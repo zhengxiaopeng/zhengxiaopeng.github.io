@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="baidu-site-verification" content="WG8fZ2mGXA" />
+  <meta name="baidu_union_verify" content="d1952c66cf48912e21c18c7c581f382a">
+  <meta name="google-site-verification" content="J7ONClDGsj92njCYAloRwEkDpz94YUFUxgi76g1m4Lk" />
+  
+  <title>【译】NotRxJava懒人专用指南 | Rocko&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="原文链接 : NotRxJava guide for lazy folks
+原文作者 : Yaroslav Heriatovych
+译文出自 : 开发技术前线 www.devtf.cn
+译者 : Rocko
+校对者: Mr.Simple
+状态 : 完成校对
+
+
+如果你是一位 Android 开发者，那么这些天你可能已经听到或看到一些关于 RxJava 满天飞的宣传了。RxJava 是一个能让你">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【译】NotRxJava懒人专用指南">
+<meta property="og:url" content="http://rocko.xyz/2015/05/05/【译】NotRxJava懒人专用指南/index.html">
+<meta property="og:site_name" content="Rocko's blog">
+<meta property="og:description" content="原文链接 : NotRxJava guide for lazy folks
+原文作者 : Yaroslav Heriatovych
+译文出自 : 开发技术前线 www.devtf.cn
+译者 : Rocko
+校对者: Mr.Simple
+状态 : 完成校对
+
+
+如果你是一位 Android 开发者，那么这些天你可能已经听到或看到一些关于 RxJava 满天飞的宣传了。RxJava 是一个能让你">
+<meta property="og:updated_time" content="2016-11-21T04:36:55.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【译】NotRxJava懒人专用指南">
+<meta name="twitter:description" content="原文链接 : NotRxJava guide for lazy folks
+原文作者 : Yaroslav Heriatovych
+译文出自 : 开发技术前线 www.devtf.cn
+译者 : Rocko
+校对者: Mr.Simple
+状态 : 完成校对
+
+
+如果你是一位 Android 开发者，那么这些天你可能已经听到或看到一些关于 RxJava 满天飞的宣传了。RxJava 是一个能让你">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  <link href='/css/open_sans.css' rel='stylesheet' type='text/css'>
+  <link href="/css/source_code_pro.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  
+
+  
+
+  <script>
+  var _hmt = _hmt || [];
+  (function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?c16c4e2dd9b9bdcefb419ffec7adb092";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+
+ <script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-2972075783837999",
+    enable_page_level_ads: true
+  });
+</script>
+
+</head>
+<body>
+  <div id="container">
+    <header id="header">
+  <div id="header-main" class="header-inner">
+    <div class="outer">
+      <a href="/" id="logo"><i class="logo" style="background-image: url(/img/rocdroid-80.gif)"></i><span class="site-title">Rocko&#39;s blog</span></a>
+      <nav id="main-nav">
+        
+
+          
+          <a class="main-nav-link" href="/."><i class="fa fa-home"></i> Home</a>
+          
+
+        
+
+          
+          <a class="main-nav-link" href="/archives"><i class="fa fa-archive"></i> Archives</a>
+          
+
+        
+
+          
+          <a class="main-nav-link" href="/categories"><i class="fa fa-sort-alpha-asc"></i> Categories</a>
+          
+
+        
+
+          
+          <a class="main-nav-link" href="/tags"><i class="fa fa-tag"></i> Tags</a>
+          
+
+        
+
+          
+          <a class="main-nav-link" href="/about"><i class="fa fa-user"></i> About</a>
+          
+
+        
+
+           
+            <a class="main-nav-link" href="http://adb.rocko.xyz" target="ADB"><i class="fa fa-bookmark"></i> ADB</a>
+          
+
+        
+      </nav>
+      
+        <nav id="sub-nav">
+          <div class="profile" id="profile-nav">
+            <a id="profile-anchor" href="javascript:;"><img class="avatar" src="/img/avatar.png"><i class="fa fa-caret-down"></i></a>
+          </div>
+        </nav>
+      
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="http://rocko.xyz"></form>
+      </div>
+    </div>
+  </div>
+  <div id="main-nav-mobile" class="header-sub header-inner">
+    <table class="menu outer">
+      <tr>
+        
+          <td>
+                
+            <a class="main-nav-link" href="/."><i class="fa fa-home"></i> Home</a>
+            
+
+          </td>
+        
+          <td>
+                
+            <a class="main-nav-link" href="/archives"><i class="fa fa-archive"></i> Archives</a>
+            
+
+          </td>
+        
+          <td>
+                
+            <a class="main-nav-link" href="/categories"><i class="fa fa-sort-alpha-asc"></i> Categories</a>
+            
+
+          </td>
+        
+          <td>
+                
+            <a class="main-nav-link" href="/tags"><i class="fa fa-tag"></i> Tags</a>
+            
+
+          </td>
+        
+          <td>
+                
+            <a class="main-nav-link" href="/about"><i class="fa fa-user"></i> About</a>
+            
+
+          </td>
+        
+          <td>
+                 
+              <a class="main-nav-link" href="http://adb.rocko.xyz" target="ADB"><i class="fa fa-bookmark"></i> ADB</a>
+            
+
+          </td>
+        
+        <td>
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://rocko.xyz"></form>
+        </td>
+      </tr>
+    </table>
+  </div>
+</header>
+
+    <div class="outer">
+      
+        <aside id="profile">
+  <div class="inner profile-inner">
+    <div class="base-info profile-block">
+      <img id="avatar" src="/img/avatar.png" >
+      <h2 id="name">Rocko</h2>
+      <h3 id="title">Android Developer</h3>
+      <span id="location"><i class="fa fa-map-marker"></i>Shenzhen, China</span>
+      <a id="follow" 
+        href='
+          
+    javascript:(
+    /*
+     * Copyright (C) 2015 Rocko (http://rocko.xyz) <rocko.zxp@gmail.com>
+     *
+     * Licensed under the Apache License, Version 2.0 (the "License");
+     * you may not use this file except in compliance with the License.
+     * You may obtain a copy of the License at
+     *
+     *      http://www.apache.org/licenses/LICENSE-2.0
+     *
+     * Unless required by applicable law or agreed to in writing, software
+     * distributed under the License is distributed on an "AS IS" BASIS,
+     * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     * See the License for the specific language governing permissions and
+     * limitations under the License.
+     */
+    function go() {
+    
+    function c() {
+        var e = document.createElement("link");
+        e.setAttribute("type", "text/css");
+        e.setAttribute("rel", "stylesheet");
+        e.setAttribute("href", f);
+        e.setAttribute("class", l);
+        document.body.appendChild(e)
+    }
+ 
+    function h() {
+        var e = document.getElementsByClassName(l);
+        for (var t = 0; t < e.length; t++) {
+            document.body.removeChild(e[t])
+        }
+    }
+ 
+    function p() {
+        var e = document.createElement("div");
+        e.setAttribute("class", a);
+        document.body.appendChild(e);
+        setTimeout(function() {
+            document.body.removeChild(e)
+        }, 100)
+    }
+ 
+    function d(e) {
+        return {
+            height : e.offsetHeight,
+            width : e.offsetWidth
+        }
+    }
+ 
+    function v(i) {
+        var s = d(i);
+        return s.height > e && s.height < n && s.width > t && s.width < r
+    }
+ 
+    function m(e) {
+        var t = e;
+        var n = 0;
+        while (!!t) {
+            n += t.offsetTop;
+            t = t.offsetParent
+        }
+        return n
+    }
+ 
+    function g() {
+        var e = document.documentElement;
+        if (!!window.innerWidth) {
+            return window.innerHeight
+        } else if (e && !isNaN(e.clientHeight)) {
+            return e.clientHeight
+        }
+        return 0
+    }
+ 
+    function y() {
+        if (window.pageYOffset) {
+            return window.pageYOffset
+        }
+        return Math.max(document.documentElement.scrollTop, document.body.scrollTop)
+    }
+ 
+    function E(e) {
+        var t = m(e);
+        return t >= w && t <= b + w
+    }
+ 
+    var songs = [
+                "http://7xoiki.com1.z0.glb.clouddn.com/Music-Fashion_Show.mp3",
+                "http://7xoiki.com1.z0.glb.clouddn.com/Music-Wake-Live.mp3",
+                "http://7xoiki.com1.z0.glb.clouddn.com/Music-outside.mp3",
+                "http://7xoiki.com1.z0.glb.clouddn.com/Music-sunburst.mp3"
+    ];
+
+    function S() {
+        var e = document.getElementById("audio_element_id");
+        if(e != null){
+            var index = parseInt(e.getAttribute("curSongIndex"));
+            if(index > songs.length - 2) {
+                index = 0;
+            } else {
+                index++;
+            }
+            e.setAttribute("curSongIndex", index);
+            N();
+        }
+
+        e.src = i;
+        e.play()
+    }
+ 
+    function x(e) {
+        e.className += " " + s + " " + o
+    }
+ 
+    function T(e) {
+        e.className += " " + s + " " + u[Math.floor(Math.random() * u.length)]
+    }
+ 
+    function N() {
+        var e = document.getElementsByClassName(s);
+        var t = new RegExp("\\b" + s + "\\b");
+        for (var n = 0; n < e.length; ) {
+            e[n].className = e[n].className.replace(t, "")
+        }
+    }
+
+    function initAudioEle() {
+        var e = document.getElementById("audio_element_id");
+        if(e === null){
+            e = document.createElement("audio");
+            e.setAttribute("class", l);
+            e.setAttribute("curSongIndex", 0);
+            e.id = "audio_element_id";
+            e.loop = false;
+            e.bgcolor = 0;
+            e.addEventListener("canplay", function() {
+            setTimeout(function() {
+                x(k)
+            }, 500);
+            setTimeout(function() {
+                N();
+                p();
+                for (var e = 0; e < O.length; e++) {
+                    T(O[e])
+                }
+            }, 15500)
+        }, true);
+        e.addEventListener("ended", function() {
+            N();
+            h();
+            go();
+        }, true);
+        e.innerHTML = " <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>";
+        document.body.appendChild(e);
+        }
+    }
+    
+    initAudioEle();
+    var e = 30;
+    var t = 30;
+    var n = 350;
+    var r = 350;
+
+    var curSongIndex = parseInt(document.getElementById("audio_element_id").getAttribute("curSongIndex"));
+    var i = songs[curSongIndex];
+    
+    var s = "mw-harlem_shake_me";
+    var o = "im_first";
+    var u = ["im_drunk", "im_baked", "im_trippin", "im_blown"];
+    var a = "mw-strobe_light";
+
+    var f = "/css/harlem-shake-style.css";
+    
+    var l = "mw_added_css";
+    var b = g();
+    var w = y();
+    var C = document.getElementsByTagName("*");
+    var k = null;
+    for (var L = 0; L < C.length; L++) {
+        var A = C[L];
+        if (v(A)) {
+            if (E(A)) {
+                k = A;
+                break
+            }
+        }
+    }
+    if (A === null) {
+        console.warn("Could not find a node of the right size. Please try a different page.");
+        return
+    }
+    c();
+    S();
+    var O = [];
+    for (var L = 0; L < C.length; L++) {
+        var A = C[L];
+        if (v(A)) {
+            O.push(A)
+        }
+    }
+    })()
+    
+        '>
+      <i class="fa fa-music"></i> &nbsp High一下 </i></a>
+    </div>
+    <div class="article-info profile-block">
+      <div class="article-info-block">
+        22
+        <span>文章</span>
+      </div>
+      <div class="article-info-block">
+        29
+        <span>标签</span>
+      </div>
+    </div>
+    
+    <div class="contact-info profile-block">
+      <table class="contact-list">
+        <tr>
+          
+          <td><a href="//github.com/zhengxiaopeng/" target="_blank" title="github"><i class="fa fa-github"></i></a></td>
+          
+          <td><a href="//weibo.com/678662430/" target="_blank" title="weibo"><i class="fa fa-weibo"></i></a></td>
+          
+          <td><a href="//www.zhihu.com/people/rocko/" target="_blank" title="smile-o"><i class="fa fa-smile-o"></i></a></td>
+          
+          <td><a href="https://twitter.com/rocko_zxp" target="_blank" title="twitter"><i class="fa fa-twitter"></i></a></td>
+          
+          <td><a href="https://plus.google.com/u/0/101915236087672094434/" target="_blank" title="google-plus"><i class="fa fa-google-plus"></i></a></td>
+          
+          <td><a href="/atom.xml" target="_blank" title="rss"><i class="fa fa-rss"></i></a></td>
+          
+        </tr>
+      </table>
+    </div>
+    
+    
+  </div>
+</aside>
+
+      
+      <section id="main"><article id="post-【译】NotRxJava懒人专用指南" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      【译】NotRxJava懒人专用指南
+    </h1>
+  
+
+        <div class="article-meta">
+          
+  <div class="article-date" >
+    <i class="fa fa-calendar"></i>
+    <a href="/2015/05/05/【译】NotRxJava懒人专用指南/">
+      <time datetime="2015-05-05T04:49:07.000Z" itemprop="datePublished">2015-05-05</time>
+    </a>
+  </div>
+
+
+          
+  <div class="article-category">
+  	<i class="fa fa-folder"></i>
+    <a class="article-category-link" href="/categories/Android/">Android</a>
+  </div>
+
+          <!-- 评论、访问统计部分，不蒜子 -->
+          <!-- 不蒜子统计 -->
+
+
+          
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+                
+                    <div id="toc" class="toc-article">
+                    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Cat-应用程序"><span class="toc-number">1.</span> <span class="toc-text">Cat 应用程序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#模型和-API"><span class="toc-number">2.</span> <span class="toc-text">模型和 API</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#走向异步"><span class="toc-number">3.</span> <span class="toc-text">走向异步</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#更美好的世界！"><span class="toc-number">4.</span> <span class="toc-text">更美好的世界！</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#泛型回调"><span class="toc-number">4.1.</span> <span class="toc-text">泛型回调</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#你必须把它分开"><span class="toc-number">4.2.</span> <span class="toc-text">你必须把它分开</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Breaking-things"><span class="toc-number">4.3.</span> <span class="toc-text">Breaking things</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#简单映射"><span class="toc-number">4.4.</span> <span class="toc-text">简单映射</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#高级映射"><span class="toc-number">4.5.</span> <span class="toc-text">高级映射</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#最后的要点"><span class="toc-number">4.6.</span> <span class="toc-text">最后的要点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RxJava"><span class="toc-number">5.</span> <span class="toc-text">RxJava</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">6.</span> <span class="toc-text">总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一些有用的链接"><span class="toc-number">7.</span> <span class="toc-text">一些有用的链接</span></a></li></ol>
+  </div>
+
+        <blockquote>
+<ul>
+<li>原文链接 : <a href="http://yarikx.github.io/NotRxJava/" target="_blank" rel="external">NotRxJava guide for lazy folks</a></li>
+<li>原文作者 : <a href="http://yarikx.github.io/" target="_blank" rel="external">Yaroslav Heriatovych</a></li>
+<li>译文出自 : <a href="http://www.devtf.cn/" target="_blank" rel="external">开发技术前线 www.devtf.cn</a></li>
+<li>译者 : <a href="https://github.com/zhengxiaopeng" target="_blank" rel="external">Rocko</a></li>
+<li>校对者: <a href="https://github.com/bboyfeiyu" target="_blank" rel="external">Mr.Simple</a></li>
+<li>状态 : 完成校对</li>
+</ul>
+</blockquote>
+<p>如果你是一位 Android 开发者，那么这些天你可能已经听到或看到一些关于 RxJava 满天飞的宣传了。RxJava 是一个能让你摆脱编写一些复杂繁琐的代码去处理异步事件的库。一旦开始在你的项目中使用，你会对它爱不释手的。</p>
+<p>然而，RxJava 有个缺陷，它需要一个陡峭的学习过程。对于一个从未接触使用过 RxJava 的人来说，是很难一次就领会到它的精髓所在的，对于它的一些使用方法你也可能会很迷惑。在项目中使用它意味着你需要稍微地改变一下你的代码编写思路，另外，这样的学习曲线会使得在项目中因为大规模的使用RxJava而引发一些问题。</p>
+<p>当然，关于如何去使用 RxJava 已经有许多的教程和代码范例了。感兴趣的开发者可以访问 RxJava 的官方 Wiki，里面有关于什么是 Observable 以及它和 Iterable、Future 之间关系的很好的解释。Wiki 里有一篇很有用的文章：How To Use RxJava，这篇文章包含怎么去发送事件流并且打印出它们的介绍以及它的样例代码。</p>
+<p>但我们要明确的是在还没有学习什么是 Observable 的前提下了解 RxJava 用来解决什么问题以及它是怎么帮助我们组织起异步代码的。</p>
+<p>我这篇文章的定位就是 RxJava 官方文档的“前篇”，读完这篇文章能更好地去理解 RxJava 所解决的问题。文章中也有一个小 Demo，就是自己怎么去整理那些凌乱的代码，然后看看我们在没有使用 RxJava 的情况下是怎么去遵循 RxJava 基本原则的。</p>
+<p>所以，如果你仍有足够的好奇的话就让我们开始吧！</p>
+<a id="more"></a>
+<h2 id="Cat-应用程序"><a href="#Cat-应用程序" class="headerlink" title="Cat 应用程序"></a>Cat 应用程序</h2><p>让我们来创建一个真实世界的例子。我们都知道猫是我们技术发展的引擎，所以就让我们也来创建这么一个用来下载猫图片的典型应用吧。</p>
+<p><strong> 任务描述 </strong></p>
+<ul>
+<li>我们有个 Web API，能根据给定的查询请求搜索到整个互联网上猫的图片。每个图片包含可爱指数的参数（描述图片可爱度的整型值）。我们的任务将会下载到一个猫列表的集合，选择最可爱的那个，然后把它保存到本地。</li>
+</ul>
+<p>我们只关心下载、处理和保存猫的数据。</p>
+<p>我们开始吧~</p>
+<h2 id="模型和-API"><a href="#模型和-API" class="headerlink" title="模型和 API"></a>模型和 API</h2><p>下面是描述“猫”的简单数据结构：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Cat</span> <span class="keyword">implements</span> <span class="title">Comparable</span>&lt;<span class="title">Cat</span>&gt;</span>&#123;</div><div class="line">    Bitmap image;</div><div class="line">    <span class="keyword">int</span> cuteness;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compareTo</span><span class="params">(Cat another)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> Integer.compare(cuteness, another.cuteness);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>还有我们传统阻塞式风格的 API，它被打包进 cat-sdk.jar 中了：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Api</span> </span>&#123;</div><div class="line">    <span class="function">List&lt;Cat&gt; <span class="title">queryCats</span><span class="params">(String query)</span></span>;</div><div class="line">    <span class="function">Uri <span class="title">store</span><span class="params">(Cat cat)</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这足够清楚了吗？当然！那就让我们开始编写业务逻辑吧：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CatsHelper</span> </span>&#123;</div><div class="line"></div><div class="line">    Api api;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> Uri <span class="title">saveTheCutestCat</span><span class="params">(String query)</span></span>&#123;</div><div class="line">        List&lt;Cat&gt; cats = api.queryCats(query);</div><div class="line">        Cat cutest = findCutest(cats);</div><div class="line">        Uri savedUri = api.store(cutest);</div><div class="line">        <span class="keyword">return</span> savedUri;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> Cat <span class="title">findCutest</span><span class="params">(List&lt;Cat&gt; cats)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> Collections.max(cats);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>唉，这样清晰简单的代码帅到让我窒息啊。来理清一下代码的炫酷之处吧。主方法 saveTheCutestCat 只包含了 3 个其它方法，然后花个几分钟来看看代码和思考这些方法。你给方法提供了输入参数然后就能得到结果返回了，在这个方法工作的时候我们需要等待它的完成。</p>
+<p>简洁而有用，让我们再看看组合方法的其它优势：</p>
+<p><strong>组合</strong></p>
+<p>正如我们看到的，根据其它 3 个方法而新创建了一个方法（<code>saveTheCutestCat</code>），因此我们组合了它们。像乐高积木那样，我们把方法之间连接起来组成了乐高积木（实际上可以在之后组合起来）。组合方法是很简单的，从一个方法得到返回结果然后再把它传递给另外的方法做为输入参数，这不简单吗？</p>
+<p><strong>错误的传递</strong></p>
+<p>另外一个好处就是我们处理错误的方式了。任何一个方法都可能因执行时发生错误而被终止，这个错误能在任何层次上被处理掉，Java 中我们叫它抛出了异常，然后这个错误在 try/catch 代码块中做处理。这里的关键点是我们不需要为组合方法里的每个方法都做异常处理，仅需要对这些组合起来的方法做统一处理，像下面这样：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">try</span>&#123;</div><div class="line">    List&lt;Cat&gt; cats = api.queryCats(query);</div><div class="line">    Cat cutest = findCutest(cats);</div><div class="line">    Uri savedUri = api.store(cutest);</div><div class="line">    <span class="keyword">return</span> savedUri;</div><div class="line">&#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">    e.printStackTrace()</div><div class="line">    <span class="keyword">return</span> someDefaultValue;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这个情况下，我们处理了所有执行时的错误，或者说如果我们没有使用 try/catch 代码块我们能够把错误传递到下一个层次上。</p>
+<h2 id="走向异步"><a href="#走向异步" class="headerlink" title="走向异步"></a>走向异步</h2><p>要知道我们身在一个对等待很敏感的世界里，我们也知道不可能只有阻塞式的调用。在 Android 中我们也总需要处理异步代码。</p>
+<p>拿 Android 的 <code>OnClickListener</code> 举个例子，当你需要处理一个控件的点击事件时，你必须提供一个监听器（回调）以供在用户点击控件时被调用。这没有理由使用阻塞的方式去接受点击事件的回调，所以对点击来说总是异步的。现在，让我们也使用异步编程吧。</p>
+<p><strong>异步的网络调用</strong></p>
+<p>开始想象下使用没有阻塞的 HTTP client（例如<a href="https://github.com/koush/ion" target="_blank" rel="external">Ion</a>），还有就是我们的 <code>cats-sdk.jar</code> 已经更新。它的 API 也换成了异步的方式调用。</p>
+<p>新 API 的接口：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Api</span> </span>&#123;</div><div class="line">    <span class="class"><span class="keyword">interface</span> <span class="title">CatsQueryCallback</span> </span>&#123;</div><div class="line">        <span class="function"><span class="keyword">void</span> <span class="title">onCatListReceived</span><span class="params">(List&lt;Cat&gt; cats)</span></span>;</div><div class="line">        <span class="function"><span class="keyword">void</span> <span class="title">onError</span><span class="params">(Exception e)</span></span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">queryCats</span><span class="params">(String query, CatsQueryCallback catsQueryCallback)</span></span>;</div><div class="line"></div><div class="line">    <span class="function">Uri <span class="title">store</span><span class="params">(Cat cat)</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>所以现在我们能异步的获取猫的信息集合列表了，返回正确或错误的结果时都会通过 <code>CatsQueryCallback</code> 回调接口。</p>
+<p>因为 API 改变了所以我们也不得不改变我们的 <code>CatsHelper</code>:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CatsHelper</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">CutestCatCallback</span> </span>&#123;</div><div class="line">        <span class="function"><span class="keyword">void</span> <span class="title">onCutestCatSaved</span><span class="params">(Uri uri)</span></span>;</div><div class="line">        <span class="function"><span class="keyword">void</span> <span class="title">onError</span><span class="params">(Exception e)</span></span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    Api api;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">saveTheCutestCat</span><span class="params">(String query, CutestCatCallback cutestCatCallback)</span></span>&#123;</div><div class="line">        api.queryCats(query, <span class="keyword">new</span> Api.CatsQueryCallback() &#123;</div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCatListReceived</span><span class="params">(List&lt;Cat&gt; cats)</span> </span>&#123;</div><div class="line">                Cat cutest = findCutest(cats);</div><div class="line">                Uri savedUri = api.store(cutest);</div><div class="line">                cutestCatCallback.onCutestCatSaved(savedUri);</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onQueryFailed</span><span class="params">(Exception e)</span> </span>&#123;</div><div class="line">                cutestCatCallback.onError(e);</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> Cat <span class="title">findCutest</span><span class="params">(List&lt;Cat&gt; cats)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> Collections.max(cats);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>现在我们已经不能使用阻塞的 API 了，我们也不能把我们的客户端上写成阻塞式的调用（实际上是可以的，但需要明确的在线程中使用 <code>synchronized</code>、<code>CountdownLatch</code>、等等，也需要在下层中使用异步处理）。所以我们不能在 <code>saveTheCutestCat</code> 方法中直接返回一个值，我们需要对它进行异步回调处理。</p>
+<p>让我们再深入一点，如果我们 API 的两个方法调用都是异步的，举个例子，我们正在使用非阻塞IO去写进一个文件。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Api</span> </span>&#123;</div><div class="line">    <span class="class"><span class="keyword">interface</span> <span class="title">CatsQueryCallback</span> </span>&#123;</div><div class="line">        <span class="function"><span class="keyword">void</span> <span class="title">onCatListReceived</span><span class="params">(List&lt;Cat&gt; cats)</span></span>;</div><div class="line">        <span class="function"><span class="keyword">void</span> <span class="title">onQueryFailed</span><span class="params">(Exception e)</span></span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="class"><span class="keyword">interface</span> <span class="title">StoreCallback</span></span>&#123;</div><div class="line">        <span class="function"><span class="keyword">void</span> <span class="title">onCatStored</span><span class="params">(Uri uri)</span></span>;</div><div class="line">        <span class="function"><span class="keyword">void</span> <span class="title">onStoreFailed</span><span class="params">(Exception e)</span></span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">queryCats</span><span class="params">(String query, CatsQueryCallback catsQueryCallback)</span></span>;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">store</span><span class="params">(Cat cat, StoreCallback storeCallback)</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>还有我们的 helper：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CatsHelper</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">CutestCatCallback</span> </span>&#123;</div><div class="line">        <span class="function"><span class="keyword">void</span> <span class="title">onCutestCatSaved</span><span class="params">(Uri uri)</span></span>;</div><div class="line">        <span class="function"><span class="keyword">void</span> <span class="title">onError</span><span class="params">(Exception e)</span></span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    Api api;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">saveTheCutestCat</span><span class="params">(String query, CutestCatCallback cutestCatCallback)</span></span>&#123;</div><div class="line">        api.queryCats(query, <span class="keyword">new</span> Api.CatsQueryCallback() &#123;</div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCatListReceived</span><span class="params">(List&lt;Cat&gt; cats)</span> </span>&#123;</div><div class="line">                Cat cutest = findCutest(cats);</div><div class="line">                api.store(cutest, <span class="keyword">new</span> Api.StoreCallback() &#123;</div><div class="line">                    <span class="meta">@Override</span></div><div class="line">                    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCatStored</span><span class="params">(Uri uri)</span> </span>&#123;</div><div class="line">                        cutestCatCallback.onCutestCatSaved(uri);</div><div class="line">                    &#125;</div><div class="line"></div><div class="line">                    <span class="meta">@Override</span></div><div class="line">                    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onStoreFailed</span><span class="params">(Exception e)</span> </span>&#123;</div><div class="line">                        cutestCatCallback.onError(e);</div><div class="line">                    &#125;</div><div class="line">                &#125;);</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onQueryFailed</span><span class="params">(Exception e)</span> </span>&#123;</div><div class="line">                cutestCatCallback.onError(e);</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> Cat <span class="title">findCutest</span><span class="params">(List&lt;Cat&gt; cats)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> Collections.max(cats);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>现在再来看看代码，跟之前一样优雅吗？明显不是了，这很糟糕！现在它有了更多无关代码和花括号，但是逻辑是一样的。</p>
+<p>那么组合在哪呢？他已经不见了！现在你不能像之前那样组合操作了。对于每一个异步操作你都必须创建出回调接口并在代码中插入它们，每一次都需要手动地加入！</p>
+<p>错误传递又在哪？又是一个否定！在这样的代码中错误不会自动地传递，我们需要在更深一层上通过自己手动地再让它传递下去（请看 <code>onStoreFailed</code> 和 <code>onQueryFailed方法</code>）。</p>
+<p>我们很难对这样的代码进行阅读和找出潜在的 bugs。</p>
+<p><strong>结束了？</strong></p>
+<p>结束了又怎样？我们能拿它来干嘛？我们被困在这个没有组合回调的地狱里了吗？前方高能，请抓紧你的安全带哦，我们将努力的去把这些干掉！</p>
+<h2 id="更美好的世界！"><a href="#更美好的世界！" class="headerlink" title="更美好的世界！"></a>更美好的世界！</h2><h3 id="泛型回调"><a href="#泛型回调" class="headerlink" title="泛型回调"></a>泛型回调</h3><p>可以从我们的回调接口中找到共同的模式：</p>
+<ul>
+<li>都有一个分发结果的方法（<code>onCutestCatSaved</code>, <code>onCatListReceived</code>, <code>onCatStored</code>）</li>
+<li>它们中大多数（在我们的例子中是全部）有一个用于错误处理的方法（<code>onError</code>, <code>onQueryFailed</code>, <code>onStoreFailed</code>）</li>
+</ul>
+<p>所以我们可以创建一个泛型回调接口去替代原来所有的接口。但是我们不能去改变 API 的调用方法的签名，我们必须创建包装类来间接调用。</p>
+<p>所以我们的泛型回调接口看起来是这样的：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Callback</span>&lt;<span class="title">T</span>&gt; </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">onResult</span><span class="params">(T result)</span></span>;</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">onError</span><span class="params">(Exception e)</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>然后我们来创建 <code>ApiWrapper</code> 来改变一下调用方法的签名：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ApiWrapper</span> </span>&#123;</div><div class="line">    Api api;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">queryCats</span><span class="params">(String query, Callback&lt;List&lt;Cat&gt;&gt; catsCallback)</span></span>&#123;</div><div class="line">        api.queryCats(query, <span class="keyword">new</span> Api.CatsQueryCallback() &#123;</div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCatListReceived</span><span class="params">(List&lt;Cat&gt; cats)</span> </span>&#123;</div><div class="line">                catsCallback.onResult(cats);</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onQueryFailed</span><span class="params">(Exception e)</span> </span>&#123;</div><div class="line">                catsCallback.onError(e);</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">store</span><span class="params">(Cat cat, Callback&lt;Uri&gt; uriCallback)</span></span>&#123;</div><div class="line">        api.store(cat, <span class="keyword">new</span> Api.StoreCallback() &#123;</div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCatStored</span><span class="params">(Uri uri)</span> </span>&#123;</div><div class="line">                uriCallback.onResult(uri);</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onStoreFailed</span><span class="params">(Exception e)</span> </span>&#123;</div><div class="line">                uriCallback.onError(e);</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>所以这仅仅是对于 <code>Callback</code> 的一些传递 resuts/errors 的调用转发逻辑。</p>
+<p>最后我们的 <code>CatsHelper</code>：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CatsHelper</span></span>&#123;</div><div class="line"></div><div class="line">    ApiWrapper apiWrapper;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">saveTheCutestCat</span><span class="params">(String query, Callback&lt;Uri&gt; cutestCatCallback)</span></span>&#123;</div><div class="line">        apiWrapper.queryCats(query, <span class="keyword">new</span> Callback&lt;List&lt;Cat&gt;&gt;() &#123;</div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onResult</span><span class="params">(List&lt;Cat&gt; cats)</span> </span>&#123;</div><div class="line">                Cat cutest = findCutest(cats);</div><div class="line">                apiWrapper.store(cutest, cutestCatCallback);</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onError</span><span class="params">(Exception e)</span> </span>&#123;</div><div class="line">                cutestCatCallback.onError(e);</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> Cat <span class="title">findCutest</span><span class="params">(List&lt;Cat&gt; cats)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> Collections.max(cats);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>可以看到比之前的简明了一些。我们可以通过直接传递一个顶级的 <code>cutestCatCallback</code> 回调接口给 <code>apiWrapper.store</code> 来减少回调间的层级调用，此外作为回调方法的签名是一样的。</p>
+<p>但是我们可以做的更好！</p>
+<h3 id="你必须把它分开"><a href="#你必须把它分开" class="headerlink" title="你必须把它分开"></a>你必须把它分开</h3><p>让我们来看看我们的异步操作（<code>queryCats</code>，<code>queryCats</code>，还有 <code>saveTheCutestCat</code>），它们都遵循了相同的模式。调用它们的方法有一些参数（<code>query</code>、<code>cat</code>）也包括一个回调对象。再次说明：任何异步操作需要携带所需的常规参数和一个回调实例对象。如果我们试图去分开这几个阶段，每个异步操作仅仅将会携带一个参数对象，然后返回一些携带着回调（信息）的临时对象。</p>
+<p>我们来应用下这样的模式，看看是否对我们有所帮助。</p>
+<p>如果在异步操作中返回一些临时对象，我们需要定义一个出来。这样的一个对象需要包括常见的行为（以回调为单一参数），我们将定义这样的类给所有的异步操作使用，这个类就叫它<code>AsyncJob</code>。</p>
+<ul>
+<li>P.S. 称之为AsyncTask更合适一点，但是我不希望你混淆了异步操作跟另外一个存在的抽象概念之间的关系（这是不好的一点）。</li>
+</ul>
+<p>所以：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">AsyncJob</span>&lt;<span class="title">T</span>&gt; </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">start</span><span class="params">(Callback&lt;T&gt; callback)</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>非常的简单，<code>Callback</code> 传进方法后就会开始它的工作任务。</p>
+<p>然后更改包装 API 的调用：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ApiWrapper</span> </span>&#123;</div><div class="line">    Api api;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> AsyncJob&lt;List&lt;Cat&gt;&gt; queryCats(String query) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> AsyncJob&lt;List&lt;Cat&gt;&gt;() &#123;</div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">start</span><span class="params">(Callback&lt;List&lt;Cat&gt;&gt; catsCallback)</span> </span>&#123;</div><div class="line">                api.queryCats(query, <span class="keyword">new</span> Api.CatsQueryCallback() &#123;</div><div class="line">                    <span class="meta">@Override</span></div><div class="line">                    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCatListReceived</span><span class="params">(List&lt;Cat&gt; cats)</span> </span>&#123;</div><div class="line">                        catsCallback.onResult(cats);</div><div class="line">                    &#125;</div><div class="line"></div><div class="line">                    <span class="meta">@Override</span></div><div class="line">                    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onQueryFailed</span><span class="params">(Exception e)</span> </span>&#123;</div><div class="line">                        catsCallback.onError(e);</div><div class="line">                    &#125;</div><div class="line">                &#125;);</div><div class="line">            &#125;</div><div class="line">        &#125;;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> AsyncJob&lt;Uri&gt; <span class="title">store</span><span class="params">(Cat cat)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> AsyncJob&lt;Uri&gt;() &#123;</div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">start</span><span class="params">(Callback&lt;Uri&gt; uriCallback)</span> </span>&#123;</div><div class="line">                api.store(cat, <span class="keyword">new</span> Api.StoreCallback() &#123;</div><div class="line">                    <span class="meta">@Override</span></div><div class="line">                    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCatStored</span><span class="params">(Uri uri)</span> </span>&#123;</div><div class="line">                        uriCallback.onResult(uri);</div><div class="line">                    &#125;</div><div class="line"></div><div class="line">                    <span class="meta">@Override</span></div><div class="line">                    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onStoreFailed</span><span class="params">(Exception e)</span> </span>&#123;</div><div class="line">                        uriCallback.onError(e);</div><div class="line">                    &#125;</div><div class="line">                &#125;);</div><div class="line">            &#125;</div><div class="line">        &#125;;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>目前一切顺利，我们只是部分运用我们的包装过的 API 调用在程序之中。现在我们可以开始使用 <code>AsyncJob</code> 去做我们想要的了，当然也到更改 <code>CatsHelper</code> 的时间了。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CatsHelper</span> </span>&#123;</div><div class="line"></div><div class="line">    ApiWrapper apiWrapper;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> AsyncJob&lt;Uri&gt; <span class="title">saveTheCutestCat</span><span class="params">(String query)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> AsyncJob&lt;Uri&gt;() &#123;</div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">start</span><span class="params">(Callback&lt;Uri&gt; cutestCatCallback)</span> </span>&#123;</div><div class="line">                apiWrapper.queryCats(query)</div><div class="line">                        .start(<span class="keyword">new</span> Callback&lt;List&lt;Cat&gt;&gt;() &#123;</div><div class="line">                            <span class="meta">@Override</span></div><div class="line">                            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onResult</span><span class="params">(List&lt;Cat&gt; cats)</span> </span>&#123;</div><div class="line">                                Cat cutest = findCutest(cats);</div><div class="line">                                apiWrapper.store(cutest)</div><div class="line">                                        .start(<span class="keyword">new</span> Callback&lt;Uri&gt;() &#123;</div><div class="line">                                            <span class="meta">@Override</span></div><div class="line">                                            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onResult</span><span class="params">(Uri result)</span> </span>&#123;</div><div class="line">                                                cutestCatCallback.onResult(result);</div><div class="line">                                            &#125;</div><div class="line"></div><div class="line">                                            <span class="meta">@Override</span></div><div class="line">                                            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onError</span><span class="params">(Exception e)</span> </span>&#123;</div><div class="line">                                                cutestCatCallback.onError(e);</div><div class="line">                                            &#125;</div><div class="line">                                        &#125;);</div><div class="line">                            &#125;</div><div class="line"></div><div class="line">                            <span class="meta">@Override</span></div><div class="line">                            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onError</span><span class="params">(Exception e)</span> </span>&#123;</div><div class="line">                                cutestCatCallback.onError(e);</div><div class="line">                            &#125;</div><div class="line">                        &#125;);</div><div class="line">            &#125;</div><div class="line">        &#125;;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> Cat <span class="title">findCutest</span><span class="params">(List&lt;Cat&gt; cats)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> Collections.max(cats);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>哇，之前的版本更简单些啊，我们现在的优势是什么？答案就是现在我们可以给客户端返回“组合”操作的 <code>AsyncJob&lt;Uri&gt;</code>。所以一个客户端（在 activity 或者 fragment 处）可以用组合起来的工作来操作。</p>
+<h3 id="Breaking-things"><a href="#Breaking-things" class="headerlink" title="Breaking things"></a>Breaking things</h3><p>这是我们的逻辑数据流：</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">         (<span class="keyword">async</span>)                 (<span class="keyword">sync</span>)           (<span class="keyword">async</span>)</div><div class="line">query ===========&gt; <span class="built_in">List</span>&lt;Cat&gt; -------------&gt; Cat ==========&gt; <span class="built_in">Uri</span></div><div class="line">       queryCats              findCutest           store</div></pre></td></tr></table></figure>
+<p>为了让我们的代码拥有之前的可读性，我们从这个事件流中强行进入到里面的操作里。但有件事需要注意，如果某些操作（方法）是异步的，然后调用它的操作（方法）又是异步的，就比如，查询猫的操作是异步的，然后寻找出最可爱的猫（即使有一个阻塞调用）也是一个异步操作（客户端希望接收的结果）。</p>
+<p>所以我们可以使用 AsyncJobs 把我们的方法分解成更小的操作：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CatsHelper</span> </span>&#123;</div><div class="line"></div><div class="line">    ApiWrapper apiWrapper;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> AsyncJob&lt;Uri&gt; <span class="title">saveTheCutestCat</span><span class="params">(String query)</span> </span>&#123;</div><div class="line">        AsyncJob&lt;List&lt;Cat&gt;&gt; catsListAsyncJob = apiWrapper.queryCats(query);</div><div class="line">        AsyncJob&lt;Cat&gt; cutestCatAsyncJob = <span class="keyword">new</span> AsyncJob&lt;Cat&gt;() &#123;</div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">start</span><span class="params">(Callback&lt;Cat&gt; callback)</span> </span>&#123;</div><div class="line">                catsListAsyncJob.start(<span class="keyword">new</span> Callback&lt;List&lt;Cat&gt;&gt;() &#123;</div><div class="line">                    <span class="meta">@Override</span></div><div class="line">                    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onResult</span><span class="params">(List&lt;Cat&gt; result)</span> </span>&#123;</div><div class="line">                        callback.onResult(findCutest(result));</div><div class="line">                    &#125;</div><div class="line"></div><div class="line">                    <span class="meta">@Override</span></div><div class="line">                    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onError</span><span class="params">(Exception e)</span> </span>&#123;</div><div class="line">                        callback.onError(e);</div><div class="line">                    &#125;</div><div class="line">                &#125;);</div><div class="line">            &#125;</div><div class="line">        &#125;;</div><div class="line"></div><div class="line">        AsyncJob&lt;Uri&gt; storedUriAsyncJob = <span class="keyword">new</span> AsyncJob&lt;Uri&gt;() &#123;</div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">start</span><span class="params">(Callback&lt;Uri&gt; cutestCatCallback)</span> </span>&#123;</div><div class="line">                cutestCatAsyncJob.start(<span class="keyword">new</span> Callback&lt;Cat&gt;() &#123;</div><div class="line">                    <span class="meta">@Override</span></div><div class="line">                    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onResult</span><span class="params">(Cat cutest)</span> </span>&#123;</div><div class="line">                        apiWrapper.store(cutest)</div><div class="line">                                .start(<span class="keyword">new</span> Callback&lt;Uri&gt;() &#123;</div><div class="line">                                    <span class="meta">@Override</span></div><div class="line">                                    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onResult</span><span class="params">(Uri result)</span> </span>&#123;</div><div class="line">                                        cutestCatCallback.onResult(result);</div><div class="line">                                    &#125;</div><div class="line"></div><div class="line">                                    <span class="meta">@Override</span></div><div class="line">                                    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onError</span><span class="params">(Exception e)</span> </span>&#123;</div><div class="line">                                        cutestCatCallback.onError(e);</div><div class="line">                                    &#125;</div><div class="line">                                &#125;);</div><div class="line">                    &#125;</div><div class="line"></div><div class="line">                    <span class="meta">@Override</span></div><div class="line">                    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onError</span><span class="params">(Exception e)</span> </span>&#123;</div><div class="line">                        cutestCatCallback.onError(e);</div><div class="line">                    &#125;</div><div class="line">                &#125;);</div><div class="line">            &#125;</div><div class="line">        &#125;;</div><div class="line">        <span class="keyword">return</span> storedUriAsyncJob;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> Cat <span class="title">findCutest</span><span class="params">(List&lt;Cat&gt; cats)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> Collections.max(cats);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>代码量多了许多，但是更加清晰了。低层次嵌套的回调，利于理解的变量名（<code>catsListAsyncJob</code>、<code>cutestCatAsyncJob</code>、<code>storedUriAsyncJob</code>）。</p>
+<p>看起来好了许多，但我们要再做一些事情：</p>
+<h3 id="简单映射"><a href="#简单映射" class="headerlink" title="简单映射"></a>简单映射</h3><p>现在看看 <code>AsyncJob&lt;Cat&gt; cutestCatAsyncJob</code> 的部分：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">AsyncJob&lt;Cat&gt; cutestCatAsyncJob = <span class="keyword">new</span> AsyncJob&lt;Cat&gt;() &#123;</div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">start</span><span class="params">(Callback&lt;Cat&gt; callback)</span> </span>&#123;</div><div class="line">                catsListAsyncJob.start(<span class="keyword">new</span> Callback&lt;List&lt;Cat&gt;&gt;() &#123;</div><div class="line">                    <span class="meta">@Override</span></div><div class="line">                    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onResult</span><span class="params">(List&lt;Cat&gt; result)</span> </span>&#123;</div><div class="line">                        callback.onResult(findCutest(result));</div><div class="line">                    &#125;</div><div class="line"></div><div class="line">                    <span class="meta">@Override</span></div><div class="line">                    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onError</span><span class="params">(Exception e)</span> </span>&#123;</div><div class="line">                        callback.onError(e);</div><div class="line">                    &#125;</div><div class="line">                &#125;);</div><div class="line">            &#125;</div><div class="line">        &#125;;</div></pre></td></tr></table></figure>
+<p>这 16 行代码只有一行是对我们有用（对于逻辑来说）的操作：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">findCutest(result)</div></pre></td></tr></table></figure>
+<p>剩下的仅仅是开启另外一个 <code>AsyncJob</code> 和传递结果与错误的样板代码。此外，这些代码并不用于特定的任务，我们可以把其移动到其它地方而不影响编写我们真正需要的业务代码。</p>
+<p>我们该怎么写呢？我们必须做下面的两件事情：</p>
+<ul>
+<li><p>AsyncJob是我们转换的结果</p>
+</li>
+<li><p>转换方法</p>
+</li>
+</ul>
+<p>这又有另外一个问题，因为在 Java 中不能直接传递方法（函数）所以我们需要通过类（和接口）来间接实现这样的功能，然后我们就来定义这个 “方法”：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Func</span>&lt;<span class="title">T</span>, <span class="title">R</span>&gt; </span>&#123;</div><div class="line">    <span class="function">R <span class="title">call</span><span class="params">(T t)</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>相当简单，<code>Func</code> 接口有两个类型成员，T对应于参数类型而R对应于返回类型。</p>
+<p>当我们从一个 <code>AsyncJob</code> 中装换处结果后我们就需要做一些值之间的映射，这样的方法我们就叫它 <code>map</code>。定义这个方法实例（Func 类型）最好的地方就在 <code>AsyncJob</code> 类中，所以 <code>AsyncJob</code> 代码里看起来就是这样了：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">AsyncJob</span>&lt;<span class="title">T</span>&gt; </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">start</span><span class="params">(Callback&lt;T&gt; callback)</span></span>;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> &lt;R&gt; <span class="function">AsyncJob&lt;R&gt; <span class="title">map</span><span class="params">(Func&lt;T, R&gt; func)</span></span>&#123;</div><div class="line">        <span class="keyword">final</span> AsyncJob&lt;T&gt; source = <span class="keyword">this</span>;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> AsyncJob&lt;R&gt;() &#123;</div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">start</span><span class="params">(Callback&lt;R&gt; callback)</span> </span>&#123;</div><div class="line">                source.start(<span class="keyword">new</span> Callback&lt;T&gt;() &#123;</div><div class="line">                    <span class="meta">@Override</span></div><div class="line">                    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onResult</span><span class="params">(T result)</span> </span>&#123;</div><div class="line">                        R mapped = func.call(result);</div><div class="line">                        callback.onResult(mapped);</div><div class="line">                    &#125;</div><div class="line"></div><div class="line">                    <span class="meta">@Override</span></div><div class="line">                    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onError</span><span class="params">(Exception e)</span> </span>&#123;</div><div class="line">                        callback.onError(e);</div><div class="line">                    &#125;</div><div class="line">                &#125;);</div><div class="line">            &#125;</div><div class="line">        &#125;;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>赞，这时 <code>CatsHelper</code> 就是下面这样了：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CatsHelper</span> </span>&#123;</div><div class="line"></div><div class="line">    ApiWrapper apiWrapper;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> AsyncJob&lt;Uri&gt; <span class="title">saveTheCutestCat</span><span class="params">(String query)</span> </span>&#123;</div><div class="line">        AsyncJob&lt;List&lt;Cat&gt;&gt; catsListAsyncJob = apiWrapper.queryCats(query);</div><div class="line">        AsyncJob&lt;Cat&gt; cutestCatAsyncJob = catsListAsyncJob.map(<span class="keyword">new</span> Func&lt;List&lt;Cat&gt;, Cat&gt;() &#123;</div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> Cat <span class="title">call</span><span class="params">(List&lt;Cat&gt; cats)</span> </span>&#123;</div><div class="line">                <span class="keyword">return</span> findCutest(cats);</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line"></div><div class="line">        AsyncJob&lt;Uri&gt; storedUriAsyncJob = <span class="keyword">new</span> AsyncJob&lt;Uri&gt;() &#123;</div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">start</span><span class="params">(Callback&lt;Uri&gt; cutestCatCallback)</span> </span>&#123;</div><div class="line">                cutestCatAsyncJob.start(<span class="keyword">new</span> Callback&lt;Cat&gt;() &#123;</div><div class="line">                    <span class="meta">@Override</span></div><div class="line">                    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onResult</span><span class="params">(Cat cutest)</span> </span>&#123;</div><div class="line">                        apiWrapper.store(cutest)</div><div class="line">                                .start(<span class="keyword">new</span> Callback&lt;Uri&gt;() &#123;</div><div class="line">                                    <span class="meta">@Override</span></div><div class="line">                                    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onResult</span><span class="params">(Uri result)</span> </span>&#123;</div><div class="line">                                        cutestCatCallback.onResult(result);</div><div class="line">                                    &#125;</div><div class="line"></div><div class="line">                                    <span class="meta">@Override</span></div><div class="line">                                    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onError</span><span class="params">(Exception e)</span> </span>&#123;</div><div class="line">                                        cutestCatCallback.onError(e);</div><div class="line">                                    &#125;</div><div class="line">                                &#125;);</div><div class="line">                    &#125;</div><div class="line"></div><div class="line">                    <span class="meta">@Override</span></div><div class="line">                    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onError</span><span class="params">(Exception e)</span> </span>&#123;</div><div class="line">                        cutestCatCallback.onError(e);</div><div class="line">                    &#125;</div><div class="line">                &#125;);</div><div class="line">            &#125;</div><div class="line">        &#125;;</div><div class="line">        <span class="keyword">return</span> storedUriAsyncJob;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> Cat <span class="title">findCutest</span><span class="params">(List&lt;Cat&gt; cats)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> Collections.max(cats);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>现在好多了，创建 <code>AsyncJob&lt;Cat&gt; cutestCatAsyncJob</code> 只需要 6 行代码而回调也只有一个层级了。</p>
+<h3 id="高级映射"><a href="#高级映射" class="headerlink" title="高级映射"></a>高级映射</h3><p>前面的那些已经很赞了，但是创建 <code>AsyncJob&lt;Uri&gt; storedUriAsyncJob</code> 的部分还有些不忍直视。能在这里创建映射吗？我们来试试吧：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CatsHelper</span> </span>&#123;</div><div class="line"></div><div class="line">    ApiWrapper apiWrapper;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> AsyncJob&lt;Uri&gt; <span class="title">saveTheCutestCat</span><span class="params">(String query)</span> </span>&#123;</div><div class="line">        AsyncJob&lt;List&lt;Cat&gt;&gt; catsListAsyncJob = apiWrapper.queryCats(query);</div><div class="line">        AsyncJob&lt;Cat&gt; cutestCatAsyncJob = catsListAsyncJob.map(<span class="keyword">new</span> Func&lt;List&lt;Cat&gt;, Cat&gt;() &#123;</div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> Cat <span class="title">call</span><span class="params">(List&lt;Cat&gt; cats)</span> </span>&#123;</div><div class="line">                <span class="keyword">return</span> findCutest(cats);</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line"></div><div class="line">        AsyncJob&lt;Uri&gt; storedUriAsyncJob = cutestCatAsyncJob.map(<span class="keyword">new</span> Func&lt;Cat, Uri&gt;() &#123;</div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> Uri <span class="title">call</span><span class="params">(Cat cat)</span> </span>&#123;</div><div class="line">                <span class="keyword">return</span> apiWrapper.store(cat);</div><div class="line">        <span class="comment">//      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ will not compile</span></div><div class="line">        <span class="comment">//      Incompatible types:</span></div><div class="line">        <span class="comment">//      Required: Uri</span></div><div class="line">        <span class="comment">//      Found: AsyncJob&lt;Uri&gt;                </span></div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">        <span class="keyword">return</span> storedUriAsyncJob;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> Cat <span class="title">findCutest</span><span class="params">(List&lt;Cat&gt; cats)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> Collections.max(cats);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>呃呃。。。并不容易哦，我们来修改下结果的类型变量，试下其它方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CatsHelper</span> </span>&#123;</div><div class="line"></div><div class="line">    ApiWrapper apiWrapper;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> AsyncJob&lt;Uri&gt; <span class="title">saveTheCutestCat</span><span class="params">(String query)</span> </span>&#123;</div><div class="line">        AsyncJob&lt;List&lt;Cat&gt;&gt; catsListAsyncJob = apiWrapper.queryCats(query);</div><div class="line">        AsyncJob&lt;Cat&gt; cutestCatAsyncJob = catsListAsyncJob.map(<span class="keyword">new</span> Func&lt;List&lt;Cat&gt;, Cat&gt;() &#123;</div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> Cat <span class="title">call</span><span class="params">(List&lt;Cat&gt; cats)</span> </span>&#123;</div><div class="line">                <span class="keyword">return</span> findCutest(cats);</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line"></div><div class="line">        AsyncJob&lt;AsyncJob&lt;Uri&gt;&gt; storedUriAsyncJob = cutestCatAsyncJob.map(<span class="keyword">new</span> Func&lt;Cat, AsyncJob&lt;Uri&gt;&gt;() &#123;</div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> AsyncJob&lt;Uri&gt; <span class="title">call</span><span class="params">(Cat cat)</span> </span>&#123;</div><div class="line">                <span class="keyword">return</span> apiWrapper.store(cat);</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">        <span class="keyword">return</span> storedUriAsyncJob;</div><div class="line">        <span class="comment">//^^^^^^^^^^^^^^^^^^^^^^^ will not compile</span></div><div class="line">        <span class="comment">//      Incompatible types:</span></div><div class="line">        <span class="comment">//      Required: AsyncJob&lt;Uri&gt;</span></div><div class="line">        <span class="comment">//      Found: AsyncJob&lt;AsyncJob&lt;Uri&gt;&gt;</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> Cat <span class="title">findCutest</span><span class="params">(List&lt;Cat&gt; cats)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> Collections.max(cats);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在目前这点上我们只能有 <code>AsyncJob&lt;AsyncJob&lt;Uri&gt;&gt;</code>。我们需要往更深处挖吗？我们希望的是，去把 <code>AsyncJob</code> 在一个级别上的两个异步操作扁平化成一个单一的异步操作。</p>
+<p>现在我们需要的是得到能使方法返回映射成R类型也是 <code>AsyncJob&lt;R&gt;</code> 类型的操作。这个操作应该像 <code>map</code>，但在最后应该 <code>flatten</code> 我们嵌套的 <code>AsyncJob</code> 。我们叫它为 <code>flatMap</code> 吧，然后就是来实现它：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">AsyncJob</span>&lt;<span class="title">T</span>&gt; </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">start</span><span class="params">(Callback&lt;T&gt; callback)</span></span>;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> &lt;R&gt; <span class="function">AsyncJob&lt;R&gt; <span class="title">map</span><span class="params">(Func&lt;T, R&gt; func)</span></span>&#123;</div><div class="line">        <span class="keyword">final</span> AsyncJob&lt;T&gt; source = <span class="keyword">this</span>;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> AsyncJob&lt;R&gt;() &#123;</div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">start</span><span class="params">(Callback&lt;R&gt; callback)</span> </span>&#123;</div><div class="line">                source.start(<span class="keyword">new</span> Callback&lt;T&gt;() &#123;</div><div class="line">                    <span class="meta">@Override</span></div><div class="line">                    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onResult</span><span class="params">(T result)</span> </span>&#123;</div><div class="line">                        R mapped = func.call(result);</div><div class="line">                        callback.onResult(mapped);</div><div class="line">                    &#125;</div><div class="line"></div><div class="line">                    <span class="meta">@Override</span></div><div class="line">                    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onError</span><span class="params">(Exception e)</span> </span>&#123;</div><div class="line">                        callback.onError(e);</div><div class="line">                    &#125;</div><div class="line">                &#125;);</div><div class="line">            &#125;</div><div class="line">        &#125;;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> &lt;R&gt; <span class="function">AsyncJob&lt;R&gt; <span class="title">flatMap</span><span class="params">(Func&lt;T, AsyncJob&lt;R&gt;&gt; func)</span></span>&#123;</div><div class="line">        <span class="keyword">final</span> AsyncJob&lt;T&gt; source = <span class="keyword">this</span>;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> AsyncJob&lt;R&gt;() &#123;</div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">start</span><span class="params">(Callback&lt;R&gt; callback)</span> </span>&#123;</div><div class="line">                source.start(<span class="keyword">new</span> Callback&lt;T&gt;() &#123;</div><div class="line">                    <span class="meta">@Override</span></div><div class="line">                    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onResult</span><span class="params">(T result)</span> </span>&#123;</div><div class="line">                        AsyncJob&lt;R&gt; mapped = func.call(result);</div><div class="line">                        mapped.start(<span class="keyword">new</span> Callback&lt;R&gt;() &#123;</div><div class="line">                            <span class="meta">@Override</span></div><div class="line">                            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onResult</span><span class="params">(R result)</span> </span>&#123;</div><div class="line">                                callback.onResult(result);</div><div class="line">                            &#125;</div><div class="line"></div><div class="line">                            <span class="meta">@Override</span></div><div class="line">                            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onError</span><span class="params">(Exception e)</span> </span>&#123;</div><div class="line">                                callback.onError(e);</div><div class="line">                            &#125;</div><div class="line">                        &#125;);</div><div class="line">                    &#125;</div><div class="line"></div><div class="line">                    <span class="meta">@Override</span></div><div class="line">                    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onError</span><span class="params">(Exception e)</span> </span>&#123;</div><div class="line">                        callback.onError(e);</div><div class="line">                    &#125;</div><div class="line">                &#125;);</div><div class="line">            &#125;</div><div class="line">        &#125;;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>FlatMap 的粗略实现，但这些东西的实现都在一个地方了，在客户端的业务代码中不会再见到它。接下来我们修复下 <code>CatsHelper</code>:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CatsHelper</span> </span>&#123;</div><div class="line"></div><div class="line">    ApiWrapper apiWrapper;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> AsyncJob&lt;Uri&gt; <span class="title">saveTheCutestCat</span><span class="params">(String query)</span> </span>&#123;</div><div class="line">        AsyncJob&lt;List&lt;Cat&gt;&gt; catsListAsyncJob = apiWrapper.queryCats(query);</div><div class="line">        AsyncJob&lt;Cat&gt; cutestCatAsyncJob = catsListAsyncJob.map(<span class="keyword">new</span> Func&lt;List&lt;Cat&gt;, Cat&gt;() &#123;</div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> Cat <span class="title">call</span><span class="params">(List&lt;Cat&gt; cats)</span> </span>&#123;</div><div class="line">                <span class="keyword">return</span> findCutest(cats);</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line"></div><div class="line">        AsyncJob&lt;Uri&gt; storedUriAsyncJob = cutestCatAsyncJob.flatMap(<span class="keyword">new</span> Func&lt;Cat, AsyncJob&lt;Uri&gt;&gt;() &#123;</div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> AsyncJob&lt;Uri&gt; <span class="title">call</span><span class="params">(Cat cat)</span> </span>&#123;</div><div class="line">                <span class="keyword">return</span> apiWrapper.store(cat);</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">        <span class="keyword">return</span> storedUriAsyncJob;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> Cat <span class="title">findCutest</span><span class="params">(List&lt;Cat&gt; cats)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> Collections.max(cats);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>哈哈！它能用了，读和写也简单了不少。</p>
+<h3 id="最后的要点"><a href="#最后的要点" class="headerlink" title="最后的要点"></a>最后的要点</h3><p>再来看看我们编写的代码，眼熟吗？如果我们使用 Java 8 的 lambdas（逻辑是一样的但是看起来更爽一些） 代码会更加地简洁。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CatsHelper</span> </span>&#123;</div><div class="line"></div><div class="line">    ApiWrapper apiWrapper;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> AsyncJob&lt;Uri&gt; <span class="title">saveTheCutestCat</span><span class="params">(String query)</span> </span>&#123;</div><div class="line">        AsyncJob&lt;List&lt;Cat&gt;&gt; catsListAsyncJob = apiWrapper.queryCats(query);</div><div class="line">        AsyncJob&lt;Cat&gt; cutestCatAsyncJob = catsListAsyncJob.map(cats -&gt; findCutest(cats));</div><div class="line">        AsyncJob&lt;Uri&gt; storedUriAsyncJob = cutestCatAsyncJob.flatMap(cat -&gt; apiWrapper.store(cat));</div><div class="line">        <span class="keyword">return</span> storedUriAsyncJob;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> Cat <span class="title">findCutest</span><span class="params">(List&lt;Cat&gt; cats)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> Collections.max(cats);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>它看起来会更好吗？我认为这样的代码跟我们第一次阻塞的版本差不多：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CatsHelper</span> </span>&#123;</div><div class="line"></div><div class="line">    Api api;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> Uri <span class="title">saveTheCutestCat</span><span class="params">(String query)</span></span>&#123;</div><div class="line">        List&lt;Cat&gt; cats = api.queryCats(query);</div><div class="line">        Cat cutest = findCutest(cats);</div><div class="line">        Uri savedUri = api.store(cutest);</div><div class="line">        <span class="keyword">return</span> savedUri;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> Cat <span class="title">findCutest</span><span class="params">(List&lt;Cat&gt; cats)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> Collections.max(cats);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>是的，就是这样，逻辑是相似的！也有可能会复杂些（语义是一样的）。<br>我们这样的代码有组合性吗？请大声的说有！我们组合了所有的异步操作然后作为返回结果我们仅需一个组合后的结果对象而已。<br>错误传递呢？当然也有！所有的错误都会传递到最后的回调中。<br>接下来的最后呢。。。</p>
+<h2 id="RxJava"><a href="#RxJava" class="headerlink" title="RxJava"></a>RxJava</h2><p>嘿，你不需要把那些代码拷到你的项目中，因为我们还是实现地不够完全的，仅仅算是非线程安全的 RxJava 的一小部分而已。</p>
+<p>它们之间只有一些差异：</p>
+<ul>
+<li><p><code>AsyncJob&lt;T&gt;</code> 就是实际上的 <a href="http://reactivex.io/documentation/observable.html" target="_blank" rel="external">Observable</a>，它不仅可以只分发一个单一的结果也可以是一个序列（可以为空）。</p>
+</li>
+<li><p><code>Callback&lt;T&gt;</code> 就是 <a href="http://reactivex.io/documentation/operators/subscribe.html" target="_blank" rel="external">Observer</a>，除了 <code>Callback</code> 少了 <code>onNext(T t)</code> 方法。<a href="http://reactivex.io/documentation/operators/subscribe.html" target="_blank" rel="external">Observer</a> 中在 <code>onError(Throwable t)</code> 方法被调用后，会继而调用 <code>onCompleted()</code>，然后 Observer 会包装好并发送出事件流（因为它能发送一个序列）。</p>
+</li>
+<li><p><code>abstract void start(Callback&lt;T&gt; callback)</code> 对应 <a href="http://reactivex.io/RxJava/javadoc/rx/Observable.html#subscribe(rx.Observer" target="_blank" rel="external">Subscription subscribe(final Observer&lt;? super T&gt; observer))</a>，这个方法也返回 <a href="http://reactivex.io/RxJava/javadoc/rx/Subscription.html" target="_blank" rel="external">Subscription</a> ，在不需要它时你可以决定取消接收事件流。</p>
+</li>
+<li><p>除了 <code>map</code> 和 <code>flatMap</code> 方法，<code>Observable</code> 在 <code>Observalbes</code> 之上也有一些 <a href="http://reactivex.io/documentation/operators.html" target="_blank" rel="external">其它</a> 有用的操作。</p>
+</li>
+</ul>
+<p>下面的代码是使用 RxJava 来完成我们前面自己写的代码的功能：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ApiWrapper</span> </span>&#123;</div><div class="line">    Api api;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> Observable&lt;List&lt;Cat&gt;&gt; queryCats(<span class="keyword">final</span> String query) &#123;</div><div class="line">        <span class="keyword">return</span> Observable.create(<span class="keyword">new</span> Observable.OnSubscribe&lt;List&lt;Cat&gt;&gt;() &#123;</div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">call</span><span class="params">(<span class="keyword">final</span> Subscriber&lt;? <span class="keyword">super</span> List&lt;Cat&gt;&gt; subscriber)</span> </span>&#123;</div><div class="line">                api.queryCats(query, <span class="keyword">new</span> Api.CatsQueryCallback() &#123;</div><div class="line">                    <span class="meta">@Override</span></div><div class="line">                    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCatListReceived</span><span class="params">(List&lt;Cat&gt; cats)</span> </span>&#123;</div><div class="line">                        subscriber.onNext(cats);</div><div class="line">                    &#125;</div><div class="line"></div><div class="line">                    <span class="meta">@Override</span></div><div class="line">                    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onQueryFailed</span><span class="params">(Exception e)</span> </span>&#123;</div><div class="line">                        subscriber.onError(e);</div><div class="line">                    &#125;</div><div class="line">                &#125;);</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> Observable&lt;Uri&gt; <span class="title">store</span><span class="params">(<span class="keyword">final</span> Cat cat)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> Observable.create(<span class="keyword">new</span> Observable.OnSubscribe&lt;Uri&gt;() &#123;</div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">call</span><span class="params">(<span class="keyword">final</span> Subscriber&lt;? <span class="keyword">super</span> Uri&gt; subscriber)</span> </span>&#123;</div><div class="line">                api.store(cat, <span class="keyword">new</span> Api.StoreCallback() &#123;</div><div class="line">                    <span class="meta">@Override</span></div><div class="line">                    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCatStored</span><span class="params">(Uri uri)</span> </span>&#123;</div><div class="line">                        subscriber.onNext(uri);</div><div class="line">                    &#125;</div><div class="line"></div><div class="line">                    <span class="meta">@Override</span></div><div class="line">                    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onStoreFailed</span><span class="params">(Exception e)</span> </span>&#123;</div><div class="line">                        subscriber.onError(e);</div><div class="line">                    &#125;</div><div class="line">                &#125;);</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CatsHelper</span> </span>&#123;</div><div class="line"></div><div class="line">    ApiWrapper apiWrapper;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> Observable&lt;Uri&gt; <span class="title">saveTheCutestCat</span><span class="params">(String query)</span> </span>&#123;</div><div class="line">        Observable&lt;List&lt;Cat&gt;&gt; catsListObservable = apiWrapper.queryCats(query);</div><div class="line">        Observable&lt;Cat&gt; cutestCatObservable = catsListObservable.map(<span class="keyword">new</span> Func1&lt;List&lt;Cat&gt;, Cat&gt;() &#123;</div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> Cat <span class="title">call</span><span class="params">(List&lt;Cat&gt; cats)</span> </span>&#123;</div><div class="line">                <span class="keyword">return</span> CatsHelper.<span class="keyword">this</span>.findCutest(cats);</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">        Observable&lt;Uri&gt; storedUriObservable = cutestCatObservable.flatMap(<span class="keyword">new</span> Func1&lt;Cat, Observable&lt;? extends Uri&gt;&gt;() &#123;</div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="keyword">public</span> Observable&lt;? extends Uri&gt; call(Cat cat) &#123;</div><div class="line">                <span class="keyword">return</span> apiWrapper.store(cat);</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">        <span class="keyword">return</span> storedUriObservable;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> Cat <span class="title">findCutest</span><span class="params">(List&lt;Cat&gt; cats)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> Collections.max(cats);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>你可以看到代码是相同的，除了使用 <code>Observable</code> 来替代 <code>AsyncJob</code>。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>我们看到，通过简单的转化我们可以把异步操作给抽象出来。这个抽象出来的东西可以被用来操作和组合异步操作就像简单的方法那样。通过这种方法我们可以摆脱嵌套的回调，在处理异步结果时也能手动处理错误的传递。</p>
+<p>如果你看到了这里的话建议你放松下，思考下 sync/async 之间的二元关系，然后看看这个很棒的来自 <a href="http://en.wikipedia.org/wiki/Erik_Meijer_(computer_scientist" target="_blank" rel="external">Erik Meijer</a>的 <a href="https://channel9.msdn.com/Events/Lang-NEXT/Lang-NEXT-2014/Keynote-Duality" target="_blank" rel="external">视频</a>。</p>
+<h2 id="一些有用的链接"><a href="#一些有用的链接" class="headerlink" title="一些有用的链接"></a>一些有用的链接</h2><ul>
+<li><a href="http://reactivex.io/" target="_blank" rel="external">http://reactivex.io/</a></li>
+<li><a href="https://github.com/ReactiveX/RxJava" target="_blank" rel="external">https://github.com/ReactiveX/RxJava</a></li>
+<li><a href="https://github.com/ReactiveX/RxJava/wiki" target="_blank" rel="external">https://github.com/ReactiveX/RxJava/wiki</a></li>
+<li><a href="http://queue.acm.org/detail.cfm?id=2169076" target="_blank" rel="external">http://queue.acm.org/detail.cfm?id=2169076</a></li>
+<li><a href="https://www.coursera.org/course/reactive" target="_blank" rel="external">https://www.coursera.org/course/reactive</a></li>
+<li><a href="http://blog.danlew.net/2014/09/15/grokking-rxjava-part-1/" target="_blank" rel="external">http://blog.danlew.net/2014/09/15/grokking-rxjava-part-1/</a></li>
+</ul>
+
+      
+    </div>
+    
+   <!-- 加入广告 -->
+   <!-- 广告 -->
+
+    
+    
+    <div class="article-entry">
+
+    <hr>
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- Article -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-2972075783837999"
+     data-ad-slot="8471072663"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+<!--
+<iframe src="http://rcm-cn.amazon-adsystem.com/e/cm?t=rocko-23&o=28&p=48&l=ez&f=ifr&f=ifr" width="728" height="90" scrolling="no" marginwidth="0" marginheight="0" border="0" frameborder="0" style="border:none;max-width:800px;max-height:600px;"></iframe>
+
+<iframe src="http://rcm-cn.amazon-adsystem.com/e/cm?t=rocko-23&o=28&p=48&l=ur1&category=books&banner=0A227TKG9322B3XY3RG2&f=ifr" width="760" height="90" scrolling="no" border="0" marginwidth="0" style="border:none;max-width:800px;max-height:600px;" frameborder="0"></iframe>
+-->
+    </div>
+
+    
+
+   <!-- 加入打赏 -->
+   <!-- 打赏 -->
+
+    
+    <div class="article-entry">
+        <hr>
+            <ul>
+              <li><p><i class="fa fa-credit-card"></i> <strong>打赏</strong><br>  如果觉得我的博客、分享对您有帮助，可以扫一扫随意打赏，您的支持将鼓励我继续创作、分享！</p>
+              <p>  <a href="http://rocko-blog.qiniudn.com/zhifubao_weixin.jpg?imageView2/2/w/400/h/200/q/100" title="支付宝||微信" class="fancybox" rel="article0"><img src="http://rocko-blog.qiniudn.com/zhifubao_weixin.jpg?imageView2/2/w/400/h/200/q/100" alt="⇐支付宝||微信⇒"></a><span class="caption">⇐支付宝||微信⇒</span></p>
+              </li>
+            </ul>
+        </div>
+
+    
+
+
+    <footer class="article-footer">
+      <a data-url="http://rocko.xyz/2015/05/05/【译】NotRxJava懒人专用指南/" data-id="civs7a33y0017xksdwjlai2bh" class="article-share-link">分享到</a>
+      
+        <a href="http://rocko.xyz/2015/05/05/【译】NotRxJava懒人专用指南/#comments" class="article-comment-link">去评论</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ReactiveX/">ReactiveX</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RxJava/">RxJava</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/译文/">译文</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/06/19/【译】解决共享元素在系统UI上绘制的问题/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          【译】解决共享元素在系统UI上绘制的问题
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/04/26/Android-View-OnTouchListener-的子类/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">Android View.OnTouchListener 的子类</div>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+
+  <section id="comments">
+    <div class="ds-thread" data-thread-key="2015/05/05/【译】NotRxJava懒人专用指南/-【译】NotRxJava懒人专用指南" data-title="【译】NotRxJava懒人专用指南" data-url="http://rocko.xyz/2015/05/05/【译】NotRxJava懒人专用指南/" data-author-key="1" ></div>
+    <!-- 直接换成多说的
+    <div id="ds-thread" class="ds-thread" data-thread-key="http://rocko.xyz/2015/05/05/【译】NotRxJava懒人专用指南/" data-title="【译】NotRxJava懒人专用指南" data-url="http://rocko.xyz/2015/05/05/【译】NotRxJava懒人专用指南/">
+      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by DuoShuo.</a></noscript>
+      </div>
+    -->
+  </section>
+
+</section>
+      
+        <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">内容许可</h3>
+    <div class="widget tagcloud">
+      <ul>
+	  <h5><a href="http://creativecommons.org/licenses/by-sa/3.0/cn/" target="_britt" title="http://creativecommons.org/licenses/by-sa/3.0/cn/">除特别说明外，文章均采用「知识共享署名 - 相同方式共享 3.0 中国大陆许可协议」进行许可，转载需注明文章出处。</a></h5>
+    </ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul id="recent-post" class="">
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              <a href="/2016/08/28/科学上网的各种姿势/" class="thumbnail">
+  
+    <span style="background-image:url(http://rocko-blog.qiniudn.com/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E7%9A%84%E5%90%84%E7%A7%8D%E5%A7%BF%E5%8A%BF_0.jpg)" alt="科学上网的各种姿势" class="thumbnail-image"></span>
+  
+</a>
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/FGFW/">FGFW</a></p>
+              <p class="item-title"><a href="/2016/08/28/科学上网的各种姿势/" class="title">科学上网的各种姿势</a></p>
+              <p class="item-date"><time datetime="2016-08-27T16:00:01.000Z" itemprop="datePublished">2016-08-28</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              <a href="/2016/06/14/ADB-Issue-2/" class="thumbnail">
+  
+    <span style="background-image:url(http://rocko-blog.qiniudn.com/android-dev-bookmarks.jpg)" alt="ADB-Issue#2" class="thumbnail-image"></span>
+  
+</a>
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/Android-Dev-Bookmarks/">Android-Dev-Bookmarks</a></p>
+              <p class="item-title"><a href="/2016/06/14/ADB-Issue-2/" class="title">ADB-Issue#2</a></p>
+              <p class="item-date"><time datetime="2016-06-14T13:51:45.000Z" itemprop="datePublished">2016-06-14</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              <a href="/2016/02/17/AndroidDev站点推荐-Issue-1/" class="thumbnail">
+  
+    <span style="background-image:url(http://rocko-blog.qiniudn.com/android-dev-bookmarks.jpg)" alt="AndroidDev站点推荐-Issue#1" class="thumbnail-image"></span>
+  
+</a>
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/Android-Dev-Bookmarks/">Android-Dev-Bookmarks</a></p>
+              <p class="item-title"><a href="/2016/02/17/AndroidDev站点推荐-Issue-1/" class="title">AndroidDev站点推荐-Issue#1</a></p>
+              <p class="item-date"><time datetime="2016-02-17T05:45:05.000Z" itemprop="datePublished">2016-02-17</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              <a href="/2015/11/07/MVVM_Android-CleanArchitecture/" class="thumbnail">
+  
+    <span style="background-image:url(http://rocko-blog.qiniudn.com/MVVM_Android-CleanArchitecture-0.png?imageView2/2/w/400/h/300/q/100)" alt="MVVM_Android-CleanArchitecture" class="thumbnail-image"></span>
+  
+</a>
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/Android/">Android</a></p>
+              <p class="item-title"><a href="/2015/11/07/MVVM_Android-CleanArchitecture/" class="title">MVVM_Android-CleanArchitecture</a></p>
+              <p class="item-date"><time datetime="2015-11-07T04:49:07.000Z" itemprop="datePublished">2015-11-07</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              <a href="/2015/06/27/High一下/" class="thumbnail">
+  
+    <span style="background-image:url(http://rocko-blog.qiniudn.com/High一下-1.jpg?imageView2/2/w/400/h/300/q/100)" alt="High一下" class="thumbnail-image"></span>
+  
+</a>
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/Hexo/">Hexo</a></p>
+              <p class="item-title"><a href="/2015/06/27/High一下/" class="title">High一下</a></p>
+              <p class="item-date"><time datetime="2015-06-27T04:49:07.000Z" itemprop="datePublished">2015-06-27</time></p>
+            </div>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap widget-list">
+    <h3 class="widget-title">编程好书推荐</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+          <a target="_blank" href="http://www.amazon.cn/gp/product/B004BJ18KM/ref=as_li_tf_tl?ie=UTF8&camp=536&creative=3200&creativeASIN=B004BJ18KM&linkCode=as2&tag=rocko-23">深入理解计算机系统</a><img src="http://ir-cn.amazon-adsystem.com/e/ir?t=rocko-23&l=as2&o=28&a=B004BJ18KM" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+          </li>
+	  
+          <li>
+          <a target="_blank" href="http://www.amazon.cn/gp/product/B004GV08CY/ref=as_li_tf_tl?ie=UTF8&camp=536&creative=3200&creativeASIN=B004GV08CY&linkCode=as2&tag=rocko-23">程序员修炼之道:从小工到专家</a><img src="http://ir-cn.amazon-adsystem.com/e/ir?t=rocko-23&l=as2&o=28&a=B004GV08CY" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+          </li>
+          
+          <li>
+          <a target="_blank" href="http://www.amazon.cn/gp/product/B011LPUB42/ref=as_li_tf_tl?ie=UTF8&camp=536&creative=3200&creativeASIN=B011LPUB42&linkCode=as2&tag=rocko-23">重构:改善既有代码的设计</a><img src="http://ir-cn.amazon-adsystem.com/e/ir?t=rocko-23&l=as2&o=28&a=B011LPUB42" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+          </li>
+
+          <li>
+          <a target="_blank" href="http://www.amazon.cn/gp/product/B00JAUY84U/ref=as_li_tf_tl?ie=UTF8&camp=536&creative=3200&creativeASIN=B00JAUY84U&linkCode=as2&tag=rocko-23">大话重构</a><img src="http://ir-cn.amazon-adsystem.com/e/ir?t=rocko-23&l=as2&o=28&a=B00JAUY84U" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+          </li>
+
+         <li>
+          <a target="_blank" href="http://www.amazon.cn/gp/product/B00SFZH0DC/ref=as_li_tf_tl?ie=UTF8&camp=536&creative=3200&creativeASIN=B00SFZH0DC&linkCode=as2&tag=rocko-23">编程珠玑</a><img src="http://ir-cn.amazon-adsystem.com/e/ir?t=rocko-23&l=as2&o=28&a=B00SFZH0DC" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+          </li>
+
+    	   <li>
+          <a target="_blank" href="http://www.amazon.cn/gp/product/B008XFDQ14/ref=as_li_tf_tl?ie=UTF8&camp=536&creative=3200&creativeASIN=B008XFDQ14&linkCode=as2&tag=rocko-23">HTTP权威指南</a><img src="http://ir-cn.amazon-adsystem.com/e/ir?t=rocko-23&l=as2&o=28&a=B008XFDQ14" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+          </li>
+
+         <li>
+          <a target="_blank" href="http://www.amazon.cn/gp/product/B00116OTVS/ref=as_li_tf_tl?ie=UTF8&camp=536&creative=3200&creativeASIN=B00116OTVS&linkCode=as2&tag=rocko-23">TCP/IP详解卷1:协议</a><img src="http://ir-cn.amazon-adsystem.com/e/ir?t=rocko-23&l=as2&o=28&a=B00116OTVS" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+          </li>
+
+         <li>
+         <a  target="_blank" href="http://www.amazon.cn/gp/product/B004WHZGZQ/ref=as_li_tf_tl?ie=UTF8&camp=536&creative=3200&creativeASIN=B004WHZGZQ&linkCode=as2&tag=rocko-23">黑客与画家</a><img src="http://ir-cn.amazon-adsystem.com/e/ir?t=rocko-23&l=as2&o=28&a=B004WHZGZQ" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+          </li>
+
+         <li>
+         <a  target="_blank" href="http://www.amazon.cn/gp/product/B003LBSRDM/ref=as_li_tf_tl?ie=UTF8&camp=536&creative=3200&creativeASIN=B003LBSRDM&linkCode=as2&tag=rocko-23">企业应用架构模式</a><img src="http://ir-cn.amazon-adsystem.com/e/ir?t=rocko-23&l=as2&o=28&a=B003LBSRDM" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+          </li>
+
+          <li>
+          <a  target="_blank" href="http://www.amazon.cn/gp/product/B00N4M0DVC/ref=as_li_tf_tl?ie=UTF8&camp=536&creative=3200&creativeASIN=B00N4M0DVC&linkCode=as2&tag=rocko-23">构建之法:现代软件工程</a><img src="http://ir-cn.amazon-adsystem.com/e/ir?t=rocko-23&l=as2&o=28&a=B00N4M0DVC" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+          </li>
+          
+        
+      </ul>
+    </div>
+  </div>
+
+
+
+  
+    
+  <div class="widget-wrap widget-list">
+    <h3 class="widget-title">Java好书推荐</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+          <a target="_blank" href="http://www.amazon.cn/gp/product/B0011F7WU4/ref=as_li_tf_tl?ie=UTF8&camp=536&creative=3200&creativeASIN=B0011F7WU4&linkCode=as2&tag=rocko-23">Java编程思想(第4版)</a><img src="http://ir-cn.amazon-adsystem.com/e/ir?t=rocko-23&l=as2&o=28&a=B0011F7WU4" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+          </li>
+
+          <li>
+          <a target="_blank" href="http://www.amazon.cn/gp/product/B0011FBU34/ref=as_li_tf_tl?ie=UTF8&camp=536&creative=3200&creativeASIN=B0011FBU34&linkCode=as2&tag=rocko-23">Head First设计模式</a><img src="http://ir-cn.amazon-adsystem.com/e/ir?t=rocko-23&l=as2&o=28&a=B0011FBU34" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+          </li>
+
+          <li>
+          <a  target="_blank" href="http://www.amazon.cn/gp/product/B0077K9XHW/ref=as_li_tf_tl?ie=UTF8&camp=536&creative=3200&creativeASIN=B0077K9XHW&linkCode=as2&tag=rocko-23">Java并发编程实战</a><img src="http://ir-cn.amazon-adsystem.com/e/ir?t=rocko-23&l=as2&o=28&a=B0077K9XHW" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+          </li>
+
+          <li>
+          <a  target="_blank" href="http://www.amazon.cn/gp/product/B001PTGR52/ref=as_li_tf_tl?ie=UTF8&camp=536&creative=3200&creativeASIN=B001PTGR52&linkCode=as2&tag=rocko-23">Effective Java</a><img src="http://ir-cn.amazon-adsystem.com/e/ir?t=rocko-23&l=as2&o=28&a=B001PTGR52" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+          </li>
+
+          <li>
+         <a  target="_blank" href="http://www.amazon.cn/gp/product/B00D2ID4PK/ref=as_li_tf_tl?ie=UTF8&camp=536&creative=3200&creativeASIN=B00D2ID4PK&linkCode=as2&tag=rocko-23">深入理解Java虚拟机</a><img src="http://ir-cn.amazon-adsystem.com/e/ir?t=rocko-23&l=as2&o=28&a=B00D2ID4PK" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+          </li>
+
+          <li>
+         <a  target="_blank" href="http://www.amazon.cn/gp/product/B00IOB0K1Q/ref=as_li_tf_tl?ie=UTF8&camp=536&creative=3200&creativeASIN=B00IOB0K1Q&linkCode=as2&tag=rocko-23">Java性能优化权威指南</a><img src="http://ir-cn.amazon-adsystem.com/e/ir?t=rocko-23&l=as2&o=28&a=B00IOB0K1Q" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+          </li>
+
+          <li>
+         <a target="_blank" href="http://www.amazon.cn/gp/product/B009GT0H4U/ref=as_li_tf_tl?ie=UTF8&camp=536&creative=3200&creativeASIN=B009GT0H4U&linkCode=as2&tag=rocko-23">Java程序性能优化</a><img src="http://ir-cn.amazon-adsystem.com/e/ir?t=rocko-23&l=as2&o=28&a=B009GT0H4U" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+          </li>
+
+          <li>
+         <a target="_blank" href="http://www.amazon.cn/gp/product/B00H1FXTNM/ref=as_li_tf_tl?ie=UTF8&camp=536&creative=3200&creativeASIN=B00H1FXTNM&linkCode=as2&tag=rocko-23">Java虚拟机规范(Java SE 7版)</a><img src="http://ir-cn.amazon-adsystem.com/e/ir?t=rocko-23&l=as2&o=28&a=B00H1FXTNM" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+          </li>
+
+        
+      </ul>
+    </div>
+  </div>
+
+
+
+  
+    
+  <div class="widget-wrap widget-list">
+    <h3 class="widget-title">Android好书推荐</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+          <a target="_blank" href="http://www.amazon.cn/gp/product/B014HV1X3K/ref=as_li_tf_tl?ie=UTF8&camp=536&creative=3200&creativeASIN=B014HV1X3K&linkCode=as2&tag=rocko-23">Android开发艺术探索</a><img src="http://ir-cn.amazon-adsystem.com/e/ir?t=rocko-23&l=as2&o=28&a=B014HV1X3K" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+          </li>
+
+          <li>
+          <a target="_blank" href="http://www.amazon.cn/gp/product/B0176QDPUW/ref=as_li_tf_tl?ie=UTF8&camp=536&creative=3200&creativeASIN=B0176QDPUW&linkCode=as2&tag=rocko-23">Android源码设计模式解析与实战</a><img src="http://ir-cn.amazon-adsystem.com/e/ir?t=rocko-23&l=as2&o=28&a=B0176QDPUW" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+          </li>
+
+          <li>
+          <a target="_blank" href="http://www.amazon.cn/gp/product/B00JP53QOI/ref=as_li_tf_tl?ie=UTF8&camp=536&creative=3200&creativeASIN=B00JP53QOI&linkCode=as2&tag=rocko-23">Android应用测试与调试实战</a><img src="http://ir-cn.amazon-adsystem.com/e/ir?t=rocko-23&l=as2&o=28&a=B00JP53QOI" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+          </li>
+
+          <li>
+          <a  target="_blank" href="http://www.amazon.cn/gp/product/B019FSLVUU/ref=as_li_tf_tl?ie=UTF8&camp=536&creative=3200&creativeASIN=B019FSLVUU&linkCode=as2&tag=rocko-23">Android系统源代码情景分析</a><img src="http://ir-cn.amazon-adsystem.com/e/ir?t=rocko-23&l=as2&o=28&a=B019FSLVUU" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+          </li>
+
+          <li>
+          <a  target="_blank" href="http://www.amazon.cn/gp/product/B00BMTVUGG/ref=as_li_tf_tl?ie=UTF8&camp=536&creative=3200&creativeASIN=B00BMTVUGG&linkCode=as2&tag=rocko-23">Android软件安全与逆向分析</a><img src="http://ir-cn.amazon-adsystem.com/e/ir?t=rocko-23&l=as2&o=28&a=B00BMTVUGG" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+          </li>
+
+          <li>
+          <a target="_blank"  href="http://www.amazon.cn/gp/product/B01B38QVSC/ref=as_li_tf_tl?ie=UTF8&camp=536&creative=3200&creativeASIN=B01B38QVSC&linkCode=as2&tag=rocko-23">Android 安全架构深究</a><img src="http://ir-cn.amazon-adsystem.com/e/ir?t=rocko-23&l=as2&o=28&a=B01B38QVSC" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+          </li>
+
+        
+      </ul>
+    </div>
+  </div>
+
+
+
+  
+    
+  <div class="widget-wrap widget-list">
+    <h3 class="widget-title">友链</h3>
+    <div class="widget">
+      <ul>
+        
+          <li><a href="http://blog.csdn.net/bbld_/" target="_bbld" title="http://blog.csdn.net/bbld_/">我的CSDN博客</a></li>
+	  	  <li><a href="http://www.jiangwenrou.com/" target="_xiaojiang" title="http://www.jiangwenrou.com">小蒋的博客</a></li>
+          <li><a href="http://kymjs.com/" target="_kymjs" title="http://kymjs.com/">kymjs张涛</a></li>
+          <li><a href="http://hanks.xyz/" target="_hanks" title="http://hanks.xyz/">Hanks.xyz</a></li>
+          <li><a href="http://www.liuling123.com/" target="_liuling123" title="http://www.liuling123.com/">残剑博客</a></li>
+	  	  <li><a href="http://brittyu.xyz/" target="_britt" title="http://brittyu.xyz/">Brittyu</a></li>
+
+        
+      </ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">   </h3>
+    <div class="widget tagcloud">
+      <ul>
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- Navigation -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-2972075783837999"
+     data-ad-slot="9961152264"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+      
+      <!--
+     <iframe src="http://rcm-cn.amazon-adsystem.com/e/cm?t=rocko-23&o=28&p=11&l=ur1&category=books&banner=1AY3G51F22DKJFC72ER2&f=ifr" width="200" height="600" scrolling="no" border="0" marginwidth="0" style="border:none;max-width:800px;max-height:600px;" frameborder="0"></iframe>
+     -->
+
+    </ul>
+    </div>
+  </div>
+
+
+
+
+  
+  <div id="toTop" class="fa fa-chevron-up"></div>
+</aside>
+      
+    </div>
+    <footer id="footer">
+
+<!--
+
+  
+-->
+  
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2014 - 2016  <i class="fa fa-heartbeat"></i> Rocko
+
+<!--
+      
+-->
+      <br>
+
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme by <a href="https://github.com/zhengxiaopeng/hexo-theme-icarus" target="_icarus">Icarus </a>
+
+        
+
+    </div>
+
+   
+
+   
+
+  </div>
+</footer>
+    
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"rocko"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+
+
+
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

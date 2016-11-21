@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="baidu-site-verification" content="WG8fZ2mGXA" />
+  <meta name="baidu_union_verify" content="d1952c66cf48912e21c18c7c581f382a">
+  <meta name="google-site-verification" content="J7ONClDGsj92njCYAloRwEkDpz94YUFUxgi76g1m4Lk" />
+  
+  <title>Android View.OnTouchListener 的子类 | Rocko&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="如下是几个实现了 OnTouchListener 接口的子类，OnTouchListener 我们是再熟悉不过了，在 Hello World 开始就接触了，但在 Support V4 中还有它的 3 个子类我们平时可能使用的较少但就其功能而言还是对我们很有帮助的。
+
+ AutoScrollHelper  抽象类，用于控件边缘触发自动滚动。
+ ListViewAutoScrollHelper  用于">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android View.OnTouchListener 的子类">
+<meta property="og:url" content="http://rocko.xyz/2015/04/26/Android-View-OnTouchListener-的子类/index.html">
+<meta property="og:site_name" content="Rocko's blog">
+<meta property="og:description" content="如下是几个实现了 OnTouchListener 接口的子类，OnTouchListener 我们是再熟悉不过了，在 Hello World 开始就接触了，但在 Support V4 中还有它的 3 个子类我们平时可能使用的较少但就其功能而言还是对我们很有帮助的。
+
+ AutoScrollHelper  抽象类，用于控件边缘触发自动滚动。
+ ListViewAutoScrollHelper  用于">
+<meta property="og:image" content="http://rocko-blog.qiniudn.com/Android%20View.OnTouchListener%20%E7%9A%84%E5%AD%90%E7%B1%BB_1.gif">
+<meta property="og:image" content="http://rocko-blog.qiniudn.com/Android View.OnTouchListener 的子类_2.gif">
+<meta property="og:image" content="http://rocko-blog.qiniudn.com/Android View.OnTouchListener 的子类_3.gif">
+<meta property="og:updated_time" content="2016-11-21T04:36:55.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android View.OnTouchListener 的子类">
+<meta name="twitter:description" content="如下是几个实现了 OnTouchListener 接口的子类，OnTouchListener 我们是再熟悉不过了，在 Hello World 开始就接触了，但在 Support V4 中还有它的 3 个子类我们平时可能使用的较少但就其功能而言还是对我们很有帮助的。
+
+ AutoScrollHelper  抽象类，用于控件边缘触发自动滚动。
+ ListViewAutoScrollHelper  用于">
+<meta name="twitter:image" content="http://rocko-blog.qiniudn.com/Android%20View.OnTouchListener%20%E7%9A%84%E5%AD%90%E7%B1%BB_1.gif">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  <link href='/css/open_sans.css' rel='stylesheet' type='text/css'>
+  <link href="/css/source_code_pro.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  
+
+  
+
+  <script>
+  var _hmt = _hmt || [];
+  (function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?c16c4e2dd9b9bdcefb419ffec7adb092";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+
+ <script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-2972075783837999",
+    enable_page_level_ads: true
+  });
+</script>
+
+</head>
+<body>
+  <div id="container">
+    <header id="header">
+  <div id="header-main" class="header-inner">
+    <div class="outer">
+      <a href="/" id="logo"><i class="logo" style="background-image: url(/img/rocdroid-80.gif)"></i><span class="site-title">Rocko&#39;s blog</span></a>
+      <nav id="main-nav">
+        
+
+          
+          <a class="main-nav-link" href="/."><i class="fa fa-home"></i> Home</a>
+          
+
+        
+
+          
+          <a class="main-nav-link" href="/archives"><i class="fa fa-archive"></i> Archives</a>
+          
+
+        
+
+          
+          <a class="main-nav-link" href="/categories"><i class="fa fa-sort-alpha-asc"></i> Categories</a>
+          
+
+        
+
+          
+          <a class="main-nav-link" href="/tags"><i class="fa fa-tag"></i> Tags</a>
+          
+
+        
+
+          
+          <a class="main-nav-link" href="/about"><i class="fa fa-user"></i> About</a>
+          
+
+        
+
+           
+            <a class="main-nav-link" href="http://adb.rocko.xyz" target="ADB"><i class="fa fa-bookmark"></i> ADB</a>
+          
+
+        
+      </nav>
+      
+        <nav id="sub-nav">
+          <div class="profile" id="profile-nav">
+            <a id="profile-anchor" href="javascript:;"><img class="avatar" src="/img/avatar.png"><i class="fa fa-caret-down"></i></a>
+          </div>
+        </nav>
+      
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="http://rocko.xyz"></form>
+      </div>
+    </div>
+  </div>
+  <div id="main-nav-mobile" class="header-sub header-inner">
+    <table class="menu outer">
+      <tr>
+        
+          <td>
+                
+            <a class="main-nav-link" href="/."><i class="fa fa-home"></i> Home</a>
+            
+
+          </td>
+        
+          <td>
+                
+            <a class="main-nav-link" href="/archives"><i class="fa fa-archive"></i> Archives</a>
+            
+
+          </td>
+        
+          <td>
+                
+            <a class="main-nav-link" href="/categories"><i class="fa fa-sort-alpha-asc"></i> Categories</a>
+            
+
+          </td>
+        
+          <td>
+                
+            <a class="main-nav-link" href="/tags"><i class="fa fa-tag"></i> Tags</a>
+            
+
+          </td>
+        
+          <td>
+                
+            <a class="main-nav-link" href="/about"><i class="fa fa-user"></i> About</a>
+            
+
+          </td>
+        
+          <td>
+                 
+              <a class="main-nav-link" href="http://adb.rocko.xyz" target="ADB"><i class="fa fa-bookmark"></i> ADB</a>
+            
+
+          </td>
+        
+        <td>
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://rocko.xyz"></form>
+        </td>
+      </tr>
+    </table>
+  </div>
+</header>
+
+    <div class="outer">
+      
+        <aside id="profile">
+  <div class="inner profile-inner">
+    <div class="base-info profile-block">
+      <img id="avatar" src="/img/avatar.png" >
+      <h2 id="name">Rocko</h2>
+      <h3 id="title">Android Developer</h3>
+      <span id="location"><i class="fa fa-map-marker"></i>Shenzhen, China</span>
+      <a id="follow" 
+        href='
+          
+    javascript:(
+    /*
+     * Copyright (C) 2015 Rocko (http://rocko.xyz) <rocko.zxp@gmail.com>
+     *
+     * Licensed under the Apache License, Version 2.0 (the "License");
+     * you may not use this file except in compliance with the License.
+     * You may obtain a copy of the License at
+     *
+     *      http://www.apache.org/licenses/LICENSE-2.0
+     *
+     * Unless required by applicable law or agreed to in writing, software
+     * distributed under the License is distributed on an "AS IS" BASIS,
+     * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     * See the License for the specific language governing permissions and
+     * limitations under the License.
+     */
+    function go() {
+    
+    function c() {
+        var e = document.createElement("link");
+        e.setAttribute("type", "text/css");
+        e.setAttribute("rel", "stylesheet");
+        e.setAttribute("href", f);
+        e.setAttribute("class", l);
+        document.body.appendChild(e)
+    }
+ 
+    function h() {
+        var e = document.getElementsByClassName(l);
+        for (var t = 0; t < e.length; t++) {
+            document.body.removeChild(e[t])
+        }
+    }
+ 
+    function p() {
+        var e = document.createElement("div");
+        e.setAttribute("class", a);
+        document.body.appendChild(e);
+        setTimeout(function() {
+            document.body.removeChild(e)
+        }, 100)
+    }
+ 
+    function d(e) {
+        return {
+            height : e.offsetHeight,
+            width : e.offsetWidth
+        }
+    }
+ 
+    function v(i) {
+        var s = d(i);
+        return s.height > e && s.height < n && s.width > t && s.width < r
+    }
+ 
+    function m(e) {
+        var t = e;
+        var n = 0;
+        while (!!t) {
+            n += t.offsetTop;
+            t = t.offsetParent
+        }
+        return n
+    }
+ 
+    function g() {
+        var e = document.documentElement;
+        if (!!window.innerWidth) {
+            return window.innerHeight
+        } else if (e && !isNaN(e.clientHeight)) {
+            return e.clientHeight
+        }
+        return 0
+    }
+ 
+    function y() {
+        if (window.pageYOffset) {
+            return window.pageYOffset
+        }
+        return Math.max(document.documentElement.scrollTop, document.body.scrollTop)
+    }
+ 
+    function E(e) {
+        var t = m(e);
+        return t >= w && t <= b + w
+    }
+ 
+    var songs = [
+                "http://7xoiki.com1.z0.glb.clouddn.com/Music-Fashion_Show.mp3",
+                "http://7xoiki.com1.z0.glb.clouddn.com/Music-Wake-Live.mp3",
+                "http://7xoiki.com1.z0.glb.clouddn.com/Music-outside.mp3",
+                "http://7xoiki.com1.z0.glb.clouddn.com/Music-sunburst.mp3"
+    ];
+
+    function S() {
+        var e = document.getElementById("audio_element_id");
+        if(e != null){
+            var index = parseInt(e.getAttribute("curSongIndex"));
+            if(index > songs.length - 2) {
+                index = 0;
+            } else {
+                index++;
+            }
+            e.setAttribute("curSongIndex", index);
+            N();
+        }
+
+        e.src = i;
+        e.play()
+    }
+ 
+    function x(e) {
+        e.className += " " + s + " " + o
+    }
+ 
+    function T(e) {
+        e.className += " " + s + " " + u[Math.floor(Math.random() * u.length)]
+    }
+ 
+    function N() {
+        var e = document.getElementsByClassName(s);
+        var t = new RegExp("\\b" + s + "\\b");
+        for (var n = 0; n < e.length; ) {
+            e[n].className = e[n].className.replace(t, "")
+        }
+    }
+
+    function initAudioEle() {
+        var e = document.getElementById("audio_element_id");
+        if(e === null){
+            e = document.createElement("audio");
+            e.setAttribute("class", l);
+            e.setAttribute("curSongIndex", 0);
+            e.id = "audio_element_id";
+            e.loop = false;
+            e.bgcolor = 0;
+            e.addEventListener("canplay", function() {
+            setTimeout(function() {
+                x(k)
+            }, 500);
+            setTimeout(function() {
+                N();
+                p();
+                for (var e = 0; e < O.length; e++) {
+                    T(O[e])
+                }
+            }, 15500)
+        }, true);
+        e.addEventListener("ended", function() {
+            N();
+            h();
+            go();
+        }, true);
+        e.innerHTML = " <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>";
+        document.body.appendChild(e);
+        }
+    }
+    
+    initAudioEle();
+    var e = 30;
+    var t = 30;
+    var n = 350;
+    var r = 350;
+
+    var curSongIndex = parseInt(document.getElementById("audio_element_id").getAttribute("curSongIndex"));
+    var i = songs[curSongIndex];
+    
+    var s = "mw-harlem_shake_me";
+    var o = "im_first";
+    var u = ["im_drunk", "im_baked", "im_trippin", "im_blown"];
+    var a = "mw-strobe_light";
+
+    var f = "/css/harlem-shake-style.css";
+    
+    var l = "mw_added_css";
+    var b = g();
+    var w = y();
+    var C = document.getElementsByTagName("*");
+    var k = null;
+    for (var L = 0; L < C.length; L++) {
+        var A = C[L];
+        if (v(A)) {
+            if (E(A)) {
+                k = A;
+                break
+            }
+        }
+    }
+    if (A === null) {
+        console.warn("Could not find a node of the right size. Please try a different page.");
+        return
+    }
+    c();
+    S();
+    var O = [];
+    for (var L = 0; L < C.length; L++) {
+        var A = C[L];
+        if (v(A)) {
+            O.push(A)
+        }
+    }
+    })()
+    
+        '>
+      <i class="fa fa-music"></i> &nbsp High一下 </i></a>
+    </div>
+    <div class="article-info profile-block">
+      <div class="article-info-block">
+        22
+        <span>文章</span>
+      </div>
+      <div class="article-info-block">
+        29
+        <span>标签</span>
+      </div>
+    </div>
+    
+    <div class="contact-info profile-block">
+      <table class="contact-list">
+        <tr>
+          
+          <td><a href="//github.com/zhengxiaopeng/" target="_blank" title="github"><i class="fa fa-github"></i></a></td>
+          
+          <td><a href="//weibo.com/678662430/" target="_blank" title="weibo"><i class="fa fa-weibo"></i></a></td>
+          
+          <td><a href="//www.zhihu.com/people/rocko/" target="_blank" title="smile-o"><i class="fa fa-smile-o"></i></a></td>
+          
+          <td><a href="https://twitter.com/rocko_zxp" target="_blank" title="twitter"><i class="fa fa-twitter"></i></a></td>
+          
+          <td><a href="https://plus.google.com/u/0/101915236087672094434/" target="_blank" title="google-plus"><i class="fa fa-google-plus"></i></a></td>
+          
+          <td><a href="/atom.xml" target="_blank" title="rss"><i class="fa fa-rss"></i></a></td>
+          
+        </tr>
+      </table>
+    </div>
+    
+    
+  </div>
+</aside>
+
+      
+      <section id="main"><article id="post-Android-View-OnTouchListener-的子类" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Android View.OnTouchListener 的子类
+    </h1>
+  
+
+        <div class="article-meta">
+          
+  <div class="article-date" >
+    <i class="fa fa-calendar"></i>
+    <a href="/2015/04/26/Android-View-OnTouchListener-的子类/">
+      <time datetime="2015-04-26T02:27:24.000Z" itemprop="datePublished">2015-04-26</time>
+    </a>
+  </div>
+
+
+          
+  <div class="article-category">
+  	<i class="fa fa-folder"></i>
+    <a class="article-category-link" href="/categories/Android/">Android</a>
+  </div>
+
+          <!-- 评论、访问统计部分，不蒜子 -->
+          <!-- 不蒜子统计 -->
+
+
+          
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+                
+                    <div id="toc" class="toc-article">
+                    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#AutoScrollHelper"><span class="toc-number">1.</span> <span class="toc-text">AutoScrollHelper</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ListViewAutoScrollHelper"><span class="toc-number">1.1.</span> <span class="toc-text">ListViewAutoScrollHelper</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RecyclerViewAutoScrollHelper"><span class="toc-number">1.2.</span> <span class="toc-text">RecyclerViewAutoScrollHelper</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ScrollViewAutoScrollHelper"><span class="toc-number">1.3.</span> <span class="toc-text">ScrollViewAutoScrollHelper</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ZoomButtonsController"><span class="toc-number">2.</span> <span class="toc-text">ZoomButtonsController</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#End"><span class="toc-number">3.</span> <span class="toc-text">End</span></a></li></ol>
+  </div>
+
+        <p>如下是几个实现了 <a href="http://developer.android.com/reference/android/view/View.OnTouchListener.html" target="_blank" rel="external">OnTouchListener</a> 接口的子类，OnTouchListener 我们是再熟悉不过了，在 Hello World 开始就接触了，但在 Support V4 中还有它的 3 个子类我们平时可能使用的较少但就其功能而言还是对我们很有帮助的。</p>
+<ul>
+<li><strong> <a href="http://developer.android.com/reference/android/support/v4/widget/AutoScrollHelper.html" target="_blank" rel="external">AutoScrollHelper</a> </strong> 抽象类，用于控件边缘触发自动滚动。</li>
+<li><strong> <a href="http://developer.android.com/reference/android/support/v4/widget/ListViewAutoScrollHelper.html" target="_blank" rel="external">ListViewAutoScrollHelper</a> </strong> 用于 ListView，目前 SDK 里的唯一 AutoScrollHelper 实现类。</li>
+<li><strong> <a href="http://developer.android.com/reference/android/widget/ZoomButtonsController.html" target="_blank" rel="external">ZoomButtonsController</a> </strong> 用于控制缩放控件。</li>
+</ul>
+<p>三者的功能体现在 AutoScrollHelper 和 ZoomButtonsController，前者用于实现控件的自动滚动而后者用于对缩放控件（缩小放大按钮）的处理。</p>
+<h2 id="AutoScrollHelper"><a href="#AutoScrollHelper" class="headerlink" title="AutoScrollHelper"></a>AutoScrollHelper</h2><p>为了更好阐述它的功能，我们先来看如下的 Gif 图：<br><img src="http://rocko-blog.qiniudn.com/Android%20View.OnTouchListener%20%E7%9A%84%E5%AD%90%E7%B1%BB_1.gif" alt="ListViewAutoScrollHelper"><br>所以，他能完成的功能就是在 View 的边缘长按时能自动地滚动视图。下面是它的主要方法说明：</p>
+<a id="more"></a>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 构造方法，不用说了</span></div><div class="line">AutoScrollHelper(View target)</div><div class="line"></div><div class="line"><span class="comment">/* 3个子类必须实现的抽象方法 */</span></div><div class="line"></div><div class="line"><span class="comment">// 判断 View 能否在水平方向上滚动</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">boolean</span> <span class="title">canTargetScrollHorizontally</span> <span class="params">(<span class="keyword">int</span> direction)</span></span></div><div class="line"></div><div class="line"><span class="comment">// 判断 View 能否在垂直方向上滚动</span></div><div class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">boolean</span> <span class="title">canTargetScrollVertically</span> <span class="params">(<span class="keyword">int</span> direction)</span></div><div class="line"></div><div class="line"><span class="comment">// 最重要的方法，控制 View 的滚动实现，参数分别表示在水平和垂直方向上滚动的像素值</span></div><div class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">scrollTargetBy</span> <span class="params">(<span class="keyword">int</span> deltaX, <span class="keyword">int</span> deltaY)</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">/* 如下是一些基本的属性配置方法 */</span></div><div class="line"></div><div class="line"><span class="comment">// 长按边缘后开始滚动的的延迟时间</span></div><div class="line"><span class="keyword">public</span> AutoScrollHelper <span class="title">setActivationDelay</span> <span class="params">(<span class="keyword">int</span> delayMillis)</span></div><div class="line"></div><div class="line"><span class="comment">// 边缘触发类型，有3种：EDGE_TYPE_INSIDE: 在自身 View 内边缘区域才会触发滚动，（手指）移动到 View 外的区域时即停止滚动；</span></div><div class="line"><span class="comment">// EDGE_TYPE_INSIDE_EXTEND：在自身 View 内边缘区域才会触发滚动，但手指移动到 View 外时仍会滚动；</span></div><div class="line"><span class="comment">// EDGE_TYPE_OUTSIDE：在自身 View 外边缘处才有触发滚动，手指向内移动到 View 内则会停止。</span></div><div class="line"><span class="keyword">public</span> AutoScrollHelper <span class="title">setEdgeType</span> <span class="params">(<span class="keyword">int</span> type)</span></div><div class="line"></div><div class="line"><span class="comment">// 是否消耗掉触摸事件</span></div><div class="line"><span class="keyword">public</span> AutoScrollHelper <span class="title">setExclusive</span> <span class="params">(<span class="keyword">boolean</span> exclusive)</span></div><div class="line"></div><div class="line"><span class="comment">// 开始滚动后到达预定速度的时间</span></div><div class="line"><span class="keyword">public</span> AutoScrollHelper <span class="title">setRampUpDuration</span> <span class="params">(<span class="keyword">int</span> durationMillis)</span></div><div class="line"></div><div class="line"><span class="comment">// 开始停止滚动时，速度减为 0 的时间</span></div><div class="line"><span class="keyword">public</span> AutoScrollHelper <span class="title">setRampDownDuration</span> <span class="params">(<span class="keyword">int</span> durationMillis)</span></div><div class="line"></div><div class="line"><span class="comment">// 还有诸如：触摸边缘的距离范围、滚动速度等方法，比较好理解，不一一列举了。</span></div></pre></td></tr></table></figure>
+<h3 id="ListViewAutoScrollHelper"><a href="#ListViewAutoScrollHelper" class="headerlink" title="ListViewAutoScrollHelper"></a>ListViewAutoScrollHelper</h3><p>使用：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">AutoScrollHelper autoScrollHelper = <span class="keyword">new</span> ListViewAutoScrollHelper(listView);</div><div class="line">listView.setOnTouchListener(autoScrollHelper); </div><div class="line">autoScrollHelper.setEnabled(<span class="keyword">true</span>); <span class="comment">// 这个不要忘了</span></div></pre></td></tr></table></figure></p>
+<p>ListViewAutoScrollHelper 的效果图如上，Google 帮我们实现了在 ListView 上的实现，ListViewAutoScrollHelper 也只能用于 ListView，在其它可滚动视图上又怎么办呢？很明显，继承实现 AutoScrollHelper，下面就来在 RecyclerView 和 ScrollView 上实现 RecyclerViewAutoScrollHelper 和 ScrollViewAutoScrollHelper，得益于 RecyclerView 能干很多事，这也就基本涵盖了滚动视图了。</p>
+<h3 id="RecyclerViewAutoScrollHelper"><a href="#RecyclerViewAutoScrollHelper" class="headerlink" title="RecyclerViewAutoScrollHelper"></a>RecyclerViewAutoScrollHelper</h3><p>RecyclerView 要实现 AutoScrollHelper，只需要写 3 行代码就够了，支持水平和垂直的方向上的操作，相比 ListViewAutoScrollHelper 的实现简单许多。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RecyclerViewAutoScrollHelper</span> <span class="keyword">extends</span> <span class="title">AutoScrollHelper</span> </span>&#123;</div><div class="line">    <span class="keyword">protected</span> RecyclerView mTarget;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">RecyclerViewAutoScrollHelper</span><span class="params">(RecyclerView target)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>(target);</div><div class="line">        <span class="keyword">this</span>.mTarget = target;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">scrollTargetBy</span><span class="params">(<span class="keyword">int</span> deltaX, <span class="keyword">int</span> deltaY)</span> </span>&#123;</div><div class="line">        mTarget.scrollBy(deltaX, deltaY); <span class="comment">// 1 行</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">canTargetScrollHorizontally</span><span class="params">(<span class="keyword">int</span> direction)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> mTarget.getLayoutManager().canScrollHorizontally(); <span class="comment">// 2 行</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">canTargetScrollVertically</span><span class="params">(<span class="keyword">int</span> direction)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> mTarget.getLayoutManager().canScrollVertically(); <span class="comment">// 3 行</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>效果如下：<br><img src="http://rocko-blog.qiniudn.com/Android View.OnTouchListener 的子类_2.gif" alt="RecyclerViewAutoScrollHelper"></p>
+<h3 id="ScrollViewAutoScrollHelper"><a href="#ScrollViewAutoScrollHelper" class="headerlink" title="ScrollViewAutoScrollHelper"></a>ScrollViewAutoScrollHelper</h3><p>ScrollView 的也很简单，如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ScrollViewAutoScrollHelper</span> <span class="keyword">extends</span> <span class="title">AutoScrollHelper</span> </span>&#123;</div><div class="line">    <span class="keyword">protected</span> ScrollView mTarger;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ScrollViewAutoScrollHelper</span><span class="params">(ScrollView target)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>(target);</div><div class="line">        <span class="keyword">this</span>.mTarger = target;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">scrollTargetBy</span><span class="params">(<span class="keyword">int</span> deltaX, <span class="keyword">int</span> deltaY)</span> </span>&#123;</div><div class="line">        mTarger.smoothScrollBy(deltaX, deltaY);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">canTargetScrollHorizontally</span><span class="params">(<span class="keyword">int</span> direction)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> mTarger.canScrollHorizontally(direction);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">canTargetScrollVertically</span><span class="params">(<span class="keyword">int</span> direction)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> mTarger.canScrollVertically(direction);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>此外，<code>HorizontalScrollView</code> 的实现也是类似就不贴了。</p>
+<h2 id="ZoomButtonsController"><a href="#ZoomButtonsController" class="headerlink" title="ZoomButtonsController"></a>ZoomButtonsController</h2><p>使用方式也很简单，其相关 API 可以 <a href="http://www.cnblogs.com/over140/archive/2010/12/02/1894065.html" target="_blank" rel="external">戳这里</a>。在构造方法中传进一个 View，然后缩放控件就依附绑定在此 View 当中，然后在 OnZoomListener 回调函数中处理放大和缩小事件。需要注意的是在生命周期结束时需要把它注销掉 <code>zoomButtonsController.setVisible(false)</code>，否则会发生 ANR、内存泄露。效果如下：<br><img src="http://rocko-blog.qiniudn.com/Android View.OnTouchListener 的子类_3.gif" alt="ZoomButtonsController"></p>
+<h2 id="End"><a href="#End" class="headerlink" title="End"></a>End</h2><p>源码传送门：<a href="https://github.com/zhengxiaopeng/Rocko-Android-Demos/tree/master/touchlistener-subclasses" target="_blank" rel="external">touchlistener-subclasses</a></p>
+
+      
+    </div>
+    
+   <!-- 加入广告 -->
+   <!-- 广告 -->
+
+    
+    
+    <div class="article-entry">
+
+    <hr>
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- Article -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-2972075783837999"
+     data-ad-slot="8471072663"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+<!--
+<iframe src="http://rcm-cn.amazon-adsystem.com/e/cm?t=rocko-23&o=28&p=48&l=ez&f=ifr&f=ifr" width="728" height="90" scrolling="no" marginwidth="0" marginheight="0" border="0" frameborder="0" style="border:none;max-width:800px;max-height:600px;"></iframe>
+
+<iframe src="http://rcm-cn.amazon-adsystem.com/e/cm?t=rocko-23&o=28&p=48&l=ur1&category=books&banner=0A227TKG9322B3XY3RG2&f=ifr" width="760" height="90" scrolling="no" border="0" marginwidth="0" style="border:none;max-width:800px;max-height:600px;" frameborder="0"></iframe>
+-->
+    </div>
+
+    
+
+   <!-- 加入打赏 -->
+   <!-- 打赏 -->
+
+    
+    <div class="article-entry">
+        <hr>
+            <ul>
+              <li><p><i class="fa fa-credit-card"></i> <strong>打赏</strong><br>  如果觉得我的博客、分享对您有帮助，可以扫一扫随意打赏，您的支持将鼓励我继续创作、分享！</p>
+              <p>  <a href="http://rocko-blog.qiniudn.com/zhifubao_weixin.jpg?imageView2/2/w/400/h/200/q/100" title="支付宝||微信" class="fancybox" rel="article0"><img src="http://rocko-blog.qiniudn.com/zhifubao_weixin.jpg?imageView2/2/w/400/h/200/q/100" alt="⇐支付宝||微信⇒"></a><span class="caption">⇐支付宝||微信⇒</span></p>
+              </li>
+            </ul>
+        </div>
+
+    
+
+
+    <footer class="article-footer">
+      <a data-url="http://rocko.xyz/2015/04/26/Android-View-OnTouchListener-的子类/" data-id="civs7a33e000dxksdhdsgacua" class="article-share-link">分享到</a>
+      
+        <a href="http://rocko.xyz/2015/04/26/Android-View-OnTouchListener-的子类/#comments" class="article-comment-link">去评论</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OnTouchListener/">OnTouchListener</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/View/">View</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/05/05/【译】NotRxJava懒人专用指南/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          【译】NotRxJava懒人专用指南
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/03/10/Python小程序-多说评论通知/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">Python小程序-多说评论通知</div>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+
+  <section id="comments">
+    <div class="ds-thread" data-thread-key="2015/04/26/Android-View-OnTouchListener-的子类/-Android-View-OnTouchListener-的子类" data-title="Android View.OnTouchListener 的子类" data-url="http://rocko.xyz/2015/04/26/Android-View-OnTouchListener-的子类/" data-author-key="1" ></div>
+    <!-- 直接换成多说的
+    <div id="ds-thread" class="ds-thread" data-thread-key="http://rocko.xyz/2015/04/26/Android-View-OnTouchListener-的子类/" data-title="Android View.OnTouchListener 的子类" data-url="http://rocko.xyz/2015/04/26/Android-View-OnTouchListener-的子类/">
+      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by DuoShuo.</a></noscript>
+      </div>
+    -->
+  </section>
+
+</section>
+      
+        <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">内容许可</h3>
+    <div class="widget tagcloud">
+      <ul>
+	  <h5><a href="http://creativecommons.org/licenses/by-sa/3.0/cn/" target="_britt" title="http://creativecommons.org/licenses/by-sa/3.0/cn/">除特别说明外，文章均采用「知识共享署名 - 相同方式共享 3.0 中国大陆许可协议」进行许可，转载需注明文章出处。</a></h5>
+    </ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul id="recent-post" class="">
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              <a href="/2016/08/28/科学上网的各种姿势/" class="thumbnail">
+  
+    <span style="background-image:url(http://rocko-blog.qiniudn.com/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E7%9A%84%E5%90%84%E7%A7%8D%E5%A7%BF%E5%8A%BF_0.jpg)" alt="科学上网的各种姿势" class="thumbnail-image"></span>
+  
+</a>
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/FGFW/">FGFW</a></p>
+              <p class="item-title"><a href="/2016/08/28/科学上网的各种姿势/" class="title">科学上网的各种姿势</a></p>
+              <p class="item-date"><time datetime="2016-08-27T16:00:01.000Z" itemprop="datePublished">2016-08-28</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              <a href="/2016/06/14/ADB-Issue-2/" class="thumbnail">
+  
+    <span style="background-image:url(http://rocko-blog.qiniudn.com/android-dev-bookmarks.jpg)" alt="ADB-Issue#2" class="thumbnail-image"></span>
+  
+</a>
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/Android-Dev-Bookmarks/">Android-Dev-Bookmarks</a></p>
+              <p class="item-title"><a href="/2016/06/14/ADB-Issue-2/" class="title">ADB-Issue#2</a></p>
+              <p class="item-date"><time datetime="2016-06-14T13:51:45.000Z" itemprop="datePublished">2016-06-14</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              <a href="/2016/02/17/AndroidDev站点推荐-Issue-1/" class="thumbnail">
+  
+    <span style="background-image:url(http://rocko-blog.qiniudn.com/android-dev-bookmarks.jpg)" alt="AndroidDev站点推荐-Issue#1" class="thumbnail-image"></span>
+  
+</a>
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/Android-Dev-Bookmarks/">Android-Dev-Bookmarks</a></p>
+              <p class="item-title"><a href="/2016/02/17/AndroidDev站点推荐-Issue-1/" class="title">AndroidDev站点推荐-Issue#1</a></p>
+              <p class="item-date"><time datetime="2016-02-17T05:45:05.000Z" itemprop="datePublished">2016-02-17</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              <a href="/2015/11/07/MVVM_Android-CleanArchitecture/" class="thumbnail">
+  
+    <span style="background-image:url(http://rocko-blog.qiniudn.com/MVVM_Android-CleanArchitecture-0.png?imageView2/2/w/400/h/300/q/100)" alt="MVVM_Android-CleanArchitecture" class="thumbnail-image"></span>
+  
+</a>
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/Android/">Android</a></p>
+              <p class="item-title"><a href="/2015/11/07/MVVM_Android-CleanArchitecture/" class="title">MVVM_Android-CleanArchitecture</a></p>
+              <p class="item-date"><time datetime="2015-11-07T04:49:07.000Z" itemprop="datePublished">2015-11-07</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              <a href="/2015/06/27/High一下/" class="thumbnail">
+  
+    <span style="background-image:url(http://rocko-blog.qiniudn.com/High一下-1.jpg?imageView2/2/w/400/h/300/q/100)" alt="High一下" class="thumbnail-image"></span>
+  
+</a>
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/Hexo/">Hexo</a></p>
+              <p class="item-title"><a href="/2015/06/27/High一下/" class="title">High一下</a></p>
+              <p class="item-date"><time datetime="2015-06-27T04:49:07.000Z" itemprop="datePublished">2015-06-27</time></p>
+            </div>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap widget-list">
+    <h3 class="widget-title">编程好书推荐</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+          <a target="_blank" href="http://www.amazon.cn/gp/product/B004BJ18KM/ref=as_li_tf_tl?ie=UTF8&camp=536&creative=3200&creativeASIN=B004BJ18KM&linkCode=as2&tag=rocko-23">深入理解计算机系统</a><img src="http://ir-cn.amazon-adsystem.com/e/ir?t=rocko-23&l=as2&o=28&a=B004BJ18KM" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+          </li>
+	  
+          <li>
+          <a target="_blank" href="http://www.amazon.cn/gp/product/B004GV08CY/ref=as_li_tf_tl?ie=UTF8&camp=536&creative=3200&creativeASIN=B004GV08CY&linkCode=as2&tag=rocko-23">程序员修炼之道:从小工到专家</a><img src="http://ir-cn.amazon-adsystem.com/e/ir?t=rocko-23&l=as2&o=28&a=B004GV08CY" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+          </li>
+          
+          <li>
+          <a target="_blank" href="http://www.amazon.cn/gp/product/B011LPUB42/ref=as_li_tf_tl?ie=UTF8&camp=536&creative=3200&creativeASIN=B011LPUB42&linkCode=as2&tag=rocko-23">重构:改善既有代码的设计</a><img src="http://ir-cn.amazon-adsystem.com/e/ir?t=rocko-23&l=as2&o=28&a=B011LPUB42" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+          </li>
+
+          <li>
+          <a target="_blank" href="http://www.amazon.cn/gp/product/B00JAUY84U/ref=as_li_tf_tl?ie=UTF8&camp=536&creative=3200&creativeASIN=B00JAUY84U&linkCode=as2&tag=rocko-23">大话重构</a><img src="http://ir-cn.amazon-adsystem.com/e/ir?t=rocko-23&l=as2&o=28&a=B00JAUY84U" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+          </li>
+
+         <li>
+          <a target="_blank" href="http://www.amazon.cn/gp/product/B00SFZH0DC/ref=as_li_tf_tl?ie=UTF8&camp=536&creative=3200&creativeASIN=B00SFZH0DC&linkCode=as2&tag=rocko-23">编程珠玑</a><img src="http://ir-cn.amazon-adsystem.com/e/ir?t=rocko-23&l=as2&o=28&a=B00SFZH0DC" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+          </li>
+
+    	   <li>
+          <a target="_blank" href="http://www.amazon.cn/gp/product/B008XFDQ14/ref=as_li_tf_tl?ie=UTF8&camp=536&creative=3200&creativeASIN=B008XFDQ14&linkCode=as2&tag=rocko-23">HTTP权威指南</a><img src="http://ir-cn.amazon-adsystem.com/e/ir?t=rocko-23&l=as2&o=28&a=B008XFDQ14" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+          </li>
+
+         <li>
+          <a target="_blank" href="http://www.amazon.cn/gp/product/B00116OTVS/ref=as_li_tf_tl?ie=UTF8&camp=536&creative=3200&creativeASIN=B00116OTVS&linkCode=as2&tag=rocko-23">TCP/IP详解卷1:协议</a><img src="http://ir-cn.amazon-adsystem.com/e/ir?t=rocko-23&l=as2&o=28&a=B00116OTVS" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+          </li>
+
+         <li>
+         <a  target="_blank" href="http://www.amazon.cn/gp/product/B004WHZGZQ/ref=as_li_tf_tl?ie=UTF8&camp=536&creative=3200&creativeASIN=B004WHZGZQ&linkCode=as2&tag=rocko-23">黑客与画家</a><img src="http://ir-cn.amazon-adsystem.com/e/ir?t=rocko-23&l=as2&o=28&a=B004WHZGZQ" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+          </li>
+
+         <li>
+         <a  target="_blank" href="http://www.amazon.cn/gp/product/B003LBSRDM/ref=as_li_tf_tl?ie=UTF8&camp=536&creative=3200&creativeASIN=B003LBSRDM&linkCode=as2&tag=rocko-23">企业应用架构模式</a><img src="http://ir-cn.amazon-adsystem.com/e/ir?t=rocko-23&l=as2&o=28&a=B003LBSRDM" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+          </li>
+
+          <li>
+          <a  target="_blank" href="http://www.amazon.cn/gp/product/B00N4M0DVC/ref=as_li_tf_tl?ie=UTF8&camp=536&creative=3200&creativeASIN=B00N4M0DVC&linkCode=as2&tag=rocko-23">构建之法:现代软件工程</a><img src="http://ir-cn.amazon-adsystem.com/e/ir?t=rocko-23&l=as2&o=28&a=B00N4M0DVC" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+          </li>
+          
+        
+      </ul>
+    </div>
+  </div>
+
+
+
+  
+    
+  <div class="widget-wrap widget-list">
+    <h3 class="widget-title">Java好书推荐</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+          <a target="_blank" href="http://www.amazon.cn/gp/product/B0011F7WU4/ref=as_li_tf_tl?ie=UTF8&camp=536&creative=3200&creativeASIN=B0011F7WU4&linkCode=as2&tag=rocko-23">Java编程思想(第4版)</a><img src="http://ir-cn.amazon-adsystem.com/e/ir?t=rocko-23&l=as2&o=28&a=B0011F7WU4" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+          </li>
+
+          <li>
+          <a target="_blank" href="http://www.amazon.cn/gp/product/B0011FBU34/ref=as_li_tf_tl?ie=UTF8&camp=536&creative=3200&creativeASIN=B0011FBU34&linkCode=as2&tag=rocko-23">Head First设计模式</a><img src="http://ir-cn.amazon-adsystem.com/e/ir?t=rocko-23&l=as2&o=28&a=B0011FBU34" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+          </li>
+
+          <li>
+          <a  target="_blank" href="http://www.amazon.cn/gp/product/B0077K9XHW/ref=as_li_tf_tl?ie=UTF8&camp=536&creative=3200&creativeASIN=B0077K9XHW&linkCode=as2&tag=rocko-23">Java并发编程实战</a><img src="http://ir-cn.amazon-adsystem.com/e/ir?t=rocko-23&l=as2&o=28&a=B0077K9XHW" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+          </li>
+
+          <li>
+          <a  target="_blank" href="http://www.amazon.cn/gp/product/B001PTGR52/ref=as_li_tf_tl?ie=UTF8&camp=536&creative=3200&creativeASIN=B001PTGR52&linkCode=as2&tag=rocko-23">Effective Java</a><img src="http://ir-cn.amazon-adsystem.com/e/ir?t=rocko-23&l=as2&o=28&a=B001PTGR52" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+          </li>
+
+          <li>
+         <a  target="_blank" href="http://www.amazon.cn/gp/product/B00D2ID4PK/ref=as_li_tf_tl?ie=UTF8&camp=536&creative=3200&creativeASIN=B00D2ID4PK&linkCode=as2&tag=rocko-23">深入理解Java虚拟机</a><img src="http://ir-cn.amazon-adsystem.com/e/ir?t=rocko-23&l=as2&o=28&a=B00D2ID4PK" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+          </li>
+
+          <li>
+         <a  target="_blank" href="http://www.amazon.cn/gp/product/B00IOB0K1Q/ref=as_li_tf_tl?ie=UTF8&camp=536&creative=3200&creativeASIN=B00IOB0K1Q&linkCode=as2&tag=rocko-23">Java性能优化权威指南</a><img src="http://ir-cn.amazon-adsystem.com/e/ir?t=rocko-23&l=as2&o=28&a=B00IOB0K1Q" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+          </li>
+
+          <li>
+         <a target="_blank" href="http://www.amazon.cn/gp/product/B009GT0H4U/ref=as_li_tf_tl?ie=UTF8&camp=536&creative=3200&creativeASIN=B009GT0H4U&linkCode=as2&tag=rocko-23">Java程序性能优化</a><img src="http://ir-cn.amazon-adsystem.com/e/ir?t=rocko-23&l=as2&o=28&a=B009GT0H4U" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+          </li>
+
+          <li>
+         <a target="_blank" href="http://www.amazon.cn/gp/product/B00H1FXTNM/ref=as_li_tf_tl?ie=UTF8&camp=536&creative=3200&creativeASIN=B00H1FXTNM&linkCode=as2&tag=rocko-23">Java虚拟机规范(Java SE 7版)</a><img src="http://ir-cn.amazon-adsystem.com/e/ir?t=rocko-23&l=as2&o=28&a=B00H1FXTNM" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+          </li>
+
+        
+      </ul>
+    </div>
+  </div>
+
+
+
+  
+    
+  <div class="widget-wrap widget-list">
+    <h3 class="widget-title">Android好书推荐</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+          <a target="_blank" href="http://www.amazon.cn/gp/product/B014HV1X3K/ref=as_li_tf_tl?ie=UTF8&camp=536&creative=3200&creativeASIN=B014HV1X3K&linkCode=as2&tag=rocko-23">Android开发艺术探索</a><img src="http://ir-cn.amazon-adsystem.com/e/ir?t=rocko-23&l=as2&o=28&a=B014HV1X3K" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+          </li>
+
+          <li>
+          <a target="_blank" href="http://www.amazon.cn/gp/product/B0176QDPUW/ref=as_li_tf_tl?ie=UTF8&camp=536&creative=3200&creativeASIN=B0176QDPUW&linkCode=as2&tag=rocko-23">Android源码设计模式解析与实战</a><img src="http://ir-cn.amazon-adsystem.com/e/ir?t=rocko-23&l=as2&o=28&a=B0176QDPUW" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+          </li>
+
+          <li>
+          <a target="_blank" href="http://www.amazon.cn/gp/product/B00JP53QOI/ref=as_li_tf_tl?ie=UTF8&camp=536&creative=3200&creativeASIN=B00JP53QOI&linkCode=as2&tag=rocko-23">Android应用测试与调试实战</a><img src="http://ir-cn.amazon-adsystem.com/e/ir?t=rocko-23&l=as2&o=28&a=B00JP53QOI" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+          </li>
+
+          <li>
+          <a  target="_blank" href="http://www.amazon.cn/gp/product/B019FSLVUU/ref=as_li_tf_tl?ie=UTF8&camp=536&creative=3200&creativeASIN=B019FSLVUU&linkCode=as2&tag=rocko-23">Android系统源代码情景分析</a><img src="http://ir-cn.amazon-adsystem.com/e/ir?t=rocko-23&l=as2&o=28&a=B019FSLVUU" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+          </li>
+
+          <li>
+          <a  target="_blank" href="http://www.amazon.cn/gp/product/B00BMTVUGG/ref=as_li_tf_tl?ie=UTF8&camp=536&creative=3200&creativeASIN=B00BMTVUGG&linkCode=as2&tag=rocko-23">Android软件安全与逆向分析</a><img src="http://ir-cn.amazon-adsystem.com/e/ir?t=rocko-23&l=as2&o=28&a=B00BMTVUGG" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+          </li>
+
+          <li>
+          <a target="_blank"  href="http://www.amazon.cn/gp/product/B01B38QVSC/ref=as_li_tf_tl?ie=UTF8&camp=536&creative=3200&creativeASIN=B01B38QVSC&linkCode=as2&tag=rocko-23">Android 安全架构深究</a><img src="http://ir-cn.amazon-adsystem.com/e/ir?t=rocko-23&l=as2&o=28&a=B01B38QVSC" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+          </li>
+
+        
+      </ul>
+    </div>
+  </div>
+
+
+
+  
+    
+  <div class="widget-wrap widget-list">
+    <h3 class="widget-title">友链</h3>
+    <div class="widget">
+      <ul>
+        
+          <li><a href="http://blog.csdn.net/bbld_/" target="_bbld" title="http://blog.csdn.net/bbld_/">我的CSDN博客</a></li>
+	  	  <li><a href="http://www.jiangwenrou.com/" target="_xiaojiang" title="http://www.jiangwenrou.com">小蒋的博客</a></li>
+          <li><a href="http://kymjs.com/" target="_kymjs" title="http://kymjs.com/">kymjs张涛</a></li>
+          <li><a href="http://hanks.xyz/" target="_hanks" title="http://hanks.xyz/">Hanks.xyz</a></li>
+          <li><a href="http://www.liuling123.com/" target="_liuling123" title="http://www.liuling123.com/">残剑博客</a></li>
+	  	  <li><a href="http://brittyu.xyz/" target="_britt" title="http://brittyu.xyz/">Brittyu</a></li>
+
+        
+      </ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">   </h3>
+    <div class="widget tagcloud">
+      <ul>
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- Navigation -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-2972075783837999"
+     data-ad-slot="9961152264"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+      
+      <!--
+     <iframe src="http://rcm-cn.amazon-adsystem.com/e/cm?t=rocko-23&o=28&p=11&l=ur1&category=books&banner=1AY3G51F22DKJFC72ER2&f=ifr" width="200" height="600" scrolling="no" border="0" marginwidth="0" style="border:none;max-width:800px;max-height:600px;" frameborder="0"></iframe>
+     -->
+
+    </ul>
+    </div>
+  </div>
+
+
+
+
+  
+  <div id="toTop" class="fa fa-chevron-up"></div>
+</aside>
+      
+    </div>
+    <footer id="footer">
+
+<!--
+
+  
+-->
+  
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2014 - 2016  <i class="fa fa-heartbeat"></i> Rocko
+
+<!--
+      
+-->
+      <br>
+
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme by <a href="https://github.com/zhengxiaopeng/hexo-theme-icarus" target="_icarus">Icarus </a>
+
+        
+
+    </div>
+
+   
+
+   
+
+  </div>
+</footer>
+    
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"rocko"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+
+
+
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
