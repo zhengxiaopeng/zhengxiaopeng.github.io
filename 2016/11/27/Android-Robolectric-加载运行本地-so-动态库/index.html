@@ -20,7 +20,7 @@
 <meta property="og:image" content="http://rocko-blog.qiniudn.com/2016-11-27_09-11-08_no_deal_with.png">
 <meta property="og:image" content="http://rocko-blog.qiniudn.com/2016-11-27_09-24-25_test_libs_folder.png">
 <meta property="og:image" content="http://rocko-blog.qiniudn.com/2016-11-27_09-32-15_test_case_success.png">
-<meta property="og:updated_time" content="2016-11-27T02:30:18.000Z">
+<meta property="og:updated_time" content="2016-11-27T02:48:56.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android Robolectric 加载运行本地 So 动态库">
 <meta name="twitter:description" content="http://rocko.xyz/2016/11/27/Android-Robolectric-加载运行本地-so-动态库/
@@ -480,7 +480,7 @@
   </div>
 
         <p><a href="http://rocko.xyz/2016/11/27/Android-Robolectric-加载运行本地-so-动态库/">http://rocko.xyz/2016/11/27/Android-Robolectric-加载运行本地-so-动态库/</a></p>
-<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p><a href="http://robolectric.org/" target="_blank" rel="external">Robolectric</a> 是 Android 的单元测试框架，运行无需 Android 真机环境直接运行在 JVM 之上，所以在 test case 运行速度效率上有了很大提升，接近于 Java JUnit test（<code>JUnit test &gt; Robolectric ≫ androidTest</code>）。不过<strong>框架本身并不支持 <code>so</code> 本地库的加载使用</strong>，加载时会直接报错，因为实际上运行环境是电脑机器，而我们打出的 so 文件是给手机上用的所以当然会报错。虽然在 <a href="https://github.com/robolectric/robolectric" target="_blank" rel="external">GitHub</a> 上很多人问过关于使用 so 的问题但基本都建议说不要在单元测试中去加载本地库，这在原则上是要这么做，但可能有些项目中做起来就有些困难了，比如在代码结构不够好、依赖耦合较大或者本身就对 so 库依赖很大的情况下。所以下面说说在项目中 Robolectric 要怎么解决需要加载运行本地 so 库这个问题。</p>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p><a href="http://robolectric.org/" target="_blank" rel="external">Robolectric</a> 是 Android 的单元测试框架，运行无需 Android 真机环境直接运行在 JVM 之上，所以在 test case 运行速度效率上有了很大提升，接近于 Java JUnit test（<code>JUnit test &gt; Robolectric &gt;&gt; androidTest</code>）。不过<strong>框架本身并不支持 <code>so</code> 本地库的加载使用</strong>，加载时会直接报错，因为实际上运行环境是电脑机器，而我们打出的 so 文件是给手机上用的所以当然会报错。虽然在 <a href="https://github.com/robolectric/robolectric" target="_blank" rel="external">GitHub</a> 上很多人问过关于使用 so 的问题但基本都建议说不要在单元测试中去加载本地库，这在原则上是要这么做，但可能有些项目中做起来就有些困难了，比如在代码结构不够好、依赖耦合较大或者本身就对 so 库依赖很大的情况下。所以下面说说在项目中 Robolectric 要怎么解决需要加载运行本地 so 库这个问题。</p>
 <a id="more"></a>
 <h1 id="动态库"><a href="#动态库" class="headerlink" title="动态库"></a>动态库</h1><p>动态库又称动态链接库（Dynamic-link library 缩写 DLL），是一个包含可由多个程序同时使用的代码和数据的库，DLL 不是可执行文件。动态链接提供了一种方法，使进程可以调用不属于其可执行代码的函数。函数的可执行代码位于一个 DLL 中，该 DLL 包含一个或多个已被编译、链接并与使用它们的进程分开存储的函数。DLL 还有助于共享数据和资源。多个应用程序可同时访问内存中单个DLL 副本的内容。DLL 是一个包含可由多个程序同时使用的代码和数据的库。<strong>Windows下动态库为 .dll 后缀（一般为 PE 格式），在 Linux 在为 .so 后缀（一般为 ELF 格式），macOS下为 .dylib 后缀（一般为 Mach-O 格式）</strong>。由于 CPU 架构和动态库文件格式的不同因而在不同平台下不能通用。其它细节的东西就不展开了因为也不会 :-)</p>
 <p>而 Android 本身是 Linux 系统，所以用的动态库也是 .so 的文件，因而运行与 JVM 的 Robolectric 是不能直接加载使用的（Linux 某些情况下可用，下面提到）。</p>
@@ -574,7 +574,7 @@
 
 
     <footer class="article-footer">
-      <a data-url="http://rocko.xyz/2016/11/27/Android-Robolectric-加载运行本地-so-动态库/" data-id="ciw013gwq00075qsd8k2wqu8j" class="article-share-link">分享到</a>
+      <a data-url="http://rocko.xyz/2016/11/27/Android-Robolectric-加载运行本地-so-动态库/" data-id="ciw01rhee0005s7sdkw60qxs6" class="article-share-link">分享到</a>
       
         <a href="http://rocko.xyz/2016/11/27/Android-Robolectric-加载运行本地-so-动态库/#comments" class="article-comment-link">去评论</a>
       

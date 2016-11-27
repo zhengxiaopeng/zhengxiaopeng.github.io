@@ -466,7 +466,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p><a href="http://rocko.xyz/2016/11/27/Android-Robolectric-加载运行本地-so-动态库/">http://rocko.xyz/2016/11/27/Android-Robolectric-加载运行本地-so-动态库/</a></p>
-<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p><a href="http://robolectric.org/">Robolectric</a> 是 Android 的单元测试框架，运行无需 Android 真机环境直接运行在 JVM 之上，所以在 test case 运行速度效率上有了很大提升，接近于 Java JUnit test（<code>JUnit test &gt; Robolectric ≫ androidTest</code>）。不过<strong>框架本身并不支持 <code>so</code> 本地库的加载使用</strong>，加载时会直接报错，因为实际上运行环境是电脑机器，而我们打出的 so 文件是给手机上用的所以当然会报错。虽然在 <a href="https://github.com/robolectric/robolectric">GitHub</a> 上很多人问过关于使用 so 的问题但基本都建议说不要在单元测试中去加载本地库，这在原则上是要这么做，但可能有些项目中做起来就有些困难了，比如在代码结构不够好、依赖耦合较大或者本身就对 so 库依赖很大的情况下。所以下面说说在项目中 Robolectric 要怎么解决需要加载运行本地 so 库这个问题。</p>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p><a href="http://robolectric.org/">Robolectric</a> 是 Android 的单元测试框架，运行无需 Android 真机环境直接运行在 JVM 之上，所以在 test case 运行速度效率上有了很大提升，接近于 Java JUnit test（<code>JUnit test &gt; Robolectric &gt;&gt; androidTest</code>）。不过<strong>框架本身并不支持 <code>so</code> 本地库的加载使用</strong>，加载时会直接报错，因为实际上运行环境是电脑机器，而我们打出的 so 文件是给手机上用的所以当然会报错。虽然在 <a href="https://github.com/robolectric/robolectric">GitHub</a> 上很多人问过关于使用 so 的问题但基本都建议说不要在单元测试中去加载本地库，这在原则上是要这么做，但可能有些项目中做起来就有些困难了，比如在代码结构不够好、依赖耦合较大或者本身就对 so 库依赖很大的情况下。所以下面说说在项目中 Robolectric 要怎么解决需要加载运行本地 so 库这个问题。</p>
         
           <p class="article-more-link">
             <a href="/2016/11/27/Android-Robolectric-加载运行本地-so-动态库/#more">阅读全文</a>
@@ -483,7 +483,7 @@
 
 
     <footer class="article-footer">
-      <a data-url="http://rocko.xyz/2016/11/27/Android-Robolectric-加载运行本地-so-动态库/" data-id="ciw013gwq00075qsd8k2wqu8j" class="article-share-link">分享到</a>
+      <a data-url="http://rocko.xyz/2016/11/27/Android-Robolectric-加载运行本地-so-动态库/" data-id="ciw01rhee0005s7sdkw60qxs6" class="article-share-link">分享到</a>
       
         <a href="http://rocko.xyz/2016/11/27/Android-Robolectric-加载运行本地-so-动态库/#comments" class="article-comment-link">去评论</a>
       
@@ -564,7 +564,7 @@
 
 
     <footer class="article-footer">
-      <a data-url="http://rocko.xyz/2016/08/28/科学上网的各种姿势/" data-id="ciw013gy1001s5qsdmb0r83k7" class="article-share-link">分享到</a>
+      <a data-url="http://rocko.xyz/2016/08/28/科学上网的各种姿势/" data-id="ciw01rhj1002ns7sdonwsrdba" class="article-share-link">分享到</a>
       
         <a href="http://rocko.xyz/2016/08/28/科学上网的各种姿势/#comments" class="article-comment-link">去评论</a>
       
@@ -644,7 +644,7 @@
 
 
     <footer class="article-footer">
-      <a data-url="http://rocko.xyz/2016/06/14/ADB-Issue-2/" data-id="ciw013gwn00055qsdques8yf7" class="article-share-link">分享到</a>
+      <a data-url="http://rocko.xyz/2016/06/14/ADB-Issue-2/" data-id="ciw01rhf5000bs7sdyiu6p8if" class="article-share-link">分享到</a>
       
         <a href="http://rocko.xyz/2016/06/14/ADB-Issue-2/#comments" class="article-comment-link">去评论</a>
       
@@ -725,7 +725,7 @@
 
 
     <footer class="article-footer">
-      <a data-url="http://rocko.xyz/2016/02/17/AndroidDev站点推荐-Issue-1/" data-id="ciw013gx7000j5qsdjtgji6g1" class="article-share-link">分享到</a>
+      <a data-url="http://rocko.xyz/2016/02/17/AndroidDev站点推荐-Issue-1/" data-id="ciw01rhgy0015s7sdn1ssk0fd" class="article-share-link">分享到</a>
       
         <a href="http://rocko.xyz/2016/02/17/AndroidDev站点推荐-Issue-1/#comments" class="article-comment-link">去评论</a>
       
@@ -806,7 +806,7 @@
 
 
     <footer class="article-footer">
-      <a data-url="http://rocko.xyz/2015/11/07/MVVM_Android-CleanArchitecture/" data-id="ciw013gxg000v5qsd8ypoaeam" class="article-share-link">分享到</a>
+      <a data-url="http://rocko.xyz/2015/11/07/MVVM_Android-CleanArchitecture/" data-id="ciw01rhhw001ss7sd0dx0zpbj" class="article-share-link">分享到</a>
       
         <a href="http://rocko.xyz/2015/11/07/MVVM_Android-CleanArchitecture/#comments" class="article-comment-link">去评论</a>
       
@@ -886,7 +886,7 @@
 
 
     <footer class="article-footer">
-      <a data-url="http://rocko.xyz/2015/06/27/High一下/" data-id="ciw013gxf000s5qsdfmpasiqj" class="article-share-link">分享到</a>
+      <a data-url="http://rocko.xyz/2015/06/27/High一下/" data-id="ciw01rhhf001js7sd1wynpj16" class="article-share-link">分享到</a>
       
         <a href="http://rocko.xyz/2015/06/27/High一下/#comments" class="article-comment-link">去评论</a>
       
@@ -961,7 +961,7 @@
 
 
     <footer class="article-footer">
-      <a data-url="http://rocko.xyz/2015/06/19/【译】解决共享元素在系统UI上绘制的问题/" data-id="ciw013gxp00195qsdo6so312j" class="article-share-link">分享到</a>
+      <a data-url="http://rocko.xyz/2015/06/19/【译】解决共享元素在系统UI上绘制的问题/" data-id="ciw01rhi90022s7sd1dfq7njd" class="article-share-link">分享到</a>
       
         <a href="http://rocko.xyz/2015/06/19/【译】解决共享元素在系统UI上绘制的问题/#comments" class="article-comment-link">去评论</a>
       
