@@ -395,11 +395,11 @@
     </div>
     <div class="article-info profile-block">
       <div class="article-info-block">
-        22
+        23
         <span>文章</span>
       </div>
       <div class="article-info-block">
-        29
+        33
         <span>标签</span>
       </div>
     </div>
@@ -523,7 +523,7 @@
 <p>设置完成了<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">adb devices</div><div class="line">List of devices attached </div><div class="line">434235313151564C4D45    device</div></pre></td></tr></table></figure></p>
 <hr>
 <p><strong>系统环境：</strong><br>Windows7 64位<br><strong>问题描述：</strong><br>AndroidStudio无法更新(已加了google host)<br><strong>错误提示：</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Connection failed. Please check your network connection and try again</div></pre></td></tr></table></figure></p>
-<p><strong>解决方案：</strong><br>修改安装目录下bin\studio.exe.vmoptions文件,如E:\Android\android-studio\bin\studio.exe.vmoptions，64位的还有studio64.exe.vmoptions<br>添加内容:<br><figure class="highlight haml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">-<span class="ruby">Djava.net.preferIPv4Stack=<span class="literal">true</span> </span></div><div class="line">-<span class="ruby">Didea.updates.url=<span class="symbol">http:</span>/<span class="regexp">/dl.google.com/android</span><span class="regexp">/studio/patches</span><span class="regexp">/updates.xml</span></span></div><div class="line">-<span class="ruby"><span class="regexp">Didea.patches.url=http:/</span><span class="regexp">/dl.google.com/android</span><span class="regexp">/studio/patches</span><span class="regexp">/</span></span></div></pre></td></tr></table></figure></p>
+<p><strong>解决方案：</strong><br>修改安装目录下bin\studio.exe.vmoptions文件,如E:\Android\android-studio\bin\studio.exe.vmoptions，64位的还有studio64.exe.vmoptions<br>添加内容:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">-Djava.net.preferIPv4Stack=true </div><div class="line">-Didea.updates.url=http://dl.google.com/android/studio/patches/updates.xml</div><div class="line">-Didea.patches.url=http://dl.google.com/android/studio/patches/</div></pre></td></tr></table></figure></p>
 <p>注意更新后这两个文件会被重新覆盖。</p>
 <hr>
 <p><strong>系统环境：</strong><br>Windows7 64位<br><strong>问题描述：</strong><br>使用Jackson解析key为大写的json(复杂)数据报错<br><strong>错误提示：</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Jackson with JSON: Unrecognized field, not marked as ignorable</div></pre></td></tr></table></figure></p>
@@ -601,7 +601,7 @@
 
 
     <footer class="article-footer">
-      <a data-url="http://rocko.xyz/2015/02/05/Android-错误集锦ing/" data-id="civs7m7hx000b0isdxfykwson" class="article-share-link">分享到</a>
+      <a data-url="http://rocko.xyz/2015/02/05/Android-错误集锦ing/" data-id="ciw013gx6000h5qsds51i9dw4" class="article-share-link">分享到</a>
       
         <a href="http://rocko.xyz/2015/02/05/Android-错误集锦ing/#comments" class="article-comment-link">去评论</a>
       
@@ -670,6 +670,23 @@
           <li>
             
             <div class="item-thumbnail">
+              <a href="/2016/11/27/Android-Robolectric-加载运行本地-so-动态库/" class="thumbnail">
+  
+    <span style="background-image:url(http://rocko-blog.qiniudn.com/2016-11-27_10-04-15_Robolectric.jpg?imageView2/2/w/200/h/100/q/100)" alt="Android Robolectric 加载运行本地 So 动态库" class="thumbnail-image"></span>
+  
+</a>
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/Android/">Android</a></p>
+              <p class="item-title"><a href="/2016/11/27/Android-Robolectric-加载运行本地-so-动态库/" class="title">Android Robolectric 加载运行本地 So 动态库</a></p>
+              <p class="item-date"><time datetime="2016-11-27T01:42:41.000Z" itemprop="datePublished">2016-11-27</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
               <a href="/2016/08/28/科学上网的各种姿势/" class="thumbnail">
   
     <span style="background-image:url(http://rocko-blog.qiniudn.com/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E7%9A%84%E5%90%84%E7%A7%8D%E5%A7%BF%E5%8A%BF_0.jpg)" alt="科学上网的各种姿势" class="thumbnail-image"></span>
@@ -732,23 +749,6 @@
               <p class="item-category"><a class="article-category-link" href="/categories/Android/">Android</a></p>
               <p class="item-title"><a href="/2015/11/07/MVVM_Android-CleanArchitecture/" class="title">MVVM_Android-CleanArchitecture</a></p>
               <p class="item-date"><time datetime="2015-11-07T04:49:07.000Z" itemprop="datePublished">2015-11-07</time></p>
-            </div>
-          </li>
-        
-          <li>
-            
-            <div class="item-thumbnail">
-              <a href="/2015/06/27/High一下/" class="thumbnail">
-  
-    <span style="background-image:url(http://rocko-blog.qiniudn.com/High一下-1.jpg?imageView2/2/w/400/h/300/q/100)" alt="High一下" class="thumbnail-image"></span>
-  
-</a>
-            </div>
-            
-            <div class="item-inner">
-              <p class="item-category"><a class="article-category-link" href="/categories/Hexo/">Hexo</a></p>
-              <p class="item-title"><a href="/2015/06/27/High一下/" class="title">High一下</a></p>
-              <p class="item-date"><time datetime="2015-06-27T04:49:07.000Z" itemprop="datePublished">2015-06-27</time></p>
             </div>
           </li>
         

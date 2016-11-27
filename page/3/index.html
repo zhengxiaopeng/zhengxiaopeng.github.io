@@ -382,11 +382,11 @@
     </div>
     <div class="article-info profile-block">
       <div class="article-info-block">
-        22
+        23
         <span>文章</span>
       </div>
       <div class="article-info-block">
-        29
+        33
         <span>标签</span>
       </div>
     </div>
@@ -417,6 +417,79 @@
 
       
       <section id="main">
+      <article id="post-Android中的MVP" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/02/06/Android中的MVP/">Android中的MVP</a>
+    </h1>
+  
+
+        <div class="article-meta">
+          
+  <div class="article-date" >
+    <i class="fa fa-calendar"></i>
+    <a href="/2015/02/06/Android中的MVP/">
+      <time datetime="2015-02-06T04:28:48.000Z" itemprop="datePublished">2015-02-06</time>
+    </a>
+  </div>
+
+
+          
+  <div class="article-category">
+  	<i class="fa fa-folder"></i>
+    <a class="article-category-link" href="/categories/Android/">Android</a>
+  </div>
+
+          <!-- 评论、访问统计部分，不蒜子 -->
+          <!-- 不蒜子统计 -->
+
+
+          
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>MVP作为一种MVC的演化版本在Android开发中受到了越来越多的关注，但在项目开发中选择一种这样的软件设计模式需保持慎重心态，一旦确定使用MVP作为你App的开发模式那么你就最好坚持做下去，如果在使用MVP模式开发过程中发现问题而且坑越来越大，这时你想用MVC等来重新设计的话基本上就等于推倒重来了。要知道在Android上MVP在现在为止并没有统一的标准或者框架，不像SSH这三个成熟稳重强而有力的三剑客支持推动着Java EE的开发，所以在运用MVP时一定要做好自己的理解，并且尽量预知自己App各模块的需求（客户说改改改，我们就改改改 :-( ）以便提前做好充分的设计工作。当然MVP既然能出现那么必然有它的优点的，不然谁会理会这个冒出来的东西，下面就对Android中MVP做一些阐述。</p>
+<h2 id="MVP简介"><a href="#MVP简介" class="headerlink" title="MVP简介"></a>MVP简介</h2><p>相信大家对MVC都是比较熟悉了：<code>M-Model-模型</code>、<code>V-View-视图</code>、<code>C-Controller-控制器</code>，MVP作为MVC的演化版本，也是作为用户界面（用户层）的实现模式，那么类似的MVP所对应的意义：<code>M-Model-模型</code>、<code>V-View-视图</code>、<code>P-Presenter-表示器</code>。从MVC和MVP两者结合来看，Controlller/Presenter在MVC/MVP中都起着逻辑控制处理的角色，起着控制各业务流程的作用。而MVP与MVC最不同的一点是M与V是不直接关联的也是就Model与View不存在直接关系，这两者之间间隔着的是Presenter层，其负责调控View与Model之间的间接交互，MVP的结构图如下所示，对于这个图理解即可而不必限于其中的条条框框，毕竟在不同的场景下多少会有些出入的。在Android中很重要的一点就是对UI的操作基本上需要异步进行也就是在MainThread中才能操作UI，所以对View与Model的切断分离是合理的。此外Presenter与View、Model的交互使用接口定义交互操作可以进一步达到松耦合也可以通过接口更加方便地进行单元测试。<br><img src="http://rocko-blog.qiniudn.com/Android中的MVP_1.png" alt="MVP结构图"></p>
+        
+          <p class="article-more-link">
+            <a href="/2015/02/06/Android中的MVP/#more">阅读全文</a>
+          </p>
+        
+      
+    </div>
+    
+   <!-- 加入广告 -->
+   <!-- 广告 -->
+
+   <!-- 加入打赏 -->
+   <!-- 打赏 -->
+
+
+    <footer class="article-footer">
+      <a data-url="http://rocko.xyz/2015/02/06/Android中的MVP/" data-id="ciw013gxd000o5qsdo5zb9kg3" class="article-share-link">分享到</a>
+      
+        <a href="http://rocko.xyz/2015/02/06/Android中的MVP/#comments" class="article-comment-link">去评论</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MVP/">MVP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/架构/">架构</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+    
       <article id="post-Android-错误集锦ing" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -493,7 +566,7 @@
 
 
     <footer class="article-footer">
-      <a data-url="http://rocko.xyz/2015/02/05/Android-错误集锦ing/" data-id="civs7m7hx000b0isdxfykwson" class="article-share-link">分享到</a>
+      <a data-url="http://rocko.xyz/2015/02/05/Android-错误集锦ing/" data-id="ciw013gx6000h5qsds51i9dw4" class="article-share-link">分享到</a>
       
         <a href="http://rocko.xyz/2015/02/05/Android-错误集锦ing/#comments" class="article-comment-link">去评论</a>
       
@@ -568,7 +641,7 @@
 
 
     <footer class="article-footer">
-      <a data-url="http://rocko.xyz/2015/02/02/使用Gradle发布项目到JCenter仓库/" data-id="civs7m7jf00260isdv10bnnz3" class="article-share-link">分享到</a>
+      <a data-url="http://rocko.xyz/2015/02/02/使用Gradle发布项目到JCenter仓库/" data-id="ciw013gxv001k5qsdpib3svsf" class="article-share-link">分享到</a>
       
         <a href="http://rocko.xyz/2015/02/02/使用Gradle发布项目到JCenter仓库/#comments" class="article-comment-link">去评论</a>
       
@@ -640,7 +713,7 @@
 
 
     <footer class="article-footer">
-      <a data-url="http://rocko.xyz/2015/01/14/运算符的几点/" data-id="civs7m7ji002h0isda36jl7kv" class="article-share-link">分享到</a>
+      <a data-url="http://rocko.xyz/2015/01/14/运算符的几点/" data-id="ciw013gy6001z5qsdx9akdfs7" class="article-share-link">分享到</a>
       
         <a href="http://rocko.xyz/2015/01/14/运算符的几点/#comments" class="article-comment-link">去评论</a>
       
@@ -714,7 +787,7 @@
 
 
     <footer class="article-footer">
-      <a data-url="http://rocko.xyz/2014/12/13/Android-Studio-jar、so、library项目依赖/" data-id="civs7m7hu00090isdfexw8nm7" class="article-share-link">分享到</a>
+      <a data-url="http://rocko.xyz/2014/12/13/Android-Studio-jar、so、library项目依赖/" data-id="ciw013gwy000b5qsdihen824q" class="article-share-link">分享到</a>
       
         <a href="http://rocko.xyz/2014/12/13/Android-Studio-jar、so、library项目依赖/#comments" class="article-comment-link">去评论</a>
       
@@ -788,7 +861,7 @@
 
 
     <footer class="article-footer">
-      <a data-url="http://rocko.xyz/2014/12/06/设置域名邮箱/" data-id="civs7m7jl002n0isdaqd4we9m" class="article-share-link">分享到</a>
+      <a data-url="http://rocko.xyz/2014/12/06/设置域名邮箱/" data-id="ciw013gy3001v5qsduvyd15ga" class="article-share-link">分享到</a>
       
         <a href="http://rocko.xyz/2014/12/06/设置域名邮箱/#comments" class="article-comment-link">去评论</a>
       
@@ -871,89 +944,12 @@
 
 
     <footer class="article-footer">
-      <a data-url="http://rocko.xyz/2014/12/05/Android-Volley自定义Request-JacksonRequest、GsonRequest/" data-id="civs7m7hv000a0isdl6nnia4c" class="article-share-link">分享到</a>
+      <a data-url="http://rocko.xyz/2014/12/05/Android-Volley自定义Request-JacksonRequest、GsonRequest/" data-id="ciw013gx4000e5qsdem43dh01" class="article-share-link">分享到</a>
       
         <a href="http://rocko.xyz/2014/12/05/Android-Volley自定义Request-JacksonRequest、GsonRequest/#comments" class="article-comment-link">去评论</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Volley/">Volley</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-    
-      <article id="post-Git-错误集锦ing" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/11/25/Git-错误集锦ing/">Git 错误集锦ing...</a>
-    </h1>
-  
-
-        <div class="article-meta">
-          
-  <div class="article-date" >
-    <i class="fa fa-calendar"></i>
-    <a href="/2014/11/25/Git-错误集锦ing/">
-      <time datetime="2014-11-25T10:21:52.000Z" itemprop="datePublished">2014-11-25</time>
-    </a>
-  </div>
-
-
-          
-  <div class="article-category">
-  	<i class="fa fa-folder"></i>
-    <a class="article-category-link" href="/categories/Git/">Git</a>
-  </div>
-
-          <!-- 评论、访问统计部分，不蒜子 -->
-          <!-- 不蒜子统计 -->
-
-
-          
-          
-        </div>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>系统环境：</strong><br>Windows7 64位<br><strong>问题描述：</strong><br>Windows使用Git客户端gitscm时，当clone或commit时报错。<br><strong>错误提示：</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">warning: templates not found /share/git-core/templates</div><div class="line">fatal: Unable to find remote helper <span class="keyword">for</span> <span class="string">'https'</span></div></pre></td></tr></table></figure></p>
-<p><strong>解决方案：</strong><br>把Git换个安装目录重新安装问题解决!!!具体原因找了很久未明，估计不知怎么把Git搞乱了。</p>
-<hr>
-<p><strong>系统环境：</strong><br>Windows7 64位<br><strong>问题描述：</strong><br>ssh-keygen命令报错，一般在Windows上配置git的ssh会出现这个问题<br><strong>错误提示：</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Could not create directory <span class="string">'//.ssh'</span>.</div><div class="line">...</div></pre></td></tr></table></figure></p>
-<p><strong>解决方案：</strong><br>找不到主目录，在系统环境变量配置<code>HOME</code>变量：系统变量上新建-&gt;变量名：<code>HOME</code>、变量值：<code>C:\Users\Administrator</code>,Administrator为你当前的用户名。</p>
-<hr>
-        
-          <p class="article-more-link">
-            <a href="/2014/11/25/Git-错误集锦ing/#more">阅读全文</a>
-          </p>
-        
-      
-    </div>
-    
-   <!-- 加入广告 -->
-   <!-- 广告 -->
-
-   <!-- 加入打赏 -->
-   <!-- 打赏 -->
-
-
-    <footer class="article-footer">
-      <a data-url="http://rocko.xyz/2014/11/25/Git-错误集锦ing/" data-id="civs7m7i2000g0isdvipy9qm7" class="article-share-link">分享到</a>
-      
-        <a href="http://rocko.xyz/2014/11/25/Git-错误集锦ing/#comments" class="article-comment-link">去评论</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/错误/">错误</a></li></ul>
 
     </footer>
   </div>
@@ -987,6 +983,23 @@
     <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul id="recent-post" class="">
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              <a href="/2016/11/27/Android-Robolectric-加载运行本地-so-动态库/" class="thumbnail">
+  
+    <span style="background-image:url(http://rocko-blog.qiniudn.com/2016-11-27_10-04-15_Robolectric.jpg?imageView2/2/w/200/h/100/q/100)" alt="Android Robolectric 加载运行本地 So 动态库" class="thumbnail-image"></span>
+  
+</a>
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/Android/">Android</a></p>
+              <p class="item-title"><a href="/2016/11/27/Android-Robolectric-加载运行本地-so-动态库/" class="title">Android Robolectric 加载运行本地 So 动态库</a></p>
+              <p class="item-date"><time datetime="2016-11-27T01:42:41.000Z" itemprop="datePublished">2016-11-27</time></p>
+            </div>
+          </li>
         
           <li>
             
@@ -1053,23 +1066,6 @@
               <p class="item-category"><a class="article-category-link" href="/categories/Android/">Android</a></p>
               <p class="item-title"><a href="/2015/11/07/MVVM_Android-CleanArchitecture/" class="title">MVVM_Android-CleanArchitecture</a></p>
               <p class="item-date"><time datetime="2015-11-07T04:49:07.000Z" itemprop="datePublished">2015-11-07</time></p>
-            </div>
-          </li>
-        
-          <li>
-            
-            <div class="item-thumbnail">
-              <a href="/2015/06/27/High一下/" class="thumbnail">
-  
-    <span style="background-image:url(http://rocko-blog.qiniudn.com/High一下-1.jpg?imageView2/2/w/400/h/300/q/100)" alt="High一下" class="thumbnail-image"></span>
-  
-</a>
-            </div>
-            
-            <div class="item-inner">
-              <p class="item-category"><a class="article-category-link" href="/categories/Hexo/">Hexo</a></p>
-              <p class="item-title"><a href="/2015/06/27/High一下/" class="title">High一下</a></p>
-              <p class="item-date"><time datetime="2015-06-27T04:49:07.000Z" itemprop="datePublished">2015-06-27</time></p>
             </div>
           </li>
         
