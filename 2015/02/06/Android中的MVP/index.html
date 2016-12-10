@@ -14,14 +14,14 @@
 <meta property="og:url" content="https://rocko.xyz/2015/02/06/Android中的MVP/index.html">
 <meta property="og:site_name" content="Rocko's blog">
 <meta property="og:description" content="前言MVP作为一种MVC的演化版本在Android开发中受到了越来越多的关注，但在项目开发中选择一种这样的软件设计模式需保持慎重心态，一旦确定使用MVP作为你App的开发模式那么你就最好坚持做下去，如果在使用MVP模式开发过程中发现问题而且坑越来越大，这时你想用MVC等来重新设计的话基本上就等于推倒重来了。要知道在Android上MVP在现在为止并没有统一的标准或者框架，不像SSH这三个成熟稳重强">
-<meta property="og:image" content="https://coding.net/u/Rocko/p/static/git/raw/coding-pages/img/Android中的MVP_1.png">
-<meta property="og:image" content="https://coding.net/u/Rocko/p/static/git/raw/coding-pages/img/Android中的MVP_2.png?imageView2/2/w/450/h/450/q/100">
-<meta property="og:image" content="https://coding.net/u/Rocko/p/static/git/raw/coding-pages/img/Android中的MVP_3.png?imageView2/2/w/450/h/450/q/100">
-<meta property="og:updated_time" content="2016-12-10T18:07:06.000Z">
+<meta property="og:image" content="https://static.rocko.xyz/img/Android中的MVP_1.png">
+<meta property="og:image" content="https://static.rocko.xyz/img/Android中的MVP_2.png?imageView2/2/w/450/h/450/q/100">
+<meta property="og:image" content="https://static.rocko.xyz/img/Android中的MVP_3.png?imageView2/2/w/450/h/450/q/100">
+<meta property="og:updated_time" content="2016-12-10T18:48:42.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android中的MVP">
 <meta name="twitter:description" content="前言MVP作为一种MVC的演化版本在Android开发中受到了越来越多的关注，但在项目开发中选择一种这样的软件设计模式需保持慎重心态，一旦确定使用MVP作为你App的开发模式那么你就最好坚持做下去，如果在使用MVP模式开发过程中发现问题而且坑越来越大，这时你想用MVC等来重新设计的话基本上就等于推倒重来了。要知道在Android上MVP在现在为止并没有统一的标准或者框架，不像SSH这三个成熟稳重强">
-<meta name="twitter:image" content="https://coding.net/u/Rocko/p/static/git/raw/coding-pages/img/Android中的MVP_1.png">
+<meta name="twitter:image" content="https://static.rocko.xyz/img/Android中的MVP_1.png">
   
   
     <link rel="icon" href="/img/favicon.png">
@@ -460,12 +460,12 @@
   </div>
 
         <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>MVP作为一种MVC的演化版本在Android开发中受到了越来越多的关注，但在项目开发中选择一种这样的软件设计模式需保持慎重心态，一旦确定使用MVP作为你App的开发模式那么你就最好坚持做下去，如果在使用MVP模式开发过程中发现问题而且坑越来越大，这时你想用MVC等来重新设计的话基本上就等于推倒重来了。要知道在Android上MVP在现在为止并没有统一的标准或者框架，不像SSH这三个成熟稳重强而有力的三剑客支持推动着Java EE的开发，所以在运用MVP时一定要做好自己的理解，并且尽量预知自己App各模块的需求（客户说改改改，我们就改改改 :-( ）以便提前做好充分的设计工作。当然MVP既然能出现那么必然有它的优点的，不然谁会理会这个冒出来的东西，下面就对Android中MVP做一些阐述。</p>
-<h2 id="MVP简介"><a href="#MVP简介" class="headerlink" title="MVP简介"></a>MVP简介</h2><p>相信大家对MVC都是比较熟悉了：<code>M-Model-模型</code>、<code>V-View-视图</code>、<code>C-Controller-控制器</code>，MVP作为MVC的演化版本，也是作为用户界面（用户层）的实现模式，那么类似的MVP所对应的意义：<code>M-Model-模型</code>、<code>V-View-视图</code>、<code>P-Presenter-表示器</code>。从MVC和MVP两者结合来看，Controlller/Presenter在MVC/MVP中都起着逻辑控制处理的角色，起着控制各业务流程的作用。而MVP与MVC最不同的一点是M与V是不直接关联的也是就Model与View不存在直接关系，这两者之间间隔着的是Presenter层，其负责调控View与Model之间的间接交互，MVP的结构图如下所示，对于这个图理解即可而不必限于其中的条条框框，毕竟在不同的场景下多少会有些出入的。在Android中很重要的一点就是对UI的操作基本上需要异步进行也就是在MainThread中才能操作UI，所以对View与Model的切断分离是合理的。此外Presenter与View、Model的交互使用接口定义交互操作可以进一步达到松耦合也可以通过接口更加方便地进行单元测试。<br><img src="https://coding.net/u/Rocko/p/static/git/raw/coding-pages/img/Android中的MVP_1.png" alt="MVP结构图"></p>
+<h2 id="MVP简介"><a href="#MVP简介" class="headerlink" title="MVP简介"></a>MVP简介</h2><p>相信大家对MVC都是比较熟悉了：<code>M-Model-模型</code>、<code>V-View-视图</code>、<code>C-Controller-控制器</code>，MVP作为MVC的演化版本，也是作为用户界面（用户层）的实现模式，那么类似的MVP所对应的意义：<code>M-Model-模型</code>、<code>V-View-视图</code>、<code>P-Presenter-表示器</code>。从MVC和MVP两者结合来看，Controlller/Presenter在MVC/MVP中都起着逻辑控制处理的角色，起着控制各业务流程的作用。而MVP与MVC最不同的一点是M与V是不直接关联的也是就Model与View不存在直接关系，这两者之间间隔着的是Presenter层，其负责调控View与Model之间的间接交互，MVP的结构图如下所示，对于这个图理解即可而不必限于其中的条条框框，毕竟在不同的场景下多少会有些出入的。在Android中很重要的一点就是对UI的操作基本上需要异步进行也就是在MainThread中才能操作UI，所以对View与Model的切断分离是合理的。此外Presenter与View、Model的交互使用接口定义交互操作可以进一步达到松耦合也可以通过接口更加方便地进行单元测试。<br><img src="https://static.rocko.xyz/img/Android中的MVP_1.png" alt="MVP结构图"></p>
 <a id="more"></a>
 <h2 id="MVP之Model"><a href="#MVP之Model" class="headerlink" title="MVP之Model"></a>MVP之Model</h2><p>Model 是用户界面需要显示数据的抽象，也可以理解为从业务数据（结果）那里到用户界面的抽象（Business rule, data access, model classes）。本文 Demo 为了简单处理就直接把业务放到了对应的 Model 之中。</p>
 <h2 id="MVP之View"><a href="#MVP之View" class="headerlink" title="MVP之View"></a>MVP之View</h2><p>视图这一层体现的很轻薄，负责显示数据、提供友好界面跟用户交互就行。MVP下Activity和Fragment体现在了这一层，Activity一般也就做加载UI视图、设置监听再交由Presenter处理的一些工作，所以也就需要持有相应Presenter的引用。例如，Activity上滚动列表时隐藏或者显示Acionbar（Toolbar），这样的UI逻辑时也应该在这一层。另外在View上输入的数据做一些判断时，例如，EditText的输入数据，假如是简单的非空判断则可以作为View层的逻辑，而当需要对EditText的数据进行更复杂的比较时，如从数据库获取本地数据进行判断时明显需要经过Model层才能返回了，所以这些细节需要自己掂量。</p>
 <h2 id="MVP之Presenter"><a href="#MVP之Presenter" class="headerlink" title="MVP之Presenter"></a>MVP之Presenter</h2><p>Presenter这一层处理着程序各种逻辑的分发，收到View层UI上的反馈命令、定时命令、系统命令等指令后分发处理逻辑交由业务层做具体的业务操作，然后将得到的 Model 给 View 显示。</p>
-<h2 id="演示demo"><a href="#演示demo" class="headerlink" title="演示demo"></a>演示demo</h2><p>动手写起代码来才有更好的感觉。demo很简单,还是上个图更直观，输入城市的代号，点击按钮获取城市的天气信息然后显示出来，网络操作使用Volley框架，解析用Gson，其它的就手写了。整个项目的包设计如下：<br><img src="https://coding.net/u/Rocko/p/static/git/raw/coding-pages/img/Android中的MVP_2.png?imageView2/2/w/450/h/450/q/100" alt="包结构"><br><img src="https://coding.net/u/Rocko/p/static/git/raw/coding-pages/img/Android中的MVP_3.png?imageView2/2/w/450/h/450/q/100" alt="项目效果预览"><br>包图中明显的三层：Model包、Presenter包、UI包，其中，三者都实现各自的结构，Model为WeatherModel、Presenter为WeatherPresenter、View为Weather，那么具体实现类就是impl包里的了，View层的即为Activity。此外的app和util包无关紧要可以不看。可以看到采用MVP设计后项目明显多了很多东西，这也是不可避免的，使用原始方法可以使项目开起来简单些但是以后还有维护呢、测试呢、加功能呢、。。。<br>entity里的实体属性基本上对应<a href="http://www.weather.com.cn/data/sk/101010100.html" target="_blank" rel="external">json里的这些属性了</a>，代码不贴了，View里面的接口：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">WeatherView</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">showLoading</span><span class="params">()</span></span>;</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">hideLoading</span><span class="params">()</span></span>;</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">showError</span><span class="params">()</span></span>;</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">setWeatherInfo</span><span class="params">(Weather weather)</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="演示demo"><a href="#演示demo" class="headerlink" title="演示demo"></a>演示demo</h2><p>动手写起代码来才有更好的感觉。demo很简单,还是上个图更直观，输入城市的代号，点击按钮获取城市的天气信息然后显示出来，网络操作使用Volley框架，解析用Gson，其它的就手写了。整个项目的包设计如下：<br><img src="https://static.rocko.xyz/img/Android中的MVP_2.png?imageView2/2/w/450/h/450/q/100" alt="包结构"><br><img src="https://static.rocko.xyz/img/Android中的MVP_3.png?imageView2/2/w/450/h/450/q/100" alt="项目效果预览"><br>包图中明显的三层：Model包、Presenter包、UI包，其中，三者都实现各自的结构，Model为WeatherModel、Presenter为WeatherPresenter、View为Weather，那么具体实现类就是impl包里的了，View层的即为Activity。此外的app和util包无关紧要可以不看。可以看到采用MVP设计后项目明显多了很多东西，这也是不可避免的，使用原始方法可以使项目开起来简单些但是以后还有维护呢、测试呢、加功能呢、。。。<br>entity里的实体属性基本上对应<a href="http://www.weather.com.cn/data/sk/101010100.html" target="_blank" rel="external">json里的这些属性了</a>，代码不贴了，View里面的接口：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">WeatherView</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">showLoading</span><span class="params">()</span></span>;</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">hideLoading</span><span class="params">()</span></span>;</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">showError</span><span class="params">()</span></span>;</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">setWeatherInfo</span><span class="params">(Weather weather)</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>WeatherPresenter的接口：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">WeatherPresenter</span> </span>&#123;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 获取天气的逻辑</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">getWeather</span><span class="params">(String cityNO)</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>WeatherModel接口：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">WeatherModel</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">loadWeather</span><span class="params">(String cityNO, OnWeatherListener listener)</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>prestener里面还有个OnWeatherListener，其在Presenter层实现，给Model层回调，更改View层的状态，确保Model层不直接操作View层。如果没有这一接口在WeatherPresenterImpl实现的话，WeatherPresenterImpl只有View和Model的引用那么Model怎么把结果告诉View呢？当然这只是一种解决方案，在实际项目中可以使用Dagger、EventBus、Otto等第三方框架结合进来达到更加松耦合的设计。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">OnWeatherListener</span> </span>&#123;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 成功时回调</div><div class="line">     *</div><div class="line">     * <span class="doctag">@param</span> weather</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">onSuccess</span><span class="params">(Weather weather)</span></span>;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 失败时回调，简单处理，没做什么</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">onError</span><span class="params">()</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
@@ -530,7 +530,7 @@
 
 
     <footer class="article-footer">
-      <a data-url="https://rocko.xyz/2015/02/06/Android中的MVP/" data-id="ciwjjyeuw000jy0sdzi2lxt6r" class="article-share-link">分享到</a>
+      <a data-url="https://rocko.xyz/2015/02/06/Android中的MVP/" data-id="ciwjkrxvi000l63sdl94xs897" class="article-share-link">分享到</a>
       
         <a href="https://rocko.xyz/2015/02/06/Android中的MVP/#comments" class="article-comment-link">去评论</a>
       
@@ -601,7 +601,7 @@
             <div class="item-thumbnail">
               <a href="/2016/11/27/Android-Robolectric-加载运行本地-so-动态库/" class="thumbnail">
   
-    <span style="background-image:url(https://coding.net/u/Rocko/p/static/git/raw/coding-pages/img/2016-11-27_10-04-15_Robolectric.jpg?imageView2/2/w/200/h/100/q/100)" alt="Android Robolectric 加载运行本地 So 动态库" class="thumbnail-image"></span>
+    <span style="background-image:url(https://static.rocko.xyz/img/2016-11-27_10-04-15_Robolectric.jpg?imageView2/2/w/200/h/100/q/100)" alt="Android Robolectric 加载运行本地 So 动态库" class="thumbnail-image"></span>
   
 </a>
             </div>
@@ -618,7 +618,7 @@
             <div class="item-thumbnail">
               <a href="/2016/08/28/科学上网的各种姿势/" class="thumbnail">
   
-    <span style="background-image:url(https://coding.net/u/Rocko/p/static/git/raw/coding-pages/img/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E7%9A%84%E5%90%84%E7%A7%8D%E5%A7%BF%E5%8A%BF_0.jpg)" alt="科学上网的各种姿势" class="thumbnail-image"></span>
+    <span style="background-image:url(https://static.rocko.xyz/img/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E7%9A%84%E5%90%84%E7%A7%8D%E5%A7%BF%E5%8A%BF_0.jpg)" alt="科学上网的各种姿势" class="thumbnail-image"></span>
   
 </a>
             </div>
@@ -635,7 +635,7 @@
             <div class="item-thumbnail">
               <a href="/2016/06/14/ADB-Issue-2/" class="thumbnail">
   
-    <span style="background-image:url(https://coding.net/u/Rocko/p/static/git/raw/coding-pages/img/android-dev-bookmarks.jpg)" alt="ADB-Issue#2" class="thumbnail-image"></span>
+    <span style="background-image:url(https://static.rocko.xyz/img/android-dev-bookmarks.jpg)" alt="ADB-Issue#2" class="thumbnail-image"></span>
   
 </a>
             </div>
@@ -652,7 +652,7 @@
             <div class="item-thumbnail">
               <a href="/2016/02/17/AndroidDev站点推荐-Issue-1/" class="thumbnail">
   
-    <span style="background-image:url(https://coding.net/u/Rocko/p/static/git/raw/coding-pages/img/android-dev-bookmarks.jpg)" alt="AndroidDev站点推荐-Issue#1" class="thumbnail-image"></span>
+    <span style="background-image:url(https://static.rocko.xyz/img/android-dev-bookmarks.jpg)" alt="AndroidDev站点推荐-Issue#1" class="thumbnail-image"></span>
   
 </a>
             </div>
@@ -669,7 +669,7 @@
             <div class="item-thumbnail">
               <a href="/2015/11/07/MVVM_Android-CleanArchitecture/" class="thumbnail">
   
-    <span style="background-image:url(https://coding.net/u/Rocko/p/static/git/raw/coding-pages/img/MVVM_Android-CleanArchitecture-0.png?imageView2/2/w/400/h/300/q/100)" alt="MVVM_Android-CleanArchitecture" class="thumbnail-image"></span>
+    <span style="background-image:url(https://static.rocko.xyz/img/MVVM_Android-CleanArchitecture-0.png?imageView2/2/w/400/h/300/q/100)" alt="MVVM_Android-CleanArchitecture" class="thumbnail-image"></span>
   
 </a>
             </div>

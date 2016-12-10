@@ -20,16 +20,16 @@
 温馨提示：Ctrl+F查找
 
 系统环境：Windows7 64位问题描述：Eclipse真机无法打印log信息错误提示：…解决方案：window–&amp;gt;show view–&amp;gt;android-&amp;gt;devices，打开de">
-<meta property="og:image" content="https://coding.net/u/Rocko/p/static/git/raw/coding-pages/img/20140924103915303">
-<meta property="og:image" content="https://coding.net/u/Rocko/p/static/git/raw/coding-pages/img/Android 错误集锦ing..._1.png">
-<meta property="og:updated_time" content="2016-12-10T18:05:34.000Z">
+<meta property="og:image" content="https://static.rocko.xyz/img/20140924103915303">
+<meta property="og:image" content="https://static.rocko.xyz/img/Android 错误集锦ing..._1.png">
+<meta property="og:updated_time" content="2016-12-10T18:48:42.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android 错误集锦ing...">
 <meta name="twitter:description" content="Fork from my csdn blog: Android 错误集锦(ing…).Last update time: 2016-03-06 23:34:26.   
 温馨提示：Ctrl+F查找
 
 系统环境：Windows7 64位问题描述：Eclipse真机无法打印log信息错误提示：…解决方案：window–&amp;gt;show view–&amp;gt;android-&amp;gt;devices，打开de">
-<meta name="twitter:image" content="https://coding.net/u/Rocko/p/static/git/raw/coding-pages/img/20140924103915303">
+<meta name="twitter:image" content="https://static.rocko.xyz/img/20140924103915303">
   
   
     <link rel="icon" href="/img/favicon.png">
@@ -494,7 +494,7 @@
 <p><strong>解决方案：</strong><br>在Activity之间传递数据必须所有的内容都实现serializable接口才行。</p>
 <hr>
 <p><strong>系统环境：</strong><br>Windows7 64位<br><strong>问题描述：</strong><br>Intent使用Parcelable传递复杂数据时报错<br><strong>错误提示：</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Unmarshalling unknown <span class="built_in">type</span> code 7471205 at offset 232</div></pre></td></tr></table></figure></p>
-<p><strong>解决方案：</strong><br>在两个activitiy之间，传递一个实现了Parcelable的ArrayList，就出现了这个错误，但是当我传递其它类型的数据时（int、String）却没有问题，显然问题出现了Parcelable身上，简单找了找答案<br><img src="https://coding.net/u/Rocko/p/static/git/raw/coding-pages/img/20140924103915303" alt=""></p>
+<p><strong>解决方案：</strong><br>在两个activitiy之间，传递一个实现了Parcelable的ArrayList，就出现了这个错误，但是当我传递其它类型的数据时（int、String）却没有问题，显然问题出现了Parcelable身上，简单找了找答案<br><img src="https://static.rocko.xyz/img/20140924103915303" alt=""></p>
 <hr>
 <p><strong>系统环境：</strong><br>Windows7 64位<br><strong>问题描述：</strong><br>使用开源控件NumberPicker，inflate时一直错误<br><strong>错误提示：</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Android - Error inflating SimonVT NumberPicker class <span class="keyword">in</span> my layout xml</div></pre></td></tr></table></figure></p>
 <p><strong>解决方案：</strong><br>activity的主题的numberPickerStyle item（numberpicker的主题）要使用它项目中的主题！坑爹···<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"numberPickerStyle"</span>&gt;</span>@style/NPWidget.Holo.NumberPicker<span class="tag">&lt;/<span class="name">item</span>&gt;</span></div></pre></td></tr></table></figure></p>
@@ -526,7 +526,7 @@
 <p><strong>解决方案：</strong><br>在出问题的module的build.gradle中的android节点加上：<br><figure class="highlight gradle"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">packagingOptions &#123;</div><div class="line">        <span class="keyword">exclude</span> <span class="string">'META-INF/DEPENDENCIES'</span></div><div class="line">        <span class="keyword">exclude</span> <span class="string">'META-INF/LICENSE'</span></div><div class="line">        <span class="keyword">exclude</span> <span class="string">'META-INF/LICENSE.txt'</span></div><div class="line">        <span class="keyword">exclude</span> <span class="string">'META-INF/license.txt'</span></div><div class="line">        <span class="keyword">exclude</span> <span class="string">'META-INF/NOTICE'</span></div><div class="line">        <span class="keyword">exclude</span> <span class="string">'META-INF/NOTICE.txt'</span></div><div class="line">        <span class="keyword">exclude</span> <span class="string">'META-INF/notice.txt'</span></div><div class="line">        <span class="keyword">exclude</span> <span class="string">'META-INF/ASL2.0'</span></div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
 <hr>
 <p><strong>系统环境：</strong><br>Windows7 64位 Android Studio 1.0.2<br><strong>问题描述：</strong><br>Android Studio导入项目后问题，无法run、rebuild等。<br><strong>错误提示：</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Error:FAILURE: Build failed with an exception.</div><div class="line">* What went wrong:</div><div class="line">Task <span class="string">''</span> not found <span class="keyword">in</span> root project <span class="string">'android-project'</span>.</div><div class="line">* Try:</div><div class="line">Run gradle tasks to get a list of available tasks. Run with --stacktrace option to get the stack trace. Run with --info or --debug option to get more <span class="built_in">log</span> output.</div></pre></td></tr></table></figure></p>
-<p><strong>解决方案：</strong><br>gradle tasks命令执行正常。一般都为Gradle的问题造成的。<br>从其它正常项目里复制替换掉当前项目的<code>gradlew</code>、<code>gradlew.bat</code>文件（也可自己视情况替换掉相关的gradle文件）<br>打开设置，打开Gradle选项，如图，点击使用Gradle home（你本地的Gradle目录），然后点击Apply和OK，还不行可以在Use选项中来回切换Apply一下，我就遇到点多几下才正常。。<br><img src="https://coding.net/u/Rocko/p/static/git/raw/coding-pages/img/Android 错误集锦ing..._1.png" alt=""></p>
+<p><strong>解决方案：</strong><br>gradle tasks命令执行正常。一般都为Gradle的问题造成的。<br>从其它正常项目里复制替换掉当前项目的<code>gradlew</code>、<code>gradlew.bat</code>文件（也可自己视情况替换掉相关的gradle文件）<br>打开设置，打开Gradle选项，如图，点击使用Gradle home（你本地的Gradle目录），然后点击Apply和OK，还不行可以在Use选项中来回切换Apply一下，我就遇到点多几下才正常。。<br><img src="https://static.rocko.xyz/img/Android 错误集锦ing..._1.png" alt=""></p>
 <hr>
 <p><strong>系统环境：</strong><br>Windows7 64 位 Android Studio 1.1.0<br><strong>问题描述：</strong><br>使用 ZoomButtonsController，在 Activity 重建后发生 ANR 异常退出<br><strong>错误提示：</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"> android.view.WindowLeaked: Activity org.rocko.touchlistener.subclasses.ZoomButtonsActivity has leaked window android.widget.ZoomButtonsController<span class="variable">$Container</span>@2b992988 that was originally added here</div><div class="line">            ......</div><div class="line">            at dalvik.system.NativeStart.main(Native Method)</div><div class="line"></div><div class="line">org.rocko.touchlistener.subclasses E/ActivityThread﹕ Activity org.rocko.touchlistener.subclasses.ZoomButtonsActivity has leaked IntentReceiver android.widget.ZoomButtonsController<span class="variable">$1</span>@2b992778 that was originally registered here. Are you missing a call to unregisterReceiver()?</div><div class="line">    android.app.IntentReceiverLeaked: Activity org.rocko.touchlistener.subclasses.ZoomButtonsActivity has leaked IntentReceiver android.widget.ZoomButtonsController<span class="variable">$1</span>@2b992778 that was originally registered here. Are you missing a call to unregisterReceiver()?</div><div class="line">            ......</div><div class="line">            at dalvik.system.NativeStart.main(Native Method)</div><div class="line">01-31 18:28:29.022  11475-11475/org.rocko.touchlistener.subclasses E/AndroidRuntime﹕ FATAL EXCEPTION: main</div><div class="line">    java.lang.IllegalArgumentException: Receiver not registered: android.widget.ZoomButtonsController<span class="variable">$1</span>@2b992778</div><div class="line">            ......</div><div class="line">            at dalvik.system.NativeStart.main(Native Method)</div></pre></td></tr></table></figure></p>
 <p><strong>解决方案：</strong><br>ZoomButtonsController 造成了内存泄露，在 onDestroy 中把其注销：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onDestroy</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">super</span>.onDestroy();</div><div class="line">    zoomButtonsController.setVisible(<span class="keyword">false</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
@@ -593,7 +593,7 @@
 
 
     <footer class="article-footer">
-      <a data-url="https://rocko.xyz/2015/02/05/Android-错误集锦ing/" data-id="ciwjjyev1000py0sdyn3pgeoa" class="article-share-link">分享到</a>
+      <a data-url="https://rocko.xyz/2015/02/05/Android-错误集锦ing/" data-id="ciwjkrxva000b63sdjc15lvd2" class="article-share-link">分享到</a>
       
         <a href="https://rocko.xyz/2015/02/05/Android-错误集锦ing/#comments" class="article-comment-link">去评论</a>
       
@@ -664,7 +664,7 @@
             <div class="item-thumbnail">
               <a href="/2016/11/27/Android-Robolectric-加载运行本地-so-动态库/" class="thumbnail">
   
-    <span style="background-image:url(https://coding.net/u/Rocko/p/static/git/raw/coding-pages/img/2016-11-27_10-04-15_Robolectric.jpg?imageView2/2/w/200/h/100/q/100)" alt="Android Robolectric 加载运行本地 So 动态库" class="thumbnail-image"></span>
+    <span style="background-image:url(https://static.rocko.xyz/img/2016-11-27_10-04-15_Robolectric.jpg?imageView2/2/w/200/h/100/q/100)" alt="Android Robolectric 加载运行本地 So 动态库" class="thumbnail-image"></span>
   
 </a>
             </div>
@@ -681,7 +681,7 @@
             <div class="item-thumbnail">
               <a href="/2016/08/28/科学上网的各种姿势/" class="thumbnail">
   
-    <span style="background-image:url(https://coding.net/u/Rocko/p/static/git/raw/coding-pages/img/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E7%9A%84%E5%90%84%E7%A7%8D%E5%A7%BF%E5%8A%BF_0.jpg)" alt="科学上网的各种姿势" class="thumbnail-image"></span>
+    <span style="background-image:url(https://static.rocko.xyz/img/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E7%9A%84%E5%90%84%E7%A7%8D%E5%A7%BF%E5%8A%BF_0.jpg)" alt="科学上网的各种姿势" class="thumbnail-image"></span>
   
 </a>
             </div>
@@ -698,7 +698,7 @@
             <div class="item-thumbnail">
               <a href="/2016/06/14/ADB-Issue-2/" class="thumbnail">
   
-    <span style="background-image:url(https://coding.net/u/Rocko/p/static/git/raw/coding-pages/img/android-dev-bookmarks.jpg)" alt="ADB-Issue#2" class="thumbnail-image"></span>
+    <span style="background-image:url(https://static.rocko.xyz/img/android-dev-bookmarks.jpg)" alt="ADB-Issue#2" class="thumbnail-image"></span>
   
 </a>
             </div>
@@ -715,7 +715,7 @@
             <div class="item-thumbnail">
               <a href="/2016/02/17/AndroidDev站点推荐-Issue-1/" class="thumbnail">
   
-    <span style="background-image:url(https://coding.net/u/Rocko/p/static/git/raw/coding-pages/img/android-dev-bookmarks.jpg)" alt="AndroidDev站点推荐-Issue#1" class="thumbnail-image"></span>
+    <span style="background-image:url(https://static.rocko.xyz/img/android-dev-bookmarks.jpg)" alt="AndroidDev站点推荐-Issue#1" class="thumbnail-image"></span>
   
 </a>
             </div>
@@ -732,7 +732,7 @@
             <div class="item-thumbnail">
               <a href="/2015/11/07/MVVM_Android-CleanArchitecture/" class="thumbnail">
   
-    <span style="background-image:url(https://coding.net/u/Rocko/p/static/git/raw/coding-pages/img/MVVM_Android-CleanArchitecture-0.png?imageView2/2/w/400/h/300/q/100)" alt="MVVM_Android-CleanArchitecture" class="thumbnail-image"></span>
+    <span style="background-image:url(https://static.rocko.xyz/img/MVVM_Android-CleanArchitecture-0.png?imageView2/2/w/400/h/300/q/100)" alt="MVVM_Android-CleanArchitecture" class="thumbnail-image"></span>
   
 </a>
             </div>
