@@ -16,16 +16,16 @@
 <meta property="og:site_name" content="Rocko's blog">
 <meta property="og:description" content="http://rocko.xyz/2016/11/27/Android-Robolectric-加载运行本地-so-动态库/
 前言Robolectric 是 Android 的单元测试框架，运行无需 Android 真机环境直接运行在 JVM 之上，所以在 test case 运行速度效率上有了很大提升，接近于 Java JUnit test（JUnit test &amp;gt; Robolectric">
-<meta property="og:image" content="https://static.rocko.xyz/img/2016-11-27_01-03-43_liblog.so.png">
-<meta property="og:image" content="https://static.rocko.xyz/img/2016-11-27_09-11-08_no_deal_with.png">
-<meta property="og:image" content="https://static.rocko.xyz/img/2016-11-27_09-24-25_test_libs_folder.png">
-<meta property="og:image" content="https://static.rocko.xyz/img/2016-11-27_09-32-15_test_case_success.png">
-<meta property="og:updated_time" content="2016-12-10T17:12:54.000Z">
+<meta property="og:image" content="https://coding.net/u/Rocko/p/static/git/blob/coding-pages/img/2016-11-27_01-03-43_liblog.so.png">
+<meta property="og:image" content="https://coding.net/u/Rocko/p/static/git/blob/coding-pages/img/2016-11-27_09-11-08_no_deal_with.png">
+<meta property="og:image" content="https://coding.net/u/Rocko/p/static/git/blob/coding-pages/img/2016-11-27_09-24-25_test_libs_folder.png">
+<meta property="og:image" content="https://coding.net/u/Rocko/p/static/git/blob/coding-pages/img/2016-11-27_09-32-15_test_case_success.png">
+<meta property="og:updated_time" content="2016-12-10T17:51:41.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android Robolectric 加载运行本地 So 动态库">
 <meta name="twitter:description" content="http://rocko.xyz/2016/11/27/Android-Robolectric-加载运行本地-so-动态库/
 前言Robolectric 是 Android 的单元测试框架，运行无需 Android 真机环境直接运行在 JVM 之上，所以在 test case 运行速度效率上有了很大提升，接近于 Java JUnit test（JUnit test &amp;gt; Robolectric">
-<meta name="twitter:image" content="https://static.rocko.xyz/img/2016-11-27_01-03-43_liblog.so.png">
+<meta name="twitter:image" content="https://coding.net/u/Rocko/p/static/git/blob/coding-pages/img/2016-11-27_01-03-43_liblog.so.png">
   
   
     <link rel="icon" href="/img/favicon.png">
@@ -422,7 +422,7 @@
     
       
 	
-		<img src="https://static.rocko.xyz/img/2016-11-27_10-04-15_Robolectric.jpg" class="article-banner">
+		<img src="https://coding.net/u/Rocko/p/static/git/blob/coding-pages/img/2016-11-27_10-04-15_Robolectric.jpg" class="article-banner">
 	
 
 
@@ -481,7 +481,7 @@
 <h2 id="Linux-下-Robolectric-中使用动态库"><a href="#Linux-下-Robolectric-中使用动态库" class="headerlink" title="Linux 下 Robolectric 中使用动态库"></a>Linux 下 Robolectric 中使用动态库</h2><p>Android 与 Linux 同气连枝，所以底层的东西很多是通用的，动态库也一样。我们 Android 使用 so 时一般也要对不同 CPU 架构的手机下使用不同的 so 文件，譬如：<code>armeabi-v7a</code>、<code>mips</code>、<code>x86</code>。而我们使用的 LInux 发行版一般都是 64 位的，所以原理上我们使用 <code>x86-64</code> 的动态库是可以的，不过可能需要处理依赖库问题如果你的本地代码里有 include 其它依赖的话。如果没加进来 Robolectric 运行就会报如下的错误：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">java.lang.UnsatisfiedLinkError: xxx/xxx.so xxx 动态库找不到。</div></pre></td></tr></table></figure>
 <p>xxx.so 就是你所使用 so 的依赖，比如把新浪微博 SDK 的 x86-64 的 <code>libweibosdkcore.so</code> 加载进来的话就会报 <code>liblog.so</code> 等找不到，因为 libweibosdkcore 中有对 Android liblog 等 so 库的依赖。那这个问题怎么解决呢。我们想想打包 so 库时用的是 ndk，需要使用 ndk-bundle 工具，我们想想，跟编译 apk 差不多，apk 打包需要 sdk 工具，compileSdk 里就是我们编译的依赖，里面有 <code>android.jar</code>。所以我们可以到 ndk-bundle 里找找，最后我们发现不同 CPU 架构下的 so 依赖库都是有的，像我们一般的电脑 64 位 CPU 即可使用 <code>arch-x86_64</code> 下的 so 动态库，所以我们只需要在加载我们程序的 so 库之前加载这些必须的依赖即可。处理代码后面贴出。</p>
-<p><img src="https://static.rocko.xyz/img/2016-11-27_01-03-43_liblog.so.png" alt="ndk-bundle依赖库"></p>
+<p><img src="https://coding.net/u/Rocko/p/static/git/blob/coding-pages/img/2016-11-27_01-03-43_liblog.so.png" alt="ndk-bundle依赖库"></p>
 <p>注意 ndk-bundle 里的 so 也是只能在 Linux 下用的，如果用于其它平台会报错，原因前面已说明。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">java.lang.UnsatisfiedLinkError: xxx.so: unknown file type, first eight bytes: <span class="number">0x7F</span> <span class="number">0x45</span> <span class="number">0x4C</span> <span class="number">0x46</span> <span class="number">0x02</span> <span class="number">0x01</span> <span class="number">0x01</span> <span class="number">0x00</span></div></pre></td></tr></table></figure>
 <h2 id="macOS-下-Robolectric-中使用动态库"><a href="#macOS-下-Robolectric-中使用动态库" class="headerlink" title="macOS 下 Robolectric 中使用动态库"></a>macOS 下 Robolectric 中使用动态库</h2><p>前面已提到，不同平台下动态链接库是不通用的，所以必须对源码重新编译打包以移植到不同平台下，如果你的 so 没有源码的话那在 macOS 和 Windows 下就行不通了。重新打包我们可以按如下两步进行：</p>
@@ -496,12 +496,12 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">NativeLibsApplication</span> <span class="keyword">extends</span> <span class="title">Application</span> </span>&#123;</div><div class="line"></div><div class="line"> <span class="comment">// Used to load the 'native-lib' library on application startup.</span></div><div class="line"> <span class="keyword">static</span> &#123;</div><div class="line">   System.loadLibrary(<span class="string">"native-lib"</span>);</div><div class="line"> &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>此时运行 Robolectric 的 test case 就发生如下报错：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">java.lang.UnsatisfiedLinkError: no <span class="keyword">native</span>-lib in java.library.path</div></pre></td></tr></table></figure>
-<p><img src="https://static.rocko.xyz/img/2016-11-27_09-11-08_no_deal_with.png" alt="正常运行 Test case"></p>
+<p><img src="https://coding.net/u/Rocko/p/static/git/blob/coding-pages/img/2016-11-27_09-11-08_no_deal_with.png" alt="正常运行 Test case"></p>
 <h2 id="处理后的流程"><a href="#处理后的流程" class="headerlink" title="处理后的流程"></a>处理后的流程</h2><p>首先流程应该在我们的代码里避免可以直接加载 so 动态库，然后 Robolectric 在启动时自己去加载需要的动态库。</p>
 <p>// NativeLibsApplication.java</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">NativeLibsApplication</span> <span class="keyword">extends</span> <span class="title">Application</span> </span>&#123;</div><div class="line"></div><div class="line"> <span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">()</span> </span>&#123;</div><div class="line">   <span class="keyword">super</span>.onCreate();</div><div class="line">   loadNativeLibraries();</div><div class="line"> &#125;</div><div class="line"></div><div class="line"> <span class="comment">/**</span></div><div class="line">  * 简单让子类可自己实现</div><div class="line">  */</div><div class="line"> <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">loadNativeLibraries</span><span class="params">()</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="comment">// 代码里真正加载本地库的地方，当然你自己的可以处理地更解耦一点。</span></div><div class="line">   NativeLibrariesManager.loadNativeLibraries();</div><div class="line"> &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>然后我们的 Robolectric 里自定义自己的 Application，里面根据需要在不同运行平台下自己加载需要的本地动态库，首先复制我们给 Robolectric 用的本地库到 test 的 libs 文件夹里，按不同平台分类，如下图：</p>
-<p><img src="https://static.rocko.xyz/img/2016-11-27_09-24-25_test_libs_folder.png" alt="test 内 libs 文件"></p>
+<p><img src="https://coding.net/u/Rocko/p/static/git/blob/coding-pages/img/2016-11-27_09-24-25_test_libs_folder.png" alt="test 内 libs 文件"></p>
 <p>Linux 下的我们从 ndk-bundle 里复制我们需要的 .so，然后我们自己的本地库打一个 x86-64 的即可，注意 compileSdkVersion 选上高一点支持 x86-64 的版本。</p>
 <p>然后重新移植打出 macOS 下的动态库，简单写个打包脚本如下：</p>
 <p>// make_macOS_dylib.sh</p>
@@ -512,7 +512,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RobolectricApplication</span> <span class="keyword">extends</span> <span class="title">NativeLibsApplication</span> </span>&#123;</div><div class="line"></div><div class="line"> <span class="keyword">static</span> &#123;</div><div class="line">   ShadowLog.stream = System.out; <span class="comment">//Android logcat output.</span></div><div class="line"> &#125;</div><div class="line"></div><div class="line"> <span class="meta">@Override</span> <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">loadNativeLibraries</span><span class="params">()</span> </span>&#123;</div><div class="line">   <span class="comment">//Disable super class load so file.</span></div><div class="line">   <span class="comment">//super.loadNativeLibraries();</span></div><div class="line">   Log.d(TAG, <span class="string">"=====&gt;&gt; Robolectric start native libraries."</span>);</div><div class="line"></div><div class="line">   String libsBasePath =</div><div class="line">       <span class="keyword">new</span> File(<span class="keyword">new</span> File(<span class="string">""</span>).getAbsolutePath() + <span class="string">"/src/test/libs"</span>).getAbsolutePath();</div><div class="line">   String os = System.getProperty(<span class="string">"os.name"</span>);</div><div class="line">   os = !TextUtils.isEmpty(os) ? os : <span class="string">""</span>;</div><div class="line">   List&lt;File&gt; soFileList = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">   String systemArchPath = libsBasePath + <span class="string">"/framework/"</span>;</div><div class="line">   <span class="comment">//!!! 64 位机器下处理</span></div><div class="line">   <span class="keyword">if</span> (os.contains(<span class="string">"Mac"</span>)) &#123;</div><div class="line">     <span class="comment">//load system library if need</span></div><div class="line">     String macSysSoBasePath = systemArchPath + <span class="string">"macOS/"</span>;</div><div class="line">     soFileList.addAll(addLibs(macSysSoBasePath));</div><div class="line">     <span class="comment">// App so...</span></div><div class="line">     String macAppSoPath = libsBasePath + <span class="string">"/macOS_x86-64/"</span>;</div><div class="line">     <span class="comment">// mac下so要使用macOS专用库</span></div><div class="line">     soFileList.addAll(addLibs(macAppSoPath));</div><div class="line">   &#125; <span class="keyword">else</span> <span class="keyword">if</span> (os.contains(<span class="string">"Linux"</span>)) &#123;</div><div class="line">     <span class="comment">//load system library if need</span></div><div class="line">     String linuxSysSoBasePath = systemArchPath + <span class="string">"arch_x86-64/"</span>;</div><div class="line">     soFileList.addAll(addLibs(linuxSysSoBasePath));</div><div class="line">     <span class="comment">// App so...</span></div><div class="line">     String linuxAppSoPath = libsBasePath + <span class="string">"/linux_x86-64/"</span>;</div><div class="line">     soFileList.addAll(addLibs(linuxAppSoPath));</div><div class="line">   &#125; <span class="keyword">else</span> <span class="keyword">if</span> (os.contains(<span class="string">"Windows"</span>)) &#123;</div><div class="line">     <span class="comment">// ignore</span></div><div class="line">   &#125;</div><div class="line"></div><div class="line">   <span class="keyword">for</span> (File soFie : soFileList) &#123;</div><div class="line">     System.load(soFie.getAbsolutePath());</div><div class="line">   &#125;</div><div class="line"> &#125;</div><div class="line"></div><div class="line"> <span class="function"><span class="keyword">private</span> List&lt;File&gt; <span class="title">addLibs</span><span class="params">(@NonNull String path)</span> </span>&#123;</div><div class="line">   File[] basePathFiles = <span class="keyword">new</span> File(path).listFiles();</div><div class="line">   List&lt;File&gt; pathFilesList = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">   <span class="keyword">if</span> (basePathFiles != <span class="keyword">null</span> &amp;&amp; basePathFiles.length &gt; <span class="number">0</span>) &#123;</div><div class="line">     pathFilesList.addAll(Arrays.asList(basePathFiles));</div><div class="line">   &#125;</div><div class="line">   <span class="keyword">return</span> pathFilesList;</div><div class="line"> &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>现在就可以加载了，运行如下 test case，结果如下图，成功了。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">@Test public void testLoadNativeLibrariesSuccess() throws Exception &#123;</div><div class="line">      String nativeExcepted = &quot;Hello from Native.&quot;;</div><div class="line">      String result = NativeSample.stringFromJNI();</div><div class="line">      Log.d(TAG, &quot;result: &quot; + result);</div><div class="line">      assertEquals(nativeExcepted, result);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><img src="https://static.rocko.xyz/img/2016-11-27_09-32-15_test_case_success.png" alt="运行加载本地库 Test case 成功"></p>
+<p><img src="https://coding.net/u/Rocko/p/static/git/blob/coding-pages/img/2016-11-27_09-32-15_test_case_success.png" alt="运行加载本地库 Test case 成功"></p>
 <h1 id="End"><a href="#End" class="headerlink" title="End"></a>End</h1><p>Linux 下使用最快速方便，只需要打包程序的 so 时顺便打包出 x86-64 的 so ，然后复制 ndk-bundle 的 so 加上需要的依赖即可。macOS 和 Windows 下就需要自己打包出各自平台下的动态库才可使用，如果代码里有 Android 自带 so 依赖的话那就需要自己去重新移植编译打包 ndk-bundle 里的动态库了。</p>
 <p>项目实例源码：<a href="https://github.com/zhengxiaopeng/RobolectricSupportNativeLibs" target="_blank" rel="external">RobolectricSupportNativeLibs</a></p>
 <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://developer.apple.com/library/content/documentation/Java/Conceptual/Java14Development/05-CoreJavaAPIs/CoreJavaAPIs.html" target="_blank" rel="external">Core Java APIs and the Java Runtime on OS X</a></p>
@@ -566,7 +566,7 @@
 
 
     <footer class="article-footer">
-      <a data-url="https://rocko.xyz/2016/11/27/Android-Robolectric-加载运行本地-so-动态库/" data-id="ciwjhk8f800068nsd2bmln8d7" class="article-share-link">分享到</a>
+      <a data-url="https://rocko.xyz/2016/11/27/Android-Robolectric-加载运行本地-so-动态库/" data-id="ciwjis4uj0007h0sdziwyosxa" class="article-share-link">分享到</a>
       
         <a href="https://rocko.xyz/2016/11/27/Android-Robolectric-加载运行本地-so-动态库/#comments" class="article-comment-link">去评论</a>
       
@@ -628,7 +628,7 @@
             <div class="item-thumbnail">
               <a href="/2016/11/27/Android-Robolectric-加载运行本地-so-动态库/" class="thumbnail">
   
-    <span style="background-image:url(https://static.rocko.xyz/img/2016-11-27_10-04-15_Robolectric.jpg?imageView2/2/w/200/h/100/q/100)" alt="Android Robolectric 加载运行本地 So 动态库" class="thumbnail-image"></span>
+    <span style="background-image:url(https://coding.net/u/Rocko/p/static/git/blob/coding-pages/img/2016-11-27_10-04-15_Robolectric.jpg?imageView2/2/w/200/h/100/q/100)" alt="Android Robolectric 加载运行本地 So 动态库" class="thumbnail-image"></span>
   
 </a>
             </div>
@@ -679,7 +679,7 @@
             <div class="item-thumbnail">
               <a href="/2016/02/17/AndroidDev站点推荐-Issue-1/" class="thumbnail">
   
-    <span style="background-image:url(https://static.rocko.xyz/img/android-dev-bookmarks.jpg)" alt="AndroidDev站点推荐-Issue#1" class="thumbnail-image"></span>
+    <span style="background-image:url(https://coding.net/u/Rocko/p/static/git/blob/coding-pages/img/android-dev-bookmarks.jpg)" alt="AndroidDev站点推荐-Issue#1" class="thumbnail-image"></span>
   
 </a>
             </div>
@@ -696,7 +696,7 @@
             <div class="item-thumbnail">
               <a href="/2015/11/07/MVVM_Android-CleanArchitecture/" class="thumbnail">
   
-    <span style="background-image:url(https://static.rocko.xyz/img/MVVM_Android-CleanArchitecture-0.png?imageView2/2/w/400/h/300/q/100)" alt="MVVM_Android-CleanArchitecture" class="thumbnail-image"></span>
+    <span style="background-image:url(https://coding.net/u/Rocko/p/static/git/blob/coding-pages/img/MVVM_Android-CleanArchitecture-0.png?imageView2/2/w/400/h/300/q/100)" alt="MVVM_Android-CleanArchitecture" class="thumbnail-image"></span>
   
 </a>
             </div>

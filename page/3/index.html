@@ -450,7 +450,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>MVP作为一种MVC的演化版本在Android开发中受到了越来越多的关注，但在项目开发中选择一种这样的软件设计模式需保持慎重心态，一旦确定使用MVP作为你App的开发模式那么你就最好坚持做下去，如果在使用MVP模式开发过程中发现问题而且坑越来越大，这时你想用MVC等来重新设计的话基本上就等于推倒重来了。要知道在Android上MVP在现在为止并没有统一的标准或者框架，不像SSH这三个成熟稳重强而有力的三剑客支持推动着Java EE的开发，所以在运用MVP时一定要做好自己的理解，并且尽量预知自己App各模块的需求（客户说改改改，我们就改改改 :-( ）以便提前做好充分的设计工作。当然MVP既然能出现那么必然有它的优点的，不然谁会理会这个冒出来的东西，下面就对Android中MVP做一些阐述。</p>
-<h2 id="MVP简介"><a href="#MVP简介" class="headerlink" title="MVP简介"></a>MVP简介</h2><p>相信大家对MVC都是比较熟悉了：<code>M-Model-模型</code>、<code>V-View-视图</code>、<code>C-Controller-控制器</code>，MVP作为MVC的演化版本，也是作为用户界面（用户层）的实现模式，那么类似的MVP所对应的意义：<code>M-Model-模型</code>、<code>V-View-视图</code>、<code>P-Presenter-表示器</code>。从MVC和MVP两者结合来看，Controlller/Presenter在MVC/MVP中都起着逻辑控制处理的角色，起着控制各业务流程的作用。而MVP与MVC最不同的一点是M与V是不直接关联的也是就Model与View不存在直接关系，这两者之间间隔着的是Presenter层，其负责调控View与Model之间的间接交互，MVP的结构图如下所示，对于这个图理解即可而不必限于其中的条条框框，毕竟在不同的场景下多少会有些出入的。在Android中很重要的一点就是对UI的操作基本上需要异步进行也就是在MainThread中才能操作UI，所以对View与Model的切断分离是合理的。此外Presenter与View、Model的交互使用接口定义交互操作可以进一步达到松耦合也可以通过接口更加方便地进行单元测试。<br><img src="https://static.rocko.xyz/img/Android中的MVP_1.png" alt="MVP结构图"></p>
+<h2 id="MVP简介"><a href="#MVP简介" class="headerlink" title="MVP简介"></a>MVP简介</h2><p>相信大家对MVC都是比较熟悉了：<code>M-Model-模型</code>、<code>V-View-视图</code>、<code>C-Controller-控制器</code>，MVP作为MVC的演化版本，也是作为用户界面（用户层）的实现模式，那么类似的MVP所对应的意义：<code>M-Model-模型</code>、<code>V-View-视图</code>、<code>P-Presenter-表示器</code>。从MVC和MVP两者结合来看，Controlller/Presenter在MVC/MVP中都起着逻辑控制处理的角色，起着控制各业务流程的作用。而MVP与MVC最不同的一点是M与V是不直接关联的也是就Model与View不存在直接关系，这两者之间间隔着的是Presenter层，其负责调控View与Model之间的间接交互，MVP的结构图如下所示，对于这个图理解即可而不必限于其中的条条框框，毕竟在不同的场景下多少会有些出入的。在Android中很重要的一点就是对UI的操作基本上需要异步进行也就是在MainThread中才能操作UI，所以对View与Model的切断分离是合理的。此外Presenter与View、Model的交互使用接口定义交互操作可以进一步达到松耦合也可以通过接口更加方便地进行单元测试。<br><img src="https://coding.net/u/Rocko/p/static/git/blob/coding-pages/img/Android中的MVP_1.png" alt="MVP结构图"></p>
         
           <p class="article-more-link">
             <a href="/2015/02/06/Android中的MVP/#more">阅读全文</a>
@@ -467,7 +467,7 @@
 
 
     <footer class="article-footer">
-      <a data-url="https://rocko.xyz/2015/02/06/Android中的MVP/" data-id="ciwjhk8fh000e8nsd4bafeyoy" class="article-share-link">分享到</a>
+      <a data-url="https://rocko.xyz/2015/02/06/Android中的MVP/" data-id="ciwjis4uz000mh0sdzpo3sdok" class="article-share-link">分享到</a>
       
         <a href="https://rocko.xyz/2015/02/06/Android中的MVP/#comments" class="article-comment-link">去评论</a>
       
@@ -558,7 +558,7 @@
 
 
     <footer class="article-footer">
-      <a data-url="https://rocko.xyz/2015/02/05/Android-错误集锦ing/" data-id="ciwjhk8fk000k8nsdofj6de66" class="article-share-link">分享到</a>
+      <a data-url="https://rocko.xyz/2015/02/05/Android-错误集锦ing/" data-id="ciwjis4us000eh0sdm795hb6u" class="article-share-link">分享到</a>
       
         <a href="https://rocko.xyz/2015/02/05/Android-错误集锦ing/#comments" class="article-comment-link">去评论</a>
       
@@ -633,7 +633,7 @@
 
 
     <footer class="article-footer">
-      <a data-url="https://rocko.xyz/2015/02/02/使用Gradle发布项目到JCenter仓库/" data-id="ciwjhk8gw00248nsdhsvj7wzl" class="article-share-link">分享到</a>
+      <a data-url="https://rocko.xyz/2015/02/02/使用Gradle发布项目到JCenter仓库/" data-id="ciwjis4vl001fh0sd5nvzzykh" class="article-share-link">分享到</a>
       
         <a href="https://rocko.xyz/2015/02/02/使用Gradle发布项目到JCenter仓库/#comments" class="article-comment-link">去评论</a>
       
@@ -705,7 +705,7 @@
 
 
     <footer class="article-footer">
-      <a data-url="https://rocko.xyz/2015/01/14/运算符的几点/" data-id="ciwjhk8h7002s8nsdhsjcxdz1" class="article-share-link">分享到</a>
+      <a data-url="https://rocko.xyz/2015/01/14/运算符的几点/" data-id="ciwjis4w00020h0sdu05qe9z1" class="article-share-link">分享到</a>
       
         <a href="https://rocko.xyz/2015/01/14/运算符的几点/#comments" class="article-comment-link">去评论</a>
       
@@ -762,7 +762,7 @@
       
         <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>Android Studio(以下简称AS)在13年I/O大会后放出预览版到现在放出的正式版1.0（PS.今天又更新到1.0.1了）历时一年多了，虽然Google官方推出的Android开发者的IDE对我们Android DEV是很有吸引力的，但考虑到beta版还是太多问题所以自己主要还是把AS当做尝鲜为主，每放出一个较大更新就下载下来试试，感觉还是挺好的，渐渐用AS的人越来越多，Github上的项目也基本是AS的了，Google的sample也采用AS，所以使用Eclipse跟外界交流越来越困难啊。到现在<code>android-studio-bundle-135.1629389</code>AS正式版的推出，我们有理由从Eclipse迁移到AS了。<br>要迁移到AS中开发那么要掌握AS中的项目管理是必须的，基本的new project、run什么的就不提了，这篇文章记录我在AS中在项目中解决jar包、library项目依赖、so动态链接库的问题，版本控制Git、SVN等这篇文章不涉及。这么多废话后下面开始。</p>
 <h1 id="Eclipse跟AS的不同"><a href="#Eclipse跟AS的不同" class="headerlink" title="Eclipse跟AS的不同"></a>Eclipse跟AS的不同</h1><p>从Eclipse到AS不要带着在Eclipse中的主观色彩去在AS中使用，从项目的构成到构建是不同的，下面列举在Eclipse和AS中的一些概念的区别：   </p>
-<h2 id="WorkSpace和Project"><a href="#WorkSpace和Project" class="headerlink" title="WorkSpace和Project"></a>WorkSpace和Project</h2><p>Eclipse的WorkSpace和AS的Project说的可以说是一个东西，也就是说你可以把在AS中的Project理解为WorkSpace。<br><img src="https://static.rocko.xyz/img/Android-Studio-jar、so、library项目依赖_1.jpg?imageView2/2/w/400/h/400/q/100" alt=""> 所以你在AS中new一个Project相当于在Eclipse中重开了一个WorkSpace，注意第一个箭头，显示模式为Project，建议刚用AS时用这种，方便了解里面的文件结构。</p>
+<h2 id="WorkSpace和Project"><a href="#WorkSpace和Project" class="headerlink" title="WorkSpace和Project"></a>WorkSpace和Project</h2><p>Eclipse的WorkSpace和AS的Project说的可以说是一个东西，也就是说你可以把在AS中的Project理解为WorkSpace。<br><img src="https://coding.net/u/Rocko/p/static/git/blob/coding-pages/img/Android-Studio-jar、so、library项目依赖_1.jpg?imageView2/2/w/400/h/400/q/100" alt=""> 所以你在AS中new一个Project相当于在Eclipse中重开了一个WorkSpace，注意第一个箭头，显示模式为Project，建议刚用AS时用这种，方便了解里面的文件结构。</p>
         
           <p class="article-more-link">
             <a href="/2014/12/13/Android-Studio-jar、so、library项目依赖/#more">阅读全文</a>
@@ -779,7 +779,7 @@
 
 
     <footer class="article-footer">
-      <a data-url="https://rocko.xyz/2014/12/13/Android-Studio-jar、so、library项目依赖/" data-id="ciwjhk8fe000a8nsdiesysvzt" class="article-share-link">分享到</a>
+      <a data-url="https://rocko.xyz/2014/12/13/Android-Studio-jar、so、library项目依赖/" data-id="ciwjis4up000bh0sdtfe3j8n5" class="article-share-link">分享到</a>
       
         <a href="https://rocko.xyz/2014/12/13/Android-Studio-jar、so、library项目依赖/#comments" class="article-comment-link">去评论</a>
       
@@ -836,7 +836,7 @@
       
         <h1 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h1><p>首先你得有自己的域名…</p>
 <h1 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h1><p>自己喜欢选一个提供域名邮箱服务的邮箱，如qq、163等，设置内容都是大同小异照着来设置就好,我是选了qq邮箱的，所以下面的是在qq邮箱里设置域名邮箱的流程。</p>
-<h2 id="创建域名邮箱"><a href="#创建域名邮箱" class="headerlink" title="创建域名邮箱"></a>创建域名邮箱</h2><p>在qq邮箱的设置里，点击账户按钮，向下滚找到域名邮箱然后点击管理域名邮箱，或者<a href="http://domain.mail.qq.com/">直接点击这里</a>。<br><strong>来到创建域名邮箱页面</strong>，如下，填写后下一步：<br><img src="https://static.rocko.xyz/img/设置域名邮箱_1.jpg?imageView2/2/w/600/h/600/q/100" alt="">  </p>
+<h2 id="创建域名邮箱"><a href="#创建域名邮箱" class="headerlink" title="创建域名邮箱"></a>创建域名邮箱</h2><p>在qq邮箱的设置里，点击账户按钮，向下滚找到域名邮箱然后点击管理域名邮箱，或者<a href="http://domain.mail.qq.com/">直接点击这里</a>。<br><strong>来到创建域名邮箱页面</strong>，如下，填写后下一步：<br><img src="https://coding.net/u/Rocko/p/static/git/blob/coding-pages/img/设置域名邮箱_1.jpg?imageView2/2/w/600/h/600/q/100" alt="">  </p>
         
           <p class="article-more-link">
             <a href="/2014/12/06/设置域名邮箱/#more">阅读全文</a>
@@ -853,7 +853,7 @@
 
 
     <footer class="article-footer">
-      <a data-url="https://rocko.xyz/2014/12/06/设置域名邮箱/" data-id="ciwjhk8h4002l8nsdx53v0xb1" class="article-share-link">分享到</a>
+      <a data-url="https://rocko.xyz/2014/12/06/设置域名邮箱/" data-id="ciwjis4vx001wh0sd1q3fwqji" class="article-share-link">分享到</a>
       
         <a href="https://rocko.xyz/2014/12/06/设置域名邮箱/#comments" class="article-comment-link">去评论</a>
       
@@ -936,7 +936,7 @@
 
 
     <footer class="article-footer">
-      <a data-url="https://rocko.xyz/2014/12/05/Android-Volley自定义Request-JacksonRequest、GsonRequest/" data-id="ciwjhk8ff000b8nsddt9fqn2t" class="article-share-link">分享到</a>
+      <a data-url="https://rocko.xyz/2014/12/05/Android-Volley自定义Request-JacksonRequest、GsonRequest/" data-id="ciwjis4ut000hh0sdonnfy4ys" class="article-share-link">分享到</a>
       
         <a href="https://rocko.xyz/2014/12/05/Android-Volley自定义Request-JacksonRequest、GsonRequest/#comments" class="article-comment-link">去评论</a>
       
@@ -981,7 +981,7 @@
             <div class="item-thumbnail">
               <a href="/2016/11/27/Android-Robolectric-加载运行本地-so-动态库/" class="thumbnail">
   
-    <span style="background-image:url(https://static.rocko.xyz/img/2016-11-27_10-04-15_Robolectric.jpg?imageView2/2/w/200/h/100/q/100)" alt="Android Robolectric 加载运行本地 So 动态库" class="thumbnail-image"></span>
+    <span style="background-image:url(https://coding.net/u/Rocko/p/static/git/blob/coding-pages/img/2016-11-27_10-04-15_Robolectric.jpg?imageView2/2/w/200/h/100/q/100)" alt="Android Robolectric 加载运行本地 So 动态库" class="thumbnail-image"></span>
   
 </a>
             </div>
@@ -1032,7 +1032,7 @@
             <div class="item-thumbnail">
               <a href="/2016/02/17/AndroidDev站点推荐-Issue-1/" class="thumbnail">
   
-    <span style="background-image:url(https://static.rocko.xyz/img/android-dev-bookmarks.jpg)" alt="AndroidDev站点推荐-Issue#1" class="thumbnail-image"></span>
+    <span style="background-image:url(https://coding.net/u/Rocko/p/static/git/blob/coding-pages/img/android-dev-bookmarks.jpg)" alt="AndroidDev站点推荐-Issue#1" class="thumbnail-image"></span>
   
 </a>
             </div>
@@ -1049,7 +1049,7 @@
             <div class="item-thumbnail">
               <a href="/2015/11/07/MVVM_Android-CleanArchitecture/" class="thumbnail">
   
-    <span style="background-image:url(https://static.rocko.xyz/img/MVVM_Android-CleanArchitecture-0.png?imageView2/2/w/400/h/300/q/100)" alt="MVVM_Android-CleanArchitecture" class="thumbnail-image"></span>
+    <span style="background-image:url(https://coding.net/u/Rocko/p/static/git/blob/coding-pages/img/MVVM_Android-CleanArchitecture-0.png?imageView2/2/w/400/h/300/q/100)" alt="MVVM_Android-CleanArchitecture" class="thumbnail-image"></span>
   
 </a>
             </div>
