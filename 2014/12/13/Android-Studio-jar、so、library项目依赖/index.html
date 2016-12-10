@@ -14,15 +14,15 @@
 <meta property="og:url" content="https://rocko.xyz/2014/12/13/Android-Studio-jar、so、library项目依赖/index.html">
 <meta property="og:site_name" content="Rocko's blog">
 <meta property="og:description" content="前言Android Studio(以下简称AS)在13年I/O大会后放出预览版到现在放出的正式版1.0（PS.今天又更新到1.0.1了）历时一年多了，虽然Google官方推出的Android开发者的IDE对我们Android DEV是很有吸引力的，但考虑到beta版还是太多问题所以自己主要还是把AS当做尝鲜为主，每放出一个较大更新就下载下来试试，感觉还是挺好的，渐渐用AS的人越来越多，Github">
-<meta property="og:image" content="https://coding.net/u/Rocko/p/static/git/blob/coding-pages/img/Android-Studio-jar、so、library项目依赖_1.jpg?imageView2/2/w/400/h/400/q/100">
-<meta property="og:image" content="https://coding.net/u/Rocko/p/static/git/blob/coding-pages/img/Android-Studio-jar、so、library项目依赖_2.jpg?imageView2/2/w/400/h/400/q/100">
-<meta property="og:image" content="https://coding.net/u/Rocko/p/static/git/blob/coding-pages/img/Android-Studio-jar、so、library项目依赖_3.jpg?imageView2/2/w/700/h/700/q/100">
-<meta property="og:image" content="https://coding.net/u/Rocko/p/static/git/blob/coding-pages/img/Android-Studio-jar、so、library项目依赖_4.jpg?imageView2/2/w/400/h/400/q/100">
-<meta property="og:updated_time" content="2016-12-10T17:51:41.000Z">
+<meta property="og:image" content="https://coding.net/u/Rocko/p/static/git/raw/coding-pages/img/Android-Studio-jar、so、library项目依赖_1.jpg?imageView2/2/w/400/h/400/q/100">
+<meta property="og:image" content="https://coding.net/u/Rocko/p/static/git/raw/coding-pages/img/Android-Studio-jar、so、library项目依赖_2.jpg?imageView2/2/w/400/h/400/q/100">
+<meta property="og:image" content="https://coding.net/u/Rocko/p/static/git/raw/coding-pages/img/Android-Studio-jar、so、library项目依赖_3.jpg?imageView2/2/w/700/h/700/q/100">
+<meta property="og:image" content="https://coding.net/u/Rocko/p/static/git/raw/coding-pages/img/Android-Studio-jar、so、library项目依赖_4.jpg?imageView2/2/w/400/h/400/q/100">
+<meta property="og:updated_time" content="2016-12-10T18:06:19.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android Studio Jar、so、library项目依赖">
 <meta name="twitter:description" content="前言Android Studio(以下简称AS)在13年I/O大会后放出预览版到现在放出的正式版1.0（PS.今天又更新到1.0.1了）历时一年多了，虽然Google官方推出的Android开发者的IDE对我们Android DEV是很有吸引力的，但考虑到beta版还是太多问题所以自己主要还是把AS当做尝鲜为主，每放出一个较大更新就下载下来试试，感觉还是挺好的，渐渐用AS的人越来越多，Github">
-<meta name="twitter:image" content="https://coding.net/u/Rocko/p/static/git/blob/coding-pages/img/Android-Studio-jar、so、library项目依赖_1.jpg?imageView2/2/w/400/h/400/q/100">
+<meta name="twitter:image" content="https://coding.net/u/Rocko/p/static/git/raw/coding-pages/img/Android-Studio-jar、so、library项目依赖_1.jpg?imageView2/2/w/400/h/400/q/100">
   
   
     <link rel="icon" href="/img/favicon.png">
@@ -462,10 +462,10 @@
 
         <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>Android Studio(以下简称AS)在13年I/O大会后放出预览版到现在放出的正式版1.0（PS.今天又更新到1.0.1了）历时一年多了，虽然Google官方推出的Android开发者的IDE对我们Android DEV是很有吸引力的，但考虑到beta版还是太多问题所以自己主要还是把AS当做尝鲜为主，每放出一个较大更新就下载下来试试，感觉还是挺好的，渐渐用AS的人越来越多，Github上的项目也基本是AS的了，Google的sample也采用AS，所以使用Eclipse跟外界交流越来越困难啊。到现在<code>android-studio-bundle-135.1629389</code>AS正式版的推出，我们有理由从Eclipse迁移到AS了。<br>要迁移到AS中开发那么要掌握AS中的项目管理是必须的，基本的new project、run什么的就不提了，这篇文章记录我在AS中在项目中解决jar包、library项目依赖、so动态链接库的问题，版本控制Git、SVN等这篇文章不涉及。这么多废话后下面开始。</p>
 <h1 id="Eclipse跟AS的不同"><a href="#Eclipse跟AS的不同" class="headerlink" title="Eclipse跟AS的不同"></a>Eclipse跟AS的不同</h1><p>从Eclipse到AS不要带着在Eclipse中的主观色彩去在AS中使用，从项目的构成到构建是不同的，下面列举在Eclipse和AS中的一些概念的区别：   </p>
-<h2 id="WorkSpace和Project"><a href="#WorkSpace和Project" class="headerlink" title="WorkSpace和Project"></a>WorkSpace和Project</h2><p>Eclipse的WorkSpace和AS的Project说的可以说是一个东西，也就是说你可以把在AS中的Project理解为WorkSpace。<br><img src="https://coding.net/u/Rocko/p/static/git/blob/coding-pages/img/Android-Studio-jar、so、library项目依赖_1.jpg?imageView2/2/w/400/h/400/q/100" alt=""> 所以你在AS中new一个Project相当于在Eclipse中重开了一个WorkSpace，注意第一个箭头，显示模式为Project，建议刚用AS时用这种，方便了解里面的文件结构。</p>
+<h2 id="WorkSpace和Project"><a href="#WorkSpace和Project" class="headerlink" title="WorkSpace和Project"></a>WorkSpace和Project</h2><p>Eclipse的WorkSpace和AS的Project说的可以说是一个东西，也就是说你可以把在AS中的Project理解为WorkSpace。<br><img src="https://coding.net/u/Rocko/p/static/git/raw/coding-pages/img/Android-Studio-jar、so、library项目依赖_1.jpg?imageView2/2/w/400/h/400/q/100" alt=""> 所以你在AS中new一个Project相当于在Eclipse中重开了一个WorkSpace，注意第一个箭头，显示模式为Project，建议刚用AS时用这种，方便了解里面的文件结构。</p>
 <a id="more"></a>
-<h2 id="Project和Module"><a href="#Project和Module" class="headerlink" title="Project和Module"></a>Project和Module</h2><p>跟上面一样，Eclipse中的一个个project也就是相当于AS中的一个个module。上图的module_1和module_2就是我们习惯的eclipse中的一堆project了，把显示模式换为Android之后就更为直观了：<br><img src="https://coding.net/u/Rocko/p/static/git/blob/coding-pages/img/Android-Studio-jar、so、library项目依赖_2.jpg?imageView2/2/w/400/h/400/q/100" alt=""><br>最下面的就是<code>AS</code>中整个Project中所有Gradle的配置了，当然包括所有module的配置了，括号的名字就表示build.gradle对应的配置对象。</p>
-<h2 id="Properties和Module-Setting"><a href="#Properties和Module-Setting" class="headerlink" title="Properties和Module Setting"></a>Properties和Module Setting</h2><p>Eclipse中的Properties也是跟AS的Module Setting对应的<br><img src="https://coding.net/u/Rocko/p/static/git/blob/coding-pages/img/Android-Studio-jar、so、library项目依赖_3.jpg?imageView2/2/w/700/h/700/q/100" alt=""><br>可以看到这里可以像在Eclipse的Properties中一样在这里配置一些东西，比如在Module Setting里给Module添加依赖(dependencies)信息也是可以的，并且可以直接搜maven的项目依赖。</p>
+<h2 id="Project和Module"><a href="#Project和Module" class="headerlink" title="Project和Module"></a>Project和Module</h2><p>跟上面一样，Eclipse中的一个个project也就是相当于AS中的一个个module。上图的module_1和module_2就是我们习惯的eclipse中的一堆project了，把显示模式换为Android之后就更为直观了：<br><img src="https://coding.net/u/Rocko/p/static/git/raw/coding-pages/img/Android-Studio-jar、so、library项目依赖_2.jpg?imageView2/2/w/400/h/400/q/100" alt=""><br>最下面的就是<code>AS</code>中整个Project中所有Gradle的配置了，当然包括所有module的配置了，括号的名字就表示build.gradle对应的配置对象。</p>
+<h2 id="Properties和Module-Setting"><a href="#Properties和Module-Setting" class="headerlink" title="Properties和Module Setting"></a>Properties和Module Setting</h2><p>Eclipse中的Properties也是跟AS的Module Setting对应的<br><img src="https://coding.net/u/Rocko/p/static/git/raw/coding-pages/img/Android-Studio-jar、so、library项目依赖_3.jpg?imageView2/2/w/700/h/700/q/100" alt=""><br>可以看到这里可以像在Eclipse的Properties中一样在这里配置一些东西，比如在Module Setting里给Module添加依赖(dependencies)信息也是可以的，并且可以直接搜maven的项目依赖。</p>
 <h1 id="jar"><a href="#jar" class="headerlink" title="jar"></a>jar</h1><p>明白了上面的三点就可以很快上手了。首先就来说最简单的添加jar包。  </p>
 <ul>
 <li>可以跟在Eclipse中一样，把jar包往<code>Module</code>里扔，再在jar右键add as library就可以了，然后最后在你的Module文件夹（像上面的module_1）右键make module一下就可以在代码里用jar里的东西了。  </li>
@@ -477,7 +477,7 @@
 <p>到这里先确认下你的project(AS)的settings.gradle里有没把module都include进去,没有的话加上：<br><figure class="highlight gradle"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">include</span> <span class="string">':module_1'</span>, <span class="string">':module_2'</span></div></pre></td></tr></table></figure></p>
 <p>最后就可以在module_1里就添加library依赖(module_2)了。进入module_1的build.gradle，找到dependencies加上<code>compile project(&#39;:module_2&#39;)</code><br><em>build.gradle(module_1)</em><br><figure class="highlight gradle"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">apply plugin: <span class="string">'com.android.application'</span></div><div class="line">android &#123;</div><div class="line">    compileSdkVersion <span class="number">21</span></div><div class="line">    buildToolsVersion <span class="string">"21.1.1"</span></div><div class="line">    defaultConfig &#123;</div><div class="line">        applicationId <span class="string">"com.example.mrzheng.as"</span></div><div class="line">        minSdkVersion <span class="number">10</span></div><div class="line">        targetSdkVersion <span class="number">21</span></div><div class="line">        versionCode <span class="number">1</span></div><div class="line">        versionName <span class="string">"1.0"</span></div><div class="line">    &#125;	</div><div class="line">    buildTypes &#123;</div><div class="line">        release &#123;</div><div class="line">            minifyEnabled <span class="keyword">false</span></div><div class="line">            proguardFiles getDefaultProguardFile(<span class="string">'proguard-android.txt'</span>), <span class="string">'proguard-rules.pro'</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">sourceSets</span> &#123;</div><div class="line">        main &#123;</div><div class="line">            jniLibs.srcDirs = [<span class="string">'libs'</span>]</div><div class="line">        &#125;</div><div class="line">    &#125;	</div><div class="line">&#125;</div><div class="line"><span class="keyword">dependencies</span> &#123;</div><div class="line">    <span class="keyword">compile</span> <span class="keyword">fileTree</span>(dir: <span class="string">'libs'</span>, <span class="keyword">include</span>: [<span class="string">'*.jar'</span>])</div><div class="line">    <span class="keyword">compile</span> <span class="keyword">fileTree</span>(dir: <span class="string">'D:\\repositories\\libs\\java'</span>, <span class="keyword">include</span>: [<span class="string">'*.jar'</span>])</div><div class="line">    <span class="keyword">compile</span> <span class="string">'com.android.support:appcompat-v7:21.0.2'</span></div><div class="line">    <span class="keyword">compile</span> <span class="keyword">project</span>(<span class="string">':module_2'</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>现在make module一下就可以使用依赖的项目了(module_2)。</p>
-<h1 id="so"><a href="#so" class="headerlink" title="so"></a>so</h1><p>之前的版本不知道怎么样，现在正式版的AS添加so打包进apk里的lib里是很简单的，我们只需要把so文件放到libs文件夹里的对应cpu文件夹里，最后在module的build.gradle里加上jni的sourceSets配置：<code>jniLibs.srcDirs = [&#39;libs&#39;]</code>，完整代码看上面的<em>build.gradle(module_1)</em>代码片。<br><img src="https://coding.net/u/Rocko/p/static/git/blob/coding-pages/img/Android-Studio-jar、so、library项目依赖_4.jpg?imageView2/2/w/400/h/400/q/100" alt=""></p>
+<h1 id="so"><a href="#so" class="headerlink" title="so"></a>so</h1><p>之前的版本不知道怎么样，现在正式版的AS添加so打包进apk里的lib里是很简单的，我们只需要把so文件放到libs文件夹里的对应cpu文件夹里，最后在module的build.gradle里加上jni的sourceSets配置：<code>jniLibs.srcDirs = [&#39;libs&#39;]</code>，完整代码看上面的<em>build.gradle(module_1)</em>代码片。<br><img src="https://coding.net/u/Rocko/p/static/git/raw/coding-pages/img/Android-Studio-jar、so、library项目依赖_4.jpg?imageView2/2/w/400/h/400/q/100" alt=""></p>
 <h1 id="END"><a href="#END" class="headerlink" title="END"></a>END</h1><p>做完上面的工作，jar包、so动态链接库、library依赖项目里的代码就都可以正常工作了，正常的项目开发已经没什么问题。最后给上本博文的源码：<a href="http://download.csdn.net/detail/bbld_/8255385" target="_blank" rel="external">Android Studio jar、so、library项目依赖</a>，导进AS里后，run module_1即可。<br>最最后奉上Android Studio快捷键大全（大部分来源于：<a href="http://ask.android-studio.org/?/article/12" target="_blank" rel="external">http://ask.android-studio.org/?/article/12</a>）：  </p>
 <h1 id="附录（IDEA-Android-Studio-快捷键）"><a href="#附录（IDEA-Android-Studio-快捷键）" class="headerlink" title="附录（IDEA(Android Studio) 快捷键）"></a>附录（IDEA(Android Studio) 快捷键）</h1><p>说明：斜体文字表示，测试时没有效果或者没有测试时没有达到预先条件的情况下没有效果。</p>
 <h2 id="IDE"><a href="#IDE" class="headerlink" title="IDE"></a>IDE</h2><table>
@@ -1122,7 +1122,7 @@
 
 
     <footer class="article-footer">
-      <a data-url="https://rocko.xyz/2014/12/13/Android-Studio-jar、so、library项目依赖/" data-id="ciwjis4up000bh0sdtfe3j8n5" class="article-share-link">分享到</a>
+      <a data-url="https://rocko.xyz/2014/12/13/Android-Studio-jar、so、library项目依赖/" data-id="ciwjjcs4v000ds1sdvledrp36" class="article-share-link">分享到</a>
       
         <a href="https://rocko.xyz/2014/12/13/Android-Studio-jar、so、library项目依赖/#comments" class="article-comment-link">去评论</a>
       
@@ -1193,7 +1193,7 @@
             <div class="item-thumbnail">
               <a href="/2016/11/27/Android-Robolectric-加载运行本地-so-动态库/" class="thumbnail">
   
-    <span style="background-image:url(https://coding.net/u/Rocko/p/static/git/blob/coding-pages/img/2016-11-27_10-04-15_Robolectric.jpg?imageView2/2/w/200/h/100/q/100)" alt="Android Robolectric 加载运行本地 So 动态库" class="thumbnail-image"></span>
+    <span style="background-image:url(https://coding.net/u/Rocko/p/static/git/raw/coding-pages/img/2016-11-27_10-04-15_Robolectric.jpg?imageView2/2/w/200/h/100/q/100)" alt="Android Robolectric 加载运行本地 So 动态库" class="thumbnail-image"></span>
   
 </a>
             </div>
@@ -1210,7 +1210,7 @@
             <div class="item-thumbnail">
               <a href="/2016/08/28/科学上网的各种姿势/" class="thumbnail">
   
-    <span style="background-image:url(https://rocko-blog.qiniudn.com/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E7%9A%84%E5%90%84%E7%A7%8D%E5%A7%BF%E5%8A%BF_0.jpg)" alt="科学上网的各种姿势" class="thumbnail-image"></span>
+    <span style="background-image:url(https://coding.net/u/Rocko/p/static/git/raw/coding-pages/img/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E7%9A%84%E5%90%84%E7%A7%8D%E5%A7%BF%E5%8A%BF_0.jpg)" alt="科学上网的各种姿势" class="thumbnail-image"></span>
   
 </a>
             </div>
@@ -1227,7 +1227,7 @@
             <div class="item-thumbnail">
               <a href="/2016/06/14/ADB-Issue-2/" class="thumbnail">
   
-    <span style="background-image:url(https://rocko-blog.qiniudn.com/android-dev-bookmarks.jpg)" alt="ADB-Issue#2" class="thumbnail-image"></span>
+    <span style="background-image:url(https://coding.net/u/Rocko/p/static/git/raw/coding-pages/img/android-dev-bookmarks.jpg)" alt="ADB-Issue#2" class="thumbnail-image"></span>
   
 </a>
             </div>
@@ -1244,7 +1244,7 @@
             <div class="item-thumbnail">
               <a href="/2016/02/17/AndroidDev站点推荐-Issue-1/" class="thumbnail">
   
-    <span style="background-image:url(https://coding.net/u/Rocko/p/static/git/blob/coding-pages/img/android-dev-bookmarks.jpg)" alt="AndroidDev站点推荐-Issue#1" class="thumbnail-image"></span>
+    <span style="background-image:url(https://coding.net/u/Rocko/p/static/git/raw/coding-pages/img/android-dev-bookmarks.jpg)" alt="AndroidDev站点推荐-Issue#1" class="thumbnail-image"></span>
   
 </a>
             </div>
@@ -1261,7 +1261,7 @@
             <div class="item-thumbnail">
               <a href="/2015/11/07/MVVM_Android-CleanArchitecture/" class="thumbnail">
   
-    <span style="background-image:url(https://coding.net/u/Rocko/p/static/git/blob/coding-pages/img/MVVM_Android-CleanArchitecture-0.png?imageView2/2/w/400/h/300/q/100)" alt="MVVM_Android-CleanArchitecture" class="thumbnail-image"></span>
+    <span style="background-image:url(https://coding.net/u/Rocko/p/static/git/raw/coding-pages/img/MVVM_Android-CleanArchitecture-0.png?imageView2/2/w/400/h/300/q/100)" alt="MVVM_Android-CleanArchitecture" class="thumbnail-image"></span>
   
 </a>
             </div>
