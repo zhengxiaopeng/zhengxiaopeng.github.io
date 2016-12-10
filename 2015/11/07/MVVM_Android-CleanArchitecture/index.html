@@ -16,16 +16,16 @@ Uncle Bob 的这句话套在 MVVM 上也是适用的, MVVM 也仅仅是架构模
 <meta property="og:site_name" content="Rocko's blog">
 <meta property="og:description" content="前言“Architecture is About Intent, not Frameworks”    - Robert C. Martin (Uncle Bob)
 Uncle Bob 的这句话套在 MVVM 上也是适用的, MVVM 也仅仅是架构模式（Architectural pattern），其有一套自己的理论概念（pattern）而不是规定的具体实现（或 Frameworks）。早之前在知">
-<meta property="og:image" content="http://rocko-blog.qiniudn.com/MVVM_Android-CleanArchitecture-1.png">
-<meta property="og:image" content="http://rocko-blog.qiniudn.com/MVVM_Android-CleanArchitecture-2.png">
-<meta property="og:image" content="http://rocko-blog.qiniudn.com/MVVM_Android-CleanArchitecture-3.png">
-<meta property="og:image" content="http://rocko-blog.qiniudn.com/MVVM_Android-CleanArchitecture-4.png">
-<meta property="og:updated_time" content="2016-11-21T04:36:55.000Z">
+<meta property="og:image" content="https://rocko-blog.qiniudn.com/MVVM_Android-CleanArchitecture-1.png">
+<meta property="og:image" content="https://rocko-blog.qiniudn.com/MVVM_Android-CleanArchitecture-2.png">
+<meta property="og:image" content="https://rocko-blog.qiniudn.com/MVVM_Android-CleanArchitecture-3.png">
+<meta property="og:image" content="https://rocko-blog.qiniudn.com/MVVM_Android-CleanArchitecture-4.png">
+<meta property="og:updated_time" content="2016-12-10T14:34:50.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MVVM_Android-CleanArchitecture">
 <meta name="twitter:description" content="前言“Architecture is About Intent, not Frameworks”    - Robert C. Martin (Uncle Bob)
 Uncle Bob 的这句话套在 MVVM 上也是适用的, MVVM 也仅仅是架构模式（Architectural pattern），其有一套自己的理论概念（pattern）而不是规定的具体实现（或 Frameworks）。早之前在知">
-<meta name="twitter:image" content="http://rocko-blog.qiniudn.com/MVVM_Android-CleanArchitecture-1.png">
+<meta name="twitter:image" content="https://rocko-blog.qiniudn.com/MVVM_Android-CleanArchitecture-1.png">
   
   
     <link rel="icon" href="/img/favicon.png">
@@ -100,7 +100,7 @@ Uncle Bob 的这句话套在 MVVM 上也是适用的, MVVM 也仅仅是架构模
         
 
            
-            <a class="main-nav-link" href="http://adb.rocko.xyz" target="ADB"><i class="fa fa-bookmark"></i> ADB</a>
+            <a class="main-nav-link" href="https://adb.rocko.xyz" target="ADB"><i class="fa fa-bookmark"></i> ADB</a>
           
 
         
@@ -158,7 +158,7 @@ Uncle Bob 的这句话套在 MVVM 上也是适用的, MVVM 也仅仅是架构模
         
           <td>
                  
-              <a class="main-nav-link" href="http://adb.rocko.xyz" target="ADB"><i class="fa fa-bookmark"></i> ADB</a>
+              <a class="main-nav-link" href="https://adb.rocko.xyz" target="ADB"><i class="fa fa-bookmark"></i> ADB</a>
             
 
           </td>
@@ -430,7 +430,7 @@ Uncle Bob 的这句话套在 MVVM 上也是适用的, MVVM 也仅仅是架构模
     
       
 	
-		<img src="http://rocko-blog.qiniudn.com/MVVM_Android-CleanArchitecture-0.png" class="article-banner">
+		<img src="https://rocko-blog.qiniudn.com/MVVM_Android-CleanArchitecture-0.png" class="article-banner">
 	
 
 
@@ -508,7 +508,7 @@ Uncle Bob 的这句话套在 MVVM 上也是适用的, MVVM 也仅仅是架构模
 </li>
 </ul>
 <p>此外还有必不可少的一部分：Binder，Android 中也就是 Data binding 了，提供 View 与 Model 的绑定功能，所以 Model-View-ViewModel 又称为 <code>Model-View-Binder</code>。 与 MVP 中的 Presenter 相比，ViewModel 并不需要去持有 View 的引用，下面是结构图：</p>
-<p><img src="http://rocko-blog.qiniudn.com/MVVM_Android-CleanArchitecture-1.png" alt="MVVM结构图"></p>
+<p><img src="https://rocko-blog.qiniudn.com/MVVM_Android-CleanArchitecture-1.png" alt="MVVM结构图"></p>
 <h3 id="Android-中实现"><a href="#Android-中实现" class="headerlink" title="Android 中实现"></a>Android 中实现</h3><p>目前 Android 的 data binding 还是 beta，还只是 <code>one-way</code> 单向绑定，功能上还有所欠缺、控制性也还不强，但是把它写出来还是没问题的。对于 Activity、Fragment 而言仅仅是作为 Java View 看待，与 XML 对应，所以里面只有 View 的展现逻辑，此外没有其它代码。一个 Activity 或 Fragment（一般都 with XML） 对应一个 ViewModel，对于一个基础 View（XML）可以通过继承对应的 ViewModel 实现重用，本文的代码也有体现。对于 Activity 和 Fragment 的View 状态保存恢复也通过 ViewModel 处理。因为 binding 的入口在 Activity 或 Fragment 中，所以为了方便写个基类处理 ViewModel 和 Binding 的初始化，然后在 对应的 XML 里加上 ViewModel 的 variable， XML 里不再有其它数据对象的 variable。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">BaseActivity</span>&lt;<span class="title">VM</span> <span class="keyword">extends</span> <span class="title">ViewModel</span>, <span class="title">B</span> <span class="keyword">extends</span> <span class="title">ViewDataBinding</span>&gt; <span class="keyword">extends</span> <span class="title">Activity</span> </span>&#123;</div><div class="line"></div><div class="line">  <span class="keyword">private</span> VM viewModel;</div><div class="line">  <span class="keyword">private</span> B binding;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setViewModel</span><span class="params">(@NonNull VM viewModel)</span> </span>&#123;</div><div class="line">    <span class="keyword">this</span>.viewModel = viewModel;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">public</span> VM <span class="title">getViewModel</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (viewModel == <span class="keyword">null</span>) &#123;</div><div class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> NullPointerException(<span class="string">"You should setViewModel first!"</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> viewModel;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setBinding</span><span class="params">(@NonNull B binding)</span> </span>&#123;</div><div class="line">    <span class="keyword">this</span>.binding = binding;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">public</span> B <span class="title">getBinding</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (binding == <span class="keyword">null</span>) &#123;</div><div class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> NullPointerException(<span class="string">"You should setBinding first!"</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> binding;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>ViewModel 中通过 ObservableField 来达到细粒度的控制，绑定操作都放在 ViewModel 里，然后 ViewModel 里可以有多个 domain 中的 Interator(UseCase) 来得到 View 需要渲染的数据 Model。对于 ObservableField 的绑定操作和命令操作（Command）都是暴露的，也易于测试。binding 现在缺少手动在 Java 代码中注册通知事件的功能，比如有些 model 的渲染必须通过 Java 代码来操作的话就需要了，在 Activity（Java View） 中通过向 Binding 注册通知回调，而目前只能在 XML 中知道，当然目前也可以自己实现，方法也有多种：接口回调、EventBus、RxBus。。</p>
@@ -516,11 +516,11 @@ Uncle Bob 的这句话套在 MVVM 上也是适用的, MVVM 也仅仅是架构模
 <ul>
 <li><strong>Clean Architecture：</strong></li>
 </ul>
-<p><img src="http://rocko-blog.qiniudn.com/MVVM_Android-CleanArchitecture-2.png" alt="Clean Architecture"></p>
+<p><img src="https://rocko-blog.qiniudn.com/MVVM_Android-CleanArchitecture-2.png" alt="Clean Architecture"></p>
 <ul>
-<li><p><strong><strong>MVVM_Clean-Architecture tier：</strong></strong><br><img src="http://rocko-blog.qiniudn.com/MVVM_Android-CleanArchitecture-3.png" alt="MVVM_Clean-Architecture 分层结构"></p>
+<li><p><strong><strong>MVVM_Clean-Architecture tier：</strong></strong><br><img src="https://rocko-blog.qiniudn.com/MVVM_Android-CleanArchitecture-3.png" alt="MVVM_Clean-Architecture 分层结构"></p>
 </li>
-<li><p><strong>MVVM_Clean-Architecture put all：</strong><br><img src="http://rocko-blog.qiniudn.com/MVVM_Android-CleanArchitecture-4.png" alt="MVVM_Clean-Architecture put all 应用在一起"></p>
+<li><p><strong>MVVM_Clean-Architecture put all：</strong><br><img src="https://rocko-blog.qiniudn.com/MVVM_Android-CleanArchitecture-4.png" alt="MVVM_Clean-Architecture put all 应用在一起"></p>
 </li>
 </ul>
 <h2 id="Refactor"><a href="#Refactor" class="headerlink" title="Refactor"></a>Refactor</h2><p>Talk is cheap. Show you the code. <strong>↓↓↓</strong><br><a href="https://github.com/zhengxiaopeng/MVVM_Android-CleanArchitecture" target="_blank" rel="external">MVVM_Android-CleanArchitecture</a></p>
@@ -580,7 +580,7 @@ Uncle Bob 的这句话套在 MVVM 上也是适用的, MVVM 也仅仅是架构模
 
 
     <footer class="article-footer">
-      <a data-url="https://rocko.xyz/2015/11/07/MVVM_Android-CleanArchitecture/" data-id="ciwj4wngw000u6bsdxzejelug" class="article-share-link">分享到</a>
+      <a data-url="https://rocko.xyz/2015/11/07/MVVM_Android-CleanArchitecture/" data-id="ciwjbq1pu000unnsd68asvv9y" class="article-share-link">分享到</a>
       
         <a href="https://rocko.xyz/2015/11/07/MVVM_Android-CleanArchitecture/#comments" class="article-comment-link">去评论</a>
       
@@ -651,7 +651,7 @@ Uncle Bob 的这句话套在 MVVM 上也是适用的, MVVM 也仅仅是架构模
             <div class="item-thumbnail">
               <a href="/2016/11/27/Android-Robolectric-加载运行本地-so-动态库/" class="thumbnail">
   
-    <span style="background-image:url(http://rocko-blog.qiniudn.com/2016-11-27_10-04-15_Robolectric.jpg?imageView2/2/w/200/h/100/q/100)" alt="Android Robolectric 加载运行本地 So 动态库" class="thumbnail-image"></span>
+    <span style="background-image:url(https://rocko-blog.qiniudn.com/2016-11-27_10-04-15_Robolectric.jpg?imageView2/2/w/200/h/100/q/100)" alt="Android Robolectric 加载运行本地 So 动态库" class="thumbnail-image"></span>
   
 </a>
             </div>
@@ -668,7 +668,7 @@ Uncle Bob 的这句话套在 MVVM 上也是适用的, MVVM 也仅仅是架构模
             <div class="item-thumbnail">
               <a href="/2016/08/28/科学上网的各种姿势/" class="thumbnail">
   
-    <span style="background-image:url(http://rocko-blog.qiniudn.com/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E7%9A%84%E5%90%84%E7%A7%8D%E5%A7%BF%E5%8A%BF_0.jpg)" alt="科学上网的各种姿势" class="thumbnail-image"></span>
+    <span style="background-image:url(https://rocko-blog.qiniudn.com/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E7%9A%84%E5%90%84%E7%A7%8D%E5%A7%BF%E5%8A%BF_0.jpg)" alt="科学上网的各种姿势" class="thumbnail-image"></span>
   
 </a>
             </div>
@@ -685,7 +685,7 @@ Uncle Bob 的这句话套在 MVVM 上也是适用的, MVVM 也仅仅是架构模
             <div class="item-thumbnail">
               <a href="/2016/06/14/ADB-Issue-2/" class="thumbnail">
   
-    <span style="background-image:url(http://rocko-blog.qiniudn.com/android-dev-bookmarks.jpg)" alt="ADB-Issue#2" class="thumbnail-image"></span>
+    <span style="background-image:url(https://rocko-blog.qiniudn.com/android-dev-bookmarks.jpg)" alt="ADB-Issue#2" class="thumbnail-image"></span>
   
 </a>
             </div>
@@ -702,7 +702,7 @@ Uncle Bob 的这句话套在 MVVM 上也是适用的, MVVM 也仅仅是架构模
             <div class="item-thumbnail">
               <a href="/2016/02/17/AndroidDev站点推荐-Issue-1/" class="thumbnail">
   
-    <span style="background-image:url(http://rocko-blog.qiniudn.com/android-dev-bookmarks.jpg)" alt="AndroidDev站点推荐-Issue#1" class="thumbnail-image"></span>
+    <span style="background-image:url(https://rocko-blog.qiniudn.com/android-dev-bookmarks.jpg)" alt="AndroidDev站点推荐-Issue#1" class="thumbnail-image"></span>
   
 </a>
             </div>
@@ -719,7 +719,7 @@ Uncle Bob 的这句话套在 MVVM 上也是适用的, MVVM 也仅仅是架构模
             <div class="item-thumbnail">
               <a href="/2015/11/07/MVVM_Android-CleanArchitecture/" class="thumbnail">
   
-    <span style="background-image:url(http://rocko-blog.qiniudn.com/MVVM_Android-CleanArchitecture-0.png?imageView2/2/w/400/h/300/q/100)" alt="MVVM_Android-CleanArchitecture" class="thumbnail-image"></span>
+    <span style="background-image:url(https://rocko-blog.qiniudn.com/MVVM_Android-CleanArchitecture-0.png?imageView2/2/w/400/h/300/q/100)" alt="MVVM_Android-CleanArchitecture" class="thumbnail-image"></span>
   
 </a>
             </div>
