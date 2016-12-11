@@ -421,11 +421,11 @@
       <category term="Android" scheme="https://rocko.xyz/categories/Android/"/>
     
     
-      <category term="架构" scheme="https://rocko.xyz/tags/%E6%9E%B6%E6%9E%84/"/>
-    
       <category term="MVVM" scheme="https://rocko.xyz/tags/MVVM/"/>
     
       <category term="Data Binding" scheme="https://rocko.xyz/tags/Data-Binding/"/>
+    
+      <category term="架构" scheme="https://rocko.xyz/tags/%E6%9E%B6%E6%9E%84/"/>
     
   </entry>
   
@@ -949,9 +949,9 @@
       <category term="Git" scheme="https://rocko.xyz/categories/Git/"/>
     
     
-      <category term="错误" scheme="https://rocko.xyz/tags/%E9%94%99%E8%AF%AF/"/>
-    
       <category term="Git" scheme="https://rocko.xyz/tags/Git/"/>
+    
+      <category term="错误" scheme="https://rocko.xyz/tags/%E9%94%99%E8%AF%AF/"/>
     
       <category term="VPS" scheme="https://rocko.xyz/tags/VPS/"/>
     
@@ -1034,9 +1034,9 @@
       <category term="Android" scheme="https://rocko.xyz/categories/Android/"/>
     
     
-      <category term="MVP" scheme="https://rocko.xyz/tags/MVP/"/>
-    
       <category term="架构" scheme="https://rocko.xyz/tags/%E6%9E%B6%E6%9E%84/"/>
+    
+      <category term="MVP" scheme="https://rocko.xyz/tags/MVP/"/>
     
   </entry>
   
