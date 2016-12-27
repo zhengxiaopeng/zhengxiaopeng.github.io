@@ -784,7 +784,7 @@
     <link href="https://rocko.xyz/2015/03/04/%E3%80%90%E8%AF%91%E3%80%91Spans%EF%BC%8C%E4%B8%80%E4%B8%AA%E5%BC%BA%E5%A4%A7%E7%9A%84%E6%A6%82%E5%BF%B5/"/>
     <id>https://rocko.xyz/2015/03/04/【译】Spans，一个强大的概念/</id>
     <published>2015-03-03T16:11:25.000Z</published>
-    <updated>2016-12-10T18:48:42.000Z</updated>
+    <updated>2016-12-27T15:58:08.000Z</updated>
     
     <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>原文：<a href="http://flavienlaurent.com/blog/2014/01/31/spans/" target="_blank" rel="external">Spans, a Powerful Concept.</a></p>
 <p>最近，我写了一篇关于NewStand app和app上ActionBar的图标的翻转动效的文章。<a href="http://cyrilmottier.com/" target="_blank" rel="external">Cyril Mottier</a>建议我采用一个很优雅的方案，即使用Spans去淡入淡出ActionBar的标题。<br>此外，我一直想尝试所有可用的Sapn色的类型：<a href="http://developer.android.com/reference/android/text/style/ImageSpan.html" target="_blank" rel="external">ImageSpan</a>、<a href="http://developer.android.com/reference/android/text/style/BackgroundColorSpan.html" target="_blank" rel="external">BackgroundColorSpan</a>等。他们非常简单易用但是（也）没有任何关于它们的文档和详细信息。<br>因此，在这篇文章中，我将探索在Spans的框架下什么是可以做的，然后，我将会告诉你怎么去进阶使用Spans。<br>你可以下载和安装<a href="https://github.com/flavienlaurent/spans/raw/master/sample.apk" target="_blank" rel="external">demo程序</a>，查看<a href="https://github.com/flavienlaurent/spans" target="_blank" rel="external">源码</a>。</p>
@@ -862,7 +862,7 @@
 <li><a href="http://developer.android.com/reference/android/text/style/ReplacementSpan.html#draw(android.graphics.Canvas,%20java.lang.CharSequence,%20int,%20int,%20float,%20int,%20int,%20int,%20android.graphics.Paint" target="_blank" rel="external">draw</a>)：可以使用Canvas绘制。<br>x：绘制文本的x坐标<br>top：线（line）的顶部（译者注：line的定义参看前面<em>字体规格</em>这一节）<br>y：基线<br>bottom：线的底部、</li>
 </ul>
 <p>让我们看一个例子，画一个包围文本的蓝色矩形。<br><em>FrameSpan.java</em><br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getSize</span><span class="params">(Paint paint, CharSequence text, <span class="keyword">int</span> start, <span class="keyword">int</span> end, Paint.FontMetricsInt fm)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="comment">//将返回相对于Paint画笔的文本</span></div><div class="line">    mWidth = (<span class="keyword">int</span>) paint.measureText(text, start, end);</div><div class="line">    <span class="keyword">return</span> mWidth;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">draw</span><span class="params">(Canvas canvas, CharSequence text, <span class="keyword">int</span> start, <span class="keyword">int</span> end, <span class="keyword">float</span> x, <span class="keyword">int</span> top, <span class="keyword">int</span> y, <span class="keyword">int</span> bottom, Paint paint)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="comment">//使用自定义的画笔绘制在画布上</span></div><div class="line">    canvas.drawRect(x, top, x + mWidth, bottom, mPaint);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p><img src="https://static.rocko.xyz/img/Spans，一个强大的概念-24.png?imageView2/2/w/400/h/300/q/100" alt="自定义Span的效果"></p>
+<p><img src="https://static.rocko.xyz/img/Spans，一个强大的概念-24.jpeg?imageView2/2/w/400/h/300/q/100" alt="自定义Span的效果"></p>
 <h4 id="附加"><a href="#附加" class="headerlink" title="附加"></a>附加</h4><p>Sample app包含了一些Spans进阶的例子，如下：<br><img src="https://static.rocko.xyz/img/Spans，一个强大的概念-26.gif?imageView2/2/w/400/h/300/q/100" alt="Progressive blur"><br><img src="https://static.rocko.xyz/img/Spans，一个强大的概念-27.gif?imageView2/2/w/400/h/300/q/100" alt="Typewriter"></p>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>在编写这篇文章的过程中，我意识到Spans是真的像Drawable那样强大的，我认为它们还没有被充分运用。文本是一个应用程序的主要内容，它无处不在，所以不要忘记，通过Spans让它变得更具活力和吸引力！</p>
 ]]></content>
@@ -879,11 +879,11 @@
     
       <category term="动画" scheme="https://rocko.xyz/tags/%E5%8A%A8%E7%94%BB/"/>
     
-      <category term="译文" scheme="https://rocko.xyz/tags/%E8%AF%91%E6%96%87/"/>
-    
       <category term="Span" scheme="https://rocko.xyz/tags/Span/"/>
     
       <category term="文字" scheme="https://rocko.xyz/tags/%E6%96%87%E5%AD%97/"/>
+    
+      <category term="译文" scheme="https://rocko.xyz/tags/%E8%AF%91%E6%96%87/"/>
     
   </entry>
   
