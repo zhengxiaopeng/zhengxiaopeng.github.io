@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://rocko.xyz/404.html</loc>
+    
+    <lastmod>2016-12-28T17:46:11.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://rocko.xyz/friendLink/index.html</loc>
     
     <lastmod>2016-12-28T17:34:35.000Z</lastmod>
@@ -30,7 +37,7 @@
   </url>
   
   <url>
-    <loc>https://rocko.xyz/2015/05/05/%E3%80%90%E8%AF%91%E3%80%91NotRxJava%E6%87%92%E4%BA%BA%E4%B8%93%E7%94%A8%E6%8C%87%E5%8D%97/</loc>
+    <loc>https://rocko.xyz/2016/02/17/AndroidDev%E7%AB%99%E7%82%B9%E6%8E%A8%E8%8D%90-Issue-1/</loc>
     
     <lastmod>2016-12-10T18:48:42.000Z</lastmod>
     
@@ -44,13 +51,6 @@
   </url>
   
   <url>
-    <loc>https://rocko.xyz/2016/02/17/AndroidDev%E7%AB%99%E7%82%B9%E6%8E%A8%E8%8D%90-Issue-1/</loc>
-    
-    <lastmod>2016-12-10T18:48:42.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://rocko.xyz/2015/02/06/Android%E4%B8%AD%E7%9A%84MVP/</loc>
     
     <lastmod>2016-12-10T18:48:42.000Z</lastmod>
@@ -58,14 +58,14 @@
   </url>
   
   <url>
-    <loc>https://rocko.xyz/2014/11/25/Git-%E9%94%99%E8%AF%AF%E9%9B%86%E9%94%A6ing/</loc>
+    <loc>https://rocko.xyz/2015/06/27/High%E4%B8%80%E4%B8%8B/</loc>
     
     <lastmod>2016-12-10T18:48:42.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://rocko.xyz/2015/06/27/High%E4%B8%80%E4%B8%8B/</loc>
+    <loc>https://rocko.xyz/2014/11/25/Git-%E9%94%99%E8%AF%AF%E9%9B%86%E9%94%A6ing/</loc>
     
     <lastmod>2016-12-10T18:48:42.000Z</lastmod>
     
@@ -100,14 +100,14 @@
   </url>
   
   <url>
-    <loc>https://rocko.xyz/2015/06/19/%E3%80%90%E8%AF%91%E3%80%91%E8%A7%A3%E5%86%B3%E5%85%B1%E4%BA%AB%E5%85%83%E7%B4%A0%E5%9C%A8%E7%B3%BB%E7%BB%9FUI%E4%B8%8A%E7%BB%98%E5%88%B6%E7%9A%84%E9%97%AE%E9%A2%98/</loc>
+    <loc>https://rocko.xyz/2015/05/05/%E3%80%90%E8%AF%91%E3%80%91NotRxJava%E6%87%92%E4%BA%BA%E4%B8%93%E7%94%A8%E6%8C%87%E5%8D%97/</loc>
     
     <lastmod>2016-12-10T18:48:42.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://rocko.xyz/2016/06/14/ADB-Issue-2/</loc>
+    <loc>https://rocko.xyz/2015/06/19/%E3%80%90%E8%AF%91%E3%80%91%E8%A7%A3%E5%86%B3%E5%85%B1%E4%BA%AB%E5%85%83%E7%B4%A0%E5%9C%A8%E7%B3%BB%E7%BB%9FUI%E4%B8%8A%E7%BB%98%E5%88%B6%E7%9A%84%E9%97%AE%E9%A2%98/</loc>
     
     <lastmod>2016-12-10T18:48:42.000Z</lastmod>
     
@@ -121,7 +121,7 @@
   </url>
   
   <url>
-    <loc>https://rocko.xyz/2015/04/26/Android-View-OnTouchListener-%E7%9A%84%E5%AD%90%E7%B1%BB/</loc>
+    <loc>https://rocko.xyz/2016/06/14/ADB-Issue-2/</loc>
     
     <lastmod>2016-12-10T18:48:42.000Z</lastmod>
     
@@ -142,6 +142,13 @@
   </url>
   
   <url>
+    <loc>https://rocko.xyz/2015/01/14/%E8%BF%90%E7%AE%97%E7%AC%A6%E7%9A%84%E5%87%A0%E7%82%B9/</loc>
+    
+    <lastmod>2016-12-10T18:48:42.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://rocko.xyz/2014/12/13/Android-Studio-jar%E3%80%81so%E3%80%81library%E9%A1%B9%E7%9B%AE%E4%BE%9D%E8%B5%96/</loc>
     
     <lastmod>2016-12-10T18:48:42.000Z</lastmod>
@@ -156,7 +163,7 @@
   </url>
   
   <url>
-    <loc>https://rocko.xyz/2015/01/14/%E8%BF%90%E7%AE%97%E7%AC%A6%E7%9A%84%E5%87%A0%E7%82%B9/</loc>
+    <loc>https://rocko.xyz/2015/04/26/Android-View-OnTouchListener-%E7%9A%84%E5%AD%90%E7%B1%BB/</loc>
     
     <lastmod>2016-12-10T18:48:42.000Z</lastmod>
     
@@ -177,21 +184,7 @@
   </url>
   
   <url>
-    <loc>https://rocko.xyz/404.html</loc>
-    
-    <lastmod>2016-11-21T04:36:55.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://rocko.xyz/baidu_verify_dqOf3tI9Ld.html</loc>
-    
-    <lastmod>2016-11-21T04:36:55.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://rocko.xyz/google36b76b49b569a9a7.html</loc>
+    <loc>https://rocko.xyz/baidu_verify_WG8fZ2mGXA.html</loc>
     
     <lastmod>2016-11-21T04:36:55.000Z</lastmod>
     
@@ -205,14 +198,14 @@
   </url>
   
   <url>
-    <loc>https://rocko.xyz/categories/index.html</loc>
+    <loc>https://rocko.xyz/google36b76b49b569a9a7.html</loc>
     
     <lastmod>2016-11-21T04:36:55.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://rocko.xyz/baidu_verify_WG8fZ2mGXA.html</loc>
+    <loc>https://rocko.xyz/categories/index.html</loc>
     
     <lastmod>2016-11-21T04:36:55.000Z</lastmod>
     
@@ -226,7 +219,7 @@
   </url>
   
   <url>
-    <loc>https://rocko.xyz/tags/index.html</loc>
+    <loc>https://rocko.xyz/baidu_verify_dqOf3tI9Ld.html</loc>
     
     <lastmod>2016-11-21T04:36:55.000Z</lastmod>
     
@@ -234,6 +227,13 @@
   
   <url>
     <loc>https://rocko.xyz/search/index.html</loc>
+    
+    <lastmod>2016-11-21T04:36:55.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://rocko.xyz/tags/index.html</loc>
     
     <lastmod>2016-11-21T04:36:55.000Z</lastmod>
     
