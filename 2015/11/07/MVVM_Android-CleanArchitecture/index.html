@@ -1,15 +1,40 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <meta name="baidu-site-verification" content="WG8fZ2mGXA" />
-  <meta name="baidu_union_verify" content="d1952c66cf48912e21c18c7c581f382a">
-  <meta name="google-site-verification" content="J7ONClDGsj92njCYAloRwEkDpz94YUFUxgi76g1m4Lk" />
-  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
-  
-  <title>MVVM_Android-CleanArchitecture | Rocko&#39;s blog</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前言“Architecture is About Intent, not Frameworks”    - Robert C. Martin (Uncle Bob)
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?4536d8f17989e675f0efa92c7722c95c"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    
+    <meta name="google-site-verification" content="J7ONClDGsj92njCYAloRwEkDpz94YUFUxgi76g1m4Lk">
+    
+    
+    <link rel="canonical" href="https://rocko.xyz/2015/11/07/MVVM_Android-CleanArchitecture/">
+    
+    
+    <title>MVVM_Android-CleanArchitecture | Rocko&#39;s blog | </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="baidu-site-verification" content="WG8fZ2mGXA" >
+    <meta name="baidu_union_verify" content="d1952c66cf48912e21c18c7c581f382a">
+    
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="架构,MVVM,Data Binding">
+    <meta name="description" content="前言“Architecture is About Intent, not Frameworks”    - Robert C. Martin (Uncle Bob)
 Uncle Bob 的这句话套在 MVVM 上也是适用的, MVVM 也仅仅是架构模式（Architectural pattern），其有一套自己的理论概念（pattern）而不是规定的具体实现（或 Frameworks）。早之前在知">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MVVM_Android-CleanArchitecture">
@@ -27,453 +52,202 @@ Uncle Bob 的这句话套在 MVVM 上也是适用的, MVVM 也仅仅是架构模
 <meta name="twitter:description" content="前言“Architecture is About Intent, not Frameworks”    - Robert C. Martin (Uncle Bob)
 Uncle Bob 的这句话套在 MVVM 上也是适用的, MVVM 也仅仅是架构模式（Architectural pattern），其有一套自己的理论概念（pattern）而不是规定的具体实现（或 Frameworks）。早之前在知">
 <meta name="twitter:image" content="https://static.rocko.xyz/img/MVVM_Android-CleanArchitecture-1.png">
-  
-  
-    <link rel="icon" href="/img/favicon.png">
-  
-  <link href='/css/open_sans.css' rel='stylesheet' type='text/css'>
-  <link href="/css/source_code_pro.css" rel="stylesheet" type="text/css">
-  <link rel="stylesheet" href="/css/style.css">
-  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
-  
-
-  
-
- <script src="/js/jquery-2.0.3.min.js"></script>
-
-
-<script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?4536d8f17989e675f0efa92c7722c95c";
-  var s = document.getElementsByTagName("script")[0]; 
-  s.parentNode.insertBefore(hm, s);
-})();
-</script>
-
-
+    
+        <link rel="alternative" href="/atom.xml" title="Rocko&#39;s blog" type="application/atom+xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.png">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.3">
+    <script>window.lazyScripts=[]</script>
 </head>
+
 <body>
-  <div id="container">
-    <header id="header">
-  <div id="header-main" class="header-inner">
-    <div class="outer">
-      <a href="/" id="logo"><i class="logo" style="background-image: url(/img/rocdroid-80.gif)"></i><span class="site-title">Rocko&#39;s blog</span></a>
-      <nav id="main-nav">
-        
+    <div id="loading" class="active"></div>
 
-          
-          <a class="main-nav-link" href="/."><i class="fa fa-home"></i> Home</a>
-          
-
-        
-
-          
-          <a class="main-nav-link" href="/archives"><i class="fa fa-archive"></i> Archives</a>
-          
-
-        
-
-          
-          <a class="main-nav-link" href="/categories"><i class="fa fa-sort-alpha-asc"></i> Categories</a>
-          
-
-        
-
-          
-          <a class="main-nav-link" href="/tags"><i class="fa fa-tag"></i> Tags</a>
-          
-
-        
-
-          
-          <a class="main-nav-link" href="/about"><i class="fa fa-user"></i> About</a>
-          
-
-        
-
-           
-            <a class="main-nav-link" href="https://adb.rocko.xyz" target="ADB"><i class="fa fa-bookmark"></i> ADB</a>
-          
-
-        
-      </nav>
-      
-        <nav id="sub-nav">
-          <div class="profile" id="profile-nav">
-            <a id="profile-anchor" href="javascript:;"><img class="avatar" src="/img/avatar.png"><i class="fa fa-caret-down"></i></a>
-          </div>
-        </nav>
-      
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="https://rocko.xyz"></form>
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Rocko</h5>
+          <a href="mailto:rocko.zxp@gmail.com" title="rocko.zxp@gmail.com" class="mail">rocko.zxp@gmail.com</a>
+        </hgroup>
       </div>
     </div>
-  </div>
-  <div id="main-nav-mobile" class="header-sub header-inner">
-    <table class="menu outer">
-      <tr>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
         
-          <td>
-                
-            <a class="main-nav-link" href="/."><i class="fa fa-home"></i> Home</a>
-            
-
-          </td>
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
         
-          <td>
-                
-            <a class="main-nav-link" href="/archives"><i class="fa fa-archive"></i> Archives</a>
-            
-
-          </td>
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
         
-          <td>
-                
-            <a class="main-nav-link" href="/categories"><i class="fa fa-sort-alpha-asc"></i> Categories</a>
-            
-
-          </td>
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
         
-          <td>
-                
-            <a class="main-nav-link" href="/tags"><i class="fa fa-tag"></i> Tags</a>
-            
-
-          </td>
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
         
-          <td>
-                
-            <a class="main-nav-link" href="/about"><i class="fa fa-user"></i> About</a>
-            
-
-          </td>
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-user-circle"></i>
+                关于
+              </a>
+            </li>
         
-          <td>
-                 
-              <a class="main-nav-link" href="https://adb.rocko.xyz" target="ADB"><i class="fa fa-bookmark"></i> ADB</a>
-            
-
-          </td>
+            <li class="waves-block waves-effect">
+              <a href="/friendLink"  >
+                <i class="icon icon-lg icon-users"></i>
+                友链
+              </a>
+            </li>
         
-        <td>
-          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="https://rocko.xyz"></form>
-        </td>
-      </tr>
-    </table>
-  </div>
-</header>
-
-    <div class="outer">
-      
-        <aside id="profile">
-  <div class="inner profile-inner">
-    <div class="base-info profile-block">
-      <img id="avatar" src="/img/avatar.png" >
-      <h2 id="name">Rocko</h2>
-      <h3 id="title">Android Developer</h3>
-      <span id="location"><i class="fa fa-map-marker"></i>Shenzhen, China</span>
-      <a id="follow" 
-        href='
-          
-    javascript:(
-    /*
-     * Copyright (C) 2015 Rocko (http://rocko.xyz) <rocko.zxp@gmail.com>
-     *
-     * Licensed under the Apache License, Version 2.0 (the "License");
-     * you may not use this file except in compliance with the License.
-     * You may obtain a copy of the License at
-     *
-     *      http://www.apache.org/licenses/LICENSE-2.0
-     *
-     * Unless required by applicable law or agreed to in writing, software
-     * distributed under the License is distributed on an "AS IS" BASIS,
-     * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-     * See the License for the specific language governing permissions and
-     * limitations under the License.
-     */
-    function go() {
-    
-    function c() {
-        var e = document.createElement("link");
-        e.setAttribute("type", "text/css");
-        e.setAttribute("rel", "stylesheet");
-        e.setAttribute("href", f);
-        e.setAttribute("class", l);
-        document.body.appendChild(e)
-    }
- 
-    function h() {
-        var e = document.getElementsByClassName(l);
-        for (var t = 0; t < e.length; t++) {
-            document.body.removeChild(e[t])
-        }
-    }
- 
-    function p() {
-        var e = document.createElement("div");
-        e.setAttribute("class", a);
-        document.body.appendChild(e);
-        setTimeout(function() {
-            document.body.removeChild(e)
-        }, 100)
-    }
- 
-    function d(e) {
-        return {
-            height : e.offsetHeight,
-            width : e.offsetWidth
-        }
-    }
- 
-    function v(i) {
-        var s = d(i);
-        return s.height > e && s.height < n && s.width > t && s.width < r
-    }
- 
-    function m(e) {
-        var t = e;
-        var n = 0;
-        while (!!t) {
-            n += t.offsetTop;
-            t = t.offsetParent
-        }
-        return n
-    }
- 
-    function g() {
-        var e = document.documentElement;
-        if (!!window.innerWidth) {
-            return window.innerHeight
-        } else if (e && !isNaN(e.clientHeight)) {
-            return e.clientHeight
-        }
-        return 0
-    }
- 
-    function y() {
-        if (window.pageYOffset) {
-            return window.pageYOffset
-        }
-        return Math.max(document.documentElement.scrollTop, document.body.scrollTop)
-    }
- 
-    function E(e) {
-        var t = m(e);
-        return t >= w && t <= b + w
-    }
- 
-    var songs = [
-                "https://static.rocko.xyz/audio/Music-Wake-Live.mp3",
-                "https://static.rocko.xyz/audio/Music-Fashion_Show.mp3",
-                "https://static.rocko.xyz/audio/Music-outside.mp3",
-                "https://static.rocko.xyz/audio/Music-sunburst.mp3"
-    ];
-
-    function S() {
-        var e = document.getElementById("audio_element_id");
-        if(e != null){
-            var index = parseInt(e.getAttribute("curSongIndex"));
-            if(index > songs.length - 2) {
-                index = 0;
-            } else {
-                index++;
-            }
-            e.setAttribute("curSongIndex", index);
-            N();
-        }
-
-        e.src = i;
-        e.play()
-    }
- 
-    function x(e) {
-        e.className += " " + s + " " + o
-    }
- 
-    function T(e) {
-        e.className += " " + s + " " + u[Math.floor(Math.random() * u.length)]
-    }
- 
-    function N() {
-        var e = document.getElementsByClassName(s);
-        var t = new RegExp("\\b" + s + "\\b");
-        for (var n = 0; n < e.length; ) {
-            e[n].className = e[n].className.replace(t, "")
-        }
-    }
-
-    function initAudioEle() {
-        var e = document.getElementById("audio_element_id");
-        if(e === null){
-            e = document.createElement("audio");
-            e.setAttribute("class", l);
-            e.setAttribute("curSongIndex", 0);
-            e.id = "audio_element_id";
-            e.loop = false;
-            e.bgcolor = 0;
-            e.addEventListener("canplay", function() {
-            setTimeout(function() {
-                x(k)
-            }, 500);
-            setTimeout(function() {
-                N();
-                p();
-                for (var e = 0; e < O.length; e++) {
-                    T(O[e])
-                }
-            }, 15500)
-        }, true);
-        e.addEventListener("ended", function() {
-            N();
-            h();
-            go();
-        }, true);
-        e.innerHTML = " <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>";
-        document.body.appendChild(e);
-        }
-    }
-    
-    initAudioEle();
-    var e = 30;
-    var t = 30;
-    var n = 350;
-    var r = 350;
-
-    var curSongIndex = parseInt(document.getElementById("audio_element_id").getAttribute("curSongIndex"));
-    var i = songs[curSongIndex];
-    
-    var s = "mw-harlem_shake_me";
-    var o = "im_first";
-    var u = ["im_drunk", "im_baked", "im_trippin", "im_blown"];
-    var a = "mw-strobe_light";
-
-    var f = "/css/harlem-shake-style.css";
-    
-    var l = "mw_added_css";
-    var b = g();
-    var w = y();
-    var C = document.getElementsByTagName("*");
-    var k = null;
-    for (var L = 0; L < C.length; L++) {
-        var A = C[L];
-        if (v(A)) {
-            if (E(A)) {
-                k = A;
-                break
-            }
-        }
-    }
-    if (A === null) {
-        console.warn("Could not find a node of the right size. Please try a different page.");
-        return
-    }
-    c();
-    S();
-    var O = [];
-    for (var L = 0; L < C.length; L++) {
-        var A = C[L];
-        if (v(A)) {
-            O.push(A)
-        }
-    }
-    })()
-    
-        '>
-      <i class="fa fa-music"></i> &nbsp High一下 </i></a>
+            <li class="waves-block waves-effect">
+              <a href="https://adb.rocko.xyz" target="_blank" >
+                <i class="icon icon-lg icon-bookmark"></i>
+                ADB
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/zhengxiaopeng" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                GitHub
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="//weibo.com/678662430/" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="//www.zhihu.com/people/rocko/" target="_blank" >
+                <i class="icon icon-lg icon-smile-o"></i>
+                Zhihu
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/rocko_zxp" target="_blank" >
+                <i class="icon icon-lg icon-twitter"></i>
+                Twitter
+              </a>
+            </li>
+        
+      </ul>
     </div>
-    <div class="article-info profile-block">
-      <div class="article-info-block">
-        23
-        <span>文章</span>
-      </div>
-      <div class="article-info-block">
-        33
-        <span>标签</span>
-      </div>
-    </div>
-    
-    <div class="contact-info profile-block">
-      <table class="contact-list">
-        <tr>
-          
-          <td><a href="//github.com/zhengxiaopeng/" target="_blank" title="github"><i class="fa fa-github"></i></a></td>
-          
-          <td><a href="//weibo.com/678662430/" target="_blank" title="weibo"><i class="fa fa-weibo"></i></a></td>
-          
-          <td><a href="//www.zhihu.com/people/rocko/" target="_blank" title="smile-o"><i class="fa fa-smile-o"></i></a></td>
-          
-          <td><a href="https://twitter.com/rocko_zxp" target="_blank" title="twitter"><i class="fa fa-twitter"></i></a></td>
-          
-          <td><a href="https://plus.google.com/u/0/101915236087672094434/" target="_blank" title="google-plus"><i class="fa fa-google-plus"></i></a></td>
-          
-          <td><a href="/atom.xml" target="_blank" title="rss"><i class="fa fa-rss"></i></a></td>
-          
-        </tr>
-      </table>
-    </div>
-    
-    
   </div>
 </aside>
 
-      
-      <section id="main"><article id="post-MVVM_Android-CleanArchitecture" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      
-	
-		<img src="https://static.rocko.xyz/img/MVVM_Android-CleanArchitecture-0.png" class="article-banner">
-	
-
-
-
-    
-    
-    
-      <header class="article-header">
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">MVVM_Android-CleanArchitecture</div>
         
-  
-    <h1 class="article-title" itemprop="name">
-      MVVM_Android-CleanArchitecture
-    </h1>
-  
-
-        <div class="article-meta">
-          
-  <div class="article-date" >
-    <i class="fa fa-calendar"></i>
-    <a href="/2015/11/07/MVVM_Android-CleanArchitecture/">
-      <time datetime="2015-11-07T04:49:07.000Z" itemprop="datePublished">2015-11-07</time>
-    </a>
-  </div>
-
-
-          
-  <div class="article-category">
-  	<i class="fa fa-folder"></i>
-    <a class="article-category-link" href="/categories/Android/">Android</a>
-  </div>
-
-          <!-- 评论、访问统计部分，不蒜子 -->
-          <!-- 不蒜子统计 -->
-
-
-          
-          
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
         </div>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-                
-                    <div id="toc" class="toc-article">
-                    <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分层架构与-M-V-X"><span class="toc-number">2.</span> <span class="toc-text">分层架构与 M-V-X</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Android-CleanArchitecture"><span class="toc-number">3.</span> <span class="toc-text">Android-CleanArchitecture</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Dagger"><span class="toc-number">3.1.</span> <span class="toc-text">Dagger</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RxJava、RxAndroid"><span class="toc-number">3.2.</span> <span class="toc-text">RxJava、RxAndroid</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Lambda"><span class="toc-number">3.3.</span> <span class="toc-text">Lambda</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MVVM"><span class="toc-number">4.</span> <span class="toc-text">MVVM</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#理论简述"><span class="toc-number">4.1.</span> <span class="toc-text">理论简述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Android-中实现"><span class="toc-number">4.2.</span> <span class="toc-text">Android 中实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#架构图"><span class="toc-number">4.3.</span> <span class="toc-text">架构图</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Refactor"><span class="toc-number">5.</span> <span class="toc-text">Refactor</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">6.</span> <span class="toc-text">参考</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#END"><span class="toc-number">7.</span> <span class="toc-text">END</span></a></li></ol>
-  </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
 
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>“Architecture is About Intent, not Frameworks”    - <a href="http://cleancoder.com/" target="_blank" rel="external">Robert C. Martin (Uncle Bob)</a></p>
+    <div class="container fade-scale">
+        <h1 class="title">MVVM_Android-CleanArchitecture</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2015-11-07T04:49:07.000Z" itemprop="datePublished" class="page-time">
+  2015-11-07
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Android/">Android</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#前言"><span class="post-toc-number">1.</span> <span class="post-toc-text">前言</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#分层架构与-M-V-X"><span class="post-toc-number">2.</span> <span class="post-toc-text">分层架构与 M-V-X</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Android-CleanArchitecture"><span class="post-toc-number">3.</span> <span class="post-toc-text">Android-CleanArchitecture</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Dagger"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">Dagger</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#RxJava、RxAndroid"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">RxJava、RxAndroid</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Lambda"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">Lambda</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#MVVM"><span class="post-toc-number">4.</span> <span class="post-toc-text">MVVM</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#理论简述"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">理论简述</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Android-中实现"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">Android 中实现</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#架构图"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">架构图</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Refactor"><span class="post-toc-number">5.</span> <span class="post-toc-text">Refactor</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#参考"><span class="post-toc-number">6.</span> <span class="post-toc-text">参考</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#END"><span class="post-toc-number">7.</span> <span class="post-toc-text">END</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-MVVM_Android-CleanArchitecture"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">MVVM_Android-CleanArchitecture</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2015年11月07日 12:49" datetime="2015-11-07T04:49:07.000Z"  itemprop="datePublished">2015-11-07</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Android/">Android</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+<span>
+    <a href="/2015/11/07/MVVM_Android-CleanArchitecture/#comments" class="ds-thread-count" data-thread-key="MVVM_Android-CleanArchitecture" data-count-type="comments"></a>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>“Architecture is About Intent, not Frameworks”    - <a href="http://cleancoder.com/" target="_blank" rel="external">Robert C. Martin (Uncle Bob)</a></p>
 <p>Uncle Bob 的这句话套在 MVVM 上也是适用的, MVVM 也仅仅是架构<code>模式</code>（Architectural pattern），其有一套自己的理论概念（pattern）而不是规定的具体实现（或 Frameworks）。早之前在知乎上相关问题的回答（<a href="http://www.zhihu.com/question/30976423/answer/50181505" target="_blank" rel="external">android UI设计MVVM设计模式讨论？</a>）中也简单提到过 MVVM 了，M-V-X 的关系如上图，那么这一次博主把 <a href="https://github.com/android10" target="_blank" rel="external">Fernando Cejas(android10)</a> 的 <a href="https://github.com/android10/Android-CleanArchitecture" target="_blank" rel="external">Android-CleanArchitecture</a> 项目中的 MVP 实现重构成了用 MVVM 来实现。所以看这篇文章最好是先搞清了 <a href="https://github.com/android10" target="_blank" rel="external">Fernando Cejas(android10)</a> 的 <a href="https://github.com/android10/Android-CleanArchitecture" target="_blank" rel="external">Android-CleanArchitecture</a> sample app 和对应的两篇文章（见参考）。整个历程也算比较愉快，没什么不良反应，这篇文章理所当然会重点说说 MVVM 的实现、 Data Binding 等相关的东西。那为什么拥抱 MVVM 呢。当然是 Google 推出官方的 <a href="https://developer.android.com/tools/data-binding/guide.html" target="_blank" rel="external">data binding</a> 啦，下一次的 Android MVVM 热潮应该就是 data binding 放出正式版了。</p>
 <a id="more"></a>
 <h2 id="分层架构与-M-V-X"><a href="#分层架构与-M-V-X" class="headerlink" title="分层架构与 M-V-X"></a>分层架构与 M-V-X</h2><p>首先还是先来说说 <code>分层架构</code> 与 <code>MVC</code> or <code>M-V-X</code> 之间的关系。分层架构是一种常见的软件应用架构，在 Java 程序中可以算是一种应用标准了，通常又叫 N 层架构，而最常见的是 3 层架构，它包含如下 3 层：</p>
@@ -502,7 +276,13 @@ var _hmt = _hmt || [];
 </li>
 </ul>
 <p>此外还有必不可少的一部分：Binder，Android 中也就是 Data binding 了，提供 View 与 Model 的绑定功能，所以 Model-View-ViewModel 又称为 <code>Model-View-Binder</code>。 与 MVP 中的 Presenter 相比，ViewModel 并不需要去持有 View 的引用，下面是结构图：</p>
-<p><img src="https://static.rocko.xyz/img/MVVM_Android-CleanArchitecture-1.png" alt="MVVM结构图"></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://static.rocko.xyz/img/MVVM_Android-CleanArchitecture-1.png" alt="MVVM结构图" title="">
+                </div>
+                <div class="image-caption">MVVM结构图</div>
+            </figure>
 <h3 id="Android-中实现"><a href="#Android-中实现" class="headerlink" title="Android 中实现"></a>Android 中实现</h3><p>目前 Android 的 data binding 还是 beta，还只是 <code>one-way</code> 单向绑定，功能上还有所欠缺、控制性也还不强，但是把它写出来还是没问题的。对于 Activity、Fragment 而言仅仅是作为 Java View 看待，与 XML 对应，所以里面只有 View 的展现逻辑，此外没有其它代码。一个 Activity 或 Fragment（一般都 with XML） 对应一个 ViewModel，对于一个基础 View（XML）可以通过继承对应的 ViewModel 实现重用，本文的代码也有体现。对于 Activity 和 Fragment 的View 状态保存恢复也通过 ViewModel 处理。因为 binding 的入口在 Activity 或 Fragment 中，所以为了方便写个基类处理 ViewModel 和 Binding 的初始化，然后在 对应的 XML 里加上 ViewModel 的 variable， XML 里不再有其它数据对象的 variable。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">BaseActivity</span>&lt;<span class="title">VM</span> <span class="keyword">extends</span> <span class="title">ViewModel</span>, <span class="title">B</span> <span class="keyword">extends</span> <span class="title">ViewDataBinding</span>&gt; <span class="keyword">extends</span> <span class="title">Activity</span> </span>&#123;</div><div class="line"></div><div class="line">  <span class="keyword">private</span> VM viewModel;</div><div class="line">  <span class="keyword">private</span> B binding;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setViewModel</span><span class="params">(@NonNull VM viewModel)</span> </span>&#123;</div><div class="line">    <span class="keyword">this</span>.viewModel = viewModel;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">public</span> VM <span class="title">getViewModel</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (viewModel == <span class="keyword">null</span>) &#123;</div><div class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> NullPointerException(<span class="string">"You should setViewModel first!"</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> viewModel;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setBinding</span><span class="params">(@NonNull B binding)</span> </span>&#123;</div><div class="line">    <span class="keyword">this</span>.binding = binding;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">public</span> B <span class="title">getBinding</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (binding == <span class="keyword">null</span>) &#123;</div><div class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> NullPointerException(<span class="string">"You should setBinding first!"</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> binding;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>ViewModel 中通过 ObservableField 来达到细粒度的控制，绑定操作都放在 ViewModel 里，然后 ViewModel 里可以有多个 domain 中的 Interator(UseCase) 来得到 View 需要渲染的数据 Model。对于 ObservableField 的绑定操作和命令操作（Command）都是暴露的，也易于测试。binding 现在缺少手动在 Java 代码中注册通知事件的功能，比如有些 model 的渲染必须通过 Java 代码来操作的话就需要了，在 Activity（Java View） 中通过向 Binding 注册通知回调，而目前只能在 XML 中知道，当然目前也可以自己实现，方法也有多种：接口回调、EventBus、RxBus。。</p>
@@ -510,11 +290,31 @@ var _hmt = _hmt || [];
 <ul>
 <li><strong>Clean Architecture：</strong></li>
 </ul>
-<p><img src="https://static.rocko.xyz/img/MVVM_Android-CleanArchitecture-2.png" alt="Clean Architecture"></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://static.rocko.xyz/img/MVVM_Android-CleanArchitecture-2.png" alt="Clean" title="">
+                </div>
+                <div class="image-caption">Clean</div>
+            </figure>
 <ul>
-<li><p><strong><strong>MVVM_Clean-Architecture tier：</strong></strong><br><img src="https://static.rocko.xyz/img/MVVM_Android-CleanArchitecture-3.png" alt="MVVM_Clean-Architecture 分层结构"></p>
+<li><p><strong><strong>MVVM_Clean-Architecture tier：</strong></strong></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://static.rocko.xyz/img/MVVM_Android-CleanArchitecture-3.png" alt="MVVM_Clean-Architecture" title="">
+                </div>
+                <div class="image-caption">MVVM_Clean-Architecture</div>
+            </figure>
 </li>
-<li><p><strong>MVVM_Clean-Architecture put all：</strong><br><img src="https://static.rocko.xyz/img/MVVM_Android-CleanArchitecture-4.png" alt="MVVM_Clean-Architecture put all 应用在一起"></p>
+<li><p><strong>MVVM_Clean-Architecture put all：</strong></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://static.rocko.xyz/img/MVVM_Android-CleanArchitecture-4.png" alt="MVVM_Clean-Architecture" title="">
+                </div>
+                <div class="image-caption">MVVM_Clean-Architecture</div>
+            </figure>
 </li>
 </ul>
 <h2 id="Refactor"><a href="#Refactor" class="headerlink" title="Refactor"></a>Refactor</h2><p>Talk is cheap. Show you the code. <strong>↓↓↓</strong><br><a href="https://github.com/zhengxiaopeng/MVVM_Android-CleanArchitecture" target="_blank" rel="external">MVVM_Android-CleanArchitecture</a></p>
@@ -525,15 +325,11 @@ var _hmt = _hmt || [];
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="http://book.douban.com/subject/4826290/" target="_blank" rel="external">企业应用架构模式</a><br><a href="http://fernandocejas.com/2014/09/03/architecting-android-the-clean-way/" target="_blank" rel="external">Architecting Android…The clean way?</a> （Android-CleanArchitecture 的文章，译文略）<br><a href="http://fernandocejas.com/2015/07/18/architecting-android-the-evolution/" target="_blank" rel="external">Architecting Android…The evolution</a> （Android-CleanArchitecture 的文章，译文略）<br><a href="https://getpocket.com/a/read/1048441260" target="_blank" rel="external">Approaching Android with MVVM</a><br><a href="http://tech.vg.no/2015/07/17/android-databinding-goodbye-presenter-hello-viewmodel/" target="_blank" rel="external">ANDROID DATABINDING: GOODBYE PRESENTER, HELLO VIEWMODEL!</a></p>
 <h2 id="END"><a href="#END" class="headerlink" title="END"></a>END</h2><p>本文源码：<a href="https://github.com/zhengxiaopeng/MVVM_Android-CleanArchitecture" target="_blank" rel="external">MVVM_Android-CleanArchitecture</a> or <a href="https://github.com/zhengxiaopeng/Rocko-Android-Demos/tree/master/architecture/MVVM_Android-CleanArchitecture" target="_blank" rel="external">Rocko-Android-Demo(-MVVM_Android-CleanArchitecture)</a></p>
 
-      
-    </div>
-    
+        </div>
    <!-- 加入广告 -->
    <!-- 广告 -->
-
-    
-    
-    <div class="article-entry">
+<blockquote class="post-copyright">
+	    <div class="article-entry">
 
     <!-- hr 分割线-->
 
@@ -549,300 +345,275 @@ var _hmt = _hmt || [];
 </script>
 
     </div>
-
-    
-
-   <!-- 加入打赏 -->
-   <!-- 打赏 -->
-
-    
-    <div class="article-entry">
-            <br/>
-            <br/>
-            <ul>
-              <li><p><i class="fa fa-credit-card"></i> <strong>打赏</strong><br>  如果觉得我的博客、分享对您有帮助，可以扫一扫随意打赏，您的支持将鼓励我继续创作、分享！</p>
-              <p>  <a href="https://static.rocko.xyz/img/donate.jpg" title="支付宝||微信" class="fancybox" rel="article0"><img src="https://static.rocko.xyz/img/donate.jpg" alt="⇐支付宝||微信⇒"></a><span class="caption">⇐支付宝||微信⇒</span></p>
-              </li>
-            </ul>
-        </div>
-
-    
+</blockquote>
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2016-12-10T18:48:42.000Z" itemprop="dateUpdated">2016年12月11日 2:48</time>
+</span><br>
 
 
-    <footer class="article-footer">
-      <a data-url="https://rocko.xyz/2015/11/07/MVVM_Android-CleanArchitecture/" data-id="cix7p5xda0013hcsdchkhlqmf" class="article-share-link">分享到</a>
-      
-        <a href="https://rocko.xyz/2015/11/07/MVVM_Android-CleanArchitecture/#comments" class="article-comment-link">去评论</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Data-Binding/">Data Binding</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MVVM/">MVVM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/架构/">架构</a></li></ul>
-
+        除特别说明外，文章均采用「知识共享 署名 - 非商业性 - 相同方式共享 4.0协议」进行许可，转载需注明文章出处：<a href="/2015/11/07/MVVM_Android-CleanArchitecture/" target="_blank" rel="external">https://rocko.xyz/2015/11/07/MVVM_Android-CleanArchitecture/</a>
+    </div>
+    <footer>
+        <a href="https://rocko.xyz">
+            <img src="/img/avatar.png" alt="Rocko">
+            Rocko
+        </a>
     </footer>
-  </div>
-  
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Data-Binding/">Data Binding</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MVVM/">MVVM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/架构/">架构</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
     
-<nav id="article-nav">
-  
-    <a href="/2016/02/17/AndroidDev站点推荐-Issue-1/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">上一篇</strong>
-      <div class="article-nav-title">
-        
-          AndroidDev站点推荐-Issue#1
-        
-      </div>
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://rocko.xyz/2015/11/07/MVVM_Android-CleanArchitecture/&title=《MVVM_Android-CleanArchitecture》 — Rocko's blog&pic=https://rocko.xyz/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://rocko.xyz/2015/11/07/MVVM_Android-CleanArchitecture/&title=《MVVM_Android-CleanArchitecture》 — Rocko's blog&source=前言“Architecture is About Intent, not Frameworks”    - Robert C. Martin (Uncle..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://rocko.xyz/2015/11/07/MVVM_Android-CleanArchitecture/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《MVVM_Android-CleanArchitecture》 — Rocko's blog&url=https://rocko.xyz/2015/11/07/MVVM_Android-CleanArchitecture/&via=https://rocko.xyz" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://rocko.xyz/2015/11/07/MVVM_Android-CleanArchitecture/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
     </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
   
+    <div class="waves-block waves-effect prev">
+      <a href="/2016/02/17/AndroidDev站点推荐-Issue-1/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">AndroidDev站点推荐-Issue#1</h4>
+      </a>
+    </div>
   
-    <a href="/2015/06/27/High一下/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">下一篇</strong>
-      <div class="article-nav-title">High一下</div>
-    </a>
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2015/06/27/High一下/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">High一下</h4>
+      </a>
+    </div>
   
 </nav>
 
 
-  
+
+    
+
+<div class="comments" id="comments">
+    <div class="ds-thread" data-thread-key="MVVM_Android-CleanArchitecture" data-title="MVVM_Android-CleanArchitecture" data-url="https://rocko.xyz/2015/11/07/MVVM_Android-CleanArchitecture/"></div>
+</div>
+<script>
+lazyScripts.push('//cdn.bootcss.com/marked/0.3.6/marked.min.js');
+
+
+</script>
+
+
+
+
+
+
+
 </article>
 
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        大爷，请随意~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechat.png" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
 
-  <section id="comments">
-    <div class="ds-thread" data-thread-key="2015/11/07/MVVM_Android-CleanArchitecture/-MVVM_Android-CleanArchitecture" data-title="MVVM_Android-CleanArchitecture" data-url="https://rocko.xyz/2015/11/07/MVVM_Android-CleanArchitecture/" data-author-key="1" ></div>
-
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<script>
-  (adsbygoogle = window.adsbygoogle || []).push({
-    google_ad_client: "ca-pub-2972075783837999",
-    enable_page_level_ads: true
-  });
-</script>
-    
-    <!-- 直接换成多说的
-    <div id="ds-thread" class="ds-thread" data-thread-key="https://rocko.xyz/2015/11/07/MVVM_Android-CleanArchitecture/" data-title="MVVM_Android-CleanArchitecture" data-url="https://rocko.xyz/2015/11/07/MVVM_Android-CleanArchitecture/">
-      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by DuoShuo.</a></noscript>
-      </div>
-    -->
-  </section>
-
-</section>
-      
-        <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">内容许可</h3>
-    <div class="widget tagcloud">
-      <ul>
-	  <h5><a href="http://creativecommons.org/licenses/by-sa/3.0/cn/" target="_britt" title="http://creativecommons.org/licenses/by-sa/3.0/cn/">除特别说明外，文章均采用「知识共享署名 - 相同方式共享 3.0 中国大陆许可协议」进行许可，转载需注明文章出处。</a></h5>
+        
+        <li>
+            <img src="/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
     </ul>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            <span>博客内容遵循 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享 署名 - 非商业性 - 相同方式共享 4.0协议</a></span>
+        </p>
     </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">最新文章</h3>
-    <div class="widget">
-      <ul id="recent-post" class="">
-        
-          <li>
-            
-            <div class="item-thumbnail">
-              <a href="/2016/11/27/Android-Robolectric-加载运行本地-so-动态库/" class="thumbnail">
-  
-    <span style="background-image:url(https://static.rocko.xyz/img/2016-11-27_10-04-15_Robolectric.jpg?imageView2/2/w/200/h/100/q/100)" alt="Android Robolectric 加载运行本地 So 动态库" class="thumbnail-image"></span>
-  
-</a>
-            </div>
-            
-            <div class="item-inner">
-              <p class="item-category"><a class="article-category-link" href="/categories/Android/">Android</a></p>
-              <p class="item-title"><a href="/2016/11/27/Android-Robolectric-加载运行本地-so-动态库/" class="title">Android Robolectric 加载运行本地 So 动态库</a></p>
-              <p class="item-date"><time datetime="2016-11-27T01:42:41.000Z" itemprop="datePublished">2016-11-27</time></p>
-            </div>
-          </li>
-        
-          <li>
-            
-            <div class="item-thumbnail">
-              <a href="/2016/08/28/科学上网的各种姿势/" class="thumbnail">
-  
-    <span style="background-image:url(https://static.rocko.xyz/img/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E7%9A%84%E5%90%84%E7%A7%8D%E5%A7%BF%E5%8A%BF_0.jpg)" alt="科学上网的各种姿势" class="thumbnail-image"></span>
-  
-</a>
-            </div>
-            
-            <div class="item-inner">
-              <p class="item-category"><a class="article-category-link" href="/categories/FGFW/">FGFW</a></p>
-              <p class="item-title"><a href="/2016/08/28/科学上网的各种姿势/" class="title">科学上网的各种姿势</a></p>
-              <p class="item-date"><time datetime="2016-08-27T16:00:01.000Z" itemprop="datePublished">2016-08-28</time></p>
-            </div>
-          </li>
-        
-          <li>
-            
-            <div class="item-thumbnail">
-              <a href="/2016/06/14/ADB-Issue-2/" class="thumbnail">
-  
-    <span style="background-image:url(https://static.rocko.xyz/img/android-dev-bookmarks.jpg)" alt="ADB-Issue#2" class="thumbnail-image"></span>
-  
-</a>
-            </div>
-            
-            <div class="item-inner">
-              <p class="item-category"><a class="article-category-link" href="/categories/Android-Dev-Bookmarks/">Android-Dev-Bookmarks</a></p>
-              <p class="item-title"><a href="/2016/06/14/ADB-Issue-2/" class="title">ADB-Issue#2</a></p>
-              <p class="item-date"><time datetime="2016-06-14T13:51:45.000Z" itemprop="datePublished">2016-06-14</time></p>
-            </div>
-          </li>
-        
-          <li>
-            
-            <div class="item-thumbnail">
-              <a href="/2016/02/17/AndroidDev站点推荐-Issue-1/" class="thumbnail">
-  
-    <span style="background-image:url(https://static.rocko.xyz/img/android-dev-bookmarks.jpg)" alt="AndroidDev站点推荐-Issue#1" class="thumbnail-image"></span>
-  
-</a>
-            </div>
-            
-            <div class="item-inner">
-              <p class="item-category"><a class="article-category-link" href="/categories/Android-Dev-Bookmarks/">Android-Dev-Bookmarks</a></p>
-              <p class="item-title"><a href="/2016/02/17/AndroidDev站点推荐-Issue-1/" class="title">AndroidDev站点推荐-Issue#1</a></p>
-              <p class="item-date"><time datetime="2016-02-17T05:45:05.000Z" itemprop="datePublished">2016-02-17</time></p>
-            </div>
-          </li>
-        
-          <li>
-            
-            <div class="item-thumbnail">
-              <a href="/2015/11/07/MVVM_Android-CleanArchitecture/" class="thumbnail">
-  
-    <span style="background-image:url(https://static.rocko.xyz/img/MVVM_Android-CleanArchitecture-0.png?imageView2/2/w/400/h/300/q/100)" alt="MVVM_Android-CleanArchitecture" class="thumbnail-image"></span>
-  
-</a>
-            </div>
-            
-            <div class="item-inner">
-              <p class="item-category"><a class="article-category-link" href="/categories/Android/">Android</a></p>
-              <p class="item-title"><a href="/2015/11/07/MVVM_Android-CleanArchitecture/" class="title">MVVM_Android-CleanArchitecture</a></p>
-              <p class="item-date"><time datetime="2015-11-07T04:49:07.000Z" itemprop="datePublished">2015-11-07</time></p>
-            </div>
-          </li>
-        
-      </ul>
+    <div class="bottom">
+        <p>
+            <span>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></span>
+            <span>Rocko's blog &copy; 2014 - 2016</span>
+        </p>
     </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap widget-list">
-    <h3 class="widget-title">友链</h3>
-    <div class="widget">
-      <ul>
-        
-          <li><a href="http://blog.csdn.net/bbld_/" target="_bbld" title="http://blog.csdn.net/bbld_/">我的CSDN博客</a></li>
-	  	  <li><a href="http://www.jiangwenrou.com/" target="_xiaojiang" title="http://www.jiangwenrou.com">小蒋的博客</a></li>
-          <li><a href="http://kymjs.com/" target="_kymjs" title="http://kymjs.com/">kymjs张涛</a></li>
-          <li><a href="http://hanks.xyz/" target="_hanks" title="http://hanks.xyz/">Hanks.xyz</a></li>
-          <li><a href="http://www.liuling123.com/" target="_liuling123" title="http://www.liuling123.com/">残剑博客</a></li>
-	  	  <li><a href="http://brittyu.xyz/" target="_britt" title="http://brittyu.xyz/">Brittyu</a></li>
-
-        
-      </ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">   </h3>
-    <div class="widget tagcloud">
-      <ul>
-
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<!-- Navigation -->
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-2972075783837999"
-     data-ad-slot="9961152264"
-     data-ad-format="auto"></ins>
-<script>
-(adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-      
-      <!--
-     <iframe src="http://rcm-cn.amazon-adsystem.com/e/cm?t=rocko-23&o=28&p=11&l=ur1&category=books&banner=1AY3G51F22DKJFC72ER2&f=ifr" width="200" height="600" scrolling="no" border="0" marginwidth="0" style="border:none;max-width:800px;max-height:600px;" frameborder="0"></iframe>
-     -->
-
-    </ul>
-    </div>
-  </div>
-
-
-
-
-  
-  <div id="toTop" class="fa fa-chevron-up"></div>
-</aside>
-      
-    </div>
-    <footer id="footer">
-
-<!--
-
-  
--->
-  
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2014 - 2016  <i class="fa fa-heartbeat"></i> Rocko
-
-<!--
-      
--->
-      <br>
-
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme by <a href="https://github.com/zhengxiaopeng/hexo-theme-icarus" target="_icarus">Icarus </a>
-
-        
-
-    </div>
-
-   
-
-   
-
-  </div>
 </footer>
-    
 
-<script type="text/javascript">
-  var duoshuoQuery = {short_name:"rocko"};
-  (function() {
-    var ds = document.createElement('script');
-    ds.type = 'text/javascript';ds.async = true;
-    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-    ds.charset = 'UTF-8';
-    (document.getElementsByTagName('head')[0] 
-     || document.getElementsByTagName('body')[0]).appendChild(ds);
-  })();
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://rocko.xyz/2015/11/07/MVVM_Android-CleanArchitecture/&title=《MVVM_Android-CleanArchitecture》 — Rocko's blog&pic=https://rocko.xyz/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://rocko.xyz/2015/11/07/MVVM_Android-CleanArchitecture/&title=《MVVM_Android-CleanArchitecture》 — Rocko's blog&source=前言“Architecture is About Intent, not Frameworks”    - Robert C. Martin (Uncle..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://rocko.xyz/2015/11/07/MVVM_Android-CleanArchitecture/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《MVVM_Android-CleanArchitecture》 — Rocko's blog&url=https://rocko.xyz/2015/11/07/MVVM_Android-CleanArchitecture/&via=https://rocko.xyz" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://rocko.xyz/2015/11/07/MVVM_Android-CleanArchitecture/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACG0lEQVR42u3aQW7DMAwEwPz/0+m1QOFkl3IKRBqdAliWPT4oFMnHIx7Pi/H76t/ff+/N5z8+MTAwML6W8Xw5ruZcvWKyfj4neTcMDIxzGFdLJ3New3L263vfvDMGBgZGuQm2vNnnw8DAwEiWy8HrmzUGBgbGLKHWho+zNW8+i2NgYHwhI8+6///vj9Q3MDAwvorxLMd6iq1N/UdvhYGBsTUj3+DyUuVsfttsgYGBgdEeQZNNNge08zEwME5j5AvlLWKzhrPkcIuBgXECI7951myRMPI03+VVDAyMYxjr2+69mKU2CwwMjK0ZbZNW+yFmbWFvCpwYGBhbM+qp7fm4BOclgcuzOAYGxjGM9sFtaSH/ZHmyDwMD4wTGbU0P8Wg37ijOxcDA2JqRB23tsXYlnTf838DAwNiIkQSF66S7jrLDZgsMDIwtGCstFHng2K5TFDgxMDAOYOSL5kXN5DPVMezV+hgYGFszZg9eKSSsHHeLrCEGBsYBjPwVW8AKZhjnYmBgbMRoU2Dt1RaTf1YMDIxzGHl7xCytP0vYFY0dGBgYmzKe5WjbIFaSdMVdGBgYWzPWN7uc2pYEZs0cGBgYuzI+12axHgIWrRgYGBgHMNpXuSv4mx2k39Q3MDAwjme0pcqVoLCIajEwMDBepsPyMC5vAmuDVwwMjBMY+QNWGinaMkCSwsPAwDiB0R4d80LjSoFzVtTEwMDYjvEDMKs39RjZP6oAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+var duoshuoQuery = {short_name:'rocko', theme: 'none'};
+lazyScripts.push('/js/embed.min.js?v=1.4.3');
+
+
+
 </script>
 
+<script src="/js/main.min.js?v=1.4.3"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.4.3" async></script>
 
 
 
 
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
 
 
-<script src="/js/script.js"></script>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
-
-  </div>
 </body>
 </html>

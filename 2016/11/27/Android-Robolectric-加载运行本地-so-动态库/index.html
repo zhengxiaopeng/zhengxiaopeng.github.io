@@ -1,480 +1,250 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <meta name="baidu-site-verification" content="WG8fZ2mGXA" />
-  <meta name="baidu_union_verify" content="d1952c66cf48912e21c18c7c581f382a">
-  <meta name="google-site-verification" content="J7ONClDGsj92njCYAloRwEkDpz94YUFUxgi76g1m4Lk" />
-  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
-  
-  <title>Android Robolectric 加载运行本地 So 动态库 | Rocko&#39;s blog</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="http://rocko.xyz/2016/11/27/Android-Robolectric-加载运行本地-so-动态库/
-前言Robolectric 是 Android 的单元测试框架，运行无需 Android 真机环境直接运行在 JVM 之上，所以在 test case 运行速度效率上有了很大提升，接近于 Java JUnit test（JUnit test &amp;gt; Robolectric">
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?4536d8f17989e675f0efa92c7722c95c"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    
+    <meta name="google-site-verification" content="J7ONClDGsj92njCYAloRwEkDpz94YUFUxgi76g1m4Lk">
+    
+    
+    <link rel="canonical" href="https://rocko.xyz/2016/11/27/Android-Robolectric-加载运行本地-so-动态库/">
+    
+    
+    <title>Android Robolectric 加载运行本地 So 动态库 | Rocko&#39;s blog | </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="baidu-site-verification" content="WG8fZ2mGXA" >
+    <meta name="baidu_union_verify" content="d1952c66cf48912e21c18c7c581f382a">
+    
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Robolectric,Testing,动态链接库,移植">
+    <meta name="description" content="前言Robolectric 是 Android 的单元测试框架，运行无需 Android 真机环境直接运行在 JVM 之上，所以在 test case 运行速度效率上有了很大提升，接近于 Java JUnit test（JUnit test &amp;gt; Robolectric &amp;gt;&amp;gt; androidTest）。不过框架本身并不支持 so 本地库的加载使用，加载时会直接报错，因为实际上运行环">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android Robolectric 加载运行本地 So 动态库">
 <meta property="og:url" content="https://rocko.xyz/2016/11/27/Android-Robolectric-加载运行本地-so-动态库/index.html">
 <meta property="og:site_name" content="Rocko's blog">
-<meta property="og:description" content="http://rocko.xyz/2016/11/27/Android-Robolectric-加载运行本地-so-动态库/
-前言Robolectric 是 Android 的单元测试框架，运行无需 Android 真机环境直接运行在 JVM 之上，所以在 test case 运行速度效率上有了很大提升，接近于 Java JUnit test（JUnit test &amp;gt; Robolectric">
+<meta property="og:description" content="前言Robolectric 是 Android 的单元测试框架，运行无需 Android 真机环境直接运行在 JVM 之上，所以在 test case 运行速度效率上有了很大提升，接近于 Java JUnit test（JUnit test &amp;gt; Robolectric &amp;gt;&amp;gt; androidTest）。不过框架本身并不支持 so 本地库的加载使用，加载时会直接报错，因为实际上运行环">
 <meta property="og:image" content="https://static.rocko.xyz/img/2016-11-27_01-03-43_liblog.so.png">
 <meta property="og:image" content="https://static.rocko.xyz/img/2016-11-27_09-11-08_no_deal_with.png">
 <meta property="og:image" content="https://static.rocko.xyz/img/2016-11-27_09-24-25_test_libs_folder.png">
 <meta property="og:image" content="https://static.rocko.xyz/img/2016-11-27_09-32-15_test_case_success.png">
-<meta property="og:updated_time" content="2016-12-10T18:48:42.000Z">
+<meta property="og:updated_time" content="2016-12-28T15:54:49.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android Robolectric 加载运行本地 So 动态库">
-<meta name="twitter:description" content="http://rocko.xyz/2016/11/27/Android-Robolectric-加载运行本地-so-动态库/
-前言Robolectric 是 Android 的单元测试框架，运行无需 Android 真机环境直接运行在 JVM 之上，所以在 test case 运行速度效率上有了很大提升，接近于 Java JUnit test（JUnit test &amp;gt; Robolectric">
+<meta name="twitter:description" content="前言Robolectric 是 Android 的单元测试框架，运行无需 Android 真机环境直接运行在 JVM 之上，所以在 test case 运行速度效率上有了很大提升，接近于 Java JUnit test（JUnit test &amp;gt; Robolectric &amp;gt;&amp;gt; androidTest）。不过框架本身并不支持 so 本地库的加载使用，加载时会直接报错，因为实际上运行环">
 <meta name="twitter:image" content="https://static.rocko.xyz/img/2016-11-27_01-03-43_liblog.so.png">
-  
-  
-    <link rel="icon" href="/img/favicon.png">
-  
-  <link href='/css/open_sans.css' rel='stylesheet' type='text/css'>
-  <link href="/css/source_code_pro.css" rel="stylesheet" type="text/css">
-  <link rel="stylesheet" href="/css/style.css">
-  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
-  
-
-  
-
- <script src="/js/jquery-2.0.3.min.js"></script>
-
-
-<script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?4536d8f17989e675f0efa92c7722c95c";
-  var s = document.getElementsByTagName("script")[0]; 
-  s.parentNode.insertBefore(hm, s);
-})();
-</script>
-
-
+    
+        <link rel="alternative" href="/atom.xml" title="Rocko&#39;s blog" type="application/atom+xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.png">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.3">
+    <script>window.lazyScripts=[]</script>
 </head>
+
 <body>
-  <div id="container">
-    <header id="header">
-  <div id="header-main" class="header-inner">
-    <div class="outer">
-      <a href="/" id="logo"><i class="logo" style="background-image: url(/img/rocdroid-80.gif)"></i><span class="site-title">Rocko&#39;s blog</span></a>
-      <nav id="main-nav">
-        
+    <div id="loading" class="active"></div>
 
-          
-          <a class="main-nav-link" href="/."><i class="fa fa-home"></i> Home</a>
-          
-
-        
-
-          
-          <a class="main-nav-link" href="/archives"><i class="fa fa-archive"></i> Archives</a>
-          
-
-        
-
-          
-          <a class="main-nav-link" href="/categories"><i class="fa fa-sort-alpha-asc"></i> Categories</a>
-          
-
-        
-
-          
-          <a class="main-nav-link" href="/tags"><i class="fa fa-tag"></i> Tags</a>
-          
-
-        
-
-          
-          <a class="main-nav-link" href="/about"><i class="fa fa-user"></i> About</a>
-          
-
-        
-
-           
-            <a class="main-nav-link" href="https://adb.rocko.xyz" target="ADB"><i class="fa fa-bookmark"></i> ADB</a>
-          
-
-        
-      </nav>
-      
-        <nav id="sub-nav">
-          <div class="profile" id="profile-nav">
-            <a id="profile-anchor" href="javascript:;"><img class="avatar" src="/img/avatar.png"><i class="fa fa-caret-down"></i></a>
-          </div>
-        </nav>
-      
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="https://rocko.xyz"></form>
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Rocko</h5>
+          <a href="mailto:rocko.zxp@gmail.com" title="rocko.zxp@gmail.com" class="mail">rocko.zxp@gmail.com</a>
+        </hgroup>
       </div>
     </div>
-  </div>
-  <div id="main-nav-mobile" class="header-sub header-inner">
-    <table class="menu outer">
-      <tr>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
         
-          <td>
-                
-            <a class="main-nav-link" href="/."><i class="fa fa-home"></i> Home</a>
-            
-
-          </td>
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
         
-          <td>
-                
-            <a class="main-nav-link" href="/archives"><i class="fa fa-archive"></i> Archives</a>
-            
-
-          </td>
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
         
-          <td>
-                
-            <a class="main-nav-link" href="/categories"><i class="fa fa-sort-alpha-asc"></i> Categories</a>
-            
-
-          </td>
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
         
-          <td>
-                
-            <a class="main-nav-link" href="/tags"><i class="fa fa-tag"></i> Tags</a>
-            
-
-          </td>
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
         
-          <td>
-                
-            <a class="main-nav-link" href="/about"><i class="fa fa-user"></i> About</a>
-            
-
-          </td>
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-user-circle"></i>
+                关于
+              </a>
+            </li>
         
-          <td>
-                 
-              <a class="main-nav-link" href="https://adb.rocko.xyz" target="ADB"><i class="fa fa-bookmark"></i> ADB</a>
-            
-
-          </td>
+            <li class="waves-block waves-effect">
+              <a href="/friendLink"  >
+                <i class="icon icon-lg icon-users"></i>
+                友链
+              </a>
+            </li>
         
-        <td>
-          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="https://rocko.xyz"></form>
-        </td>
-      </tr>
-    </table>
-  </div>
-</header>
-
-    <div class="outer">
-      
-        <aside id="profile">
-  <div class="inner profile-inner">
-    <div class="base-info profile-block">
-      <img id="avatar" src="/img/avatar.png" >
-      <h2 id="name">Rocko</h2>
-      <h3 id="title">Android Developer</h3>
-      <span id="location"><i class="fa fa-map-marker"></i>Shenzhen, China</span>
-      <a id="follow" 
-        href='
-          
-    javascript:(
-    /*
-     * Copyright (C) 2015 Rocko (http://rocko.xyz) <rocko.zxp@gmail.com>
-     *
-     * Licensed under the Apache License, Version 2.0 (the "License");
-     * you may not use this file except in compliance with the License.
-     * You may obtain a copy of the License at
-     *
-     *      http://www.apache.org/licenses/LICENSE-2.0
-     *
-     * Unless required by applicable law or agreed to in writing, software
-     * distributed under the License is distributed on an "AS IS" BASIS,
-     * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-     * See the License for the specific language governing permissions and
-     * limitations under the License.
-     */
-    function go() {
-    
-    function c() {
-        var e = document.createElement("link");
-        e.setAttribute("type", "text/css");
-        e.setAttribute("rel", "stylesheet");
-        e.setAttribute("href", f);
-        e.setAttribute("class", l);
-        document.body.appendChild(e)
-    }
- 
-    function h() {
-        var e = document.getElementsByClassName(l);
-        for (var t = 0; t < e.length; t++) {
-            document.body.removeChild(e[t])
-        }
-    }
- 
-    function p() {
-        var e = document.createElement("div");
-        e.setAttribute("class", a);
-        document.body.appendChild(e);
-        setTimeout(function() {
-            document.body.removeChild(e)
-        }, 100)
-    }
- 
-    function d(e) {
-        return {
-            height : e.offsetHeight,
-            width : e.offsetWidth
-        }
-    }
- 
-    function v(i) {
-        var s = d(i);
-        return s.height > e && s.height < n && s.width > t && s.width < r
-    }
- 
-    function m(e) {
-        var t = e;
-        var n = 0;
-        while (!!t) {
-            n += t.offsetTop;
-            t = t.offsetParent
-        }
-        return n
-    }
- 
-    function g() {
-        var e = document.documentElement;
-        if (!!window.innerWidth) {
-            return window.innerHeight
-        } else if (e && !isNaN(e.clientHeight)) {
-            return e.clientHeight
-        }
-        return 0
-    }
- 
-    function y() {
-        if (window.pageYOffset) {
-            return window.pageYOffset
-        }
-        return Math.max(document.documentElement.scrollTop, document.body.scrollTop)
-    }
- 
-    function E(e) {
-        var t = m(e);
-        return t >= w && t <= b + w
-    }
- 
-    var songs = [
-                "https://static.rocko.xyz/audio/Music-Wake-Live.mp3",
-                "https://static.rocko.xyz/audio/Music-Fashion_Show.mp3",
-                "https://static.rocko.xyz/audio/Music-outside.mp3",
-                "https://static.rocko.xyz/audio/Music-sunburst.mp3"
-    ];
-
-    function S() {
-        var e = document.getElementById("audio_element_id");
-        if(e != null){
-            var index = parseInt(e.getAttribute("curSongIndex"));
-            if(index > songs.length - 2) {
-                index = 0;
-            } else {
-                index++;
-            }
-            e.setAttribute("curSongIndex", index);
-            N();
-        }
-
-        e.src = i;
-        e.play()
-    }
- 
-    function x(e) {
-        e.className += " " + s + " " + o
-    }
- 
-    function T(e) {
-        e.className += " " + s + " " + u[Math.floor(Math.random() * u.length)]
-    }
- 
-    function N() {
-        var e = document.getElementsByClassName(s);
-        var t = new RegExp("\\b" + s + "\\b");
-        for (var n = 0; n < e.length; ) {
-            e[n].className = e[n].className.replace(t, "")
-        }
-    }
-
-    function initAudioEle() {
-        var e = document.getElementById("audio_element_id");
-        if(e === null){
-            e = document.createElement("audio");
-            e.setAttribute("class", l);
-            e.setAttribute("curSongIndex", 0);
-            e.id = "audio_element_id";
-            e.loop = false;
-            e.bgcolor = 0;
-            e.addEventListener("canplay", function() {
-            setTimeout(function() {
-                x(k)
-            }, 500);
-            setTimeout(function() {
-                N();
-                p();
-                for (var e = 0; e < O.length; e++) {
-                    T(O[e])
-                }
-            }, 15500)
-        }, true);
-        e.addEventListener("ended", function() {
-            N();
-            h();
-            go();
-        }, true);
-        e.innerHTML = " <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>";
-        document.body.appendChild(e);
-        }
-    }
-    
-    initAudioEle();
-    var e = 30;
-    var t = 30;
-    var n = 350;
-    var r = 350;
-
-    var curSongIndex = parseInt(document.getElementById("audio_element_id").getAttribute("curSongIndex"));
-    var i = songs[curSongIndex];
-    
-    var s = "mw-harlem_shake_me";
-    var o = "im_first";
-    var u = ["im_drunk", "im_baked", "im_trippin", "im_blown"];
-    var a = "mw-strobe_light";
-
-    var f = "/css/harlem-shake-style.css";
-    
-    var l = "mw_added_css";
-    var b = g();
-    var w = y();
-    var C = document.getElementsByTagName("*");
-    var k = null;
-    for (var L = 0; L < C.length; L++) {
-        var A = C[L];
-        if (v(A)) {
-            if (E(A)) {
-                k = A;
-                break
-            }
-        }
-    }
-    if (A === null) {
-        console.warn("Could not find a node of the right size. Please try a different page.");
-        return
-    }
-    c();
-    S();
-    var O = [];
-    for (var L = 0; L < C.length; L++) {
-        var A = C[L];
-        if (v(A)) {
-            O.push(A)
-        }
-    }
-    })()
-    
-        '>
-      <i class="fa fa-music"></i> &nbsp High一下 </i></a>
+            <li class="waves-block waves-effect">
+              <a href="https://adb.rocko.xyz" target="_blank" >
+                <i class="icon icon-lg icon-bookmark"></i>
+                ADB
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/zhengxiaopeng" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                GitHub
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="//weibo.com/678662430/" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="//www.zhihu.com/people/rocko/" target="_blank" >
+                <i class="icon icon-lg icon-smile-o"></i>
+                Zhihu
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/rocko_zxp" target="_blank" >
+                <i class="icon icon-lg icon-twitter"></i>
+                Twitter
+              </a>
+            </li>
+        
+      </ul>
     </div>
-    <div class="article-info profile-block">
-      <div class="article-info-block">
-        23
-        <span>文章</span>
-      </div>
-      <div class="article-info-block">
-        33
-        <span>标签</span>
-      </div>
-    </div>
-    
-    <div class="contact-info profile-block">
-      <table class="contact-list">
-        <tr>
-          
-          <td><a href="//github.com/zhengxiaopeng/" target="_blank" title="github"><i class="fa fa-github"></i></a></td>
-          
-          <td><a href="//weibo.com/678662430/" target="_blank" title="weibo"><i class="fa fa-weibo"></i></a></td>
-          
-          <td><a href="//www.zhihu.com/people/rocko/" target="_blank" title="smile-o"><i class="fa fa-smile-o"></i></a></td>
-          
-          <td><a href="https://twitter.com/rocko_zxp" target="_blank" title="twitter"><i class="fa fa-twitter"></i></a></td>
-          
-          <td><a href="https://plus.google.com/u/0/101915236087672094434/" target="_blank" title="google-plus"><i class="fa fa-google-plus"></i></a></td>
-          
-          <td><a href="/atom.xml" target="_blank" title="rss"><i class="fa fa-rss"></i></a></td>
-          
-        </tr>
-      </table>
-    </div>
-    
-    
   </div>
 </aside>
 
-      
-      <section id="main"><article id="post-Android-Robolectric-加载运行本地-so-动态库" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      
-	
-		<img src="https://static.rocko.xyz/img/2016-11-27_10-04-15_Robolectric.jpg" class="article-banner">
-	
-
-
-
-    
-    
-    
-      <header class="article-header">
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Android Robolectric 加载运行本地 So 动态库</div>
         
-  
-    <h1 class="article-title" itemprop="name">
-      Android Robolectric 加载运行本地 So 动态库
-    </h1>
-  
-
-        <div class="article-meta">
-          
-  <div class="article-date" >
-    <i class="fa fa-calendar"></i>
-    <a href="/2016/11/27/Android-Robolectric-加载运行本地-so-动态库/">
-      <time datetime="2016-11-27T01:42:41.000Z" itemprop="datePublished">2016-11-27</time>
-    </a>
-  </div>
-
-
-          
-  <div class="article-category">
-  	<i class="fa fa-folder"></i>
-    <a class="article-category-link" href="/categories/Android/">Android</a>
-  </div>
-
-          <!-- 评论、访问统计部分，不蒜子 -->
-          <!-- 不蒜子统计 -->
-
-
-          
-          
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
         </div>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-                
-                    <div id="toc" class="toc-article">
-                    <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#动态库"><span class="toc-number">2.</span> <span class="toc-text">动态库</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Robolectric-中使用动态库"><span class="toc-number">3.</span> <span class="toc-text">Robolectric 中使用动态库</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux-下-Robolectric-中使用动态库"><span class="toc-number">3.1.</span> <span class="toc-text">Linux 下 Robolectric 中使用动态库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#macOS-下-Robolectric-中使用动态库"><span class="toc-number">3.2.</span> <span class="toc-text">macOS 下 Robolectric 中使用动态库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Windows-下-Robolectric-中使用动态库"><span class="toc-number">3.3.</span> <span class="toc-text">Windows 下 Robolectric 中使用动态库</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Sample"><span class="toc-number">4.</span> <span class="toc-text">Sample</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#正常流程"><span class="toc-number">4.1.</span> <span class="toc-text">正常流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#处理后的流程"><span class="toc-number">4.2.</span> <span class="toc-text">处理后的流程</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#End"><span class="toc-number">5.</span> <span class="toc-text">End</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考"><span class="toc-number">6.</span> <span class="toc-text">参考</span></a></li></ol>
-  </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
 
-        <p><a href="http://rocko.xyz/2016/11/27/Android-Robolectric-加载运行本地-so-动态库/">http://rocko.xyz/2016/11/27/Android-Robolectric-加载运行本地-so-动态库/</a></p>
-<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p><a href="http://robolectric.org/" target="_blank" rel="external">Robolectric</a> 是 Android 的单元测试框架，运行无需 Android 真机环境直接运行在 JVM 之上，所以在 test case 运行速度效率上有了很大提升，接近于 Java JUnit test（<code>JUnit test &gt; Robolectric &gt;&gt; androidTest</code>）。不过<strong>框架本身并不支持 <code>so</code> 本地库的加载使用</strong>，加载时会直接报错，因为实际上运行环境是电脑机器，而我们打出的 so 文件是给手机上用的所以当然会报错。虽然在 <a href="https://github.com/robolectric/robolectric" target="_blank" rel="external">GitHub</a> 上很多人问过关于使用 so 的问题但基本都建议说不要在单元测试中去加载本地库，这在原则上是要这么做，但可能有些项目中做起来就有些困难了，比如在代码结构不够好、依赖耦合较大或者本身就对 so 库依赖很大的情况下。所以下面说说在项目中 Robolectric 要怎么解决需要加载运行本地 so 库这个问题。</p>
+    <div class="container fade-scale">
+        <h1 class="title">Android Robolectric 加载运行本地 So 动态库</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2016-11-27T01:42:41.000Z" itemprop="datePublished" class="page-time">
+  2016-11-27
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Android/">Android</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#前言"><span class="post-toc-number">1.</span> <span class="post-toc-text">前言</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#动态库"><span class="post-toc-number">2.</span> <span class="post-toc-text">动态库</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Robolectric-中使用动态库"><span class="post-toc-number">3.</span> <span class="post-toc-text">Robolectric 中使用动态库</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Linux-下-Robolectric-中使用动态库"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">Linux 下 Robolectric 中使用动态库</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#macOS-下-Robolectric-中使用动态库"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">macOS 下 Robolectric 中使用动态库</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Windows-下-Robolectric-中使用动态库"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">Windows 下 Robolectric 中使用动态库</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Sample"><span class="post-toc-number">4.</span> <span class="post-toc-text">Sample</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#正常流程"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">正常流程</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#处理后的流程"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">处理后的流程</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#End"><span class="post-toc-number">5.</span> <span class="post-toc-text">End</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#参考"><span class="post-toc-number">6.</span> <span class="post-toc-text">参考</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-Android-Robolectric-加载运行本地-so-动态库"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Android Robolectric 加载运行本地 So 动态库</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2016年11月27日 9:42" datetime="2016-11-27T01:42:41.000Z"  itemprop="datePublished">2016-11-27</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Android/">Android</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+<span>
+    <a href="/2016/11/27/Android-Robolectric-加载运行本地-so-动态库/#comments" class="ds-thread-count" data-thread-key="Android-Robolectric-加载运行本地-so-动态库" data-count-type="comments"></a>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p><a href="http://robolectric.org" target="_blank" rel="external">Robolectric</a> 是 Android 的单元测试框架，运行无需 Android 真机环境直接运行在 JVM 之上，所以在 test case 运行速度效率上有了很大提升，接近于 Java JUnit test（<code>JUnit test &gt; Robolectric &gt;&gt; androidTest</code>）。不过<strong>框架本身并不支持 <code>so</code> 本地库的加载使用</strong>，加载时会直接报错，因为实际上运行环境是电脑机器，而我们打出的 so 文件是给手机上用的所以当然会报错。虽然在 <a href="https://github.com/robolectric/robolectric" target="_blank" rel="external">GitHub</a> 上很多人问过关于使用 so 的问题但基本都建议说不要在单元测试中去加载本地库，这在原则上是要这么做，但可能有些项目中做起来就有些困难了，比如在代码结构不够好、依赖耦合较大或者本身就对 so 库依赖很大的情况下。所以下面说说在项目中 Robolectric 要怎么解决需要加载运行本地 so 库这个问题。</p>
 <a id="more"></a>
 <h1 id="动态库"><a href="#动态库" class="headerlink" title="动态库"></a>动态库</h1><p>动态库又称动态链接库（Dynamic-link library 缩写 DLL），是一个包含可由多个程序同时使用的代码和数据的库，DLL 不是可执行文件。动态链接提供了一种方法，使进程可以调用不属于其可执行代码的函数。函数的可执行代码位于一个 DLL 中，该 DLL 包含一个或多个已被编译、链接并与使用它们的进程分开存储的函数。DLL 还有助于共享数据和资源。多个应用程序可同时访问内存中单个DLL 副本的内容。DLL 是一个包含可由多个程序同时使用的代码和数据的库。<strong>Windows下动态库为 .dll 后缀（一般为 PE 格式），在 Linux 在为 .so 后缀（一般为 ELF 格式），macOS下为 .dylib 后缀（一般为 Mach-O 格式）</strong>。由于 CPU 架构和动态库文件格式的不同因而在不同平台下不能通用。其它细节的东西就不展开了因为也不会 :-)</p>
 <p>而 Android 本身是 Linux 系统，所以用的动态库也是 .so 的文件，因而运行与 JVM 的 Robolectric 是不能直接加载使用的（Linux 某些情况下可用，下面提到）。</p>
@@ -498,12 +268,24 @@ var _hmt = _hmt || [];
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">NativeLibsApplication</span> <span class="keyword">extends</span> <span class="title">Application</span> </span>&#123;</div><div class="line"></div><div class="line"> <span class="comment">// Used to load the 'native-lib' library on application startup.</span></div><div class="line"> <span class="keyword">static</span> &#123;</div><div class="line">   System.loadLibrary(<span class="string">"native-lib"</span>);</div><div class="line"> &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>此时运行 Robolectric 的 test case 就发生如下报错：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">java.lang.UnsatisfiedLinkError: no <span class="keyword">native</span>-lib in java.library.path</div></pre></td></tr></table></figure>
-<p><img src="https://static.rocko.xyz/img/2016-11-27_09-11-08_no_deal_with.png" alt="正常运行 Test case"></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://static.rocko.xyz/img/2016-11-27_09-11-08_no_deal_with.png" alt="正常运行" title="">
+                </div>
+                <div class="image-caption">正常运行</div>
+            </figure>
 <h2 id="处理后的流程"><a href="#处理后的流程" class="headerlink" title="处理后的流程"></a>处理后的流程</h2><p>首先流程应该在我们的代码里避免可以直接加载 so 动态库，然后 Robolectric 在启动时自己去加载需要的动态库。</p>
 <p>// NativeLibsApplication.java</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">NativeLibsApplication</span> <span class="keyword">extends</span> <span class="title">Application</span> </span>&#123;</div><div class="line"></div><div class="line"> <span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">()</span> </span>&#123;</div><div class="line">   <span class="keyword">super</span>.onCreate();</div><div class="line">   loadNativeLibraries();</div><div class="line"> &#125;</div><div class="line"></div><div class="line"> <span class="comment">/**</span></div><div class="line">  * 简单让子类可自己实现</div><div class="line">  */</div><div class="line"> <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">loadNativeLibraries</span><span class="params">()</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="comment">// 代码里真正加载本地库的地方，当然你自己的可以处理地更解耦一点。</span></div><div class="line">   NativeLibrariesManager.loadNativeLibraries();</div><div class="line"> &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>然后我们的 Robolectric 里自定义自己的 Application，里面根据需要在不同运行平台下自己加载需要的本地动态库，首先复制我们给 Robolectric 用的本地库到 test 的 libs 文件夹里，按不同平台分类，如下图：</p>
-<p><img src="https://static.rocko.xyz/img/2016-11-27_09-24-25_test_libs_folder.png" alt="test 内 libs 文件"></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://static.rocko.xyz/img/2016-11-27_09-24-25_test_libs_folder.png" alt="test" title="">
+                </div>
+                <div class="image-caption">test</div>
+            </figure>
 <p>Linux 下的我们从 ndk-bundle 里复制我们需要的 .so，然后我们自己的本地库打一个 x86-64 的即可，注意 compileSdkVersion 选上高一点支持 x86-64 的版本。</p>
 <p>然后重新移植打出 macOS 下的动态库，简单写个打包脚本如下：</p>
 <p>// make_macOS_dylib.sh</p>
@@ -514,20 +296,22 @@ var _hmt = _hmt || [];
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RobolectricApplication</span> <span class="keyword">extends</span> <span class="title">NativeLibsApplication</span> </span>&#123;</div><div class="line"></div><div class="line"> <span class="keyword">static</span> &#123;</div><div class="line">   ShadowLog.stream = System.out; <span class="comment">//Android logcat output.</span></div><div class="line"> &#125;</div><div class="line"></div><div class="line"> <span class="meta">@Override</span> <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">loadNativeLibraries</span><span class="params">()</span> </span>&#123;</div><div class="line">   <span class="comment">//Disable super class load so file.</span></div><div class="line">   <span class="comment">//super.loadNativeLibraries();</span></div><div class="line">   Log.d(TAG, <span class="string">"=====&gt;&gt; Robolectric start native libraries."</span>);</div><div class="line"></div><div class="line">   String libsBasePath =</div><div class="line">       <span class="keyword">new</span> File(<span class="keyword">new</span> File(<span class="string">""</span>).getAbsolutePath() + <span class="string">"/src/test/libs"</span>).getAbsolutePath();</div><div class="line">   String os = System.getProperty(<span class="string">"os.name"</span>);</div><div class="line">   os = !TextUtils.isEmpty(os) ? os : <span class="string">""</span>;</div><div class="line">   List&lt;File&gt; soFileList = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">   String systemArchPath = libsBasePath + <span class="string">"/framework/"</span>;</div><div class="line">   <span class="comment">//!!! 64 位机器下处理</span></div><div class="line">   <span class="keyword">if</span> (os.contains(<span class="string">"Mac"</span>)) &#123;</div><div class="line">     <span class="comment">//load system library if need</span></div><div class="line">     String macSysSoBasePath = systemArchPath + <span class="string">"macOS/"</span>;</div><div class="line">     soFileList.addAll(addLibs(macSysSoBasePath));</div><div class="line">     <span class="comment">// App so...</span></div><div class="line">     String macAppSoPath = libsBasePath + <span class="string">"/macOS_x86-64/"</span>;</div><div class="line">     <span class="comment">// mac下so要使用macOS专用库</span></div><div class="line">     soFileList.addAll(addLibs(macAppSoPath));</div><div class="line">   &#125; <span class="keyword">else</span> <span class="keyword">if</span> (os.contains(<span class="string">"Linux"</span>)) &#123;</div><div class="line">     <span class="comment">//load system library if need</span></div><div class="line">     String linuxSysSoBasePath = systemArchPath + <span class="string">"arch_x86-64/"</span>;</div><div class="line">     soFileList.addAll(addLibs(linuxSysSoBasePath));</div><div class="line">     <span class="comment">// App so...</span></div><div class="line">     String linuxAppSoPath = libsBasePath + <span class="string">"/linux_x86-64/"</span>;</div><div class="line">     soFileList.addAll(addLibs(linuxAppSoPath));</div><div class="line">   &#125; <span class="keyword">else</span> <span class="keyword">if</span> (os.contains(<span class="string">"Windows"</span>)) &#123;</div><div class="line">     <span class="comment">// ignore</span></div><div class="line">   &#125;</div><div class="line"></div><div class="line">   <span class="keyword">for</span> (File soFie : soFileList) &#123;</div><div class="line">     System.load(soFie.getAbsolutePath());</div><div class="line">   &#125;</div><div class="line"> &#125;</div><div class="line"></div><div class="line"> <span class="function"><span class="keyword">private</span> List&lt;File&gt; <span class="title">addLibs</span><span class="params">(@NonNull String path)</span> </span>&#123;</div><div class="line">   File[] basePathFiles = <span class="keyword">new</span> File(path).listFiles();</div><div class="line">   List&lt;File&gt; pathFilesList = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">   <span class="keyword">if</span> (basePathFiles != <span class="keyword">null</span> &amp;&amp; basePathFiles.length &gt; <span class="number">0</span>) &#123;</div><div class="line">     pathFilesList.addAll(Arrays.asList(basePathFiles));</div><div class="line">   &#125;</div><div class="line">   <span class="keyword">return</span> pathFilesList;</div><div class="line"> &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>现在就可以加载了，运行如下 test case，结果如下图，成功了。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">@Test public void testLoadNativeLibrariesSuccess() throws Exception &#123;</div><div class="line">      String nativeExcepted = &quot;Hello from Native.&quot;;</div><div class="line">      String result = NativeSample.stringFromJNI();</div><div class="line">      Log.d(TAG, &quot;result: &quot; + result);</div><div class="line">      assertEquals(nativeExcepted, result);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><img src="https://static.rocko.xyz/img/2016-11-27_09-32-15_test_case_success.png" alt="运行加载本地库 Test case 成功"></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://static.rocko.xyz/img/2016-11-27_09-32-15_test_case_success.png" alt="运行加载本地库" title="">
+                </div>
+                <div class="image-caption">运行加载本地库</div>
+            </figure>
 <h1 id="End"><a href="#End" class="headerlink" title="End"></a>End</h1><p>Linux 下使用最快速方便，只需要打包程序的 so 时顺便打包出 x86-64 的 so ，然后复制 ndk-bundle 的 so 加上需要的依赖即可。macOS 和 Windows 下就需要自己打包出各自平台下的动态库才可使用，如果代码里有 Android 自带 so 依赖的话那就需要自己去重新移植编译打包 ndk-bundle 里的动态库了。</p>
 <p>项目实例源码：<a href="https://github.com/zhengxiaopeng/RobolectricSupportNativeLibs" target="_blank" rel="external">RobolectricSupportNativeLibs</a></p>
 <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://developer.apple.com/library/content/documentation/Java/Conceptual/Java14Development/05-CoreJavaAPIs/CoreJavaAPIs.html" target="_blank" rel="external">Core Java APIs and the Java Runtime on OS X</a></p>
 
-      
-    </div>
-    
+        </div>
    <!-- 加入广告 -->
    <!-- 广告 -->
-
-    
-    
-    <div class="article-entry">
+<blockquote class="post-copyright">
+	    <div class="article-entry">
 
     <!-- hr 分割线-->
 
@@ -543,291 +327,268 @@ var _hmt = _hmt || [];
 </script>
 
     </div>
-
-    
-
-   <!-- 加入打赏 -->
-   <!-- 打赏 -->
-
-    
-    <div class="article-entry">
-            <br/>
-            <br/>
-            <ul>
-              <li><p><i class="fa fa-credit-card"></i> <strong>打赏</strong><br>  如果觉得我的博客、分享对您有帮助，可以扫一扫随意打赏，您的支持将鼓励我继续创作、分享！</p>
-              <p>  <a href="https://static.rocko.xyz/img/donate.jpg" title="支付宝||微信" class="fancybox" rel="article0"><img src="https://static.rocko.xyz/img/donate.jpg" alt="⇐支付宝||微信⇒"></a><span class="caption">⇐支付宝||微信⇒</span></p>
-              </li>
-            </ul>
-        </div>
-
-    
+</blockquote>
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2016-12-28T15:54:49.000Z" itemprop="dateUpdated">2016年12月28日 23:54</time>
+</span><br>
 
 
-    <footer class="article-footer">
-      <a data-url="https://rocko.xyz/2016/11/27/Android-Robolectric-加载运行本地-so-动态库/" data-id="cix7p5xcv000dhcsd1qlytbqt" class="article-share-link">分享到</a>
-      
-        <a href="https://rocko.xyz/2016/11/27/Android-Robolectric-加载运行本地-so-动态库/#comments" class="article-comment-link">去评论</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Robolectric/">Robolectric</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Testing/">Testing</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/动态链接库/">动态链接库</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/移植/">移植</a></li></ul>
-
+        除特别说明外，文章均采用「知识共享 署名 - 非商业性 - 相同方式共享 4.0协议」进行许可，转载需注明文章出处：<a href="/2016/11/27/Android-Robolectric-加载运行本地-so-动态库/" target="_blank" rel="external">https://rocko.xyz/2016/11/27/Android-Robolectric-加载运行本地-so-动态库/</a>
+    </div>
+    <footer>
+        <a href="https://rocko.xyz">
+            <img src="/img/avatar.png" alt="Rocko">
+            Rocko
+        </a>
     </footer>
-  </div>
-  
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Robolectric/">Robolectric</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Testing/">Testing</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/动态链接库/">动态链接库</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/移植/">移植</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
     
-<nav id="article-nav">
-  
-  
-    <a href="/2016/08/28/科学上网的各种姿势/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">下一篇</strong>
-      <div class="article-nav-title">科学上网的各种姿势</div>
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://rocko.xyz/2016/11/27/Android-Robolectric-加载运行本地-so-动态库/&title=《Android Robolectric 加载运行本地 So 动态库》 — Rocko's blog&pic=https://rocko.xyz/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://rocko.xyz/2016/11/27/Android-Robolectric-加载运行本地-so-动态库/&title=《Android Robolectric 加载运行本地 So 动态库》 — Rocko's blog&source=前言Robolectric 是 Android 的单元测试框架，运行无需 Android 真机环境直接运行在 JVM 之上，所以在 test case 运..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://rocko.xyz/2016/11/27/Android-Robolectric-加载运行本地-so-动态库/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Android Robolectric 加载运行本地 So 动态库》 — Rocko's blog&url=https://rocko.xyz/2016/11/27/Android-Robolectric-加载运行本地-so-动态库/&via=https://rocko.xyz" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://rocko.xyz/2016/11/27/Android-Robolectric-加载运行本地-so-动态库/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
     </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2016/08/28/科学上网的各种姿势/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">科学上网的各种姿势</h4>
+      </a>
+    </div>
   
 </nav>
 
 
-  
+
+    
+
+<div class="comments" id="comments">
+    <div class="ds-thread" data-thread-key="Android-Robolectric-加载运行本地-so-动态库" data-title="Android Robolectric 加载运行本地 So 动态库" data-url="https://rocko.xyz/2016/11/27/Android-Robolectric-加载运行本地-so-动态库/"></div>
+</div>
+<script>
+lazyScripts.push('//cdn.bootcss.com/marked/0.3.6/marked.min.js');
+
+
+</script>
+
+
+
+
+
+
+
 </article>
 
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        大爷，请随意~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechat.png" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
 
-  <section id="comments">
-    <div class="ds-thread" data-thread-key="2016/11/27/Android-Robolectric-加载运行本地-so-动态库/-Android-Robolectric-加载运行本地-so-动态库" data-title="Android Robolectric 加载运行本地 So 动态库" data-url="https://rocko.xyz/2016/11/27/Android-Robolectric-加载运行本地-so-动态库/" data-author-key="1" ></div>
-
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<script>
-  (adsbygoogle = window.adsbygoogle || []).push({
-    google_ad_client: "ca-pub-2972075783837999",
-    enable_page_level_ads: true
-  });
-</script>
-    
-    <!-- 直接换成多说的
-    <div id="ds-thread" class="ds-thread" data-thread-key="https://rocko.xyz/2016/11/27/Android-Robolectric-加载运行本地-so-动态库/" data-title="Android Robolectric 加载运行本地 So 动态库" data-url="https://rocko.xyz/2016/11/27/Android-Robolectric-加载运行本地-so-动态库/">
-      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by DuoShuo.</a></noscript>
-      </div>
-    -->
-  </section>
-
-</section>
-      
-        <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">内容许可</h3>
-    <div class="widget tagcloud">
-      <ul>
-	  <h5><a href="http://creativecommons.org/licenses/by-sa/3.0/cn/" target="_britt" title="http://creativecommons.org/licenses/by-sa/3.0/cn/">除特别说明外，文章均采用「知识共享署名 - 相同方式共享 3.0 中国大陆许可协议」进行许可，转载需注明文章出处。</a></h5>
+        
+        <li>
+            <img src="/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
     </ul>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            <span>博客内容遵循 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享 署名 - 非商业性 - 相同方式共享 4.0协议</a></span>
+        </p>
     </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">最新文章</h3>
-    <div class="widget">
-      <ul id="recent-post" class="">
-        
-          <li>
-            
-            <div class="item-thumbnail">
-              <a href="/2016/11/27/Android-Robolectric-加载运行本地-so-动态库/" class="thumbnail">
-  
-    <span style="background-image:url(https://static.rocko.xyz/img/2016-11-27_10-04-15_Robolectric.jpg?imageView2/2/w/200/h/100/q/100)" alt="Android Robolectric 加载运行本地 So 动态库" class="thumbnail-image"></span>
-  
-</a>
-            </div>
-            
-            <div class="item-inner">
-              <p class="item-category"><a class="article-category-link" href="/categories/Android/">Android</a></p>
-              <p class="item-title"><a href="/2016/11/27/Android-Robolectric-加载运行本地-so-动态库/" class="title">Android Robolectric 加载运行本地 So 动态库</a></p>
-              <p class="item-date"><time datetime="2016-11-27T01:42:41.000Z" itemprop="datePublished">2016-11-27</time></p>
-            </div>
-          </li>
-        
-          <li>
-            
-            <div class="item-thumbnail">
-              <a href="/2016/08/28/科学上网的各种姿势/" class="thumbnail">
-  
-    <span style="background-image:url(https://static.rocko.xyz/img/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E7%9A%84%E5%90%84%E7%A7%8D%E5%A7%BF%E5%8A%BF_0.jpg)" alt="科学上网的各种姿势" class="thumbnail-image"></span>
-  
-</a>
-            </div>
-            
-            <div class="item-inner">
-              <p class="item-category"><a class="article-category-link" href="/categories/FGFW/">FGFW</a></p>
-              <p class="item-title"><a href="/2016/08/28/科学上网的各种姿势/" class="title">科学上网的各种姿势</a></p>
-              <p class="item-date"><time datetime="2016-08-27T16:00:01.000Z" itemprop="datePublished">2016-08-28</time></p>
-            </div>
-          </li>
-        
-          <li>
-            
-            <div class="item-thumbnail">
-              <a href="/2016/06/14/ADB-Issue-2/" class="thumbnail">
-  
-    <span style="background-image:url(https://static.rocko.xyz/img/android-dev-bookmarks.jpg)" alt="ADB-Issue#2" class="thumbnail-image"></span>
-  
-</a>
-            </div>
-            
-            <div class="item-inner">
-              <p class="item-category"><a class="article-category-link" href="/categories/Android-Dev-Bookmarks/">Android-Dev-Bookmarks</a></p>
-              <p class="item-title"><a href="/2016/06/14/ADB-Issue-2/" class="title">ADB-Issue#2</a></p>
-              <p class="item-date"><time datetime="2016-06-14T13:51:45.000Z" itemprop="datePublished">2016-06-14</time></p>
-            </div>
-          </li>
-        
-          <li>
-            
-            <div class="item-thumbnail">
-              <a href="/2016/02/17/AndroidDev站点推荐-Issue-1/" class="thumbnail">
-  
-    <span style="background-image:url(https://static.rocko.xyz/img/android-dev-bookmarks.jpg)" alt="AndroidDev站点推荐-Issue#1" class="thumbnail-image"></span>
-  
-</a>
-            </div>
-            
-            <div class="item-inner">
-              <p class="item-category"><a class="article-category-link" href="/categories/Android-Dev-Bookmarks/">Android-Dev-Bookmarks</a></p>
-              <p class="item-title"><a href="/2016/02/17/AndroidDev站点推荐-Issue-1/" class="title">AndroidDev站点推荐-Issue#1</a></p>
-              <p class="item-date"><time datetime="2016-02-17T05:45:05.000Z" itemprop="datePublished">2016-02-17</time></p>
-            </div>
-          </li>
-        
-          <li>
-            
-            <div class="item-thumbnail">
-              <a href="/2015/11/07/MVVM_Android-CleanArchitecture/" class="thumbnail">
-  
-    <span style="background-image:url(https://static.rocko.xyz/img/MVVM_Android-CleanArchitecture-0.png?imageView2/2/w/400/h/300/q/100)" alt="MVVM_Android-CleanArchitecture" class="thumbnail-image"></span>
-  
-</a>
-            </div>
-            
-            <div class="item-inner">
-              <p class="item-category"><a class="article-category-link" href="/categories/Android/">Android</a></p>
-              <p class="item-title"><a href="/2015/11/07/MVVM_Android-CleanArchitecture/" class="title">MVVM_Android-CleanArchitecture</a></p>
-              <p class="item-date"><time datetime="2015-11-07T04:49:07.000Z" itemprop="datePublished">2015-11-07</time></p>
-            </div>
-          </li>
-        
-      </ul>
+    <div class="bottom">
+        <p>
+            <span>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></span>
+            <span>Rocko's blog &copy; 2014 - 2016</span>
+        </p>
     </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap widget-list">
-    <h3 class="widget-title">友链</h3>
-    <div class="widget">
-      <ul>
-        
-          <li><a href="http://blog.csdn.net/bbld_/" target="_bbld" title="http://blog.csdn.net/bbld_/">我的CSDN博客</a></li>
-	  	  <li><a href="http://www.jiangwenrou.com/" target="_xiaojiang" title="http://www.jiangwenrou.com">小蒋的博客</a></li>
-          <li><a href="http://kymjs.com/" target="_kymjs" title="http://kymjs.com/">kymjs张涛</a></li>
-          <li><a href="http://hanks.xyz/" target="_hanks" title="http://hanks.xyz/">Hanks.xyz</a></li>
-          <li><a href="http://www.liuling123.com/" target="_liuling123" title="http://www.liuling123.com/">残剑博客</a></li>
-	  	  <li><a href="http://brittyu.xyz/" target="_britt" title="http://brittyu.xyz/">Brittyu</a></li>
-
-        
-      </ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">   </h3>
-    <div class="widget tagcloud">
-      <ul>
-
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<!-- Navigation -->
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-2972075783837999"
-     data-ad-slot="9961152264"
-     data-ad-format="auto"></ins>
-<script>
-(adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-      
-      <!--
-     <iframe src="http://rcm-cn.amazon-adsystem.com/e/cm?t=rocko-23&o=28&p=11&l=ur1&category=books&banner=1AY3G51F22DKJFC72ER2&f=ifr" width="200" height="600" scrolling="no" border="0" marginwidth="0" style="border:none;max-width:800px;max-height:600px;" frameborder="0"></iframe>
-     -->
-
-    </ul>
-    </div>
-  </div>
-
-
-
-
-  
-  <div id="toTop" class="fa fa-chevron-up"></div>
-</aside>
-      
-    </div>
-    <footer id="footer">
-
-<!--
-
-  
--->
-  
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2014 - 2016  <i class="fa fa-heartbeat"></i> Rocko
-
-<!--
-      
--->
-      <br>
-
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme by <a href="https://github.com/zhengxiaopeng/hexo-theme-icarus" target="_icarus">Icarus </a>
-
-        
-
-    </div>
-
-   
-
-   
-
-  </div>
 </footer>
-    
 
-<script type="text/javascript">
-  var duoshuoQuery = {short_name:"rocko"};
-  (function() {
-    var ds = document.createElement('script');
-    ds.type = 'text/javascript';ds.async = true;
-    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-    ds.charset = 'UTF-8';
-    (document.getElementsByTagName('head')[0] 
-     || document.getElementsByTagName('body')[0]).appendChild(ds);
-  })();
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://rocko.xyz/2016/11/27/Android-Robolectric-加载运行本地-so-动态库/&title=《Android Robolectric 加载运行本地 So 动态库》 — Rocko's blog&pic=https://rocko.xyz/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://rocko.xyz/2016/11/27/Android-Robolectric-加载运行本地-so-动态库/&title=《Android Robolectric 加载运行本地 So 动态库》 — Rocko's blog&source=前言Robolectric 是 Android 的单元测试框架，运行无需 Android 真机环境直接运行在 JVM 之上，所以在 test case 运..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://rocko.xyz/2016/11/27/Android-Robolectric-加载运行本地-so-动态库/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Android Robolectric 加载运行本地 So 动态库》 — Rocko's blog&url=https://rocko.xyz/2016/11/27/Android-Robolectric-加载运行本地-so-动态库/&via=https://rocko.xyz" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://rocko.xyz/2016/11/27/Android-Robolectric-加载运行本地-so-动态库/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACsElEQVR42u3aQW7DMAwEwPz/0+m1RVB7SYqBD+NTEbiRRgUkdqnXK37eH8/1O8n3/P5k8uaBBw8PD2889f+++nOAfPj/3rweK5nPzdLj4eHhrfHOTqg6ietlqh4neHh4eE/mVSedPNWjBQ8PD+/5vHz4U+EFHh4e3jN5yT//vXA2DzXyKGQla8HDw8PrVK2vyQb9zZ9X+nt4eHh44656tSyuHg/XpXAvyPgzBzw8PLwFXjVoyIODfIpJ0TyaJx4eHt5RXjVi6MW11wdJLxSOFgIPDw9vgdcbuJcA9I6ZSVGOh4eHt8HLB0i242Rb7yWu13+AZgyBh4eH1+JVN+J5lJCXwtUyvXBe4eHh4R3iTSKJfJl6RXmyQM0R8fDw8Aa83qacL8Sk/d9rv+Hh4eFt8HqFb07duHxQOIrw8PDw1njVk2Qe71aPkOrohZQaDw8Pr8hLNvHeNam8NTUpxKMjBA8PD+8rvCSqyEPbSfxavXrV7I/h4eHhxbzq11UD314TK9/0b34XDw8Pb42XbNPXgOqlgV7oUL64gIeHh7fGmwQQ1eihV8pXrxfg4eHh7fF6B8DkYJgfQtUZ4uHh4Z3l5ZOeNKt6V7V6BToeHh7eNi/pFuXxwfxaQLWkHnX58PDw8Ma8ahE8KXmbDa0AczNPPDw8vEO85AJBr+xOItd8os2lx8PDw1vj5QHEO34mE83jWjw8PLzn8PbihrwNNgmC8fDw8DZ47+JTLabzJcjbcvmC4uHh4W3wqhtuXl4XzqWYWr2khYeHh7fH6x0G1eih2v7PC/GbEhwPDw9vjXeq2V8NKeYxxE1RjoeHh/cAXvWTagmelMt5hIGHh4f3BF5vQqeCiWr8gYeHh7fHm1+cSt7Mm1u9ttkoa8HDw8OLeZNNfH7RqnfAHOjp4eHh4XXm8wN2QJxx5Oa4VwAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+var duoshuoQuery = {short_name:'rocko', theme: 'none'};
+lazyScripts.push('/js/embed.min.js?v=1.4.3');
+
+
+
 </script>
 
+<script src="/js/main.min.js?v=1.4.3"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.4.3" async></script>
 
 
 
 
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
 
 
-<script src="/js/script.js"></script>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
-
-  </div>
 </body>
 </html>
