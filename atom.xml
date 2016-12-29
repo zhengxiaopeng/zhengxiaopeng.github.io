@@ -740,7 +740,7 @@
     <link href="https://rocko.xyz/2015/04/26/Android-View-OnTouchListener-%E7%9A%84%E5%AD%90%E7%B1%BB/"/>
     <id>https://rocko.xyz/2015/04/26/Android-View-OnTouchListener-的子类/</id>
     <published>2015-04-26T02:27:24.000Z</published>
-    <updated>2016-12-10T18:48:42.000Z</updated>
+    <updated>2016-12-29T15:00:28.000Z</updated>
     
     <content type="html"><![CDATA[<p>如下是几个实现了 <a href="http://developer.android.com/reference/android/view/View.OnTouchListener.html" target="_blank" rel="external">OnTouchListener</a> 接口的子类，OnTouchListener 我们是再熟悉不过了，在 Hello World 开始就接触了，但在 Support V4 中还有它的 3 个子类我们平时可能使用的较少但就其功能而言还是对我们很有帮助的。</p>
 <ul>
@@ -764,7 +764,7 @@
 <p>效果如下：<br><figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="https://static.rocko.xyz/img/Android" alt="RecyclerViewAutoScrollHelper" title="">
+                    <img src="https://coding.net/u/Rocko/p/static/git/raw/coding-pages/img/Android%2520View.OnTouchListener%2520%25E7%259A%2584%25E5%25AD%2590%25E7%25B1%25BB_2.gif" alt="RecyclerViewAutoScrollHelper" title="">
                 </div>
                 <div class="image-caption">RecyclerViewAutoScrollHelper</div>
             </figure></p>
@@ -773,7 +773,7 @@
 <h2 id="ZoomButtonsController"><a href="#ZoomButtonsController" class="headerlink" title="ZoomButtonsController"></a>ZoomButtonsController</h2><p>使用方式也很简单，其相关 API 可以 <a href="http://www.cnblogs.com/over140/archive/2010/12/02/1894065.html" target="_blank" rel="external">戳这里</a>。在构造方法中传进一个 View，然后缩放控件就依附绑定在此 View 当中，然后在 OnZoomListener 回调函数中处理放大和缩小事件。需要注意的是在生命周期结束时需要把它注销掉 <code>zoomButtonsController.setVisible(false)</code>，否则会发生 ANR、内存泄露。效果如下：<br><figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="https://static.rocko.xyz/img/Android" alt="ZoomButtonsController" title="">
+                    <img src="https://coding.net/u/Rocko/p/static/git/raw/coding-pages/img/Android%2520View.OnTouchListener%2520%25E7%259A%2584%25E5%25AD%2590%25E7%25B1%25BB_3.gif" alt="ZoomButtonsController" title="">
                 </div>
                 <div class="image-caption">ZoomButtonsController</div>
             </figure></p>
@@ -1208,9 +1208,9 @@
       <category term="Git" scheme="https://rocko.xyz/categories/Git/"/>
     
     
-      <category term="错误" scheme="https://rocko.xyz/tags/%E9%94%99%E8%AF%AF/"/>
-    
       <category term="Git" scheme="https://rocko.xyz/tags/Git/"/>
+    
+      <category term="错误" scheme="https://rocko.xyz/tags/%E9%94%99%E8%AF%AF/"/>
     
       <category term="VPS" scheme="https://rocko.xyz/tags/VPS/"/>
     
