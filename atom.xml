@@ -502,14 +502,14 @@
     <link href="https://rocko.xyz/2015/06/19/%E3%80%90%E8%AF%91%E3%80%91%E8%A7%A3%E5%86%B3%E5%85%B1%E4%BA%AB%E5%85%83%E7%B4%A0%E5%9C%A8%E7%B3%BB%E7%BB%9FUI%E4%B8%8A%E7%BB%98%E5%88%B6%E7%9A%84%E9%97%AE%E9%A2%98/"/>
     <id>https://rocko.xyz/2015/06/19/【译】解决共享元素在系统UI上绘制的问题/</id>
     <published>2015-06-19T04:49:07.000Z</published>
-    <updated>2016-12-10T18:48:42.000Z</updated>
+    <updated>2016-12-29T16:27:41.000Z</updated>
     
     <content type="html"><![CDATA[<ul>
 <li>原文链接 ：<a href="https://plus.google.com/+AlexLockwood/posts/RPtwZ5nNebb" target="_blank" rel="external">Dealing with shared elements that draw on top of the system UI</a></li>
 </ul>
 <p>目前为止，我在使用 Activity transitions 中遇到的一个比较烦人的小问题：共享元素会部分地覆盖掉 Status/Navigation/Action Bar，一旦开始过渡动画，共享元素就会很唐突地从系统 UI 下 <code>弹出</code>。这一不和谐的表现可以看看下面这个视频：</p>
 <a id="more"></a>
-<div class="video-container"><iframe src="//www.youtube.com/embed/yAbDPjhftlQ" frameborder="0" allowfullscreen></iframe></div>
+<p><a href="https://youtu.be/yAbDPjhftlQ" target="_blank" rel="external">Youtube video</a></p>
 <p>更多关于 Lollipop 中共享元素过渡动画的内容，可查看我的系列博客：<a href="http://www.androiddesignpatterns.com/2014/12/activity-fragment-transitions-in-android-lollipop-part1.html" target="_blank" rel="external">http://www.androiddesignpatterns.com/2014/12/activity-fragment-transitions-in-android-lollipop-part1.html</a>。PS.这一系列文章在 <a href="http://www.devtf.cn/" target="_blank" rel="external">开发技术前线</a> 已有译文，见附录～</p>
 <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>出现这一问题的原因是因为共享元素默认是在整个窗口视图层的顶层 ViewOverlay 上绘制的。这一默认行为确保了过渡元素总是 Activity 过渡动画的中心焦点，同时这也会使得共享元素会意外地被绘制在正在调用和被调用 Activity 的视图层级顶部。所以不幸的，不小心的话就会造成共享元素可能被绘制在 <code>应用的 Action Bar、状态栏背景、导航栏背景 之上</code>，然而这种情况我们绝对是需要避免的。</p>
 <h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>好在我发现有两种方法可以避免出现这种情况：</p>
