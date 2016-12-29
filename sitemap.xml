@@ -44,7 +44,7 @@
   </url>
   
   <url>
-    <loc>https://rocko.xyz/2015/02/06/Android%E4%B8%AD%E7%9A%84MVP/</loc>
+    <loc>https://rocko.xyz/2015/02/05/Android-%E9%94%99%E8%AF%AF%E9%9B%86%E9%94%A6ing/</loc>
     
     <lastmod>2016-12-10T18:48:42.000Z</lastmod>
     
@@ -58,7 +58,14 @@
   </url>
   
   <url>
-    <loc>https://rocko.xyz/2015/02/05/Android-%E9%94%99%E8%AF%AF%E9%9B%86%E9%94%A6ing/</loc>
+    <loc>https://rocko.xyz/2015/02/06/Android%E4%B8%AD%E7%9A%84MVP/</loc>
+    
+    <lastmod>2016-12-10T18:48:42.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://rocko.xyz/2015/11/07/MVVM_Android-CleanArchitecture/</loc>
     
     <lastmod>2016-12-10T18:48:42.000Z</lastmod>
     
@@ -72,7 +79,7 @@
   </url>
   
   <url>
-    <loc>https://rocko.xyz/2015/11/07/MVVM_Android-CleanArchitecture/</loc>
+    <loc>https://rocko.xyz/2015/02/12/VPS%E4%B8%BB%E6%9C%BA%E6%90%AD%E5%BB%BAGit%E6%9C%8D%E5%8A%A1%E5%99%A8/</loc>
     
     <lastmod>2016-12-10T18:48:42.000Z</lastmod>
     
@@ -87,13 +94,6 @@
   
   <url>
     <loc>https://rocko.xyz/2014/11/24/hello-world/</loc>
-    
-    <lastmod>2016-12-10T18:48:42.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://rocko.xyz/2015/02/12/VPS%E4%B8%BB%E6%9C%BA%E6%90%AD%E5%BB%BAGit%E6%9C%8D%E5%8A%A1%E5%99%A8/</loc>
     
     <lastmod>2016-12-10T18:48:42.000Z</lastmod>
     
@@ -142,14 +142,14 @@
   </url>
   
   <url>
-    <loc>https://rocko.xyz/2014/12/06/%E8%AE%BE%E7%BD%AE%E5%9F%9F%E5%90%8D%E9%82%AE%E7%AE%B1/</loc>
+    <loc>https://rocko.xyz/2014/12/13/Android-Studio-jar%E3%80%81so%E3%80%81library%E9%A1%B9%E7%9B%AE%E4%BE%9D%E8%B5%96/</loc>
     
     <lastmod>2016-12-10T18:48:42.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://rocko.xyz/2014/12/05/Android-Volley%E8%87%AA%E5%AE%9A%E4%B9%89Request-JacksonRequest%E3%80%81GsonRequest/</loc>
+    <loc>https://rocko.xyz/2014/12/06/%E8%AE%BE%E7%BD%AE%E5%9F%9F%E5%90%8D%E9%82%AE%E7%AE%B1/</loc>
     
     <lastmod>2016-12-10T18:48:42.000Z</lastmod>
     
@@ -163,14 +163,14 @@
   </url>
   
   <url>
-    <loc>https://rocko.xyz/2014/12/13/Android-Studio-jar%E3%80%81so%E3%80%81library%E9%A1%B9%E7%9B%AE%E4%BE%9D%E8%B5%96/</loc>
+    <loc>https://rocko.xyz/2015/04/26/Android-View-OnTouchListener-%E7%9A%84%E5%AD%90%E7%B1%BB/</loc>
     
     <lastmod>2016-12-10T18:48:42.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://rocko.xyz/2015/04/26/Android-View-OnTouchListener-%E7%9A%84%E5%AD%90%E7%B1%BB/</loc>
+    <loc>https://rocko.xyz/2014/12/05/Android-Volley%E8%87%AA%E5%AE%9A%E4%B9%89Request-JacksonRequest%E3%80%81GsonRequest/</loc>
     
     <lastmod>2016-12-10T18:48:42.000Z</lastmod>
     
@@ -184,7 +184,7 @@
   </url>
   
   <url>
-    <loc>https://rocko.xyz/google93ea4c2dba91c9dd.html</loc>
+    <loc>https://rocko.xyz/baidu_verify_dqOf3tI9Ld.html</loc>
     
     <lastmod>2016-11-21T04:36:55.000Z</lastmod>
     
@@ -198,14 +198,14 @@
   </url>
   
   <url>
-    <loc>https://rocko.xyz/baidu_verify_WG8fZ2mGXA.html</loc>
+    <loc>https://rocko.xyz/google93ea4c2dba91c9dd.html</loc>
     
     <lastmod>2016-11-21T04:36:55.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://rocko.xyz/baidu_verify_dqOf3tI9Ld.html</loc>
+    <loc>https://rocko.xyz/baidu_verify_WG8fZ2mGXA.html</loc>
     
     <lastmod>2016-11-21T04:36:55.000Z</lastmod>
     
@@ -226,14 +226,14 @@
   </url>
   
   <url>
-    <loc>https://rocko.xyz/tags/index.html</loc>
+    <loc>https://rocko.xyz/search/index.html</loc>
     
     <lastmod>2016-11-21T04:36:55.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://rocko.xyz/search/index.html</loc>
+    <loc>https://rocko.xyz/tags/index.html</loc>
     
     <lastmod>2016-11-21T04:36:55.000Z</lastmod>
     
