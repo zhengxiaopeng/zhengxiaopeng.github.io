@@ -275,10 +275,22 @@ Quick">
 
 	
 	function loadAd() {
-		var script = document.createElement('script');
-		script.src = '//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js';
+		//var script = document.createElement('script');
+		//script.src = '//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js';
+
+
+		// Adding the script tag to the head as suggested before
+    var head = document.getElementsByTagName('head')[0];
+    var script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js';
+
+
+    // Fire the loading
+    head.appendChild(script);
 
 		(adsbygoogle = window.adsbygoogle || []).push({});
+		console.log('=================> wtf')
 	}
 
 	setTimeout('loadAd()',5000);
