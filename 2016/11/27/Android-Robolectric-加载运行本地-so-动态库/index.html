@@ -33,7 +33,7 @@
 <meta property="og:image" content="https://static.rocko.xyz/img/2016-11-27_09-11-08_no_deal_with.png">
 <meta property="og:image" content="https://static.rocko.xyz/img/2016-11-27_09-24-25_test_libs_folder.png">
 <meta property="og:image" content="https://static.rocko.xyz/img/2016-11-27_09-32-15_test_case_success.png">
-<meta property="og:updated_time" content="2016-12-29T12:38:28.000Z">
+<meta property="og:updated_time" content="2016-12-30T14:17:02.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android Robolectric 加载运行本地 So 动态库">
 <meta name="twitter:description" content="前言Robolectric 是 Android 的单元测试框架，运行无需 Android 真机环境直接运行在 JVM 之上，所以在 test case 运行速度效率上有了很大提升，接近于 Java JUnit test（JUnit test &amp;gt; Robolectric &amp;gt;&amp;gt; androidTest）。不过框架本身并不支持 so 本地库的加载使用，加载时会直接报错，因为实际上运行环">
@@ -249,6 +249,7 @@
 <a id="more"></a>
 <h1 id="动态库"><a href="#动态库" class="headerlink" title="动态库"></a>动态库</h1><p>动态库又称动态链接库（Dynamic-link library 缩写 DLL），是一个包含可由多个程序同时使用的代码和数据的库，DLL 不是可执行文件。动态链接提供了一种方法，使进程可以调用不属于其可执行代码的函数。函数的可执行代码位于一个 DLL 中，该 DLL 包含一个或多个已被编译、链接并与使用它们的进程分开存储的函数。DLL 还有助于共享数据和资源。多个应用程序可同时访问内存中单个DLL 副本的内容。DLL 是一个包含可由多个程序同时使用的代码和数据的库。<strong>Windows下动态库为 .dll 后缀（一般为 PE 格式），在 Linux 在为 .so 后缀（一般为 ELF 格式），macOS下为 .dylib 后缀（一般为 Mach-O 格式）</strong> 。由于 CPU 架构和动态库文件格式的不同因而在不同平台下不能通用。其它细节的东西就不展开了因为也不会 :-)</p>
 <p>而 Android 本身是 Linux 系统，所以用的动态库也是 .so 的文件，因而运行与 JVM 的 Robolectric 是不能直接加载使用的（Linux 某些情况下可用，下面提到）。</p>
+<p><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2972075783837999" data-ad-slot="8471072663" data-ad-format="auto"></ins></p>
 <h1 id="Robolectric-中使用动态库"><a href="#Robolectric-中使用动态库" class="headerlink" title="Robolectric 中使用动态库"></a>Robolectric 中使用动态库</h1><p>我们知道动态库一般都是打给特定平台、特定 CPU 架构用的，所以要解决在 Robolectric 下加载运行 so 动态库的问题的思路就是在不同 Robolectric 运行平台下去处理加载不同的动态库，所以你要在 Robolectric 中使用的 so 动态库最好要有源码不然在 macOS 和 Windows 下就不就好处理了。</p>
 <p><code>Note:</code> 注意动态库名称已 <code>lib</code> 开头。</p>
 <h2 id="Linux-下-Robolectric-中使用动态库"><a href="#Linux-下-Robolectric-中使用动态库" class="headerlink" title="Linux 下 Robolectric 中使用动态库"></a>Linux 下 Robolectric 中使用动态库</h2><p>Android 与 Linux 同气连枝，所以底层的东西很多是通用的，动态库也一样。我们 Android 使用 so 时一般也要对不同 CPU 架构的手机下使用不同的 so 文件，譬如：<code>armeabi-v7a</code>、<code>mips</code>、<code>x86</code>。而我们使用的 LInux 发行版一般都是 64 位的，所以原理上我们使用 <code>x86-64</code> 的动态库是可以的，不过可能需要处理依赖库问题如果你的本地代码里有 include 其它依赖的话。如果没加进来 Robolectric 运行就会报如下的错误：</p>
@@ -356,7 +357,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2016-12-29T12:38:28.000Z" itemprop="dateUpdated">2016年12月29日 20:38</time>
+    最后更新时间：<time datetime="2016-12-30T14:17:02.000Z" itemprop="dateUpdated">2016年12月30日 22:17</time>
 </span><br>
 
 
