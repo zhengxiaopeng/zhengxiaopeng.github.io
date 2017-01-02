@@ -1352,7 +1352,7 @@
     <link href="https://rocko.xyz/2015/02/05/Android-%E9%94%99%E8%AF%AF%E9%9B%86%E9%94%A6ing/"/>
     <id>https://rocko.xyz/2015/02/05/Android-错误集锦ing/</id>
     <published>2015-02-05T05:44:42.000Z</published>
-    <updated>2016-12-10T18:48:42.000Z</updated>
+    <updated>2017-01-02T12:44:34.000Z</updated>
     
     <content type="html"><![CDATA[<p>Fork from my csdn blog: <a href="http://blog.csdn.net/bbld_/article/details/39520249" target="_blank" rel="external">Android 错误集锦(ing…)</a>.<br>Last update time: <em>2016-03-06 23:34:26</em>.   </p>
 <p>温馨提示：<code>Ctrl+F查找</code></p>
@@ -1427,9 +1427,9 @@
 <p><strong>解决方案：</strong><br>gradle tasks命令执行正常。一般都为Gradle的问题造成的。<br>从其它正常项目里复制替换掉当前项目的<code>gradlew</code>、<code>gradlew.bat</code>文件（也可自己视情况替换掉相关的gradle文件）<br>打开设置，打开Gradle选项，如图，点击使用Gradle home（你本地的Gradle目录），然后点击Apply和OK，还不行可以在Use选项中来回切换Apply一下，我就遇到点多几下才正常。。<br><figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="https://static.rocko.xyz/img/Android" alt="错误集锦ing..._1.png" title="">
+                    <img src="https://static.rocko.xyz/img/Android%20%E9%94%99%E8%AF%AF%E9%9B%86%E9%94%A6ing..._1.png" alt="" title="">
                 </div>
-                <div class="image-caption">错误集锦ing..._1.png</div>
+                <div class="image-caption"></div>
             </figure></p>
 <hr>
 <p><strong>系统环境：</strong><br>Windows7 64 位 Android Studio 1.1.0<br><strong>问题描述：</strong><br>使用 ZoomButtonsController，在 Activity 重建后发生 ANR 异常退出<br><strong>错误提示：</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"> android.view.WindowLeaked: Activity org.rocko.touchlistener.subclasses.ZoomButtonsActivity has leaked window android.widget.ZoomButtonsController<span class="variable">$Container</span>@2b992988 that was originally added here</div><div class="line">            ......</div><div class="line">            at dalvik.system.NativeStart.main(Native Method)</div><div class="line"></div><div class="line">org.rocko.touchlistener.subclasses E/ActivityThread﹕ Activity org.rocko.touchlistener.subclasses.ZoomButtonsActivity has leaked IntentReceiver android.widget.ZoomButtonsController<span class="variable">$1</span>@2b992778 that was originally registered here. Are you missing a call to unregisterReceiver()?</div><div class="line">    android.app.IntentReceiverLeaked: Activity org.rocko.touchlistener.subclasses.ZoomButtonsActivity has leaked IntentReceiver android.widget.ZoomButtonsController<span class="variable">$1</span>@2b992778 that was originally registered here. Are you missing a call to unregisterReceiver()?</div><div class="line">            ......</div><div class="line">            at dalvik.system.NativeStart.main(Native Method)</div><div class="line">01-31 18:28:29.022  11475-11475/org.rocko.touchlistener.subclasses E/AndroidRuntime﹕ FATAL EXCEPTION: main</div><div class="line">    java.lang.IllegalArgumentException: Receiver not registered: android.widget.ZoomButtonsController<span class="variable">$1</span>@2b992778</div><div class="line">            ......</div><div class="line">            at dalvik.system.NativeStart.main(Native Method)</div></pre></td></tr></table></figure></p>
