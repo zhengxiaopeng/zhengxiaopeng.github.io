@@ -843,9 +843,9 @@
       <category term="Python" scheme="https://rocko.xyz/categories/Python/"/>
     
     
-      <category term="多说" scheme="https://rocko.xyz/tags/%E5%A4%9A%E8%AF%B4/"/>
-    
       <category term="Hexo" scheme="https://rocko.xyz/tags/Hexo/"/>
+    
+      <category term="多说" scheme="https://rocko.xyz/tags/%E5%A4%9A%E8%AF%B4/"/>
     
   </entry>
   
@@ -1120,11 +1120,11 @@
     
       <category term="动画" scheme="https://rocko.xyz/tags/%E5%8A%A8%E7%94%BB/"/>
     
+      <category term="译文" scheme="https://rocko.xyz/tags/%E8%AF%91%E6%96%87/"/>
+    
       <category term="Span" scheme="https://rocko.xyz/tags/Span/"/>
     
       <category term="文字" scheme="https://rocko.xyz/tags/%E6%96%87%E5%AD%97/"/>
-    
-      <category term="译文" scheme="https://rocko.xyz/tags/%E8%AF%91%E6%96%87/"/>
     
   </entry>
   
@@ -1486,10 +1486,10 @@
     <link href="https://rocko.xyz/2015/02/02/%E4%BD%BF%E7%94%A8Gradle%E5%8F%91%E5%B8%83%E9%A1%B9%E7%9B%AE%E5%88%B0JCenter%E4%BB%93%E5%BA%93/"/>
     <id>https://rocko.xyz/2015/02/02/使用Gradle发布项目到JCenter仓库/</id>
     <published>2015-02-02T13:32:49.000Z</published>
-    <updated>2016-12-10T18:48:42.000Z</updated>
+    <updated>2017-01-08T09:05:03.000Z</updated>
     
     <content type="html"><![CDATA[<p>这篇文章介绍通过Gradle把开源项目发布到公共仓库JCenter中，方便你我他的事情，我们都是很懒的嘛。JCenter现在是Android Studio中repositories的默认节点了，之前是Maven的，不过JCenter是兼容Maven的，所以放心使用。步骤基本是按<a href="https://www.virag.si/2015/01/publishing-gradle-android-library-to-jcenter/" target="_blank" rel="external">Publishing Gradle Android Library to jCenter Repository</a>这里来的，英文能看的直接看这篇也行。下面我的步骤正式开始，发布到JCenter仓库的是我的项目：<a href="https://github.com/zhengxiaopeng/BounceProgressBar" target="_blank" rel="external">BounceProgressBar</a>。</p>
-<h2 id="申请Bintray账号"><a href="#申请Bintray账号" class="headerlink" title="申请Bintray账号"></a>申请Bintray账号</h2><p>Bintray的基本功能类似于Maven Central，一样的我们需要一个账号，<a href="https://bintray.com/" target="_blank" rel="external">Bintray传送门</a>，注册完成后第一步算完成了。</p>
+<h2 id="申请Bintray账号"><a href="#申请Bintray账号" class="headerlink" title="申请Bintray账号"></a>申请Bintray账号</h2><p>Bintray的基本功能类似于Maven Central，一样的我们需要一个账号，<a href="https://bintray.com/" target="_blank" rel="external">Bintray传送门</a>，注册完成后第一步算完成了。<br><code>Note:</code> 如果你的主页中没有添加 <strong>maven</strong> 记得添加上。点击 <code>Add New Repositories</code> 然后 name 和 type 写上 <code>maven</code> 即可。</p>
 <h2 id="生成项目的JavaDoc和source-JARs"><a href="#生成项目的JavaDoc和source-JARs" class="headerlink" title="生成项目的JavaDoc和source JARs"></a>生成项目的JavaDoc和source JARs</h2><p>简单的说生成的这两样东西就是我们在下一步中上传到远程仓库JCenter上的文件了。这一步需要<code>android-maven-plugin</code>插件，所以我们需要在项目的build.gradle（Top-level build file，项目最外层的build.gradle文件）中添加这个构建依赖，如下：<br><figure class="highlight gradle"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">buildscript</span> &#123;</div><div class="line">    <span class="keyword">repositories</span> &#123;</div><div class="line">        jcenter()</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">dependencies</span> &#123;</div><div class="line">        <span class="keyword">classpath</span> <span class="string">'com.android.tools.build:gradle:1.0.0'</span></div><div class="line">        <span class="keyword">classpath</span> <span class="string">'com.github.dcendents:android-maven-plugin:1.2'</span></div><div class="line">        <span class="comment">// <span class="doctag">NOTE:</span> Do not place your application dependencies here; they belong</span></div><div class="line">        <span class="comment">// in the individual module build.gradle files</span></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">allprojects</span> &#123;</div><div class="line">    <span class="keyword">repositories</span> &#123;</div><div class="line">        jcenter()</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>然后在你需要发布的那个module（我这里的即是library）的build.gradle里配置如下内容：</p>
 <a id="more"></a>
@@ -1512,7 +1512,7 @@
     <summary type="html">
     
       &lt;p&gt;这篇文章介绍通过Gradle把开源项目发布到公共仓库JCenter中，方便你我他的事情，我们都是很懒的嘛。JCenter现在是Android Studio中repositories的默认节点了，之前是Maven的，不过JCenter是兼容Maven的，所以放心使用。步骤基本是按&lt;a href=&quot;https://www.virag.si/2015/01/publishing-gradle-android-library-to-jcenter/&quot;&gt;Publishing Gradle Android Library to jCenter Repository&lt;/a&gt;这里来的，英文能看的直接看这篇也行。下面我的步骤正式开始，发布到JCenter仓库的是我的项目：&lt;a href=&quot;https://github.com/zhengxiaopeng/BounceProgressBar&quot;&gt;BounceProgressBar&lt;/a&gt;。&lt;/p&gt;
-&lt;h2 id=&quot;申请Bintray账号&quot;&gt;&lt;a href=&quot;#申请Bintray账号&quot; class=&quot;headerlink&quot; title=&quot;申请Bintray账号&quot;&gt;&lt;/a&gt;申请Bintray账号&lt;/h2&gt;&lt;p&gt;Bintray的基本功能类似于Maven Central，一样的我们需要一个账号，&lt;a href=&quot;https://bintray.com/&quot;&gt;Bintray传送门&lt;/a&gt;，注册完成后第一步算完成了。&lt;/p&gt;
+&lt;h2 id=&quot;申请Bintray账号&quot;&gt;&lt;a href=&quot;#申请Bintray账号&quot; class=&quot;headerlink&quot; title=&quot;申请Bintray账号&quot;&gt;&lt;/a&gt;申请Bintray账号&lt;/h2&gt;&lt;p&gt;Bintray的基本功能类似于Maven Central，一样的我们需要一个账号，&lt;a href=&quot;https://bintray.com/&quot;&gt;Bintray传送门&lt;/a&gt;，注册完成后第一步算完成了。&lt;br&gt;&lt;code&gt;Note:&lt;/code&gt; 如果你的主页中没有添加 &lt;strong&gt;maven&lt;/strong&gt; 记得添加上。点击 &lt;code&gt;Add New Repositories&lt;/code&gt; 然后 name 和 type 写上 &lt;code&gt;maven&lt;/code&gt; 即可。&lt;/p&gt;
 &lt;h2 id=&quot;生成项目的JavaDoc和source-JARs&quot;&gt;&lt;a href=&quot;#生成项目的JavaDoc和source-JARs&quot; class=&quot;headerlink&quot; title=&quot;生成项目的JavaDoc和source JARs&quot;&gt;&lt;/a&gt;生成项目的JavaDoc和source JARs&lt;/h2&gt;&lt;p&gt;简单的说生成的这两样东西就是我们在下一步中上传到远程仓库JCenter上的文件了。这一步需要&lt;code&gt;android-maven-plugin&lt;/code&gt;插件，所以我们需要在项目的build.gradle（Top-level build file，项目最外层的build.gradle文件）中添加这个构建依赖，如下：&lt;br&gt;&lt;figure class=&quot;highlight gradle&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;11&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;12&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;13&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;14&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;15&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;16&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;buildscript&lt;/span&gt; &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;repositories&lt;/span&gt; &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        jcenter()&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;dependencies&lt;/span&gt; &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;classpath&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&#39;com.android.tools.build:gradle:1.0.0&#39;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;classpath&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&#39;com.github.dcendents:android-maven-plugin:1.2&#39;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;// &lt;span class=&quot;doctag&quot;&gt;NOTE:&lt;/span&gt; Do not place your application dependencies here; they belong&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;// in the individual module build.gradle files&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;allprojects&lt;/span&gt; &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;repositories&lt;/span&gt; &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        jcenter()&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;然后在你需要发布的那个module（我这里的即是library）的build.gradle里配置如下内容：&lt;/p&gt;
     
