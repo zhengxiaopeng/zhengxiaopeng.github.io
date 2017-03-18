@@ -42,7 +42,7 @@
         <link rel="alternative" href="/atom.xml" title="Rocko&#39;s blog" type="application/atom+xml">
     
     <link rel="shortcut icon" href="/img/favicon.png">
-    <link rel="stylesheet" href="/css/style.css?v=1.4.9">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.13">
     <script>window.lazyScripts=[]</script>
 </head>
 
@@ -272,9 +272,9 @@
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="https://static.rocko.xyz/img/2016-11-27_09-11-08_no_deal_with.png" alt="正常运行" title="">
+                    <img src="https://static.rocko.xyz/img/2016-11-27_09-11-08_no_deal_with.png" alt="正常运行 Test case" title="">
                 </div>
-                <div class="image-caption">正常运行</div>
+                <div class="image-caption">正常运行 Test case</div>
             </figure>
 <h2 id="处理后的流程"><a href="#处理后的流程" class="headerlink" title="处理后的流程"></a>处理后的流程</h2><p>首先流程应该在我们的代码里避免可以直接加载 so 动态库，然后 Robolectric 在启动时自己去加载需要的动态库。</p>
 <p>// NativeLibsApplication.java</p>
@@ -283,9 +283,9 @@
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="https://static.rocko.xyz/img/2016-11-27_09-24-25_test_libs_folder.png" alt="test" title="">
+                    <img src="https://static.rocko.xyz/img/2016-11-27_09-24-25_test_libs_folder.png" alt="test 内 libs 文件" title="">
                 </div>
-                <div class="image-caption">test</div>
+                <div class="image-caption">test 内 libs 文件</div>
             </figure>
 <p>Linux 下的我们从 ndk-bundle 里复制我们需要的 .so，然后我们自己的本地库打一个 x86-64 的即可，注意 compileSdkVersion 选上高一点支持 x86-64 的版本。</p>
 <p>然后重新移植打出 macOS 下的动态库，简单写个打包脚本如下：</p>
@@ -300,9 +300,9 @@
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="https://static.rocko.xyz/img/2016-11-27_09-32-15_test_case_success.png" alt="运行加载本地库" title="">
+                    <img src="https://static.rocko.xyz/img/2016-11-27_09-32-15_test_case_success.png" alt="运行加载本地库 Test case 成功" title="">
                 </div>
-                <div class="image-caption">运行加载本地库</div>
+                <div class="image-caption">运行加载本地库 Test case 成功</div>
             </figure>
 <h1 id="End"><a href="#End" class="headerlink" title="End"></a>End</h1><p>Linux 下使用最快速方便，只需要打包程序的 so 时顺便打包出 x86-64 的 so ，然后复制 ndk-bundle 的 so 加上需要的依赖即可。macOS 和 Windows 下就需要自己打包出各自平台下的动态库才可使用，如果代码里有 Android 自带 so 依赖的话那就需要自己去重新移植编译打包 ndk-bundle 里的动态库了。</p>
 <p>项目实例源码：<a href="https://github.com/zhengxiaopeng/RobolectricSupportNativeLibs" target="_blank" rel="external">RobolectricSupportNativeLibs</a></p>
@@ -458,7 +458,7 @@
 lazyScripts.push('//cdn.bootcss.com/marked/0.3.6/marked.min.js');
 
 var duoshuoQuery = {short_name:'rocko', theme: 'none'};
-lazyScripts.push('/js/embed.min.js?v=1.4.9');
+lazyScripts.push('/js/embed.min.js?v=1.4.13');
 
 
 </script>
@@ -586,7 +586,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
 
 </script>
 
-<script src="/js/main.min.js?v=1.4.9"></script>
+<script src="/js/main.min.js?v=1.4.13"></script>
 
 
 <div class="search-panel" id="search-panel">
@@ -606,7 +606,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
 </li>
 </template>
 
-<script src="/js/search.min.js?v=1.4.9" async></script>
+<script src="/js/search.min.js?v=1.4.13" async></script>
 
 
 
