@@ -33,10 +33,10 @@
 <meta name="twitter:title" content="Rocko's blog">
 <meta name="twitter:description" content="Rocko&apos;s blog">
     
-        <link rel="alternative" href="/atom.xml" title="Rocko&#39;s blog" type="application/atom+xml">
+        <link rel="alternate" type="application/atom+xml" title="Rocko&#39;s blog" href="/atom.xml">
     
     <link rel="shortcut icon" href="/img/favicon.png">
-    <link rel="stylesheet" href="/css/style.css?v=1.4.13">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
     <script>window.lazyScripts=[]</script>
 </head>
 
@@ -48,7 +48,7 @@
     <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
         <i class="icon icon-lg icon-close"></i>
     </a>
-    <div class="brand-wrap">
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
       <div class="brand">
         <a href="/" class="avatar waves-effect waves-circle waves-light">
           <img src="/img/avatar.png">
@@ -156,7 +156,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入关键字搜索站内内容">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -196,6 +196,7 @@
 
     
 
+
 </header>
 
 <div class="container body-wrap fade">
@@ -203,14 +204,14 @@
 
     
             
-            <h3 class="archive-separator">November, 2016</h3>
+            <h3 class="archive-separator">十一月, 2016</h3>
             <div class="waterfall">
     
 
         <div class="waterfall-item">
   <article class="article-card archive-article">
     <div class="post-meta">
-      <time class="post-time" title="2016年11月27日 9:42" datetime="2016-11-27T01:42:41.000Z"  itemprop="datePublished">Nov 27</time>
+      <time class="post-time" title="2016-11-27 09:42:41" datetime="2016-11-27T01:42:41.000Z"  itemprop="datePublished">2016-11-27</time>
 
       
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Android/">Android</a></li></ul>
@@ -260,14 +261,14 @@
 
         <p>
         <!-- 
-            <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-1x icon-rss"></i></a></span> -->
+            <span><a href="" target="_blank" class="rss" title="rss"><i class="icon icon-1x icon-rss"></i></a></span> -->
             <span>博客内容遵循 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享 署名 - 非商业性 - 相同方式共享 4.0 协议</a></span>
         </p>
     </div>
     <div class="bottom">
         <p>
             <span>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></span>
-            <span>Rocko's blog &copy; 2014 - 2017</span>
+            <span>Rocko &copy; 2014 - 2017</span>
         </p>
     </div>
 
@@ -332,7 +333,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 
 </script>
 
-<script src="/js/main.min.js?v=1.4.13"></script>
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
 
 
 <div class="search-panel" id="search-panel">
@@ -352,7 +353,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 </li>
 </template>
 
-<script src="/js/search.min.js?v=1.4.13" async></script>
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
 
 
 
@@ -362,14 +363,24 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
- 
-<!-- Baidu Tongji -->
-<script>var _hmt = _hmt || []</script>
-<script async src="//hm.baidu.com/hm.js?4536d8f17989e675f0efa92c7722c95c"></script>
-<!-- End Baidu Tongji -->
 
 
-
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
 
 
 

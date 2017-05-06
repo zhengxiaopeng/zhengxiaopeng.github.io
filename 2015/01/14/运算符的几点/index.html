@@ -34,10 +34,10 @@
 <meta name="twitter:title" content="运算符的几点">
 <meta name="twitter:description" content="开篇废话运算符使用的几点小技巧，先给出Java的运算符的基本知识复习下，其它语言的大同小异。运算符需要注意的问题有：优先级（运算顺序问题）、结合方向（自左至右或自右至左问题）、要求运算对象个数（运算符需要有几个运算对象问题）。合理运用运算符能提高自己代码的BIG、能精简代码、还能提高程序的运行效率，滥用运算符可能导致逻辑混乱、代码不知所云什么的，所以有些问题还是要自己注意一下的。下面就列出一些运算">
     
-        <link rel="alternative" href="/atom.xml" title="Rocko&#39;s blog" type="application/atom+xml">
+        <link rel="alternate" type="application/atom+xml" title="Rocko&#39;s blog" href="/atom.xml">
     
     <link rel="shortcut icon" href="/img/favicon.png">
-    <link rel="stylesheet" href="/css/style.css?v=1.4.13">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
     <script>window.lazyScripts=[]</script>
 </head>
 
@@ -49,7 +49,7 @@
     <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
         <i class="icon icon-lg icon-close"></i>
     </a>
-    <div class="brand-wrap">
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
       <div class="brand">
         <a href="/" class="avatar waves-effect waves-circle waves-light">
           <img src="/img/avatar.png">
@@ -157,7 +157,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入关键字搜索站内内容">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -205,6 +205,7 @@
 
     
 
+
 </header>
 
 
@@ -223,7 +224,7 @@
     <div class="post-card">
         <h1 class="post-card-title">运算符的几点</h1>
         <div class="post-meta">
-            <time class="post-time" title="2015年01月14日 12:06" datetime="2015-01-14T04:06:58.000Z"  itemprop="datePublished">2015-01-14</time>
+            <time class="post-time" title="2015-01-14 12:06:58" datetime="2015-01-14T04:06:58.000Z"  itemprop="datePublished">2015-01-14</time>
 
             
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Programming/">Programming</a></li></ul>
@@ -298,11 +299,13 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2016-12-10T18:48:42.000Z" itemprop="dateUpdated">2016年12月11日 2:48</time>
+    最后更新时间：<time datetime="2016-12-10T18:48:42.000Z" itemprop="dateUpdated">2016-12-11 02:48:42</time>
 </span><br>
 
 
+        
         除特别说明外，文章均采用「知识共享 署名 - 非商业性 - 相同方式共享 4.0 协议」进行许可，转载需注明文章出处：<a href="/2015/01/14/运算符的几点/" target="_blank" rel="external">https://rocko.xyz/2015/01/14/运算符的几点/</a>
+        
     </div>
     <footer>
         <a href="https://rocko.xyz">
@@ -400,17 +403,33 @@
 
     
 
-<div class="comments" id="comments">
-    <div class="ds-thread" data-thread-key="2015/01/14/运算符的几点/-运算符的几点" data-title="运算符的几点" data-url="https://rocko.xyz/2015/01/14/运算符的几点/" data-author-key="1" ></div>
-</div>
-<script>
-lazyScripts.push('//cdn.bootcss.com/marked/0.3.6/marked.min.js');
-
-var duoshuoQuery = {short_name:'rocko', theme: 'none'};
-lazyScripts.push('/js/embed.min.js?v=1.4.13');
 
 
-</script>
+
+
+
+
+
+
+
+    <div id="cloud-tie-wrapper" class="comments cloud-tie-wrapper"></div>
+    <script>
+    var cloudTieConfig = {
+        url: 'https://rocko.xyz/2015/01/14/运算符的几点/index.html',
+        sourceId: '运算符的几点',
+        productKey: '6d61795419b741dea9d65e302b1764ec',
+        target: 'cloud-tie-wrapper',
+        pcFiles: [
+            '//unpkg.com/hexo-theme-material-indigo@latest/css/cloudTie/pc.css',
+            '//unpkg.com/hexo-theme-material-indigo@latest/js/cloudTie/pc.min.js',
+        ],
+        mobileFiles: [
+            '//unpkg.com/hexo-theme-material-indigo@latest/css/cloudTie/mobile.css',
+            '//unpkg.com/hexo-theme-material-indigo@latest/js/cloudTie/mobile.min.js'
+        ]
+    };
+    </script>
+    <script src="//unpkg.com/hexo-theme-material-indigo@latest/js/cloudTie/loader.min.js"></script>
 
 
 
@@ -463,14 +482,14 @@ lazyScripts.push('/js/embed.min.js?v=1.4.13');
 
         <p>
         <!-- 
-            <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-1x icon-rss"></i></a></span> -->
+            <span><a href="" target="_blank" class="rss" title="rss"><i class="icon icon-1x icon-rss"></i></a></span> -->
             <span>博客内容遵循 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享 署名 - 非商业性 - 相同方式共享 4.0 协议</a></span>
         </p>
     </div>
     <div class="bottom">
         <p>
             <span>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></span>
-            <span>Rocko's blog &copy; 2014 - 2017</span>
+            <span>Rocko &copy; 2014 - 2017</span>
         </p>
     </div>
 
@@ -535,7 +554,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
 
 </script>
 
-<script src="/js/main.min.js?v=1.4.13"></script>
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
 
 
 <div class="search-panel" id="search-panel">
@@ -555,7 +574,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
 </li>
 </template>
 
-<script src="/js/search.min.js?v=1.4.13" async></script>
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
 
 
 
@@ -565,14 +584,24 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
 <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
- 
-<!-- Baidu Tongji -->
-<script>var _hmt = _hmt || []</script>
-<script async src="//hm.baidu.com/hm.js?4536d8f17989e675f0efa92c7722c95c"></script>
-<!-- End Baidu Tongji -->
 
 
-
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
 
 
 
