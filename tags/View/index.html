@@ -175,7 +175,8 @@
  
 
 
-        <a class="header-icon waves-effect waves-circle waves-light" title="High一下" herf="javascript:(    /*     * Copyright (C) 2015 Rocko (rocko.xyz) <rocko.zxp@gmail.com>     *     * Licensed under the Apache License, Version 2.0 (the 'License');     * you may not use this file except in compliance with the License.     * You may obtain a copy of the License at     *     *      http://www.apache.org/licenses/LICENSE-2.0     *     * Unless required by applicable law or agreed to in writing, software     * distributed under the License is distributed on an 'AS IS' BASIS,     * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.     * See the License for the specific language governing permissions and     * limitations under the License.     */    function go() {        function c() {        var e = document.createElement('link');        e.setAttribute('type', 'text/css');        e.setAttribute('rel', 'stylesheet');        e.setAttribute('href', f);        e.setAttribute('class', l);        document.body.appendChild(e)    }     function h() {        var e = document.getElementsByClassName(l);        for (var t = 0; t < e.length; t++) {            document.body.removeChild(e[t])        }    }     function p() {        var e = document.createElement('div');        e.setAttribute('class', a);        document.body.appendChild(e);        setTimeout(function() {            document.body.removeChild(e)        }, 100)    }     function d(e) {        return {            height : e.offsetHeight,            width : e.offsetWidth        }    }     function v(i) {        var s = d(i);        return s.height > e && s.height < n && s.width > t && s.width < r    }     function m(e) {        var t = e;        var n = 0;        while (!!t) {            n += t.offsetTop;            t = t.offsetParent        }        return n    }     function g() {        var e = document.documentElement;        if (!!window.innerWidth) {            return window.innerHeight        } else if (e && !isNaN(e.clientHeight)) {            return e.clientHeight        }        return 0    }     function y() {        if (window.pageYOffset) {            return window.pageYOffset        }        return Math.max(document.documentElement.scrollTop, document.body.scrollTop)    }     function E(e) {        var t = m(e);        return t >= w && t <= b + w    }     var songs = [                'http://rocko-blog.qiniudn.com/Music-Fashion_Show.mp3',                'http://rocko-blog.qiniudn.com/Music-Wake-Live.mp3',                'http://rocko-blog.qiniudn.com/Music-outside.mp3',                'http://rocko-blog.qiniudn.com/Music-sunburst.mp3'    ];    function S() {        var e = document.getElementById('audio_element_id');        if(e != null){            var index = parseInt(e.getAttribute('curSongIndex'));            if(index > songs.length - 2) {                index = 0;            } else {                index++;            }            e.setAttribute('curSongIndex', index);            N();        }        e.src = i;        e.play()    }     function x(e) {        e.className += ' ' + s + ' ' + o    }     function T(e) {        e.className += ' ' + s + ' ' + u[Math.floor(Math.random() * u.length)]    }     function N() {        var e = document.getElementsByClassName(s);        var t = new RegExp('\\b' + s + '\\b');        for (var n = 0; n < e.length; ) {            e[n].className = e[n].className.replace(t, '')        }    }    function initAudioEle() {        var e = document.getElementById('audio_element_id');        if(e === null){            e = document.createElement('audio');            e.setAttribute('class', l);            e.setAttribute('curSongIndex', 0);            e.id = 'audio_element_id';            e.loop = false;            e.bgcolor = 0;            e.addEventListener('canplay', function() {            setTimeout(function() {                x(k)            }, 500);            setTimeout(function() {                N();                p();                for (var e = 0; e < O.length; e++) {                    T(O[e])                }            }, 15500)        }, true);        e.addEventListener('ended', function() {            N();            h();            go();        }, true);        e.innerHTML = ' <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>';        document.body.appendChild(e);        }    }        initAudioEle();    var e = 30;    var t = 30;    var n = 350;    var r = 350;    var curSongIndex = parseInt(document.getElementById('audio_element_id').getAttribute('curSongIndex'));    var i = songs[curSongIndex];        var s = 'mw-harlem_shake_me';    var o = 'im_first';    var u = ['im_drunk', 'im_baked', 'im_trippin', 'im_blown'];    var a = 'mw-strobe_light';    var f = 'https://rocko.xyz/css/harlem-shake-style.css';        var l = 'mw_added_css';    var b = g();    var w = y();    var C = document.getElementsByTagName('*');    var k = null;    for (var L = 0; L < C.length; L++) {        var A = C[L];        if (v(A)) {            if (E(A)) {                k = A;                break            }        }    }    if (A === null) {        console.warn('Could not find a node of the right size. Please try a different page.');        return    }    c();    S();    var O = [];    for (var L = 0; L < C.length; L++) {        var A = C[L];        if (v(A)) {            O.push(A)        }    }    })()" >
+        <a herf="javascript:(function go() {        function c() {        var e = document.createElement('link');        e.setAttribute('type', 'text/css');        e.setAttribute('rel', 'stylesheet');        e.setAttribute('href', f);        e.setAttribute('class', l);        document.body.appendChild(e)    }     function h() {        var e = document.getElementsByClassName(l);        for (var t = 0; t < e.length; t++) {            document.body.removeChild(e[t])        }    }     function p() {        var e = document.createElement('div');        e.setAttribute('class', a);        document.body.appendChild(e);        setTimeout(function() {            document.body.removeChild(e)        }, 100)    }     function d(e) {        return {            height : e.offsetHeight,            width : e.offsetWidth        }    }     function v(i) {        var s = d(i);        return s.height > e && s.height < n && s.width > t && s.width < r    }     function m(e) {        var t = e;        var n = 0;        while (!!t) {            n += t.offsetTop;            t = t.offsetParent        }        return n    }     function g() {        var e = document.documentElement;        if (!!window.innerWidth) {            return window.innerHeight        } else if (e && !isNaN(e.clientHeight)) {            return e.clientHeight        }        return 0    }     function y() {        if (window.pageYOffset) {            return window.pageYOffset        }        return Math.max(document.documentElement.scrollTop, document.body.scrollTop)    }     function E(e) {        var t = m(e);        return t >= w && t <= b + w    }     var songs = [                'http://rocko-blog.qiniudn.com/Music-Fashion_Show.mp3',                'http://rocko-blog.qiniudn.com/Music-Wake-Live.mp3',                'http://rocko-blog.qiniudn.com/Music-outside.mp3',                'http://rocko-blog.qiniudn.com/Music-sunburst.mp3'    ];    function S() {        var e = document.getElementById('audio_element_id');        if(e != null){            var index = parseInt(e.getAttribute('curSongIndex'));            if(index > songs.length - 2) {                index = 0;            } else {                index++;            }            e.setAttribute('curSongIndex', index);            N();        }        e.src = i;        e.play()    }     function x(e) {        e.className += ' ' + s + ' ' + o    }     function T(e) {        e.className += ' ' + s + ' ' + u[Math.floor(Math.random() * u.length)]    }     function N() {        var e = document.getElementsByClassName(s);        var t = new RegExp('\\b' + s + '\\b');        for (var n = 0; n < e.length; ) {            e[n].className = e[n].className.replace(t, '')        }    }    function initAudioEle() {        var e = document.getElementById('audio_element_id');        if(e === null){            e = document.createElement('audio');            e.setAttribute('class', l);            e.setAttribute('curSongIndex', 0);            e.id = 'audio_element_id';            e.loop = false;            e.bgcolor = 0;            e.addEventListener('canplay', function() {            setTimeout(function() {                x(k)            }, 500);            setTimeout(function() {                N();                p();                for (var e = 0; e < O.length; e++) {                    T(O[e])                }            }, 15500)        }, true);        e.addEventListener('ended', function() {            N();            h();            go();        }, true);        e.innerHTML = ' <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>';        document.body.appendChild(e);        }    }        initAudioEle();    var e = 30;    var t = 30;    var n = 350;    var r = 350;    var curSongIndex = parseInt(document.getElementById('audio_element_id').getAttribute('curSongIndex'));    var i = songs[curSongIndex];        var s = 'mw-harlem_shake_me';    var o = 'im_first';    var u = ['im_drunk', 'im_baked', 'im_trippin', 'im_blown'];    var a = 'mw-strobe_light';    var f = 'https://rocko.xyz/css/harlem-shake-style.css';        var l = 'mw_added_css';    var b = g();    var w = y();    var C = document.getElementsByTagName('*');    var k = null;    for (var L = 0; L < C.length; L++) {        var A = C[L];        if (v(A)) {            if (E(A)) {                k = A;                break            }        }    }    if (A === null) {        console.warn('Could not find a node of the right size. Please try a different page.');        return    }    c();    S();    var O = [];    for (var L = 0; L < C.length; L++) {        var A = C[L];        if (v(A)) {            O.push(A)        }    }    })()" 
+        class="header-icon waves-effect waves-circle waves-light" >
         <i class="icon icon-lg icon-music"></i>High~
         </a>
     
@@ -199,19 +200,15 @@
             ">全部</a>
         
 
-            <a href="/tags/Android-Dev-Bookmarks/" style="-webkit-order:25;order:25" class="tags-list-item waves-effect waves-button waves-light">Android-Dev-Bookmarks</a>
+            <a href="/tags/Android-Dev-Bookmarks/" style="-webkit-order:26;order:26" class="tags-list-item waves-effect waves-button waves-light">Android-Dev-Bookmarks</a>
 
         
 
-            <a href="/tags/站点/" style="-webkit-order:26;order:26" class="tags-list-item waves-effect waves-button waves-light">站点</a>
+            <a href="/tags/站点/" style="-webkit-order:27;order:27" class="tags-list-item waves-effect waves-button waves-light">站点</a>
 
         
 
-            <a href="/tags/推荐/" style="-webkit-order:27;order:27" class="tags-list-item waves-effect waves-button waves-light">推荐</a>
-
-        
-
-            <a href="/tags/Android-Studio/" style="-webkit-order:28;order:28" class="tags-list-item waves-effect waves-button waves-light">Android Studio</a>
+            <a href="/tags/推荐/" style="-webkit-order:28;order:28" class="tags-list-item waves-effect waves-button waves-light">推荐</a>
 
         
 
@@ -231,7 +228,7 @@
 
         
 
-            <a href="/tags/Volley/" style="-webkit-order:0;order:0" class="tags-list-item waves-effect waves-button waves-light">Volley</a>
+            <a href="/tags/Android-Studio/" style="-webkit-order:0;order:0" class="tags-list-item waves-effect waves-button waves-light">Android Studio</a>
 
         
 
@@ -243,11 +240,11 @@
 
         
 
-            <a href="/tags/错误/" style="-webkit-order:3;order:3" class="tags-list-item waves-effect waves-button waves-light">错误</a>
+            <a href="/tags/Volley/" style="-webkit-order:3;order:3" class="tags-list-item waves-effect waves-button waves-light">Volley</a>
 
         
 
-            <a href="/tags/Git/" style="-webkit-order:4;order:4" class="tags-list-item waves-effect waves-button waves-light">Git</a>
+            <a href="/tags/错误/" style="-webkit-order:4;order:4" class="tags-list-item waves-effect waves-button waves-light">错误</a>
 
         
 
@@ -259,75 +256,79 @@
 
         
 
-            <a href="/tags/MVVM/" style="-webkit-order:7;order:7" class="tags-list-item waves-effect waves-button waves-light">MVVM</a>
+            <a href="/tags/Git/" style="-webkit-order:7;order:7" class="tags-list-item waves-effect waves-button waves-light">Git</a>
 
         
 
-            <a href="/tags/Data-Binding/" style="-webkit-order:8;order:8" class="tags-list-item waves-effect waves-button waves-light">Data Binding</a>
+            <a href="/tags/High/" style="-webkit-order:8;order:8" class="tags-list-item waves-effect waves-button waves-light">High</a>
 
         
 
-            <a href="/tags/High/" style="-webkit-order:9;order:9" class="tags-list-item waves-effect waves-button waves-light">High</a>
+            <a href="/tags/动画/" style="-webkit-order:9;order:9" class="tags-list-item waves-effect waves-button waves-light">动画</a>
 
         
 
-            <a href="/tags/动画/" style="-webkit-order:10;order:10" class="tags-list-item waves-effect waves-button waves-light">动画</a>
+            <a href="/tags/MVVM/" style="-webkit-order:10;order:10" class="tags-list-item waves-effect waves-button waves-light">MVVM</a>
 
         
 
-            <a href="/tags/VPS/" style="-webkit-order:11;order:11" class="tags-list-item waves-effect waves-button waves-light">VPS</a>
+            <a href="/tags/Data-Binding/" style="-webkit-order:11;order:11" class="tags-list-item waves-effect waves-button waves-light">Data Binding</a>
 
         
 
-            <a href="/tags/Hexo/" style="-webkit-order:12;order:12" class="tags-list-item waves-effect waves-button waves-light">Hexo</a>
+            <a href="/tags/多说/" style="-webkit-order:12;order:12" class="tags-list-item waves-effect waves-button waves-light">多说</a>
 
         
 
-            <a href="/tags/多说/" style="-webkit-order:13;order:13" class="tags-list-item waves-effect waves-button waves-light">多说</a>
+            <a href="/tags/Hexo/" style="-webkit-order:13;order:13" class="tags-list-item waves-effect waves-button waves-light">Hexo</a>
 
         
 
-            <a href="/tags/译文/" style="-webkit-order:14;order:14" class="tags-list-item waves-effect waves-button waves-light">译文</a>
+            <a href="/tags/VPS/" style="-webkit-order:14;order:14" class="tags-list-item waves-effect waves-button waves-light">VPS</a>
 
         
 
-            <a href="/tags/RxJava/" style="-webkit-order:15;order:15" class="tags-list-item waves-effect waves-button waves-light">RxJava</a>
+            <a href="/tags/译文/" style="-webkit-order:15;order:15" class="tags-list-item waves-effect waves-button waves-light">译文</a>
 
         
 
-            <a href="/tags/ReactiveX/" style="-webkit-order:16;order:16" class="tags-list-item waves-effect waves-button waves-light">ReactiveX</a>
+            <a href="/tags/图像/" style="-webkit-order:16;order:16" class="tags-list-item waves-effect waves-button waves-light">图像</a>
 
         
 
-            <a href="/tags/Span/" style="-webkit-order:17;order:17" class="tags-list-item waves-effect waves-button waves-light">Span</a>
+            <a href="/tags/RxJava/" style="-webkit-order:17;order:17" class="tags-list-item waves-effect waves-button waves-light">RxJava</a>
 
         
 
-            <a href="/tags/文字/" style="-webkit-order:18;order:18" class="tags-list-item waves-effect waves-button waves-light">文字</a>
+            <a href="/tags/ReactiveX/" style="-webkit-order:18;order:18" class="tags-list-item waves-effect waves-button waves-light">ReactiveX</a>
 
         
 
-            <a href="/tags/图像/" style="-webkit-order:19;order:19" class="tags-list-item waves-effect waves-button waves-light">图像</a>
+            <a href="/tags/JCenter/" style="-webkit-order:19;order:19" class="tags-list-item waves-effect waves-button waves-light">JCenter</a>
 
         
 
-            <a href="/tags/JCenter/" style="-webkit-order:20;order:20" class="tags-list-item waves-effect waves-button waves-light">JCenter</a>
+            <a href="/tags/Span/" style="-webkit-order:20;order:20" class="tags-list-item waves-effect waves-button waves-light">Span</a>
 
         
 
-            <a href="/tags/FQ/" style="-webkit-order:21;order:21" class="tags-list-item waves-effect waves-button waves-light">FQ</a>
+            <a href="/tags/文字/" style="-webkit-order:21;order:21" class="tags-list-item waves-effect waves-button waves-light">文字</a>
 
         
 
-            <a href="/tags/域名/" style="-webkit-order:22;order:22" class="tags-list-item waves-effect waves-button waves-light">域名</a>
+            <a href="/tags/FQ/" style="-webkit-order:22;order:22" class="tags-list-item waves-effect waves-button waves-light">FQ</a>
 
         
 
-            <a href="/tags/运算符/" style="-webkit-order:23;order:23" class="tags-list-item waves-effect waves-button waves-light">运算符</a>
+            <a href="/tags/域名/" style="-webkit-order:23;order:23" class="tags-list-item waves-effect waves-button waves-light">域名</a>
 
         
 
-            <a href="/tags/技巧/" style="-webkit-order:24;order:24" class="tags-list-item waves-effect waves-button waves-light">技巧</a>
+            <a href="/tags/运算符/" style="-webkit-order:24;order:24" class="tags-list-item waves-effect waves-button waves-light">运算符</a>
+
+        
+
+            <a href="/tags/技巧/" style="-webkit-order:25;order:25" class="tags-list-item waves-effect waves-button waves-light">技巧</a>
 
         
     </nav>
