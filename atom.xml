@@ -727,11 +727,11 @@
       <category term="Android" scheme="https://rocko.xyz/categories/Android/"/>
     
     
+      <category term="译文" scheme="https://rocko.xyz/tags/%E8%AF%91%E6%96%87/"/>
+    
       <category term="RxJava" scheme="https://rocko.xyz/tags/RxJava/"/>
     
       <category term="ReactiveX" scheme="https://rocko.xyz/tags/ReactiveX/"/>
-    
-      <category term="译文" scheme="https://rocko.xyz/tags/%E8%AF%91%E6%96%87/"/>
     
   </entry>
   
@@ -843,9 +843,9 @@
       <category term="Python" scheme="https://rocko.xyz/categories/Python/"/>
     
     
-      <category term="Hexo" scheme="https://rocko.xyz/tags/Hexo/"/>
-    
       <category term="多说" scheme="https://rocko.xyz/tags/%E5%A4%9A%E8%AF%B4/"/>
+    
+      <category term="Hexo" scheme="https://rocko.xyz/tags/Hexo/"/>
     
   </entry>
   
@@ -1208,9 +1208,9 @@
       <category term="Git" scheme="https://rocko.xyz/categories/Git/"/>
     
     
-      <category term="错误" scheme="https://rocko.xyz/tags/%E9%94%99%E8%AF%AF/"/>
-    
       <category term="Git" scheme="https://rocko.xyz/tags/Git/"/>
+    
+      <category term="错误" scheme="https://rocko.xyz/tags/%E9%94%99%E8%AF%AF/"/>
     
       <category term="VPS" scheme="https://rocko.xyz/tags/VPS/"/>
     
