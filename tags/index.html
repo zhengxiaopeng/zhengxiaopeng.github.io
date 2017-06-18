@@ -176,8 +176,9 @@
  
 
 
-        <a class="header-icon waves-effect waves-circle waves-light" title="High一下" herf="javascript:(    /*     * Copyright (C) 2015 Rocko (rocko.xyz) <rocko.zxp@gmail.com>     *     * Licensed under the Apache License, Version 2.0 (the 'License');     * you may not use this file except in compliance with the License.     * You may obtain a copy of the License at     *     *      http://www.apache.org/licenses/LICENSE-2.0     *     * Unless required by applicable law or agreed to in writing, software     * distributed under the License is distributed on an 'AS IS' BASIS,     * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.     * See the License for the specific language governing permissions and     * limitations under the License.     */    function go() {        function c() {        var e = document.createElement('link');        e.setAttribute('type', 'text/css');        e.setAttribute('rel', 'stylesheet');        e.setAttribute('href', f);        e.setAttribute('class', l);        document.body.appendChild(e)    }     function h() {        var e = document.getElementsByClassName(l);        for (var t = 0; t < e.length; t++) {            document.body.removeChild(e[t])        }    }     function p() {        var e = document.createElement('div');        e.setAttribute('class', a);        document.body.appendChild(e);        setTimeout(function() {            document.body.removeChild(e)        }, 100)    }     function d(e) {        return {            height : e.offsetHeight,            width : e.offsetWidth        }    }     function v(i) {        var s = d(i);        return s.height > e && s.height < n && s.width > t && s.width < r    }     function m(e) {        var t = e;        var n = 0;        while (!!t) {            n += t.offsetTop;            t = t.offsetParent        }        return n    }     function g() {        var e = document.documentElement;        if (!!window.innerWidth) {            return window.innerHeight        } else if (e && !isNaN(e.clientHeight)) {            return e.clientHeight        }        return 0    }     function y() {        if (window.pageYOffset) {            return window.pageYOffset        }        return Math.max(document.documentElement.scrollTop, document.body.scrollTop)    }     function E(e) {        var t = m(e);        return t >= w && t <= b + w    }     var songs = [                'http://rocko-blog.qiniudn.com/Music-Fashion_Show.mp3',                'http://rocko-blog.qiniudn.com/Music-Wake-Live.mp3',                'http://rocko-blog.qiniudn.com/Music-outside.mp3',                'http://rocko-blog.qiniudn.com/Music-sunburst.mp3'    ];    function S() {        var e = document.getElementById('audio_element_id');        if(e != null){            var index = parseInt(e.getAttribute('curSongIndex'));            if(index > songs.length - 2) {                index = 0;            } else {                index++;            }            e.setAttribute('curSongIndex', index);            N();        }        e.src = i;        e.play()    }     function x(e) {        e.className += ' ' + s + ' ' + o    }     function T(e) {        e.className += ' ' + s + ' ' + u[Math.floor(Math.random() * u.length)]    }     function N() {        var e = document.getElementsByClassName(s);        var t = new RegExp('\\b' + s + '\\b');        for (var n = 0; n < e.length; ) {            e[n].className = e[n].className.replace(t, '')        }    }    function initAudioEle() {        var e = document.getElementById('audio_element_id');        if(e === null){            e = document.createElement('audio');            e.setAttribute('class', l);            e.setAttribute('curSongIndex', 0);            e.id = 'audio_element_id';            e.loop = false;            e.bgcolor = 0;            e.addEventListener('canplay', function() {            setTimeout(function() {                x(k)            }, 500);            setTimeout(function() {                N();                p();                for (var e = 0; e < O.length; e++) {                    T(O[e])                }            }, 15500)        }, true);        e.addEventListener('ended', function() {            N();            h();            go();        }, true);        e.innerHTML = ' <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>';        document.body.appendChild(e);        }    }        initAudioEle();    var e = 30;    var t = 30;    var n = 350;    var r = 350;    var curSongIndex = parseInt(document.getElementById('audio_element_id').getAttribute('curSongIndex'));    var i = songs[curSongIndex];        var s = 'mw-harlem_shake_me';    var o = 'im_first';    var u = ['im_drunk', 'im_baked', 'im_trippin', 'im_blown'];    var a = 'mw-strobe_light';    var f = 'https://rocko.xyz/css/harlem-shake-style.css';        var l = 'mw_added_css';    var b = g();    var w = y();    var C = document.getElementsByTagName('*');    var k = null;    for (var L = 0; L < C.length; L++) {        var A = C[L];        if (v(A)) {            if (E(A)) {                k = A;                break            }        }    }    if (A === null) {        console.warn('Could not find a node of the right size. Please try a different page.');        return    }    c();    S();    var O = [];    for (var L = 0; L < C.length; L++) {        var A = C[L];        if (v(A)) {            O.push(A)        }    }    })()">
-        <i class="icon icon-lg icon-music"></i>High~</a>
+        <a class="header-icon waves-effect waves-circle waves-light" title="High一下" herf="javascript:(    /*     * Copyright (C) 2015 Rocko (rocko.xyz) <rocko.zxp@gmail.com>     *     * Licensed under the Apache License, Version 2.0 (the 'License');     * you may not use this file except in compliance with the License.     * You may obtain a copy of the License at     *     *      http://www.apache.org/licenses/LICENSE-2.0     *     * Unless required by applicable law or agreed to in writing, software     * distributed under the License is distributed on an 'AS IS' BASIS,     * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.     * See the License for the specific language governing permissions and     * limitations under the License.     */    function go() {        function c() {        var e = document.createElement('link');        e.setAttribute('type', 'text/css');        e.setAttribute('rel', 'stylesheet');        e.setAttribute('href', f);        e.setAttribute('class', l);        document.body.appendChild(e)    }     function h() {        var e = document.getElementsByClassName(l);        for (var t = 0; t < e.length; t++) {            document.body.removeChild(e[t])        }    }     function p() {        var e = document.createElement('div');        e.setAttribute('class', a);        document.body.appendChild(e);        setTimeout(function() {            document.body.removeChild(e)        }, 100)    }     function d(e) {        return {            height : e.offsetHeight,            width : e.offsetWidth        }    }     function v(i) {        var s = d(i);        return s.height > e && s.height < n && s.width > t && s.width < r    }     function m(e) {        var t = e;        var n = 0;        while (!!t) {            n += t.offsetTop;            t = t.offsetParent        }        return n    }     function g() {        var e = document.documentElement;        if (!!window.innerWidth) {            return window.innerHeight        } else if (e && !isNaN(e.clientHeight)) {            return e.clientHeight        }        return 0    }     function y() {        if (window.pageYOffset) {            return window.pageYOffset        }        return Math.max(document.documentElement.scrollTop, document.body.scrollTop)    }     function E(e) {        var t = m(e);        return t >= w && t <= b + w    }     var songs = [                'http://rocko-blog.qiniudn.com/Music-Fashion_Show.mp3',                'http://rocko-blog.qiniudn.com/Music-Wake-Live.mp3',                'http://rocko-blog.qiniudn.com/Music-outside.mp3',                'http://rocko-blog.qiniudn.com/Music-sunburst.mp3'    ];    function S() {        var e = document.getElementById('audio_element_id');        if(e != null){            var index = parseInt(e.getAttribute('curSongIndex'));            if(index > songs.length - 2) {                index = 0;            } else {                index++;            }            e.setAttribute('curSongIndex', index);            N();        }        e.src = i;        e.play()    }     function x(e) {        e.className += ' ' + s + ' ' + o    }     function T(e) {        e.className += ' ' + s + ' ' + u[Math.floor(Math.random() * u.length)]    }     function N() {        var e = document.getElementsByClassName(s);        var t = new RegExp('\\b' + s + '\\b');        for (var n = 0; n < e.length; ) {            e[n].className = e[n].className.replace(t, '')        }    }    function initAudioEle() {        var e = document.getElementById('audio_element_id');        if(e === null){            e = document.createElement('audio');            e.setAttribute('class', l);            e.setAttribute('curSongIndex', 0);            e.id = 'audio_element_id';            e.loop = false;            e.bgcolor = 0;            e.addEventListener('canplay', function() {            setTimeout(function() {                x(k)            }, 500);            setTimeout(function() {                N();                p();                for (var e = 0; e < O.length; e++) {                    T(O[e])                }            }, 15500)        }, true);        e.addEventListener('ended', function() {            N();            h();            go();        }, true);        e.innerHTML = ' <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>';        document.body.appendChild(e);        }    }        initAudioEle();    var e = 30;    var t = 30;    var n = 350;    var r = 350;    var curSongIndex = parseInt(document.getElementById('audio_element_id').getAttribute('curSongIndex'));    var i = songs[curSongIndex];        var s = 'mw-harlem_shake_me';    var o = 'im_first';    var u = ['im_drunk', 'im_baked', 'im_trippin', 'im_blown'];    var a = 'mw-strobe_light';    var f = 'https://rocko.xyz/css/harlem-shake-style.css';        var l = 'mw_added_css';    var b = g();    var w = y();    var C = document.getElementsByTagName('*');    var k = null;    for (var L = 0; L < C.length; L++) {        var A = C[L];        if (v(A)) {            if (E(A)) {                k = A;                break            }        }    }    if (A === null) {        console.warn('Could not find a node of the right size. Please try a different page.');        return    }    c();    S();    var O = [];    for (var L = 0; L < C.length; L++) {        var A = C[L];        if (v(A)) {            O.push(A)        }    }    })()" >
+        <i class="icon icon-lg icon-music"></i>High~
+        </a>
     
 
 
@@ -211,67 +212,67 @@
 
         
 
-            <a href="/tags/Robolectric/" style="-webkit-order:3;order:3" class="tags-list-item waves-effect waves-button waves-light">Robolectric</a>
+            <a href="/tags/Android-Studio/" style="-webkit-order:3;order:3" class="tags-list-item waves-effect waves-button waves-light">Android Studio</a>
 
         
 
-            <a href="/tags/Testing/" style="-webkit-order:4;order:4" class="tags-list-item waves-effect waves-button waves-light">Testing</a>
+            <a href="/tags/Robolectric/" style="-webkit-order:4;order:4" class="tags-list-item waves-effect waves-button waves-light">Robolectric</a>
 
         
 
-            <a href="/tags/动态链接库/" style="-webkit-order:5;order:5" class="tags-list-item waves-effect waves-button waves-light">动态链接库</a>
+            <a href="/tags/Testing/" style="-webkit-order:5;order:5" class="tags-list-item waves-effect waves-button waves-light">Testing</a>
 
         
 
-            <a href="/tags/移植/" style="-webkit-order:6;order:6" class="tags-list-item waves-effect waves-button waves-light">移植</a>
+            <a href="/tags/动态链接库/" style="-webkit-order:6;order:6" class="tags-list-item waves-effect waves-button waves-light">动态链接库</a>
 
         
 
-            <a href="/tags/Android-Studio/" style="-webkit-order:7;order:7" class="tags-list-item waves-effect waves-button waves-light">Android Studio</a>
+            <a href="/tags/移植/" style="-webkit-order:7;order:7" class="tags-list-item waves-effect waves-button waves-light">移植</a>
 
         
 
-            <a href="/tags/View/" style="-webkit-order:8;order:8" class="tags-list-item waves-effect waves-button waves-light">View</a>
+            <a href="/tags/Volley/" style="-webkit-order:8;order:8" class="tags-list-item waves-effect waves-button waves-light">Volley</a>
 
         
 
-            <a href="/tags/OnTouchListener/" style="-webkit-order:9;order:9" class="tags-list-item waves-effect waves-button waves-light">OnTouchListener</a>
+            <a href="/tags/View/" style="-webkit-order:9;order:9" class="tags-list-item waves-effect waves-button waves-light">View</a>
 
         
 
-            <a href="/tags/错误/" style="-webkit-order:10;order:10" class="tags-list-item waves-effect waves-button waves-light">错误</a>
+            <a href="/tags/OnTouchListener/" style="-webkit-order:10;order:10" class="tags-list-item waves-effect waves-button waves-light">OnTouchListener</a>
 
         
 
-            <a href="/tags/Volley/" style="-webkit-order:11;order:11" class="tags-list-item waves-effect waves-button waves-light">Volley</a>
+            <a href="/tags/错误/" style="-webkit-order:11;order:11" class="tags-list-item waves-effect waves-button waves-light">错误</a>
 
         
 
-            <a href="/tags/MVP/" style="-webkit-order:12;order:12" class="tags-list-item waves-effect waves-button waves-light">MVP</a>
+            <a href="/tags/Git/" style="-webkit-order:12;order:12" class="tags-list-item waves-effect waves-button waves-light">Git</a>
 
         
 
-            <a href="/tags/架构/" style="-webkit-order:13;order:13" class="tags-list-item waves-effect waves-button waves-light">架构</a>
+            <a href="/tags/MVP/" style="-webkit-order:13;order:13" class="tags-list-item waves-effect waves-button waves-light">MVP</a>
 
         
 
-            <a href="/tags/Git/" style="-webkit-order:14;order:14" class="tags-list-item waves-effect waves-button waves-light">Git</a>
+            <a href="/tags/架构/" style="-webkit-order:14;order:14" class="tags-list-item waves-effect waves-button waves-light">架构</a>
 
         
 
-            <a href="/tags/High/" style="-webkit-order:15;order:15" class="tags-list-item waves-effect waves-button waves-light">High</a>
+            <a href="/tags/MVVM/" style="-webkit-order:15;order:15" class="tags-list-item waves-effect waves-button waves-light">MVVM</a>
 
         
 
-            <a href="/tags/动画/" style="-webkit-order:16;order:16" class="tags-list-item waves-effect waves-button waves-light">动画</a>
+            <a href="/tags/Data-Binding/" style="-webkit-order:16;order:16" class="tags-list-item waves-effect waves-button waves-light">Data Binding</a>
 
         
 
-            <a href="/tags/MVVM/" style="-webkit-order:17;order:17" class="tags-list-item waves-effect waves-button waves-light">MVVM</a>
+            <a href="/tags/High/" style="-webkit-order:17;order:17" class="tags-list-item waves-effect waves-button waves-light">High</a>
 
         
 
-            <a href="/tags/Data-Binding/" style="-webkit-order:18;order:18" class="tags-list-item waves-effect waves-button waves-light">Data Binding</a>
+            <a href="/tags/动画/" style="-webkit-order:18;order:18" class="tags-list-item waves-effect waves-button waves-light">动画</a>
 
         
 
@@ -279,23 +280,23 @@
 
         
 
-            <a href="/tags/多说/" style="-webkit-order:20;order:20" class="tags-list-item waves-effect waves-button waves-light">多说</a>
+            <a href="/tags/Hexo/" style="-webkit-order:20;order:20" class="tags-list-item waves-effect waves-button waves-light">Hexo</a>
 
         
 
-            <a href="/tags/Hexo/" style="-webkit-order:21;order:21" class="tags-list-item waves-effect waves-button waves-light">Hexo</a>
+            <a href="/tags/多说/" style="-webkit-order:21;order:21" class="tags-list-item waves-effect waves-button waves-light">多说</a>
 
         
 
-            <a href="/tags/RxJava/" style="-webkit-order:22;order:22" class="tags-list-item waves-effect waves-button waves-light">RxJava</a>
+            <a href="/tags/译文/" style="-webkit-order:22;order:22" class="tags-list-item waves-effect waves-button waves-light">译文</a>
 
         
 
-            <a href="/tags/ReactiveX/" style="-webkit-order:23;order:23" class="tags-list-item waves-effect waves-button waves-light">ReactiveX</a>
+            <a href="/tags/RxJava/" style="-webkit-order:23;order:23" class="tags-list-item waves-effect waves-button waves-light">RxJava</a>
 
         
 
-            <a href="/tags/译文/" style="-webkit-order:24;order:24" class="tags-list-item waves-effect waves-button waves-light">译文</a>
+            <a href="/tags/ReactiveX/" style="-webkit-order:24;order:24" class="tags-list-item waves-effect waves-button waves-light">ReactiveX</a>
 
         
 
@@ -569,6 +570,47 @@
             </div>
             
 
+            <h3 class="archive-separator" id="tag-Android Studio">Android Studio</h3>
+
+            <div class="waterfall">
+            
+
+                <div class="waterfall-item">
+  <article class="article-card archive-article">
+    <div class="post-meta">
+      <time class="post-time" title="2014-12-13 10:50:28" datetime="2014-12-13T02:50:28.000Z"  itemprop="datePublished">2014-12-13</time>
+
+      
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Android/">Android</a></li></ul>
+
+
+
+    </div>
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2014/12/13/Android-Studio-jar、so、library项目依赖/">Android Studio Jar、so、library项目依赖</a>
+    </h3>
+  
+
+
+
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android-Studio/">Android Studio</a></li></ul>
+
+    </div>
+    
+  </article>
+</div>
+
+            
+            </div>
+            
+
             <h3 class="archive-separator" id="tag-Robolectric">Robolectric</h3>
 
             <div class="waterfall">
@@ -733,7 +775,7 @@
             </div>
             
 
-            <h3 class="archive-separator" id="tag-Android Studio">Android Studio</h3>
+            <h3 class="archive-separator" id="tag-Volley">Volley</h3>
 
             <div class="waterfall">
             
@@ -741,7 +783,7 @@
                 <div class="waterfall-item">
   <article class="article-card archive-article">
     <div class="post-meta">
-      <time class="post-time" title="2014-12-13 10:50:28" datetime="2014-12-13T02:50:28.000Z"  itemprop="datePublished">2014-12-13</time>
+      <time class="post-time" title="2014-12-05 22:55:31" datetime="2014-12-05T14:55:31.000Z"  itemprop="datePublished">2014-12-05</time>
 
       
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Android/">Android</a></li></ul>
@@ -754,7 +796,7 @@
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2014/12/13/Android-Studio-jar、so、library项目依赖/">Android Studio Jar、so、library项目依赖</a>
+      <a class="post-title-link" href="/2014/12/05/Android-Volley自定义Request-JacksonRequest、GsonRequest/">Android Volley自定义Request(JacksonRequest、GsonRequest)</a>
     </h3>
   
 
@@ -763,7 +805,7 @@
     
     <div class="post-footer">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android-Studio/">Android Studio</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Volley/">Volley</a></li></ul>
 
     </div>
     
@@ -965,7 +1007,7 @@
             </div>
             
 
-            <h3 class="archive-separator" id="tag-Volley">Volley</h3>
+            <h3 class="archive-separator" id="tag-Git">Git</h3>
 
             <div class="waterfall">
             
@@ -973,10 +1015,10 @@
                 <div class="waterfall-item">
   <article class="article-card archive-article">
     <div class="post-meta">
-      <time class="post-time" title="2014-12-05 22:55:31" datetime="2014-12-05T14:55:31.000Z"  itemprop="datePublished">2014-12-05</time>
+      <time class="post-time" title="2014-11-25 18:21:52" datetime="2014-11-25T10:21:52.000Z"  itemprop="datePublished">2014-11-25</time>
 
       
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Android/">Android</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Git/">Git</a></li></ul>
 
 
 
@@ -986,7 +1028,7 @@
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2014/12/05/Android-Volley自定义Request-JacksonRequest、GsonRequest/">Android Volley自定义Request(JacksonRequest、GsonRequest)</a>
+      <a class="post-title-link" href="/2014/11/25/Git-错误集锦ing/">Git 错误集锦ing...</a>
     </h3>
   
 
@@ -995,7 +1037,41 @@
     
     <div class="post-footer">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Volley/">Volley</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/错误/">错误</a></li></ul>
+
+    </div>
+    
+  </article>
+</div>
+
+            
+
+                <div class="waterfall-item">
+  <article class="article-card archive-article">
+    <div class="post-meta">
+      <time class="post-time" title="2015-02-12 00:06:07" datetime="2015-02-11T16:06:07.000Z"  itemprop="datePublished">2015-02-12</time>
+
+      
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Git/">Git</a></li></ul>
+
+
+
+    </div>
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2015/02/12/VPS主机搭建Git服务器/">VPS主机搭建Git服务器</a>
+    </h3>
+  
+
+
+
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VPS/">VPS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/错误/">错误</a></li></ul>
 
     </div>
     
@@ -1122,7 +1198,7 @@
             </div>
             
 
-            <h3 class="archive-separator" id="tag-Git">Git</h3>
+            <h3 class="archive-separator" id="tag-MVVM">MVVM</h3>
 
             <div class="waterfall">
             
@@ -1130,10 +1206,10 @@
                 <div class="waterfall-item">
   <article class="article-card archive-article">
     <div class="post-meta">
-      <time class="post-time" title="2014-11-25 18:21:52" datetime="2014-11-25T10:21:52.000Z"  itemprop="datePublished">2014-11-25</time>
+      <time class="post-time" title="2015-11-07 12:49:07" datetime="2015-11-07T04:49:07.000Z"  itemprop="datePublished">2015-11-07</time>
 
       
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Git/">Git</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Android/">Android</a></li></ul>
 
 
 
@@ -1143,7 +1219,7 @@
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2014/11/25/Git-错误集锦ing/">Git 错误集锦ing...</a>
+      <a class="post-title-link" href="/2015/11/07/MVVM_Android-CleanArchitecture/">MVVM_Android-CleanArchitecture</a>
     </h3>
   
 
@@ -1152,7 +1228,7 @@
     
     <div class="post-footer">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/错误/">错误</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Data-Binding/">Data Binding</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MVVM/">MVVM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/架构/">架构</a></li></ul>
 
     </div>
     
@@ -1160,14 +1236,21 @@
 </div>
 
             
+            </div>
+            
+
+            <h3 class="archive-separator" id="tag-Data Binding">Data Binding</h3>
+
+            <div class="waterfall">
+            
 
                 <div class="waterfall-item">
   <article class="article-card archive-article">
     <div class="post-meta">
-      <time class="post-time" title="2015-02-12 00:06:07" datetime="2015-02-11T16:06:07.000Z"  itemprop="datePublished">2015-02-12</time>
+      <time class="post-time" title="2015-11-07 12:49:07" datetime="2015-11-07T04:49:07.000Z"  itemprop="datePublished">2015-11-07</time>
 
       
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Git/">Git</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Android/">Android</a></li></ul>
 
 
 
@@ -1177,7 +1260,7 @@
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2015/02/12/VPS主机搭建Git服务器/">VPS主机搭建Git服务器</a>
+      <a class="post-title-link" href="/2015/11/07/MVVM_Android-CleanArchitecture/">MVVM_Android-CleanArchitecture</a>
     </h3>
   
 
@@ -1186,7 +1269,7 @@
     
     <div class="post-footer">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VPS/">VPS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/错误/">错误</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Data-Binding/">Data Binding</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MVVM/">MVVM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/架构/">架构</a></li></ul>
 
     </div>
     
@@ -1280,40 +1363,6 @@
                 <div class="waterfall-item">
   <article class="article-card archive-article">
     <div class="post-meta">
-      <time class="post-time" title="2015-03-04 00:11:25" datetime="2015-03-03T16:11:25.000Z"  itemprop="datePublished">2015-03-04</time>
-
-      
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Android/">Android</a></li></ul>
-
-
-
-    </div>
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2015/03/04/【译】Spans，一个强大的概念/">【译】Spans，一个强大的概念</a>
-    </h3>
-  
-
-
-
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Span/">Span</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/动画/">动画</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/文字/">文字</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/译文/">译文</a></li></ul>
-
-    </div>
-    
-  </article>
-</div>
-
-            
-
-                <div class="waterfall-item">
-  <article class="article-card archive-article">
-    <div class="post-meta">
       <time class="post-time" title="2015-06-19 12:49:07" datetime="2015-06-19T04:49:07.000Z"  itemprop="datePublished">2015-06-19</time>
 
       
@@ -1344,18 +1393,11 @@
 </div>
 
             
-            </div>
-            
-
-            <h3 class="archive-separator" id="tag-MVVM">MVVM</h3>
-
-            <div class="waterfall">
-            
 
                 <div class="waterfall-item">
   <article class="article-card archive-article">
     <div class="post-meta">
-      <time class="post-time" title="2015-11-07 12:49:07" datetime="2015-11-07T04:49:07.000Z"  itemprop="datePublished">2015-11-07</time>
+      <time class="post-time" title="2015-03-04 00:11:25" datetime="2015-03-03T16:11:25.000Z"  itemprop="datePublished">2015-03-04</time>
 
       
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Android/">Android</a></li></ul>
@@ -1368,7 +1410,7 @@
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2015/11/07/MVVM_Android-CleanArchitecture/">MVVM_Android-CleanArchitecture</a>
+      <a class="post-title-link" href="/2015/03/04/【译】Spans，一个强大的概念/">【译】Spans，一个强大的概念</a>
     </h3>
   
 
@@ -1377,48 +1419,7 @@
     
     <div class="post-footer">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Data-Binding/">Data Binding</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MVVM/">MVVM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/架构/">架构</a></li></ul>
-
-    </div>
-    
-  </article>
-</div>
-
-            
-            </div>
-            
-
-            <h3 class="archive-separator" id="tag-Data Binding">Data Binding</h3>
-
-            <div class="waterfall">
-            
-
-                <div class="waterfall-item">
-  <article class="article-card archive-article">
-    <div class="post-meta">
-      <time class="post-time" title="2015-11-07 12:49:07" datetime="2015-11-07T04:49:07.000Z"  itemprop="datePublished">2015-11-07</time>
-
-      
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Android/">Android</a></li></ul>
-
-
-
-    </div>
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2015/11/07/MVVM_Android-CleanArchitecture/">MVVM_Android-CleanArchitecture</a>
-    </h3>
-  
-
-
-
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Data-Binding/">Data Binding</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MVVM/">MVVM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/架构/">架构</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Span/">Span</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/动画/">动画</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/文字/">文字</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/译文/">译文</a></li></ul>
 
     </div>
     
@@ -1504,6 +1505,115 @@
             </div>
             
 
+            <h3 class="archive-separator" id="tag-Hexo">Hexo</h3>
+
+            <div class="waterfall">
+            
+
+                <div class="waterfall-item">
+  <article class="article-card archive-article">
+    <div class="post-meta">
+      <time class="post-time" title="2014-11-24 12:49:07" datetime="2014-11-24T04:49:07.000Z"  itemprop="datePublished">2014-11-24</time>
+
+      
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Hexo/">Hexo</a></li></ul>
+
+
+
+    </div>
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2014/11/24/hello-world/">Hello World</a>
+    </h3>
+  
+
+
+
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li></ul>
+
+    </div>
+    
+  </article>
+</div>
+
+            
+
+                <div class="waterfall-item">
+  <article class="article-card archive-article">
+    <div class="post-meta">
+      <time class="post-time" title="2015-03-10 00:40:06" datetime="2015-03-09T16:40:06.000Z"  itemprop="datePublished">2015-03-10</time>
+
+      
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Python/">Python</a></li></ul>
+
+
+
+    </div>
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2015/03/10/Python小程序-多说评论通知/">Python小程序-多说评论通知</a>
+    </h3>
+  
+
+
+
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/多说/">多说</a></li></ul>
+
+    </div>
+    
+  </article>
+</div>
+
+            
+
+                <div class="waterfall-item">
+  <article class="article-card archive-article">
+    <div class="post-meta">
+      <time class="post-time" title="2014-12-06 12:49:07" datetime="2014-12-06T04:49:07.000Z"  itemprop="datePublished">2014-12-06</time>
+
+      
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Hexo/">Hexo</a></li></ul>
+
+
+
+    </div>
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2014/12/06/设置域名邮箱/">设置域名邮箱</a>
+    </h3>
+  
+
+
+
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/域名/">域名</a></li></ul>
+
+    </div>
+    
+  </article>
+</div>
+
+            
+            </div>
+            
+
             <h3 class="archive-separator" id="tag-多说">多说</h3>
 
             <div class="waterfall">
@@ -1545,7 +1655,7 @@
             </div>
             
 
-            <h3 class="archive-separator" id="tag-Hexo">Hexo</h3>
+            <h3 class="archive-separator" id="tag-译文">译文</h3>
 
             <div class="waterfall">
             
@@ -1553,10 +1663,10 @@
                 <div class="waterfall-item">
   <article class="article-card archive-article">
     <div class="post-meta">
-      <time class="post-time" title="2015-03-10 00:40:06" datetime="2015-03-09T16:40:06.000Z"  itemprop="datePublished">2015-03-10</time>
+      <time class="post-time" title="2015-06-19 12:49:07" datetime="2015-06-19T04:49:07.000Z"  itemprop="datePublished">2015-06-19</time>
 
       
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Python/">Python</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Android/">Android</a></li></ul>
 
 
 
@@ -1566,7 +1676,7 @@
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2015/03/10/Python小程序-多说评论通知/">Python小程序-多说评论通知</a>
+      <a class="post-title-link" href="/2015/06/19/【译】解决共享元素在系统UI上绘制的问题/">【译】解决共享元素在系统UI上绘制的问题</a>
     </h3>
   
 
@@ -1575,7 +1685,7 @@
     
     <div class="post-footer">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/多说/">多说</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/动画/">动画</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/译文/">译文</a></li></ul>
 
     </div>
     
@@ -1587,10 +1697,10 @@
                 <div class="waterfall-item">
   <article class="article-card archive-article">
     <div class="post-meta">
-      <time class="post-time" title="2014-11-24 12:49:07" datetime="2014-11-24T04:49:07.000Z"  itemprop="datePublished">2014-11-24</time>
+      <time class="post-time" title="2015-05-05 12:49:07" datetime="2015-05-05T04:49:07.000Z"  itemprop="datePublished">2015-05-05</time>
 
       
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Hexo/">Hexo</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Android/">Android</a></li></ul>
 
 
 
@@ -1600,7 +1710,7 @@
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2014/11/24/hello-world/">Hello World</a>
+      <a class="post-title-link" href="/2015/05/05/【译】NotRxJava懒人专用指南/">【译】NotRxJava懒人专用指南</a>
     </h3>
   
 
@@ -1609,7 +1719,7 @@
     
     <div class="post-footer">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ReactiveX/">ReactiveX</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RxJava/">RxJava</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/译文/">译文</a></li></ul>
 
     </div>
     
@@ -1621,10 +1731,10 @@
                 <div class="waterfall-item">
   <article class="article-card archive-article">
     <div class="post-meta">
-      <time class="post-time" title="2014-12-06 12:49:07" datetime="2014-12-06T04:49:07.000Z"  itemprop="datePublished">2014-12-06</time>
+      <time class="post-time" title="2015-03-04 00:11:25" datetime="2015-03-03T16:11:25.000Z"  itemprop="datePublished">2015-03-04</time>
 
       
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Hexo/">Hexo</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Android/">Android</a></li></ul>
 
 
 
@@ -1634,7 +1744,7 @@
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2014/12/06/设置域名邮箱/">设置域名邮箱</a>
+      <a class="post-title-link" href="/2015/03/04/【译】Spans，一个强大的概念/">【译】Spans，一个强大的概念</a>
     </h3>
   
 
@@ -1643,7 +1753,7 @@
     
     <div class="post-footer">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/域名/">域名</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Span/">Span</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/动画/">动画</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/文字/">文字</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/译文/">译文</a></li></ul>
 
     </div>
     
@@ -1726,115 +1836,6 @@
     <div class="post-footer">
         
 	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ReactiveX/">ReactiveX</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RxJava/">RxJava</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/译文/">译文</a></li></ul>
-
-    </div>
-    
-  </article>
-</div>
-
-            
-            </div>
-            
-
-            <h3 class="archive-separator" id="tag-译文">译文</h3>
-
-            <div class="waterfall">
-            
-
-                <div class="waterfall-item">
-  <article class="article-card archive-article">
-    <div class="post-meta">
-      <time class="post-time" title="2015-05-05 12:49:07" datetime="2015-05-05T04:49:07.000Z"  itemprop="datePublished">2015-05-05</time>
-
-      
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Android/">Android</a></li></ul>
-
-
-
-    </div>
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2015/05/05/【译】NotRxJava懒人专用指南/">【译】NotRxJava懒人专用指南</a>
-    </h3>
-  
-
-
-
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ReactiveX/">ReactiveX</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RxJava/">RxJava</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/译文/">译文</a></li></ul>
-
-    </div>
-    
-  </article>
-</div>
-
-            
-
-                <div class="waterfall-item">
-  <article class="article-card archive-article">
-    <div class="post-meta">
-      <time class="post-time" title="2015-03-04 00:11:25" datetime="2015-03-03T16:11:25.000Z"  itemprop="datePublished">2015-03-04</time>
-
-      
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Android/">Android</a></li></ul>
-
-
-
-    </div>
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2015/03/04/【译】Spans，一个强大的概念/">【译】Spans，一个强大的概念</a>
-    </h3>
-  
-
-
-
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Span/">Span</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/动画/">动画</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/文字/">文字</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/译文/">译文</a></li></ul>
-
-    </div>
-    
-  </article>
-</div>
-
-            
-
-                <div class="waterfall-item">
-  <article class="article-card archive-article">
-    <div class="post-meta">
-      <time class="post-time" title="2015-06-19 12:49:07" datetime="2015-06-19T04:49:07.000Z"  itemprop="datePublished">2015-06-19</time>
-
-      
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Android/">Android</a></li></ul>
-
-
-
-    </div>
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2015/06/19/【译】解决共享元素在系统UI上绘制的问题/">【译】解决共享元素在系统UI上绘制的问题</a>
-    </h3>
-  
-
-
-
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/动画/">动画</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/译文/">译文</a></li></ul>
 
     </div>
     
