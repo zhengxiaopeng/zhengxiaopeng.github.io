@@ -466,14 +466,14 @@
         Blog.toc.actived(top);
     }, false);
 
-    high.addEventListener('click', function (e) {
+    high.addEventListener(even, function (e) {
         
         if (typeof window.orientation == 'undefined') {
             Blog.toggleMenu(true);
             e.preventDefault();
         }
 
-    });
+    }, false);
 
     if (w.BLOG.SHARE) {
         Blog.share()
