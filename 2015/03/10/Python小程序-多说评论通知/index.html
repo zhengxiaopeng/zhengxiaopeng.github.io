@@ -22,7 +22,7 @@
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="Hexo,多说">
+    <meta name="keywords" content="多说,Hexo">
     <meta name="description" content="前言这段时间在学习Python，写了第一个稍有实用价值的Python脚本小程序，发文以作纪念。实现多说评论邮件通知的功能：利用多说的API定时去检查后台数据从而检测是否有新评论的数据产生，有的话就发邮件到指定邮箱。之所以做这个是因为多说官方的方法一直尝试失败，可以戳这个：同步用户到多说实现文章被评论时的提醒功能，作者用户是导入了，但测试发现一直没反应；另外一个就是多说官方的通知不是及时的，一天一封">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python小程序-多说评论通知">
@@ -418,31 +418,23 @@
     
 
 
-
-
-
-
-
-
-
-
-
 <section class="comments" id="comments">
-    <div id="gitment_thread"></div>
-    <link rel="stylesheet" href="//unpkg.com/gitment/style/default.css">
-    <script src="//unpkg.com/gitment/dist/gitment.browser.js"></script>
+    <div id="disqus_thread"></div>
     <script>
-        var gitment = new Gitment({
-            owner: '',
-            repo: '',
-            oauth: {
-                client_id: '',
-                client_secret: '',
-            },
-        })
-        gitment.render('comments')
+    var disqus_shortname = 'rocko-1';
+    lazyScripts.push('//' + disqus_shortname + '.disqus.com/embed.js')
     </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 </section>
+
+
+
+
+
+
+
+
+
 
 
 

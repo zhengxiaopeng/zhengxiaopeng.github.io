@@ -461,11 +461,11 @@
       <category term="Android" scheme="https://rocko.xyz/categories/Android/"/>
     
     
+      <category term="架构" scheme="https://rocko.xyz/tags/%E6%9E%B6%E6%9E%84/"/>
+    
       <category term="MVVM" scheme="https://rocko.xyz/tags/MVVM/"/>
     
       <category term="Data Binding" scheme="https://rocko.xyz/tags/Data-Binding/"/>
-    
-      <category term="架构" scheme="https://rocko.xyz/tags/%E6%9E%B6%E6%9E%84/"/>
     
   </entry>
   
@@ -727,11 +727,11 @@
       <category term="Android" scheme="https://rocko.xyz/categories/Android/"/>
     
     
-      <category term="译文" scheme="https://rocko.xyz/tags/%E8%AF%91%E6%96%87/"/>
-    
       <category term="RxJava" scheme="https://rocko.xyz/tags/RxJava/"/>
     
       <category term="ReactiveX" scheme="https://rocko.xyz/tags/ReactiveX/"/>
+    
+      <category term="译文" scheme="https://rocko.xyz/tags/%E8%AF%91%E6%96%87/"/>
     
   </entry>
   
@@ -843,9 +843,9 @@
       <category term="Python" scheme="https://rocko.xyz/categories/Python/"/>
     
     
-      <category term="Hexo" scheme="https://rocko.xyz/tags/Hexo/"/>
-    
       <category term="多说" scheme="https://rocko.xyz/tags/%E5%A4%9A%E8%AF%B4/"/>
+    
+      <category term="Hexo" scheme="https://rocko.xyz/tags/Hexo/"/>
     
   </entry>
   
@@ -1120,11 +1120,11 @@
     
       <category term="动画" scheme="https://rocko.xyz/tags/%E5%8A%A8%E7%94%BB/"/>
     
+      <category term="译文" scheme="https://rocko.xyz/tags/%E8%AF%91%E6%96%87/"/>
+    
       <category term="Span" scheme="https://rocko.xyz/tags/Span/"/>
     
       <category term="文字" scheme="https://rocko.xyz/tags/%E6%96%87%E5%AD%97/"/>
-    
-      <category term="译文" scheme="https://rocko.xyz/tags/%E8%AF%91%E6%96%87/"/>
     
   </entry>
   
@@ -1341,9 +1341,9 @@
       <category term="Android" scheme="https://rocko.xyz/categories/Android/"/>
     
     
-      <category term="架构" scheme="https://rocko.xyz/tags/%E6%9E%B6%E6%9E%84/"/>
-    
       <category term="MVP" scheme="https://rocko.xyz/tags/MVP/"/>
+    
+      <category term="架构" scheme="https://rocko.xyz/tags/%E6%9E%B6%E6%9E%84/"/>
     
   </entry>
   
