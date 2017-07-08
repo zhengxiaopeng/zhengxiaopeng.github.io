@@ -22,7 +22,7 @@
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="多说,Hexo">
+    <meta name="keywords" content="Hexo,多说">
     <meta name="description" content="前言这段时间在学习Python，写了第一个稍有实用价值的Python脚本小程序，发文以作纪念。实现多说评论邮件通知的功能：利用多说的API定时去检查后台数据从而检测是否有新评论的数据产生，有的话就发邮件到指定邮箱。之所以做这个是因为多说官方的方法一直尝试失败，可以戳这个：同步用户到多说实现文章被评论时的提醒功能，作者用户是导入了，但测试发现一直没反应；另外一个就是多说官方的通知不是及时的，一天一封">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python小程序-多说评论通知">
@@ -247,8 +247,6 @@
 </span>
 
 
-            
-
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
             <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这段时间在学习Python，写了第一个稍有实用价值的Python脚本小程序，发文以作纪念。实现多说评论邮件通知的功能：利用<a href="http://dev.duoshuo.com/docs" target="_blank" rel="external">多说的API</a>定时去检查后台数据从而检测是否有新评论的数据产生，有的话就发邮件到指定邮箱。之所以做这个是因为多说官方的方法一直尝试失败，可以戳这个：<a href="http://haomwei.com/technology/import-users-to-duoshuo.html" target="_blank" rel="external">同步用户到多说实现文章被评论时的提醒功能</a>，作者用户是导入了，但测试发现一直没反应；另外一个就是多说官方的通知不是及时的，一天一封吧，强迫症患者可能受不了。写的不好求轻喷。</p>
@@ -429,8 +427,6 @@
 
 
 
-
-
 <section class="comments" id="comments">
     <div id="gitment_thread"></div>
     <link rel="stylesheet" href="//unpkg.com/gitment/style/default.css">
@@ -460,21 +456,23 @@
         请随意~
         <i class="icon icon-quote-right"></i>
     </h3>
-    <ul class="reward-items">
+    <div class="reward-content">
         
-        <li>
-            <img src="/img/wechat.png" title="微信打赏二维码" alt="微信打赏二维码">
-            <p>微信</p>
-        </li>
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.png" alt="打赏二维码">
+        </div>
         
-
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.png" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
         
-        <li>
-            <img src="/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
-            <p>支付宝</p>
-        </li>
-        
-    </ul>
+    </div>
 </div>
 
 
@@ -567,7 +565,6 @@
     <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
 <script>
 var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
-
 
 
 </script>

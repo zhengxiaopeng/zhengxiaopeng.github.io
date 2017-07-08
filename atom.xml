@@ -461,11 +461,11 @@
       <category term="Android" scheme="https://rocko.xyz/categories/Android/"/>
     
     
-      <category term="架构" scheme="https://rocko.xyz/tags/%E6%9E%B6%E6%9E%84/"/>
-    
       <category term="MVVM" scheme="https://rocko.xyz/tags/MVVM/"/>
     
       <category term="Data Binding" scheme="https://rocko.xyz/tags/Data-Binding/"/>
+    
+      <category term="架构" scheme="https://rocko.xyz/tags/%E6%9E%B6%E6%9E%84/"/>
     
   </entry>
   
@@ -843,9 +843,9 @@
       <category term="Python" scheme="https://rocko.xyz/categories/Python/"/>
     
     
-      <category term="多说" scheme="https://rocko.xyz/tags/%E5%A4%9A%E8%AF%B4/"/>
-    
       <category term="Hexo" scheme="https://rocko.xyz/tags/Hexo/"/>
+    
+      <category term="多说" scheme="https://rocko.xyz/tags/%E5%A4%9A%E8%AF%B4/"/>
     
   </entry>
   
@@ -1341,9 +1341,9 @@
       <category term="Android" scheme="https://rocko.xyz/categories/Android/"/>
     
     
-      <category term="MVP" scheme="https://rocko.xyz/tags/MVP/"/>
-    
       <category term="架构" scheme="https://rocko.xyz/tags/%E6%9E%B6%E6%9E%84/"/>
+    
+      <category term="MVP" scheme="https://rocko.xyz/tags/MVP/"/>
     
   </entry>
   

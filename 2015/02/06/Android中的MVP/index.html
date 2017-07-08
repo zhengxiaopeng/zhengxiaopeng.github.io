@@ -22,7 +22,7 @@
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="MVP,架构">
+    <meta name="keywords" content="架构,MVP">
     <meta name="description" content="前言MVP 作为一种 MVC 的演化版本在 Android 开发中受到了越来越多的关注，但在项目开发中选择一种这样的软件设计模式需保持慎重心态，一旦确定使用 MVP 作为你 App 的开发模式那么你就最好坚持做下去，如果在使用 MVP 模式开发过程中发现问题而且坑越来越大，那么就呵呵了。要知道在 Android 上 MVP 在现在为止并没有统一的标准或者框架，不像 Java Web 领域的项目有">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android中的MVP">
@@ -249,8 +249,6 @@
 </span>
 
 
-            
-
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
             <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>MVP 作为一种 MVC 的演化版本在 Android 开发中受到了越来越多的关注，但在项目开发中选择一种这样的软件设计模式需保持慎重心态，一旦确定使用 MVP 作为你 App 的开发模式那么你就最好坚持做下去，如果在使用 MVP 模式开发过程中发现问题而且坑越来越大，那么就呵呵了。要知道在 Android 上 MVP 在现在为止并没有统一的标准或者框架，不像 Java Web 领域的项目有 SSH 这三个成熟稳重强而有力的三剑客支持推动着，所以在运用 MVP 时一定要做好自己的理解，并且尽量预知自己 App 各模块的需求以便提前做好充分的设计工作。当然 MVP 既然能出现那么必然有它的优点的，不然谁会理会这个冒出来的东西，下面就对 Android 中 MVP 做一些阐述。</p>
@@ -455,8 +453,6 @@
 
 
 
-
-
 <section class="comments" id="comments">
     <div id="gitment_thread"></div>
     <link rel="stylesheet" href="//unpkg.com/gitment/style/default.css">
@@ -486,21 +482,23 @@
         请随意~
         <i class="icon icon-quote-right"></i>
     </h3>
-    <ul class="reward-items">
+    <div class="reward-content">
         
-        <li>
-            <img src="/img/wechat.png" title="微信打赏二维码" alt="微信打赏二维码">
-            <p>微信</p>
-        </li>
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.png" alt="打赏二维码">
+        </div>
         
-
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.png" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
         
-        <li>
-            <img src="/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
-            <p>支付宝</p>
-        </li>
-        
-    </ul>
+    </div>
 </div>
 
 
@@ -593,7 +591,6 @@
     <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
 <script>
 var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
-
 
 
 </script>

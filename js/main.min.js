@@ -202,9 +202,16 @@
             $('#search').addEventListener(even, toggleSearch);
         },
         reward: function () {
-            var modal = new this.modal('#reward')
+            var modal = new this.modal('#reward');
+            $('#rewardBtn').addEventListener(even, modal.toggle);
 
-            $('#rewardBtn').addEventListener(even, modal.toggle)
+            var $rewardToggle = $('#rewardToggle');
+            var $rewardCode = $('#rewardCode');
+            if ($rewardToggle) {
+                $rewardToggle.addEventListener('change', function () {
+                    $rewardCode.src = this.checked ? this.dataset.alipay : this.dataset.wechat
+                })
+            }
         },
         waterfall: function () {
 
@@ -406,7 +413,7 @@
         w.lazyScripts && w.lazyScripts.length && Blog.loadScript(w.lazyScripts)
     });
 
-    w.addEventListener('DOMContentLoaded', function() {
+    w.addEventListener('DOMContentLoaded', function () {
         Blog.waterfall();
         var top = docEl.scrollTop;
         Blog.toc.fixed(top);

@@ -250,8 +250,6 @@
 </span>
 
 
-            
-
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
             <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>生命不息，折腾不止，方校长的丰功伟绩我天朝程序员为之叹息，说多了都是泪。既然现在不太存在把Q推倒的可能，那我们就只好自个F过去，之前一直用都在用<a href="https://github.com/goagent/goagent" target="_blank" rel="external">Goagent</a>上Youtube看视频，一卡一卡的，而且Goagent也要常更新才能使用，比较蛋疼。而用Hosts上谷歌虽然是一种最直接的方法，但要找到一封就更新IP的服务比较少，这里推荐两个：<a href="https://github.com/txthinking/google-hosts" target="_blank" rel="external">google-hosts</a>, <a href="http://www.netsh.org/" target="_blank" rel="external">netsh</a>，这些hosts都是说不定突然就会被封的，但自己使用来看netsh目前还挺靠谱，把它放在hosts那里也还不错的。额，其它的不扯了，下面来把Shadowsocks搭起来。</p>
@@ -453,8 +451,6 @@
 
 
 
-
-
 <section class="comments" id="comments">
     <div id="gitment_thread"></div>
     <link rel="stylesheet" href="//unpkg.com/gitment/style/default.css">
@@ -484,21 +480,23 @@
         请随意~
         <i class="icon icon-quote-right"></i>
     </h3>
-    <ul class="reward-items">
+    <div class="reward-content">
         
-        <li>
-            <img src="/img/wechat.png" title="微信打赏二维码" alt="微信打赏二维码">
-            <p>微信</p>
-        </li>
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.png" alt="打赏二维码">
+        </div>
         
-
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.png" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
         
-        <li>
-            <img src="/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
-            <p>支付宝</p>
-        </li>
-        
-    </ul>
+    </div>
 </div>
 
 
@@ -591,7 +589,6 @@
     <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
 <script>
 var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
-
 
 
 </script>
