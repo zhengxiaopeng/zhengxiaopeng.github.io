@@ -22,7 +22,7 @@
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="RxJava,ReactiveX,译文">
+    <meta name="keywords" content="译文,RxJava,ReactiveX">
     <meta name="description" content="原文链接 : NotRxJava guide for lazy folks
 原文作者 : Yaroslav Heriatovych
 译文出自 : 开发技术前线 www.devtf.cn
@@ -587,23 +587,31 @@
 
 
 
+
+
+
+
+
+
+
+
+
 <section class="comments" id="comments">
-    <div id="disqus_thread"></div>
+    <div id="gitment_thread"></div>
+    <link rel="stylesheet" href="//unpkg.com/gitment/style/default.css">
+    <script src="//unpkg.com/gitment/dist/gitment.browser.js"></script>
     <script>
-    var disqus_shortname = 'rocko-1';
-    lazyScripts.push('//' + disqus_shortname + '.disqus.com/embed.js')
+        var gitment = new Gitment({
+            owner: '',
+            repo: '',
+            oauth: {
+                client_id: '',
+                client_secret: '',
+            },
+        })
+        gitment.render('comments')
     </script>
-    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 </section>
-
-
-
-
-
-
-
-
-
 
 
 
