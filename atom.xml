@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://rocko.xyz/"/>
-  <updated>2017-01-08T14:28:53.000Z</updated>
+  <updated>2017-07-09T04:41:54.000Z</updated>
   <id>https://rocko.xyz/</id>
   
   <author>
@@ -14,6 +14,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Python-Argparse 脚本参数解析</title>
+    <link href="https://rocko.xyz/2017/07/09/Python-Argparse-%E8%84%9A%E6%9C%AC%E5%8F%82%E6%95%B0%E8%A7%A3%E6%9E%90/"/>
+    <id>https://rocko.xyz/2017/07/09/Python-Argparse-脚本参数解析/</id>
+    <published>2017-07-09T04:04:34.000Z</published>
+    <updated>2017-07-09T04:41:54.000Z</updated>
+    
+    <content type="html"><![CDATA[<p><code>Argparse</code> 是 <code>Python</code> 标准库中推荐的命令行解析模块，经常需要解析脚本参数的话这是个方便的工具模块，摆脱万年手动 <code>system.argv</code>。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;code&gt;Argparse&lt;/code&gt; 是 &lt;code&gt;Python&lt;/code&gt; 标准库中推荐的命令行解析模块，经常需要解析脚本参数的话这是个方便的工具模块，摆脱万年手动 &lt;code&gt;system.argv&lt;/code&gt;。&lt;/p&gt;
+
+    
+    </summary>
+    
+      <category term="Python" scheme="https://rocko.xyz/categories/Python/"/>
+    
+    
+      <category term="Python" scheme="https://rocko.xyz/tags/Python/"/>
+    
+      <category term="脚本" scheme="https://rocko.xyz/tags/%E8%84%9A%E6%9C%AC/"/>
+    
+      <category term="解析" scheme="https://rocko.xyz/tags/%E8%A7%A3%E6%9E%90/"/>
+    
+  </entry>
   
   <entry>
     <title>Android Robolectric 加载运行本地 So 动态库</title>
@@ -727,11 +755,11 @@
       <category term="Android" scheme="https://rocko.xyz/categories/Android/"/>
     
     
+      <category term="译文" scheme="https://rocko.xyz/tags/%E8%AF%91%E6%96%87/"/>
+    
       <category term="RxJava" scheme="https://rocko.xyz/tags/RxJava/"/>
     
       <category term="ReactiveX" scheme="https://rocko.xyz/tags/ReactiveX/"/>
-    
-      <category term="译文" scheme="https://rocko.xyz/tags/%E8%AF%91%E6%96%87/"/>
     
   </entry>
   
@@ -1120,11 +1148,11 @@
     
       <category term="动画" scheme="https://rocko.xyz/tags/%E5%8A%A8%E7%94%BB/"/>
     
-      <category term="译文" scheme="https://rocko.xyz/tags/%E8%AF%91%E6%96%87/"/>
-    
       <category term="Span" scheme="https://rocko.xyz/tags/Span/"/>
     
       <category term="文字" scheme="https://rocko.xyz/tags/%E6%96%87%E5%AD%97/"/>
+    
+      <category term="译文" scheme="https://rocko.xyz/tags/%E8%AF%91%E6%96%87/"/>
     
   </entry>
   
@@ -1208,9 +1236,9 @@
       <category term="Git" scheme="https://rocko.xyz/categories/Git/"/>
     
     
-      <category term="错误" scheme="https://rocko.xyz/tags/%E9%94%99%E8%AF%AF/"/>
-    
       <category term="Git" scheme="https://rocko.xyz/tags/Git/"/>
+    
+      <category term="错误" scheme="https://rocko.xyz/tags/%E9%94%99%E8%AF%AF/"/>
     
       <category term="VPS" scheme="https://rocko.xyz/tags/VPS/"/>
     
@@ -2215,43 +2243,6 @@
     
     
       <category term="Android Studio" scheme="https://rocko.xyz/tags/Android-Studio/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>设置域名邮箱</title>
-    <link href="https://rocko.xyz/2014/12/06/%E8%AE%BE%E7%BD%AE%E5%9F%9F%E5%90%8D%E9%82%AE%E7%AE%B1/"/>
-    <id>https://rocko.xyz/2014/12/06/设置域名邮箱/</id>
-    <published>2014-12-06T04:49:07.000Z</published>
-    <updated>2016-12-10T18:48:42.000Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h1><p>首先你得有自己的域名…</p>
-<h1 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h1><p>自己喜欢选一个提供域名邮箱服务的邮箱，如qq、163等，设置内容都是大同小异照着来设置就好,我是选了qq邮箱的，所以下面的是在qq邮箱里设置域名邮箱的流程。</p>
-<h2 id="创建域名邮箱"><a href="#创建域名邮箱" class="headerlink" title="创建域名邮箱"></a>创建域名邮箱</h2><p>在qq邮箱的设置里，点击账户按钮，向下滚找到域名邮箱然后点击管理域名邮箱，或者<a href="http://domain.mail.qq.com/" target="_blank" rel="external">直接点击这里</a>。<br><strong>来到创建域名邮箱页面</strong>，如下，填写后下一步：<br><img src="https://static.rocko.xyz/img/设置域名邮箱_1.jpg?imageView2/2/w/600/h/600/q/100" alt="">  </p>
-<a id="more"></a>
-<p><strong>选择你的域名提供商</strong><br><img src="https://static.rocko.xyz/img/设置域名邮箱_2.jpg?imageView2/2/w/600/h/600/q/100" alt=""><br>下一步来到域名验证和MX记录设置，我们需要先登录到<code>DNS解析服务商</code>,我的是国内的DNSPOD，所以我需要登录DNSPOD的管理页面不需要登录我购买域名的godaddy了。如果你在godaddy里购买的域名且没有更改过域名解析商的话那就是用godaddy默认的解析服务，然后你需要登录到godaddy里去设置。这一步“请验证域名的所有权并设置MX记录”,qq的页面上的教程是在godaddy里设置的，就不说在godaddy的设置了，下面是DNSPOD里的操作。<br><strong>来到DNSPOD的域名管理页面，添加CNAME记录并保存</strong><br><img src="https://static.rocko.xyz/img/设置域名邮箱_3.jpg?imageView2/2/w/600/h/600/q/100" alt=""><br><strong>再添加MX记录</strong>，方法也是新建记录只不过选项不同而已，按照下面图片的内容填写即可<br><img src="https://static.rocko.xyz/img/设置域名邮箱_4.jpg?imageView2/2/w/600/h/600/q/100" alt=""><br>完成后来到qq的页面里点击<code>提交验证</code>即可(可能会有延迟，失败的话过几分钟再试试),成功后跳转到如下页面：<br><img src="https://static.rocko.xyz/img/设置域名邮箱_5.jpg?imageView2/2/w/600/h/600/q/100" alt=""><br>然后点击管理添加成员并设置它的账号，一般都首先设置自己的qq号并设置为管理员账号，然后我们把qq的收发账号设置为刚刚添加的账号就算完成了（这个设置也是在qq账户设置里，找到默认发信账号后切换账号即可），整个流程也是不麻烦，最后我们就可以愉快的用自己的域名邮箱收发邮件了。<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="https://static.rocko.xyz/img/设置域名邮箱_6.jpg?imageView2/2/w/600/h/600/q/100" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;前提&quot;&gt;&lt;a href=&quot;#前提&quot; class=&quot;headerlink&quot; title=&quot;前提&quot;&gt;&lt;/a&gt;前提&lt;/h1&gt;&lt;p&gt;首先你得有自己的域名…&lt;/p&gt;
-&lt;h1 id=&quot;操作&quot;&gt;&lt;a href=&quot;#操作&quot; class=&quot;headerlink&quot; title=&quot;操作&quot;&gt;&lt;/a&gt;操作&lt;/h1&gt;&lt;p&gt;自己喜欢选一个提供域名邮箱服务的邮箱，如qq、163等，设置内容都是大同小异照着来设置就好,我是选了qq邮箱的，所以下面的是在qq邮箱里设置域名邮箱的流程。&lt;/p&gt;
-&lt;h2 id=&quot;创建域名邮箱&quot;&gt;&lt;a href=&quot;#创建域名邮箱&quot; class=&quot;headerlink&quot; title=&quot;创建域名邮箱&quot;&gt;&lt;/a&gt;创建域名邮箱&lt;/h2&gt;&lt;p&gt;在qq邮箱的设置里，点击账户按钮，向下滚找到域名邮箱然后点击管理域名邮箱，或者&lt;a href=&quot;http://domain.mail.qq.com/&quot;&gt;直接点击这里&lt;/a&gt;。&lt;br&gt;&lt;strong&gt;来到创建域名邮箱页面&lt;/strong&gt;，如下，填写后下一步：&lt;br&gt;&lt;img src=&quot;https://static.rocko.xyz/img/设置域名邮箱_1.jpg?imageView2/2/w/600/h/600/q/100&quot; alt=&quot;&quot;&gt;  &lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Hexo" scheme="https://rocko.xyz/categories/Hexo/"/>
-    
-    
-      <category term="Hexo" scheme="https://rocko.xyz/tags/Hexo/"/>
-    
-      <category term="域名" scheme="https://rocko.xyz/tags/%E5%9F%9F%E5%90%8D/"/>
     
   </entry>
   

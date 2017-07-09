@@ -214,6 +214,64 @@
     <ul class="post-list">
     
         <li class="post-list-item fade">
+            <article id="post-Android-Volley自定义Request-JacksonRequest、GsonRequest"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2014-12-05 22:55:31" datetime="2014-12-05T14:55:31.000Z"  itemprop="datePublished">2014-12-05</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Android/">Android</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2014/12/05/Android-Volley自定义Request-JacksonRequest、GsonRequest/">Android Volley自定义Request(JacksonRequest、GsonRequest)</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        前言Volley是一个强大的HTTP库，让Android的的网络操作变得容易、高效、快速。在少数据的高并发情况下它的优势很明显，但在大文件的上传或者下载操作中就并不适用了，这种情况下是建议使用传统方式或者其它框架来实现的。它的优点再罗列如下：
+
+自动管理网络请求
+多并发的网络连接
+通过标准的HTTP cache coherence(高速缓存一致性)使得磁盘与内存缓存不可见(Transparent)
+支持指定请求的优先级
+支持取消已经发出的请求。你可以取消单个请求，也可以设置请求取消的块或范围
+框架是容易被定制的，例如，重试或者回退功能
+强大的指令使得你可以容易地去异步网络操作和(网络获取数据后)的UI设置
+(内置)Debugging和tracing工具
+
+自定义Request实现上面提到的优点：Volley是容易被定制的，它的易扩展性在这里的自定义Request实现中就很好的体现了出来。自定义Request是通过继承Volley中最核心的Request类来实现的。在我们的Request来解析json数据时，注意处理复杂json数据的解析可扩展性。比如，我们一般都需要把JSON数据解析成我们的实体对象，如下面使用示例中的Weather对象，如果我们的实体比较复杂时就需要自定义自己的Type去给Jackson、Gson去处理了，不然一般都会默认的给解析成HashMap式的键值对造成FC或者get不到属性。对于Jackson，使用Jackson库里的TypeReference类来实现；对于Gson，使用Gson库中的TypeToken类来实现。
+    
+
+        <a href="/2014/12/05/Android-Volley自定义Request-JacksonRequest、GsonRequest/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Volley/">Volley</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
             <article id="post-Git-错误集锦ing"
   class="article-card article-type-post" itemprop="blogPost">
 
