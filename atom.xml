@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://rocko.xyz/"/>
-  <updated>2017-07-09T07:45:07.000Z</updated>
+  <updated>2017-07-09T07:47:55.000Z</updated>
   <id>https://rocko.xyz/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://rocko.xyz/2017/07/09/Python-Argparse-%E8%84%9A%E6%9C%AC%E5%8F%82%E6%95%B0%E8%A7%A3%E6%9E%90/"/>
     <id>https://rocko.xyz/2017/07/09/Python-Argparse-脚本参数解析/</id>
     <published>2017-07-09T04:04:34.000Z</published>
-    <updated>2017-07-09T07:45:07.000Z</updated>
+    <updated>2017-07-09T07:47:55.000Z</updated>
     
     <content type="html"><![CDATA[<p><code>Argparse</code> 是 <code>Python</code> 标准库中推荐的命令行解析模块，经常需要解析脚本参数的话这是个方便的工具模块，摆脱万年手动 <code>system.argv</code>。</p>
 <a id="more"></a>
@@ -801,11 +801,11 @@
       <category term="Android" scheme="https://rocko.xyz/categories/Android/"/>
     
     
+      <category term="译文" scheme="https://rocko.xyz/tags/%E8%AF%91%E6%96%87/"/>
+    
       <category term="RxJava" scheme="https://rocko.xyz/tags/RxJava/"/>
     
       <category term="ReactiveX" scheme="https://rocko.xyz/tags/ReactiveX/"/>
-    
-      <category term="译文" scheme="https://rocko.xyz/tags/%E8%AF%91%E6%96%87/"/>
     
   </entry>
   
