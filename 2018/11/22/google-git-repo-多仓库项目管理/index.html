@@ -31,7 +31,7 @@
 <meta property="og:description" content="前言项目模块化/组件化之后各模块也作为独立的 Git 仓库从主项目里剥离了出去，各模块各自管理自己的版本。正常 Android 项目，各剥离出去的子模块仓库则通过 Maven 仓库 来管理，然后和引入第三方库一样依赖到主项目里。这种状态下的项目迭代带来的问题会是：需要频繁发布子模块的 版本并需要把修改的版本提交 Merge Request 到主模块里，尤其像我们一周一版的快速迭代的情况下，问题尤为">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/aee46221gy1fxf0rynj2xj20kb0ou759.jpg">
 <meta property="og:image" content="https://ws1.sinaimg.cn/large/aee46221gy1fxg56bs5tmj21s015sn1w.jpg">
-<meta property="og:updated_time" content="2018-11-21T16:33:51.222Z">
+<meta property="og:updated_time" content="2018-11-21T16:34:44.550Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Google Git-Repo (Android)多仓库项目管理">
 <meta name="twitter:description" content="前言项目模块化/组件化之后各模块也作为独立的 Git 仓库从主项目里剥离了出去，各模块各自管理自己的版本。正常 Android 项目，各剥离出去的子模块仓库则通过 Maven 仓库 来管理，然后和引入第三方库一样依赖到主项目里。这种状态下的项目迭代带来的问题会是：需要频繁发布子模块的 版本并需要把修改的版本提交 Merge Request 到主模块里，尤其像我们一周一版的快速迭代的情况下，问题尤为">
@@ -348,7 +348,7 @@
                 <div class="image-caption">Git-repo workflow</div>
             </figure>
 <p>具体到每个仓库来说，主仓库位置原有的 git workflow 不用变，各子仓库新增 <code>dev</code>、<code>build</code> 分支，那么对应的合版打包与发版打包对应 Manifest 固定的分支配置就行，如果没有项目删减，那么合版与发版时的子模块仓库版本也是不用动的。避免了频繁的合版时，各模块版本频繁/繁琐的修改合并。</p>
-<h3 id="Jenkins"><a href="#Jenkins" class="headerlink" title="Jenkins"></a>Jenkins</h3><p>使用 Jenkins 的需要使用 <a href="https://wiki.jenkins.io/display/JENKINS/Repo+Plugin" target="_blank" rel="external">repo</a> 插件，也还算挺方便的，稍微由原来的 git 迁移到 repo 的配置就行。<br>配合 Jenkins 的自动化打包，加一些自动化的打包配置，如远程参数化构建、自定义的Gradle插件等，如果需要在 Jenkins 上打 Feature包的，那么在 Manifest 项目里可以不需要再新建 Feature 分支了。所以综合来看，合版时的工作量减轻了不少~</p>
+<h3 id="Jenkins"><a href="#Jenkins" class="headerlink" title="Jenkins"></a>Jenkins</h3><p>使用 Jenkins 的需要使用 <a href="https://wiki.jenkins.io/display/JENKINS/Repo+Plugin" target="_blank" rel="external">repo</a> 插件，也还算挺方便的，稍微由原来的 git 迁移到 repo 的配置就行。<br>配合 Jenkins 的自动化打包，加一些自动化的打包配置，如远程参数化构建、自定义的 Gradle 打包插件等，如果需要在 Jenkins 上打 Feature 包的，那么在 Manifest 项目里可以不需要再新建 Feature 分支了。所以综合来看，合版时的工作量减轻了不少~</p>
 <h2 id="End"><a href="#End" class="headerlink" title="End"></a>End</h2><p>参考：</p>
 <p><a href="https://source.android.com/index.html" target="_blank" rel="external">AOSP 文档</a><br><a href="https://www.jianshu.com/p/284ded3d191b" target="_blank" rel="external">Git多项目管理</a><br><a href="https://gerrit.googlesource.com/git-repo/" target="_blank" rel="external">git-repo README</a></p>
 
@@ -400,7 +400,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2018-11-21T16:33:51.222Z" itemprop="dateUpdated">2018-11-22 00:33:51</time>
+    最后更新时间：<time datetime="2018-11-21T16:34:44.550Z" itemprop="dateUpdated">2018-11-22 00:34:44</time>
 </span><br>
 
 
