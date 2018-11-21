@@ -217,6 +217,53 @@
     <ul class="post-list">
     
         <li class="post-list-item fade">
+            <article id="post-google-git-repo-多仓库项目管理"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2018-11-22 00:23:00" datetime="2018-11-21T16:23:00.000Z"  itemprop="datePublished">2018-11-22</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Git/">Git</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Git/Android/">Android</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Git/Android/组件化/">组件化</a></li></ul></li></ul></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2018/11/22/google-git-repo-多仓库项目管理/">Google Git-Repo (Android)多仓库项目管理</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        前言项目模块化/组件化之后各模块也作为独立的 Git 仓库从主项目里剥离了出去，各模块各自管理自己的版本。正常 Android 项目，各剥离出去的子模块仓库则通过 Maven 仓库 来管理，然后和引入第三方库一样依赖到主项目里。这种状态下的项目迭代带来的问题会是：需要频繁发布子模块的 版本并需要把修改的版本提交 Merge Request 到主模块里，尤其像我们一周一版的快速迭代的情况下，问题尤为凸显。此外还有个问题就是 Debug/断点 会变得不太方便，因为可能子模块的源码并未发到 Maven 上。
+    
+
+        <a href="/2018/11/22/google-git-repo-多仓库项目管理/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Repo/">Repo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git-repo/">git-repo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/多仓库/">多仓库</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/构建/">构建</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/模块化/">模块化</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/组件化/">组件化</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
             <article id="post-Android-Robolectric-加载运行本地-so-动态库"
   class="article-card article-type-post" itemprop="blogPost">
 
@@ -493,53 +540,6 @@ Uncle Bob 的这句话套在 MVVM 上也是适用的, MVVM 也仅仅是架构模
     <div class="post-footer">
         
 	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/脚本/">脚本</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/解析/">解析</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-High一下"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2015-06-27 12:49:07" datetime="2015-06-27T04:49:07.000Z"  itemprop="datePublished">2015-06-27</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Hexo/">Hexo</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2015/06/27/High一下/">High一下</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        发现博客访问不了，原来是 GitCafe Pages 又挂了，而且 A 记录也不能用了，所以又得把博客迁回 Github 了。顺便把 High一下 优化了下。基本是直接拿耗子叔的 酷壳 上的 High 一下来用的，存在点击重复播放的问题，而且歌曲只有一首，所以得加以优化下：加了几首歌点击随机播放；修复点击重复执行播放的问题，重新点击后动画重新开始。原来的代码右键 High 一下 审查元素 就看得到了，修改后的代码如下：
-    
-
-        <a href="/2015/06/27/High一下/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/High/">High</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/动画/">动画</a></li></ul>
 
     </div>
     

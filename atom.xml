@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://rocko.xyz/"/>
-  <updated>2017-01-08T14:28:53.000Z</updated>
+  <updated>2018-11-21T16:24:19.373Z</updated>
   <id>https://rocko.xyz/</id>
   
   <author>
@@ -14,6 +14,142 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Google Git-Repo (Android)多仓库项目管理</title>
+    <link href="https://rocko.xyz/2018/11/22/google-git-repo-%E5%A4%9A%E4%BB%93%E5%BA%93%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/"/>
+    <id>https://rocko.xyz/2018/11/22/google-git-repo-多仓库项目管理/</id>
+    <published>2018-11-21T16:23:00.000Z</published>
+    <updated>2018-11-21T16:24:19.373Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>项目<code>模块化/组件化</code>之后各模块也作为独立的 <code>Git</code> 仓库从主项目里剥离了出去，各模块各自管理自己的版本。正常 Android 项目，各剥离出去的子模块仓库则通过 <code>Maven 仓库</code> 来管理，然后和引入第三方库一样依赖到主项目里。这种状态下的项目迭代带来的问题会是：需要频繁发布子模块的 版本并需要把修改的版本提交 Merge Request 到主模块里，尤其像我们一周一版的快速迭代的情况下，问题尤为凸显。此外还有个问题就是 <code>Debug/断点</code> 会变得不太方便，因为可能子模块的源码并未发到 Maven 上。</p>
+<a id="more"></a>
+<p>在上面所说的状态下工作了一段时间后，需要找到个方案来解决这个问题。遂尝试在多仓库管理的方向上尝试。支持 Git 多仓库的管理工具也有好几个：<a href="https://gerrit.googlesource.com/git-repo/" target="_blank" rel="external">git-repo</a>、<a href="https://git-scm.com/docs/git-submodule" target="_blank" rel="external">git-submodule</a>、<a href="http://gitslave.sourceforge.net/" target="_blank" rel="external">gitslave</a>、<a href="https://github.com/apenwarr/git-subtree/" target="_blank" rel="external">git-subtree</a>，看了一番，除了 git-repo 外的几个要么 <code>子模块需要手动指定本地仓库路径</code>、要么 <code>主仓库与子仓库会产生污染</code> 且操作不够简便化。所以最终就采用了 Google 的 <code>Git-repo（Repo）</code></p>
+<h2 id="Git-repo"><a href="#Git-repo" class="headerlink" title="Git-repo"></a>Git-repo</h2><p>Repo 是对 Git 构成补充的多（可以巨多的那种）代码库管理工具，简单说就是使用 Python 在 Git 基础上开发的一系列脚本命令。当前整个 Android 项目（AOSP）就是通过 repo 来管理，最新版本的仓库大约 <strong>七百多个</strong>，可见 Repo 在多仓库的代码管理和版本管理上是可以支撑现有我们的项目的。接下来描述分析下迁移使用 Repo 的过程和一些解释。</p>
+<h3 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h3><p>准备好梯子，把 <code>repo</code> 装到系统里：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mkdir ~/bin</div><div class="line">PATH=~/bin:$PATH  # 自己加到 ~/.zshrc or ~/.bashrc or /etc/profile 里 </div><div class="line"></div><div class="line">curl https://storage.googleapis.com/git-repo-downloads/repo &gt; ~/bin/repo</div><div class="line">chmod a+x ~/bin/repo</div><div class="line"></div><div class="line"># 最后 source 下环境变量</div></pre></td></tr></table></figure>
+<p>然后就可以操作项目了，如初始化 AOSP 项目:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">repo init -u https://android.googlesource.com/platform/manifest -b android-4.0.1_r1</div></pre></td></tr></table></figure>
+<h3 id="Manifest"><a href="#Manifest" class="headerlink" title="Manifest"></a>Manifest</h3><p>Repo 管理的核心就在于 <code>Manifest</code>，每个采用 repo 管理的复杂多仓库项目都需要一个对应的 manifest 仓库，如 AOSP 的 <a href="https://android.googlesource.com/platform/manifest" target="_blank" rel="external">manifest</a> ，此仓库用来存储所有子仓库的配置信息，repo 也是读取此仓库的配置文件来进行管理操作。里面的配置就是 xml 定义的结构，一般有两个主要的配置：子仓库用到的仓库地址（remote）、子仓库详细配置信息（project）。举例如下：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</div><div class="line"><span class="tag">&lt;<span class="name">manifest</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">remote</span>  <span class="attr">name</span>=<span class="string">"remote1"</span></span></div><div class="line">           <span class="attr">alias</span>=<span class="string">"origin"</span></div><div class="line">           <span class="attr">fetch</span>=<span class="string">".."</span></div><div class="line">           <span class="attr">review</span>=<span class="string">"https://android-review.googlesource.com/"</span> /&gt;</div><div class="line"></div><div class="line">  <span class="tag">&lt;<span class="name">remote</span>  <span class="attr">name</span>=<span class="string">"remote2"</span></span></div><div class="line">           <span class="attr">alias</span>=<span class="string">"origin"</span></div><div class="line">           <span class="attr">fetch</span>=<span class="string">"git@github.com:group2/"</span></div><div class="line">           <span class="attr">review</span>=<span class="string">"https://android-review2.googlesource.com/"</span> /&gt;         </div><div class="line"></div><div class="line">  <span class="tag">&lt;<span class="name">default</span> <span class="attr">revision</span>=<span class="string">"master"</span></span></div><div class="line">           <span class="attr">remote</span>=<span class="string">"remote1"</span></div><div class="line">           <span class="attr">sync-j</span>=<span class="string">"4"</span> /&gt;</div><div class="line"></div><div class="line">  <span class="tag">&lt;<span class="name">project</span> <span class="attr">path</span>=<span class="string">"build/make"</span> <span class="attr">name</span>=<span class="string">"platform/build"</span> <span class="attr">groups</span>=<span class="string">"pdk"</span> &gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">copyfile</span> <span class="attr">src</span>=<span class="string">"core/root.mk"</span> <span class="attr">dest</span>=<span class="string">"Makefile"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">linkfile</span> <span class="attr">src</span>=<span class="string">"CleanSpec.mk"</span> <span class="attr">dest</span>=<span class="string">"build/CleanSpec.mk"</span> /&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">project</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">project</span> <span class="attr">path</span>=<span class="string">"build/blueprint"</span> <span class="attr">name</span>=<span class="string">"platform/build/blueprint"</span> <span class="attr">groups</span>=<span class="string">"pdk,tradefed"</span> <span class="attr">revision</span>=<span class="string">"other_branch"</span> <span class="attr">remote</span>=<span class="string">"remote1"</span>/&gt;</span></div><div class="line"></div><div class="line"><span class="comment">&lt;!-- ... --&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">manifest</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>解释下常用的各节点：</p>
+<h4 id="remote"><a href="#remote" class="headerlink" title="remote"></a>remote</h4><p>远程仓库地址配置，可以多个。</p>
+<ul>
+<li>name: 名字，也用于子仓库的 git remote 名称（.git/config 里的 remote）</li>
+<li>alias: 别名，可省略，建议设为 <code>origin</code>， 设置了那么子仓库的 git remote 即为此名，方便不同的 name 下可以最终设置生成相同的 remote 名称</li>
+<li>fetch: 仓库地址<code>前缀</code>，即 project 的仓库地址为: <code>remote.fetch + project.name</code></li>
+<li>pushurl: 一般可省略，省略了则直接用 fetch</li>
+<li>review: Gerrit code review 的地址，如果没有用 Gerrit 则不需要配置（也就不能用 repo upload 命令了）</li>
+<li>revision: 使用此 remote 的默认分支</li>
+</ul>
+<p><strong>这里的 fetch 遇到个坑</strong>，<code>git@github.com:group2/</code> 这样 git scheme 开头的地址会有问题（ssh/https 的正常），最终子仓库在本地的 remote 地址一直是 manifest 的地址拼上 fetch 再加 project 的  name (manifest.git_path + remote.fetch + project.name)。最终发现是 <a href="https://gerrit.googlesource.com/git-repo" target="_blank" rel="external">git-repo</a> 里的代码 <a href="https://gerrit.googlesource.com/git-repo/+/v1.12.37/manifest_xml.py" target="_blank" rel="external">manifest_xml.py</a> 有问题，需要 fix 下，简单的把 <code>78</code> 行注释掉，然后推到自己的仓库，指定下系统环境变量:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">REPO_URL=your_fix_git-repo_git_url</div><div class="line"># repo 脚本会使用此变量的地址</div></pre></td></tr></table></figure></p>
+<h4 id="project"><a href="#project" class="headerlink" title="project"></a>project</h4><p>子项目仓库配置，可以多个。</p>
+<ul>
+<li>path: repo sync 同步时，相对于根目录的子仓库文件夹路径</li>
+<li>name: 子仓库的 git 仓库名称</li>
+<li>group: 分组</li>
+<li>revision: 使用的分支名</li>
+<li>clone-depth: 仓库同步 Git 的 depth</li>
+</ul>
+<h5 id="copyfile"><a href="#copyfile" class="headerlink" title="copyfile"></a>copyfile</h5><p>project 的子节点属性.</p>
+<ul>
+<li>src: project 下的相对路径</li>
+<li>dest: 整个仓库根路径下的相对路径</li>
+</ul>
+<h5 id="linkfile"><a href="#linkfile" class="headerlink" title="linkfile"></a>linkfile</h5><p>project 的子节点属性，类似 copyfile，只是把复制文件变为创建链接文件。</p>
+<h3 id="default"><a href="#default" class="headerlink" title="default"></a>default</h3><p>project 没有设置属性时会使用的默认配置，常用的是 remote 和 revision。</p>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>其他现在暂时用的较少，详细完整的 manifest 格式说明请看<a href="https://gerrit.googlesource.com/git-repo/+/HEAD/docs/manifest-format.md" target="_blank" rel="external">官方文档</a>。<br>了解了 Repo 下的 Manifest 配置仓库的概念后就可以根据自己的项目来创建了，Just do it!</p>
+<h3 id="local-manifest"><a href="#local-manifest" class="headerlink" title="local_manifest"></a>local_manifest</h3><p>local_manifest 简单说就是一个比 repo init 时设置的 manifest 有更高优先级的本地配置，一般用在不改动远程 manifest 配置又想设置到本地的专属配置时用得到。版本高一点的 repo 下，在工作根目录新建配置文件即可： <code>.repo/local_manifests/local_manifest.xml</code></p>
+<p>有一点需要注意的是如果需要覆盖主 manifest 文件已有 project 的配置那么需要先 <code>remove-project</code> 才行，不然会报错：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">fatal: duplicate path project_name in .repo/manifest.xml</div></pre></td></tr></table></figure>
+<p>fix :</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">remove-project</span> <span class="attr">name</span>=<span class="string">"project_name"</span> /&gt;</span></div><div class="line"><span class="comment">&lt;!-- 再重写 project 配置 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">project</span> <span class="attr">path</span>=<span class="string">"xxx"</span> <span class="attr">name</span>=<span class="string">"xxx"</span> <span class="attr">revision</span>=<span class="string">"xxxx"</span> <span class="attr">remote</span>=<span class="string">"xxxx"</span>  /&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="Repo-命令"><a href="#Repo-命令" class="headerlink" title="Repo 命令"></a>Repo 命令</h2><p><code>repo init -u yout_manifest_git_url</code> 初始化了你的项目 repo 工作区后，<code>repo sync</code>，你就可以进入正常的特性开发状态了。那么我们以开发一个 feature 为例，顺序说明下需要使用到的常用命令，也是我现在尝试使用的 <code>repo workflow</code> 了。</p>
+<h3 id="repo-init"><a href="#repo-init" class="headerlink" title="repo init"></a>repo init</h3><p>初始化。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">repo init -u your_project_git_url</div></pre></td></tr></table></figure>
+<p>其他常用可选参数:</p>
+<ul>
+<li>-b 选取的 manifest 仓库分支，默认 master</li>
+<li>-m 选取的默认配置文件，默认 default.xml</li>
+<li>–depth=1 git clone 的深度，一般如在 Jenkins 上打包时可用，加快代码 clone 速度</li>
+<li>–repo-url=URL 使用自定义的 git-repo 代码，如前面说到的 fix 了 bug 的 git-repo</li>
+<li>–no-repo-verify 不验证 repo 的源码，如果自定义了 repo url 那么这个一般也加上</li>
+</ul>
+<h3 id="repo-sync"><a href="#repo-sync" class="headerlink" title="repo sync"></a>repo sync</h3><p>初始化好一个 repo 工作目录后下一步就是把代码同步下来了：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">repo sync</div></pre></td></tr></table></figure>
+<p>同步完成后就会在当前目录下生成 manifest 里配置的各仓库和其对应目录。其他常用可选参数：</p>
+<ul>
+<li>-f 不阻断同步，即一个 project 失败会继续下一个 project 同步</li>
+<li>–force-sync 如果需要，强制覆盖现有的 git 目录指向不同的对象目录。<strong>此操作可能会导致数据丢失</strong></li>
+<li>-d 把项目回退到 manifest 里配置的分支</li>
+<li>-m 手动指定当前操作使用哪个 manifest 文件</li>
+<li>-t 使用对应 tag 里的 manifest 文件</li>
+</ul>
+<p>同步完后你就可以用你的 IDE 打开项目了。<strong>此时，你需要根据当前的子仓库目录配置，在项目里处理下子仓库的依赖问题</strong>，比如 Android 项目，在 settting.gradle 里就需要根据此 repo 仓库的项目目录把子仓库 include 进来。</p>
+<h3 id="repo-start"><a href="#repo-start" class="headerlink" title="repo start"></a>repo start</h3><p>从 manifest 配置文件中指定的分支里，创建一个新的分支进行开发，如:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">repo start your_feature_branch_name --all | [project1 project2]</div></pre></td></tr></table></figure>
+<p>后续如果发现还改动到了其他模块仓库那么再 start 一个对应 project 的分支</p>
+<h3 id="Work-in-progress"><a href="#Work-in-progress" class="headerlink" title="Work in progress"></a>Work in progress</h3><p>开发过程中需要用到的常用命令：</p>
+<ul>
+<li>repo status: 跟 git status 类似，会把当前 repo 工作区的状态信息列出来</li>
+<li>repo diff: 同理 git diff</li>
+<li>repo forall <project_list> -c <command>: 在（所有）子仓库下执行命令，比如 repo 没有类似 <code>git stash</code> 的命令，利用 forall 就可以实现：<code>repo forall -c git stash</code></project_list></li>
+<li>repo prune: 删除已经合并分支</li>
+<li>repo stage: 把文件添加到 index 表(暂存区)中</li>
+<li>repo manifest: 显示当前使用的 manifest 信息内容</li>
+</ul>
+<h3 id="repo-upload"><a href="#repo-upload" class="headerlink" title="repo upload"></a>repo upload</h3><p>提交代码到 Gerrit code review 中，如果没有使用 Gerrit，则可以跟之前那样手动操作单个仓库 push 或者使用 <code>repo forall -c git push xxx</code></p>
+<h3 id="Other"><a href="#Other" class="headerlink" title="Other"></a>Other</h3><p>其他更详细的参考可以查看 <a href="https://source.android.com/source/using-repo.html" target="_blank" rel="external">Repo 命令参考资料</a></p>
+<h2 id="Workflow"><a href="#Workflow" class="headerlink" title="Workflow"></a>Workflow</h2><p>上面一节介绍的 repo 命令的顺序过程可以说就是一个常用的 repo 工作流程，<code>AOSP</code> 给的开发流程可以先看下：<a href="https://source.android.com/source/developing.html" target="_blank" rel="external"><br>开发</a></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ww1.sinaimg.cn/large/aee46221gy1fxf0rynj2xj20kb0ou759.jpg" alt="Git 和 Repo 快速参考表" title="">
+                </div>
+                <div class="image-caption">Git 和 Repo 快速参考表</div>
+            </figure>
+<p>那么根据上一节的介绍，给出下当前尝试使用的 <code>repo-workflow</code> 的图示：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://ws1.sinaimg.cn/large/aee46221gy1fxg56bs5tmj21s015sn1w.jpg" alt="Git-repo workflow" title="">
+                </div>
+                <div class="image-caption">Git-repo workflow</div>
+            </figure>
+<p>具体到每个仓库来说，主仓库位置原有的 git workflow 不用变，各子仓库新增 <code>dev</code>、<code>build</code> 分支，那么对应的合版打包与发版打包对应 Manifest 固定的分支配置就行，如果没有项目删减，那么合版与发版时的子模块仓库版本也是不用动的。避免了频繁的合版时，各模块版本频繁/繁琐的修改合并。</p>
+<h3 id="Jenkins"><a href="#Jenkins" class="headerlink" title="Jenkins"></a>Jenkins</h3><p>使用 Jenkins 的需要使用 <a href="https://wiki.jenkins.io/display/JENKINS/Repo+Plugin" target="_blank" rel="external">repo</a> 插件，也还算挺方便的，稍微由原来的 git 迁移到 repo 的配置就行。</p>
+<h2 id="End"><a href="#End" class="headerlink" title="End"></a>End</h2><p>参考：</p>
+<p><a href="https://source.android.com/index.html" target="_blank" rel="external">AOSP 文档</a><br><a href="https://www.jianshu.com/p/284ded3d191b" target="_blank" rel="external">Git多项目管理</a><br><a href="https://gerrit.googlesource.com/git-repo/" target="_blank" rel="external">git-repo README</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;项目&lt;code&gt;模块化/组件化&lt;/code&gt;之后各模块也作为独立的 &lt;code&gt;Git&lt;/code&gt; 仓库从主项目里剥离了出去，各模块各自管理自己的版本。正常 Android 项目，各剥离出去的子模块仓库则通过 &lt;code&gt;Maven 仓库&lt;/code&gt; 来管理，然后和引入第三方库一样依赖到主项目里。这种状态下的项目迭代带来的问题会是：需要频繁发布子模块的 版本并需要把修改的版本提交 Merge Request 到主模块里，尤其像我们一周一版的快速迭代的情况下，问题尤为凸显。此外还有个问题就是 &lt;code&gt;Debug/断点&lt;/code&gt; 会变得不太方便，因为可能子模块的源码并未发到 Maven 上。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Git" scheme="https://rocko.xyz/categories/Git/"/>
+    
+      <category term="Android" scheme="https://rocko.xyz/categories/Git/Android/"/>
+    
+      <category term="组件化" scheme="https://rocko.xyz/categories/Git/Android/%E7%BB%84%E4%BB%B6%E5%8C%96/"/>
+    
+    
+      <category term="构建" scheme="https://rocko.xyz/tags/%E6%9E%84%E5%BB%BA/"/>
+    
+      <category term="Repo" scheme="https://rocko.xyz/tags/Repo/"/>
+    
+      <category term="git-repo" scheme="https://rocko.xyz/tags/git-repo/"/>
+    
+      <category term="多仓库" scheme="https://rocko.xyz/tags/%E5%A4%9A%E4%BB%93%E5%BA%93/"/>
+    
+      <category term="模块化" scheme="https://rocko.xyz/tags/%E6%A8%A1%E5%9D%97%E5%8C%96/"/>
+    
+      <category term="组件化" scheme="https://rocko.xyz/tags/%E7%BB%84%E4%BB%B6%E5%8C%96/"/>
+    
+      <category term="Android" scheme="https://rocko.xyz/tags/Android/"/>
+    
+  </entry>
   
   <entry>
     <title>Android Robolectric 加载运行本地 So 动态库</title>
@@ -461,11 +597,11 @@
       <category term="Android" scheme="https://rocko.xyz/categories/Android/"/>
     
     
-      <category term="架构" scheme="https://rocko.xyz/tags/%E6%9E%B6%E6%9E%84/"/>
-    
       <category term="MVVM" scheme="https://rocko.xyz/tags/MVVM/"/>
     
       <category term="Data Binding" scheme="https://rocko.xyz/tags/Data-Binding/"/>
+    
+      <category term="架构" scheme="https://rocko.xyz/tags/%E6%9E%B6%E6%9E%84/"/>
     
   </entry>
   
@@ -1282,9 +1418,9 @@
       <category term="Git" scheme="https://rocko.xyz/categories/Git/"/>
     
     
-      <category term="Git" scheme="https://rocko.xyz/tags/Git/"/>
-    
       <category term="错误" scheme="https://rocko.xyz/tags/%E9%94%99%E8%AF%AF/"/>
+    
+      <category term="Git" scheme="https://rocko.xyz/tags/Git/"/>
     
       <category term="VPS" scheme="https://rocko.xyz/tags/VPS/"/>
     
@@ -1415,9 +1551,9 @@
       <category term="Android" scheme="https://rocko.xyz/categories/Android/"/>
     
     
-      <category term="MVP" scheme="https://rocko.xyz/tags/MVP/"/>
-    
       <category term="架构" scheme="https://rocko.xyz/tags/%E6%9E%B6%E6%9E%84/"/>
+    
+      <category term="MVP" scheme="https://rocko.xyz/tags/MVP/"/>
     
   </entry>
   
@@ -1629,666 +1765,6 @@
       <category term="运算符" scheme="https://rocko.xyz/tags/%E8%BF%90%E7%AE%97%E7%AC%A6/"/>
     
       <category term="技巧" scheme="https://rocko.xyz/tags/%E6%8A%80%E5%B7%A7/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Android Studio Jar、so、library项目依赖</title>
-    <link href="https://rocko.xyz/2014/12/13/Android-Studio-jar%E3%80%81so%E3%80%81library%E9%A1%B9%E7%9B%AE%E4%BE%9D%E8%B5%96/"/>
-    <id>https://rocko.xyz/2014/12/13/Android-Studio-jar、so、library项目依赖/</id>
-    <published>2014-12-13T02:50:28.000Z</published>
-    <updated>2016-12-10T18:48:42.000Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>Android Studio(以下简称AS)在13年I/O大会后放出预览版到现在放出的正式版1.0（PS.今天又更新到1.0.1了）历时一年多了，虽然Google官方推出的Android开发者的IDE对我们Android DEV是很有吸引力的，但考虑到beta版还是太多问题所以自己主要还是把AS当做尝鲜为主，每放出一个较大更新就下载下来试试，感觉还是挺好的，渐渐用AS的人越来越多，Github上的项目也基本是AS的了，Google的sample也采用AS，所以使用Eclipse跟外界交流越来越困难啊。到现在<code>android-studio-bundle-135.1629389</code>AS正式版的推出，我们有理由从Eclipse迁移到AS了。<br>要迁移到AS中开发那么要掌握AS中的项目管理是必须的，基本的new project、run什么的就不提了，这篇文章记录我在AS中在项目中解决jar包、library项目依赖、so动态链接库的问题，版本控制Git、SVN等这篇文章不涉及。这么多废话后下面开始。</p>
-<h1 id="Eclipse跟AS的不同"><a href="#Eclipse跟AS的不同" class="headerlink" title="Eclipse跟AS的不同"></a>Eclipse跟AS的不同</h1><p>从Eclipse到AS不要带着在Eclipse中的主观色彩去在AS中使用，从项目的构成到构建是不同的，下面列举在Eclipse和AS中的一些概念的区别：   </p>
-<h2 id="WorkSpace和Project"><a href="#WorkSpace和Project" class="headerlink" title="WorkSpace和Project"></a>WorkSpace和Project</h2><p>Eclipse的WorkSpace和AS的Project说的可以说是一个东西，也就是说你可以把在AS中的Project理解为WorkSpace。<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="https://static.rocko.xyz/img/Android-Studio-jar、so、library项目依赖_1.jpg?imageView2/2/w/400/h/400/q/100" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure> 所以你在AS中new一个Project相当于在Eclipse中重开了一个WorkSpace，注意第一个箭头，显示模式为Project，建议刚用AS时用这种，方便了解里面的文件结构。</p>
-<a id="more"></a>
-<h2 id="Project和Module"><a href="#Project和Module" class="headerlink" title="Project和Module"></a>Project和Module</h2><p>跟上面一样，Eclipse中的一个个project也就是相当于AS中的一个个module。上图的module_1和module_2就是我们习惯的eclipse中的一堆project了，把显示模式换为Android之后就更为直观了：<br><img src="https://static.rocko.xyz/img/Android-Studio-jar、so、library项目依赖_2.jpg?imageView2/2/w/400/h/400/q/100" alt=""><br>最下面的就是<code>AS</code>中整个Project中所有Gradle的配置了，当然包括所有module的配置了，括号的名字就表示build.gradle对应的配置对象。</p>
-<h2 id="Properties和Module-Setting"><a href="#Properties和Module-Setting" class="headerlink" title="Properties和Module Setting"></a>Properties和Module Setting</h2><p>Eclipse中的Properties也是跟AS的Module Setting对应的<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="https://static.rocko.xyz/img/Android-Studio-jar、so、library项目依赖_3.jpg?imageView2/2/w/700/h/700/q/100" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure><br>可以看到这里可以像在Eclipse的Properties中一样在这里配置一些东西，比如在Module Setting里给Module添加依赖(dependencies)信息也是可以的，并且可以直接搜maven的项目依赖。</p>
-<h1 id="jar"><a href="#jar" class="headerlink" title="jar"></a>jar</h1><p>明白了上面的三点就可以很快上手了。首先就来说最简单的添加jar包。  </p>
-<ul>
-<li>可以跟在Eclipse中一样，把jar包往<code>Module</code>里扔，再在jar右键add as library就可以了，然后最后在你的Module文件夹（像上面的module_1）右键make module一下就可以在代码里用jar里的东西了。  </li>
-<li>也可以自己手动到module里的build.gradle里添加dependencies，上面的方法做的方法本质上就是这种。<figure class="highlight gradle"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">dependencies</span> &#123;</div><div class="line">    <span class="keyword">compile</span> <span class="keyword">fileTree</span>(dir: <span class="string">'libs'</span>, <span class="keyword">include</span>: [<span class="string">'*.jar'</span>])</div><div class="line">    <span class="keyword">compile</span> <span class="keyword">fileTree</span>(dir: <span class="string">'D:\\repositories\\libs\\java'</span>, <span class="keyword">include</span>: [<span class="string">'*.jar'</span>])</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>dir可以是电脑上的目录文件。</p>
-<h1 id="library项目"><a href="#library项目" class="headerlink" title="library项目"></a>library项目</h1><p>有了前面跟Eclipse的比较后，类似地像在Eclipse中添加项目依赖一样，被依赖的项目得是作为library。在Eclipse中我们是进入到Properties把这个项目设置为library（as a library），所以在AS中也是类似的，我们需要把一个module作为library(这个module可以自己新建module也可以导入module，此外我们是可以把一个AS的Project导进成module的或者直接导Project里的单个module也可以)，完成后到这个module（我这里是把module_2作为library）把<code>apply plugin: &#39;com.android.application&#39;</code>改为<code>apply plugin: &#39;com.android.library&#39;</code>再然后去掉（删除）module_2的build.gradle里的<code>applicationId &quot;com.example.mrzheng.as&quot;</code>(一个library不需要这个，不然make project或make module时会报错)。<br><em>build.gradle(module_2)</em><br><figure class="highlight gradle"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">apply plugin: <span class="string">'com.android.library'</span></div><div class="line">android &#123;</div><div class="line">    compileSdkVersion <span class="number">21</span></div><div class="line">    buildToolsVersion <span class="string">"21.1.1"</span></div><div class="line">    defaultConfig &#123;</div><div class="line">        minSdkVersion <span class="number">10</span></div><div class="line">        targetSdkVersion <span class="number">21</span></div><div class="line">        versionCode <span class="number">1</span></div><div class="line">        versionName <span class="string">"1.0"</span></div><div class="line">    &#125;</div><div class="line">    buildTypes &#123;</div><div class="line">        release &#123;</div><div class="line">            minifyEnabled <span class="keyword">false</span></div><div class="line">            proguardFiles getDefaultProguardFile(<span class="string">'proguard-android.txt'</span>), <span class="string">'proguard-rules.pro'</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">dependencies</span> &#123;</div><div class="line">    <span class="keyword">compile</span> <span class="keyword">fileTree</span>(dir: <span class="string">'libs'</span>, <span class="keyword">include</span>: [<span class="string">'*.jar'</span>])</div><div class="line">    <span class="keyword">compile</span> <span class="string">'com.android.support:appcompat-v7:21.0.2'</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>到这里先确认下你的project(AS)的settings.gradle里有没把module都include进去,没有的话加上：<br><figure class="highlight gradle"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">include</span> <span class="string">':module_1'</span>, <span class="string">':module_2'</span></div></pre></td></tr></table></figure></p>
-<p>最后就可以在module_1里就添加library依赖(module_2)了。进入module_1的build.gradle，找到dependencies加上<code>compile project(&#39;:module_2&#39;)</code><br><em>build.gradle(module_1)</em><br><figure class="highlight gradle"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">apply plugin: <span class="string">'com.android.application'</span></div><div class="line">android &#123;</div><div class="line">    compileSdkVersion <span class="number">21</span></div><div class="line">    buildToolsVersion <span class="string">"21.1.1"</span></div><div class="line">    defaultConfig &#123;</div><div class="line">        applicationId <span class="string">"com.example.mrzheng.as"</span></div><div class="line">        minSdkVersion <span class="number">10</span></div><div class="line">        targetSdkVersion <span class="number">21</span></div><div class="line">        versionCode <span class="number">1</span></div><div class="line">        versionName <span class="string">"1.0"</span></div><div class="line">    &#125;	</div><div class="line">    buildTypes &#123;</div><div class="line">        release &#123;</div><div class="line">            minifyEnabled <span class="keyword">false</span></div><div class="line">            proguardFiles getDefaultProguardFile(<span class="string">'proguard-android.txt'</span>), <span class="string">'proguard-rules.pro'</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">sourceSets</span> &#123;</div><div class="line">        main &#123;</div><div class="line">            jniLibs.srcDirs = [<span class="string">'libs'</span>]</div><div class="line">        &#125;</div><div class="line">    &#125;	</div><div class="line">&#125;</div><div class="line"><span class="keyword">dependencies</span> &#123;</div><div class="line">    <span class="keyword">compile</span> <span class="keyword">fileTree</span>(dir: <span class="string">'libs'</span>, <span class="keyword">include</span>: [<span class="string">'*.jar'</span>])</div><div class="line">    <span class="keyword">compile</span> <span class="keyword">fileTree</span>(dir: <span class="string">'D:\\repositories\\libs\\java'</span>, <span class="keyword">include</span>: [<span class="string">'*.jar'</span>])</div><div class="line">    <span class="keyword">compile</span> <span class="string">'com.android.support:appcompat-v7:21.0.2'</span></div><div class="line">    <span class="keyword">compile</span> <span class="keyword">project</span>(<span class="string">':module_2'</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>现在make module一下就可以使用依赖的项目了(module_2)。</p>
-<h1 id="so"><a href="#so" class="headerlink" title="so"></a>so</h1><p>之前的版本不知道怎么样，现在正式版的AS添加so打包进apk里的lib里是很简单的，我们只需要把so文件放到libs文件夹里的对应cpu文件夹里，最后在module的build.gradle里加上jni的sourceSets配置：<code>jniLibs.srcDirs = [&#39;libs&#39;]</code>，完整代码看上面的<em>build.gradle(module_1)</em>代码片。<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="https://static.rocko.xyz/img/Android-Studio-jar、so、library项目依赖_4.jpg?imageView2/2/w/400/h/400/q/100" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure></p>
-<h1 id="END"><a href="#END" class="headerlink" title="END"></a>END</h1><p>做完上面的工作，jar包、so动态链接库、library依赖项目里的代码就都可以正常工作了，正常的项目开发已经没什么问题。最后给上本博文的源码：<a href="http://download.csdn.net/detail/bbld_/8255385" target="_blank" rel="external">Android Studio jar、so、library项目依赖</a>，导进AS里后，run module_1即可。<br>最最后奉上Android Studio快捷键大全（大部分来源于：<a href="http://ask.android-studio.org/?/article/12" target="_blank" rel="external">http://ask.android-studio.org/?/article/12</a>）：  </p>
-<h1 id="附录（IDEA-Android-Studio-快捷键）"><a href="#附录（IDEA-Android-Studio-快捷键）" class="headerlink" title="附录（IDEA(Android Studio) 快捷键）"></a>附录（IDEA(Android Studio) 快捷键）</h1><p>说明：斜体文字表示，测试时没有效果或者没有测试时没有达到预先条件的情况下没有效果。</p>
-<h2 id="IDE"><a href="#IDE" class="headerlink" title="IDE"></a>IDE</h2><table>
-<thead>
-<tr>
-<th>按键</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>F1</td>
-<td>帮助</td>
-</tr>
-<tr>
-<td>Alt+F1</td>
-<td>查找文件所在目录位置</td>
-</tr>
-<tr>
-<td>Alt+1</td>
-<td>快速打开或隐藏工程面板</td>
-</tr>
-<tr>
-<td>Ctrl+Alt+S</td>
-<td>打开设置对话框</td>
-</tr>
-<tr>
-<td>Alt+Home</td>
-<td>跳转到导航栏</td>
-</tr>
-<tr>
-<td>Esc</td>
-<td>光标返回编辑框</td>
-</tr>
-<tr>
-<td>Shift+Esc</td>
-<td>光标返回编辑框,关闭无用的窗口</td>
-</tr>
-<tr>
-<td>Shift+Click</td>
-<td>关闭标签页</td>
-</tr>
-<tr>
-<td>F12</td>
-<td>把焦点从编辑器移到最近使用的工具窗口</td>
-</tr>
-<tr>
-<td>Ctrl+Alt+Y</td>
-<td>同步</td>
-</tr>
-<tr>
-<td>Ctrl+Alt+S</td>
-<td>打开设置对话框</td>
-</tr>
-<tr>
-<td>Alt+Shift+Inert</td>
-<td>开启/关闭列选择模式</td>
-</tr>
-<tr>
-<td>Ctrl+Alt+Shift+S</td>
-<td>打开当前项目/模块属性</td>
-</tr>
-<tr>
-<td>Alt+Shift+C</td>
-<td>查看文件的变更历史</td>
-</tr>
-<tr>
-<td>Ctrl+Shift+F10</td>
-<td>运行</td>
-</tr>
-<tr>
-<td>Ctrl+Shift+F9</td>
-<td>debug运行</td>
-</tr>
-<tr>
-<td>Ctrl+Alt+F12</td>
-<td>资源管理器打开文件夹</td>
-</tr>
-</tbody>
-</table>
-<h2 id="编辑"><a href="#编辑" class="headerlink" title="编辑"></a>编辑</h2><table>
-<thead>
-<tr>
-<th>按键</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Alt+J</td>
-<td>多行编辑</td>
-</tr>
-<tr>
-<td>Alt+MouseDrag</td>
-<td>鼠标选中区域</td>
-</tr>
-<tr>
-<td>Ctrl+C</td>
-<td>复制当前行或选中的内容</td>
-</tr>
-<tr>
-<td>Ctrl+D</td>
-<td>粘贴当前行或选中的内容到下一行</td>
-</tr>
-<tr>
-<td>Ctrl+X</td>
-<td>剪切当前行或选中的内容</td>
-</tr>
-<tr>
-<td>Ctrl+Y</td>
-<td>删除行</td>
-</tr>
-<tr>
-<td>Ctrl+Z</td>
-<td>倒退</td>
-</tr>
-<tr>
-<td>Ctrl+Shift+Z</td>
-<td>向前</td>
-</tr>
-<tr>
-<td>Alt+Enter</td>
-<td>自动修正</td>
-</tr>
-<tr>
-<td>Ctrl+Alt+L</td>
-<td>格式化代码</td>
-</tr>
-<tr>
-<td>Ctrl+Alt+I</td>
-<td>将选中的代码进行自动缩进编排</td>
-</tr>
-<tr>
-<td>Ctrl+Alt+O</td>
-<td>优化导入的类和包</td>
-</tr>
-<tr>
-<td>Ctrl+Alt+D</td>
-<td>对选中内容添加包围代码</td>
-</tr>
-<tr>
-<td>Ctrl+Alt+J</td>
-<td>用动态模板环绕</td>
-</tr>
-<tr>
-<td>Alt+Insert</td>
-<td>得到一些Intention Action，可以生成构造器、Getter、Setter、将 <code>==</code> 改为 <code>equals()</code> 等</td>
-</tr>
-<tr>
-<td>Ctrl+Shift+V</td>
-<td>选最近使用的剪贴板内容并插入</td>
-</tr>
-<tr>
-<td>Ctrl+Alt+Shift+V</td>
-<td>简单粘贴</td>
-</tr>
-<tr>
-<td>Ctrl+Shift+Insert</td>
-<td>选最近使用的剪贴板内容并插入（同Ctrl+Shift+V）</td>
-</tr>
-<tr>
-<td>Ctrl+Enter</td>
-<td>在当前行的上面插入新行，并移动光标到新行（此功能光标在行首时有效）</td>
-</tr>
-<tr>
-<td>Shift+Enter</td>
-<td>在当前行的下面插入新行，并移动光标到新行</td>
-</tr>
-<tr>
-<td>Ctrl+J</td>
-<td>自动代码</td>
-</tr>
-<tr>
-<td>Ctrl+Alt+T</td>
-<td>把选中的代码放在 <code>try{}</code> 、<code>if{}</code> 、 <code>else{}</code> 里</td>
-</tr>
-<tr>
-<td>Shift+Alt+Insert</td>
-<td>竖编辑模式</td>
-</tr>
-<tr>
-<td>Ctrl+ <code>/</code></td>
-<td>注释 <code>//</code> </td>
-</tr>
-<tr>
-<td>Ctrl+Shift+ <code>/</code></td>
-<td>注释 <code>/*...*/</code></td>
-</tr>
-<tr>
-<td>Ctrl+Shift+J</td>
-<td>合并成一行</td>
-</tr>
-<tr>
-<td>F2/Shift+F2</td>
-<td>跳转到下/上一个错误语句处</td>
-</tr>
-<tr>
-<td>Ctrl+Shift+Back</td>
-<td>跳转到上次编辑的地方</td>
-</tr>
-<tr>
-<td>Ctrl+Alt+Space</td>
-<td>类名自动完成</td>
-</tr>
-<tr>
-<td>Shift+Alt+Up/Down</td>
-<td>内容向上/下移动</td>
-</tr>
-<tr>
-<td>Ctrl+Shift+Up/Down</td>
-<td>语句向上/下移动</td>
-</tr>
-<tr>
-<td>Ctrl+Shift+U</td>
-<td>大小写切换</td>
-</tr>
-<tr>
-<td>Tab</td>
-<td>代码标签输入完成后，按 <code>Tab</code>，生成代码</td>
-</tr>
-<tr>
-<td>Ctrl+Backspace</td>
-<td>按单词删除</td>
-</tr>
-<tr>
-<td>Ctrl+Shift+Enter</td>
-<td>语句完成</td>
-</tr>
-</tbody>
-</table>
-<h2 id="文件"><a href="#文件" class="headerlink" title="文件"></a>文件</h2><table>
-<thead>
-<tr>
-<th>按键</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Ctrl+F12</td>
-<td>显示当前文件的结构</td>
-</tr>
-<tr>
-<td>Ctrl+H</td>
-<td>显示类继承结构图</td>
-</tr>
-<tr>
-<td>Ctrl+Q</td>
-<td>显示注释文档</td>
-</tr>
-<tr>
-<td>Ctrl+P</td>
-<td>方法参数提示</td>
-</tr>
-<tr>
-<td>Ctrl+U</td>
-<td>打开当前类的父类或者实现的接口</td>
-</tr>
-<tr>
-<td>Alt+Left/Right</td>
-<td>切换代码视图</td>
-</tr>
-<tr>
-<td>Ctrl+Alt+Left/Right</td>
-<td>返回上次编辑的位置</td>
-</tr>
-<tr>
-<td>Alt+Up/Down</td>
-<td>在方法间快速移动定位</td>
-</tr>
-<tr>
-<td>Ctrl+B</td>
-<td>快速打开光标处的类或方法</td>
-</tr>
-<tr>
-<td>Ctrl+W</td>
-<td>选中代码，连续按会有其他效果</td>
-</tr>
-<tr>
-<td>Ctrl+Shift+W</td>
-<td>取消选择光标所在词</td>
-</tr>
-<tr>
-<td>Ctrl+ <code>-</code> / <code>+</code></td>
-<td>折叠/展开代码</td>
-</tr>
-<tr>
-<td>Ctrl+Shift+ <code>-</code> / <code>+</code></td>
-<td>折叠/展开全部代码</td>
-</tr>
-<tr>
-<td>Ctrl+Shift+<code>.</code></td>
-<td>折叠/展开当前花括号中的代码</td>
-</tr>
-<tr>
-<td>Ctrl+ <code>]</code> / <code>[</code></td>
-<td>跳转到代码块结束/开始处</td>
-</tr>
-<tr>
-<td>F2 或 Shift+F2</td>
-<td>高亮错误或警告快速定位</td>
-</tr>
-<tr>
-<td>Ctrl+Shift+C</td>
-<td>复制路径</td>
-</tr>
-<tr>
-<td>Ctrl+Alt+Shift+C</td>
-<td>复制引用，必须选择类名</td>
-</tr>
-<tr>
-<td>Alt+Up/Down</td>
-<td>在方法间快速移动定位</td>
-</tr>
-<tr>
-<td>Shift+F1</td>
-<td>要打开编辑器光标字符处使用的类或者方法 <code>Java</code> 文档的浏览器</td>
-</tr>
-<tr>
-<td>Ctrl+G</td>
-<td>定位行</td>
-</tr>
-</tbody>
-</table>
-<h2 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h2><table>
-<thead>
-<tr>
-<th>按键</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Ctrl+F</td>
-<td>在当前窗口查找文本</td>
-</tr>
-<tr>
-<td>Ctrl+Shift+F</td>
-<td>在指定环境下查找文本</td>
-</tr>
-<tr>
-<td>F3</td>
-<td>向下查找关键字出现位置</td>
-</tr>
-<tr>
-<td>Shift+F3</td>
-<td>向上一个关键字出现位置</td>
-</tr>
-<tr>
-<td>Ctrl+R</td>
-<td>在当前窗口替换文本</td>
-</tr>
-<tr>
-<td>Ctrl+Shift+R</td>
-<td>在指定窗口替换文本</td>
-</tr>
-<tr>
-<td>Ctrl+N</td>
-<td>查找类</td>
-</tr>
-<tr>
-<td>Ctrl+Shift+N</td>
-<td>查找文件</td>
-</tr>
-<tr>
-<td>Ctrl+Shift+Alt+N</td>
-<td>查找项目中的方法或变量</td>
-</tr>
-<tr>
-<td>Ctrl+B</td>
-<td>查找变量的来源</td>
-</tr>
-<tr>
-<td>Ctrl+Alt+B</td>
-<td>快速打开光标处的类或方法</td>
-</tr>
-<tr>
-<td>Ctrl+Shift+B</td>
-<td>跳转到类或方法实现处</td>
-</tr>
-<tr>
-<td>Ctrl+E</td>
-<td>最近打开的文件</td>
-</tr>
-<tr>
-<td>Alt+F3</td>
-<td>快速查找，效果和Ctrl+F相同</td>
-</tr>
-<tr>
-<td>F4</td>
-<td>跳转至定义变量的位置</td>
-</tr>
-<tr>
-<td>Alt+F7</td>
-<td>查询当前元素在工程中的引用</td>
-</tr>
-<tr>
-<td>Ctrl+F7</td>
-<td>查询当前元素在当前文件中的引用，然后按 <code>F3</code> 可以选择</td>
-</tr>
-<tr>
-<td>Ctrl+Alt+F7</td>
-<td>选中查询当前元素(方法或元素)在工程中的引用</td>
-</tr>
-<tr>
-<td>Ctrl+Alt+H</td>
-<td>打开方法调用结构层级的窗口</td>
-</tr>
-<tr>
-<td>Ctrl+Shift+F7</td>
-<td>高亮显示匹配的字符，按 <code>Esc</code> 高亮消失</td>
-</tr>
-<tr>
-<td>Ctrl+Shift+Alt+N</td>
-<td>查找类中的方法或变量</td>
-</tr>
-<tr>
-<td>Ctrl+F12</td>
-<td>查找类中的方法</td>
-</tr>
-<tr>
-<td><em>Ctrl+Shift+O</em></td>
-<td><em>弹出显示查找内容</em></td>
-</tr>
-<tr>
-<td><em>Ctrl+Alt+Up/Down</em></td>
-<td><em>快速跳转搜索结果</em>   </td>
-</tr>
-<tr>
-<td><em>Ctrl+Shift+S</em></td>
-<td><em>高级搜索、搜索结构</em></td>
-</tr>
-</tbody>
-</table>
-<h2 id="重构"><a href="#重构" class="headerlink" title="重构"></a>重构</h2><table>
-<thead>
-<tr>
-<th>按键</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>F5</td>
-<td>复制</td>
-</tr>
-<tr>
-<td>F6</td>
-<td>移动</td>
-</tr>
-<tr>
-<td>Alt+Delete</td>
-<td>安全删除</td>
-</tr>
-<tr>
-<td>Ctrl+U</td>
-<td>转到父类</td>
-</tr>
-<tr>
-<td>Ctrl+O</td>
-<td>重写父类的方法</td>
-</tr>
-<tr>
-<td>Ctrl+I</td>
-<td>实现方法</td>
-</tr>
-<tr>
-<td>Ctrl+Alt+N</td>
-<td>内联</td>
-</tr>
-<tr>
-<td>Ctrl+Alt+Shift+T</td>
-<td>弹出重构菜单</td>
-</tr>
-<tr>
-<td>Shift+F6</td>
-<td>重构-重命名</td>
-</tr>
-<tr>
-<td>Ctrl+Alt+M</td>
-<td>提取代码组成方法</td>
-</tr>
-<tr>
-<td>Ctrl+Alt+C</td>
-<td>将变量更改为常量</td>
-</tr>
-<tr>
-<td>Ctrl+Alt+V</td>
-<td>定义变量引用当前对象或者方法的返回值</td>
-</tr>
-<tr>
-<td>Ctrl+Alt+F</td>
-<td>将局部变量更改为类的成员变量</td>
-</tr>
-<tr>
-<td>Ctrl+Alt+P</td>
-<td>将变量更改为方法的参数</td>
-</tr>
-</tbody>
-</table>
-<h2 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h2><table>
-<thead>
-<tr>
-<th>按键</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>F8</td>
-<td>跳到下一步</td>
-</tr>
-<tr>
-<td>Shift+F8</td>
-<td>跳出函数、跳到下一个断点</td>
-</tr>
-<tr>
-<td>Alt+Shift+F8</td>
-<td>强制跳出函数</td>
-</tr>
-<tr>
-<td>F7</td>
-<td>进入代码</td>
-</tr>
-<tr>
-<td>Shift+F7</td>
-<td>智能进入代码</td>
-</tr>
-<tr>
-<td>Alt+Shift+F7</td>
-<td>强制进入代码</td>
-</tr>
-<tr>
-<td>Alt+F9</td>
-<td>运行至光标处</td>
-</tr>
-<tr>
-<td>Ctrl+Alt+F9</td>
-<td>强制运行至光标处</td>
-</tr>
-<tr>
-<td>Ctrl+F2</td>
-<td>停止运行</td>
-</tr>
-<tr>
-<td>Alt+F8</td>
-<td>计算变量值</td>
-</tr>
-</tbody>
-</table>
-<h2 id="VCS"><a href="#VCS" class="headerlink" title="VCS"></a>VCS</h2><table>
-<thead>
-<tr>
-<th>按键</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Alt+ <code>~</code></td>
-<td><code>VCS</code> 操作菜单</td>
-</tr>
-<tr>
-<td>Ctrl+K</td>
-<td>提交更改</td>
-</tr>
-<tr>
-<td>Ctrl+T</td>
-<td>更新项目</td>
-</tr>
-<tr>
-<td>Ctrl+Alt+Shift+D</td>
-<td>显示变化</td>
-</tr>
-</tbody>
-</table>
-<h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><table>
-<thead>
-<tr>
-<th>按键</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>(Ctrl+)F11</td>
-<td>标记书签</td>
-</tr>
-<tr>
-<td>Shift+F11</td>
-<td>显示书签</td>
-</tr>
-</tbody>
-</table>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;Android Studio(以下简称AS)在13年I/O大会后放出预览版到现在放出的正式版1.0（PS.今天又更新到1.0.1了）历时一年多了，虽然Google官方推出的Android开发者的IDE对我们Android DEV是很有吸引力的，但考虑到beta版还是太多问题所以自己主要还是把AS当做尝鲜为主，每放出一个较大更新就下载下来试试，感觉还是挺好的，渐渐用AS的人越来越多，Github上的项目也基本是AS的了，Google的sample也采用AS，所以使用Eclipse跟外界交流越来越困难啊。到现在&lt;code&gt;android-studio-bundle-135.1629389&lt;/code&gt;AS正式版的推出，我们有理由从Eclipse迁移到AS了。&lt;br&gt;要迁移到AS中开发那么要掌握AS中的项目管理是必须的，基本的new project、run什么的就不提了，这篇文章记录我在AS中在项目中解决jar包、library项目依赖、so动态链接库的问题，版本控制Git、SVN等这篇文章不涉及。这么多废话后下面开始。&lt;/p&gt;
-&lt;h1 id=&quot;Eclipse跟AS的不同&quot;&gt;&lt;a href=&quot;#Eclipse跟AS的不同&quot; class=&quot;headerlink&quot; title=&quot;Eclipse跟AS的不同&quot;&gt;&lt;/a&gt;Eclipse跟AS的不同&lt;/h1&gt;&lt;p&gt;从Eclipse到AS不要带着在Eclipse中的主观色彩去在AS中使用，从项目的构成到构建是不同的，下面列举在Eclipse和AS中的一些概念的区别：   &lt;/p&gt;
-&lt;h2 id=&quot;WorkSpace和Project&quot;&gt;&lt;a href=&quot;#WorkSpace和Project&quot; class=&quot;headerlink&quot; title=&quot;WorkSpace和Project&quot;&gt;&lt;/a&gt;WorkSpace和Project&lt;/h2&gt;&lt;p&gt;Eclipse的WorkSpace和AS的Project说的可以说是一个东西，也就是说你可以把在AS中的Project理解为WorkSpace。&lt;br&gt;&lt;figure class=&quot;image-bubble&quot;&gt;
-                &lt;div class=&quot;img-lightbox&quot;&gt;
-                    &lt;div class=&quot;overlay&quot;&gt;&lt;/div&gt;
-                    &lt;img src=&quot;https://static.rocko.xyz/img/Android-Studio-jar、so、library项目依赖_1.jpg?imageView2/2/w/400/h/400/q/100&quot; alt=&quot;&quot; title=&quot;&quot;&gt;
-                &lt;/div&gt;
-                &lt;div class=&quot;image-caption&quot;&gt;&lt;/div&gt;
-            &lt;/figure&gt; 所以你在AS中new一个Project相当于在Eclipse中重开了一个WorkSpace，注意第一个箭头，显示模式为Project，建议刚用AS时用这种，方便了解里面的文件结构。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Android" scheme="https://rocko.xyz/categories/Android/"/>
-    
-    
-      <category term="Android Studio" scheme="https://rocko.xyz/tags/Android-Studio/"/>
     
   </entry>
   
