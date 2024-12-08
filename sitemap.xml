@@ -2,6 +2,33 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://rocko.vip/2018/11/22/google-git-repo-%E5%A4%9A%E4%BB%93%E5%BA%93%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/</loc>
+    
+    <lastmod>2024-12-08</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://rocko.vip/2016/08/28/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E7%9A%84%E5%90%84%E7%A7%8D%E5%A7%BF%E5%8A%BF/</loc>
+    
+    <lastmod>2024-12-08</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://rocko.vip/2014/12/05/Android-Volley%E8%87%AA%E5%AE%9A%E4%B9%89Request-JacksonRequest%E3%80%81GsonRequest/</loc>
+    
+    <lastmod>2024-12-08</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://rocko.vip/2015/03/04/%E3%80%90%E8%AF%91%E3%80%91Spans%EF%BC%8C%E4%B8%80%E4%B8%AA%E5%BC%BA%E5%A4%A7%E7%9A%84%E6%A6%82%E5%BF%B5/</loc>
     
     <lastmod>2024-12-07</lastmod>
@@ -92,15 +119,6 @@
   </url>
   
   <url>
-    <loc>https://rocko.vip/2018/11/22/google-git-repo-%E5%A4%9A%E4%BB%93%E5%BA%93%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/</loc>
-    
-    <lastmod>2024-12-07</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://rocko.vip/2015/07/09/Python-Argparse-%E8%84%9A%E6%9C%AC%E5%8F%82%E6%95%B0%E8%A7%A3%E6%9E%90/</loc>
     
     <lastmod>2018-01-10</lastmod>
@@ -146,15 +164,6 @@
   </url>
   
   <url>
-    <loc>https://rocko.vip/2016/08/28/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E7%9A%84%E5%90%84%E7%A7%8D%E5%A7%BF%E5%8A%BF/</loc>
-    
-    <lastmod>2016-12-28</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://rocko.vip/2016/06/14/ADB-Issue-2/</loc>
     
     <lastmod>2016-12-10</lastmod>
@@ -165,15 +174,6 @@
   
   <url>
     <loc>https://rocko.vip/2014/12/13/Android-Studio-jar%E3%80%81so%E3%80%81library%E9%A1%B9%E7%9B%AE%E4%BE%9D%E8%B5%96/</loc>
-    
-    <lastmod>2016-12-10</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://rocko.vip/2014/12/05/Android-Volley%E8%87%AA%E5%AE%9A%E4%B9%89Request-JacksonRequest%E3%80%81GsonRequest/</loc>
     
     <lastmod>2016-12-10</lastmod>
     
@@ -209,15 +209,6 @@
   </url>
   
   <url>
-    <loc>https://rocko.vip/2015/02/12/VPS%E4%B8%BB%E6%9C%BA%E6%90%AD%E5%BB%BAGit%E6%9C%8D%E5%8A%A1%E5%99%A8/</loc>
-    
-    <lastmod>2016-12-10</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://rocko.vip/2014/11/24/hello-world/</loc>
     
     <lastmod>2016-12-10</lastmod>
@@ -227,7 +218,7 @@
   </url>
   
   <url>
-    <loc>https://rocko.vip/2014/12/06/%E8%AE%BE%E7%BD%AE%E5%9F%9F%E5%90%8D%E9%82%AE%E7%AE%B1/</loc>
+    <loc>https://rocko.vip/2015/02/12/VPS%E4%B8%BB%E6%9C%BA%E6%90%AD%E5%BB%BAGit%E6%9C%8D%E5%8A%A1%E5%99%A8/</loc>
     
     <lastmod>2016-12-10</lastmod>
     
@@ -237,6 +228,15 @@
   
   <url>
     <loc>https://rocko.vip/2015/05/05/%E3%80%90%E8%AF%91%E3%80%91NotRxJava%E6%87%92%E4%BA%BA%E4%B8%93%E7%94%A8%E6%8C%87%E5%8D%97/</loc>
+    
+    <lastmod>2016-12-10</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://rocko.vip/2014/12/06/%E8%AE%BE%E7%BD%AE%E5%9F%9F%E5%90%8D%E9%82%AE%E7%AE%B1/</loc>
     
     <lastmod>2016-12-10</lastmod>
     
@@ -263,15 +263,6 @@
   </url>
   
   <url>
-    <loc>https://rocko.vip/baidu_verify_dqOf3tI9Ld.html</loc>
-    
-    <lastmod>2016-11-21</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://rocko.vip/google36b76b49b569a9a7.html</loc>
     
     <lastmod>2016-11-21</lastmod>
@@ -282,6 +273,15 @@
   
   <url>
     <loc>https://rocko.vip/google93ea4c2dba91c9dd.html</loc>
+    
+    <lastmod>2016-11-21</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://rocko.vip/baidu_verify_dqOf3tI9Ld.html</loc>
     
     <lastmod>2016-11-21</lastmod>
     
@@ -382,20 +382,6 @@
   </url>
   
   <url>
-    <loc>https://rocko.vip/tags/View/</loc>
-    <lastmod>2024-12-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://rocko.vip/tags/OnTouchListener/</loc>
-    <lastmod>2024-12-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://rocko.vip/tags/Volley/</loc>
     <lastmod>2024-12-08</lastmod>
     <changefreq>weekly</changefreq>
@@ -404,6 +390,20 @@
   
   <url>
     <loc>https://rocko.vip/tags/%E9%94%99%E8%AF%AF/</loc>
+    <lastmod>2024-12-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://rocko.vip/tags/View/</loc>
+    <lastmod>2024-12-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://rocko.vip/tags/OnTouchListener/</loc>
     <lastmod>2024-12-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -459,6 +459,20 @@
   </url>
   
   <url>
+    <loc>https://rocko.vip/tags/%E5%A4%9A%E8%AF%B4/</loc>
+    <lastmod>2024-12-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://rocko.vip/tags/Hexo/</loc>
+    <lastmod>2024-12-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://rocko.vip/tags/Python/</loc>
     <lastmod>2024-12-08</lastmod>
     <changefreq>weekly</changefreq>
@@ -474,27 +488,6 @@
   
   <url>
     <loc>https://rocko.vip/tags/%E8%A7%A3%E6%9E%90/</loc>
-    <lastmod>2024-12-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://rocko.vip/tags/%E5%A4%9A%E8%AF%B4/</loc>
-    <lastmod>2024-12-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://rocko.vip/tags/Hexo/</loc>
-    <lastmod>2024-12-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://rocko.vip/tags/VPS/</loc>
     <lastmod>2024-12-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -550,6 +543,34 @@
   </url>
   
   <url>
+    <loc>https://rocko.vip/tags/VPS/</loc>
+    <lastmod>2024-12-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://rocko.vip/tags/RxJava/</loc>
+    <lastmod>2024-12-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://rocko.vip/tags/ReactiveX/</loc>
+    <lastmod>2024-12-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://rocko.vip/tags/%E8%AF%91%E6%96%87/</loc>
+    <lastmod>2024-12-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://rocko.vip/tags/Span/</loc>
     <lastmod>2024-12-08</lastmod>
     <changefreq>weekly</changefreq>
@@ -558,13 +579,6 @@
   
   <url>
     <loc>https://rocko.vip/tags/%E6%96%87%E5%AD%97/</loc>
-    <lastmod>2024-12-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://rocko.vip/tags/%E8%AF%91%E6%96%87/</loc>
     <lastmod>2024-12-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -593,20 +607,6 @@
   
   <url>
     <loc>https://rocko.vip/tags/%E5%9F%9F%E5%90%8D/</loc>
-    <lastmod>2024-12-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://rocko.vip/tags/RxJava/</loc>
-    <lastmod>2024-12-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://rocko.vip/tags/ReactiveX/</loc>
     <lastmod>2024-12-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -664,7 +664,7 @@
   </url>
   
   <url>
-    <loc>https://rocko.vip/categories/Git/Android/</loc>
+    <loc>https://rocko.vip/categories/%E5%A4%9A%E4%BB%93/</loc>
     <lastmod>2024-12-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -672,13 +672,6 @@
   
   <url>
     <loc>https://rocko.vip/categories/FGFW/</loc>
-    <lastmod>2024-12-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://rocko.vip/categories/Git/Android/%E7%BB%84%E4%BB%B6%E5%8C%96/</loc>
     <lastmod>2024-12-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
