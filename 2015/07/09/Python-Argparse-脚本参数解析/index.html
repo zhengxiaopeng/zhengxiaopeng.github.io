@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    <meta charset="utf-8">
+    
+    <meta name="google-site-verification" content="J7ONClDGsj92njCYAloRwEkDpz94YUFUxgi76g1m4Lk">
+    
+    
+    <link rel="canonical" href="https://rocko.xyz/2015/07/09/Python-Argparse-%E8%84%9A%E6%9C%AC%E5%8F%82%E6%95%B0%E8%A7%A3%E6%9E%90/">
+    
+    
+    <title>Python-Argparse 脚本参数解析 | Rocko&#39;s blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="baidu-site-verification" content="WG8fZ2mGXA" >
+    <meta name="baidu_union_verify" content="d1952c66cf48912e21c18c7c581f382a">
+    
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Python,脚本,解析">
+    <meta name="description" content="Argparse 是 Python 标准库中推荐的命令行解析模块，经常需要解析脚本参数的话这是个方便的工具模块，摆脱万年手动 system.argv。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python-Argparse 脚本参数解析">
+<meta property="og:url" content="https://rocko.xyz/2015/07/09/Python-Argparse-%E8%84%9A%E6%9C%AC%E5%8F%82%E6%95%B0%E8%A7%A3%E6%9E%90/index.html">
+<meta property="og:site_name" content="Rocko&#39;s blog">
+<meta property="og:description" content="Argparse 是 Python 标准库中推荐的命令行解析模块，经常需要解析脚本参数的话这是个方便的工具模块，摆脱万年手动 system.argv。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2015-07-09T04:04:34.000Z">
+<meta property="article:modified_time" content="2018-01-10T13:41:07.488Z">
+<meta property="article:author" content="Rocko">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="脚本">
+<meta property="article:tag" content="解析">
+<meta name="twitter:card" content="summary">
+    
+        <link rel="alternate" type="application/atom+xml" title="Rocko&#39;s blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.png">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?4536d8f17989e675f0efa92c7722c95c";
+          var s = document.getElementsByTagName("script")[0]; 
+          s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+    <!-- custom head -->
+    
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Rocko</h5>
+          <a href="mailto:rocko.zxp@gmail.com" title="rocko.zxp@gmail.com" class="mail">rocko.zxp@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+
+主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+
+归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+
+分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+
+标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-user-circle"></i>
+
+关于
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/friendLink"  >
+                <i class="icon icon-lg icon-users"></i>
+
+友链
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://adb.rocko.xyz" target="_blank" >
+                <i class="icon icon-lg icon-bookmark"></i>
+
+ADB
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/zhengxiaopeng" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+
+GitHub
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="//weibo.com/678662430/" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+
+Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https:////www.zhihu.com/people/rocko/" target="_blank" >
+                <i class="icon icon-lg icon-smile-o"></i>
+
+Zhihu
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/rocko_zxp" target="_blank" >
+                <i class="icon icon-lg icon-twitter"></i>
+
+Twitter
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Python-Argparse 脚本参数解析</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+
+     <a href="/atom.xml" class="header-icon waves-effect waves-circle waves-light" target="_blank" title="RSS订阅">
+            <i class="icon icon-lg icon-rss"></i>
+        </a>
+
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+ 
+
+
+        <a id="header-high" style="text-decoration: none; margin-left:12px; width:71px; margin-right:5px" class="header-icon waves-effect waves-circle waves-light"  onClick="javascript:(    /*     * Copyright (C) 2015 Rocko (rocko.xyz) <rocko.zxp@gmail.com>     *     * Licensed under the Apache License, Version 2.0 (the 'License');     * you may not use this file except in compliance with the License.     * You may obtain a copy of the License at     *     *      http://www.apache.org/licenses/LICENSE-2.0     *     * Unless required by applicable law or agreed to in writing, software     * distributed under the License is distributed on an 'AS IS' BASIS,     * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.     * See the License for the specific language governing permissions and     * limitations under the License.     */    function go() {        function c() {        var e = document.createElement('link');        e.setAttribute('type', 'text/css');        e.setAttribute('rel', 'stylesheet');        e.setAttribute('href', f);        e.setAttribute('class', l);        document.body.appendChild(e)    }     function h() {        var e = document.getElementsByClassName(l);        for (var t = 0; t < e.length; t++) {            document.body.removeChild(e[t])        }    }     function p() {        var e = document.createElement('div');        e.setAttribute('class', a);        document.body.appendChild(e);        setTimeout(function() {            document.body.removeChild(e)        }, 100)    }     function d(e) {        return {            height : e.offsetHeight,            width : e.offsetWidth        }    }     function v(i) {        var s = d(i);        return s.height > e && s.height < n && s.width > t && s.width < r    }     function m(e) {        var t = e;        var n = 0;        while (!!t) {            n += t.offsetTop;            t = t.offsetParent        }        return n    }     function g() {        var e = document.documentElement;        if (!!window.innerWidth) {            return window.innerHeight        } else if (e && !isNaN(e.clientHeight)) {            return e.clientHeight        }        return 0    }     function y() {        if (window.pageYOffset) {            return window.pageYOffset        }        return Math.max(document.documentElement.scrollTop, document.body.scrollTop)    }     function E(e) {        var t = m(e);        return t >= w && t <= b + w    }     var songs = [                'http://pit79pl1z.bkt.clouddn.com/Music-Fashion_Show.mp3',                'http://pit79pl1z.bkt.clouddn.com/Music-Wake-Live.mp3',                'http://pit79pl1z.bkt.clouddn.com/Music-outside.mp3',                'http://pit79pl1z.bkt.clouddn.com/Music-sunburst.mp3'    ];    function S() {        var e = document.getElementById('audio_element_id');        if(e != null){            var index = parseInt(e.getAttribute('curSongIndex'));            if(index > songs.length - 2) {                index = 0;            } else {                index++;            }            e.setAttribute('curSongIndex', index);            N();        }        e.src = i;        e.play()    }     function x(e) {        e.className += ' ' + s + ' ' + o    }     function T(e) {        e.className += ' ' + s + ' ' + u[Math.floor(Math.random() * u.length)]    }     function N() {        var e = document.getElementsByClassName(s);        var t = new RegExp('\\b' + s + '\\b');        for (var n = 0; n < e.length; ) {            e[n].className = e[n].className.replace(t, '')        }    }    function initAudioEle() {        var e = document.getElementById('audio_element_id');        if(e === null){            e = document.createElement('audio');            e.setAttribute('class', l);            e.setAttribute('curSongIndex', 0);            e.id = 'audio_element_id';            e.loop = false;            e.bgcolor = 0;            e.addEventListener('canplay', function() {            setTimeout(function() {                x(k)            }, 500);            setTimeout(function() {                N();                p();                for (var e = 0; e < O.length; e++) {                    T(O[e])                }            }, 15500)        }, true);        e.addEventListener('ended', function() {            N();            h();            go();        }, true);        e.innerHTML = ' <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>';        document.body.appendChild(e);        }    }        initAudioEle();    var e = 30;    var t = 30;    var n = 350;    var r = 350;    var curSongIndex = parseInt(document.getElementById('audio_element_id').getAttribute('curSongIndex'));    var i = songs[curSongIndex];        var s = 'mw-harlem_shake_me';    var o = 'im_first';    var u = ['im_drunk', 'im_baked', 'im_trippin', 'im_blown'];    var a = 'mw-strobe_light';    var f = 'https://rocko.xyz/css/harlem-shake-style.css';        var l = 'mw_added_css';    var b = g();    var w = y();    var C = document.getElementsByTagName('*');    var k = null;    for (var L = 0; L < C.length; L++) {        var A = C[L];        if (v(A)) {            if (E(A)) {                k = A;                break            }        }    }    if (A === null) {        console.warn('Could not find a node of the right size. Please try a different page.');        return    }    c();    S();    var O = [];    for (var L = 0; L < C.length; L++) {        var A = C[L];        if (v(A)) {            O.push(A)        }    }    })()" >
+        <i class="icon icon-lg icon-music"></i> High~
+        </a>
+    
+
+
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Python-Argparse 脚本参数解析</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2015-07-09T04:04:34.000Z" itemprop="datePublished" class="page-time">
+  2015-07-09
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Python/">Python</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%BC%95%E5%85%A5"><span class="post-toc-number">1.</span> <span class="post-toc-text">引入</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95"><span class="post-toc-number">2.</span> <span class="post-toc-text">常用方法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#add-argument"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">add_argument()</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#add-mutually-exclusive-group"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">add_mutually_exclusive_group()</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#add-argument-group"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">add_argument_group()</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#add-subparsers"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">add_subparsers()</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Sample"><span class="post-toc-number">3.</span> <span class="post-toc-text">Sample</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-Python-Argparse-脚本参数解析"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Python-Argparse 脚本参数解析</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2015-07-09 12:04:34" datetime="2015-07-09T04:04:34.000Z"  itemprop="datePublished">2015-07-09</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Python/">Python</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p><code>Argparse</code> 是 <code>Python</code> 标准库中推荐的命令行解析模块，经常需要解析脚本参数的话这是个方便的工具模块，摆脱万年手动 <code>system.argv</code>。</p>
+<span id="more"></span>
+
+
+<h2 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> argparse</span><br><span class="line">parser = argparse.ArgumentParser(description=<span class="string">&#x27;描述说明，可用于 Help 输出说明&#x27;</span>, add_help=<span class="literal">True</span>)</span><br><span class="line">parser.parse_args()</span><br></pre></td></tr></table></figure>
+
+<p><code>ArgumentParser</code> 可选参数如下：</p>
+<ul>
+<li>prog – 此脚本程序名称 (默认: sys.argv[0])</li>
+<li>usage – 用法说明 (默认: 根据参数自动生成)</li>
+<li>description – 脚本说明</li>
+<li>epilog – 也是说明，在 help 输出最后</li>
+<li>parents – 父 Parsers</li>
+<li>formatter_class – 输出帮助信息的定制类</li>
+<li>prefix_chars – 可选前缀参数字符(设置后参数名称需以此为前缀)</li>
+<li>fromfile_prefix_chars – 从文件读取可选前缀参数字符</li>
+<li>argument_default – 所有参数的默认值</li>
+<li>conflict_handler – 冲突处理器</li>
+<li>add_help – 是否添加帮助</li>
+</ul>
+<h2 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h2><h3 id="add-argument"><a href="#add-argument" class="headerlink" title="add_argument()"></a>add_argument()</h3><p>&#x2F;&#x2F; test.py</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> argparse</span><br><span class="line">parser = argparse.ArgumentParser()</span><br><span class="line">parser.add_argument(<span class="string">&#x27;-p&#x27;</span>, <span class="string">&#x27;--param&#x27;</span>)</span><br><span class="line">args = parser.parse_args()</span><br><span class="line"><span class="built_in">print</span> args.param</span><br></pre></td></tr></table></figure>
+
+<p>运行 <code>python test.py -p value</code>  or <code>python test.py --param value</code> 即可。</p>
+<p>add_argument 可选方法参数如下：</p>
+<ul>
+<li>name or flags - 参数的名字.</li>
+<li>action - 遇到参数时的动作，默认值是 store。store_const，表示赋值为 const；append，将遇到的值存储成列表，也就是如果参数重复则会保存多个值; append_const，将参数规范中定义的一个值保存到一个列表；count，存储遇到的次数；此外，也可以继承 argparse.Action 自定义参数解析；</li>
+<li>nargs - 参数的个数，可以是具体的数字，或者是 ? 号，当不指定值时对于 Positional argument 使用 default，对于 Optional argument 使用 const；或者是 * 号，表示 0 或多个参数；或者是 + 号表示 1 或多个参数.</li>
+<li>const - action 和 nargs 所需要的常量值.</li>
+<li>default - 不指定参数时的默认值.</li>
+<li>type - 参数的类型. 如 int、str</li>
+<li>choices - 参数允许的值. 如：[‘a’, ‘b’, ‘c’]</li>
+<li>required - 可选参数是否可以省略(仅针对 optionals ). </li>
+<li>help - 参数的帮助信息，当指定为 argparse.SUPPRESS 时表示不显示该参数的帮助信息.</li>
+<li>metavar - 在usage说明中的参数名称，对于必选参数默认就是参数名称，对于可选参数默认是全大写的参数名称. </li>
+<li>dest - 解析后的参数名称，默认情况下，对于可选参数选取最长的名称，中划线转换为下划线.</li>
+</ul>
+<h3 id="add-mutually-exclusive-group"><a href="#add-mutually-exclusive-group" class="headerlink" title="add_mutually_exclusive_group()"></a>add_mutually_exclusive_group()</h3><p>设置冲突参数，当需要设置指定输入参数只能包含其中一个时即可用此方法。</p>
+<p>&#x2F;&#x2F; test.py</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">parse = argparse.ArgumentParser()</span><br><span class="line">group = parse.add_mutually_exclusive_group()</span><br><span class="line">group.add_argument(<span class="string">&quot;-a&quot;</span>, action=<span class="string">&quot;store_true&quot;</span>)</span><br><span class="line">group.add_argument(<span class="string">&quot;-b&quot;</span>, action=<span class="string">&quot;store_true&quot;</span>)</span><br><span class="line">args = parse.parse_args()</span><br></pre></td></tr></table></figure>
+
+<p>此种情形下 test.py 输入参数只能包含 a 或 b， a、b 不能同时存在。</p>
+<h3 id="add-argument-group"><a href="#add-argument-group" class="headerlink" title="add_argument_group()"></a>add_argument_group()</h3><p>参数分组设置。当有分组命令的需求时可用，输入参数将归于所属分组下。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">parse = argparse.ArgumentParser()</span><br><span class="line"></span><br><span class="line">some_group = parse.add_argument_group(<span class="string">&#x27;Publish plugin&#x27;</span>)</span><br><span class="line">some_group.add_argument(<span class="string">&#x27;-f&#x27;</span>  <span class="built_in">type</span>=<span class="built_in">str</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="add-subparsers"><a href="#add-subparsers" class="headerlink" title="add_subparsers()"></a>add_subparsers()</h3><p>子命令模式，类似 <code>git commit</code>、 <code>git push</code> 等命令.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">parse = argparse.ArgumentParser()</span><br><span class="line">sub_parse = parse.add_subparsers()</span><br><span class="line"><span class="comment"># sub_parse opt... </span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Sample"><a href="#Sample" class="headerlink" title="Sample"></a>Sample</h2><p>下面由一个使用场景说起。一个脚本：<code>publish.py</code>，包含两个功能：发布和查询，运行环境有测试服和正式服，发布时需要两个账号系统的密码，查询时需要一个账号系统的密码和版本、渠道参数。那么脚本如下，其它见注释: </p>
+<p>&#x2F;&#x2F; publish.py</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> argparse</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_args</span>():</span><br><span class="line">    parse = argparse.ArgumentParser(description=<span class="string">&#x27;Publish tools.&#x27;</span>, add_help=<span class="literal">True</span>)</span><br><span class="line">	</span><br><span class="line">	<span class="comment"># 操作输入，使用互斥参数并且参数必须输入且只能选一个</span></span><br><span class="line">    group = parse.add_mutually_exclusive_group(required=<span class="literal">True</span>)</span><br><span class="line">    <span class="comment"># 查询操作</span></span><br><span class="line">    group.add_argument(<span class="string">&quot;-s&quot;</span>, <span class="string">&quot;--Search&quot;</span>, action=<span class="string">&quot;store_true&quot;</span>)</span><br><span class="line">    <span class="comment"># 发布操作</span></span><br><span class="line">    group.add_argument(<span class="string">&quot;-p&quot;</span>, <span class="string">&quot;--Publish&quot;</span>, action=<span class="string">&quot;store_true&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 运行环境参数</span></span><br><span class="line">    parse.add_argument(<span class="string">&#x27;-e&#x27;</span>, <span class="string">&#x27;--Env&#x27;</span>, <span class="built_in">type</span>=<span class="built_in">str</span>, <span class="built_in">help</span>=<span class="string">&#x27;Running environment&#x27;</span>, choices=[<span class="string">&#x27;test&#x27;</span>, <span class="string">&#x27;product&#x27;</span>], default=<span class="string">&#x27;test&#x27;</span>)</span><br><span class="line">    <span class="comment"># 账号必选信息</span></span><br><span class="line">    parse.add_argument(<span class="string">&#x27;-a&#x27;</span>, <span class="string">&#x27;--ApiAuth&#x27;</span>, required=<span class="literal">True</span>, <span class="built_in">type</span>=<span class="built_in">str</span>, <span class="built_in">help</span>=<span class="string">&#x27;username:password&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 发布分组命令设置</span></span><br><span class="line">    publish_group = parse.add_argument_group(<span class="string">&#x27;Publish&#x27;</span>)</span><br><span class="line">    publish_group.add_argument(<span class="string">&#x27;-f&#x27;</span>, <span class="string">&#x27;--FtpAuth&#x27;</span>,  <span class="built_in">type</span>=<span class="built_in">str</span>, <span class="built_in">help</span>=<span class="string">&#x27;username:password&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 查询分组命令设置</span></span><br><span class="line">    search_group = parse.add_argument_group(<span class="string">&#x27;Search&#x27;</span>)</span><br><span class="line">    search_group.add_argument(<span class="string">&#x27;-c&#x27;</span>, <span class="string">&#x27;--channel&#x27;</span>, <span class="built_in">type</span>=<span class="built_in">str</span>, <span class="built_in">help</span>=<span class="string">&#x27;channel&#x27;</span>)</span><br><span class="line">    search_group.add_argument(<span class="string">&#x27;-v&#x27;</span>, <span class="string">&#x27;--versonCode&#x27;</span>, <span class="built_in">type</span>=<span class="built_in">int</span>, <span class="built_in">help</span>=<span class="string">&#x27;Search verson code&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    args = parse.parse_args()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">vars</span>(args)</span><br><span class="line"></span><br><span class="line">args=get_args()</span><br><span class="line"><span class="built_in">print</span> <span class="string">&#x27;opt search?:&#x27;</span>, args[<span class="string">&#x27;Search&#x27;</span>],<span class="string">&#x27; opt publish?:&#x27;</span>, args[<span class="string">&#x27;Publish&#x27;</span>], <span class="string">&#x27;\n&#x27;</span>, args</span><br></pre></td></tr></table></figure>
+
+<p><code>publish.py -h</code> 使用帮助如下：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">usage: test.py [-h] (-s | -p) [-e &#123;test,product&#125;] -a APIAUTH [-f FTPAUTH]</span><br><span class="line">               [-c CHANNEL] [-v HOSTVERSONCODE]</span><br><span class="line"></span><br><span class="line">Publish tools.</span><br><span class="line"></span><br><span class="line">optional arguments:</span><br><span class="line">  -h, --help            show this help message and exit</span><br><span class="line">  -s, --Search</span><br><span class="line">  -p, --Publish</span><br><span class="line">  -e &#123;test,product&#125;, --Env &#123;test,product&#125;</span><br><span class="line">                        Running environment</span><br><span class="line">  -a APIAUTH, --ApiAuth APIAUTH</span><br><span class="line">                        username:password</span><br><span class="line"></span><br><span class="line">Publish plugin:</span><br><span class="line">  -f FTPAUTH, --FtpAuth FTPAUTH</span><br><span class="line">                        username:password</span><br><span class="line"></span><br><span class="line">Search plugin:</span><br><span class="line">  -c CHANNEL, --channel CHANNEL</span><br><span class="line">                        channel</span><br><span class="line">  -v VERSONCODE, --VersonCode VERSONCODE</span><br><span class="line">                        Search verson code</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>使用如下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">1 publish</span></span><br><span class="line">python publish.py -p -a U:P -f U:P</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">2 search</span></span><br><span class="line">python publish.py -s -a U:P -c channel -v 100</span><br></pre></td></tr></table></figure>
+
+        </div>
+   <!-- 加入广告 -->
+   <!-- 广告 -->
+<blockquote class="post-copyright">
+	    <div class="article-entry">
+
+    <!-- hr 分割线-->
+
+<!-- Article -->
+
+<!-- Article-self -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-2972075783837999"
+     data-ad-slot="2094161067"
+     data-ad-format="auto"></ins>
+
+<script>
+
+	
+	function loadAd() {
+		//var script = document.createElement('script');
+		//script.src = '//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js';
+
+
+		// Adding the script tag to the head as suggested before
+    var head = document.getElementsByTagName('head')[0];
+    var script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = '//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js';
+
+
+    // Fire the loading
+    head.appendChild(script);
+
+	(adsbygoogle = window.adsbygoogle || []).push({});
+	}
+
+	setTimeout('loadAd()',0);
+
+
+</script>
+    </div>
+</blockquote>
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-01-10T13:41:07.488Z" itemprop="dateUpdated">2018-01-10 21:41:07</time>
+</span><br>
+
+
+        
+
+除特别说明外，文章均采用「知识共享 署名 - 非商业性 - 相同方式共享 4.0 协议」进行许可，转载需注明文章出处：<a href="<%- url_for(page.path).replace(/index.html$/, '') %>" target="_blank" rel="external"><%- url.replace(/index.html$/, '') %></a>
+        
+    </div>
+    <footer>
+        <a href="https://rocko.xyz">
+            <img src="/img/avatar.png" alt="Rocko">
+            Rocko
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/" rel="tag">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%84%9A%E6%9C%AC/" rel="tag">脚本</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%A7%A3%E6%9E%90/" rel="tag">解析</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://rocko.xyz/2015/07/09/Python-Argparse-%E8%84%9A%E6%9C%AC%E5%8F%82%E6%95%B0%E8%A7%A3%E6%9E%90/&title=《Python-Argparse 脚本参数解析》 — Rocko's blog&pic=https://rocko.xyz/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://rocko.xyz/2015/07/09/Python-Argparse-%E8%84%9A%E6%9C%AC%E5%8F%82%E6%95%B0%E8%A7%A3%E6%9E%90/&title=《Python-Argparse 脚本参数解析》 — Rocko's blog&source=Argparse 是 Python 标准库中推荐的命令行解析模块，经常需要解析脚本参数的话这是个方便的工具模块，摆脱万年手动 system.argv。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://rocko.xyz/2015/07/09/Python-Argparse-%E8%84%9A%E6%9C%AC%E5%8F%82%E6%95%B0%E8%A7%A3%E6%9E%90/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Python-Argparse 脚本参数解析》 — Rocko's blog&url=https://rocko.xyz/2015/07/09/Python-Argparse-%E8%84%9A%E6%9C%AC%E5%8F%82%E6%95%B0%E8%A7%A3%E6%9E%90/&via=https://rocko.xyz" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://rocko.xyz/2015/07/09/Python-Argparse-%E8%84%9A%E6%9C%AC%E5%8F%82%E6%95%B0%E8%A7%A3%E6%9E%90/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2015/11/07/MVVM_Android-CleanArchitecture/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">MVVM_Android-CleanArchitecture</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2015/06/27/High%E4%B8%80%E4%B8%8B/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">High一下</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'true' == 'true',
+            verify: 'false' == 'true',
+            appId: "fBqoKNrWNFkYQMTivF00jWpk-gzGzoHsz",
+            appKey: "q2baN9KwoyaFHmbjMHfssLIH",
+            avatar: "mm",
+            placeholder: "说点什么吧~",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        请随意~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.png" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.png" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        Since 2017/1/1  -  站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+        <!-- 
+            <span><a href="" target="_blank" class="rss" title="rss"><i class="icon icon-1x icon-rss"></i></a></span> -->
+            <span>博客内容遵循 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享 署名 - 非商业性 - 相同方式共享 4.0 协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></span>
+			
+			 · Hosted by <a href="https://pages.coding.me" target="_blank">Coding Pages</a>
+
+
+            <span>Rocko &copy; 2014 - 2024</span>
+        </p>
+    </div>
+
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://rocko.xyz/2015/07/09/Python-Argparse-%E8%84%9A%E6%9C%AC%E5%8F%82%E6%95%B0%E8%A7%A3%E6%9E%90/&title=《Python-Argparse 脚本参数解析》 — Rocko's blog&pic=https://rocko.xyz/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://rocko.xyz/2015/07/09/Python-Argparse-%E8%84%9A%E6%9C%AC%E5%8F%82%E6%95%B0%E8%A7%A3%E6%9E%90/&title=《Python-Argparse 脚本参数解析》 — Rocko's blog&source=Argparse 是 Python 标准库中推荐的命令行解析模块，经常需要解析脚本参数的话这是个方便的工具模块，摆脱万年手动 system.argv。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://rocko.xyz/2015/07/09/Python-Argparse-%E8%84%9A%E6%9C%AC%E5%8F%82%E6%95%B0%E8%A7%A3%E6%9E%90/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Python-Argparse 脚本参数解析》 — Rocko's blog&url=https://rocko.xyz/2015/07/09/Python-Argparse-%E8%84%9A%E6%9C%AC%E5%8F%82%E6%95%B0%E8%A7%A3%E6%9E%90/&via=https://rocko.xyz" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://rocko.xyz/2015/07/09/Python-Argparse-%E8%84%9A%E6%9C%AC%E5%8F%82%E6%95%B0%E8%A7%A3%E6%9E%90/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAADJklEQVR42u3aQW4CQQwEwPz/00TKLVKAbs8qAlN7QmQZppZDZ2x/fcXX7ee69/reO4/vvLd+cn9+z9GFjY2N/Sbs28MroSbvJ9/4eLX8nmR9bGxs7H3sPLTybbV35lkz2wM2NjY2dhsqbaRF2w2ORtjY2NjY+XJJEaqNt9nBBhsbGxs7KSq1paW26J+Tkn1eVkvDxsbGfnn2eaP3dV7/a38bGxsb+wXYt9GVlOaT8GjbvXlQPdk/NjY29iL2+Qhj23Ztm8cnRagnImxsbOwV7FkbddYYbhsAyc+Ql73+yG1sbGzsRezZuEzbPGgPJycVoSfxiY2Njb2OPQuh8zZq3pTNz1VRHGJjY2N/ALst3MxaCG0gzdoSd2eUsLGxsRex84WSYlDbBmgfbr7OkwDDxsbGXsfO/9FvDycnnzofGH0SYNjY2Nhvzs7DJm/Qzqgnx5XiEIKNjY29lN3WW2bjO20x69riVDSOiY2Njb2CfR4wefO1feeqWMXGxsbeyk6aBLPi0fm4T95IyB8cNjY29g52jswzML+nDcWT4tSvv2JjY2OvY89CKyENi/VxFM3KT9jY2Nib2En8tKX29s6r2PUIJjY2NvYK9mwUMv+aowPDARIbGxv7c9jtQeJ8pLIdu6l71OWjxMbGxt7KrgNgVE5qv6sdISqOPdjY2Nhvzp4dSPJDwiyK8jHKdrfY2NjY+9hJSLR3zkpF+TvtT4iNjY29ld2OP+aFp7ZEdTKgM+yKYGNjY69g54u2TdZ2nfMYG7YWsLGxsVewZzFzMo6Tf2r2QKNWBDY2NvYidtsTTg4SbXF/FkKzASBsbGzsreyrYunaFkIegfmDwMbGxt7KnoVBO9CTDwnlD/efmr7Y2NjYL8m+ldfJUM5syPJk+PLuCtjY2NiL2Pk1G8TJS0s5oF0TGxsb+xPYs2LNrCQ0Ozy0x5joBIaNjY29jn0yHDM7hMx6F7Oi0h8/DDY2NvbHs/MttgGT72cYXdjY2NgfzG6L8skRpQ3Fy0pU2NjY2OvYbSSczwolI5v5PutxImxsbOxF7JNG7yyE2o2eh+XsZ8PGxsZ+efY3jwFFKHID8DcAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

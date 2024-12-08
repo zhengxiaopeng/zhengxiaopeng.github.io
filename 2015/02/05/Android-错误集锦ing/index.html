@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    <meta charset="utf-8">
+    
+    <meta name="google-site-verification" content="J7ONClDGsj92njCYAloRwEkDpz94YUFUxgi76g1m4Lk">
+    
+    
+    <link rel="canonical" href="https://rocko.xyz/2015/02/05/Android-%E9%94%99%E8%AF%AF%E9%9B%86%E9%94%A6ing/">
+    
+    
+    <title>Android 错误集锦ing... | Rocko&#39;s blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="baidu-site-verification" content="WG8fZ2mGXA" >
+    <meta name="baidu_union_verify" content="d1952c66cf48912e21c18c7c581f382a">
+    
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="错误">
+    <meta name="description" content="Fork from my csdn blog: Android 错误集锦(ing…).Last update time: 2016-03-06 23:34:26.    温馨提示：Ctrl+F查找  系统环境：Windows7 64位问题描述：Eclipse真机无法打印log信息错误提示：…解决方案：window–&gt;show view–&gt;android-&gt;devices，打开de">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android 错误集锦ing...">
+<meta property="og:url" content="https://rocko.xyz/2015/02/05/Android-%E9%94%99%E8%AF%AF%E9%9B%86%E9%94%A6ing/index.html">
+<meta property="og:site_name" content="Rocko&#39;s blog">
+<meta property="og:description" content="Fork from my csdn blog: Android 错误集锦(ing…).Last update time: 2016-03-06 23:34:26.    温馨提示：Ctrl+F查找  系统环境：Windows7 64位问题描述：Eclipse真机无法打印log信息错误提示：…解决方案：window–&gt;show view–&gt;android-&gt;devices，打开de">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://static.rocko.xyz/img/20140924103915303">
+<meta property="og:image" content="https://static.rocko.xyz/img/Android%20%E9%94%99%E8%AF%AF%E9%9B%86%E9%94%A6ing..._1.png">
+<meta property="article:published_time" content="2015-02-05T05:44:42.000Z">
+<meta property="article:modified_time" content="2017-01-02T12:44:34.000Z">
+<meta property="article:author" content="Rocko">
+<meta property="article:tag" content="错误">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://static.rocko.xyz/img/20140924103915303">
+    
+        <link rel="alternate" type="application/atom+xml" title="Rocko&#39;s blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.png">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?4536d8f17989e675f0efa92c7722c95c";
+          var s = document.getElementsByTagName("script")[0]; 
+          s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+    <!-- custom head -->
+    
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Rocko</h5>
+          <a href="mailto:rocko.zxp@gmail.com" title="rocko.zxp@gmail.com" class="mail">rocko.zxp@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+
+主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+
+归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+
+分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+
+标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-user-circle"></i>
+
+关于
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/friendLink"  >
+                <i class="icon icon-lg icon-users"></i>
+
+友链
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://adb.rocko.xyz" target="_blank" >
+                <i class="icon icon-lg icon-bookmark"></i>
+
+ADB
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/zhengxiaopeng" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+
+GitHub
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="//weibo.com/678662430/" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+
+Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https:////www.zhihu.com/people/rocko/" target="_blank" >
+                <i class="icon icon-lg icon-smile-o"></i>
+
+Zhihu
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/rocko_zxp" target="_blank" >
+                <i class="icon icon-lg icon-twitter"></i>
+
+Twitter
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Android 错误集锦ing...</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+
+     <a href="/atom.xml" class="header-icon waves-effect waves-circle waves-light" target="_blank" title="RSS订阅">
+            <i class="icon icon-lg icon-rss"></i>
+        </a>
+
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+ 
+
+
+        <a id="header-high" style="text-decoration: none; margin-left:12px; width:71px; margin-right:5px" class="header-icon waves-effect waves-circle waves-light"  onClick="javascript:(    /*     * Copyright (C) 2015 Rocko (rocko.xyz) <rocko.zxp@gmail.com>     *     * Licensed under the Apache License, Version 2.0 (the 'License');     * you may not use this file except in compliance with the License.     * You may obtain a copy of the License at     *     *      http://www.apache.org/licenses/LICENSE-2.0     *     * Unless required by applicable law or agreed to in writing, software     * distributed under the License is distributed on an 'AS IS' BASIS,     * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.     * See the License for the specific language governing permissions and     * limitations under the License.     */    function go() {        function c() {        var e = document.createElement('link');        e.setAttribute('type', 'text/css');        e.setAttribute('rel', 'stylesheet');        e.setAttribute('href', f);        e.setAttribute('class', l);        document.body.appendChild(e)    }     function h() {        var e = document.getElementsByClassName(l);        for (var t = 0; t < e.length; t++) {            document.body.removeChild(e[t])        }    }     function p() {        var e = document.createElement('div');        e.setAttribute('class', a);        document.body.appendChild(e);        setTimeout(function() {            document.body.removeChild(e)        }, 100)    }     function d(e) {        return {            height : e.offsetHeight,            width : e.offsetWidth        }    }     function v(i) {        var s = d(i);        return s.height > e && s.height < n && s.width > t && s.width < r    }     function m(e) {        var t = e;        var n = 0;        while (!!t) {            n += t.offsetTop;            t = t.offsetParent        }        return n    }     function g() {        var e = document.documentElement;        if (!!window.innerWidth) {            return window.innerHeight        } else if (e && !isNaN(e.clientHeight)) {            return e.clientHeight        }        return 0    }     function y() {        if (window.pageYOffset) {            return window.pageYOffset        }        return Math.max(document.documentElement.scrollTop, document.body.scrollTop)    }     function E(e) {        var t = m(e);        return t >= w && t <= b + w    }     var songs = [                'http://pit79pl1z.bkt.clouddn.com/Music-Fashion_Show.mp3',                'http://pit79pl1z.bkt.clouddn.com/Music-Wake-Live.mp3',                'http://pit79pl1z.bkt.clouddn.com/Music-outside.mp3',                'http://pit79pl1z.bkt.clouddn.com/Music-sunburst.mp3'    ];    function S() {        var e = document.getElementById('audio_element_id');        if(e != null){            var index = parseInt(e.getAttribute('curSongIndex'));            if(index > songs.length - 2) {                index = 0;            } else {                index++;            }            e.setAttribute('curSongIndex', index);            N();        }        e.src = i;        e.play()    }     function x(e) {        e.className += ' ' + s + ' ' + o    }     function T(e) {        e.className += ' ' + s + ' ' + u[Math.floor(Math.random() * u.length)]    }     function N() {        var e = document.getElementsByClassName(s);        var t = new RegExp('\\b' + s + '\\b');        for (var n = 0; n < e.length; ) {            e[n].className = e[n].className.replace(t, '')        }    }    function initAudioEle() {        var e = document.getElementById('audio_element_id');        if(e === null){            e = document.createElement('audio');            e.setAttribute('class', l);            e.setAttribute('curSongIndex', 0);            e.id = 'audio_element_id';            e.loop = false;            e.bgcolor = 0;            e.addEventListener('canplay', function() {            setTimeout(function() {                x(k)            }, 500);            setTimeout(function() {                N();                p();                for (var e = 0; e < O.length; e++) {                    T(O[e])                }            }, 15500)        }, true);        e.addEventListener('ended', function() {            N();            h();            go();        }, true);        e.innerHTML = ' <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>';        document.body.appendChild(e);        }    }        initAudioEle();    var e = 30;    var t = 30;    var n = 350;    var r = 350;    var curSongIndex = parseInt(document.getElementById('audio_element_id').getAttribute('curSongIndex'));    var i = songs[curSongIndex];        var s = 'mw-harlem_shake_me';    var o = 'im_first';    var u = ['im_drunk', 'im_baked', 'im_trippin', 'im_blown'];    var a = 'mw-strobe_light';    var f = 'https://rocko.xyz/css/harlem-shake-style.css';        var l = 'mw_added_css';    var b = g();    var w = y();    var C = document.getElementsByTagName('*');    var k = null;    for (var L = 0; L < C.length; L++) {        var A = C[L];        if (v(A)) {            if (E(A)) {                k = A;                break            }        }    }    if (A === null) {        console.warn('Could not find a node of the right size. Please try a different page.');        return    }    c();    S();    var O = [];    for (var L = 0; L < C.length; L++) {        var A = C[L];        if (v(A)) {            O.push(A)        }    }    })()" >
+        <i class="icon icon-lg icon-music"></i> High~
+        </a>
+    
+
+
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Android 错误集锦ing...</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2015-02-05T05:44:42.000Z" itemprop="datePublished" class="page-time">
+  2015-02-05
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Android/">Android</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%B3%BB%E7%BB%9F%E7%8E%AF%E5%A2%83%EF%BC%9AWindows7-64%E4%BD%8D%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0%EF%BC%9AFragmentTransaction%E4%BD%BF%E7%94%A8%E9%97%AE%E9%A2%98%E3%80%82%E9%94%99%E8%AF%AF%E6%8F%90%E7%A4%BA%EF%BC%9A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%EF%BC%9A%E6%98%AF%E5%9B%A0%E4%B8%BA%E4%BD%A0%E7%9A%84ft%E4%BA%8B%E5%8A%A1%E6%98%AF%E5%85%A8%E5%B1%80%E7%9A%84%E5%8F%98%E9%87%8F%EF%BC%8C%E5%8F%AA%E8%83%BDcommit%E4%B8%80%E6%AC%A1%E3%80%82%E6%89%80%E4%BB%A5%E7%94%A8%E4%B8%A4%E4%B8%AA%E5%B1%80%E9%83%A8ft%E4%BA%8B%E5%8A%A1%E5%8E%BB%E5%81%9Acommit%E5%8D%B3%E5%8F%AF%E3%80%82-%E5%8E%9F%E6%96%87%E5%9C%B0%E5%9D%80%EF%BC%9Ahttp-blog-csdn-net-knxw0001-article-details-9363411%E8%A1%A5%E5%85%85%EF%BC%9A"><span class="post-toc-number">1.</span> <span class="post-toc-text">系统环境：Windows7 64位问题描述：FragmentTransaction使用问题。错误提示：1java.lang.IllegalStateException: commit already called.解决方案：是因为你的ft事务是全局的变量，只能commit一次。所以用两个局部ft事务去做commit即可。 原文地址：http:&#x2F;&#x2F;blog.csdn.net&#x2F;knxw0001&#x2F;article&#x2F;details&#x2F;9363411补充：123456789FragmentManager fragmentManager &#x3D; getSupportFragmentManager(); FragmentTransaction fragmentTransaction &#x3D; fragmentManager.beginTransaction(); detailFragment &#x3D; new ProductDetailFragment(productId); commentFragment &#x3D; new ProductCommentFragment(productId); fragmentTransaction.add(R.id.viewgroup, detailFragment); fragmentTransaction.add(R.id.viewgroup, commentFragment); fragmentTransaction.commit(); &#x2F;&#x2F;下面这个是调用的时候需要用新的局部变量  getSupportFragmentManager().beginTransaction().hide(commentFragment).show(detailFragment).commit();</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-Android-错误集锦ing"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Android 错误集锦ing...</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2015-02-05 13:44:42" datetime="2015-02-05T05:44:42.000Z"  itemprop="datePublished">2015-02-05</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Android/">Android</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>Fork from my csdn blog: <a href="http://blog.csdn.net/bbld_/article/details/39520249">Android 错误集锦(ing…)</a>.<br>Last update time: <em>2016-03-06 23:34:26</em>.   </p>
+<p>温馨提示：<code>Ctrl+F查找</code></p>
+<hr>
+<p><strong>系统环境：</strong><br>Windows7 64位<br><strong>问题描述：</strong><br>Eclipse真机无法打印log信息<br><strong>错误提示：</strong><br>…<br><strong>解决方案：</strong><br>window–&gt;show view–&gt;android-&gt;devices，打开devices，点击右边的截屏图片的按钮。等到出现截图的时候，logcat就出来信息了（不保证每次都有用）</p>
+<hr>
+<p><strong>系统环境：</strong><br>Windows7 64位<br><strong>问题描述：</strong><br>xml（资源）文件里面的错误<br><strong>错误提示：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">android: invalid start tag xxxxx 错误原因</span><br></pre></td></tr></table></figure>
+<p><strong>解决方案：</strong><br>今天在学shape这个属性,结果创建的xml总是提示这个错误百思不得其解,后来找到原因了我把这个xml文件放错了位置,放到了res&#x2F;layout路径下应该放在drawable的路径下才对</p>
+<hr>
+<p><strong>系统环境：</strong><br>Windows7 64位<br><strong>问题描述：</strong><br>无法run(运行)工程<br><strong>错误提示：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Conversion to Dalvik format failed with error 1</span><br></pre></td></tr></table></figure>
+<p><strong>解决方案：</strong><br>第一种情况包导入错误.点击工程–&gt;build path–&gt;libraries–&gt;选中android1.x 或者android2.x ，点击remove。然后再点击add library–&gt;User Library –&gt;next–&gt;User Libraries–&gt;new 你取一个名字 比如android2.1 点击OK，选中android2.1–&gt;add jars–&gt;\android-sdk-windows\platforms\android-7\android.jar 点击打开，点击ok–&gt;finish.   </p>
+<p>第二种情况签名时没有成功。签名：java -jar signapk.jar platform.x509.pem platform.pk8 e:huaworkspace\hua\bin\hua.apk e:huaworkspace\hua\bin\hua_signaed.apk，如果hua_signaed.apk签名失败，那么请到你的工作目录中将hua_signaed.apk delete掉。   </p>
+<p>第三种情况包冲突，请到工程目录下将相同的包删除，重新导入一个，这一点和第一种情况类似，不过这是针对其他包，不是android包 </p>
+<hr>
+<p><strong>系统环境：</strong><br>Windows7 64位<br><strong>问题描述：</strong><br>导入SlidingMenu和SlidingMenu所依赖的actionbarsherlock包后再导入supportv7（用来支持ActionBar），工程一直报错、无法生成R文件。<br><strong>错误提示：</strong><br>…<br><strong>解决方案：</strong><br>不用导入v7包了，因为actionbarsherlock已经支持ActionBar，再导入v7会有冲突。</p>
+<hr>
+<h2 id="系统环境：Windows7-64位问题描述：FragmentTransaction使用问题。错误提示：解决方案：是因为你的ft事务是全局的变量，只能commit一次。所以用两个局部ft事务去做commit即可。-原文地址：http-blog-csdn-net-knxw0001-article-details-9363411补充："><a href="#系统环境：Windows7-64位问题描述：FragmentTransaction使用问题。错误提示：解决方案：是因为你的ft事务是全局的变量，只能commit一次。所以用两个局部ft事务去做commit即可。-原文地址：http-blog-csdn-net-knxw0001-article-details-9363411补充：" class="headerlink" title="系统环境：Windows7 64位问题描述：FragmentTransaction使用问题。错误提示：解决方案：是因为你的ft事务是全局的变量，只能commit一次。所以用两个局部ft事务去做commit即可。 原文地址：http://blog.csdn.net/knxw0001/article/details/9363411补充："></a><strong>系统环境：</strong><br>Windows7 64位<br><strong>问题描述：</strong><br>FragmentTransaction使用问题。<br><strong>错误提示：</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java.lang.IllegalStateException: commit already called.</span><br></pre></td></tr></table></figure><br><strong>解决方案：</strong><br>是因为你的ft事务是全局的变量，只能commit一次。所以用两个局部ft事务去做commit即可。 原文地址：<a href="http://blog.csdn.net/knxw0001/article/details/9363411">http://blog.csdn.net/knxw0001/article/details/9363411</a><br>补充：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">FragmentManager</span> <span class="variable">fragmentManager</span> <span class="operator">=</span> getSupportFragmentManager(); </span><br><span class="line"><span class="type">FragmentTransaction</span> <span class="variable">fragmentTransaction</span> <span class="operator">=</span> fragmentManager.beginTransaction(); </span><br><span class="line">detailFragment = <span class="keyword">new</span> <span class="title class_">ProductDetailFragment</span>(productId); </span><br><span class="line">commentFragment = <span class="keyword">new</span> <span class="title class_">ProductCommentFragment</span>(productId); </span><br><span class="line">fragmentTransaction.add(R.id.viewgroup, detailFragment); </span><br><span class="line">fragmentTransaction.add(R.id.viewgroup, commentFragment); </span><br><span class="line">fragmentTransaction.commit(); </span><br><span class="line"><span class="comment">//下面这个是调用的时候需要用新的局部变量  </span></span><br><span class="line">getSupportFragmentManager().beginTransaction().hide(commentFragment).show(detailFragment).commit();</span><br></pre></td></tr></table></figure></h2><p><strong>系统环境：</strong><br>Windows7 64位<br><strong>问题描述：</strong><br>使用Genymotion调试出现错误INSTALL_FAILED_CPU_ABI_INCOMPATIBLE<br><strong>错误提示：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Installation error: INSTALL_FAILED_CPU_ABI_INCOMPATIBLE</span><br><span class="line">Please check logcat output <span class="keyword">for</span> more details.</span><br><span class="line">Launch canceled!</span><br></pre></td></tr></table></figure>
+<p><strong>解决方案：</strong><br>点击下载<a href="http://pan.baidu.com/s/1c0ELjzi#dir/path=%2FJustDoIt%2F%E4%B8%80%E4%BA%9B%E4%B8%8B%E8%BD%BD%E9%93%BE%E6%8E%A5%2F%E6%9C%89%E9%81%93">Genymotion-ARM-Translation.zip</a><br>将你的虚拟器运行起来，将下载好的zip包用鼠标拖到虚拟机窗口中，出现确认对跨框点OK就行。然后重启你的虚拟机。</p>
+<span id="more"></span>
+
+
+<hr>
+<p><strong>系统环境：</strong><br>Windows7 64位<br><strong>问题描述：</strong><br>自定义View（RemoteViews）无法发出通知，程序报错<br><strong>错误提示：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">android.app.RemoteServiceException: Bad notification posted from package com.gdut.repairsystem:Couldn<span class="string">&#x27;t expand RemoteViews for: StatusBarNotification(package=com.gdut.repairsystem id=0 tag=null notification=Notification(vibrate=null,sound=null,defaults=0x0,flags=0x10))</span></span><br></pre></td></tr></table></figure>
+<p><strong>解决方案：</strong><br>在自定义布局中使用了不自持的组件（这里居然是使用了自定义style的原因！！！(最外层的layout不能，里面的可以)）。</p>
+<hr>
+<p><strong>系统环境：</strong><br>Windows7 64位<br><strong>问题描述：</strong><br>jni代码里：Type Method ‘NewStringUTF’ could not be resolved<br><strong>错误提示：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Type Method <span class="string">&#x27;NewStringUTF&#x27;</span> could not be resolved</span><br></pre></td></tr></table></figure>
+<p><strong>解决方案：</strong><br>点开problems窗口把这条错误删除，ok！</p>
+<hr>
+<p><strong>系统环境：</strong><br>Windows7 64位<br><strong>问题描述：</strong><br>Intent使用serializable传递复杂数据时报错<br><strong>错误提示：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Parcelable encountered IOException writing serializable object</span><br></pre></td></tr></table></figure>
+<p><strong>解决方案：</strong><br>在Activity之间传递数据必须所有的内容都实现serializable接口才行。</p>
+<hr>
+<p><strong>系统环境：</strong><br>Windows7 64位<br><strong>问题描述：</strong><br>Intent使用Parcelable传递复杂数据时报错<br><strong>错误提示：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Unmarshalling unknown <span class="built_in">type</span> code 7471205 at offset 232</span><br></pre></td></tr></table></figure>
+<p><strong>解决方案：</strong><br>在两个activitiy之间，传递一个实现了Parcelable的ArrayList，就出现了这个错误，但是当我传递其它类型的数据时（int、String）却没有问题，显然问题出现了Parcelable身上，简单找了找答案</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://static.rocko.xyz/img/20140924103915303" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<hr>
+<p><strong>系统环境：</strong><br>Windows7 64位<br><strong>问题描述：</strong><br>使用开源控件NumberPicker，inflate时一直错误<br><strong>错误提示：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Android - Error inflating SimonVT NumberPicker class <span class="keyword">in</span> my layout xml</span><br></pre></td></tr></table></figure>
+<p><strong>解决方案：</strong><br>activity的主题的numberPickerStyle item（numberpicker的主题）要使用它项目中的主题！坑爹···</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">&quot;numberPickerStyle&quot;</span>&gt;</span>@style/NPWidget.Holo.NumberPicker<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<p><strong>系统环境：</strong><br>Windows7 64位<br><strong>问题描述：</strong><br>使用sherlockactionbar创建searchview一直报错<br><strong>错误提示：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sherlockactionbar Binary XML file line <span class="comment">#29: Error inflating class</span></span><br></pre></td></tr></table></figure>
+<p><strong>解决方案：</strong><br>values-v11等其它资源文件夹里不是使用sherlockactionbar的主题！！！</p>
+<hr>
+<p><strong>系统环境：</strong><br>Ubuntu12.04 64位<br><strong>问题描述：</strong><br>Android环境搭建完毕，但指定了sdk路径没问题依然报错，搭建JDK，Android环境，把android SDK复制过来后，里面的adb和其它命令的都不能使用。<br><strong>错误提示：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">android-sdk-linux_86/platform-tools/adb: 没有那个文件或目录。</span><br><span class="line">android-sdk-linux/platform-tools/adb: 没有那个文件或目录</span><br><span class="line">AndroidSDK/sdk/build-tools/19.0.1/aapt: error <span class="keyword">while</span> loading shared libraries:</span><br><span class="line">Failed to get the adb version: Cannot run program <span class="string">&quot;/home/android-sdk-linux/platform-tools/adb&quot;</span>:</span><br><span class="line">error=2, 没有那个文件或目录`</span><br></pre></td></tr></table></figure>
+<p><strong>解决方案：</strong><br>由于是64bit的系统，而Android sdk只有32bit的程序，需要安装ia32-libs，才能使用。<br>运行如下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># sudo apt-get install ia32-libs</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<p><strong>系统环境：</strong><br>Windows7 64位<br><strong>问题描述：</strong><br>SlidingMenu、ActionBarSherLock编译问题<br><strong>错误提示：</strong><br>…<br><strong>解决方案：</strong><br>1、新版的SlidingMenu-master需要使用google api编译。<br>2、SlidingMenu的library编译通过后，把编译好的ActionBarSherLock作为一个library导入SlidingMenu。<br>    导入方法是 右键-properties-android-add-选择ActionBarSherLock，因为SlidingMenu稍后也是以liberary的形式导入自己的项目中，所以此处勾选is a liberary。<br>3、新建项目，将SlidingMunu作为liberary导入，方法同上。<br>4、可能报找不到getSupportActionBar等ActionBarSherLock的方法。原因是使用ActionBarSherLock的Activity需继承于SherlockActivity，修改SlidingMenu liberary中的SlidingFragmentActivity，让它继承于SherlockFragmentActivity，重新编译liberary导入。<br>5、项目红叉或红叹号，删除support_v4包，ActionBarSherLock已包含此包，会冲突。也有可能是主题问题，注意appication theme是否正确，参照exsample。<br>6、注意把ActionBar、某些Fragment等替换成ActionBarSherLock包中的类。<br>7、左上角的指示图片是在application theme引用的style里设的。<br>8、 actionBar.setNavigationMode设置不同模式使用的监听类不同。</p>
+<hr>
+<p><strong>系统环境：</strong><br>Ubuntu12.04 64位<br><strong>问题描述：</strong><br>真机连接无法识别。<br><strong>错误提示：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">adb devices</span><br><span class="line">List of devices attached</span><br><span class="line">???????????? no permissions</span><br></pre></td></tr></table></figure>
+<p><strong>解决方案：</strong><br>1、设置usb权限</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$lsusb</span></span><br><span class="line">Bus 005 Device 001: ID 1d6b:0001 Linux Foundation 1.1 root hub</span><br><span class="line">Bus 004 Device 001: ID 1d6b:0001 Linux Foundation 1.1 root hub</span><br><span class="line">Bus 003 Device 001: ID 1d6b:0001 Linux Foundation 1.1 root hub</span><br><span class="line">Bus 002 Device 004: ID 093a:2510 Pixart Imaging, Inc. Hama Optical Mouse</span><br><span class="line">Bus 002 Device 002: ID 413c:2003 Dell Computer Corp. Keyboard</span><br><span class="line">Bus 002 Device 001: ID 1d6b:0001 Linux Foundation 1.1 root hub</span><br><span class="line">Bus 001 Device 022: ID 0fce:6146 Sony Ericsson Mobile Communications AB </span><br><span class="line">Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub</span><br></pre></td></tr></table></figure>
+<p>列表中，Bus 001 Device 022: ID 0fce:6146 Sony Ericsson Mobile Communications AB. 这一行为手机的usb使用端口，记录一下，id为0fce</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> gedit /etc/udev/rules.d/70-android.rules</span><br></pre></td></tr></table></figure>
+<p>加入以下内容：<br>SUBSYSTEM&#x3D;&#x3D;”usb”, ATTRS{idVendor}&#x3D;&#x3D;”0fce”, ATTRS{idProduct}&#x3D;&#x3D;”6146”,MODE&#x3D;”0666”<br>运行命令，重启udev：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> <span class="built_in">chmod</span> a+rx /etc/udev/rules.d/70-android.rules</span><br><span class="line"><span class="built_in">sudo</span> service udev restart</span><br></pre></td></tr></table></figure>
+<p>2、拔掉usb重新连上再执行：<br>&#x2F;&#x2F;重新启动adb server</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> ./adb kill-server</span><br><span class="line">./adb devices</span><br><span class="line">./adb root</span><br></pre></td></tr></table></figure>
+<p>设置完成了</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">adb devices</span><br><span class="line">List of devices attached </span><br><span class="line">434235313151564C4D45    device</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p><strong>系统环境：</strong><br>Windows7 64位<br><strong>问题描述：</strong><br>AndroidStudio无法更新(已加了google host)<br><strong>错误提示：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Connection failed. Please check your network connection and try again</span><br></pre></td></tr></table></figure>
+<p><strong>解决方案：</strong><br>修改安装目录下bin\studio.exe.vmoptions文件,如E:\Android\android-studio\bin\studio.exe.vmoptions，64位的还有studio64.exe.vmoptions<br>添加内容: </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-Djava.net.preferIPv4Stack=true </span><br><span class="line">-Didea.updates.url=http://dl.google.com/android/studio/patches/updates.xml</span><br><span class="line">-Didea.patches.url=http://dl.google.com/android/studio/patches/</span><br></pre></td></tr></table></figure>
+<p>注意更新后这两个文件会被重新覆盖。</p>
+<hr>
+<p><strong>系统环境：</strong><br>Windows7 64位<br><strong>问题描述：</strong><br>使用Jackson解析key为大写的json(复杂)数据报错<br><strong>错误提示：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Jackson with JSON: Unrecognized field, not marked as ignorable</span><br></pre></td></tr></table></figure>
+<p><strong>解决方案：</strong><br>1、给对应的解析实体类加上注解：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@JsonIgnoreProperties(ignoreUnknown = true)</span></span><br></pre></td></tr></table></figure>
+<p>2、在json解析处设置属性</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">ObjectMapper</span> <span class="variable">objectMapper</span> <span class="operator">=</span> getObjectMapper();</span><br><span class="line">objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, <span class="literal">false</span>);</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p><strong>系统环境：</strong><br>Windows7 64位 Android Studio 1.0.2<br><strong>问题描述：</strong><br>run项目时报错<br><strong>错误提示：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Error :: duplicate files during packaging of APK</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p><strong>解决方案：</strong><br>在出问题的module的build.gradle中的android节点加上：</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">packagingOptions &#123;</span><br><span class="line">        <span class="keyword">exclude</span> <span class="string">&#x27;META-INF/DEPENDENCIES&#x27;</span></span><br><span class="line">        <span class="keyword">exclude</span> <span class="string">&#x27;META-INF/LICENSE&#x27;</span></span><br><span class="line">        <span class="keyword">exclude</span> <span class="string">&#x27;META-INF/LICENSE.txt&#x27;</span></span><br><span class="line">        <span class="keyword">exclude</span> <span class="string">&#x27;META-INF/license.txt&#x27;</span></span><br><span class="line">        <span class="keyword">exclude</span> <span class="string">&#x27;META-INF/NOTICE&#x27;</span></span><br><span class="line">        <span class="keyword">exclude</span> <span class="string">&#x27;META-INF/NOTICE.txt&#x27;</span></span><br><span class="line">        <span class="keyword">exclude</span> <span class="string">&#x27;META-INF/notice.txt&#x27;</span></span><br><span class="line">        <span class="keyword">exclude</span> <span class="string">&#x27;META-INF/ASL2.0&#x27;</span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p><strong>系统环境：</strong><br>Windows7 64位 Android Studio 1.0.2<br><strong>问题描述：</strong><br>Android Studio导入项目后问题，无法run、rebuild等。<br><strong>错误提示：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Error:FAILURE: Build failed with an exception.</span><br><span class="line">* What went wrong:</span><br><span class="line">Task <span class="string">&#x27;&#x27;</span> not found <span class="keyword">in</span> root project <span class="string">&#x27;android-project&#x27;</span>.</span><br><span class="line">* Try:</span><br><span class="line">Run gradle tasks to get a list of available tasks. Run with --stacktrace option to get the stack trace. Run with --info or --debug option to get more <span class="built_in">log</span> output.</span><br></pre></td></tr></table></figure>
+<p><strong>解决方案：</strong><br>gradle tasks命令执行正常。一般都为Gradle的问题造成的。<br>从其它正常项目里复制替换掉当前项目的<code>gradlew</code>、<code>gradlew.bat</code>文件（也可自己视情况替换掉相关的gradle文件）<br>打开设置，打开Gradle选项，如图，点击使用Gradle home（你本地的Gradle目录），然后点击Apply和OK，还不行可以在Use选项中来回切换Apply一下，我就遇到点多几下才正常。。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://static.rocko.xyz/img/Android%20%E9%94%99%E8%AF%AF%E9%9B%86%E9%94%A6ing..._1.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<hr>
+<p><strong>系统环境：</strong><br>Windows7 64 位 Android Studio 1.1.0<br><strong>问题描述：</strong><br>使用 ZoomButtonsController，在 Activity 重建后发生 ANR 异常退出<br><strong>错误提示：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"> android.view.WindowLeaked: Activity org.rocko.touchlistener.subclasses.ZoomButtonsActivity has leaked window android.widget.ZoomButtonsController<span class="variable">$Container</span>@2b992988 that was originally added here</span><br><span class="line">            ......</span><br><span class="line">            at dalvik.system.NativeStart.main(Native Method)</span><br><span class="line"></span><br><span class="line">org.rocko.touchlistener.subclasses E/ActivityThread﹕ Activity org.rocko.touchlistener.subclasses.ZoomButtonsActivity has leaked IntentReceiver android.widget.ZoomButtonsController<span class="variable">$1</span>@2b992778 that was originally registered here. Are you missing a call to unregisterReceiver()?</span><br><span class="line">    android.app.IntentReceiverLeaked: Activity org.rocko.touchlistener.subclasses.ZoomButtonsActivity has leaked IntentReceiver android.widget.ZoomButtonsController<span class="variable">$1</span>@2b992778 that was originally registered here. Are you missing a call to unregisterReceiver()?</span><br><span class="line">            ......</span><br><span class="line">            at dalvik.system.NativeStart.main(Native Method)</span><br><span class="line">01-31 18:28:29.022  11475-11475/org.rocko.touchlistener.subclasses E/AndroidRuntime﹕ FATAL EXCEPTION: main</span><br><span class="line">    java.lang.IllegalArgumentException: Receiver not registered: android.widget.ZoomButtonsController<span class="variable">$1</span>@2b992778</span><br><span class="line">            ......</span><br><span class="line">            at dalvik.system.NativeStart.main(Native Method)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><strong>解决方案：</strong><br>ZoomButtonsController 造成了内存泄露，在 onDestroy 中把其注销：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">onDestroy</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="built_in">super</span>.onDestroy();</span><br><span class="line">    zoomButtonsController.setVisible(<span class="literal">false</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p><strong>系统环境：</strong><br>Ubuntu 14.04 64 位 Android Studio 1.3.1<br><strong>问题描述：</strong><br>Android 系统源码（AOSP）导入 Android Studio 问题, idegen.jar 已经生成，但是执行生成项目文件的脚本一直报错。<br><strong>错误提示：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Couldn<span class="string">&#x27;t find idegen.jar. Please run make first.</span></span><br></pre></td></tr></table></figure>
+<p><strong>解决方案：</strong><br>可以直接在 <code>源码路径</code> 下执行 idegen.jar 的命令，<code>idegen.jar</code> 的路径换成你的位置</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -<span class="built_in">cp</span> /repo/aosp/output/android-5.1.1_r12/host/linux-x86/framework/idegen.jar Main</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p><strong>系统环境：</strong><br>Ubuntu 14.04 64 位 Android Studio 1.3.2<br><strong>问题描述：</strong><br>RSA 加解密，Android 端和 Java 服务器端加解密方式不一致问题。<br><strong>错误提示：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">javax.crypto.BadPaddingException: Blocktype mismatch: 0</span><br><span class="line">    at sun.security.rsa.RSAPadding.unpadV15(RSAPadding.java:311)</span><br><span class="line">    at sun.security.rsa.RSAPadding.unpad(RSAPadding.java:255)</span><br><span class="line">    at com.sun.crypto.provider.RSACipher.a(DashoA13*..)</span><br><span class="line">    at com.sun.crypto.provider.RSACipher.engineDoFinal(DashoA13*..)</span><br><span class="line">    at javax.crypto.Cipher.doFinal(DashoA13*..)</span><br></pre></td></tr></table></figure>
+<p><strong>解决方案：</strong><br>PublicKey、PrivateKey 获取（KeyPairGenerator）仍为 RSA，Cipher 生成方式修改如下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Cipher</span> <span class="variable">cipher</span> <span class="operator">=</span> Cipher.getInstance(<span class="string">&quot;RSA/ECB/PKCS1Padding&quot;</span>); <span class="comment">// 1 推荐</span></span><br><span class="line"><span class="type">Cipher</span> <span class="variable">cipher</span> <span class="operator">=</span> Cipher.getInstance(<span class="string">&quot;RSA/ECB/NoPadding&quot;</span>); <span class="comment">// 2 解密后会有空格，需 trim 去掉</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<p><strong>系统环境：</strong><br>Ubuntu 14.04 64 位 Android Studio 1.5.1<br><strong>问题描述：</strong><br>Espresso、espresso-contrib（2.2.1）问题<br><strong>错误提示：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">java.lang.IncompatibleClassChangeError: xxx.xxx.XxxActivity</span><br><span class="line">                                        ......</span><br></pre></td></tr></table></figure>
+<p><strong>解决方案：</strong><br>espresso-contrib内部的依赖冲突，exclude掉相关依赖模块！</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">androidTestCompile (ext.test.espressoContrib)&#123;</span><br><span class="line">    exclude <span class="keyword">module</span>: <span class="string">&#x27;support-annotations&#x27;</span></span><br><span class="line">    exclude <span class="keyword">module</span>: <span class="string">&#x27;recyclerview-v7&#x27;</span></span><br><span class="line">    exclude <span class="keyword">module</span>: <span class="string">&#x27;support-v4&#x27;</span></span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p><strong>系统环境：</strong><br>Ubuntu 14.04 64 位 Android Studio 1.5.1<br><strong>问题描述：</strong><br>Android Studio 中项目编译（build）错误<br><strong>错误提示：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Error:Execution failed <span class="keyword">for</span> task <span class="string">&#x27;:app:transformClassesWithDexForDebug&#x27;</span>. &gt; com.android.build.api.transform.TransformException: com.android.ide.common.process.ProcessException: org.gradle.process.internal.ExecException: Process <span class="string">&#x27;command &#x27;</span><span class="string">&#x27; finished with non-zero exit value</span></span><br></pre></td></tr></table></figure>
+<p><strong>解决方案：</strong><br>在 build.gradle 中开启 multiDexEnabled</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">android &#123;</span><br><span class="line">    ...</span><br><span class="line">    defaultConfig &#123;</span><br><span class="line">        multiDexEnabled <span class="keyword">true</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+
+        </div>
+   <!-- 加入广告 -->
+   <!-- 广告 -->
+<blockquote class="post-copyright">
+	    <div class="article-entry">
+
+    <!-- hr 分割线-->
+
+<!-- Article -->
+
+<!-- Article-self -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-2972075783837999"
+     data-ad-slot="2094161067"
+     data-ad-format="auto"></ins>
+
+<script>
+
+	
+	function loadAd() {
+		//var script = document.createElement('script');
+		//script.src = '//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js';
+
+
+		// Adding the script tag to the head as suggested before
+    var head = document.getElementsByTagName('head')[0];
+    var script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = '//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js';
+
+
+    // Fire the loading
+    head.appendChild(script);
+
+	(adsbygoogle = window.adsbygoogle || []).push({});
+	}
+
+	setTimeout('loadAd()',0);
+
+
+</script>
+    </div>
+</blockquote>
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-01-02T12:44:34.000Z" itemprop="dateUpdated">2017-01-02 20:44:34</time>
+</span><br>
+
+
+        
+
+除特别说明外，文章均采用「知识共享 署名 - 非商业性 - 相同方式共享 4.0 协议」进行许可，转载需注明文章出处：<a href="<%- url_for(page.path).replace(/index.html$/, '') %>" target="_blank" rel="external"><%- url.replace(/index.html$/, '') %></a>
+        
+    </div>
+    <footer>
+        <a href="https://rocko.xyz">
+            <img src="/img/avatar.png" alt="Rocko">
+            Rocko
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%94%99%E8%AF%AF/" rel="tag">错误</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://rocko.xyz/2015/02/05/Android-%E9%94%99%E8%AF%AF%E9%9B%86%E9%94%A6ing/&title=《Android 错误集锦ing...》 — Rocko's blog&pic=https://rocko.xyz/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://rocko.xyz/2015/02/05/Android-%E9%94%99%E8%AF%AF%E9%9B%86%E9%94%A6ing/&title=《Android 错误集锦ing...》 — Rocko's blog&source=Fork from my csdn blog: Android 错误集锦(ing…).Last update time: 2016-03-06 23:34..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://rocko.xyz/2015/02/05/Android-%E9%94%99%E8%AF%AF%E9%9B%86%E9%94%A6ing/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Android 错误集锦ing...》 — Rocko's blog&url=https://rocko.xyz/2015/02/05/Android-%E9%94%99%E8%AF%AF%E9%9B%86%E9%94%A6ing/&via=https://rocko.xyz" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://rocko.xyz/2015/02/05/Android-%E9%94%99%E8%AF%AF%E9%9B%86%E9%94%A6ing/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2015/02/06/Android%E4%B8%AD%E7%9A%84MVP/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Android中的MVP</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2015/02/02/%E4%BD%BF%E7%94%A8Gradle%E5%8F%91%E5%B8%83%E9%A1%B9%E7%9B%AE%E5%88%B0JCenter%E4%BB%93%E5%BA%93/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">使用Gradle发布项目到JCenter仓库</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'true' == 'true',
+            verify: 'false' == 'true',
+            appId: "fBqoKNrWNFkYQMTivF00jWpk-gzGzoHsz",
+            appKey: "q2baN9KwoyaFHmbjMHfssLIH",
+            avatar: "mm",
+            placeholder: "说点什么吧~",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        请随意~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.png" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.png" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        Since 2017/1/1  -  站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+        <!-- 
+            <span><a href="" target="_blank" class="rss" title="rss"><i class="icon icon-1x icon-rss"></i></a></span> -->
+            <span>博客内容遵循 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享 署名 - 非商业性 - 相同方式共享 4.0 协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></span>
+			
+			 · Hosted by <a href="https://pages.coding.me" target="_blank">Coding Pages</a>
+
+
+            <span>Rocko &copy; 2014 - 2024</span>
+        </p>
+    </div>
+
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://rocko.xyz/2015/02/05/Android-%E9%94%99%E8%AF%AF%E9%9B%86%E9%94%A6ing/&title=《Android 错误集锦ing...》 — Rocko's blog&pic=https://rocko.xyz/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://rocko.xyz/2015/02/05/Android-%E9%94%99%E8%AF%AF%E9%9B%86%E9%94%A6ing/&title=《Android 错误集锦ing...》 — Rocko's blog&source=Fork from my csdn blog: Android 错误集锦(ing…).Last update time: 2016-03-06 23:34..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://rocko.xyz/2015/02/05/Android-%E9%94%99%E8%AF%AF%E9%9B%86%E9%94%A6ing/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Android 错误集锦ing...》 — Rocko's blog&url=https://rocko.xyz/2015/02/05/Android-%E9%94%99%E8%AF%AF%E9%9B%86%E9%94%A6ing/&via=https://rocko.xyz" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://rocko.xyz/2015/02/05/Android-%E9%94%99%E8%AF%AF%E9%9B%86%E9%94%A6ing/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACqElEQVR42u3aS24CQQwFQO5/aSJlxQKG508Di5oVAibT1ZHaxvbtFl/3/+vx9eM7r75z/Xrr3oULDw8Pr7X0V1fCmwN6W3a9Zjw8PLzTvPlhfY+v62flwSn6O3h4eHhf5VUT61fhpwq4DkV4eHh4v8yrLjpPlJMkGw8PD+/XeEkxIi8WTJLsefqOh4eHd5rXa4B99/Xx/h4eHh5eq6ueH+gnUuSFteHh4eEd4OUF1q3gkW9Bnty/WTkeHh7eR3jVksT1EreGAPJi8ZvAgIeHhzfg5bDep72yby8gRck0Hh4e3hIvLwdUF7GbWFfDDx4eHt4JXvXQz9+ZDA1sbQQeHh7eOd58lGoSDKKR08lz8fDw8FZ5vTQ6LyjMW2K9LbhNfiXg4eHhxbxqmjsJG3mhYVQWwcPDwzvA6xUXesNbE0wv/ODh4eGd4E1aTb2UN0+j8+T+5Trx8PDwDvCaMWSQtfYKtflGv2mA4eHh4Y151US5etznSfY1qZea4+Hh4Z3jJaWHecuqlyhXw9KTXwx4eHh4q7y8lZWXD3abZGtbg4eHh7fEy0u01SX2yrvVT6MqCx4eHt4qLy+e5iMFyV3VLesl2Xh4eHjnePP2fy+9rn6nOvyKh4eH93neZJggX0pvPGveqMPDw8Ob83pH8CTt3krKo03Hw8PDW+VVh0fzg37yfrJZ5f8bHh4e3iqvGhjywsFktGtejMbDw8Pb5d2L17x0Wy3X5uHkyZbh4eHhHeDN++y99HceNpYHC/Dw8PCKvK1gUE2OtwZk8fDw8L7Fmz++V3KdjBREo1d4eHh4P8bLW1a9gmx1aODNuBUeHh7ex3mTqa786M/HUqPwg4eHh3eMl49PJXf1hrSqiXgUePDw8PAO8KoNsN7waLUY0Uvrm1Q8PDy89N4/JYcNATMQS9UAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

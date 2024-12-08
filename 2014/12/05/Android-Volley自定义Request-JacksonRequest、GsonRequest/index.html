@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    <meta charset="utf-8">
+    
+    <meta name="google-site-verification" content="J7ONClDGsj92njCYAloRwEkDpz94YUFUxgi76g1m4Lk">
+    
+    
+    <link rel="canonical" href="https://rocko.xyz/2014/12/05/Android-Volley%E8%87%AA%E5%AE%9A%E4%B9%89Request-JacksonRequest%E3%80%81GsonRequest/">
+    
+    
+    <title>Android Volley自定义Request(JacksonRequest、GsonRequest) | Rocko&#39;s blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="baidu-site-verification" content="WG8fZ2mGXA" >
+    <meta name="baidu_union_verify" content="d1952c66cf48912e21c18c7c581f382a">
+    
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Volley">
+    <meta name="description" content="前言Volley是一个强大的HTTP库，让Android的的网络操作变得容易、高效、快速。在少数据的高并发情况下它的优势很明显，但在大文件的上传或者下载操作中就并不适用了，这种情况下是建议使用传统方式或者其它框架来实现的。它的优点再罗列如下：  自动管理网络请求 多并发的网络连接 通过标准的HTTP cache coherence(高速缓存一致性)使得磁盘与内存缓存不可见(Transparent)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android Volley自定义Request(JacksonRequest、GsonRequest)">
+<meta property="og:url" content="https://rocko.xyz/2014/12/05/Android-Volley%E8%87%AA%E5%AE%9A%E4%B9%89Request-JacksonRequest%E3%80%81GsonRequest/index.html">
+<meta property="og:site_name" content="Rocko&#39;s blog">
+<meta property="og:description" content="前言Volley是一个强大的HTTP库，让Android的的网络操作变得容易、高效、快速。在少数据的高并发情况下它的优势很明显，但在大文件的上传或者下载操作中就并不适用了，这种情况下是建议使用传统方式或者其它框架来实现的。它的优点再罗列如下：  自动管理网络请求 多并发的网络连接 通过标准的HTTP cache coherence(高速缓存一致性)使得磁盘与内存缓存不可见(Transparent)">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://static.rocko.xyz/img/Android-Volley%E8%87%AA%E5%AE%9A%E4%B9%89Request-JacksonRequest%E3%80%81GsonRequest_1.jpg?imageView2/2/w/400/h/400/q/100">
+<meta property="og:image" content="https://static.rocko.xyz/img/Android-Volley%E8%87%AA%E5%AE%9A%E4%B9%89Request-JacksonRequest%E3%80%81GsonRequest_2.jpg?imageView2/2/w/400/h/400/q/100">
+<meta property="article:published_time" content="2014-12-05T14:55:31.000Z">
+<meta property="article:modified_time" content="2016-12-10T18:48:42.000Z">
+<meta property="article:author" content="Rocko">
+<meta property="article:tag" content="Volley">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://static.rocko.xyz/img/Android-Volley%E8%87%AA%E5%AE%9A%E4%B9%89Request-JacksonRequest%E3%80%81GsonRequest_1.jpg?imageView2/2/w/400/h/400/q/100">
+    
+        <link rel="alternate" type="application/atom+xml" title="Rocko&#39;s blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.png">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?4536d8f17989e675f0efa92c7722c95c";
+          var s = document.getElementsByTagName("script")[0]; 
+          s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+    <!-- custom head -->
+    
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Rocko</h5>
+          <a href="mailto:rocko.zxp@gmail.com" title="rocko.zxp@gmail.com" class="mail">rocko.zxp@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+
+主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+
+归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+
+分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+
+标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-user-circle"></i>
+
+关于
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/friendLink"  >
+                <i class="icon icon-lg icon-users"></i>
+
+友链
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://adb.rocko.xyz" target="_blank" >
+                <i class="icon icon-lg icon-bookmark"></i>
+
+ADB
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/zhengxiaopeng" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+
+GitHub
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="//weibo.com/678662430/" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+
+Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https:////www.zhihu.com/people/rocko/" target="_blank" >
+                <i class="icon icon-lg icon-smile-o"></i>
+
+Zhihu
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/rocko_zxp" target="_blank" >
+                <i class="icon icon-lg icon-twitter"></i>
+
+Twitter
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Android Volley自定义Request(JacksonRequest、GsonRequest)</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+
+     <a href="/atom.xml" class="header-icon waves-effect waves-circle waves-light" target="_blank" title="RSS订阅">
+            <i class="icon icon-lg icon-rss"></i>
+        </a>
+
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+ 
+
+
+        <a id="header-high" style="text-decoration: none; margin-left:12px; width:71px; margin-right:5px" class="header-icon waves-effect waves-circle waves-light"  onClick="javascript:(    /*     * Copyright (C) 2015 Rocko (rocko.xyz) <rocko.zxp@gmail.com>     *     * Licensed under the Apache License, Version 2.0 (the 'License');     * you may not use this file except in compliance with the License.     * You may obtain a copy of the License at     *     *      http://www.apache.org/licenses/LICENSE-2.0     *     * Unless required by applicable law or agreed to in writing, software     * distributed under the License is distributed on an 'AS IS' BASIS,     * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.     * See the License for the specific language governing permissions and     * limitations under the License.     */    function go() {        function c() {        var e = document.createElement('link');        e.setAttribute('type', 'text/css');        e.setAttribute('rel', 'stylesheet');        e.setAttribute('href', f);        e.setAttribute('class', l);        document.body.appendChild(e)    }     function h() {        var e = document.getElementsByClassName(l);        for (var t = 0; t < e.length; t++) {            document.body.removeChild(e[t])        }    }     function p() {        var e = document.createElement('div');        e.setAttribute('class', a);        document.body.appendChild(e);        setTimeout(function() {            document.body.removeChild(e)        }, 100)    }     function d(e) {        return {            height : e.offsetHeight,            width : e.offsetWidth        }    }     function v(i) {        var s = d(i);        return s.height > e && s.height < n && s.width > t && s.width < r    }     function m(e) {        var t = e;        var n = 0;        while (!!t) {            n += t.offsetTop;            t = t.offsetParent        }        return n    }     function g() {        var e = document.documentElement;        if (!!window.innerWidth) {            return window.innerHeight        } else if (e && !isNaN(e.clientHeight)) {            return e.clientHeight        }        return 0    }     function y() {        if (window.pageYOffset) {            return window.pageYOffset        }        return Math.max(document.documentElement.scrollTop, document.body.scrollTop)    }     function E(e) {        var t = m(e);        return t >= w && t <= b + w    }     var songs = [                'http://pit79pl1z.bkt.clouddn.com/Music-Fashion_Show.mp3',                'http://pit79pl1z.bkt.clouddn.com/Music-Wake-Live.mp3',                'http://pit79pl1z.bkt.clouddn.com/Music-outside.mp3',                'http://pit79pl1z.bkt.clouddn.com/Music-sunburst.mp3'    ];    function S() {        var e = document.getElementById('audio_element_id');        if(e != null){            var index = parseInt(e.getAttribute('curSongIndex'));            if(index > songs.length - 2) {                index = 0;            } else {                index++;            }            e.setAttribute('curSongIndex', index);            N();        }        e.src = i;        e.play()    }     function x(e) {        e.className += ' ' + s + ' ' + o    }     function T(e) {        e.className += ' ' + s + ' ' + u[Math.floor(Math.random() * u.length)]    }     function N() {        var e = document.getElementsByClassName(s);        var t = new RegExp('\\b' + s + '\\b');        for (var n = 0; n < e.length; ) {            e[n].className = e[n].className.replace(t, '')        }    }    function initAudioEle() {        var e = document.getElementById('audio_element_id');        if(e === null){            e = document.createElement('audio');            e.setAttribute('class', l);            e.setAttribute('curSongIndex', 0);            e.id = 'audio_element_id';            e.loop = false;            e.bgcolor = 0;            e.addEventListener('canplay', function() {            setTimeout(function() {                x(k)            }, 500);            setTimeout(function() {                N();                p();                for (var e = 0; e < O.length; e++) {                    T(O[e])                }            }, 15500)        }, true);        e.addEventListener('ended', function() {            N();            h();            go();        }, true);        e.innerHTML = ' <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>';        document.body.appendChild(e);        }    }        initAudioEle();    var e = 30;    var t = 30;    var n = 350;    var r = 350;    var curSongIndex = parseInt(document.getElementById('audio_element_id').getAttribute('curSongIndex'));    var i = songs[curSongIndex];        var s = 'mw-harlem_shake_me';    var o = 'im_first';    var u = ['im_drunk', 'im_baked', 'im_trippin', 'im_blown'];    var a = 'mw-strobe_light';    var f = 'https://rocko.xyz/css/harlem-shake-style.css';        var l = 'mw_added_css';    var b = g();    var w = y();    var C = document.getElementsByTagName('*');    var k = null;    for (var L = 0; L < C.length; L++) {        var A = C[L];        if (v(A)) {            if (E(A)) {                k = A;                break            }        }    }    if (A === null) {        console.warn('Could not find a node of the right size. Please try a different page.');        return    }    c();    S();    var O = [];    for (var L = 0; L < C.length; L++) {        var A = C[L];        if (v(A)) {            O.push(A)        }    }    })()" >
+        <i class="icon icon-lg icon-music"></i> High~
+        </a>
+    
+
+
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Android Volley自定义Request(JacksonRequest、GsonRequest)</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2014-12-05T14:55:31.000Z" itemprop="datePublished" class="page-time">
+  2014-12-05
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Android/">Android</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%89%8D%E8%A8%80"><span class="post-toc-number">1.</span> <span class="post-toc-text">前言</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89Request%E5%AE%9E%E7%8E%B0"><span class="post-toc-number">2.</span> <span class="post-toc-text">自定义Request实现</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#JacksonRequest"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">JacksonRequest</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#GonRequest"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">GonRequest</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#END"><span class="post-toc-number">3.</span> <span class="post-toc-text">END</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-Android-Volley自定义Request-JacksonRequest、GsonRequest"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Android Volley自定义Request(JacksonRequest、GsonRequest)</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2014-12-05 22:55:31" datetime="2014-12-05T14:55:31.000Z"  itemprop="datePublished">2014-12-05</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Android/">Android</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>Volley是一个强大的HTTP库，让Android的的网络操作变得容易、高效、快速。在少数据的高并发情况下它的优势很明显，但在大文件的上传或者下载操作中就并不适用了，这种情况下是建议使用传统方式或者其它框架来实现的。<br><em>它的优点再罗列如下：</em></p>
+<ul>
+<li>自动管理网络请求</li>
+<li>多并发的网络连接</li>
+<li>通过标准的HTTP cache coherence(高速缓存一致性)使得磁盘与内存缓存不可见(Transparent)</li>
+<li>支持指定请求的优先级</li>
+<li>支持取消已经发出的请求。你可以取消单个请求，也可以设置请求取消的块或范围</li>
+<li>框架是容易被定制的，例如，重试或者回退功能</li>
+<li>强大的指令使得你可以容易地去异步网络操作和(网络获取数据后)的UI设置</li>
+<li>(内置)Debugging和tracing工具</li>
+</ul>
+<h1 id="自定义Request实现"><a href="#自定义Request实现" class="headerlink" title="自定义Request实现"></a>自定义Request实现</h1><p>上面提到的优点：Volley是容易被定制的，它的易扩展性在这里的自定义Request实现中就很好的体现了出来。自定义Request是通过继承Volley中最核心的Request类来实现的。在我们的Request来解析json数据时，注意处理复杂json数据的解析可扩展性。比如，我们一般都需要把JSON数据解析成我们的实体对象，如下面使用示例中的Weather对象，如果我们的实体比较复杂时就需要自定义自己的Type去给Jackson、Gson去处理了，不然一般都会默认的给解析成HashMap式的键值对造成FC或者get不到属性。对于Jackson，使用Jackson库里的<code>TypeReference</code>类来实现；对于Gson，使用Gson库中的<code>TypeToken</code>类来实现。</p>
+<span id="more"></span>
+
+<h2 id="JacksonRequest"><a href="#JacksonRequest" class="headerlink" title="JacksonRequest"></a>JacksonRequest</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">JacksonRequest</span>&lt;T&gt; <span class="keyword">extends</span> <span class="title class_">Request</span>&lt;T&gt; &#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">final</span> Listener&lt;T&gt; mListener;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="type">ObjectMapper</span> <span class="variable">objectMapper</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ObjectMapper</span>();</span><br><span class="line">	<span class="keyword">private</span> Class&lt;T&gt; mClass;</span><br><span class="line">	<span class="keyword">private</span> TypeReference&lt;T&gt; mTypeReference;<span class="comment">//提供和解析自定义的复杂JSON数据支持</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> <span class="title function_">JacksonRequest</span><span class="params">(<span class="type">int</span> method, String url, Class&lt;T&gt; clazz, Listener&lt;T&gt; listener,</span></span><br><span class="line"><span class="params">			ErrorListener errorListener)</span> &#123;</span><br><span class="line">		<span class="built_in">super</span>(method, url, errorListener);</span><br><span class="line">		mClass = clazz;</span><br><span class="line">		mListener = listener;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> <span class="title function_">JacksonRequest</span><span class="params">(<span class="type">int</span> method, String url, TypeReference&lt;T&gt; typeReference, Listener&lt;T&gt; listener,</span></span><br><span class="line"><span class="params">			ErrorListener errorListener)</span> &#123;</span><br><span class="line">		<span class="built_in">super</span>(method, url, errorListener);</span><br><span class="line">		mTypeReference = typeReference;</span><br><span class="line">		mListener = listener;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> <span class="title function_">JacksonRequest</span><span class="params">(String url, Class&lt;T&gt; clazz, Listener&lt;T&gt; listener, ErrorListener errorListener)</span> &#123;</span><br><span class="line">		<span class="built_in">this</span>(Method.GET, url, clazz, listener, errorListener);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> <span class="title function_">JacksonRequest</span><span class="params">(String url, TypeReference&lt;T&gt; typeReference, Listener&lt;T&gt; listener,</span></span><br><span class="line"><span class="params">			ErrorListener errorListener)</span> &#123;</span><br><span class="line">		<span class="built_in">super</span>(Method.GET, url, errorListener);</span><br><span class="line">		mTypeReference = typeReference;</span><br><span class="line">		mListener = listener;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="keyword">protected</span> Response&lt;T&gt; <span class="title function_">parseNetworkResponse</span><span class="params">(NetworkResponse response)</span> &#123;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			<span class="type">String</span> <span class="variable">jsonString</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">String</span>(response.data, HttpHeaderParser.parseCharset(response.headers));</span><br><span class="line">			<span class="keyword">if</span> (mTypeReference == <span class="literal">null</span>)<span class="comment">//使用Jackson默认的方式解析到mClass类对象，Jackson会像HashMap那样解析</span></span><br><span class="line">				<span class="keyword">return</span> (Response&lt;T&gt;) Response.success(</span><br><span class="line">						objectMapper.readValue(jsonString, TypeFactory.rawClass(mClass)),</span><br><span class="line">						HttpHeaderParser.parseCacheHeaders(response));</span><br><span class="line">			<span class="keyword">else</span><span class="comment">//通过自己构造TypeReference让Jackson解析成自定义的对象类型</span></span><br><span class="line">				<span class="keyword">return</span> (Response&lt;T&gt;) Response.success(objectMapper.readValue(jsonString, mTypeReference),</span><br><span class="line">						HttpHeaderParser.parseCacheHeaders(response));</span><br><span class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">			<span class="keyword">return</span> Response.error(<span class="keyword">new</span> <span class="title class_">ParseError</span>(e));</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">deliverResponse</span><span class="params">(T response)</span> &#123;</span><br><span class="line">		mListener.onResponse(response);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="GonRequest"><a href="#GonRequest" class="headerlink" title="GonRequest"></a>GonRequest</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">GsonRequest</span>&lt;T&gt; <span class="keyword">extends</span> <span class="title class_">Request</span>&lt;T&gt; &#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">final</span> Listener&lt;T&gt; mListener;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="type">Gson</span> <span class="variable">mGson</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Gson</span>();</span><br><span class="line">	<span class="keyword">private</span> Class&lt;T&gt; mClass;</span><br><span class="line">	<span class="keyword">private</span> TypeToken&lt;T&gt; mTypeToken;<span class="comment">//提供和解析自定义的复杂JSON数据支持,这点与Jackson使用TypeReference不同，但原理是大同小异的</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> <span class="title function_">GsonRequest</span><span class="params">(<span class="type">int</span> method, String url, Class&lt;T&gt; clazz, Listener&lt;T&gt; listener,</span></span><br><span class="line"><span class="params">			ErrorListener errorListener)</span> &#123;</span><br><span class="line">		<span class="built_in">super</span>(method, url, errorListener);</span><br><span class="line">		mClass = clazz;</span><br><span class="line">		mListener = listener;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> <span class="title function_">GsonRequest</span><span class="params">(<span class="type">int</span> method, String url, TypeToken&lt;T&gt; typeToken, Listener&lt;T&gt; listener,</span></span><br><span class="line"><span class="params">			ErrorListener errorListener)</span> &#123;</span><br><span class="line">		<span class="built_in">super</span>(method, url, errorListener);</span><br><span class="line">		mTypeToken = typeToken;</span><br><span class="line">		mListener = listener;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> <span class="title function_">GsonRequest</span><span class="params">(String url, Class&lt;T&gt; clazz, Listener&lt;T&gt; listener, ErrorListener errorListener)</span> &#123;</span><br><span class="line">		<span class="built_in">this</span>(Method.GET, url, clazz, listener, errorListener);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> <span class="title function_">GsonRequest</span><span class="params">(String url, TypeToken&lt;T&gt; typeToken, Listener&lt;T&gt; listener, ErrorListener errorListener)</span> &#123;</span><br><span class="line">		<span class="built_in">super</span>(Method.GET, url, errorListener);</span><br><span class="line">		mTypeToken = typeToken;</span><br><span class="line">		mListener = listener;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="keyword">protected</span> Response&lt;T&gt; <span class="title function_">parseNetworkResponse</span><span class="params">(NetworkResponse response)</span> &#123;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			<span class="type">String</span> <span class="variable">jsonString</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">String</span>(response.data, HttpHeaderParser.parseCharset(response.headers));</span><br><span class="line">			<span class="keyword">if</span> (mTypeToken == <span class="literal">null</span>)<span class="comment">//与Jackson类似</span></span><br><span class="line">				<span class="keyword">return</span> Response.success(mGson.fromJson(jsonString, mClass),</span><br><span class="line">						HttpHeaderParser.parseCacheHeaders(response));</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">				<span class="keyword">return</span> (Response&lt;T&gt;) Response.success(mGson.fromJson(jsonString, mTypeToken.getType()),</span><br><span class="line">						HttpHeaderParser.parseCacheHeaders(response));</span><br><span class="line">		&#125; <span class="keyword">catch</span> (UnsupportedEncodingException e) &#123;</span><br><span class="line">			<span class="keyword">return</span> Response.error(<span class="keyword">new</span> <span class="title class_">ParseError</span>(e));</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">deliverResponse</span><span class="params">(T response)</span> &#123;</span><br><span class="line">		mListener.onResponse(response);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>从上面可以看出，通过自定义Volley的Request可以很方便的设计出符合自己指定数据类型的请求类，对于一般只关心返回结果的我们直接重写<code>parseNetworkResponse()</code>方法处理返回的结果即可，如果对<code>Header</code>什么的也需要的话就重写<code>getHeader()</code>去处理。此外我写了个Volley的请求封装<a href="https://github.com/zhengxiaopeng/AndroidUtils/blob/master/AndroidUtils/src/com/roc/http/volley/VolleyRequest.java">VolleyRequest</a>,代码有些长不帖上来了，大家可以点击链接看一下。现在我们可以方便的如下使用自定义的Request了，更多的用法参看<a href="https://github.com/zhengxiaopeng/AndroidUtils/blob/master/AndroidUtils/src/com/roc/http/volley/HttpVolleyTestActivity.java">HttpVolleyTestActivity</a>。  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* GsonRequest */</span></span><br><span class="line">VolleyRequest.getInstance().newGsonRequest(<span class="string">&quot;http://www.weather.com.cn/data/sk/101010100.html&quot;</span>,</span><br><span class="line">        Weather.class, <span class="keyword">new</span> <span class="title class_">Response</span>.Listener&lt;Weather&gt;()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onResponse</span><span class="params">(Weather weather)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">WeatherInfo</span> <span class="variable">weatherInfo</span> <span class="operator">=</span> weather.getWeatherinfo();</span><br><span class="line">        DebugLog.v(<span class="string">&quot;&gt;&gt;&gt;GsonRequest: &quot;</span>);</span><br><span class="line">        DebugLog.v(<span class="string">&quot;city is &quot;</span> + weatherInfo.getCity());</span><br><span class="line">        DebugLog.v(<span class="string">&quot;temp is &quot;</span> + weatherInfo.getTemp());</span><br><span class="line">        DebugLog.v(<span class="string">&quot;time is &quot;</span> + weatherInfo.getTime());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;, <span class="keyword">new</span> <span class="title class_">Response</span>.ErrorListener()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onErrorResponse</span><span class="params">(VolleyError error)</span></span><br><span class="line">    &#123;</span><br><span class="line">        DebugLog.e(<span class="string">&quot;GsonRequest: &quot;</span> + error);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">/* JacksonRequest */</span></span><br><span class="line">VolleyRequest.getInstance().newJacksonRequest(<span class="string">&quot;http://www.weather.com.cn/data/sk/101010100.html&quot;</span>,</span><br><span class="line">        Weather.class, <span class="keyword">new</span> <span class="title class_">Response</span>.Listener&lt;Weather&gt;()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onResponse</span><span class="params">(Weather weather)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">WeatherInfo</span> <span class="variable">weatherInfo</span> <span class="operator">=</span> weather.getWeatherinfo();</span><br><span class="line">        DebugLog.v(<span class="string">&quot;&gt;&gt;&gt;JacksonRequest: &quot;</span>);</span><br><span class="line">        DebugLog.v(<span class="string">&quot;city is &quot;</span> + weatherInfo.getCity());</span><br><span class="line">        DebugLog.v(<span class="string">&quot;temp is &quot;</span> + weatherInfo.getTemp());</span><br><span class="line">        DebugLog.v(<span class="string">&quot;time is &quot;</span> + weatherInfo.getTime());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;, <span class="keyword">new</span> <span class="title class_">Response</span>.ErrorListener()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onErrorResponse</span><span class="params">(VolleyError error)</span></span><br><span class="line">    &#123;</span><br><span class="line">        DebugLog.e(<span class="string">&quot;JacksonRequest: &quot;</span> + error);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果你的JSON需要使用自定义Type来去解析，那么你可以直接new对应的Type匿名内部类穿进去即可：<br><em>Jackson</em>  </p>
+<pre><code class="java">/* JacksonRequest */
+VolleyRequest.getInstance().newJacksonRequest(&quot;http://www.xxx.com/xxx&quot;, new TypeReference&lt;List&lt;MeteringHistoryEntity&gt;&gt;() &#123;&#125;,
+List&lt;MeteringHistoryEntity&gt;&#123;
+    @Override
+    public void onResponse(List&lt;MeteringHistoryEntity&gt; list)
+    &#123;
+        //get...
+    &#125;
+&#125;, new Response.ErrorListener()
+&#123;
+    @Override
+    public void onErrorResponse(VolleyError error)
+    &#123;
+        DebugLog.e(&quot;JacksonRequest: &quot; + error);
+    &#125;
+&#125;);
+&#125;
+</code></pre>
+<p><em>Gson</em></p>
+<pre><code class="java">/* GsonRequest */
+VolleyRequest.getInstance().newGsonRequest(&quot;http://www.xxx.com/xxx&quot;, new TypeToken&lt;List&lt;Map&lt;String, Object&gt;&gt;&gt;() &#123;&#125; .getType(),
+new Response.Listener&lt;List&lt;Map&lt;String, Object&gt;&gt;&gt;()
+&#123;
+    @Override
+    public void onResponse(List&lt;Map&lt;String, Object&gt;&gt; list)
+    &#123;
+       //get...
+    &#125;
+&#125;, new Response.ErrorListener()
+&#123;
+    @Override
+    public void onErrorResponse(VolleyError error)
+    &#123;
+        DebugLog.e(&quot;GsonRequest: &quot; + error);
+    &#125;
+&#125;);
+</code></pre>
+<h1 id="END"><a href="#END" class="headerlink" title="END"></a>END</h1><p>源码在我github上<a href="https://github.com/zhengxiaopeng/AndroidUtils">AndroidUtils</a>里的<a href="https://github.com/zhengxiaopeng/AndroidUtils/tree/master/library/src/main/java/com/roc/http/volley">volley包</a>里，可以下载整个项目源码来运行，或者直接看volley里的类即可。<br>以上的Request返回打印结果：<br><img src="https://static.rocko.xyz/img/Android-Volley%E8%87%AA%E5%AE%9A%E4%B9%89Request-JacksonRequest%E3%80%81GsonRequest_1.jpg?imageView2/2/w/400/h/400/q/100">  </p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://static.rocko.xyz/img/Android-Volley自定义Request-JacksonRequest、GsonRequest_2.jpg?imageView2/2/w/400/h/400/q/100" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>  
+
+
+
+
+        </div>
+   <!-- 加入广告 -->
+   <!-- 广告 -->
+<blockquote class="post-copyright">
+	    <div class="article-entry">
+
+    <!-- hr 分割线-->
+
+<!-- Article -->
+
+<!-- Article-self -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-2972075783837999"
+     data-ad-slot="2094161067"
+     data-ad-format="auto"></ins>
+
+<script>
+
+	
+	function loadAd() {
+		//var script = document.createElement('script');
+		//script.src = '//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js';
+
+
+		// Adding the script tag to the head as suggested before
+    var head = document.getElementsByTagName('head')[0];
+    var script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = '//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js';
+
+
+    // Fire the loading
+    head.appendChild(script);
+
+	(adsbygoogle = window.adsbygoogle || []).push({});
+	}
+
+	setTimeout('loadAd()',0);
+
+
+</script>
+    </div>
+</blockquote>
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2016-12-10T18:48:42.000Z" itemprop="dateUpdated">2016-12-11 02:48:42</time>
+</span><br>
+
+
+        
+
+除特别说明外，文章均采用「知识共享 署名 - 非商业性 - 相同方式共享 4.0 协议」进行许可，转载需注明文章出处：<a href="<%- url_for(page.path).replace(/index.html$/, '') %>" target="_blank" rel="external"><%- url.replace(/index.html$/, '') %></a>
+        
+    </div>
+    <footer>
+        <a href="https://rocko.xyz">
+            <img src="/img/avatar.png" alt="Rocko">
+            Rocko
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Volley/" rel="tag">Volley</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://rocko.xyz/2014/12/05/Android-Volley%E8%87%AA%E5%AE%9A%E4%B9%89Request-JacksonRequest%E3%80%81GsonRequest/&title=《Android Volley自定义Request(JacksonRequest、GsonRequest)》 — Rocko's blog&pic=https://rocko.xyz/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://rocko.xyz/2014/12/05/Android-Volley%E8%87%AA%E5%AE%9A%E4%B9%89Request-JacksonRequest%E3%80%81GsonRequest/&title=《Android Volley自定义Request(JacksonRequest、GsonRequest)》 — Rocko's blog&source=前言Volley是一个强大的HTTP库，让Android的的网络操作变得容易、高效、快速。在少数据的高并发情况下它的优势很明显，但在大文件的上传或者下载操..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://rocko.xyz/2014/12/05/Android-Volley%E8%87%AA%E5%AE%9A%E4%B9%89Request-JacksonRequest%E3%80%81GsonRequest/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Android Volley自定义Request(JacksonRequest、GsonRequest)》 — Rocko's blog&url=https://rocko.xyz/2014/12/05/Android-Volley%E8%87%AA%E5%AE%9A%E4%B9%89Request-JacksonRequest%E3%80%81GsonRequest/&via=https://rocko.xyz" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://rocko.xyz/2014/12/05/Android-Volley%E8%87%AA%E5%AE%9A%E4%B9%89Request-JacksonRequest%E3%80%81GsonRequest/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2014/12/06/%E8%AE%BE%E7%BD%AE%E5%9F%9F%E5%90%8D%E9%82%AE%E7%AE%B1/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">设置域名邮箱</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2014/11/25/Git-%E9%94%99%E8%AF%AF%E9%9B%86%E9%94%A6ing/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Git 错误集锦ing...</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'true' == 'true',
+            verify: 'false' == 'true',
+            appId: "fBqoKNrWNFkYQMTivF00jWpk-gzGzoHsz",
+            appKey: "q2baN9KwoyaFHmbjMHfssLIH",
+            avatar: "mm",
+            placeholder: "说点什么吧~",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        请随意~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.png" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.png" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        Since 2017/1/1  -  站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+        <!-- 
+            <span><a href="" target="_blank" class="rss" title="rss"><i class="icon icon-1x icon-rss"></i></a></span> -->
+            <span>博客内容遵循 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享 署名 - 非商业性 - 相同方式共享 4.0 协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></span>
+			
+			 · Hosted by <a href="https://pages.coding.me" target="_blank">Coding Pages</a>
+
+
+            <span>Rocko &copy; 2014 - 2024</span>
+        </p>
+    </div>
+
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://rocko.xyz/2014/12/05/Android-Volley%E8%87%AA%E5%AE%9A%E4%B9%89Request-JacksonRequest%E3%80%81GsonRequest/&title=《Android Volley自定义Request(JacksonRequest、GsonRequest)》 — Rocko's blog&pic=https://rocko.xyz/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://rocko.xyz/2014/12/05/Android-Volley%E8%87%AA%E5%AE%9A%E4%B9%89Request-JacksonRequest%E3%80%81GsonRequest/&title=《Android Volley自定义Request(JacksonRequest、GsonRequest)》 — Rocko's blog&source=前言Volley是一个强大的HTTP库，让Android的的网络操作变得容易、高效、快速。在少数据的高并发情况下它的优势很明显，但在大文件的上传或者下载操..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://rocko.xyz/2014/12/05/Android-Volley%E8%87%AA%E5%AE%9A%E4%B9%89Request-JacksonRequest%E3%80%81GsonRequest/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Android Volley自定义Request(JacksonRequest、GsonRequest)》 — Rocko's blog&url=https://rocko.xyz/2014/12/05/Android-Volley%E8%87%AA%E5%AE%9A%E4%B9%89Request-JacksonRequest%E3%80%81GsonRequest/&via=https://rocko.xyz" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://rocko.xyz/2014/12/05/Android-Volley%E8%87%AA%E5%AE%9A%E4%B9%89Request-JacksonRequest%E3%80%81GsonRequest/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQ4AAAEOCAAAAABd2qZ5AAAD40lEQVR42u3aQW4jMQwEwPz/01lgT7sIbHeTdJJDzSkY2xqp5sCI6o+P+Pr8e3298+/9zy/X8xG+3n/02+ezevTcfJz6woEDBw4co0GfLzVZcH7n+f0E/TlrskYcOHDgwHHL0ZbAfBlJCWy/8xw6L7o4cODAgeNnOZL9Tr7Fer6M5AW0I+PAgQMHjt/Msdlibfp1yX0cOHDgwPEbOPJNV7vgTZGevZhv6pXiwIEDB44uLfDRTu43//3GfAcOHDhw4IhL1KapN2sdXgXgPkcXDhw4cODYc9y2895R//PDp6uGIw4cOHDg2HDkkbU8JJffSZp0+f0DFBw4cODAccqx2Szty+TsWS3ui38LcODAgQPHmiOfet5ce0fQYda+bEfDgQMHDhx7jvagKOk1tsdCszHzY6rkJeHAgQMHjiuOTSwgmW4bVthsHWcv7yxIhwMHDhw41uUziUEkBXLD1G4d6+gGDhw4cOAo59wue/PNfMs0i0rk3NEpHA4cOHDgGHHMQmb59uwqlDAbcxikwIEDBw4cC45ZfKGdUFv8ZkW9Ld5Reg4HDhw4cIyqZzKJK4jZU2YHS0l47uEWDgcOHDhwHHG0B0VXm7G2kOctv2T+OHDgwIHjOzlmzbhZoC2P6K0ygEmvFAcOHDhwjDiS8pZ/J48X3L6G/fj/5Ttw4MCBA8eaY/Owq41ZG4zYnxO9SA7iwIEDB44jjrzBlzTp9g3EfDs3OwCLonI4cODAgaPkyEtaHrnLi3Eb4GsDFnkLEgcOHDhw7DlmG6p8u5VHCjboOXd+PIYDBw4cOGYcm+ZdEkHIv3N1rDVrMuLAgQMHjiuOthzu49ozsnbZs3YhDhw4cODYc2wK3qY91zYQ841Z8tsXDUEcOHDgwLHmmEUQrlBmo+WLLMbHgQMHDhxv4NiUw6u4Q/79dvsX5Ttw4MCBA8eC4yqU0G6xVr3Mkrje+OHAgQMHjgXHO0LS7UTbF9D+KkfHgQMHDhy3HJuSljNtwhCb8h89HQcOHDhwHHHkZTIPQ+cL2BTR409x4MCBA8cRxyZwsIm1ta3J9jCpDjrgwIEDB441xz5kNmv25TGINpY9i+hFH+PAgQMHjmA+n+W1DzTk8YVkDm147sXrxIEDBw4ca4627CUhhrwMzw6NZhvOzb8ROHDgwIGj5WgLWxtl2G/SrmJ8UZHGgQMHDhxHHG2BTD5d1fYy9DAbufgABw4cOHC8gSMPzF016fJntZvAh7PCgQMHDhw/xNFGqDfhibaQzw6ocODAgQPHLUcbILgNw+VLarHywAQOHDhw4LjiWLXSyknMnrW5cwyBAwcOHDiezfAPjbx77gMQ8QEAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
