@@ -10,7 +10,7 @@
     <meta name="google-site-verification" content="J7ONClDGsj92njCYAloRwEkDpz94YUFUxgi76g1m4Lk">
     
     
-    <link rel="canonical" href="https://rocko.xyz/tags/">
+    <link rel="canonical" href="https://rocko.vip/tags/">
     
     
     <title>Tags | Rocko&#39;s blog</title>
@@ -26,7 +26,7 @@
     <meta name="description" content="Rocko&#39;s blog">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Tags">
-<meta property="og:url" content="https://rocko.xyz/tags/index.html">
+<meta property="og:url" content="https://rocko.vip/tags/index.html">
 <meta property="og:site_name" content="Rocko&#39;s blog">
 <meta property="og:description" content="Rocko&#39;s blog">
 <meta property="og:locale" content="zh_CN">
@@ -117,54 +117,6 @@
               </a>
             </li>
         
-            <li class="waves-block waves-effect">
-              <a href="/friendLink"  >
-                <i class="icon icon-lg icon-users"></i>
-
-友链
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="https://adb.rocko.xyz" target="_blank" >
-                <i class="icon icon-lg icon-bookmark"></i>
-
-ADB
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="https://github.com/zhengxiaopeng" target="_blank" >
-                <i class="icon icon-lg icon-github"></i>
-
-GitHub
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="//weibo.com/678662430/" target="_blank" >
-                <i class="icon icon-lg icon-weibo"></i>
-
-Weibo
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="https:////www.zhihu.com/people/rocko/" target="_blank" >
-                <i class="icon icon-lg icon-smile-o"></i>
-
-Zhihu
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="https://twitter.com/rocko_zxp" target="_blank" >
-                <i class="icon icon-lg icon-twitter"></i>
-
-Twitter
-              </a>
-            </li>
-        
       </ul>
     </div>
   </div>
@@ -201,8 +153,8 @@ Twitter
  
 
 
-        <a id="header-high" style="text-decoration: none; margin-left:12px; width:71px; margin-right:5px" class="header-icon waves-effect waves-circle waves-light"  onClick="javascript:(    /*     * Copyright (C) 2015 Rocko (rocko.xyz) <rocko.zxp@gmail.com>     *     * Licensed under the Apache License, Version 2.0 (the 'License');     * you may not use this file except in compliance with the License.     * You may obtain a copy of the License at     *     *      http://www.apache.org/licenses/LICENSE-2.0     *     * Unless required by applicable law or agreed to in writing, software     * distributed under the License is distributed on an 'AS IS' BASIS,     * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.     * See the License for the specific language governing permissions and     * limitations under the License.     */    function go() {        function c() {        var e = document.createElement('link');        e.setAttribute('type', 'text/css');        e.setAttribute('rel', 'stylesheet');        e.setAttribute('href', f);        e.setAttribute('class', l);        document.body.appendChild(e)    }     function h() {        var e = document.getElementsByClassName(l);        for (var t = 0; t < e.length; t++) {            document.body.removeChild(e[t])        }    }     function p() {        var e = document.createElement('div');        e.setAttribute('class', a);        document.body.appendChild(e);        setTimeout(function() {            document.body.removeChild(e)        }, 100)    }     function d(e) {        return {            height : e.offsetHeight,            width : e.offsetWidth        }    }     function v(i) {        var s = d(i);        return s.height > e && s.height < n && s.width > t && s.width < r    }     function m(e) {        var t = e;        var n = 0;        while (!!t) {            n += t.offsetTop;            t = t.offsetParent        }        return n    }     function g() {        var e = document.documentElement;        if (!!window.innerWidth) {            return window.innerHeight        } else if (e && !isNaN(e.clientHeight)) {            return e.clientHeight        }        return 0    }     function y() {        if (window.pageYOffset) {            return window.pageYOffset        }        return Math.max(document.documentElement.scrollTop, document.body.scrollTop)    }     function E(e) {        var t = m(e);        return t >= w && t <= b + w    }     var songs = [                'http://pit79pl1z.bkt.clouddn.com/Music-Fashion_Show.mp3',                'http://pit79pl1z.bkt.clouddn.com/Music-Wake-Live.mp3',                'http://pit79pl1z.bkt.clouddn.com/Music-outside.mp3',                'http://pit79pl1z.bkt.clouddn.com/Music-sunburst.mp3'    ];    function S() {        var e = document.getElementById('audio_element_id');        if(e != null){            var index = parseInt(e.getAttribute('curSongIndex'));            if(index > songs.length - 2) {                index = 0;            } else {                index++;            }            e.setAttribute('curSongIndex', index);            N();        }        e.src = i;        e.play()    }     function x(e) {        e.className += ' ' + s + ' ' + o    }     function T(e) {        e.className += ' ' + s + ' ' + u[Math.floor(Math.random() * u.length)]    }     function N() {        var e = document.getElementsByClassName(s);        var t = new RegExp('\\b' + s + '\\b');        for (var n = 0; n < e.length; ) {            e[n].className = e[n].className.replace(t, '')        }    }    function initAudioEle() {        var e = document.getElementById('audio_element_id');        if(e === null){            e = document.createElement('audio');            e.setAttribute('class', l);            e.setAttribute('curSongIndex', 0);            e.id = 'audio_element_id';            e.loop = false;            e.bgcolor = 0;            e.addEventListener('canplay', function() {            setTimeout(function() {                x(k)            }, 500);            setTimeout(function() {                N();                p();                for (var e = 0; e < O.length; e++) {                    T(O[e])                }            }, 15500)        }, true);        e.addEventListener('ended', function() {            N();            h();            go();        }, true);        e.innerHTML = ' <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>';        document.body.appendChild(e);        }    }        initAudioEle();    var e = 30;    var t = 30;    var n = 350;    var r = 350;    var curSongIndex = parseInt(document.getElementById('audio_element_id').getAttribute('curSongIndex'));    var i = songs[curSongIndex];        var s = 'mw-harlem_shake_me';    var o = 'im_first';    var u = ['im_drunk', 'im_baked', 'im_trippin', 'im_blown'];    var a = 'mw-strobe_light';    var f = 'https://rocko.xyz/css/harlem-shake-style.css';        var l = 'mw_added_css';    var b = g();    var w = y();    var C = document.getElementsByTagName('*');    var k = null;    for (var L = 0; L < C.length; L++) {        var A = C[L];        if (v(A)) {            if (E(A)) {                k = A;                break            }        }    }    if (A === null) {        console.warn('Could not find a node of the right size. Please try a different page.');        return    }    c();    S();    var O = [];    for (var L = 0; L < C.length; L++) {        var A = C[L];        if (v(A)) {            O.push(A)        }    }    })()" >
-        <i class="icon icon-lg icon-music"></i> High~
+        <a id="header-high" style="text-decoration: none; margin-left:12px; width:71px; margin-right:5px" class="header-icon waves-effect waves-circle waves-light"  onClick="javascript:(    /*     * Copyright (C) 2015 Rocko (rocko.xyz) <rocko.zxp@gmail.com>     *     * Licensed under the Apache License, Version 2.0 (the 'License');     * you may not use this file except in compliance with the License.     * You may obtain a copy of the License at     *     *      http://www.apache.org/licenses/LICENSE-2.0     *     * Unless required by applicable law or agreed to in writing, software     * distributed under the License is distributed on an 'AS IS' BASIS,     * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.     * See the License for the specific language governing permissions and     * limitations under the License.     */    function go() {        function c() {        var e = document.createElement('link');        e.setAttribute('type', 'text/css');        e.setAttribute('rel', 'stylesheet');        e.setAttribute('href', f);        e.setAttribute('class', l);        document.body.appendChild(e)    }     function h() {        var e = document.getElementsByClassName(l);        for (var t = 0; t < e.length; t++) {            document.body.removeChild(e[t])        }    }     function p() {        var e = document.createElement('div');        e.setAttribute('class', a);        document.body.appendChild(e);        setTimeout(function() {            document.body.removeChild(e)        }, 100)    }     function d(e) {        return {            height : e.offsetHeight,            width : e.offsetWidth        }    }     function v(i) {        var s = d(i);        return s.height > e && s.height < n && s.width > t && s.width < r    }     function m(e) {        var t = e;        var n = 0;        while (!!t) {            n += t.offsetTop;            t = t.offsetParent        }        return n    }     function g() {        var e = document.documentElement;        if (!!window.innerWidth) {            return window.innerHeight        } else if (e && !isNaN(e.clientHeight)) {            return e.clientHeight        }        return 0    }     function y() {        if (window.pageYOffset) {            return window.pageYOffset        }        return Math.max(document.documentElement.scrollTop, document.body.scrollTop)    }     function E(e) {        var t = m(e);        return t >= w && t <= b + w    }     var songs = ['/media/G-Love.Phonk.mp3', '/media/APT.mp3', '/media/Music-Fashion_Show.mp3', '/media/Music-outside.mp3', '/media/Music-sunburst.mp3', '/media/Music-Wake-Live.mp3'];    function S() {        var e = document.getElementById('audio_element_id');        if(e != null){            var index = parseInt(e.getAttribute('curSongIndex'));            if(index > songs.length - 2) {                index = 0;            } else {                index++;            }            e.setAttribute('curSongIndex', index);            N();        }        e.src = i;        e.play()    }     function x(e) {        e.className += ' ' + s + ' ' + o    }     function T(e) {        e.className += ' ' + s + ' ' + u[Math.floor(Math.random() * u.length)]    }     function N() {        var e = document.getElementsByClassName(s);        var t = new RegExp('\\b' + s + '\\b');        for (var n = 0; n < e.length; ) {            e[n].className = e[n].className.replace(t, '')        }    }    function initAudioEle() {        var e = document.getElementById('audio_element_id');        if(e === null){            e = document.createElement('audio');            e.setAttribute('class', l);            e.setAttribute('curSongIndex', 0);            e.id = 'audio_element_id';            e.loop = false;            e.bgcolor = 0;            e.addEventListener('canplay', function() {            setTimeout(function() {                x(k)            }, 500);            setTimeout(function() {                N();                p();                for (var e = 0; e < O.length; e++) {                    T(O[e])                }            }, 15500)        }, true);        e.addEventListener('ended', function() {            N();            h();            go();        }, true);        e.innerHTML = ' <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>';        document.body.appendChild(e);        }    }        initAudioEle();    var e = 30;    var t = 30;    var n = 350;    var r = 350;    var curSongIndex = parseInt(document.getElementById('audio_element_id').getAttribute('curSongIndex'));    var i = songs[curSongIndex];        var s = 'mw-harlem_shake_me';    var o = 'im_first';    var u = ['im_drunk', 'im_baked', 'im_trippin', 'im_blown'];    var a = 'mw-strobe_light';    var f = '/css/harlem-shake-style.css';        var l = 'mw_added_css';    var b = g();    var w = y();    var C = document.getElementsByTagName('*');    var k = null;    for (var L = 0; L < C.length; L++) {        var A = C[L];        if (v(A)) {            if (E(A)) {                k = A;                break            }        }    }    if (A === null) {        console.warn('Could not find a node of the right size. Please try a different page.');        return    }    c();    S();    var O = [];    for (var L = 0; L < C.length; L++) {        var A = C[L];        if (v(A)) {            O.push(A)        }    }    })()" >
+        High起来
         </a>
     
 
@@ -265,11 +217,11 @@ Twitter
 
         
 
-            <a href="/tags/%E9%94%99%E8%AF%AF/" style="-webkit-order:10;order:10" class="tags-list-item waves-effect waves-button waves-light">错误</a>
+            <a href="/tags/Volley/" style="-webkit-order:10;order:10" class="tags-list-item waves-effect waves-button waves-light">Volley</a>
 
         
 
-            <a href="/tags/Volley/" style="-webkit-order:11;order:11" class="tags-list-item waves-effect waves-button waves-light">Volley</a>
+            <a href="/tags/%E9%94%99%E8%AF%AF/" style="-webkit-order:11;order:11" class="tags-list-item waves-effect waves-button waves-light">错误</a>
 
         
 
@@ -281,15 +233,15 @@ Twitter
 
         
 
-            <a href="/tags/High/" style="-webkit-order:14;order:14" class="tags-list-item waves-effect waves-button waves-light">High</a>
+            <a href="/tags/Git/" style="-webkit-order:14;order:14" class="tags-list-item waves-effect waves-button waves-light">Git</a>
 
         
 
-            <a href="/tags/%E5%8A%A8%E7%94%BB/" style="-webkit-order:15;order:15" class="tags-list-item waves-effect waves-button waves-light">动画</a>
+            <a href="/tags/High/" style="-webkit-order:15;order:15" class="tags-list-item waves-effect waves-button waves-light">High</a>
 
         
 
-            <a href="/tags/Git/" style="-webkit-order:16;order:16" class="tags-list-item waves-effect waves-button waves-light">Git</a>
+            <a href="/tags/%E5%8A%A8%E7%94%BB/" style="-webkit-order:16;order:16" class="tags-list-item waves-effect waves-button waves-light">动画</a>
 
         
 
@@ -365,27 +317,27 @@ Twitter
 
         
 
-            <a href="/tags/RxJava/" style="-webkit-order:35;order:35" class="tags-list-item waves-effect waves-button waves-light">RxJava</a>
+            <a href="/tags/%E5%9B%BE%E5%83%8F/" style="-webkit-order:35;order:35" class="tags-list-item waves-effect waves-button waves-light">图像</a>
 
         
 
-            <a href="/tags/ReactiveX/" style="-webkit-order:36;order:36" class="tags-list-item waves-effect waves-button waves-light">ReactiveX</a>
+            <a href="/tags/JCenter/" style="-webkit-order:36;order:36" class="tags-list-item waves-effect waves-button waves-light">JCenter</a>
 
         
 
-            <a href="/tags/%E5%9B%BE%E5%83%8F/" style="-webkit-order:37;order:37" class="tags-list-item waves-effect waves-button waves-light">图像</a>
+            <a href="/tags/FQ/" style="-webkit-order:37;order:37" class="tags-list-item waves-effect waves-button waves-light">FQ</a>
 
         
 
-            <a href="/tags/JCenter/" style="-webkit-order:38;order:38" class="tags-list-item waves-effect waves-button waves-light">JCenter</a>
+            <a href="/tags/%E5%9F%9F%E5%90%8D/" style="-webkit-order:38;order:38" class="tags-list-item waves-effect waves-button waves-light">域名</a>
 
         
 
-            <a href="/tags/FQ/" style="-webkit-order:39;order:39" class="tags-list-item waves-effect waves-button waves-light">FQ</a>
+            <a href="/tags/RxJava/" style="-webkit-order:39;order:39" class="tags-list-item waves-effect waves-button waves-light">RxJava</a>
 
         
 
-            <a href="/tags/%E5%9F%9F%E5%90%8D/" style="-webkit-order:40;order:40" class="tags-list-item waves-effect waves-button waves-light">域名</a>
+            <a href="/tags/ReactiveX/" style="-webkit-order:40;order:40" class="tags-list-item waves-effect waves-button waves-light">ReactiveX</a>
 
         
 
@@ -922,6 +874,47 @@ Twitter
             </div>
             
 
+            <h3 class="archive-separator" id="tag-Volley">Volley</h3>
+
+            <div class="waterfall">
+            
+
+                <div class="waterfall-item">
+  <article class="article-card archive-article">
+    <div class="post-meta">
+      <time class="post-time" title="2014-12-05 22:55:31" datetime="2014-12-05T14:55:31.000Z"  itemprop="datePublished">2014-12-05</time>
+
+      
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Android/">Android</a></li></ul>
+
+
+
+    </div>
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2014/12/05/Android-Volley%E8%87%AA%E5%AE%9A%E4%B9%89Request-JacksonRequest%E3%80%81GsonRequest/">Android Volley自定义Request(JacksonRequest、GsonRequest)</a>
+    </h3>
+  
+
+
+
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Volley/" rel="tag">Volley</a></li></ul>
+
+    </div>
+    
+  </article>
+</div>
+
+            
+            </div>
+            
+
             <h3 class="archive-separator" id="tag-错误">错误</h3>
 
             <div class="waterfall">
@@ -1021,47 +1014,6 @@ Twitter
     <div class="post-footer">
         
 	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VPS/" rel="tag">VPS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%94%99%E8%AF%AF/" rel="tag">错误</a></li></ul>
-
-    </div>
-    
-  </article>
-</div>
-
-            
-            </div>
-            
-
-            <h3 class="archive-separator" id="tag-Volley">Volley</h3>
-
-            <div class="waterfall">
-            
-
-                <div class="waterfall-item">
-  <article class="article-card archive-article">
-    <div class="post-meta">
-      <time class="post-time" title="2014-12-05 22:55:31" datetime="2014-12-05T14:55:31.000Z"  itemprop="datePublished">2014-12-05</time>
-
-      
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Android/">Android</a></li></ul>
-
-
-
-    </div>
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2014/12/05/Android-Volley%E8%87%AA%E5%AE%9A%E4%B9%89Request-JacksonRequest%E3%80%81GsonRequest/">Android Volley自定义Request(JacksonRequest、GsonRequest)</a>
-    </h3>
-  
-
-
-
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Volley/" rel="tag">Volley</a></li></ul>
 
     </div>
     
@@ -1178,6 +1130,81 @@ Twitter
     <div class="post-footer">
         
 	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Data-Binding/" rel="tag">Data Binding</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MVVM/" rel="tag">MVVM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%9E%B6%E6%9E%84/" rel="tag">架构</a></li></ul>
+
+    </div>
+    
+  </article>
+</div>
+
+            
+            </div>
+            
+
+            <h3 class="archive-separator" id="tag-Git">Git</h3>
+
+            <div class="waterfall">
+            
+
+                <div class="waterfall-item">
+  <article class="article-card archive-article">
+    <div class="post-meta">
+      <time class="post-time" title="2014-11-25 18:21:52" datetime="2014-11-25T10:21:52.000Z"  itemprop="datePublished">2014-11-25</time>
+
+      
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Git/">Git</a></li></ul>
+
+
+
+    </div>
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2014/11/25/Git-%E9%94%99%E8%AF%AF%E9%9B%86%E9%94%A6ing/">Git 错误集锦ing...</a>
+    </h3>
+  
+
+
+
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%94%99%E8%AF%AF/" rel="tag">错误</a></li></ul>
+
+    </div>
+    
+  </article>
+</div>
+
+            
+
+                <div class="waterfall-item">
+  <article class="article-card archive-article">
+    <div class="post-meta">
+      <time class="post-time" title="2015-02-12 00:06:07" datetime="2015-02-11T16:06:07.000Z"  itemprop="datePublished">2015-02-12</time>
+
+      
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Git/">Git</a></li></ul>
+
+
+
+    </div>
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2015/02/12/VPS%E4%B8%BB%E6%9C%BA%E6%90%AD%E5%BB%BAGit%E6%9C%8D%E5%8A%A1%E5%99%A8/">VPS主机搭建Git服务器</a>
+    </h3>
+  
+
+
+
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VPS/" rel="tag">VPS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%94%99%E8%AF%AF/" rel="tag">错误</a></li></ul>
 
     </div>
     
@@ -1328,81 +1355,6 @@ Twitter
     <div class="post-footer">
         
 	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8A%A8%E7%94%BB/" rel="tag">动画</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AF%91%E6%96%87/" rel="tag">译文</a></li></ul>
-
-    </div>
-    
-  </article>
-</div>
-
-            
-            </div>
-            
-
-            <h3 class="archive-separator" id="tag-Git">Git</h3>
-
-            <div class="waterfall">
-            
-
-                <div class="waterfall-item">
-  <article class="article-card archive-article">
-    <div class="post-meta">
-      <time class="post-time" title="2014-11-25 18:21:52" datetime="2014-11-25T10:21:52.000Z"  itemprop="datePublished">2014-11-25</time>
-
-      
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Git/">Git</a></li></ul>
-
-
-
-    </div>
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2014/11/25/Git-%E9%94%99%E8%AF%AF%E9%9B%86%E9%94%A6ing/">Git 错误集锦ing...</a>
-    </h3>
-  
-
-
-
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%94%99%E8%AF%AF/" rel="tag">错误</a></li></ul>
-
-    </div>
-    
-  </article>
-</div>
-
-            
-
-                <div class="waterfall-item">
-  <article class="article-card archive-article">
-    <div class="post-meta">
-      <time class="post-time" title="2015-02-12 00:06:07" datetime="2015-02-11T16:06:07.000Z"  itemprop="datePublished">2015-02-12</time>
-
-      
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Git/">Git</a></li></ul>
-
-
-
-    </div>
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2015/02/12/VPS%E4%B8%BB%E6%9C%BA%E6%90%AD%E5%BB%BAGit%E6%9C%8D%E5%8A%A1%E5%99%A8/">VPS主机搭建Git服务器</a>
-    </h3>
-  
-
-
-
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VPS/" rel="tag">VPS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%94%99%E8%AF%AF/" rel="tag">错误</a></li></ul>
 
     </div>
     
@@ -2254,40 +2206,6 @@ Twitter
                 <div class="waterfall-item">
   <article class="article-card archive-article">
     <div class="post-meta">
-      <time class="post-time" title="2015-05-05 12:49:07" datetime="2015-05-05T04:49:07.000Z"  itemprop="datePublished">2015-05-05</time>
-
-      
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Android/">Android</a></li></ul>
-
-
-
-    </div>
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2015/05/05/%E3%80%90%E8%AF%91%E3%80%91NotRxJava%E6%87%92%E4%BA%BA%E4%B8%93%E7%94%A8%E6%8C%87%E5%8D%97/">【译】NotRxJava懒人专用指南</a>
-    </h3>
-  
-
-
-
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ReactiveX/" rel="tag">ReactiveX</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RxJava/" rel="tag">RxJava</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AF%91%E6%96%87/" rel="tag">译文</a></li></ul>
-
-    </div>
-    
-  </article>
-</div>
-
-            
-
-                <div class="waterfall-item">
-  <article class="article-card archive-article">
-    <div class="post-meta">
       <time class="post-time" title="2015-06-19 12:49:07" datetime="2015-06-19T04:49:07.000Z"  itemprop="datePublished">2015-06-19</time>
 
       
@@ -2317,54 +2235,6 @@ Twitter
   </article>
 </div>
 
-            
-            </div>
-            
-
-            <h3 class="archive-separator" id="tag-RxJava">RxJava</h3>
-
-            <div class="waterfall">
-            
-
-                <div class="waterfall-item">
-  <article class="article-card archive-article">
-    <div class="post-meta">
-      <time class="post-time" title="2015-05-05 12:49:07" datetime="2015-05-05T04:49:07.000Z"  itemprop="datePublished">2015-05-05</time>
-
-      
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Android/">Android</a></li></ul>
-
-
-
-    </div>
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2015/05/05/%E3%80%90%E8%AF%91%E3%80%91NotRxJava%E6%87%92%E4%BA%BA%E4%B8%93%E7%94%A8%E6%8C%87%E5%8D%97/">【译】NotRxJava懒人专用指南</a>
-    </h3>
-  
-
-
-
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ReactiveX/" rel="tag">ReactiveX</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RxJava/" rel="tag">RxJava</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AF%91%E6%96%87/" rel="tag">译文</a></li></ul>
-
-    </div>
-    
-  </article>
-</div>
-
-            
-            </div>
-            
-
-            <h3 class="archive-separator" id="tag-ReactiveX">ReactiveX</h3>
-
-            <div class="waterfall">
             
 
                 <div class="waterfall-item">
@@ -2601,6 +2471,88 @@ Twitter
             </div>
             
 
+            <h3 class="archive-separator" id="tag-RxJava">RxJava</h3>
+
+            <div class="waterfall">
+            
+
+                <div class="waterfall-item">
+  <article class="article-card archive-article">
+    <div class="post-meta">
+      <time class="post-time" title="2015-05-05 12:49:07" datetime="2015-05-05T04:49:07.000Z"  itemprop="datePublished">2015-05-05</time>
+
+      
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Android/">Android</a></li></ul>
+
+
+
+    </div>
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2015/05/05/%E3%80%90%E8%AF%91%E3%80%91NotRxJava%E6%87%92%E4%BA%BA%E4%B8%93%E7%94%A8%E6%8C%87%E5%8D%97/">【译】NotRxJava懒人专用指南</a>
+    </h3>
+  
+
+
+
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ReactiveX/" rel="tag">ReactiveX</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RxJava/" rel="tag">RxJava</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AF%91%E6%96%87/" rel="tag">译文</a></li></ul>
+
+    </div>
+    
+  </article>
+</div>
+
+            
+            </div>
+            
+
+            <h3 class="archive-separator" id="tag-ReactiveX">ReactiveX</h3>
+
+            <div class="waterfall">
+            
+
+                <div class="waterfall-item">
+  <article class="article-card archive-article">
+    <div class="post-meta">
+      <time class="post-time" title="2015-05-05 12:49:07" datetime="2015-05-05T04:49:07.000Z"  itemprop="datePublished">2015-05-05</time>
+
+      
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Android/">Android</a></li></ul>
+
+
+
+    </div>
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2015/05/05/%E3%80%90%E8%AF%91%E3%80%91NotRxJava%E6%87%92%E4%BA%BA%E4%B8%93%E7%94%A8%E6%8C%87%E5%8D%97/">【译】NotRxJava懒人专用指南</a>
+    </h3>
+  
+
+
+
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ReactiveX/" rel="tag">ReactiveX</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RxJava/" rel="tag">RxJava</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AF%91%E6%96%87/" rel="tag">译文</a></li></ul>
+
+    </div>
+    
+  </article>
+</div>
+
+            
+            </div>
+            
+
             <h3 class="archive-separator" id="tag-运算符">运算符</h3>
 
             <div class="waterfall">
@@ -2688,15 +2640,6 @@ Twitter
         <footer class="footer">
     <div class="top">
         
-<p>
-    <span id="busuanzi_container_site_uv" style='display:none'>
-        Since 2017/1/1  -  站点总访客数：<span id="busuanzi_value_site_uv"></span>
-    </span>
-    <span id="busuanzi_container_site_pv" style='display:none'>
-        站点总访问量：<span id="busuanzi_value_site_pv"></span>
-    </span>
-</p>
-
 
         <p>
         <!-- 
@@ -2726,7 +2669,7 @@ Twitter
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://rocko.xyz/tags/&title=《Tags》 — Rocko's blog&pic=https://rocko.xyz/img/avatar.png" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://rocko.vip/tags/&title=《Tags》 — Rocko's blog&pic=https://rocko.vip/img/avatar.png" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -2736,22 +2679,22 @@ Twitter
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://rocko.xyz/tags/&title=《Tags》 — Rocko's blog&source=Rocko's blog" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://rocko.vip/tags/&title=《Tags》 — Rocko's blog&source=Rocko's blog" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://rocko.xyz/tags/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://rocko.vip/tags/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Tags》 — Rocko's blog&url=https://rocko.xyz/tags/&via=https://rocko.xyz" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Tags》 — Rocko's blog&url=https://rocko.vip/tags/&via=https://rocko.vip" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://rocko.xyz/tags/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://rocko.vip/tags/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -2762,7 +2705,7 @@ Twitter
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAACWCAAAAAAZai4+AAABSUlEQVR42u3aMQ7DIAxAUe5/6VTq1AXybZdIwZ8pagl9GWqM4zHwuL7j93o2ZvPHjiFL1kGsys/kuOs5smR1ZpGgMFs6eu96vixZssj2vMaRu2TJklUPEDzLfTRuyZJ1BIsnu5zyUC4vS9YRrFwhKXe9vb4lS9YLWVdhkK03ubIsWc1Y622Y/4ujx10UOGTJasyKLkS+5Y89DRCyZDVg5ZoMcix+MJYlqxsrV+jhwSJZNpIlqz0rN3Nj648sWQ1YfDPOJcSVpFyWrM4sHg52NC7IktWTldt0K00/6JFkyWrMqhSJovWqG5wsWW1YyVaAciFJlixZlZS6nnATrixZPVnRZju+hZcKSbJktWTxAhBvvIuWrlBMkiVLVvDlCi9RyZIli7P4IZZ/Hs7TZck6mhVt2ak3E9wQZclqxvpXECHBpfIyRpasQ1kffzFz22d1pkMAAAAASUVORK5CYII=" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAACWCAAAAAAZai4+AAABUklEQVR42u3asRrDIAiFUd//pc3SoUOk94oOhd+pX2PNyRCkyBjymF8j/n4uxrgxYMEqxJrhWM2JuS76ZQVYsFqyVosqc9zwEd8LFixYLsu9CgsWrLMsZWuHBQuWy3Jvs4Iqj3c4l4cFqwRLr+rkP1+pb8GC9eesaQ59295b//NbWLCasfQX2C3putswLFiw9BRZP0qJ6VLogQWrGUsvDOXLSfqfXliwurH2EmL3VTfSZViwmrGUDfVKKdYNDbBglWbFk/KFIf2BjTNYWLCKsnS7GxSU+XbSDAtWA5a+qB4C9tJxWLBg6bmrjnAfDBasPqx8w4HS4mOXomDBasba64vbO9S80jMIC1Yh1qmgkAkQP/ogYMFqw8qc+NtHJnqAgAULlhwUlBYfO2uABQtWOu92G2rtSjMsWEVZetPAXlCwr8KC1Yx1IMGV6ePsgAWrAusBFfLFbUbhLBgAAAAASUVORK5CYII=" alt="微信分享二维码">
 </div>
 
 
@@ -2801,8 +2744,6 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 
 
 
-
-<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
 

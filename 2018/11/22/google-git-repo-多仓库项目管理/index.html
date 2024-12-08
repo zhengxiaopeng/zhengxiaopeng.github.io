@@ -10,7 +10,7 @@
     <meta name="google-site-verification" content="J7ONClDGsj92njCYAloRwEkDpz94YUFUxgi76g1m4Lk">
     
     
-    <link rel="canonical" href="https://rocko.xyz/2018/11/22/google-git-repo-%E5%A4%9A%E4%BB%93%E5%BA%93%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/">
+    <link rel="canonical" href="https://rocko.vip/2018/11/22/google-git-repo-%E5%A4%9A%E4%BB%93%E5%BA%93%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/">
     
     
     <title>Google Git-Repo (Android)多仓库项目管理 | Rocko&#39;s blog</title>
@@ -26,12 +26,12 @@
     <meta name="description" content="前言如果不是 Android dev 可以忽略标题的 Android。 项目模块化&#x2F;组件化之后各模块也作为独立的 Git 仓库从主项目里剥离了出去，各模块各自管理自己的版本。正常 Android 项目，各剥离出去的子模块仓库则通过 Maven 仓库 来管理，然后和引入第三方库一样依赖到主项目里。这种状态下的项目迭代带来的问题会是：需要频繁发布子模块的 版本并需要把修改的版本提交 Merge Req">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Google Git-Repo (Android)多仓库项目管理">
-<meta property="og:url" content="https://rocko.xyz/2018/11/22/google-git-repo-%E5%A4%9A%E4%BB%93%E5%BA%93%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/index.html">
+<meta property="og:url" content="https://rocko.vip/2018/11/22/google-git-repo-%E5%A4%9A%E4%BB%93%E5%BA%93%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/index.html">
 <meta property="og:site_name" content="Rocko&#39;s blog">
 <meta property="og:description" content="前言如果不是 Android dev 可以忽略标题的 Android。 项目模块化&#x2F;组件化之后各模块也作为独立的 Git 仓库从主项目里剥离了出去，各模块各自管理自己的版本。正常 Android 项目，各剥离出去的子模块仓库则通过 Maven 仓库 来管理，然后和引入第三方库一样依赖到主项目里。这种状态下的项目迭代带来的问题会是：需要频繁发布子模块的 版本并需要把修改的版本提交 Merge Req">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://rocko.xyz/images/aee46221gy1fxf0rynj2xj20kb0ou759.jpg.png">
-<meta property="og:image" content="https://rocko.xyz/images/aee46221gy1fxg56bs5tmj21s015sn1w.png">
+<meta property="og:image" content="https://rocko.vip/images/aee46221gy1fxf0rynj2xj20kb0ou759.jpg.png">
+<meta property="og:image" content="https://rocko.vip/images/aee46221gy1fxg56bs5tmj21s015sn1w.png">
 <meta property="article:published_time" content="2018-11-21T16:23:00.000Z">
 <meta property="article:modified_time" content="2024-12-07T12:20:10.865Z">
 <meta property="article:author" content="Rocko">
@@ -43,7 +43,7 @@
 <meta property="article:tag" content="组件化">
 <meta property="article:tag" content="Android">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://rocko.xyz/images/aee46221gy1fxf0rynj2xj20kb0ou759.jpg.png">
+<meta name="twitter:image" content="https://rocko.vip/images/aee46221gy1fxf0rynj2xj20kb0ou759.jpg.png">
     
         <link rel="alternate" type="application/atom+xml" title="Rocko&#39;s blog" href="/atom.xml">
     
@@ -127,54 +127,6 @@
               </a>
             </li>
         
-            <li class="waves-block waves-effect">
-              <a href="/friendLink"  >
-                <i class="icon icon-lg icon-users"></i>
-
-友链
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="https://adb.rocko.xyz" target="_blank" >
-                <i class="icon icon-lg icon-bookmark"></i>
-
-ADB
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="https://github.com/zhengxiaopeng" target="_blank" >
-                <i class="icon icon-lg icon-github"></i>
-
-GitHub
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="//weibo.com/678662430/" target="_blank" >
-                <i class="icon icon-lg icon-weibo"></i>
-
-Weibo
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="https:////www.zhihu.com/people/rocko/" target="_blank" >
-                <i class="icon icon-lg icon-smile-o"></i>
-
-Zhihu
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="https://twitter.com/rocko_zxp" target="_blank" >
-                <i class="icon icon-lg icon-twitter"></i>
-
-Twitter
-              </a>
-            </li>
-        
       </ul>
     </div>
   </div>
@@ -211,8 +163,8 @@ Twitter
  
 
 
-        <a id="header-high" style="text-decoration: none; margin-left:12px; width:71px; margin-right:5px" class="header-icon waves-effect waves-circle waves-light"  onClick="javascript:(    /*     * Copyright (C) 2015 Rocko (rocko.xyz) <rocko.zxp@gmail.com>     *     * Licensed under the Apache License, Version 2.0 (the 'License');     * you may not use this file except in compliance with the License.     * You may obtain a copy of the License at     *     *      http://www.apache.org/licenses/LICENSE-2.0     *     * Unless required by applicable law or agreed to in writing, software     * distributed under the License is distributed on an 'AS IS' BASIS,     * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.     * See the License for the specific language governing permissions and     * limitations under the License.     */    function go() {        function c() {        var e = document.createElement('link');        e.setAttribute('type', 'text/css');        e.setAttribute('rel', 'stylesheet');        e.setAttribute('href', f);        e.setAttribute('class', l);        document.body.appendChild(e)    }     function h() {        var e = document.getElementsByClassName(l);        for (var t = 0; t < e.length; t++) {            document.body.removeChild(e[t])        }    }     function p() {        var e = document.createElement('div');        e.setAttribute('class', a);        document.body.appendChild(e);        setTimeout(function() {            document.body.removeChild(e)        }, 100)    }     function d(e) {        return {            height : e.offsetHeight,            width : e.offsetWidth        }    }     function v(i) {        var s = d(i);        return s.height > e && s.height < n && s.width > t && s.width < r    }     function m(e) {        var t = e;        var n = 0;        while (!!t) {            n += t.offsetTop;            t = t.offsetParent        }        return n    }     function g() {        var e = document.documentElement;        if (!!window.innerWidth) {            return window.innerHeight        } else if (e && !isNaN(e.clientHeight)) {            return e.clientHeight        }        return 0    }     function y() {        if (window.pageYOffset) {            return window.pageYOffset        }        return Math.max(document.documentElement.scrollTop, document.body.scrollTop)    }     function E(e) {        var t = m(e);        return t >= w && t <= b + w    }     var songs = [                'http://pit79pl1z.bkt.clouddn.com/Music-Fashion_Show.mp3',                'http://pit79pl1z.bkt.clouddn.com/Music-Wake-Live.mp3',                'http://pit79pl1z.bkt.clouddn.com/Music-outside.mp3',                'http://pit79pl1z.bkt.clouddn.com/Music-sunburst.mp3'    ];    function S() {        var e = document.getElementById('audio_element_id');        if(e != null){            var index = parseInt(e.getAttribute('curSongIndex'));            if(index > songs.length - 2) {                index = 0;            } else {                index++;            }            e.setAttribute('curSongIndex', index);            N();        }        e.src = i;        e.play()    }     function x(e) {        e.className += ' ' + s + ' ' + o    }     function T(e) {        e.className += ' ' + s + ' ' + u[Math.floor(Math.random() * u.length)]    }     function N() {        var e = document.getElementsByClassName(s);        var t = new RegExp('\\b' + s + '\\b');        for (var n = 0; n < e.length; ) {            e[n].className = e[n].className.replace(t, '')        }    }    function initAudioEle() {        var e = document.getElementById('audio_element_id');        if(e === null){            e = document.createElement('audio');            e.setAttribute('class', l);            e.setAttribute('curSongIndex', 0);            e.id = 'audio_element_id';            e.loop = false;            e.bgcolor = 0;            e.addEventListener('canplay', function() {            setTimeout(function() {                x(k)            }, 500);            setTimeout(function() {                N();                p();                for (var e = 0; e < O.length; e++) {                    T(O[e])                }            }, 15500)        }, true);        e.addEventListener('ended', function() {            N();            h();            go();        }, true);        e.innerHTML = ' <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>';        document.body.appendChild(e);        }    }        initAudioEle();    var e = 30;    var t = 30;    var n = 350;    var r = 350;    var curSongIndex = parseInt(document.getElementById('audio_element_id').getAttribute('curSongIndex'));    var i = songs[curSongIndex];        var s = 'mw-harlem_shake_me';    var o = 'im_first';    var u = ['im_drunk', 'im_baked', 'im_trippin', 'im_blown'];    var a = 'mw-strobe_light';    var f = 'https://rocko.xyz/css/harlem-shake-style.css';        var l = 'mw_added_css';    var b = g();    var w = y();    var C = document.getElementsByTagName('*');    var k = null;    for (var L = 0; L < C.length; L++) {        var A = C[L];        if (v(A)) {            if (E(A)) {                k = A;                break            }        }    }    if (A === null) {        console.warn('Could not find a node of the right size. Please try a different page.');        return    }    c();    S();    var O = [];    for (var L = 0; L < C.length; L++) {        var A = C[L];        if (v(A)) {            O.push(A)        }    }    })()" >
-        <i class="icon icon-lg icon-music"></i> High~
+        <a id="header-high" style="text-decoration: none; margin-left:12px; width:71px; margin-right:5px" class="header-icon waves-effect waves-circle waves-light"  onClick="javascript:(    /*     * Copyright (C) 2015 Rocko (rocko.xyz) <rocko.zxp@gmail.com>     *     * Licensed under the Apache License, Version 2.0 (the 'License');     * you may not use this file except in compliance with the License.     * You may obtain a copy of the License at     *     *      http://www.apache.org/licenses/LICENSE-2.0     *     * Unless required by applicable law or agreed to in writing, software     * distributed under the License is distributed on an 'AS IS' BASIS,     * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.     * See the License for the specific language governing permissions and     * limitations under the License.     */    function go() {        function c() {        var e = document.createElement('link');        e.setAttribute('type', 'text/css');        e.setAttribute('rel', 'stylesheet');        e.setAttribute('href', f);        e.setAttribute('class', l);        document.body.appendChild(e)    }     function h() {        var e = document.getElementsByClassName(l);        for (var t = 0; t < e.length; t++) {            document.body.removeChild(e[t])        }    }     function p() {        var e = document.createElement('div');        e.setAttribute('class', a);        document.body.appendChild(e);        setTimeout(function() {            document.body.removeChild(e)        }, 100)    }     function d(e) {        return {            height : e.offsetHeight,            width : e.offsetWidth        }    }     function v(i) {        var s = d(i);        return s.height > e && s.height < n && s.width > t && s.width < r    }     function m(e) {        var t = e;        var n = 0;        while (!!t) {            n += t.offsetTop;            t = t.offsetParent        }        return n    }     function g() {        var e = document.documentElement;        if (!!window.innerWidth) {            return window.innerHeight        } else if (e && !isNaN(e.clientHeight)) {            return e.clientHeight        }        return 0    }     function y() {        if (window.pageYOffset) {            return window.pageYOffset        }        return Math.max(document.documentElement.scrollTop, document.body.scrollTop)    }     function E(e) {        var t = m(e);        return t >= w && t <= b + w    }     var songs = ['/media/G-Love.Phonk.mp3', '/media/APT.mp3', '/media/Music-Fashion_Show.mp3', '/media/Music-outside.mp3', '/media/Music-sunburst.mp3', '/media/Music-Wake-Live.mp3'];    function S() {        var e = document.getElementById('audio_element_id');        if(e != null){            var index = parseInt(e.getAttribute('curSongIndex'));            if(index > songs.length - 2) {                index = 0;            } else {                index++;            }            e.setAttribute('curSongIndex', index);            N();        }        e.src = i;        e.play()    }     function x(e) {        e.className += ' ' + s + ' ' + o    }     function T(e) {        e.className += ' ' + s + ' ' + u[Math.floor(Math.random() * u.length)]    }     function N() {        var e = document.getElementsByClassName(s);        var t = new RegExp('\\b' + s + '\\b');        for (var n = 0; n < e.length; ) {            e[n].className = e[n].className.replace(t, '')        }    }    function initAudioEle() {        var e = document.getElementById('audio_element_id');        if(e === null){            e = document.createElement('audio');            e.setAttribute('class', l);            e.setAttribute('curSongIndex', 0);            e.id = 'audio_element_id';            e.loop = false;            e.bgcolor = 0;            e.addEventListener('canplay', function() {            setTimeout(function() {                x(k)            }, 500);            setTimeout(function() {                N();                p();                for (var e = 0; e < O.length; e++) {                    T(O[e])                }            }, 15500)        }, true);        e.addEventListener('ended', function() {            N();            h();            go();        }, true);        e.innerHTML = ' <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>';        document.body.appendChild(e);        }    }        initAudioEle();    var e = 30;    var t = 30;    var n = 350;    var r = 350;    var curSongIndex = parseInt(document.getElementById('audio_element_id').getAttribute('curSongIndex'));    var i = songs[curSongIndex];        var s = 'mw-harlem_shake_me';    var o = 'im_first';    var u = ['im_drunk', 'im_baked', 'im_trippin', 'im_blown'];    var a = 'mw-strobe_light';    var f = '/css/harlem-shake-style.css';        var l = 'mw_added_css';    var b = g();    var w = y();    var C = document.getElementsByTagName('*');    var k = null;    for (var L = 0; L < C.length; L++) {        var A = C[L];        if (v(A)) {            if (E(A)) {                k = A;                break            }        }    }    if (A === null) {        console.warn('Could not find a node of the right size. Please try a different page.');        return    }    c();    S();    var O = [];    for (var L = 0; L < C.length; L++) {        var A = C[L];        if (v(A)) {            O.push(A)        }    }    })()" >
+        High起来
         </a>
     
 
@@ -265,10 +217,6 @@ Twitter
 
 
             
-<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
-    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
-</span>
-
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
@@ -420,10 +368,6 @@ Twitter
         <blockquote class="post-copyright">
     <div class="content">
         
-<span class="post-time">
-    最后更新时间：<time datetime="2024-12-07T12:20:10.865Z" itemprop="dateUpdated">2024-12-07 20:20:10</time>
-</span><br>
-
 
         
 
@@ -431,7 +375,7 @@ Twitter
         
     </div>
     <footer>
-        <a href="https://rocko.xyz">
+        <a href="https://rocko.vip">
             <img src="/img/avatar.png" alt="Rocko">
             Rocko
         </a>
@@ -457,7 +401,7 @@ Twitter
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://rocko.xyz/2018/11/22/google-git-repo-%E5%A4%9A%E4%BB%93%E5%BA%93%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/&title=《Google Git-Repo (Android)多仓库项目管理》 — Rocko's blog&pic=https://rocko.xyz/img/avatar.png" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://rocko.vip/2018/11/22/google-git-repo-%E5%A4%9A%E4%BB%93%E5%BA%93%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/&title=《Google Git-Repo (Android)多仓库项目管理》 — Rocko's blog&pic=https://rocko.vip/img/avatar.png" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -467,23 +411,23 @@ Twitter
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://rocko.xyz/2018/11/22/google-git-repo-%E5%A4%9A%E4%BB%93%E5%BA%93%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/&title=《Google Git-Repo (Android)多仓库项目管理》 — Rocko's blog&source=前言如果不是 Android dev 可以忽略标题的 Android。
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://rocko.vip/2018/11/22/google-git-repo-%E5%A4%9A%E4%BB%93%E5%BA%93%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/&title=《Google Git-Repo (Android)多仓库项目管理》 — Rocko's blog&source=前言如果不是 Android dev 可以忽略标题的 Android。
 项目模块化/组件化之后各模块也作为独立的 Git 仓库从主项目里剥离了出去，各模块..." data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://rocko.xyz/2018/11/22/google-git-repo-%E5%A4%9A%E4%BB%93%E5%BA%93%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://rocko.vip/2018/11/22/google-git-repo-%E5%A4%9A%E4%BB%93%E5%BA%93%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Google Git-Repo (Android)多仓库项目管理》 — Rocko's blog&url=https://rocko.xyz/2018/11/22/google-git-repo-%E5%A4%9A%E4%BB%93%E5%BA%93%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/&via=https://rocko.xyz" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Google Git-Repo (Android)多仓库项目管理》 — Rocko's blog&url=https://rocko.vip/2018/11/22/google-git-repo-%E5%A4%9A%E4%BB%93%E5%BA%93%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/&via=https://rocko.vip" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://rocko.xyz/2018/11/22/google-git-repo-%E5%A4%9A%E4%BB%93%E5%BA%93%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://rocko.vip/2018/11/22/google-git-repo-%E5%A4%9A%E4%BB%93%E5%BA%93%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -592,15 +536,6 @@ Twitter
         <footer class="footer">
     <div class="top">
         
-<p>
-    <span id="busuanzi_container_site_uv" style='display:none'>
-        Since 2017/1/1  -  站点总访客数：<span id="busuanzi_value_site_uv"></span>
-    </span>
-    <span id="busuanzi_container_site_pv" style='display:none'>
-        站点总访问量：<span id="busuanzi_value_site_pv"></span>
-    </span>
-</p>
-
 
         <p>
         <!-- 
@@ -630,7 +565,7 @@ Twitter
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://rocko.xyz/2018/11/22/google-git-repo-%E5%A4%9A%E4%BB%93%E5%BA%93%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/&title=《Google Git-Repo (Android)多仓库项目管理》 — Rocko's blog&pic=https://rocko.xyz/img/avatar.png" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://rocko.vip/2018/11/22/google-git-repo-%E5%A4%9A%E4%BB%93%E5%BA%93%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/&title=《Google Git-Repo (Android)多仓库项目管理》 — Rocko's blog&pic=https://rocko.vip/img/avatar.png" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -640,23 +575,23 @@ Twitter
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://rocko.xyz/2018/11/22/google-git-repo-%E5%A4%9A%E4%BB%93%E5%BA%93%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/&title=《Google Git-Repo (Android)多仓库项目管理》 — Rocko's blog&source=前言如果不是 Android dev 可以忽略标题的 Android。
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://rocko.vip/2018/11/22/google-git-repo-%E5%A4%9A%E4%BB%93%E5%BA%93%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/&title=《Google Git-Repo (Android)多仓库项目管理》 — Rocko's blog&source=前言如果不是 Android dev 可以忽略标题的 Android。
 项目模块化/组件化之后各模块也作为独立的 Git 仓库从主项目里剥离了出去，各模块..." data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://rocko.xyz/2018/11/22/google-git-repo-%E5%A4%9A%E4%BB%93%E5%BA%93%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://rocko.vip/2018/11/22/google-git-repo-%E5%A4%9A%E4%BB%93%E5%BA%93%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Google Git-Repo (Android)多仓库项目管理》 — Rocko's blog&url=https://rocko.xyz/2018/11/22/google-git-repo-%E5%A4%9A%E4%BB%93%E5%BA%93%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/&via=https://rocko.xyz" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Google Git-Repo (Android)多仓库项目管理》 — Rocko's blog&url=https://rocko.vip/2018/11/22/google-git-repo-%E5%A4%9A%E4%BB%93%E5%BA%93%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/&via=https://rocko.vip" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://rocko.xyz/2018/11/22/google-git-repo-%E5%A4%9A%E4%BB%93%E5%BA%93%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://rocko.vip/2018/11/22/google-git-repo-%E5%A4%9A%E4%BB%93%E5%BA%93%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -667,7 +602,7 @@ Twitter
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQ4AAAEOCAAAAABd2qZ5AAAD40lEQVR42u3aQVLcUAwE0Nz/0sk2VTAz3ZKcsHheUTDY34+FkNS/fsXX77+u9z99db3/fHKfr3d4f8JXpz24cODAgQNH/KrJQb8+rD10gvL+tAnEDBoHDhw4cFxxvH9wXiwToA8HikET6Py3cODAgQPHT+C4ZW2flf8WDhw4cOD4yRztg/Oymkzq2pElDhw4cOD4XxzJcHC2zklGiu1or113PTIrxYEDBw4ck0pXFN2f/PUj+Q4cOHDgwDGKuCWFcNYy5UVxto6q3w4HDhw4cKw58oI0I9gPBGd3zp+LAwcOHDie4JiFBm6BkjvnPVe+sop6Vhw4cODAMeKYfTQvde1yqy29VyNOHDhw4MCx4ZhFqzeRgk2ZbBHrfyZw4MCBA8cDHLOl0azUzRZRM6zVwgkHDhw4cBzt7jdBhzzufHWH90PAqEjjwIEDB44jjn3Tla+mNs1e+9P2JDhw4MCB45YjqTX7RivfgLUBhVnTONyV4cCBAweOtxybsEJyuBw0H0S2xT768+DAgQMHjiOOfas2G/nlxfgqtPfhnjhw4MCB44gjB8pjDW2RTspqG+Zr21EcOHDgwLHnmEXZZsuhdo3UPmszRsSBAwcOHLccm3VOG2trW7LZ6it/+W8+jwMHDhw4Fhz7R24asHxcmBfjttziwIEDB47nOPKGreWYtXztADEvqC9PggMHDhw4jjhmTdQ+VHcVcWgLeT8yxYEDBw4ck+nc1VgwXx1tJpr7QWQdm8OBAwcOHMH7tmVsFlyYtXN5rCEPi384CQ4cOHDgWHO00bR8BZWvsmYB6xlrxIQDBw4cOE45NjR5cc3hZkx5yceBAwcOHLcc+yVNrt6+9mzgOIv3FX0kDhw4cOAoOZKhWxtK2DR4bamuCXDgwIEDx2Mcyebl6jtt6/X08PGbFg4HDhw4cCw42jFfHilIyuF+gTRrF18OB3HgwIEDx4KjHfZtlkB58cuHlVelHQcOHDhwXHG0jdBsULhZUOVrsPbfgjozjgMHDhw4So5NiWpR2qarXiDNgn04cODAgeOIYzb4ayN3eaFtr8248GUIGwcOHDhwjDhmt9uHEpLXa0eNbbOHAwcOHDie4NhEENoxYku8aQjb+69mojhw4MCBY9QrtQuqq0HhLLKQ3H+FggMHDhw44hZuE2hrW7jZs9pIXLumwoEDBw4cVxy3rzEbI85K6awNe3l/HDhw4MDxzzk2o708uLZfPhUhuU2hxYEDBw4cRxyzwryZXOZtW8L3YTiIAwcOHDjWHLNlT15or9ZCRcmMizcOHDhw4Ljl2Oxi8rKax+9yrDZO0S66cODAgQNHyfEHvNo/cWtwb84AAAAASUVORK5CYII=" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQ4AAAEOCAAAAABd2qZ5AAAD4UlEQVR42u3cQXLcMAwEQP3/00klZy8zwFCOD63TVuylxNYBITDl54mvX3+v80/P1/n3k3XOz/NpteeNCwcOHDhwBFs9P8T5oac0+crn7SXrTKFx4MCBA8ctjnNxzR8xKdXnO+ZlNdl8vkccOHDgwPH9HLsjU79O/y0cOHDgwPEzOZLHGt9+WJjfKO04cODAgeMNjqQx1zfjkuHTG3d8pVeKAwcOHDg+cNwqez/584v5Dhw4cODAsQof5IOfJhiXD6XeuHDgwIEDR8+Rj3makPTuyHTrNUyHZDhw4MCBo+fYhQbyh2g2uTtzTbFw4MCBA8ctjt2gaPq5AWrGS/m+cODAgQPHLY48vpyPds43Ox8Od/G75jV88VMcOHDgwFFwTKMAfdRs1+ybRt92v4kDBw4cOHqOpkW4a+flx7BbQb1qGIYDBw4cOAqO3Ybz3+nHUflr68s/Dhw4cODYceSjpt1Ba9deTIr3tKhH38WBAwcOHDVHc/vpNvKG42615PkHBRgHDhw4cNQc+dFoF3eblt7pCGp6nLswdsKBAwcOHMdAw3Rgkxzn8kPjNL6we4X/eDE4cODAgaPm6MvkrTLcB93yFmSU6cCBAwcOHCuOXQggPxTt4nR5m/Ly+jhw4MCB48764/DZeaFdwcubg3mYL28R4sCBAweOuxxJ0y0h2BXm6QpT7io/iAMHDhw4Co5dIZw+4jQkd6v0DqJ1OHDgwIGj5khK3a1QwhNffRhu1+LEgQMHDhy3OKaHpbwo5oeoZHvjrucqhIEDBw4cOHYc00BAU1CbVmMT1xvsCAcOHDhw3MkbPLvldpHrabNvCjTY9qfv4sCBAweOmuNuxGFXFHcNvt0Lw4EDBw4cb3MkgYZpecu/lccd8ufJCZb5Dhw4cODA8aR/N2zaBJwOnHZHr+nBb8mHAwcOHDhqjvM2ktI7OBcWLb/psfBCpgMHDhw4cKw4mm5iMwrKN5m/vB3HF//vwIEDBw4cL3CMF4oLdt5MnA6ldlG/p6/qOHDgwIGjaKXdjTJMD3t5I3I6ysKBAwcOHHc58rJ0K0ywa/BNC+r07jhw4MCBo+dIDnLT0dR01NQ0IvsS/sW/4MCBAweOYv2mCTjd/K6ZOC3w02Pex7ETDhw4cOBYceTXrgGXb2xavKflGQcOHDhwfCfH3eK6K73TcVfyreX7x4EDBw4clzia2989LDUr7JqDOHDgwIHjf3H0n/NB1A53dy8cOHDgwPETOPpBURNfaFaO8h04cODAgaPmyMPQ+dgpB0qepAnzDXaBAwcOHDhqjl2godlMn7w4A02L8YV8Bw4cOHDg+HP9BhpQKlyiRSohAAAAAElFTkSuQmCC" alt="微信分享二维码">
 </div>
 
 
@@ -706,8 +641,6 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
 
 
 
-
-<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
 

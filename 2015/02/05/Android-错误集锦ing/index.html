@@ -10,7 +10,7 @@
     <meta name="google-site-verification" content="J7ONClDGsj92njCYAloRwEkDpz94YUFUxgi76g1m4Lk">
     
     
-    <link rel="canonical" href="https://rocko.xyz/2015/02/05/Android-%E9%94%99%E8%AF%AF%E9%9B%86%E9%94%A6ing/">
+    <link rel="canonical" href="https://rocko.vip/2015/02/05/Android-%E9%94%99%E8%AF%AF%E9%9B%86%E9%94%A6ing/">
     
     
     <title>Android 错误集锦ing... | Rocko&#39;s blog</title>
@@ -26,7 +26,7 @@
     <meta name="description" content="Fork from my csdn blog: Android 错误集锦(ing…).Last update time: 2016-03-06 23:34:26.    温馨提示：Ctrl+F查找  系统环境：Windows7 64位问题描述：Eclipse真机无法打印log信息错误提示：…解决方案：window–&gt;show view–&gt;android-&gt;devices，打开de">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android 错误集锦ing...">
-<meta property="og:url" content="https://rocko.xyz/2015/02/05/Android-%E9%94%99%E8%AF%AF%E9%9B%86%E9%94%A6ing/index.html">
+<meta property="og:url" content="https://rocko.vip/2015/02/05/Android-%E9%94%99%E8%AF%AF%E9%9B%86%E9%94%A6ing/index.html">
 <meta property="og:site_name" content="Rocko&#39;s blog">
 <meta property="og:description" content="Fork from my csdn blog: Android 错误集锦(ing…).Last update time: 2016-03-06 23:34:26.    温馨提示：Ctrl+F查找  系统环境：Windows7 64位问题描述：Eclipse真机无法打印log信息错误提示：…解决方案：window–&gt;show view–&gt;android-&gt;devices，打开de">
 <meta property="og:locale" content="zh_CN">
@@ -121,54 +121,6 @@
               </a>
             </li>
         
-            <li class="waves-block waves-effect">
-              <a href="/friendLink"  >
-                <i class="icon icon-lg icon-users"></i>
-
-友链
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="https://adb.rocko.xyz" target="_blank" >
-                <i class="icon icon-lg icon-bookmark"></i>
-
-ADB
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="https://github.com/zhengxiaopeng" target="_blank" >
-                <i class="icon icon-lg icon-github"></i>
-
-GitHub
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="//weibo.com/678662430/" target="_blank" >
-                <i class="icon icon-lg icon-weibo"></i>
-
-Weibo
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="https:////www.zhihu.com/people/rocko/" target="_blank" >
-                <i class="icon icon-lg icon-smile-o"></i>
-
-Zhihu
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="https://twitter.com/rocko_zxp" target="_blank" >
-                <i class="icon icon-lg icon-twitter"></i>
-
-Twitter
-              </a>
-            </li>
-        
       </ul>
     </div>
   </div>
@@ -205,8 +157,8 @@ Twitter
  
 
 
-        <a id="header-high" style="text-decoration: none; margin-left:12px; width:71px; margin-right:5px" class="header-icon waves-effect waves-circle waves-light"  onClick="javascript:(    /*     * Copyright (C) 2015 Rocko (rocko.xyz) <rocko.zxp@gmail.com>     *     * Licensed under the Apache License, Version 2.0 (the 'License');     * you may not use this file except in compliance with the License.     * You may obtain a copy of the License at     *     *      http://www.apache.org/licenses/LICENSE-2.0     *     * Unless required by applicable law or agreed to in writing, software     * distributed under the License is distributed on an 'AS IS' BASIS,     * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.     * See the License for the specific language governing permissions and     * limitations under the License.     */    function go() {        function c() {        var e = document.createElement('link');        e.setAttribute('type', 'text/css');        e.setAttribute('rel', 'stylesheet');        e.setAttribute('href', f);        e.setAttribute('class', l);        document.body.appendChild(e)    }     function h() {        var e = document.getElementsByClassName(l);        for (var t = 0; t < e.length; t++) {            document.body.removeChild(e[t])        }    }     function p() {        var e = document.createElement('div');        e.setAttribute('class', a);        document.body.appendChild(e);        setTimeout(function() {            document.body.removeChild(e)        }, 100)    }     function d(e) {        return {            height : e.offsetHeight,            width : e.offsetWidth        }    }     function v(i) {        var s = d(i);        return s.height > e && s.height < n && s.width > t && s.width < r    }     function m(e) {        var t = e;        var n = 0;        while (!!t) {            n += t.offsetTop;            t = t.offsetParent        }        return n    }     function g() {        var e = document.documentElement;        if (!!window.innerWidth) {            return window.innerHeight        } else if (e && !isNaN(e.clientHeight)) {            return e.clientHeight        }        return 0    }     function y() {        if (window.pageYOffset) {            return window.pageYOffset        }        return Math.max(document.documentElement.scrollTop, document.body.scrollTop)    }     function E(e) {        var t = m(e);        return t >= w && t <= b + w    }     var songs = [                'http://pit79pl1z.bkt.clouddn.com/Music-Fashion_Show.mp3',                'http://pit79pl1z.bkt.clouddn.com/Music-Wake-Live.mp3',                'http://pit79pl1z.bkt.clouddn.com/Music-outside.mp3',                'http://pit79pl1z.bkt.clouddn.com/Music-sunburst.mp3'    ];    function S() {        var e = document.getElementById('audio_element_id');        if(e != null){            var index = parseInt(e.getAttribute('curSongIndex'));            if(index > songs.length - 2) {                index = 0;            } else {                index++;            }            e.setAttribute('curSongIndex', index);            N();        }        e.src = i;        e.play()    }     function x(e) {        e.className += ' ' + s + ' ' + o    }     function T(e) {        e.className += ' ' + s + ' ' + u[Math.floor(Math.random() * u.length)]    }     function N() {        var e = document.getElementsByClassName(s);        var t = new RegExp('\\b' + s + '\\b');        for (var n = 0; n < e.length; ) {            e[n].className = e[n].className.replace(t, '')        }    }    function initAudioEle() {        var e = document.getElementById('audio_element_id');        if(e === null){            e = document.createElement('audio');            e.setAttribute('class', l);            e.setAttribute('curSongIndex', 0);            e.id = 'audio_element_id';            e.loop = false;            e.bgcolor = 0;            e.addEventListener('canplay', function() {            setTimeout(function() {                x(k)            }, 500);            setTimeout(function() {                N();                p();                for (var e = 0; e < O.length; e++) {                    T(O[e])                }            }, 15500)        }, true);        e.addEventListener('ended', function() {            N();            h();            go();        }, true);        e.innerHTML = ' <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>';        document.body.appendChild(e);        }    }        initAudioEle();    var e = 30;    var t = 30;    var n = 350;    var r = 350;    var curSongIndex = parseInt(document.getElementById('audio_element_id').getAttribute('curSongIndex'));    var i = songs[curSongIndex];        var s = 'mw-harlem_shake_me';    var o = 'im_first';    var u = ['im_drunk', 'im_baked', 'im_trippin', 'im_blown'];    var a = 'mw-strobe_light';    var f = 'https://rocko.xyz/css/harlem-shake-style.css';        var l = 'mw_added_css';    var b = g();    var w = y();    var C = document.getElementsByTagName('*');    var k = null;    for (var L = 0; L < C.length; L++) {        var A = C[L];        if (v(A)) {            if (E(A)) {                k = A;                break            }        }    }    if (A === null) {        console.warn('Could not find a node of the right size. Please try a different page.');        return    }    c();    S();    var O = [];    for (var L = 0; L < C.length; L++) {        var A = C[L];        if (v(A)) {            O.push(A)        }    }    })()" >
-        <i class="icon icon-lg icon-music"></i> High~
+        <a id="header-high" style="text-decoration: none; margin-left:12px; width:71px; margin-right:5px" class="header-icon waves-effect waves-circle waves-light"  onClick="javascript:(    /*     * Copyright (C) 2015 Rocko (rocko.xyz) <rocko.zxp@gmail.com>     *     * Licensed under the Apache License, Version 2.0 (the 'License');     * you may not use this file except in compliance with the License.     * You may obtain a copy of the License at     *     *      http://www.apache.org/licenses/LICENSE-2.0     *     * Unless required by applicable law or agreed to in writing, software     * distributed under the License is distributed on an 'AS IS' BASIS,     * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.     * See the License for the specific language governing permissions and     * limitations under the License.     */    function go() {        function c() {        var e = document.createElement('link');        e.setAttribute('type', 'text/css');        e.setAttribute('rel', 'stylesheet');        e.setAttribute('href', f);        e.setAttribute('class', l);        document.body.appendChild(e)    }     function h() {        var e = document.getElementsByClassName(l);        for (var t = 0; t < e.length; t++) {            document.body.removeChild(e[t])        }    }     function p() {        var e = document.createElement('div');        e.setAttribute('class', a);        document.body.appendChild(e);        setTimeout(function() {            document.body.removeChild(e)        }, 100)    }     function d(e) {        return {            height : e.offsetHeight,            width : e.offsetWidth        }    }     function v(i) {        var s = d(i);        return s.height > e && s.height < n && s.width > t && s.width < r    }     function m(e) {        var t = e;        var n = 0;        while (!!t) {            n += t.offsetTop;            t = t.offsetParent        }        return n    }     function g() {        var e = document.documentElement;        if (!!window.innerWidth) {            return window.innerHeight        } else if (e && !isNaN(e.clientHeight)) {            return e.clientHeight        }        return 0    }     function y() {        if (window.pageYOffset) {            return window.pageYOffset        }        return Math.max(document.documentElement.scrollTop, document.body.scrollTop)    }     function E(e) {        var t = m(e);        return t >= w && t <= b + w    }     var songs = ['/media/G-Love.Phonk.mp3', '/media/APT.mp3', '/media/Music-Fashion_Show.mp3', '/media/Music-outside.mp3', '/media/Music-sunburst.mp3', '/media/Music-Wake-Live.mp3'];    function S() {        var e = document.getElementById('audio_element_id');        if(e != null){            var index = parseInt(e.getAttribute('curSongIndex'));            if(index > songs.length - 2) {                index = 0;            } else {                index++;            }            e.setAttribute('curSongIndex', index);            N();        }        e.src = i;        e.play()    }     function x(e) {        e.className += ' ' + s + ' ' + o    }     function T(e) {        e.className += ' ' + s + ' ' + u[Math.floor(Math.random() * u.length)]    }     function N() {        var e = document.getElementsByClassName(s);        var t = new RegExp('\\b' + s + '\\b');        for (var n = 0; n < e.length; ) {            e[n].className = e[n].className.replace(t, '')        }    }    function initAudioEle() {        var e = document.getElementById('audio_element_id');        if(e === null){            e = document.createElement('audio');            e.setAttribute('class', l);            e.setAttribute('curSongIndex', 0);            e.id = 'audio_element_id';            e.loop = false;            e.bgcolor = 0;            e.addEventListener('canplay', function() {            setTimeout(function() {                x(k)            }, 500);            setTimeout(function() {                N();                p();                for (var e = 0; e < O.length; e++) {                    T(O[e])                }            }, 15500)        }, true);        e.addEventListener('ended', function() {            N();            h();            go();        }, true);        e.innerHTML = ' <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>';        document.body.appendChild(e);        }    }        initAudioEle();    var e = 30;    var t = 30;    var n = 350;    var r = 350;    var curSongIndex = parseInt(document.getElementById('audio_element_id').getAttribute('curSongIndex'));    var i = songs[curSongIndex];        var s = 'mw-harlem_shake_me';    var o = 'im_first';    var u = ['im_drunk', 'im_baked', 'im_trippin', 'im_blown'];    var a = 'mw-strobe_light';    var f = '/css/harlem-shake-style.css';        var l = 'mw_added_css';    var b = g();    var w = y();    var C = document.getElementsByTagName('*');    var k = null;    for (var L = 0; L < C.length; L++) {        var A = C[L];        if (v(A)) {            if (E(A)) {                k = A;                break            }        }    }    if (A === null) {        console.warn('Could not find a node of the right size. Please try a different page.');        return    }    c();    S();    var O = [];    for (var L = 0; L < C.length; L++) {        var A = C[L];        if (v(A)) {            O.push(A)        }    }    })()" >
+        High起来
         </a>
     
 
@@ -259,10 +211,6 @@ Twitter
 
 
             
-<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
-    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
-</span>
-
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
@@ -456,10 +404,6 @@ Twitter
         <blockquote class="post-copyright">
     <div class="content">
         
-<span class="post-time">
-    最后更新时间：<time datetime="2017-01-02T12:44:34.000Z" itemprop="dateUpdated">2017-01-02 20:44:34</time>
-</span><br>
-
 
         
 
@@ -467,7 +411,7 @@ Twitter
         
     </div>
     <footer>
-        <a href="https://rocko.xyz">
+        <a href="https://rocko.vip">
             <img src="/img/avatar.png" alt="Rocko">
             Rocko
         </a>
@@ -493,7 +437,7 @@ Twitter
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://rocko.xyz/2015/02/05/Android-%E9%94%99%E8%AF%AF%E9%9B%86%E9%94%A6ing/&title=《Android 错误集锦ing...》 — Rocko's blog&pic=https://rocko.xyz/img/avatar.png" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://rocko.vip/2015/02/05/Android-%E9%94%99%E8%AF%AF%E9%9B%86%E9%94%A6ing/&title=《Android 错误集锦ing...》 — Rocko's blog&pic=https://rocko.vip/img/avatar.png" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -503,22 +447,22 @@ Twitter
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://rocko.xyz/2015/02/05/Android-%E9%94%99%E8%AF%AF%E9%9B%86%E9%94%A6ing/&title=《Android 错误集锦ing...》 — Rocko's blog&source=Fork from my csdn blog: Android 错误集锦(ing…).Last update time: 2016-03-06 23:34..." data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://rocko.vip/2015/02/05/Android-%E9%94%99%E8%AF%AF%E9%9B%86%E9%94%A6ing/&title=《Android 错误集锦ing...》 — Rocko's blog&source=Fork from my csdn blog: Android 错误集锦(ing…).Last update time: 2016-03-06 23:34..." data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://rocko.xyz/2015/02/05/Android-%E9%94%99%E8%AF%AF%E9%9B%86%E9%94%A6ing/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://rocko.vip/2015/02/05/Android-%E9%94%99%E8%AF%AF%E9%9B%86%E9%94%A6ing/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Android 错误集锦ing...》 — Rocko's blog&url=https://rocko.xyz/2015/02/05/Android-%E9%94%99%E8%AF%AF%E9%9B%86%E9%94%A6ing/&via=https://rocko.xyz" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Android 错误集锦ing...》 — Rocko's blog&url=https://rocko.vip/2015/02/05/Android-%E9%94%99%E8%AF%AF%E9%9B%86%E9%94%A6ing/&via=https://rocko.vip" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://rocko.xyz/2015/02/05/Android-%E9%94%99%E8%AF%AF%E9%9B%86%E9%94%A6ing/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://rocko.vip/2015/02/05/Android-%E9%94%99%E8%AF%AF%E9%9B%86%E9%94%A6ing/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -634,15 +578,6 @@ Twitter
         <footer class="footer">
     <div class="top">
         
-<p>
-    <span id="busuanzi_container_site_uv" style='display:none'>
-        Since 2017/1/1  -  站点总访客数：<span id="busuanzi_value_site_uv"></span>
-    </span>
-    <span id="busuanzi_container_site_pv" style='display:none'>
-        站点总访问量：<span id="busuanzi_value_site_pv"></span>
-    </span>
-</p>
-
 
         <p>
         <!-- 
@@ -672,7 +607,7 @@ Twitter
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://rocko.xyz/2015/02/05/Android-%E9%94%99%E8%AF%AF%E9%9B%86%E9%94%A6ing/&title=《Android 错误集锦ing...》 — Rocko's blog&pic=https://rocko.xyz/img/avatar.png" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://rocko.vip/2015/02/05/Android-%E9%94%99%E8%AF%AF%E9%9B%86%E9%94%A6ing/&title=《Android 错误集锦ing...》 — Rocko's blog&pic=https://rocko.vip/img/avatar.png" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -682,22 +617,22 @@ Twitter
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://rocko.xyz/2015/02/05/Android-%E9%94%99%E8%AF%AF%E9%9B%86%E9%94%A6ing/&title=《Android 错误集锦ing...》 — Rocko's blog&source=Fork from my csdn blog: Android 错误集锦(ing…).Last update time: 2016-03-06 23:34..." data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://rocko.vip/2015/02/05/Android-%E9%94%99%E8%AF%AF%E9%9B%86%E9%94%A6ing/&title=《Android 错误集锦ing...》 — Rocko's blog&source=Fork from my csdn blog: Android 错误集锦(ing…).Last update time: 2016-03-06 23:34..." data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://rocko.xyz/2015/02/05/Android-%E9%94%99%E8%AF%AF%E9%9B%86%E9%94%A6ing/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://rocko.vip/2015/02/05/Android-%E9%94%99%E8%AF%AF%E9%9B%86%E9%94%A6ing/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Android 错误集锦ing...》 — Rocko's blog&url=https://rocko.xyz/2015/02/05/Android-%E9%94%99%E8%AF%AF%E9%9B%86%E9%94%A6ing/&via=https://rocko.xyz" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Android 错误集锦ing...》 — Rocko's blog&url=https://rocko.vip/2015/02/05/Android-%E9%94%99%E8%AF%AF%E9%9B%86%E9%94%A6ing/&via=https://rocko.vip" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://rocko.xyz/2015/02/05/Android-%E9%94%99%E8%AF%AF%E9%9B%86%E9%94%A6ing/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://rocko.vip/2015/02/05/Android-%E9%94%99%E8%AF%AF%E9%9B%86%E9%94%A6ing/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -708,7 +643,7 @@ Twitter
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACqElEQVR42u3aS24CQQwFQO5/aSJlxQKG508Di5oVAibT1ZHaxvbtFl/3/+vx9eM7r75z/Xrr3oULDw8Pr7X0V1fCmwN6W3a9Zjw8PLzTvPlhfY+v62flwSn6O3h4eHhf5VUT61fhpwq4DkV4eHh4v8yrLjpPlJMkGw8PD+/XeEkxIi8WTJLsefqOh4eHd5rXa4B99/Xx/h4eHh5eq6ueH+gnUuSFteHh4eEd4OUF1q3gkW9Bnty/WTkeHh7eR3jVksT1EreGAPJi8ZvAgIeHhzfg5bDep72yby8gRck0Hh4e3hIvLwdUF7GbWFfDDx4eHt4JXvXQz9+ZDA1sbQQeHh7eOd58lGoSDKKR08lz8fDw8FZ5vTQ6LyjMW2K9LbhNfiXg4eHhxbxqmjsJG3mhYVQWwcPDwzvA6xUXesNbE0wv/ODh4eGd4E1aTb2UN0+j8+T+5Trx8PDwDvCaMWSQtfYKtflGv2mA4eHh4Y151US5etznSfY1qZea4+Hh4Z3jJaWHecuqlyhXw9KTXwx4eHh4q7y8lZWXD3abZGtbg4eHh7fEy0u01SX2yrvVT6MqCx4eHt4qLy+e5iMFyV3VLesl2Xh4eHjnePP2fy+9rn6nOvyKh4eH93neZJggX0pvPGveqMPDw8Ob83pH8CTt3krKo03Hw8PDW+VVh0fzg37yfrJZ5f8bHh4e3iqvGhjywsFktGtejMbDw8Pb5d2L17x0Wy3X5uHkyZbh4eHhHeDN++y99HceNpYHC/Dw8PCKvK1gUE2OtwZk8fDw8L7Fmz++V3KdjBREo1d4eHh4P8bLW1a9gmx1aODNuBUeHh7ex3mTqa786M/HUqPwg4eHh3eMl49PJXf1hrSqiXgUePDw8PAO8KoNsN7waLUY0Uvrm1Q8PDy89N4/JYcNATMQS9UAAAAASUVORK5CYII=" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACuUlEQVR42u3bzW7qQAwG0Lz/S1Opqy5K+PwzwOLMClFI5syVYmP7Xle8Hr/r7+u/7zz7zP3rre8uLDw8PLzW1p+tZ5d+Bu4Bekd2v2c8PDy807zdDRVuHz/0qwEGDw8P7xt482Bwz6iGIjw8PLzv5yWXm6Tj9weHh4eH9228pBiRP9bz9HpSDl6uteDh4eHVqgHlBthnXx/v7+Hh4eG1uuqTgmy1qXYfHnq7xcPDwzvBy9PlrYCRFyCSZDoKGHh4eHhv4eWjV8mDu9foSkJFBMbDw8Nb5VXb89Xy6+T6k5rD1Zs+wMPDw0t3NYsqQflgnljnyXeU++Ph4eENePmgQN7ynxSC8/fLBVw8PDy8JV5eQp2UXKtJc95ai4IQHh4e3iovLzdUi7lbLbHeERSmD/Dw8PDGvOpgQd48qwaheUMODw8P7wSvWoTNRwfms0+93weFBhgeHh5ei/cYr92QUw0GL/aGh4eHd4CXX7RcCGhFp16oeHFlPDw8vMO85JZ56jz55GSMAA8PD+8cb54i91LtPFG+4hX9YsDDw8N77P9PovnwaJ5q59c/cjR4eHh4LV6eLuebqHbwJ3+NyhB4eHh4q7yk2Dp/J9lcXsa9qgsPDw/vAG/S/q8+piefqQ6/4uHh4b2fV61k9LbSG89aKOPi4eHhjXmTxlVSJpgk7gsFETw8PLxV3tbwaD4OtXVYo383PDw8vDEvSYjzEkBSUEjuW60qvBhaxcPDwxvzHsXVe0xPyrV5OPnnyPDw8PAO8OZ99l76Ow8by4MFeHh4eEVeLxhUf+/3GmYLI1l4eHh4x3jz208S7sn41Ivv4uHh4X0ZrxdItjpW0aHj4eHhfZSXDxCUH9+t8a8o/ODh4eEd41XHp/LRgepxVI8gGlfFw8PDW+VVG2B5Mp2Hn3n5eNTlw8PDw0u/+wMpd3Oo2qcCgQAAAABJRU5ErkJggg==" alt="微信分享二维码">
 </div>
 
 
@@ -747,8 +682,6 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
 
 
 
-
-<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
 

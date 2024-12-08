@@ -10,7 +10,7 @@
     <meta name="google-site-verification" content="J7ONClDGsj92njCYAloRwEkDpz94YUFUxgi76g1m4Lk">
     
     
-    <link rel="canonical" href="https://rocko.xyz/2015/03/10/Python%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E5%A4%9A%E8%AF%B4%E8%AF%84%E8%AE%BA%E9%80%9A%E7%9F%A5/">
+    <link rel="canonical" href="https://rocko.vip/2015/03/10/Python%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E5%A4%9A%E8%AF%B4%E8%AF%84%E8%AE%BA%E9%80%9A%E7%9F%A5/">
     
     
     <title>Python小程序-多说评论通知 | Rocko&#39;s blog</title>
@@ -26,18 +26,18 @@
     <meta name="description" content="前言这段时间在学习Python，写了第一个稍有实用价值的Python脚本小程序，发文以作纪念。实现多说评论邮件通知的功能：利用多说的API定时去检查后台数据从而检测是否有新评论的数据产生，有的话就发邮件到指定邮箱。之所以做这个是因为多说官方的方法一直尝试失败，可以戳这个：同步用户到多说实现文章被评论时的提醒功能，作者用户是导入了，但测试发现一直没反应；另外一个就是多说官方的通知不是及时的，一天一封">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python小程序-多说评论通知">
-<meta property="og:url" content="https://rocko.xyz/2015/03/10/Python%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E5%A4%9A%E8%AF%B4%E8%AF%84%E8%AE%BA%E9%80%9A%E7%9F%A5/index.html">
+<meta property="og:url" content="https://rocko.vip/2015/03/10/Python%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E5%A4%9A%E8%AF%B4%E8%AF%84%E8%AE%BA%E9%80%9A%E7%9F%A5/index.html">
 <meta property="og:site_name" content="Rocko&#39;s blog">
 <meta property="og:description" content="前言这段时间在学习Python，写了第一个稍有实用价值的Python脚本小程序，发文以作纪念。实现多说评论邮件通知的功能：利用多说的API定时去检查后台数据从而检测是否有新评论的数据产生，有的话就发邮件到指定邮箱。之所以做这个是因为多说官方的方法一直尝试失败，可以戳这个：同步用户到多说实现文章被评论时的提醒功能，作者用户是导入了，但测试发现一直没反应；另外一个就是多说官方的通知不是及时的，一天一封">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://rocko.xyz/images/Python%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E5%A4%9A%E8%AF%B4%E8%AF%84%E8%AE%BA%E9%80%9A%E7%9F%A5-1.png">
+<meta property="og:image" content="https://rocko.vip/images/Python%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E5%A4%9A%E8%AF%B4%E8%AF%84%E8%AE%BA%E9%80%9A%E7%9F%A5-1.png">
 <meta property="article:published_time" content="2015-03-09T16:40:06.000Z">
 <meta property="article:modified_time" content="2024-12-07T14:29:16.542Z">
 <meta property="article:author" content="Rocko">
 <meta property="article:tag" content="多说">
 <meta property="article:tag" content="Hexo">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://rocko.xyz/images/Python%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E5%A4%9A%E8%AF%B4%E8%AF%84%E8%AE%BA%E9%80%9A%E7%9F%A5-1.png">
+<meta name="twitter:image" content="https://rocko.vip/images/Python%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E5%A4%9A%E8%AF%B4%E8%AF%84%E8%AE%BA%E9%80%9A%E7%9F%A5-1.png">
     
         <link rel="alternate" type="application/atom+xml" title="Rocko&#39;s blog" href="/atom.xml">
     
@@ -121,54 +121,6 @@
               </a>
             </li>
         
-            <li class="waves-block waves-effect">
-              <a href="/friendLink"  >
-                <i class="icon icon-lg icon-users"></i>
-
-友链
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="https://adb.rocko.xyz" target="_blank" >
-                <i class="icon icon-lg icon-bookmark"></i>
-
-ADB
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="https://github.com/zhengxiaopeng" target="_blank" >
-                <i class="icon icon-lg icon-github"></i>
-
-GitHub
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="//weibo.com/678662430/" target="_blank" >
-                <i class="icon icon-lg icon-weibo"></i>
-
-Weibo
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="https:////www.zhihu.com/people/rocko/" target="_blank" >
-                <i class="icon icon-lg icon-smile-o"></i>
-
-Zhihu
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="https://twitter.com/rocko_zxp" target="_blank" >
-                <i class="icon icon-lg icon-twitter"></i>
-
-Twitter
-              </a>
-            </li>
-        
       </ul>
     </div>
   </div>
@@ -205,8 +157,8 @@ Twitter
  
 
 
-        <a id="header-high" style="text-decoration: none; margin-left:12px; width:71px; margin-right:5px" class="header-icon waves-effect waves-circle waves-light"  onClick="javascript:(    /*     * Copyright (C) 2015 Rocko (rocko.xyz) <rocko.zxp@gmail.com>     *     * Licensed under the Apache License, Version 2.0 (the 'License');     * you may not use this file except in compliance with the License.     * You may obtain a copy of the License at     *     *      http://www.apache.org/licenses/LICENSE-2.0     *     * Unless required by applicable law or agreed to in writing, software     * distributed under the License is distributed on an 'AS IS' BASIS,     * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.     * See the License for the specific language governing permissions and     * limitations under the License.     */    function go() {        function c() {        var e = document.createElement('link');        e.setAttribute('type', 'text/css');        e.setAttribute('rel', 'stylesheet');        e.setAttribute('href', f);        e.setAttribute('class', l);        document.body.appendChild(e)    }     function h() {        var e = document.getElementsByClassName(l);        for (var t = 0; t < e.length; t++) {            document.body.removeChild(e[t])        }    }     function p() {        var e = document.createElement('div');        e.setAttribute('class', a);        document.body.appendChild(e);        setTimeout(function() {            document.body.removeChild(e)        }, 100)    }     function d(e) {        return {            height : e.offsetHeight,            width : e.offsetWidth        }    }     function v(i) {        var s = d(i);        return s.height > e && s.height < n && s.width > t && s.width < r    }     function m(e) {        var t = e;        var n = 0;        while (!!t) {            n += t.offsetTop;            t = t.offsetParent        }        return n    }     function g() {        var e = document.documentElement;        if (!!window.innerWidth) {            return window.innerHeight        } else if (e && !isNaN(e.clientHeight)) {            return e.clientHeight        }        return 0    }     function y() {        if (window.pageYOffset) {            return window.pageYOffset        }        return Math.max(document.documentElement.scrollTop, document.body.scrollTop)    }     function E(e) {        var t = m(e);        return t >= w && t <= b + w    }     var songs = [                'http://pit79pl1z.bkt.clouddn.com/Music-Fashion_Show.mp3',                'http://pit79pl1z.bkt.clouddn.com/Music-Wake-Live.mp3',                'http://pit79pl1z.bkt.clouddn.com/Music-outside.mp3',                'http://pit79pl1z.bkt.clouddn.com/Music-sunburst.mp3'    ];    function S() {        var e = document.getElementById('audio_element_id');        if(e != null){            var index = parseInt(e.getAttribute('curSongIndex'));            if(index > songs.length - 2) {                index = 0;            } else {                index++;            }            e.setAttribute('curSongIndex', index);            N();        }        e.src = i;        e.play()    }     function x(e) {        e.className += ' ' + s + ' ' + o    }     function T(e) {        e.className += ' ' + s + ' ' + u[Math.floor(Math.random() * u.length)]    }     function N() {        var e = document.getElementsByClassName(s);        var t = new RegExp('\\b' + s + '\\b');        for (var n = 0; n < e.length; ) {            e[n].className = e[n].className.replace(t, '')        }    }    function initAudioEle() {        var e = document.getElementById('audio_element_id');        if(e === null){            e = document.createElement('audio');            e.setAttribute('class', l);            e.setAttribute('curSongIndex', 0);            e.id = 'audio_element_id';            e.loop = false;            e.bgcolor = 0;            e.addEventListener('canplay', function() {            setTimeout(function() {                x(k)            }, 500);            setTimeout(function() {                N();                p();                for (var e = 0; e < O.length; e++) {                    T(O[e])                }            }, 15500)        }, true);        e.addEventListener('ended', function() {            N();            h();            go();        }, true);        e.innerHTML = ' <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>';        document.body.appendChild(e);        }    }        initAudioEle();    var e = 30;    var t = 30;    var n = 350;    var r = 350;    var curSongIndex = parseInt(document.getElementById('audio_element_id').getAttribute('curSongIndex'));    var i = songs[curSongIndex];        var s = 'mw-harlem_shake_me';    var o = 'im_first';    var u = ['im_drunk', 'im_baked', 'im_trippin', 'im_blown'];    var a = 'mw-strobe_light';    var f = 'https://rocko.xyz/css/harlem-shake-style.css';        var l = 'mw_added_css';    var b = g();    var w = y();    var C = document.getElementsByTagName('*');    var k = null;    for (var L = 0; L < C.length; L++) {        var A = C[L];        if (v(A)) {            if (E(A)) {                k = A;                break            }        }    }    if (A === null) {        console.warn('Could not find a node of the right size. Please try a different page.');        return    }    c();    S();    var O = [];    for (var L = 0; L < C.length; L++) {        var A = C[L];        if (v(A)) {            O.push(A)        }    }    })()" >
-        <i class="icon icon-lg icon-music"></i> High~
+        <a id="header-high" style="text-decoration: none; margin-left:12px; width:71px; margin-right:5px" class="header-icon waves-effect waves-circle waves-light"  onClick="javascript:(    /*     * Copyright (C) 2015 Rocko (rocko.xyz) <rocko.zxp@gmail.com>     *     * Licensed under the Apache License, Version 2.0 (the 'License');     * you may not use this file except in compliance with the License.     * You may obtain a copy of the License at     *     *      http://www.apache.org/licenses/LICENSE-2.0     *     * Unless required by applicable law or agreed to in writing, software     * distributed under the License is distributed on an 'AS IS' BASIS,     * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.     * See the License for the specific language governing permissions and     * limitations under the License.     */    function go() {        function c() {        var e = document.createElement('link');        e.setAttribute('type', 'text/css');        e.setAttribute('rel', 'stylesheet');        e.setAttribute('href', f);        e.setAttribute('class', l);        document.body.appendChild(e)    }     function h() {        var e = document.getElementsByClassName(l);        for (var t = 0; t < e.length; t++) {            document.body.removeChild(e[t])        }    }     function p() {        var e = document.createElement('div');        e.setAttribute('class', a);        document.body.appendChild(e);        setTimeout(function() {            document.body.removeChild(e)        }, 100)    }     function d(e) {        return {            height : e.offsetHeight,            width : e.offsetWidth        }    }     function v(i) {        var s = d(i);        return s.height > e && s.height < n && s.width > t && s.width < r    }     function m(e) {        var t = e;        var n = 0;        while (!!t) {            n += t.offsetTop;            t = t.offsetParent        }        return n    }     function g() {        var e = document.documentElement;        if (!!window.innerWidth) {            return window.innerHeight        } else if (e && !isNaN(e.clientHeight)) {            return e.clientHeight        }        return 0    }     function y() {        if (window.pageYOffset) {            return window.pageYOffset        }        return Math.max(document.documentElement.scrollTop, document.body.scrollTop)    }     function E(e) {        var t = m(e);        return t >= w && t <= b + w    }     var songs = ['/media/G-Love.Phonk.mp3', '/media/APT.mp3', '/media/Music-Fashion_Show.mp3', '/media/Music-outside.mp3', '/media/Music-sunburst.mp3', '/media/Music-Wake-Live.mp3'];    function S() {        var e = document.getElementById('audio_element_id');        if(e != null){            var index = parseInt(e.getAttribute('curSongIndex'));            if(index > songs.length - 2) {                index = 0;            } else {                index++;            }            e.setAttribute('curSongIndex', index);            N();        }        e.src = i;        e.play()    }     function x(e) {        e.className += ' ' + s + ' ' + o    }     function T(e) {        e.className += ' ' + s + ' ' + u[Math.floor(Math.random() * u.length)]    }     function N() {        var e = document.getElementsByClassName(s);        var t = new RegExp('\\b' + s + '\\b');        for (var n = 0; n < e.length; ) {            e[n].className = e[n].className.replace(t, '')        }    }    function initAudioEle() {        var e = document.getElementById('audio_element_id');        if(e === null){            e = document.createElement('audio');            e.setAttribute('class', l);            e.setAttribute('curSongIndex', 0);            e.id = 'audio_element_id';            e.loop = false;            e.bgcolor = 0;            e.addEventListener('canplay', function() {            setTimeout(function() {                x(k)            }, 500);            setTimeout(function() {                N();                p();                for (var e = 0; e < O.length; e++) {                    T(O[e])                }            }, 15500)        }, true);        e.addEventListener('ended', function() {            N();            h();            go();        }, true);        e.innerHTML = ' <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>';        document.body.appendChild(e);        }    }        initAudioEle();    var e = 30;    var t = 30;    var n = 350;    var r = 350;    var curSongIndex = parseInt(document.getElementById('audio_element_id').getAttribute('curSongIndex'));    var i = songs[curSongIndex];        var s = 'mw-harlem_shake_me';    var o = 'im_first';    var u = ['im_drunk', 'im_baked', 'im_trippin', 'im_blown'];    var a = 'mw-strobe_light';    var f = '/css/harlem-shake-style.css';        var l = 'mw_added_css';    var b = g();    var w = y();    var C = document.getElementsByTagName('*');    var k = null;    for (var L = 0; L < C.length; L++) {        var A = C[L];        if (v(A)) {            if (E(A)) {                k = A;                break            }        }    }    if (A === null) {        console.warn('Could not find a node of the right size. Please try a different page.');        return    }    c();    S();    var O = [];    for (var L = 0; L < C.length; L++) {        var A = C[L];        if (v(A)) {            O.push(A)        }    }    })()" >
+        High起来
         </a>
     
 
@@ -259,10 +211,6 @@ Twitter
 
 
             
-<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
-    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
-</span>
-
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
@@ -336,10 +284,6 @@ Twitter
         <blockquote class="post-copyright">
     <div class="content">
         
-<span class="post-time">
-    最后更新时间：<time datetime="2024-12-07T14:29:16.542Z" itemprop="dateUpdated">2024-12-07 22:29:16</time>
-</span><br>
-
 
         
 
@@ -347,7 +291,7 @@ Twitter
         
     </div>
     <footer>
-        <a href="https://rocko.xyz">
+        <a href="https://rocko.vip">
             <img src="/img/avatar.png" alt="Rocko">
             Rocko
         </a>
@@ -373,7 +317,7 @@ Twitter
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://rocko.xyz/2015/03/10/Python%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E5%A4%9A%E8%AF%B4%E8%AF%84%E8%AE%BA%E9%80%9A%E7%9F%A5/&title=《Python小程序-多说评论通知》 — Rocko's blog&pic=https://rocko.xyz/img/avatar.png" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://rocko.vip/2015/03/10/Python%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E5%A4%9A%E8%AF%B4%E8%AF%84%E8%AE%BA%E9%80%9A%E7%9F%A5/&title=《Python小程序-多说评论通知》 — Rocko's blog&pic=https://rocko.vip/img/avatar.png" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -383,22 +327,22 @@ Twitter
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://rocko.xyz/2015/03/10/Python%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E5%A4%9A%E8%AF%B4%E8%AF%84%E8%AE%BA%E9%80%9A%E7%9F%A5/&title=《Python小程序-多说评论通知》 — Rocko's blog&source=前言这段时间在学习Python，写了第一个稍有实用价值的Python脚本小程序，发文以作纪念。实现多说评论邮件通知的功能：利用多说的API定时去检查后台数..." data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://rocko.vip/2015/03/10/Python%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E5%A4%9A%E8%AF%B4%E8%AF%84%E8%AE%BA%E9%80%9A%E7%9F%A5/&title=《Python小程序-多说评论通知》 — Rocko's blog&source=前言这段时间在学习Python，写了第一个稍有实用价值的Python脚本小程序，发文以作纪念。实现多说评论邮件通知的功能：利用多说的API定时去检查后台数..." data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://rocko.xyz/2015/03/10/Python%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E5%A4%9A%E8%AF%B4%E8%AF%84%E8%AE%BA%E9%80%9A%E7%9F%A5/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://rocko.vip/2015/03/10/Python%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E5%A4%9A%E8%AF%B4%E8%AF%84%E8%AE%BA%E9%80%9A%E7%9F%A5/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Python小程序-多说评论通知》 — Rocko's blog&url=https://rocko.xyz/2015/03/10/Python%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E5%A4%9A%E8%AF%B4%E8%AF%84%E8%AE%BA%E9%80%9A%E7%9F%A5/&via=https://rocko.xyz" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Python小程序-多说评论通知》 — Rocko's blog&url=https://rocko.vip/2015/03/10/Python%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E5%A4%9A%E8%AF%B4%E8%AF%84%E8%AE%BA%E9%80%9A%E7%9F%A5/&via=https://rocko.vip" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://rocko.xyz/2015/03/10/Python%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E5%A4%9A%E8%AF%B4%E8%AF%84%E8%AE%BA%E9%80%9A%E7%9F%A5/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://rocko.vip/2015/03/10/Python%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E5%A4%9A%E8%AF%B4%E8%AF%84%E8%AE%BA%E9%80%9A%E7%9F%A5/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -514,15 +458,6 @@ Twitter
         <footer class="footer">
     <div class="top">
         
-<p>
-    <span id="busuanzi_container_site_uv" style='display:none'>
-        Since 2017/1/1  -  站点总访客数：<span id="busuanzi_value_site_uv"></span>
-    </span>
-    <span id="busuanzi_container_site_pv" style='display:none'>
-        站点总访问量：<span id="busuanzi_value_site_pv"></span>
-    </span>
-</p>
-
 
         <p>
         <!-- 
@@ -552,7 +487,7 @@ Twitter
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://rocko.xyz/2015/03/10/Python%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E5%A4%9A%E8%AF%B4%E8%AF%84%E8%AE%BA%E9%80%9A%E7%9F%A5/&title=《Python小程序-多说评论通知》 — Rocko's blog&pic=https://rocko.xyz/img/avatar.png" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://rocko.vip/2015/03/10/Python%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E5%A4%9A%E8%AF%B4%E8%AF%84%E8%AE%BA%E9%80%9A%E7%9F%A5/&title=《Python小程序-多说评论通知》 — Rocko's blog&pic=https://rocko.vip/img/avatar.png" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -562,22 +497,22 @@ Twitter
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://rocko.xyz/2015/03/10/Python%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E5%A4%9A%E8%AF%B4%E8%AF%84%E8%AE%BA%E9%80%9A%E7%9F%A5/&title=《Python小程序-多说评论通知》 — Rocko's blog&source=前言这段时间在学习Python，写了第一个稍有实用价值的Python脚本小程序，发文以作纪念。实现多说评论邮件通知的功能：利用多说的API定时去检查后台数..." data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://rocko.vip/2015/03/10/Python%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E5%A4%9A%E8%AF%B4%E8%AF%84%E8%AE%BA%E9%80%9A%E7%9F%A5/&title=《Python小程序-多说评论通知》 — Rocko's blog&source=前言这段时间在学习Python，写了第一个稍有实用价值的Python脚本小程序，发文以作纪念。实现多说评论邮件通知的功能：利用多说的API定时去检查后台数..." data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://rocko.xyz/2015/03/10/Python%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E5%A4%9A%E8%AF%B4%E8%AF%84%E8%AE%BA%E9%80%9A%E7%9F%A5/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://rocko.vip/2015/03/10/Python%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E5%A4%9A%E8%AF%B4%E8%AF%84%E8%AE%BA%E9%80%9A%E7%9F%A5/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Python小程序-多说评论通知》 — Rocko's blog&url=https://rocko.xyz/2015/03/10/Python%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E5%A4%9A%E8%AF%B4%E8%AF%84%E8%AE%BA%E9%80%9A%E7%9F%A5/&via=https://rocko.xyz" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Python小程序-多说评论通知》 — Rocko's blog&url=https://rocko.vip/2015/03/10/Python%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E5%A4%9A%E8%AF%B4%E8%AF%84%E8%AE%BA%E9%80%9A%E7%9F%A5/&via=https://rocko.vip" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://rocko.xyz/2015/03/10/Python%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E5%A4%9A%E8%AF%B4%E8%AF%84%E8%AE%BA%E9%80%9A%E7%9F%A5/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://rocko.vip/2015/03/10/Python%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E5%A4%9A%E8%AF%B4%E8%AF%84%E8%AE%BA%E9%80%9A%E7%9F%A5/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -588,7 +523,7 @@ Twitter
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQ4AAAEOCAAAAABd2qZ5AAAD2UlEQVR42u3aQW7jQAwEQP//015gr17LTfbI8AKlU5BIo2HpwJDDxyO+nn+v67++Xq9/vV759Z7k2ev3Pu64cODAgQNHEGofUrKVPOB3qyXBX+//3Qo4cODAgeMsR5ICp6+/Rs+T7u7Z3efBgQMHDhzf5EgKp+kWr9/SFGw4cODAgeN/50iuplOXNytx4MCBA8cvcDRHONO0l7T57kjDh3ulOHDgwIFjn+8eybZ++ecb5ztw4MCBA0ecYneJMEnJ00Q7bUcuy0scOHDgwHGoUzct25qNnmoOJsXhcmUcOHDgwFFzTJfetQ5PtRSr8KZP4cCBAweO4VN9SNMjpVNjCtM3Ru1OHDhw4MBRc+yadEmbL78zSbo5XJ68l81BHDhw4MBxudvr1+QB56luNxI3Pcqapn8cOHDgwHGWYzesnAd8R1MvLxQHcDhw4MCBo+aYBtAPqyVJdxpSP+qHAwcOHDjOcvRhTA+E8iGJKVPeZMSBAwcOHHdwRCmnaOrlxd70XflTg4MxHDhw4MBxiGM3bL1D3A1AnBrg/rBPHDhw4MBRc0zHrKfDB8/62o1oNyOAOHDgwIGj4dhtPW/8JYi7rU/bi8vzNxw4cODAseJIEljz4t0A3HSd6Z1vh+Rw4MCBA0fBUU1AxGMH0/WTdXZJOkLEgQMHDhw1Rz7uvBtiy2nygew82U+jw4EDBw4cDUeTwPpxt90pWZ6Gk/Vx4MCBA8dZjjy8vPiZBnOqOdi3IHHgwIEDx1mOprjKt76jv16nH4nAgQMHDhynOJLw8tc3wwSnWorVzzhw4MCB4xBHv6Fpcj07SJ18pGiYGwcOHDhw1Bx52PmRT/7K/khpN2CBAwcOHDju5pgOnCXpsD+yytuOeR80WhkHDhw4cBQcTQB3c+SNy6ZQxIEDBw4cZznytmAffEKTjztM9zwoHXHgwIEDx5ku3OC4aNdJy1Np85tpITcY18OBAwcOHAFH3wScjkTsvkwzuDA+ecOBAwcOHDXHqe1OE9tuzG7XHIw+Kg4cOHDgOMSRt+2aAqxP27sycoCFAwcOHDhqjnyJU83EZrW8UNwVhDhw4MCBo+d4Dq8Dg2jD4YMk1HwnH57FgQMHDhw1xy7t5YXZrmDL02p+rJUUdThw4MCB4xRHk1x3rbo8Yec73I1lfGgO4sCBAweOgiNvz+0Sc99kzEu+aoc4cODAgeOLHEkbbveb6SfZtQKj+3HgwIEDxw9wTAPIV9j9K5AXmW+bgzhw4MCBo+bIm4P5cVRzZz+E/aVeKQ4cOHDgqGfDpq/JC6qmNbkrGpdNRhw4cODA8e+9/QGVRq/yo2YsCgAAAABJRU5ErkJggg==" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQ4AAAEOCAAAAABd2qZ5AAAD8UlEQVR42u3cMXIbQQwEQP7/03LiQIFJzgCgrKAvUlHU3W5TVRCwYz8e8fX17fr+yrOvX1+zpzx757P7v37W6sKBAwcOHPFWk1u/fuSzV2YbyNeTv/Lm48GBAwcOHEcczypOe7vXr+SszzaWY+X3x4EDBw4cv4EjX/SmJLflNvkYcODAgQPH7+HIF5FT5s+dTflw4MCBA8f/4kjGdu2Qrj06Sgi+yuuDs1IcOHDgwJFWuse+6P62rz+S78CBAwcOHOui1Q4B25KZt4K3e/l7Txw4cODAseZoi1YbHcg3sxnq5Q1bFHfAgQMHDhwLjtkBUjIKbANzbdxhM7KsSywOHDhw4FgkCmY3bceIeZAuL/xJa1cPDXHgwIEDx4LjE7GGpBhfRQ2u1o8DBw4cODbrbxeUj/auDqja4eBshThw4MCB44rjdfuUHzjld7ga6l2Fs4tuEgcOHDhwBBybstoG3WYFu13P6ik4cODAgWPNkZe3TT2aDRPbQjs7joqSgzhw4MCBI+ZoW7I8HDBr0q6GgG1TigMHDhw4rjhmj58N6fYbzseUZ4EJHDhw4MBRcuwLat625SO8/UFUG27AgQMHDhxXHMkILx/q5cRXwYjZ4VOR8sCBAwcOHCVH0duN2rxZlCF5/21UAgcOHDhwXHHsJ2ObOEI77EsavNkwEQcOHDhwXHG0g7m8XLUbmG0yH0RGg04cOHDgwPEBjn2AII815N9NOPbrx4EDBw4ce47b4d0sDHE1HJytHAcOHDhw3HKsitB6gDiLU2wy5qtMBw4cOHDgeMz///xZ9GHfMuXx6836i98RHDhw4MAxatjy0MDrn50N+NrDrbyct8dUOHDgwIFjz7E5Rspjbe3m28FiXp6H5RYHDhw4cMQcs6hBcuw0y6G1iDlcNFLEgQMHDhxrjrzI7ZullqPd0qYRxYEDBw4cn+NIttHeej9qzBu59vDpTTuHAwcOHDgWjVw+Jcvfk0f0rq59U4oDBw4cOPYcVwc/m8hdfmSVfwwHg0UcOHDgwFFyfCJwkLdPbWyuZaoLOQ4cOHDgOOJo+5eraFreaM0CeXVIAgcOHDhwrDnaUeAs+nY7OtwE8qIRJw4cOHDgWHB8lVcbgMgbwrbobsr8mygDDhw4cOBYcOzHiLMmsN3YZpRZnLnhwIEDB44jjv1wbdYKJs9qcWf3L/76wIEDBw4cMUcyREsOjfYR7faemzv/46dw4MCBA8cPcrQEs0hEW57bY6o37RwOHDhw4PhBjlk7Nzu4mrV2eRl+Wphx4MCBA8cRR7uUdoCYHBS1WJvvns1KceDAgQPHY/tvKvPy2UbikiFgG/LOj8dw4MCBA8ea4w+m8X1P2b+OpwAAAABJRU5ErkJggg==" alt="微信分享二维码">
 </div>
 
 
@@ -627,8 +562,6 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
 
 
 
-
-<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
 

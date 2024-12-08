@@ -10,7 +10,7 @@
     <meta name="google-site-verification" content="J7ONClDGsj92njCYAloRwEkDpz94YUFUxgi76g1m4Lk">
     
     
-    <link rel="canonical" href="https://rocko.xyz/2015/06/19/%E3%80%90%E8%AF%91%E3%80%91%E8%A7%A3%E5%86%B3%E5%85%B1%E4%BA%AB%E5%85%83%E7%B4%A0%E5%9C%A8%E7%B3%BB%E7%BB%9FUI%E4%B8%8A%E7%BB%98%E5%88%B6%E7%9A%84%E9%97%AE%E9%A2%98/">
+    <link rel="canonical" href="https://rocko.vip/2015/06/19/%E3%80%90%E8%AF%91%E3%80%91%E8%A7%A3%E5%86%B3%E5%85%B1%E4%BA%AB%E5%85%83%E7%B4%A0%E5%9C%A8%E7%B3%BB%E7%BB%9FUI%E4%B8%8A%E7%BB%98%E5%88%B6%E7%9A%84%E9%97%AE%E9%A2%98/">
     
     
     <title>【译】解决共享元素在系统UI上绘制的问题 | Rocko&#39;s blog</title>
@@ -26,7 +26,7 @@
     <meta name="description" content="原文链接 ：Dealing with shared elements that draw on top of the system UI  目前为止，我在使用 Activity transitions 中遇到的一个比较烦人的小问题：共享元素会部分地覆盖掉 Status&#x2F;Navigation&#x2F;Action Bar，一旦开始过渡动画，共享元素就会很唐突地从系统 UI 下 弹出。这">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【译】解决共享元素在系统UI上绘制的问题">
-<meta property="og:url" content="https://rocko.xyz/2015/06/19/%E3%80%90%E8%AF%91%E3%80%91%E8%A7%A3%E5%86%B3%E5%85%B1%E4%BA%AB%E5%85%83%E7%B4%A0%E5%9C%A8%E7%B3%BB%E7%BB%9FUI%E4%B8%8A%E7%BB%98%E5%88%B6%E7%9A%84%E9%97%AE%E9%A2%98/index.html">
+<meta property="og:url" content="https://rocko.vip/2015/06/19/%E3%80%90%E8%AF%91%E3%80%91%E8%A7%A3%E5%86%B3%E5%85%B1%E4%BA%AB%E5%85%83%E7%B4%A0%E5%9C%A8%E7%B3%BB%E7%BB%9FUI%E4%B8%8A%E7%BB%98%E5%88%B6%E7%9A%84%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="Rocko&#39;s blog">
 <meta property="og:description" content="原文链接 ：Dealing with shared elements that draw on top of the system UI  目前为止，我在使用 Activity transitions 中遇到的一个比较烦人的小问题：共享元素会部分地覆盖掉 Status&#x2F;Navigation&#x2F;Action Bar，一旦开始过渡动画，共享元素就会很唐突地从系统 UI 下 弹出。这">
 <meta property="og:locale" content="zh_CN">
@@ -119,54 +119,6 @@
               </a>
             </li>
         
-            <li class="waves-block waves-effect">
-              <a href="/friendLink"  >
-                <i class="icon icon-lg icon-users"></i>
-
-友链
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="https://adb.rocko.xyz" target="_blank" >
-                <i class="icon icon-lg icon-bookmark"></i>
-
-ADB
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="https://github.com/zhengxiaopeng" target="_blank" >
-                <i class="icon icon-lg icon-github"></i>
-
-GitHub
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="//weibo.com/678662430/" target="_blank" >
-                <i class="icon icon-lg icon-weibo"></i>
-
-Weibo
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="https:////www.zhihu.com/people/rocko/" target="_blank" >
-                <i class="icon icon-lg icon-smile-o"></i>
-
-Zhihu
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="https://twitter.com/rocko_zxp" target="_blank" >
-                <i class="icon icon-lg icon-twitter"></i>
-
-Twitter
-              </a>
-            </li>
-        
       </ul>
     </div>
   </div>
@@ -203,8 +155,8 @@ Twitter
  
 
 
-        <a id="header-high" style="text-decoration: none; margin-left:12px; width:71px; margin-right:5px" class="header-icon waves-effect waves-circle waves-light"  onClick="javascript:(    /*     * Copyright (C) 2015 Rocko (rocko.xyz) <rocko.zxp@gmail.com>     *     * Licensed under the Apache License, Version 2.0 (the 'License');     * you may not use this file except in compliance with the License.     * You may obtain a copy of the License at     *     *      http://www.apache.org/licenses/LICENSE-2.0     *     * Unless required by applicable law or agreed to in writing, software     * distributed under the License is distributed on an 'AS IS' BASIS,     * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.     * See the License for the specific language governing permissions and     * limitations under the License.     */    function go() {        function c() {        var e = document.createElement('link');        e.setAttribute('type', 'text/css');        e.setAttribute('rel', 'stylesheet');        e.setAttribute('href', f);        e.setAttribute('class', l);        document.body.appendChild(e)    }     function h() {        var e = document.getElementsByClassName(l);        for (var t = 0; t < e.length; t++) {            document.body.removeChild(e[t])        }    }     function p() {        var e = document.createElement('div');        e.setAttribute('class', a);        document.body.appendChild(e);        setTimeout(function() {            document.body.removeChild(e)        }, 100)    }     function d(e) {        return {            height : e.offsetHeight,            width : e.offsetWidth        }    }     function v(i) {        var s = d(i);        return s.height > e && s.height < n && s.width > t && s.width < r    }     function m(e) {        var t = e;        var n = 0;        while (!!t) {            n += t.offsetTop;            t = t.offsetParent        }        return n    }     function g() {        var e = document.documentElement;        if (!!window.innerWidth) {            return window.innerHeight        } else if (e && !isNaN(e.clientHeight)) {            return e.clientHeight        }        return 0    }     function y() {        if (window.pageYOffset) {            return window.pageYOffset        }        return Math.max(document.documentElement.scrollTop, document.body.scrollTop)    }     function E(e) {        var t = m(e);        return t >= w && t <= b + w    }     var songs = [                'http://pit79pl1z.bkt.clouddn.com/Music-Fashion_Show.mp3',                'http://pit79pl1z.bkt.clouddn.com/Music-Wake-Live.mp3',                'http://pit79pl1z.bkt.clouddn.com/Music-outside.mp3',                'http://pit79pl1z.bkt.clouddn.com/Music-sunburst.mp3'    ];    function S() {        var e = document.getElementById('audio_element_id');        if(e != null){            var index = parseInt(e.getAttribute('curSongIndex'));            if(index > songs.length - 2) {                index = 0;            } else {                index++;            }            e.setAttribute('curSongIndex', index);            N();        }        e.src = i;        e.play()    }     function x(e) {        e.className += ' ' + s + ' ' + o    }     function T(e) {        e.className += ' ' + s + ' ' + u[Math.floor(Math.random() * u.length)]    }     function N() {        var e = document.getElementsByClassName(s);        var t = new RegExp('\\b' + s + '\\b');        for (var n = 0; n < e.length; ) {            e[n].className = e[n].className.replace(t, '')        }    }    function initAudioEle() {        var e = document.getElementById('audio_element_id');        if(e === null){            e = document.createElement('audio');            e.setAttribute('class', l);            e.setAttribute('curSongIndex', 0);            e.id = 'audio_element_id';            e.loop = false;            e.bgcolor = 0;            e.addEventListener('canplay', function() {            setTimeout(function() {                x(k)            }, 500);            setTimeout(function() {                N();                p();                for (var e = 0; e < O.length; e++) {                    T(O[e])                }            }, 15500)        }, true);        e.addEventListener('ended', function() {            N();            h();            go();        }, true);        e.innerHTML = ' <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>';        document.body.appendChild(e);        }    }        initAudioEle();    var e = 30;    var t = 30;    var n = 350;    var r = 350;    var curSongIndex = parseInt(document.getElementById('audio_element_id').getAttribute('curSongIndex'));    var i = songs[curSongIndex];        var s = 'mw-harlem_shake_me';    var o = 'im_first';    var u = ['im_drunk', 'im_baked', 'im_trippin', 'im_blown'];    var a = 'mw-strobe_light';    var f = 'https://rocko.xyz/css/harlem-shake-style.css';        var l = 'mw_added_css';    var b = g();    var w = y();    var C = document.getElementsByTagName('*');    var k = null;    for (var L = 0; L < C.length; L++) {        var A = C[L];        if (v(A)) {            if (E(A)) {                k = A;                break            }        }    }    if (A === null) {        console.warn('Could not find a node of the right size. Please try a different page.');        return    }    c();    S();    var O = [];    for (var L = 0; L < C.length; L++) {        var A = C[L];        if (v(A)) {            O.push(A)        }    }    })()" >
-        <i class="icon icon-lg icon-music"></i> High~
+        <a id="header-high" style="text-decoration: none; margin-left:12px; width:71px; margin-right:5px" class="header-icon waves-effect waves-circle waves-light"  onClick="javascript:(    /*     * Copyright (C) 2015 Rocko (rocko.xyz) <rocko.zxp@gmail.com>     *     * Licensed under the Apache License, Version 2.0 (the 'License');     * you may not use this file except in compliance with the License.     * You may obtain a copy of the License at     *     *      http://www.apache.org/licenses/LICENSE-2.0     *     * Unless required by applicable law or agreed to in writing, software     * distributed under the License is distributed on an 'AS IS' BASIS,     * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.     * See the License for the specific language governing permissions and     * limitations under the License.     */    function go() {        function c() {        var e = document.createElement('link');        e.setAttribute('type', 'text/css');        e.setAttribute('rel', 'stylesheet');        e.setAttribute('href', f);        e.setAttribute('class', l);        document.body.appendChild(e)    }     function h() {        var e = document.getElementsByClassName(l);        for (var t = 0; t < e.length; t++) {            document.body.removeChild(e[t])        }    }     function p() {        var e = document.createElement('div');        e.setAttribute('class', a);        document.body.appendChild(e);        setTimeout(function() {            document.body.removeChild(e)        }, 100)    }     function d(e) {        return {            height : e.offsetHeight,            width : e.offsetWidth        }    }     function v(i) {        var s = d(i);        return s.height > e && s.height < n && s.width > t && s.width < r    }     function m(e) {        var t = e;        var n = 0;        while (!!t) {            n += t.offsetTop;            t = t.offsetParent        }        return n    }     function g() {        var e = document.documentElement;        if (!!window.innerWidth) {            return window.innerHeight        } else if (e && !isNaN(e.clientHeight)) {            return e.clientHeight        }        return 0    }     function y() {        if (window.pageYOffset) {            return window.pageYOffset        }        return Math.max(document.documentElement.scrollTop, document.body.scrollTop)    }     function E(e) {        var t = m(e);        return t >= w && t <= b + w    }     var songs = ['/media/G-Love.Phonk.mp3', '/media/APT.mp3', '/media/Music-Fashion_Show.mp3', '/media/Music-outside.mp3', '/media/Music-sunburst.mp3', '/media/Music-Wake-Live.mp3'];    function S() {        var e = document.getElementById('audio_element_id');        if(e != null){            var index = parseInt(e.getAttribute('curSongIndex'));            if(index > songs.length - 2) {                index = 0;            } else {                index++;            }            e.setAttribute('curSongIndex', index);            N();        }        e.src = i;        e.play()    }     function x(e) {        e.className += ' ' + s + ' ' + o    }     function T(e) {        e.className += ' ' + s + ' ' + u[Math.floor(Math.random() * u.length)]    }     function N() {        var e = document.getElementsByClassName(s);        var t = new RegExp('\\b' + s + '\\b');        for (var n = 0; n < e.length; ) {            e[n].className = e[n].className.replace(t, '')        }    }    function initAudioEle() {        var e = document.getElementById('audio_element_id');        if(e === null){            e = document.createElement('audio');            e.setAttribute('class', l);            e.setAttribute('curSongIndex', 0);            e.id = 'audio_element_id';            e.loop = false;            e.bgcolor = 0;            e.addEventListener('canplay', function() {            setTimeout(function() {                x(k)            }, 500);            setTimeout(function() {                N();                p();                for (var e = 0; e < O.length; e++) {                    T(O[e])                }            }, 15500)        }, true);        e.addEventListener('ended', function() {            N();            h();            go();        }, true);        e.innerHTML = ' <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>';        document.body.appendChild(e);        }    }        initAudioEle();    var e = 30;    var t = 30;    var n = 350;    var r = 350;    var curSongIndex = parseInt(document.getElementById('audio_element_id').getAttribute('curSongIndex'));    var i = songs[curSongIndex];        var s = 'mw-harlem_shake_me';    var o = 'im_first';    var u = ['im_drunk', 'im_baked', 'im_trippin', 'im_blown'];    var a = 'mw-strobe_light';    var f = '/css/harlem-shake-style.css';        var l = 'mw_added_css';    var b = g();    var w = y();    var C = document.getElementsByTagName('*');    var k = null;    for (var L = 0; L < C.length; L++) {        var A = C[L];        if (v(A)) {            if (E(A)) {                k = A;                break            }        }    }    if (A === null) {        console.warn('Could not find a node of the right size. Please try a different page.');        return    }    c();    S();    var O = [];    for (var L = 0; L < C.length; L++) {        var A = C[L];        if (v(A)) {            O.push(A)        }    }    })()" >
+        High起来
         </a>
     
 
@@ -257,10 +209,6 @@ Twitter
 
 
             
-<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
-    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
-</span>
-
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
@@ -330,10 +278,6 @@ Twitter
         <blockquote class="post-copyright">
     <div class="content">
         
-<span class="post-time">
-    最后更新时间：<time datetime="2016-12-29T16:27:41.000Z" itemprop="dateUpdated">2016-12-30 00:27:41</time>
-</span><br>
-
 
         
 
@@ -341,7 +285,7 @@ Twitter
         
     </div>
     <footer>
-        <a href="https://rocko.xyz">
+        <a href="https://rocko.vip">
             <img src="/img/avatar.png" alt="Rocko">
             Rocko
         </a>
@@ -367,7 +311,7 @@ Twitter
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://rocko.xyz/2015/06/19/%E3%80%90%E8%AF%91%E3%80%91%E8%A7%A3%E5%86%B3%E5%85%B1%E4%BA%AB%E5%85%83%E7%B4%A0%E5%9C%A8%E7%B3%BB%E7%BB%9FUI%E4%B8%8A%E7%BB%98%E5%88%B6%E7%9A%84%E9%97%AE%E9%A2%98/&title=《【译】解决共享元素在系统UI上绘制的问题》 — Rocko's blog&pic=https://rocko.xyz/img/avatar.png" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://rocko.vip/2015/06/19/%E3%80%90%E8%AF%91%E3%80%91%E8%A7%A3%E5%86%B3%E5%85%B1%E4%BA%AB%E5%85%83%E7%B4%A0%E5%9C%A8%E7%B3%BB%E7%BB%9FUI%E4%B8%8A%E7%BB%98%E5%88%B6%E7%9A%84%E9%97%AE%E9%A2%98/&title=《【译】解决共享元素在系统UI上绘制的问题》 — Rocko's blog&pic=https://rocko.vip/img/avatar.png" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -377,7 +321,7 @@ Twitter
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://rocko.xyz/2015/06/19/%E3%80%90%E8%AF%91%E3%80%91%E8%A7%A3%E5%86%B3%E5%85%B1%E4%BA%AB%E5%85%83%E7%B4%A0%E5%9C%A8%E7%B3%BB%E7%BB%9FUI%E4%B8%8A%E7%BB%98%E5%88%B6%E7%9A%84%E9%97%AE%E9%A2%98/&title=《【译】解决共享元素在系统UI上绘制的问题》 — Rocko's blog&source=
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://rocko.vip/2015/06/19/%E3%80%90%E8%AF%91%E3%80%91%E8%A7%A3%E5%86%B3%E5%85%B1%E4%BA%AB%E5%85%83%E7%B4%A0%E5%9C%A8%E7%B3%BB%E7%BB%9FUI%E4%B8%8A%E7%BB%98%E5%88%B6%E7%9A%84%E9%97%AE%E9%A2%98/&title=《【译】解决共享元素在系统UI上绘制的问题》 — Rocko's blog&source=
 原文链接 ：Dealing with shared elements that draw on top of the system UI
 
 目前为止，我..." data-title=" QQ">
@@ -385,17 +329,17 @@ Twitter
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://rocko.xyz/2015/06/19/%E3%80%90%E8%AF%91%E3%80%91%E8%A7%A3%E5%86%B3%E5%85%B1%E4%BA%AB%E5%85%83%E7%B4%A0%E5%9C%A8%E7%B3%BB%E7%BB%9FUI%E4%B8%8A%E7%BB%98%E5%88%B6%E7%9A%84%E9%97%AE%E9%A2%98/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://rocko.vip/2015/06/19/%E3%80%90%E8%AF%91%E3%80%91%E8%A7%A3%E5%86%B3%E5%85%B1%E4%BA%AB%E5%85%83%E7%B4%A0%E5%9C%A8%E7%B3%BB%E7%BB%9FUI%E4%B8%8A%E7%BB%98%E5%88%B6%E7%9A%84%E9%97%AE%E9%A2%98/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《【译】解决共享元素在系统UI上绘制的问题》 — Rocko's blog&url=https://rocko.xyz/2015/06/19/%E3%80%90%E8%AF%91%E3%80%91%E8%A7%A3%E5%86%B3%E5%85%B1%E4%BA%AB%E5%85%83%E7%B4%A0%E5%9C%A8%E7%B3%BB%E7%BB%9FUI%E4%B8%8A%E7%BB%98%E5%88%B6%E7%9A%84%E9%97%AE%E9%A2%98/&via=https://rocko.xyz" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《【译】解决共享元素在系统UI上绘制的问题》 — Rocko's blog&url=https://rocko.vip/2015/06/19/%E3%80%90%E8%AF%91%E3%80%91%E8%A7%A3%E5%86%B3%E5%85%B1%E4%BA%AB%E5%85%83%E7%B4%A0%E5%9C%A8%E7%B3%BB%E7%BB%9FUI%E4%B8%8A%E7%BB%98%E5%88%B6%E7%9A%84%E9%97%AE%E9%A2%98/&via=https://rocko.vip" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://rocko.xyz/2015/06/19/%E3%80%90%E8%AF%91%E3%80%91%E8%A7%A3%E5%86%B3%E5%85%B1%E4%BA%AB%E5%85%83%E7%B4%A0%E5%9C%A8%E7%B3%BB%E7%BB%9FUI%E4%B8%8A%E7%BB%98%E5%88%B6%E7%9A%84%E9%97%AE%E9%A2%98/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://rocko.vip/2015/06/19/%E3%80%90%E8%AF%91%E3%80%91%E8%A7%A3%E5%86%B3%E5%85%B1%E4%BA%AB%E5%85%83%E7%B4%A0%E5%9C%A8%E7%B3%BB%E7%BB%9FUI%E4%B8%8A%E7%BB%98%E5%88%B6%E7%9A%84%E9%97%AE%E9%A2%98/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -511,15 +455,6 @@ Twitter
         <footer class="footer">
     <div class="top">
         
-<p>
-    <span id="busuanzi_container_site_uv" style='display:none'>
-        Since 2017/1/1  -  站点总访客数：<span id="busuanzi_value_site_uv"></span>
-    </span>
-    <span id="busuanzi_container_site_pv" style='display:none'>
-        站点总访问量：<span id="busuanzi_value_site_pv"></span>
-    </span>
-</p>
-
 
         <p>
         <!-- 
@@ -549,7 +484,7 @@ Twitter
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://rocko.xyz/2015/06/19/%E3%80%90%E8%AF%91%E3%80%91%E8%A7%A3%E5%86%B3%E5%85%B1%E4%BA%AB%E5%85%83%E7%B4%A0%E5%9C%A8%E7%B3%BB%E7%BB%9FUI%E4%B8%8A%E7%BB%98%E5%88%B6%E7%9A%84%E9%97%AE%E9%A2%98/&title=《【译】解决共享元素在系统UI上绘制的问题》 — Rocko's blog&pic=https://rocko.xyz/img/avatar.png" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://rocko.vip/2015/06/19/%E3%80%90%E8%AF%91%E3%80%91%E8%A7%A3%E5%86%B3%E5%85%B1%E4%BA%AB%E5%85%83%E7%B4%A0%E5%9C%A8%E7%B3%BB%E7%BB%9FUI%E4%B8%8A%E7%BB%98%E5%88%B6%E7%9A%84%E9%97%AE%E9%A2%98/&title=《【译】解决共享元素在系统UI上绘制的问题》 — Rocko's blog&pic=https://rocko.vip/img/avatar.png" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -559,7 +494,7 @@ Twitter
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://rocko.xyz/2015/06/19/%E3%80%90%E8%AF%91%E3%80%91%E8%A7%A3%E5%86%B3%E5%85%B1%E4%BA%AB%E5%85%83%E7%B4%A0%E5%9C%A8%E7%B3%BB%E7%BB%9FUI%E4%B8%8A%E7%BB%98%E5%88%B6%E7%9A%84%E9%97%AE%E9%A2%98/&title=《【译】解决共享元素在系统UI上绘制的问题》 — Rocko's blog&source=
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://rocko.vip/2015/06/19/%E3%80%90%E8%AF%91%E3%80%91%E8%A7%A3%E5%86%B3%E5%85%B1%E4%BA%AB%E5%85%83%E7%B4%A0%E5%9C%A8%E7%B3%BB%E7%BB%9FUI%E4%B8%8A%E7%BB%98%E5%88%B6%E7%9A%84%E9%97%AE%E9%A2%98/&title=《【译】解决共享元素在系统UI上绘制的问题》 — Rocko's blog&source=
 原文链接 ：Dealing with shared elements that draw on top of the system UI
 
 目前为止，我..." data-title=" QQ">
@@ -567,17 +502,17 @@ Twitter
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://rocko.xyz/2015/06/19/%E3%80%90%E8%AF%91%E3%80%91%E8%A7%A3%E5%86%B3%E5%85%B1%E4%BA%AB%E5%85%83%E7%B4%A0%E5%9C%A8%E7%B3%BB%E7%BB%9FUI%E4%B8%8A%E7%BB%98%E5%88%B6%E7%9A%84%E9%97%AE%E9%A2%98/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://rocko.vip/2015/06/19/%E3%80%90%E8%AF%91%E3%80%91%E8%A7%A3%E5%86%B3%E5%85%B1%E4%BA%AB%E5%85%83%E7%B4%A0%E5%9C%A8%E7%B3%BB%E7%BB%9FUI%E4%B8%8A%E7%BB%98%E5%88%B6%E7%9A%84%E9%97%AE%E9%A2%98/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《【译】解决共享元素在系统UI上绘制的问题》 — Rocko's blog&url=https://rocko.xyz/2015/06/19/%E3%80%90%E8%AF%91%E3%80%91%E8%A7%A3%E5%86%B3%E5%85%B1%E4%BA%AB%E5%85%83%E7%B4%A0%E5%9C%A8%E7%B3%BB%E7%BB%9FUI%E4%B8%8A%E7%BB%98%E5%88%B6%E7%9A%84%E9%97%AE%E9%A2%98/&via=https://rocko.xyz" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《【译】解决共享元素在系统UI上绘制的问题》 — Rocko's blog&url=https://rocko.vip/2015/06/19/%E3%80%90%E8%AF%91%E3%80%91%E8%A7%A3%E5%86%B3%E5%85%B1%E4%BA%AB%E5%85%83%E7%B4%A0%E5%9C%A8%E7%B3%BB%E7%BB%9FUI%E4%B8%8A%E7%BB%98%E5%88%B6%E7%9A%84%E9%97%AE%E9%A2%98/&via=https://rocko.vip" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://rocko.xyz/2015/06/19/%E3%80%90%E8%AF%91%E3%80%91%E8%A7%A3%E5%86%B3%E5%85%B1%E4%BA%AB%E5%85%83%E7%B4%A0%E5%9C%A8%E7%B3%BB%E7%BB%9FUI%E4%B8%8A%E7%BB%98%E5%88%B6%E7%9A%84%E9%97%AE%E9%A2%98/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://rocko.vip/2015/06/19/%E3%80%90%E8%AF%91%E3%80%91%E8%A7%A3%E5%86%B3%E5%85%B1%E4%BA%AB%E5%85%83%E7%B4%A0%E5%9C%A8%E7%B3%BB%E7%BB%9FUI%E4%B8%8A%E7%BB%98%E5%88%B6%E7%9A%84%E9%97%AE%E9%A2%98/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -588,7 +523,7 @@ Twitter
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,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" alt="微信分享二维码">
+    <img src="data:image/png;base64,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" alt="微信分享二维码">
 </div>
 
 
@@ -627,8 +562,6 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
 
 
 
-
-<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
 

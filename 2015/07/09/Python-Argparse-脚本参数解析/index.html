@@ -10,7 +10,7 @@
     <meta name="google-site-verification" content="J7ONClDGsj92njCYAloRwEkDpz94YUFUxgi76g1m4Lk">
     
     
-    <link rel="canonical" href="https://rocko.xyz/2015/07/09/Python-Argparse-%E8%84%9A%E6%9C%AC%E5%8F%82%E6%95%B0%E8%A7%A3%E6%9E%90/">
+    <link rel="canonical" href="https://rocko.vip/2015/07/09/Python-Argparse-%E8%84%9A%E6%9C%AC%E5%8F%82%E6%95%B0%E8%A7%A3%E6%9E%90/">
     
     
     <title>Python-Argparse 脚本参数解析 | Rocko&#39;s blog</title>
@@ -26,7 +26,7 @@
     <meta name="description" content="Argparse 是 Python 标准库中推荐的命令行解析模块，经常需要解析脚本参数的话这是个方便的工具模块，摆脱万年手动 system.argv。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python-Argparse 脚本参数解析">
-<meta property="og:url" content="https://rocko.xyz/2015/07/09/Python-Argparse-%E8%84%9A%E6%9C%AC%E5%8F%82%E6%95%B0%E8%A7%A3%E6%9E%90/index.html">
+<meta property="og:url" content="https://rocko.vip/2015/07/09/Python-Argparse-%E8%84%9A%E6%9C%AC%E5%8F%82%E6%95%B0%E8%A7%A3%E6%9E%90/index.html">
 <meta property="og:site_name" content="Rocko&#39;s blog">
 <meta property="og:description" content="Argparse 是 Python 标准库中推荐的命令行解析模块，经常需要解析脚本参数的话这是个方便的工具模块，摆脱万年手动 system.argv。">
 <meta property="og:locale" content="zh_CN">
@@ -120,54 +120,6 @@
               </a>
             </li>
         
-            <li class="waves-block waves-effect">
-              <a href="/friendLink"  >
-                <i class="icon icon-lg icon-users"></i>
-
-友链
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="https://adb.rocko.xyz" target="_blank" >
-                <i class="icon icon-lg icon-bookmark"></i>
-
-ADB
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="https://github.com/zhengxiaopeng" target="_blank" >
-                <i class="icon icon-lg icon-github"></i>
-
-GitHub
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="//weibo.com/678662430/" target="_blank" >
-                <i class="icon icon-lg icon-weibo"></i>
-
-Weibo
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="https:////www.zhihu.com/people/rocko/" target="_blank" >
-                <i class="icon icon-lg icon-smile-o"></i>
-
-Zhihu
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="https://twitter.com/rocko_zxp" target="_blank" >
-                <i class="icon icon-lg icon-twitter"></i>
-
-Twitter
-              </a>
-            </li>
-        
       </ul>
     </div>
   </div>
@@ -204,8 +156,8 @@ Twitter
  
 
 
-        <a id="header-high" style="text-decoration: none; margin-left:12px; width:71px; margin-right:5px" class="header-icon waves-effect waves-circle waves-light"  onClick="javascript:(    /*     * Copyright (C) 2015 Rocko (rocko.xyz) <rocko.zxp@gmail.com>     *     * Licensed under the Apache License, Version 2.0 (the 'License');     * you may not use this file except in compliance with the License.     * You may obtain a copy of the License at     *     *      http://www.apache.org/licenses/LICENSE-2.0     *     * Unless required by applicable law or agreed to in writing, software     * distributed under the License is distributed on an 'AS IS' BASIS,     * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.     * See the License for the specific language governing permissions and     * limitations under the License.     */    function go() {        function c() {        var e = document.createElement('link');        e.setAttribute('type', 'text/css');        e.setAttribute('rel', 'stylesheet');        e.setAttribute('href', f);        e.setAttribute('class', l);        document.body.appendChild(e)    }     function h() {        var e = document.getElementsByClassName(l);        for (var t = 0; t < e.length; t++) {            document.body.removeChild(e[t])        }    }     function p() {        var e = document.createElement('div');        e.setAttribute('class', a);        document.body.appendChild(e);        setTimeout(function() {            document.body.removeChild(e)        }, 100)    }     function d(e) {        return {            height : e.offsetHeight,            width : e.offsetWidth        }    }     function v(i) {        var s = d(i);        return s.height > e && s.height < n && s.width > t && s.width < r    }     function m(e) {        var t = e;        var n = 0;        while (!!t) {            n += t.offsetTop;            t = t.offsetParent        }        return n    }     function g() {        var e = document.documentElement;        if (!!window.innerWidth) {            return window.innerHeight        } else if (e && !isNaN(e.clientHeight)) {            return e.clientHeight        }        return 0    }     function y() {        if (window.pageYOffset) {            return window.pageYOffset        }        return Math.max(document.documentElement.scrollTop, document.body.scrollTop)    }     function E(e) {        var t = m(e);        return t >= w && t <= b + w    }     var songs = [                'http://pit79pl1z.bkt.clouddn.com/Music-Fashion_Show.mp3',                'http://pit79pl1z.bkt.clouddn.com/Music-Wake-Live.mp3',                'http://pit79pl1z.bkt.clouddn.com/Music-outside.mp3',                'http://pit79pl1z.bkt.clouddn.com/Music-sunburst.mp3'    ];    function S() {        var e = document.getElementById('audio_element_id');        if(e != null){            var index = parseInt(e.getAttribute('curSongIndex'));            if(index > songs.length - 2) {                index = 0;            } else {                index++;            }            e.setAttribute('curSongIndex', index);            N();        }        e.src = i;        e.play()    }     function x(e) {        e.className += ' ' + s + ' ' + o    }     function T(e) {        e.className += ' ' + s + ' ' + u[Math.floor(Math.random() * u.length)]    }     function N() {        var e = document.getElementsByClassName(s);        var t = new RegExp('\\b' + s + '\\b');        for (var n = 0; n < e.length; ) {            e[n].className = e[n].className.replace(t, '')        }    }    function initAudioEle() {        var e = document.getElementById('audio_element_id');        if(e === null){            e = document.createElement('audio');            e.setAttribute('class', l);            e.setAttribute('curSongIndex', 0);            e.id = 'audio_element_id';            e.loop = false;            e.bgcolor = 0;            e.addEventListener('canplay', function() {            setTimeout(function() {                x(k)            }, 500);            setTimeout(function() {                N();                p();                for (var e = 0; e < O.length; e++) {                    T(O[e])                }            }, 15500)        }, true);        e.addEventListener('ended', function() {            N();            h();            go();        }, true);        e.innerHTML = ' <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>';        document.body.appendChild(e);        }    }        initAudioEle();    var e = 30;    var t = 30;    var n = 350;    var r = 350;    var curSongIndex = parseInt(document.getElementById('audio_element_id').getAttribute('curSongIndex'));    var i = songs[curSongIndex];        var s = 'mw-harlem_shake_me';    var o = 'im_first';    var u = ['im_drunk', 'im_baked', 'im_trippin', 'im_blown'];    var a = 'mw-strobe_light';    var f = 'https://rocko.xyz/css/harlem-shake-style.css';        var l = 'mw_added_css';    var b = g();    var w = y();    var C = document.getElementsByTagName('*');    var k = null;    for (var L = 0; L < C.length; L++) {        var A = C[L];        if (v(A)) {            if (E(A)) {                k = A;                break            }        }    }    if (A === null) {        console.warn('Could not find a node of the right size. Please try a different page.');        return    }    c();    S();    var O = [];    for (var L = 0; L < C.length; L++) {        var A = C[L];        if (v(A)) {            O.push(A)        }    }    })()" >
-        <i class="icon icon-lg icon-music"></i> High~
+        <a id="header-high" style="text-decoration: none; margin-left:12px; width:71px; margin-right:5px" class="header-icon waves-effect waves-circle waves-light"  onClick="javascript:(    /*     * Copyright (C) 2015 Rocko (rocko.xyz) <rocko.zxp@gmail.com>     *     * Licensed under the Apache License, Version 2.0 (the 'License');     * you may not use this file except in compliance with the License.     * You may obtain a copy of the License at     *     *      http://www.apache.org/licenses/LICENSE-2.0     *     * Unless required by applicable law or agreed to in writing, software     * distributed under the License is distributed on an 'AS IS' BASIS,     * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.     * See the License for the specific language governing permissions and     * limitations under the License.     */    function go() {        function c() {        var e = document.createElement('link');        e.setAttribute('type', 'text/css');        e.setAttribute('rel', 'stylesheet');        e.setAttribute('href', f);        e.setAttribute('class', l);        document.body.appendChild(e)    }     function h() {        var e = document.getElementsByClassName(l);        for (var t = 0; t < e.length; t++) {            document.body.removeChild(e[t])        }    }     function p() {        var e = document.createElement('div');        e.setAttribute('class', a);        document.body.appendChild(e);        setTimeout(function() {            document.body.removeChild(e)        }, 100)    }     function d(e) {        return {            height : e.offsetHeight,            width : e.offsetWidth        }    }     function v(i) {        var s = d(i);        return s.height > e && s.height < n && s.width > t && s.width < r    }     function m(e) {        var t = e;        var n = 0;        while (!!t) {            n += t.offsetTop;            t = t.offsetParent        }        return n    }     function g() {        var e = document.documentElement;        if (!!window.innerWidth) {            return window.innerHeight        } else if (e && !isNaN(e.clientHeight)) {            return e.clientHeight        }        return 0    }     function y() {        if (window.pageYOffset) {            return window.pageYOffset        }        return Math.max(document.documentElement.scrollTop, document.body.scrollTop)    }     function E(e) {        var t = m(e);        return t >= w && t <= b + w    }     var songs = ['/media/G-Love.Phonk.mp3', '/media/APT.mp3', '/media/Music-Fashion_Show.mp3', '/media/Music-outside.mp3', '/media/Music-sunburst.mp3', '/media/Music-Wake-Live.mp3'];    function S() {        var e = document.getElementById('audio_element_id');        if(e != null){            var index = parseInt(e.getAttribute('curSongIndex'));            if(index > songs.length - 2) {                index = 0;            } else {                index++;            }            e.setAttribute('curSongIndex', index);            N();        }        e.src = i;        e.play()    }     function x(e) {        e.className += ' ' + s + ' ' + o    }     function T(e) {        e.className += ' ' + s + ' ' + u[Math.floor(Math.random() * u.length)]    }     function N() {        var e = document.getElementsByClassName(s);        var t = new RegExp('\\b' + s + '\\b');        for (var n = 0; n < e.length; ) {            e[n].className = e[n].className.replace(t, '')        }    }    function initAudioEle() {        var e = document.getElementById('audio_element_id');        if(e === null){            e = document.createElement('audio');            e.setAttribute('class', l);            e.setAttribute('curSongIndex', 0);            e.id = 'audio_element_id';            e.loop = false;            e.bgcolor = 0;            e.addEventListener('canplay', function() {            setTimeout(function() {                x(k)            }, 500);            setTimeout(function() {                N();                p();                for (var e = 0; e < O.length; e++) {                    T(O[e])                }            }, 15500)        }, true);        e.addEventListener('ended', function() {            N();            h();            go();        }, true);        e.innerHTML = ' <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>';        document.body.appendChild(e);        }    }        initAudioEle();    var e = 30;    var t = 30;    var n = 350;    var r = 350;    var curSongIndex = parseInt(document.getElementById('audio_element_id').getAttribute('curSongIndex'));    var i = songs[curSongIndex];        var s = 'mw-harlem_shake_me';    var o = 'im_first';    var u = ['im_drunk', 'im_baked', 'im_trippin', 'im_blown'];    var a = 'mw-strobe_light';    var f = '/css/harlem-shake-style.css';        var l = 'mw_added_css';    var b = g();    var w = y();    var C = document.getElementsByTagName('*');    var k = null;    for (var L = 0; L < C.length; L++) {        var A = C[L];        if (v(A)) {            if (E(A)) {                k = A;                break            }        }    }    if (A === null) {        console.warn('Could not find a node of the right size. Please try a different page.');        return    }    c();    S();    var O = [];    for (var L = 0; L < C.length; L++) {        var A = C[L];        if (v(A)) {            O.push(A)        }    }    })()" >
+        High起来
         </a>
     
 
@@ -258,10 +210,6 @@ Twitter
 
 
             
-<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
-    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
-</span>
-
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
@@ -371,10 +319,6 @@ Twitter
         <blockquote class="post-copyright">
     <div class="content">
         
-<span class="post-time">
-    最后更新时间：<time datetime="2018-01-10T13:41:07.488Z" itemprop="dateUpdated">2018-01-10 21:41:07</time>
-</span><br>
-
 
         
 
@@ -382,7 +326,7 @@ Twitter
         
     </div>
     <footer>
-        <a href="https://rocko.xyz">
+        <a href="https://rocko.vip">
             <img src="/img/avatar.png" alt="Rocko">
             Rocko
         </a>
@@ -408,7 +352,7 @@ Twitter
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://rocko.xyz/2015/07/09/Python-Argparse-%E8%84%9A%E6%9C%AC%E5%8F%82%E6%95%B0%E8%A7%A3%E6%9E%90/&title=《Python-Argparse 脚本参数解析》 — Rocko's blog&pic=https://rocko.xyz/img/avatar.png" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://rocko.vip/2015/07/09/Python-Argparse-%E8%84%9A%E6%9C%AC%E5%8F%82%E6%95%B0%E8%A7%A3%E6%9E%90/&title=《Python-Argparse 脚本参数解析》 — Rocko's blog&pic=https://rocko.vip/img/avatar.png" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -418,22 +362,22 @@ Twitter
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://rocko.xyz/2015/07/09/Python-Argparse-%E8%84%9A%E6%9C%AC%E5%8F%82%E6%95%B0%E8%A7%A3%E6%9E%90/&title=《Python-Argparse 脚本参数解析》 — Rocko's blog&source=Argparse 是 Python 标准库中推荐的命令行解析模块，经常需要解析脚本参数的话这是个方便的工具模块，摆脱万年手动 system.argv。" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://rocko.vip/2015/07/09/Python-Argparse-%E8%84%9A%E6%9C%AC%E5%8F%82%E6%95%B0%E8%A7%A3%E6%9E%90/&title=《Python-Argparse 脚本参数解析》 — Rocko's blog&source=Argparse 是 Python 标准库中推荐的命令行解析模块，经常需要解析脚本参数的话这是个方便的工具模块，摆脱万年手动 system.argv。" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://rocko.xyz/2015/07/09/Python-Argparse-%E8%84%9A%E6%9C%AC%E5%8F%82%E6%95%B0%E8%A7%A3%E6%9E%90/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://rocko.vip/2015/07/09/Python-Argparse-%E8%84%9A%E6%9C%AC%E5%8F%82%E6%95%B0%E8%A7%A3%E6%9E%90/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Python-Argparse 脚本参数解析》 — Rocko's blog&url=https://rocko.xyz/2015/07/09/Python-Argparse-%E8%84%9A%E6%9C%AC%E5%8F%82%E6%95%B0%E8%A7%A3%E6%9E%90/&via=https://rocko.xyz" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Python-Argparse 脚本参数解析》 — Rocko's blog&url=https://rocko.vip/2015/07/09/Python-Argparse-%E8%84%9A%E6%9C%AC%E5%8F%82%E6%95%B0%E8%A7%A3%E6%9E%90/&via=https://rocko.vip" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://rocko.xyz/2015/07/09/Python-Argparse-%E8%84%9A%E6%9C%AC%E5%8F%82%E6%95%B0%E8%A7%A3%E6%9E%90/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://rocko.vip/2015/07/09/Python-Argparse-%E8%84%9A%E6%9C%AC%E5%8F%82%E6%95%B0%E8%A7%A3%E6%9E%90/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -549,15 +493,6 @@ Twitter
         <footer class="footer">
     <div class="top">
         
-<p>
-    <span id="busuanzi_container_site_uv" style='display:none'>
-        Since 2017/1/1  -  站点总访客数：<span id="busuanzi_value_site_uv"></span>
-    </span>
-    <span id="busuanzi_container_site_pv" style='display:none'>
-        站点总访问量：<span id="busuanzi_value_site_pv"></span>
-    </span>
-</p>
-
 
         <p>
         <!-- 
@@ -587,7 +522,7 @@ Twitter
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://rocko.xyz/2015/07/09/Python-Argparse-%E8%84%9A%E6%9C%AC%E5%8F%82%E6%95%B0%E8%A7%A3%E6%9E%90/&title=《Python-Argparse 脚本参数解析》 — Rocko's blog&pic=https://rocko.xyz/img/avatar.png" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://rocko.vip/2015/07/09/Python-Argparse-%E8%84%9A%E6%9C%AC%E5%8F%82%E6%95%B0%E8%A7%A3%E6%9E%90/&title=《Python-Argparse 脚本参数解析》 — Rocko's blog&pic=https://rocko.vip/img/avatar.png" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -597,22 +532,22 @@ Twitter
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://rocko.xyz/2015/07/09/Python-Argparse-%E8%84%9A%E6%9C%AC%E5%8F%82%E6%95%B0%E8%A7%A3%E6%9E%90/&title=《Python-Argparse 脚本参数解析》 — Rocko's blog&source=Argparse 是 Python 标准库中推荐的命令行解析模块，经常需要解析脚本参数的话这是个方便的工具模块，摆脱万年手动 system.argv。" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://rocko.vip/2015/07/09/Python-Argparse-%E8%84%9A%E6%9C%AC%E5%8F%82%E6%95%B0%E8%A7%A3%E6%9E%90/&title=《Python-Argparse 脚本参数解析》 — Rocko's blog&source=Argparse 是 Python 标准库中推荐的命令行解析模块，经常需要解析脚本参数的话这是个方便的工具模块，摆脱万年手动 system.argv。" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://rocko.xyz/2015/07/09/Python-Argparse-%E8%84%9A%E6%9C%AC%E5%8F%82%E6%95%B0%E8%A7%A3%E6%9E%90/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://rocko.vip/2015/07/09/Python-Argparse-%E8%84%9A%E6%9C%AC%E5%8F%82%E6%95%B0%E8%A7%A3%E6%9E%90/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Python-Argparse 脚本参数解析》 — Rocko's blog&url=https://rocko.xyz/2015/07/09/Python-Argparse-%E8%84%9A%E6%9C%AC%E5%8F%82%E6%95%B0%E8%A7%A3%E6%9E%90/&via=https://rocko.xyz" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Python-Argparse 脚本参数解析》 — Rocko's blog&url=https://rocko.vip/2015/07/09/Python-Argparse-%E8%84%9A%E6%9C%AC%E5%8F%82%E6%95%B0%E8%A7%A3%E6%9E%90/&via=https://rocko.vip" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://rocko.xyz/2015/07/09/Python-Argparse-%E8%84%9A%E6%9C%AC%E5%8F%82%E6%95%B0%E8%A7%A3%E6%9E%90/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://rocko.vip/2015/07/09/Python-Argparse-%E8%84%9A%E6%9C%AC%E5%8F%82%E6%95%B0%E8%A7%A3%E6%9E%90/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -623,7 +558,7 @@ Twitter
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAADJklEQVR42u3aQW4CQQwEwPz/00TKLVKAbs8qAlN7QmQZppZDZ2x/fcXX7ee69/reO4/vvLd+cn9+z9GFjY2N/Sbs28MroSbvJ9/4eLX8nmR9bGxs7H3sPLTybbV35lkz2wM2NjY2dhsqbaRF2w2ORtjY2NjY+XJJEaqNt9nBBhsbGxs7KSq1paW26J+Tkn1eVkvDxsbGfnn2eaP3dV7/a38bGxsb+wXYt9GVlOaT8GjbvXlQPdk/NjY29iL2+Qhj23Ztm8cnRagnImxsbOwV7FkbddYYbhsAyc+Ql73+yG1sbGzsRezZuEzbPGgPJycVoSfxiY2Njb2OPQuh8zZq3pTNz1VRHGJjY2N/ALst3MxaCG0gzdoSd2eUsLGxsRex84WSYlDbBmgfbr7OkwDDxsbGXsfO/9FvDycnnzofGH0SYNjY2Nhvzs7DJm/Qzqgnx5XiEIKNjY29lN3WW2bjO20x69riVDSOiY2Njb2CfR4wefO1feeqWMXGxsbeyk6aBLPi0fm4T95IyB8cNjY29g52jswzML+nDcWT4tSvv2JjY2OvY89CKyENi/VxFM3KT9jY2Nib2En8tKX29s6r2PUIJjY2NvYK9mwUMv+aowPDARIbGxv7c9jtQeJ8pLIdu6l71OWjxMbGxt7KrgNgVE5qv6sdISqOPdjY2Nhvzp4dSPJDwiyK8jHKdrfY2NjY+9hJSLR3zkpF+TvtT4iNjY29ld2OP+aFp7ZEdTKgM+yKYGNjY69g54u2TdZ2nfMYG7YWsLGxsVewZzFzMo6Tf2r2QKNWBDY2NvYidtsTTg4SbXF/FkKzASBsbGzsreyrYunaFkIegfmDwMbGxt7KnoVBO9CTDwnlD/efmr7Y2NjYL8m+ldfJUM5syPJk+PLuCtjY2NiL2Pk1G8TJS0s5oF0TGxsb+xPYs2LNrCQ0Ozy0x5joBIaNjY29jn0yHDM7hMx6F7Oi0h8/DDY2NvbHs/MttgGT72cYXdjY2NgfzG6L8skRpQ3Fy0pU2NjY2OvYbSSczwolI5v5PutxImxsbOxF7JNG7yyE2o2eh+XsZ8PGxsZ+efY3jwFFKHID8DcAAAAASUVORK5CYII=" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAADLUlEQVR42u3aS27jQAwFwNz/0g4wuwFi5z1SCKx2aWXISqurvWD4+fqKr8e/69nnZ3deP/ls/eT5/JnVhY2NjX0T9uPllVCT+8kbX6+WP5Osj42NjX0eOw9a+bbaJ/NYM9sDNjY2NnYbVNqQFm03SI2wsbGxsfPlkiJUG95miQ02NjY2dlJUmgWwvKCfk/J9XlBLw8bGxn579r7R+z6f/7S/jY2Njf0G7MdFV1tUmrV780D1y26xsbGxD2LvRxivSi32A5d1OxkbGxv7CPasjZoP0Fx7P29F/7JbbGxs7OPYs3GZHJy0DWYBLPkZftgPNjY29nHsfKNtUX4DmA0PReEQGxsb+wPYm+QhSQ9mASlZs5hRwsbGxj6I3aYHbZjZH2573FEAw8bGxj6CnaQH+ZBNO16T/NV+YDRaBxsbG/u27Nngy6wZsClX5c2AJKRhY2Njn8TOU4g8PchTkVlo3B8NNjY29nns/PVtSGvZbZN4FlaxsbGxP4GdB7MkGcgLSW15qD3uy9ISbGxs7Ldhz4pK+f22edy2e/PE479vsbGxsY9jz4JWQmoDVZ54tEdTnDo2Njb2rdhJ+MkZbVF+U4Ta/BjY2NjYJ7Fno5Czz5uVh0M52NjY2B/AbhOJNjjtx26KZm0QhqNTwcbGxj6C3Rb026SlfVeb6rQDQNjY2Nh3Z28SkqvSmP04Ud0YwMbGxj6InQSJ/WjOPmmZjWkWjV5sbGzsG7Lb8cckYORl/asKVcOuCDY2NvYR7H3ZaJ82zFKdPFheMH+KjY2N/fbsJCDNxh9nLYT9gUatCGxsbOyD2Jt/69sEZl/o3wxrYmNjY5/NnhXc8yNIDiJ/ZpZvDVu/2NjY2Ddht6+ctXvzcZ82Kbqg6YuNjY19Q/ajvNrw0xaJkuNrg+gPK2BjY2MfxG5rLO0ITl5aahsS7RgoNjY29tnsWbFmVhKaJQ9tGhNlYNjY2NjHsTfDMbMkZNa72DSksbGxsbHbZzahaJYOrfoh2NjY2B/A3m80KSfNgl9dosLGxsY+jr0fmmkxychmvs96nAgbGxv7IHbb6M2DU3uIm6Gc/LCwsbGxD2J/A9zrbfE6L8+vAAAAAElFTkSuQmCC" alt="微信分享二维码">
 </div>
 
 
@@ -662,8 +597,6 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
 
 
 
-
-<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
 

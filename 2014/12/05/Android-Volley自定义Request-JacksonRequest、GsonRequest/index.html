@@ -10,7 +10,7 @@
     <meta name="google-site-verification" content="J7ONClDGsj92njCYAloRwEkDpz94YUFUxgi76g1m4Lk">
     
     
-    <link rel="canonical" href="https://rocko.xyz/2014/12/05/Android-Volley%E8%87%AA%E5%AE%9A%E4%B9%89Request-JacksonRequest%E3%80%81GsonRequest/">
+    <link rel="canonical" href="https://rocko.vip/2014/12/05/Android-Volley%E8%87%AA%E5%AE%9A%E4%B9%89Request-JacksonRequest%E3%80%81GsonRequest/">
     
     
     <title>Android Volley自定义Request(JacksonRequest、GsonRequest) | Rocko&#39;s blog</title>
@@ -26,7 +26,7 @@
     <meta name="description" content="前言Volley是一个强大的HTTP库，让Android的的网络操作变得容易、高效、快速。在少数据的高并发情况下它的优势很明显，但在大文件的上传或者下载操作中就并不适用了，这种情况下是建议使用传统方式或者其它框架来实现的。它的优点再罗列如下：  自动管理网络请求 多并发的网络连接 通过标准的HTTP cache coherence(高速缓存一致性)使得磁盘与内存缓存不可见(Transparent)">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android Volley自定义Request(JacksonRequest、GsonRequest)">
-<meta property="og:url" content="https://rocko.xyz/2014/12/05/Android-Volley%E8%87%AA%E5%AE%9A%E4%B9%89Request-JacksonRequest%E3%80%81GsonRequest/index.html">
+<meta property="og:url" content="https://rocko.vip/2014/12/05/Android-Volley%E8%87%AA%E5%AE%9A%E4%B9%89Request-JacksonRequest%E3%80%81GsonRequest/index.html">
 <meta property="og:site_name" content="Rocko&#39;s blog">
 <meta property="og:description" content="前言Volley是一个强大的HTTP库，让Android的的网络操作变得容易、高效、快速。在少数据的高并发情况下它的优势很明显，但在大文件的上传或者下载操作中就并不适用了，这种情况下是建议使用传统方式或者其它框架来实现的。它的优点再罗列如下：  自动管理网络请求 多并发的网络连接 通过标准的HTTP cache coherence(高速缓存一致性)使得磁盘与内存缓存不可见(Transparent)">
 <meta property="og:locale" content="zh_CN">
@@ -121,54 +121,6 @@
               </a>
             </li>
         
-            <li class="waves-block waves-effect">
-              <a href="/friendLink"  >
-                <i class="icon icon-lg icon-users"></i>
-
-友链
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="https://adb.rocko.xyz" target="_blank" >
-                <i class="icon icon-lg icon-bookmark"></i>
-
-ADB
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="https://github.com/zhengxiaopeng" target="_blank" >
-                <i class="icon icon-lg icon-github"></i>
-
-GitHub
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="//weibo.com/678662430/" target="_blank" >
-                <i class="icon icon-lg icon-weibo"></i>
-
-Weibo
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="https:////www.zhihu.com/people/rocko/" target="_blank" >
-                <i class="icon icon-lg icon-smile-o"></i>
-
-Zhihu
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="https://twitter.com/rocko_zxp" target="_blank" >
-                <i class="icon icon-lg icon-twitter"></i>
-
-Twitter
-              </a>
-            </li>
-        
       </ul>
     </div>
   </div>
@@ -205,8 +157,8 @@ Twitter
  
 
 
-        <a id="header-high" style="text-decoration: none; margin-left:12px; width:71px; margin-right:5px" class="header-icon waves-effect waves-circle waves-light"  onClick="javascript:(    /*     * Copyright (C) 2015 Rocko (rocko.xyz) <rocko.zxp@gmail.com>     *     * Licensed under the Apache License, Version 2.0 (the 'License');     * you may not use this file except in compliance with the License.     * You may obtain a copy of the License at     *     *      http://www.apache.org/licenses/LICENSE-2.0     *     * Unless required by applicable law or agreed to in writing, software     * distributed under the License is distributed on an 'AS IS' BASIS,     * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.     * See the License for the specific language governing permissions and     * limitations under the License.     */    function go() {        function c() {        var e = document.createElement('link');        e.setAttribute('type', 'text/css');        e.setAttribute('rel', 'stylesheet');        e.setAttribute('href', f);        e.setAttribute('class', l);        document.body.appendChild(e)    }     function h() {        var e = document.getElementsByClassName(l);        for (var t = 0; t < e.length; t++) {            document.body.removeChild(e[t])        }    }     function p() {        var e = document.createElement('div');        e.setAttribute('class', a);        document.body.appendChild(e);        setTimeout(function() {            document.body.removeChild(e)        }, 100)    }     function d(e) {        return {            height : e.offsetHeight,            width : e.offsetWidth        }    }     function v(i) {        var s = d(i);        return s.height > e && s.height < n && s.width > t && s.width < r    }     function m(e) {        var t = e;        var n = 0;        while (!!t) {            n += t.offsetTop;            t = t.offsetParent        }        return n    }     function g() {        var e = document.documentElement;        if (!!window.innerWidth) {            return window.innerHeight        } else if (e && !isNaN(e.clientHeight)) {            return e.clientHeight        }        return 0    }     function y() {        if (window.pageYOffset) {            return window.pageYOffset        }        return Math.max(document.documentElement.scrollTop, document.body.scrollTop)    }     function E(e) {        var t = m(e);        return t >= w && t <= b + w    }     var songs = [                'http://pit79pl1z.bkt.clouddn.com/Music-Fashion_Show.mp3',                'http://pit79pl1z.bkt.clouddn.com/Music-Wake-Live.mp3',                'http://pit79pl1z.bkt.clouddn.com/Music-outside.mp3',                'http://pit79pl1z.bkt.clouddn.com/Music-sunburst.mp3'    ];    function S() {        var e = document.getElementById('audio_element_id');        if(e != null){            var index = parseInt(e.getAttribute('curSongIndex'));            if(index > songs.length - 2) {                index = 0;            } else {                index++;            }            e.setAttribute('curSongIndex', index);            N();        }        e.src = i;        e.play()    }     function x(e) {        e.className += ' ' + s + ' ' + o    }     function T(e) {        e.className += ' ' + s + ' ' + u[Math.floor(Math.random() * u.length)]    }     function N() {        var e = document.getElementsByClassName(s);        var t = new RegExp('\\b' + s + '\\b');        for (var n = 0; n < e.length; ) {            e[n].className = e[n].className.replace(t, '')        }    }    function initAudioEle() {        var e = document.getElementById('audio_element_id');        if(e === null){            e = document.createElement('audio');            e.setAttribute('class', l);            e.setAttribute('curSongIndex', 0);            e.id = 'audio_element_id';            e.loop = false;            e.bgcolor = 0;            e.addEventListener('canplay', function() {            setTimeout(function() {                x(k)            }, 500);            setTimeout(function() {                N();                p();                for (var e = 0; e < O.length; e++) {                    T(O[e])                }            }, 15500)        }, true);        e.addEventListener('ended', function() {            N();            h();            go();        }, true);        e.innerHTML = ' <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>';        document.body.appendChild(e);        }    }        initAudioEle();    var e = 30;    var t = 30;    var n = 350;    var r = 350;    var curSongIndex = parseInt(document.getElementById('audio_element_id').getAttribute('curSongIndex'));    var i = songs[curSongIndex];        var s = 'mw-harlem_shake_me';    var o = 'im_first';    var u = ['im_drunk', 'im_baked', 'im_trippin', 'im_blown'];    var a = 'mw-strobe_light';    var f = 'https://rocko.xyz/css/harlem-shake-style.css';        var l = 'mw_added_css';    var b = g();    var w = y();    var C = document.getElementsByTagName('*');    var k = null;    for (var L = 0; L < C.length; L++) {        var A = C[L];        if (v(A)) {            if (E(A)) {                k = A;                break            }        }    }    if (A === null) {        console.warn('Could not find a node of the right size. Please try a different page.');        return    }    c();    S();    var O = [];    for (var L = 0; L < C.length; L++) {        var A = C[L];        if (v(A)) {            O.push(A)        }    }    })()" >
-        <i class="icon icon-lg icon-music"></i> High~
+        <a id="header-high" style="text-decoration: none; margin-left:12px; width:71px; margin-right:5px" class="header-icon waves-effect waves-circle waves-light"  onClick="javascript:(    /*     * Copyright (C) 2015 Rocko (rocko.xyz) <rocko.zxp@gmail.com>     *     * Licensed under the Apache License, Version 2.0 (the 'License');     * you may not use this file except in compliance with the License.     * You may obtain a copy of the License at     *     *      http://www.apache.org/licenses/LICENSE-2.0     *     * Unless required by applicable law or agreed to in writing, software     * distributed under the License is distributed on an 'AS IS' BASIS,     * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.     * See the License for the specific language governing permissions and     * limitations under the License.     */    function go() {        function c() {        var e = document.createElement('link');        e.setAttribute('type', 'text/css');        e.setAttribute('rel', 'stylesheet');        e.setAttribute('href', f);        e.setAttribute('class', l);        document.body.appendChild(e)    }     function h() {        var e = document.getElementsByClassName(l);        for (var t = 0; t < e.length; t++) {            document.body.removeChild(e[t])        }    }     function p() {        var e = document.createElement('div');        e.setAttribute('class', a);        document.body.appendChild(e);        setTimeout(function() {            document.body.removeChild(e)        }, 100)    }     function d(e) {        return {            height : e.offsetHeight,            width : e.offsetWidth        }    }     function v(i) {        var s = d(i);        return s.height > e && s.height < n && s.width > t && s.width < r    }     function m(e) {        var t = e;        var n = 0;        while (!!t) {            n += t.offsetTop;            t = t.offsetParent        }        return n    }     function g() {        var e = document.documentElement;        if (!!window.innerWidth) {            return window.innerHeight        } else if (e && !isNaN(e.clientHeight)) {            return e.clientHeight        }        return 0    }     function y() {        if (window.pageYOffset) {            return window.pageYOffset        }        return Math.max(document.documentElement.scrollTop, document.body.scrollTop)    }     function E(e) {        var t = m(e);        return t >= w && t <= b + w    }     var songs = ['/media/G-Love.Phonk.mp3', '/media/APT.mp3', '/media/Music-Fashion_Show.mp3', '/media/Music-outside.mp3', '/media/Music-sunburst.mp3', '/media/Music-Wake-Live.mp3'];    function S() {        var e = document.getElementById('audio_element_id');        if(e != null){            var index = parseInt(e.getAttribute('curSongIndex'));            if(index > songs.length - 2) {                index = 0;            } else {                index++;            }            e.setAttribute('curSongIndex', index);            N();        }        e.src = i;        e.play()    }     function x(e) {        e.className += ' ' + s + ' ' + o    }     function T(e) {        e.className += ' ' + s + ' ' + u[Math.floor(Math.random() * u.length)]    }     function N() {        var e = document.getElementsByClassName(s);        var t = new RegExp('\\b' + s + '\\b');        for (var n = 0; n < e.length; ) {            e[n].className = e[n].className.replace(t, '')        }    }    function initAudioEle() {        var e = document.getElementById('audio_element_id');        if(e === null){            e = document.createElement('audio');            e.setAttribute('class', l);            e.setAttribute('curSongIndex', 0);            e.id = 'audio_element_id';            e.loop = false;            e.bgcolor = 0;            e.addEventListener('canplay', function() {            setTimeout(function() {                x(k)            }, 500);            setTimeout(function() {                N();                p();                for (var e = 0; e < O.length; e++) {                    T(O[e])                }            }, 15500)        }, true);        e.addEventListener('ended', function() {            N();            h();            go();        }, true);        e.innerHTML = ' <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>';        document.body.appendChild(e);        }    }        initAudioEle();    var e = 30;    var t = 30;    var n = 350;    var r = 350;    var curSongIndex = parseInt(document.getElementById('audio_element_id').getAttribute('curSongIndex'));    var i = songs[curSongIndex];        var s = 'mw-harlem_shake_me';    var o = 'im_first';    var u = ['im_drunk', 'im_baked', 'im_trippin', 'im_blown'];    var a = 'mw-strobe_light';    var f = '/css/harlem-shake-style.css';        var l = 'mw_added_css';    var b = g();    var w = y();    var C = document.getElementsByTagName('*');    var k = null;    for (var L = 0; L < C.length; L++) {        var A = C[L];        if (v(A)) {            if (E(A)) {                k = A;                break            }        }    }    if (A === null) {        console.warn('Could not find a node of the right size. Please try a different page.');        return    }    c();    S();    var O = [];    for (var L = 0; L < C.length; L++) {        var A = C[L];        if (v(A)) {            O.push(A)        }    }    })()" >
+        High起来
         </a>
     
 
@@ -259,10 +211,6 @@ Twitter
 
 
             
-<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
-    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
-</span>
-
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
@@ -383,10 +331,6 @@ new Response.Listener&lt;List&lt;Map&lt;String, Object&gt;&gt;&gt;()
         <blockquote class="post-copyright">
     <div class="content">
         
-<span class="post-time">
-    最后更新时间：<time datetime="2016-12-10T18:48:42.000Z" itemprop="dateUpdated">2016-12-11 02:48:42</time>
-</span><br>
-
 
         
 
@@ -394,7 +338,7 @@ new Response.Listener&lt;List&lt;Map&lt;String, Object&gt;&gt;&gt;()
         
     </div>
     <footer>
-        <a href="https://rocko.xyz">
+        <a href="https://rocko.vip">
             <img src="/img/avatar.png" alt="Rocko">
             Rocko
         </a>
@@ -420,7 +364,7 @@ new Response.Listener&lt;List&lt;Map&lt;String, Object&gt;&gt;&gt;()
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://rocko.xyz/2014/12/05/Android-Volley%E8%87%AA%E5%AE%9A%E4%B9%89Request-JacksonRequest%E3%80%81GsonRequest/&title=《Android Volley自定义Request(JacksonRequest、GsonRequest)》 — Rocko's blog&pic=https://rocko.xyz/img/avatar.png" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://rocko.vip/2014/12/05/Android-Volley%E8%87%AA%E5%AE%9A%E4%B9%89Request-JacksonRequest%E3%80%81GsonRequest/&title=《Android Volley自定义Request(JacksonRequest、GsonRequest)》 — Rocko's blog&pic=https://rocko.vip/img/avatar.png" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -430,22 +374,22 @@ new Response.Listener&lt;List&lt;Map&lt;String, Object&gt;&gt;&gt;()
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://rocko.xyz/2014/12/05/Android-Volley%E8%87%AA%E5%AE%9A%E4%B9%89Request-JacksonRequest%E3%80%81GsonRequest/&title=《Android Volley自定义Request(JacksonRequest、GsonRequest)》 — Rocko's blog&source=前言Volley是一个强大的HTTP库，让Android的的网络操作变得容易、高效、快速。在少数据的高并发情况下它的优势很明显，但在大文件的上传或者下载操..." data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://rocko.vip/2014/12/05/Android-Volley%E8%87%AA%E5%AE%9A%E4%B9%89Request-JacksonRequest%E3%80%81GsonRequest/&title=《Android Volley自定义Request(JacksonRequest、GsonRequest)》 — Rocko's blog&source=前言Volley是一个强大的HTTP库，让Android的的网络操作变得容易、高效、快速。在少数据的高并发情况下它的优势很明显，但在大文件的上传或者下载操..." data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://rocko.xyz/2014/12/05/Android-Volley%E8%87%AA%E5%AE%9A%E4%B9%89Request-JacksonRequest%E3%80%81GsonRequest/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://rocko.vip/2014/12/05/Android-Volley%E8%87%AA%E5%AE%9A%E4%B9%89Request-JacksonRequest%E3%80%81GsonRequest/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Android Volley自定义Request(JacksonRequest、GsonRequest)》 — Rocko's blog&url=https://rocko.xyz/2014/12/05/Android-Volley%E8%87%AA%E5%AE%9A%E4%B9%89Request-JacksonRequest%E3%80%81GsonRequest/&via=https://rocko.xyz" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Android Volley自定义Request(JacksonRequest、GsonRequest)》 — Rocko's blog&url=https://rocko.vip/2014/12/05/Android-Volley%E8%87%AA%E5%AE%9A%E4%B9%89Request-JacksonRequest%E3%80%81GsonRequest/&via=https://rocko.vip" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://rocko.xyz/2014/12/05/Android-Volley%E8%87%AA%E5%AE%9A%E4%B9%89Request-JacksonRequest%E3%80%81GsonRequest/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://rocko.vip/2014/12/05/Android-Volley%E8%87%AA%E5%AE%9A%E4%B9%89Request-JacksonRequest%E3%80%81GsonRequest/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -561,15 +505,6 @@ new Response.Listener&lt;List&lt;Map&lt;String, Object&gt;&gt;&gt;()
         <footer class="footer">
     <div class="top">
         
-<p>
-    <span id="busuanzi_container_site_uv" style='display:none'>
-        Since 2017/1/1  -  站点总访客数：<span id="busuanzi_value_site_uv"></span>
-    </span>
-    <span id="busuanzi_container_site_pv" style='display:none'>
-        站点总访问量：<span id="busuanzi_value_site_pv"></span>
-    </span>
-</p>
-
 
         <p>
         <!-- 
@@ -599,7 +534,7 @@ new Response.Listener&lt;List&lt;Map&lt;String, Object&gt;&gt;&gt;()
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://rocko.xyz/2014/12/05/Android-Volley%E8%87%AA%E5%AE%9A%E4%B9%89Request-JacksonRequest%E3%80%81GsonRequest/&title=《Android Volley自定义Request(JacksonRequest、GsonRequest)》 — Rocko's blog&pic=https://rocko.xyz/img/avatar.png" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://rocko.vip/2014/12/05/Android-Volley%E8%87%AA%E5%AE%9A%E4%B9%89Request-JacksonRequest%E3%80%81GsonRequest/&title=《Android Volley自定义Request(JacksonRequest、GsonRequest)》 — Rocko's blog&pic=https://rocko.vip/img/avatar.png" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -609,22 +544,22 @@ new Response.Listener&lt;List&lt;Map&lt;String, Object&gt;&gt;&gt;()
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://rocko.xyz/2014/12/05/Android-Volley%E8%87%AA%E5%AE%9A%E4%B9%89Request-JacksonRequest%E3%80%81GsonRequest/&title=《Android Volley自定义Request(JacksonRequest、GsonRequest)》 — Rocko's blog&source=前言Volley是一个强大的HTTP库，让Android的的网络操作变得容易、高效、快速。在少数据的高并发情况下它的优势很明显，但在大文件的上传或者下载操..." data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://rocko.vip/2014/12/05/Android-Volley%E8%87%AA%E5%AE%9A%E4%B9%89Request-JacksonRequest%E3%80%81GsonRequest/&title=《Android Volley自定义Request(JacksonRequest、GsonRequest)》 — Rocko's blog&source=前言Volley是一个强大的HTTP库，让Android的的网络操作变得容易、高效、快速。在少数据的高并发情况下它的优势很明显，但在大文件的上传或者下载操..." data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://rocko.xyz/2014/12/05/Android-Volley%E8%87%AA%E5%AE%9A%E4%B9%89Request-JacksonRequest%E3%80%81GsonRequest/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://rocko.vip/2014/12/05/Android-Volley%E8%87%AA%E5%AE%9A%E4%B9%89Request-JacksonRequest%E3%80%81GsonRequest/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Android Volley自定义Request(JacksonRequest、GsonRequest)》 — Rocko's blog&url=https://rocko.xyz/2014/12/05/Android-Volley%E8%87%AA%E5%AE%9A%E4%B9%89Request-JacksonRequest%E3%80%81GsonRequest/&via=https://rocko.xyz" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Android Volley自定义Request(JacksonRequest、GsonRequest)》 — Rocko's blog&url=https://rocko.vip/2014/12/05/Android-Volley%E8%87%AA%E5%AE%9A%E4%B9%89Request-JacksonRequest%E3%80%81GsonRequest/&via=https://rocko.vip" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://rocko.xyz/2014/12/05/Android-Volley%E8%87%AA%E5%AE%9A%E4%B9%89Request-JacksonRequest%E3%80%81GsonRequest/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://rocko.vip/2014/12/05/Android-Volley%E8%87%AA%E5%AE%9A%E4%B9%89Request-JacksonRequest%E3%80%81GsonRequest/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -635,7 +570,7 @@ new Response.Listener&lt;List&lt;Map&lt;String, Object&gt;&gt;&gt;()
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQ4AAAEOCAAAAABd2qZ5AAAD40lEQVR42u3aQW4jMQwEwPz/01lgT7sIbHeTdJJDzSkY2xqp5sCI6o+P+Pr8e3298+/9zy/X8xG+3n/02+ezevTcfJz6woEDBw4co0GfLzVZcH7n+f0E/TlrskYcOHDgwHHL0ZbAfBlJCWy/8xw6L7o4cODAgeNnOZL9Tr7Fer6M5AW0I+PAgQMHjt/Msdlibfp1yX0cOHDgwPEbOPJNV7vgTZGevZhv6pXiwIEDB44uLfDRTu43//3GfAcOHDhw4IhL1KapN2sdXgXgPkcXDhw4cODYc9y2895R//PDp6uGIw4cOHDg2HDkkbU8JJffSZp0+f0DFBw4cODAccqx2Szty+TsWS3ui38LcODAgQPHmiOfet5ce0fQYda+bEfDgQMHDhx7jvagKOk1tsdCszHzY6rkJeHAgQMHjiuOTSwgmW4bVthsHWcv7yxIhwMHDhw41uUziUEkBXLD1G4d6+gGDhw4cOAo59wue/PNfMs0i0rk3NEpHA4cOHDgGHHMQmb59uwqlDAbcxikwIEDBw4cC45ZfKGdUFv8ZkW9Ld5Reg4HDhw4cIyqZzKJK4jZU2YHS0l47uEWDgcOHDhwHHG0B0VXm7G2kOctv2T+OHDgwIHjOzlmzbhZoC2P6K0ygEmvFAcOHDhwjDiS8pZ/J48X3L6G/fj/5Ttw4MCBA8eaY/Owq41ZG4zYnxO9SA7iwIEDB44jjrzBlzTp9g3EfDs3OwCLonI4cODAgaPkyEtaHrnLi3Eb4GsDFnkLEgcOHDhw7DlmG6p8u5VHCjboOXd+PIYDBw4cOGYcm+ZdEkHIv3N1rDVrMuLAgQMHjiuOthzu49ozsnbZs3YhDhw4cODYc2wK3qY91zYQ841Z8tsXDUEcOHDgwLHmmEUQrlBmo+WLLMbHgQMHDhxv4NiUw6u4Q/79dvsX5Ttw4MCBA8eC4yqU0G6xVr3Mkrje+OHAgQMHjgXHO0LS7UTbF9D+KkfHgQMHDhy3HJuSljNtwhCb8h89HQcOHDhwHHHkZTIPQ+cL2BTR409x4MCBA8cRxyZwsIm1ta3J9jCpDjrgwIEDB441xz5kNmv25TGINpY9i+hFH+PAgQMHjmA+n+W1DzTk8YVkDm147sXrxIEDBw4ca4627CUhhrwMzw6NZhvOzb8ROHDgwIGj5WgLWxtl2G/SrmJ8UZHGgQMHDhxHHG2BTD5d1fYy9DAbufgABw4cOHC8gSMPzF016fJntZvAh7PCgQMHDhw/xNFGqDfhibaQzw6ocODAgQPHLUcbILgNw+VLarHywAQOHDhw4LjiWLXSyknMnrW5cwyBAwcOHDiezfAPjbx77gMQ8QEAAAAASUVORK5CYII=" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQ4AAAEOCAAAAABd2qZ5AAAD6klEQVR42u3bwW7bQAwEUP//T7tATwXSrGfIVZvD0ylQYmn1dKDJnbxe8fH+fXw98+f595fjfIWv57/77HlV3903v0594MCBAweO0UXPj5rcLEE58+XoZ9bkGXHgwIEDx12OtgS2tzyXwPZvztB50cWBAwcOHP+XI+l68hbr/BizF9CuHwcOHDhw/ByOWeu1GU3ma8CBAwcOHD+BI2+62gc+n2/LZF7OH5+V4sCBAweOLi3wahf3k39+MN+BAwcOHDjiEpUUwra8zSIL7UO+RwcOHDhw4Nhz3B3nPVH/882nWwNHHDhw4MCx4cgja+cz56vl8YV2sJj8ZYGCAwcOHDiucrTbSMm2zQa3JWg3k/7ypDhw4MCBY82RLz0Pqz0RdJiNL9ur4cCBAweOPcetG7StVI47K7H5a/vL9w4cOHDgwLHgSG45G+Gdb3wLNP9U3trhwIEDB45bHLNSN4vH3WJqW8c6uoEDBw4cOEqOZEFtcU1okqK4L/k5Fg4cOHDguMUxG+fNSuwmlDArwMMgBQ4cOHDgWHC0RXFWdNvit3ngvHhH6TkcOHDgwFFy3I275WU4abrao13zhxYOBw4cOHCMODbL3TdjeeBg9p7zLw04cODAgeMWxyxMFk0cR4G2dhD5WhwfnhcHDhw4cKw5kmXNbtkOENugw/76xSQVBw4cOHAcr9y2ZG0R3cfa2sI8Wz8OHDhw4HiOYxOhno0ak/tuNrSK4B0OHDhw4LjEsWnS8u2c/fBxFtorGlQcOHDgwLHmmDVU7T/etJHu/ahx0+zhwIEDB44Nx2x415LlrG3sYNaCfth2woEDBw4cC462HM62qWaFOR8FJp8qGkIcOHDgwLHgmBW8vE2aEbfR7YQgKt44cODAgeMSR34mKWb5VtBmMyl/yOL6OHDgwIHjKkfbkj1RbmfluW3kPuQ7cODAgQPHgmMWFMhp8iB1G4ybkeHAgQMHjqc52vI5C9JtSuamhWvRceDAgQPHXY5NScuZ2hHebLDYxuZWs1IcOHDgwPFNNuxuq5Y/wKaIXv4tDhw4cOC4xJGMz2Y9TotydzOpDjrgwIEDB441xz5kNhv2JUfe8uUvI1oPDhw4cOBYcLzLo912mm3/5Gtow3MfXicOHDhw4FhztGUvX8om1pa3Ye0AcfY1AgcOHDhwtBxtYdtEB2ZN2q0YX/Q6ceDAgQPHJY62QOZN3bC2l6GH2ZWLX+DAgQMHjgc4kjBBW1CTeEQbpFh9IcCBAwcOHP+cI19WuzWVjxrzUWAd+MOBAwcOHJc42gDB3TBc/kh5iW0DEzhw4MCB4xbHbJT29EDw1pnLEDhw4MCB48TxC3EeUyU7OdKQAAAAAElFTkSuQmCC" alt="微信分享二维码">
 </div>
 
 
@@ -674,8 +609,6 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
 
 
 
-
-<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
 

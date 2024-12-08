@@ -10,7 +10,7 @@
     <meta name="google-site-verification" content="J7ONClDGsj92njCYAloRwEkDpz94YUFUxgi76g1m4Lk">
     
     
-    <link rel="canonical" href="https://rocko.xyz/2015/11/07/MVVM_Android-CleanArchitecture/">
+    <link rel="canonical" href="https://rocko.vip/2015/11/07/MVVM_Android-CleanArchitecture/">
     
     
     <title>MVVM_Android-CleanArchitecture | Rocko&#39;s blog</title>
@@ -26,14 +26,14 @@
     <meta name="description" content="前言“Architecture is About Intent, not Frameworks”    - Robert C. Martin (Uncle Bob) Uncle Bob 的这句话套在 MVVM 上也是适用的, MVVM 也仅仅是架构模式（Architectural pattern），其有一套自己的理论概念（pattern）而不是规定的具体实现（或 Frameworks）。早之前在知">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MVVM_Android-CleanArchitecture">
-<meta property="og:url" content="https://rocko.xyz/2015/11/07/MVVM_Android-CleanArchitecture/index.html">
+<meta property="og:url" content="https://rocko.vip/2015/11/07/MVVM_Android-CleanArchitecture/index.html">
 <meta property="og:site_name" content="Rocko&#39;s blog">
 <meta property="og:description" content="前言“Architecture is About Intent, not Frameworks”    - Robert C. Martin (Uncle Bob) Uncle Bob 的这句话套在 MVVM 上也是适用的, MVVM 也仅仅是架构模式（Architectural pattern），其有一套自己的理论概念（pattern）而不是规定的具体实现（或 Frameworks）。早之前在知">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://rocko.xyz/images/MVVM_Android-CleanArchitecture-1.png">
-<meta property="og:image" content="https://rocko.xyz/images/MVVM_Android-CleanArchitecture-2.png">
-<meta property="og:image" content="https://rocko.xyz/images/MVVM_Android-CleanArchitecture-3.png">
-<meta property="og:image" content="https://rocko.xyz/images/MVVM_Android-CleanArchitecture-4.png">
+<meta property="og:image" content="https://rocko.vip/images/MVVM_Android-CleanArchitecture-1.png">
+<meta property="og:image" content="https://rocko.vip/images/MVVM_Android-CleanArchitecture-2.png">
+<meta property="og:image" content="https://rocko.vip/images/MVVM_Android-CleanArchitecture-3.png">
+<meta property="og:image" content="https://rocko.vip/images/MVVM_Android-CleanArchitecture-4.png">
 <meta property="article:published_time" content="2015-11-07T04:49:07.000Z">
 <meta property="article:modified_time" content="2024-12-07T14:19:49.223Z">
 <meta property="article:author" content="Rocko">
@@ -41,7 +41,7 @@
 <meta property="article:tag" content="MVVM">
 <meta property="article:tag" content="Data Binding">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://rocko.xyz/images/MVVM_Android-CleanArchitecture-1.png">
+<meta name="twitter:image" content="https://rocko.vip/images/MVVM_Android-CleanArchitecture-1.png">
     
         <link rel="alternate" type="application/atom+xml" title="Rocko&#39;s blog" href="/atom.xml">
     
@@ -125,54 +125,6 @@
               </a>
             </li>
         
-            <li class="waves-block waves-effect">
-              <a href="/friendLink"  >
-                <i class="icon icon-lg icon-users"></i>
-
-友链
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="https://adb.rocko.xyz" target="_blank" >
-                <i class="icon icon-lg icon-bookmark"></i>
-
-ADB
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="https://github.com/zhengxiaopeng" target="_blank" >
-                <i class="icon icon-lg icon-github"></i>
-
-GitHub
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="//weibo.com/678662430/" target="_blank" >
-                <i class="icon icon-lg icon-weibo"></i>
-
-Weibo
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="https:////www.zhihu.com/people/rocko/" target="_blank" >
-                <i class="icon icon-lg icon-smile-o"></i>
-
-Zhihu
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="https://twitter.com/rocko_zxp" target="_blank" >
-                <i class="icon icon-lg icon-twitter"></i>
-
-Twitter
-              </a>
-            </li>
-        
       </ul>
     </div>
   </div>
@@ -209,8 +161,8 @@ Twitter
  
 
 
-        <a id="header-high" style="text-decoration: none; margin-left:12px; width:71px; margin-right:5px" class="header-icon waves-effect waves-circle waves-light"  onClick="javascript:(    /*     * Copyright (C) 2015 Rocko (rocko.xyz) <rocko.zxp@gmail.com>     *     * Licensed under the Apache License, Version 2.0 (the 'License');     * you may not use this file except in compliance with the License.     * You may obtain a copy of the License at     *     *      http://www.apache.org/licenses/LICENSE-2.0     *     * Unless required by applicable law or agreed to in writing, software     * distributed under the License is distributed on an 'AS IS' BASIS,     * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.     * See the License for the specific language governing permissions and     * limitations under the License.     */    function go() {        function c() {        var e = document.createElement('link');        e.setAttribute('type', 'text/css');        e.setAttribute('rel', 'stylesheet');        e.setAttribute('href', f);        e.setAttribute('class', l);        document.body.appendChild(e)    }     function h() {        var e = document.getElementsByClassName(l);        for (var t = 0; t < e.length; t++) {            document.body.removeChild(e[t])        }    }     function p() {        var e = document.createElement('div');        e.setAttribute('class', a);        document.body.appendChild(e);        setTimeout(function() {            document.body.removeChild(e)        }, 100)    }     function d(e) {        return {            height : e.offsetHeight,            width : e.offsetWidth        }    }     function v(i) {        var s = d(i);        return s.height > e && s.height < n && s.width > t && s.width < r    }     function m(e) {        var t = e;        var n = 0;        while (!!t) {            n += t.offsetTop;            t = t.offsetParent        }        return n    }     function g() {        var e = document.documentElement;        if (!!window.innerWidth) {            return window.innerHeight        } else if (e && !isNaN(e.clientHeight)) {            return e.clientHeight        }        return 0    }     function y() {        if (window.pageYOffset) {            return window.pageYOffset        }        return Math.max(document.documentElement.scrollTop, document.body.scrollTop)    }     function E(e) {        var t = m(e);        return t >= w && t <= b + w    }     var songs = [                'http://pit79pl1z.bkt.clouddn.com/Music-Fashion_Show.mp3',                'http://pit79pl1z.bkt.clouddn.com/Music-Wake-Live.mp3',                'http://pit79pl1z.bkt.clouddn.com/Music-outside.mp3',                'http://pit79pl1z.bkt.clouddn.com/Music-sunburst.mp3'    ];    function S() {        var e = document.getElementById('audio_element_id');        if(e != null){            var index = parseInt(e.getAttribute('curSongIndex'));            if(index > songs.length - 2) {                index = 0;            } else {                index++;            }            e.setAttribute('curSongIndex', index);            N();        }        e.src = i;        e.play()    }     function x(e) {        e.className += ' ' + s + ' ' + o    }     function T(e) {        e.className += ' ' + s + ' ' + u[Math.floor(Math.random() * u.length)]    }     function N() {        var e = document.getElementsByClassName(s);        var t = new RegExp('\\b' + s + '\\b');        for (var n = 0; n < e.length; ) {            e[n].className = e[n].className.replace(t, '')        }    }    function initAudioEle() {        var e = document.getElementById('audio_element_id');        if(e === null){            e = document.createElement('audio');            e.setAttribute('class', l);            e.setAttribute('curSongIndex', 0);            e.id = 'audio_element_id';            e.loop = false;            e.bgcolor = 0;            e.addEventListener('canplay', function() {            setTimeout(function() {                x(k)            }, 500);            setTimeout(function() {                N();                p();                for (var e = 0; e < O.length; e++) {                    T(O[e])                }            }, 15500)        }, true);        e.addEventListener('ended', function() {            N();            h();            go();        }, true);        e.innerHTML = ' <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>';        document.body.appendChild(e);        }    }        initAudioEle();    var e = 30;    var t = 30;    var n = 350;    var r = 350;    var curSongIndex = parseInt(document.getElementById('audio_element_id').getAttribute('curSongIndex'));    var i = songs[curSongIndex];        var s = 'mw-harlem_shake_me';    var o = 'im_first';    var u = ['im_drunk', 'im_baked', 'im_trippin', 'im_blown'];    var a = 'mw-strobe_light';    var f = 'https://rocko.xyz/css/harlem-shake-style.css';        var l = 'mw_added_css';    var b = g();    var w = y();    var C = document.getElementsByTagName('*');    var k = null;    for (var L = 0; L < C.length; L++) {        var A = C[L];        if (v(A)) {            if (E(A)) {                k = A;                break            }        }    }    if (A === null) {        console.warn('Could not find a node of the right size. Please try a different page.');        return    }    c();    S();    var O = [];    for (var L = 0; L < C.length; L++) {        var A = C[L];        if (v(A)) {            O.push(A)        }    }    })()" >
-        <i class="icon icon-lg icon-music"></i> High~
+        <a id="header-high" style="text-decoration: none; margin-left:12px; width:71px; margin-right:5px" class="header-icon waves-effect waves-circle waves-light"  onClick="javascript:(    /*     * Copyright (C) 2015 Rocko (rocko.xyz) <rocko.zxp@gmail.com>     *     * Licensed under the Apache License, Version 2.0 (the 'License');     * you may not use this file except in compliance with the License.     * You may obtain a copy of the License at     *     *      http://www.apache.org/licenses/LICENSE-2.0     *     * Unless required by applicable law or agreed to in writing, software     * distributed under the License is distributed on an 'AS IS' BASIS,     * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.     * See the License for the specific language governing permissions and     * limitations under the License.     */    function go() {        function c() {        var e = document.createElement('link');        e.setAttribute('type', 'text/css');        e.setAttribute('rel', 'stylesheet');        e.setAttribute('href', f);        e.setAttribute('class', l);        document.body.appendChild(e)    }     function h() {        var e = document.getElementsByClassName(l);        for (var t = 0; t < e.length; t++) {            document.body.removeChild(e[t])        }    }     function p() {        var e = document.createElement('div');        e.setAttribute('class', a);        document.body.appendChild(e);        setTimeout(function() {            document.body.removeChild(e)        }, 100)    }     function d(e) {        return {            height : e.offsetHeight,            width : e.offsetWidth        }    }     function v(i) {        var s = d(i);        return s.height > e && s.height < n && s.width > t && s.width < r    }     function m(e) {        var t = e;        var n = 0;        while (!!t) {            n += t.offsetTop;            t = t.offsetParent        }        return n    }     function g() {        var e = document.documentElement;        if (!!window.innerWidth) {            return window.innerHeight        } else if (e && !isNaN(e.clientHeight)) {            return e.clientHeight        }        return 0    }     function y() {        if (window.pageYOffset) {            return window.pageYOffset        }        return Math.max(document.documentElement.scrollTop, document.body.scrollTop)    }     function E(e) {        var t = m(e);        return t >= w && t <= b + w    }     var songs = ['/media/G-Love.Phonk.mp3', '/media/APT.mp3', '/media/Music-Fashion_Show.mp3', '/media/Music-outside.mp3', '/media/Music-sunburst.mp3', '/media/Music-Wake-Live.mp3'];    function S() {        var e = document.getElementById('audio_element_id');        if(e != null){            var index = parseInt(e.getAttribute('curSongIndex'));            if(index > songs.length - 2) {                index = 0;            } else {                index++;            }            e.setAttribute('curSongIndex', index);            N();        }        e.src = i;        e.play()    }     function x(e) {        e.className += ' ' + s + ' ' + o    }     function T(e) {        e.className += ' ' + s + ' ' + u[Math.floor(Math.random() * u.length)]    }     function N() {        var e = document.getElementsByClassName(s);        var t = new RegExp('\\b' + s + '\\b');        for (var n = 0; n < e.length; ) {            e[n].className = e[n].className.replace(t, '')        }    }    function initAudioEle() {        var e = document.getElementById('audio_element_id');        if(e === null){            e = document.createElement('audio');            e.setAttribute('class', l);            e.setAttribute('curSongIndex', 0);            e.id = 'audio_element_id';            e.loop = false;            e.bgcolor = 0;            e.addEventListener('canplay', function() {            setTimeout(function() {                x(k)            }, 500);            setTimeout(function() {                N();                p();                for (var e = 0; e < O.length; e++) {                    T(O[e])                }            }, 15500)        }, true);        e.addEventListener('ended', function() {            N();            h();            go();        }, true);        e.innerHTML = ' <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>';        document.body.appendChild(e);        }    }        initAudioEle();    var e = 30;    var t = 30;    var n = 350;    var r = 350;    var curSongIndex = parseInt(document.getElementById('audio_element_id').getAttribute('curSongIndex'));    var i = songs[curSongIndex];        var s = 'mw-harlem_shake_me';    var o = 'im_first';    var u = ['im_drunk', 'im_baked', 'im_trippin', 'im_blown'];    var a = 'mw-strobe_light';    var f = '/css/harlem-shake-style.css';        var l = 'mw_added_css';    var b = g();    var w = y();    var C = document.getElementsByTagName('*');    var k = null;    for (var L = 0; L < C.length; L++) {        var A = C[L];        if (v(A)) {            if (E(A)) {                k = A;                break            }        }    }    if (A === null) {        console.warn('Could not find a node of the right size. Please try a different page.');        return    }    c();    S();    var O = [];    for (var L = 0; L < C.length; L++) {        var A = C[L];        if (v(A)) {            O.push(A)        }    }    })()" >
+        High起来
         </a>
     
 
@@ -263,10 +215,6 @@ Twitter
 
 
             
-<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
-    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
-</span>
-
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
@@ -394,10 +342,6 @@ Twitter
         <blockquote class="post-copyright">
     <div class="content">
         
-<span class="post-time">
-    最后更新时间：<time datetime="2024-12-07T14:19:49.223Z" itemprop="dateUpdated">2024-12-07 22:19:49</time>
-</span><br>
-
 
         
 
@@ -405,7 +349,7 @@ Twitter
         
     </div>
     <footer>
-        <a href="https://rocko.xyz">
+        <a href="https://rocko.vip">
             <img src="/img/avatar.png" alt="Rocko">
             Rocko
         </a>
@@ -431,7 +375,7 @@ Twitter
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://rocko.xyz/2015/11/07/MVVM_Android-CleanArchitecture/&title=《MVVM_Android-CleanArchitecture》 — Rocko's blog&pic=https://rocko.xyz/img/avatar.png" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://rocko.vip/2015/11/07/MVVM_Android-CleanArchitecture/&title=《MVVM_Android-CleanArchitecture》 — Rocko's blog&pic=https://rocko.vip/img/avatar.png" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -441,22 +385,22 @@ Twitter
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://rocko.xyz/2015/11/07/MVVM_Android-CleanArchitecture/&title=《MVVM_Android-CleanArchitecture》 — Rocko's blog&source=前言“Architecture is About Intent, not Frameworks”    - Robert C. Martin (Uncle..." data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://rocko.vip/2015/11/07/MVVM_Android-CleanArchitecture/&title=《MVVM_Android-CleanArchitecture》 — Rocko's blog&source=前言“Architecture is About Intent, not Frameworks”    - Robert C. Martin (Uncle..." data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://rocko.xyz/2015/11/07/MVVM_Android-CleanArchitecture/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://rocko.vip/2015/11/07/MVVM_Android-CleanArchitecture/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《MVVM_Android-CleanArchitecture》 — Rocko's blog&url=https://rocko.xyz/2015/11/07/MVVM_Android-CleanArchitecture/&via=https://rocko.xyz" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《MVVM_Android-CleanArchitecture》 — Rocko's blog&url=https://rocko.vip/2015/11/07/MVVM_Android-CleanArchitecture/&via=https://rocko.vip" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://rocko.xyz/2015/11/07/MVVM_Android-CleanArchitecture/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://rocko.vip/2015/11/07/MVVM_Android-CleanArchitecture/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -572,15 +516,6 @@ Twitter
         <footer class="footer">
     <div class="top">
         
-<p>
-    <span id="busuanzi_container_site_uv" style='display:none'>
-        Since 2017/1/1  -  站点总访客数：<span id="busuanzi_value_site_uv"></span>
-    </span>
-    <span id="busuanzi_container_site_pv" style='display:none'>
-        站点总访问量：<span id="busuanzi_value_site_pv"></span>
-    </span>
-</p>
-
 
         <p>
         <!-- 
@@ -610,7 +545,7 @@ Twitter
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://rocko.xyz/2015/11/07/MVVM_Android-CleanArchitecture/&title=《MVVM_Android-CleanArchitecture》 — Rocko's blog&pic=https://rocko.xyz/img/avatar.png" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://rocko.vip/2015/11/07/MVVM_Android-CleanArchitecture/&title=《MVVM_Android-CleanArchitecture》 — Rocko's blog&pic=https://rocko.vip/img/avatar.png" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -620,22 +555,22 @@ Twitter
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://rocko.xyz/2015/11/07/MVVM_Android-CleanArchitecture/&title=《MVVM_Android-CleanArchitecture》 — Rocko's blog&source=前言“Architecture is About Intent, not Frameworks”    - Robert C. Martin (Uncle..." data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://rocko.vip/2015/11/07/MVVM_Android-CleanArchitecture/&title=《MVVM_Android-CleanArchitecture》 — Rocko's blog&source=前言“Architecture is About Intent, not Frameworks”    - Robert C. Martin (Uncle..." data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://rocko.xyz/2015/11/07/MVVM_Android-CleanArchitecture/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://rocko.vip/2015/11/07/MVVM_Android-CleanArchitecture/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《MVVM_Android-CleanArchitecture》 — Rocko's blog&url=https://rocko.xyz/2015/11/07/MVVM_Android-CleanArchitecture/&via=https://rocko.xyz" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《MVVM_Android-CleanArchitecture》 — Rocko's blog&url=https://rocko.vip/2015/11/07/MVVM_Android-CleanArchitecture/&via=https://rocko.vip" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://rocko.xyz/2015/11/07/MVVM_Android-CleanArchitecture/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://rocko.vip/2015/11/07/MVVM_Android-CleanArchitecture/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -646,7 +581,7 @@ Twitter
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACIklEQVR42u3awY4qMQwEQP7/p9nrk1YD3c6weiSVExKZkJpDcGw/HvF4Xox/v/39+fez+fzHJwYGBsbXMp4vx9Wcqy0m6+dzkr1hYGCcw7haOpnzGpazXz/7Zs8YGBgY5SHY8mavDwMDAyNZLgevH9YYGBgYs4RaGz7O1rz5Lo6BgfGFjDzr/vefP1LfwMDA+CrGsxzrKbY29R/tCgMDY2tGfsDlpcrZ/LbZAgMDA6O9giaHbA5o52NgYJzGyBfKW8RmDWfJ5RYDA+MERv7wrNkiYeRpvstvMTAwjmGsH7v3YpbaLDAwMLZmtE1a7YuYtYW9KXBiYGBszaintvfjEpyXBC7v4hgYGMcw2h9uSwttE1iS7MPAwDiBcVvTw3JTbF4i/WTvBgYGxv/IyIO29lq7ks4b/m9gYGBsxEiCwnXSXVfZYbMFBgbGFoyVFoo8cGzXKQqcGBgYBzDyRfOiZvKa6hj2an0MDIytGbMfXikkrFx3i6whBgbGAYx8iy1gBTOMczEwMDZitCmw9tt7G2FvqG9gYGB8ISNvj5il9WcJu6KxAwMDY1PGsxxtG8RKkq54CgMDY2vG+mGXU9uSwKyZAwMDY1fG59os1kPAohUDAwPjAEa7lbuCv9lF+k19AwMD43hGW6pcCQqLqBYDAwPjZTosD+PyJrA2eMXAwDiB0TaSzhop2jJAksLDwMA4gdFeHfNC40qBc1bUxMDA2I7xAzCrN/Wf5R1pAAAAAElFTkSuQmCC" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJElEQVR42u3aQXKDMBAEQP//084DHPAMi1Ox1JxcBoSawxZazeMRH8+X4/Xs6+/Xe/PrH584MDAwvpbxPD3OGUew/BXk478ZBwMDYwPG0dBtEUzKa4LJ54aBgYGRTGXyz7XXh4GBgZEwroGT8oqBgYExWcS2vGSBmr+I29biGBgYX8jIl6Z///sj+xsYGBhfxXiWxzmsLZrX5vDLOBgYGEsz8gLXtvvzrc38//P5YGBg7MNoC2XCyINf167HwMDYk3EthJrcOwG/4WFgYCzKaLcE8rKYF+68zXd4FgMDYzPGtUVp+/l48xIXAwNjM8ak+Lbttkk0FgMDYzdGtNKNW2NtImLOxsDAWJtxPulJE60FtEvZwydiYGAsx5gvI9syPRnn8HoMDIylGfm2ZR6zmGxb5i22w1gYBgbGcoxJtCJ/WNueq8fHwMDYgNFuFbSLz7teSpRrw8DAWJSRD5pvaiZhi2t9wcP9DQwMjEUZ9z64jZTlZX0UucDAwNiA0W5n5ovhFlN852JgYCzKaANbkyjGPAj7Zn8DAwNjUUYblfhEwCJv3t08NAYGxj9mPMujDXVNmnTFXRgYGEsz7qrZ+dl8S+DesCwGBsa3M9qGVx6zmH8CFlEMDAyMDRjtVM6bYvPr6xeEgYGBcWkRG3X7yruiriEGBgbGpThFcv0kQIaBgbEDow2SJpsH7dTzMo2BgbEbYxKnuNb0b4NobbAVAwNjIcYPgYKyUHieTQoAAAAASUVORK5CYII=" alt="微信分享二维码">
 </div>
 
 
@@ -685,8 +620,6 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
 
 
 
-
-<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
 

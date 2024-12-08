@@ -3,11 +3,11 @@
   <title>Rocko&#39;s blog</title>
   
   
-  <link href="https://rocko.xyz/atom.xml" rel="self"/>
+  <link href="https://rocko.vip/atom.xml" rel="self"/>
   
-  <link href="https://rocko.xyz/"/>
+  <link href="https://rocko.vip/"/>
   <updated>2024-12-07T12:20:10.865Z</updated>
-  <id>https://rocko.xyz/</id>
+  <id>https://rocko.vip/</id>
   
   <author>
     <name>Rocko</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>Google Git-Repo (Android)多仓库项目管理</title>
-    <link href="https://rocko.xyz/2018/11/22/google-git-repo-%E5%A4%9A%E4%BB%93%E5%BA%93%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/"/>
-    <id>https://rocko.xyz/2018/11/22/google-git-repo-%E5%A4%9A%E4%BB%93%E5%BA%93%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/</id>
+    <link href="https://rocko.vip/2018/11/22/google-git-repo-%E5%A4%9A%E4%BB%93%E5%BA%93%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/"/>
+    <id>https://rocko.vip/2018/11/22/google-git-repo-%E5%A4%9A%E4%BB%93%E5%BA%93%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/</id>
     <published>2018-11-21T16:23:00.000Z</published>
     <updated>2024-12-07T12:20:10.865Z</updated>
     
@@ -31,33 +31,33 @@
     
     
     
-    <category term="Git" scheme="https://rocko.xyz/categories/Git/"/>
+    <category term="Git" scheme="https://rocko.vip/categories/Git/"/>
     
-    <category term="Android" scheme="https://rocko.xyz/categories/Git/Android/"/>
+    <category term="Android" scheme="https://rocko.vip/categories/Git/Android/"/>
     
-    <category term="组件化" scheme="https://rocko.xyz/categories/Git/Android/%E7%BB%84%E4%BB%B6%E5%8C%96/"/>
+    <category term="组件化" scheme="https://rocko.vip/categories/Git/Android/%E7%BB%84%E4%BB%B6%E5%8C%96/"/>
     
     
-    <category term="构建" scheme="https://rocko.xyz/tags/%E6%9E%84%E5%BB%BA/"/>
+    <category term="构建" scheme="https://rocko.vip/tags/%E6%9E%84%E5%BB%BA/"/>
     
-    <category term="Repo" scheme="https://rocko.xyz/tags/Repo/"/>
+    <category term="Repo" scheme="https://rocko.vip/tags/Repo/"/>
     
-    <category term="git-repo" scheme="https://rocko.xyz/tags/git-repo/"/>
+    <category term="git-repo" scheme="https://rocko.vip/tags/git-repo/"/>
     
-    <category term="多仓库" scheme="https://rocko.xyz/tags/%E5%A4%9A%E4%BB%93%E5%BA%93/"/>
+    <category term="多仓库" scheme="https://rocko.vip/tags/%E5%A4%9A%E4%BB%93%E5%BA%93/"/>
     
-    <category term="模块化" scheme="https://rocko.xyz/tags/%E6%A8%A1%E5%9D%97%E5%8C%96/"/>
+    <category term="模块化" scheme="https://rocko.vip/tags/%E6%A8%A1%E5%9D%97%E5%8C%96/"/>
     
-    <category term="组件化" scheme="https://rocko.xyz/tags/%E7%BB%84%E4%BB%B6%E5%8C%96/"/>
+    <category term="组件化" scheme="https://rocko.vip/tags/%E7%BB%84%E4%BB%B6%E5%8C%96/"/>
     
-    <category term="Android" scheme="https://rocko.xyz/tags/Android/"/>
+    <category term="Android" scheme="https://rocko.vip/tags/Android/"/>
     
   </entry>
   
   <entry>
     <title>Android Robolectric 加载运行本地 So 动态库</title>
-    <link href="https://rocko.xyz/2016/11/27/Android-Robolectric-%E5%8A%A0%E8%BD%BD%E8%BF%90%E8%A1%8C%E6%9C%AC%E5%9C%B0-so-%E5%8A%A8%E6%80%81%E5%BA%93/"/>
-    <id>https://rocko.xyz/2016/11/27/Android-Robolectric-%E5%8A%A0%E8%BD%BD%E8%BF%90%E8%A1%8C%E6%9C%AC%E5%9C%B0-so-%E5%8A%A8%E6%80%81%E5%BA%93/</id>
+    <link href="https://rocko.vip/2016/11/27/Android-Robolectric-%E5%8A%A0%E8%BD%BD%E8%BF%90%E8%A1%8C%E6%9C%AC%E5%9C%B0-so-%E5%8A%A8%E6%80%81%E5%BA%93/"/>
+    <id>https://rocko.vip/2016/11/27/Android-Robolectric-%E5%8A%A0%E8%BD%BD%E8%BF%90%E8%A1%8C%E6%9C%AC%E5%9C%B0-so-%E5%8A%A8%E6%80%81%E5%BA%93/</id>
     <published>2016-11-27T01:42:00.000Z</published>
     <updated>2024-12-07T14:15:08.509Z</updated>
     
@@ -68,23 +68,23 @@
     
     
     
-    <category term="Android" scheme="https://rocko.xyz/categories/Android/"/>
+    <category term="Android" scheme="https://rocko.vip/categories/Android/"/>
     
     
-    <category term="Robolectric" scheme="https://rocko.xyz/tags/Robolectric/"/>
+    <category term="Robolectric" scheme="https://rocko.vip/tags/Robolectric/"/>
     
-    <category term="Testing" scheme="https://rocko.xyz/tags/Testing/"/>
+    <category term="Testing" scheme="https://rocko.vip/tags/Testing/"/>
     
-    <category term="动态链接库" scheme="https://rocko.xyz/tags/%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5%E5%BA%93/"/>
+    <category term="动态链接库" scheme="https://rocko.vip/tags/%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5%E5%BA%93/"/>
     
-    <category term="移植" scheme="https://rocko.xyz/tags/%E7%A7%BB%E6%A4%8D/"/>
+    <category term="移植" scheme="https://rocko.vip/tags/%E7%A7%BB%E6%A4%8D/"/>
     
   </entry>
   
   <entry>
     <title>科学上网的各种姿势</title>
-    <link href="https://rocko.xyz/2016/08/28/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E7%9A%84%E5%90%84%E7%A7%8D%E5%A7%BF%E5%8A%BF/"/>
-    <id>https://rocko.xyz/2016/08/28/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E7%9A%84%E5%90%84%E7%A7%8D%E5%A7%BF%E5%8A%BF/</id>
+    <link href="https://rocko.vip/2016/08/28/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E7%9A%84%E5%90%84%E7%A7%8D%E5%A7%BF%E5%8A%BF/"/>
+    <id>https://rocko.vip/2016/08/28/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E7%9A%84%E5%90%84%E7%A7%8D%E5%A7%BF%E5%8A%BF/</id>
     <published>2016-08-27T16:00:01.000Z</published>
     <updated>2016-12-28T15:55:00.000Z</updated>
     
@@ -95,17 +95,17 @@
     
     
     
-    <category term="FGFW" scheme="https://rocko.xyz/categories/FGFW/"/>
+    <category term="FGFW" scheme="https://rocko.vip/categories/FGFW/"/>
     
     
-    <category term="FQ" scheme="https://rocko.xyz/tags/FQ/"/>
+    <category term="FQ" scheme="https://rocko.vip/tags/FQ/"/>
     
   </entry>
   
   <entry>
     <title>ADB-Issue#2</title>
-    <link href="https://rocko.xyz/2016/06/14/ADB-Issue-2/"/>
-    <id>https://rocko.xyz/2016/06/14/ADB-Issue-2/</id>
+    <link href="https://rocko.vip/2016/06/14/ADB-Issue-2/"/>
+    <id>https://rocko.vip/2016/06/14/ADB-Issue-2/</id>
     <published>2016-06-14T13:51:45.000Z</published>
     <updated>2016-12-10T18:48:42.000Z</updated>
     
@@ -116,21 +116,21 @@
     
     
     
-    <category term="Android-Dev-Bookmarks" scheme="https://rocko.xyz/categories/Android-Dev-Bookmarks/"/>
+    <category term="Android-Dev-Bookmarks" scheme="https://rocko.vip/categories/Android-Dev-Bookmarks/"/>
     
     
-    <category term="Android-Dev-Bookmarks" scheme="https://rocko.xyz/tags/Android-Dev-Bookmarks/"/>
+    <category term="Android-Dev-Bookmarks" scheme="https://rocko.vip/tags/Android-Dev-Bookmarks/"/>
     
-    <category term="站点" scheme="https://rocko.xyz/tags/%E7%AB%99%E7%82%B9/"/>
+    <category term="站点" scheme="https://rocko.vip/tags/%E7%AB%99%E7%82%B9/"/>
     
-    <category term="推荐" scheme="https://rocko.xyz/tags/%E6%8E%A8%E8%8D%90/"/>
+    <category term="推荐" scheme="https://rocko.vip/tags/%E6%8E%A8%E8%8D%90/"/>
     
   </entry>
   
   <entry>
     <title>AndroidDev站点推荐-Issue#1</title>
-    <link href="https://rocko.xyz/2016/02/17/AndroidDev%E7%AB%99%E7%82%B9%E6%8E%A8%E8%8D%90-Issue-1/"/>
-    <id>https://rocko.xyz/2016/02/17/AndroidDev%E7%AB%99%E7%82%B9%E6%8E%A8%E8%8D%90-Issue-1/</id>
+    <link href="https://rocko.vip/2016/02/17/AndroidDev%E7%AB%99%E7%82%B9%E6%8E%A8%E8%8D%90-Issue-1/"/>
+    <id>https://rocko.vip/2016/02/17/AndroidDev%E7%AB%99%E7%82%B9%E6%8E%A8%E8%8D%90-Issue-1/</id>
     <published>2016-02-17T05:45:05.000Z</published>
     <updated>2016-12-10T18:48:42.000Z</updated>
     
@@ -142,21 +142,21 @@
     
     
     
-    <category term="Android-Dev-Bookmarks" scheme="https://rocko.xyz/categories/Android-Dev-Bookmarks/"/>
+    <category term="Android-Dev-Bookmarks" scheme="https://rocko.vip/categories/Android-Dev-Bookmarks/"/>
     
     
-    <category term="Android-Dev-Bookmarks" scheme="https://rocko.xyz/tags/Android-Dev-Bookmarks/"/>
+    <category term="Android-Dev-Bookmarks" scheme="https://rocko.vip/tags/Android-Dev-Bookmarks/"/>
     
-    <category term="站点" scheme="https://rocko.xyz/tags/%E7%AB%99%E7%82%B9/"/>
+    <category term="站点" scheme="https://rocko.vip/tags/%E7%AB%99%E7%82%B9/"/>
     
-    <category term="推荐" scheme="https://rocko.xyz/tags/%E6%8E%A8%E8%8D%90/"/>
+    <category term="推荐" scheme="https://rocko.vip/tags/%E6%8E%A8%E8%8D%90/"/>
     
   </entry>
   
   <entry>
     <title>MVVM_Android-CleanArchitecture</title>
-    <link href="https://rocko.xyz/2015/11/07/MVVM_Android-CleanArchitecture/"/>
-    <id>https://rocko.xyz/2015/11/07/MVVM_Android-CleanArchitecture/</id>
+    <link href="https://rocko.vip/2015/11/07/MVVM_Android-CleanArchitecture/"/>
+    <id>https://rocko.vip/2015/11/07/MVVM_Android-CleanArchitecture/</id>
     <published>2015-11-07T04:49:07.000Z</published>
     <updated>2024-12-07T14:19:49.223Z</updated>
     
@@ -168,21 +168,21 @@
     
     
     
-    <category term="Android" scheme="https://rocko.xyz/categories/Android/"/>
+    <category term="Android" scheme="https://rocko.vip/categories/Android/"/>
     
     
-    <category term="架构" scheme="https://rocko.xyz/tags/%E6%9E%B6%E6%9E%84/"/>
+    <category term="架构" scheme="https://rocko.vip/tags/%E6%9E%B6%E6%9E%84/"/>
     
-    <category term="MVVM" scheme="https://rocko.xyz/tags/MVVM/"/>
+    <category term="MVVM" scheme="https://rocko.vip/tags/MVVM/"/>
     
-    <category term="Data Binding" scheme="https://rocko.xyz/tags/Data-Binding/"/>
+    <category term="Data Binding" scheme="https://rocko.vip/tags/Data-Binding/"/>
     
   </entry>
   
   <entry>
     <title>Python-Argparse 脚本参数解析</title>
-    <link href="https://rocko.xyz/2015/07/09/Python-Argparse-%E8%84%9A%E6%9C%AC%E5%8F%82%E6%95%B0%E8%A7%A3%E6%9E%90/"/>
-    <id>https://rocko.xyz/2015/07/09/Python-Argparse-%E8%84%9A%E6%9C%AC%E5%8F%82%E6%95%B0%E8%A7%A3%E6%9E%90/</id>
+    <link href="https://rocko.vip/2015/07/09/Python-Argparse-%E8%84%9A%E6%9C%AC%E5%8F%82%E6%95%B0%E8%A7%A3%E6%9E%90/"/>
+    <id>https://rocko.vip/2015/07/09/Python-Argparse-%E8%84%9A%E6%9C%AC%E5%8F%82%E6%95%B0%E8%A7%A3%E6%9E%90/</id>
     <published>2015-07-09T04:04:34.000Z</published>
     <updated>2018-01-10T13:41:07.488Z</updated>
     
@@ -193,21 +193,21 @@
     
     
     
-    <category term="Python" scheme="https://rocko.xyz/categories/Python/"/>
+    <category term="Python" scheme="https://rocko.vip/categories/Python/"/>
     
     
-    <category term="Python" scheme="https://rocko.xyz/tags/Python/"/>
+    <category term="Python" scheme="https://rocko.vip/tags/Python/"/>
     
-    <category term="脚本" scheme="https://rocko.xyz/tags/%E8%84%9A%E6%9C%AC/"/>
+    <category term="脚本" scheme="https://rocko.vip/tags/%E8%84%9A%E6%9C%AC/"/>
     
-    <category term="解析" scheme="https://rocko.xyz/tags/%E8%A7%A3%E6%9E%90/"/>
+    <category term="解析" scheme="https://rocko.vip/tags/%E8%A7%A3%E6%9E%90/"/>
     
   </entry>
   
   <entry>
     <title>High一下</title>
-    <link href="https://rocko.xyz/2015/06/27/High%E4%B8%80%E4%B8%8B/"/>
-    <id>https://rocko.xyz/2015/06/27/High%E4%B8%80%E4%B8%8B/</id>
+    <link href="https://rocko.vip/2015/06/27/High%E4%B8%80%E4%B8%8B/"/>
+    <id>https://rocko.vip/2015/06/27/High%E4%B8%80%E4%B8%8B/</id>
     <published>2015-06-27T04:49:07.000Z</published>
     <updated>2016-12-10T18:48:42.000Z</updated>
     
@@ -218,19 +218,19 @@
     
     
     
-    <category term="Hexo" scheme="https://rocko.xyz/categories/Hexo/"/>
+    <category term="Hexo" scheme="https://rocko.vip/categories/Hexo/"/>
     
     
-    <category term="High" scheme="https://rocko.xyz/tags/High/"/>
+    <category term="High" scheme="https://rocko.vip/tags/High/"/>
     
-    <category term="动画" scheme="https://rocko.xyz/tags/%E5%8A%A8%E7%94%BB/"/>
+    <category term="动画" scheme="https://rocko.vip/tags/%E5%8A%A8%E7%94%BB/"/>
     
   </entry>
   
   <entry>
     <title>【译】解决共享元素在系统UI上绘制的问题</title>
-    <link href="https://rocko.xyz/2015/06/19/%E3%80%90%E8%AF%91%E3%80%91%E8%A7%A3%E5%86%B3%E5%85%B1%E4%BA%AB%E5%85%83%E7%B4%A0%E5%9C%A8%E7%B3%BB%E7%BB%9FUI%E4%B8%8A%E7%BB%98%E5%88%B6%E7%9A%84%E9%97%AE%E9%A2%98/"/>
-    <id>https://rocko.xyz/2015/06/19/%E3%80%90%E8%AF%91%E3%80%91%E8%A7%A3%E5%86%B3%E5%85%B1%E4%BA%AB%E5%85%83%E7%B4%A0%E5%9C%A8%E7%B3%BB%E7%BB%9FUI%E4%B8%8A%E7%BB%98%E5%88%B6%E7%9A%84%E9%97%AE%E9%A2%98/</id>
+    <link href="https://rocko.vip/2015/06/19/%E3%80%90%E8%AF%91%E3%80%91%E8%A7%A3%E5%86%B3%E5%85%B1%E4%BA%AB%E5%85%83%E7%B4%A0%E5%9C%A8%E7%B3%BB%E7%BB%9FUI%E4%B8%8A%E7%BB%98%E5%88%B6%E7%9A%84%E9%97%AE%E9%A2%98/"/>
+    <id>https://rocko.vip/2015/06/19/%E3%80%90%E8%AF%91%E3%80%91%E8%A7%A3%E5%86%B3%E5%85%B1%E4%BA%AB%E5%85%83%E7%B4%A0%E5%9C%A8%E7%B3%BB%E7%BB%9FUI%E4%B8%8A%E7%BB%98%E5%88%B6%E7%9A%84%E9%97%AE%E9%A2%98/</id>
     <published>2015-06-19T04:49:07.000Z</published>
     <updated>2016-12-29T16:27:41.000Z</updated>
     
@@ -244,19 +244,19 @@
     
     
     
-    <category term="Android" scheme="https://rocko.xyz/categories/Android/"/>
+    <category term="Android" scheme="https://rocko.vip/categories/Android/"/>
     
     
-    <category term="动画" scheme="https://rocko.xyz/tags/%E5%8A%A8%E7%94%BB/"/>
+    <category term="动画" scheme="https://rocko.vip/tags/%E5%8A%A8%E7%94%BB/"/>
     
-    <category term="译文" scheme="https://rocko.xyz/tags/%E8%AF%91%E6%96%87/"/>
+    <category term="译文" scheme="https://rocko.vip/tags/%E8%AF%91%E6%96%87/"/>
     
   </entry>
   
   <entry>
     <title>【译】NotRxJava懒人专用指南</title>
-    <link href="https://rocko.xyz/2015/05/05/%E3%80%90%E8%AF%91%E3%80%91NotRxJava%E6%87%92%E4%BA%BA%E4%B8%93%E7%94%A8%E6%8C%87%E5%8D%97/"/>
-    <id>https://rocko.xyz/2015/05/05/%E3%80%90%E8%AF%91%E3%80%91NotRxJava%E6%87%92%E4%BA%BA%E4%B8%93%E7%94%A8%E6%8C%87%E5%8D%97/</id>
+    <link href="https://rocko.vip/2015/05/05/%E3%80%90%E8%AF%91%E3%80%91NotRxJava%E6%87%92%E4%BA%BA%E4%B8%93%E7%94%A8%E6%8C%87%E5%8D%97/"/>
+    <id>https://rocko.vip/2015/05/05/%E3%80%90%E8%AF%91%E3%80%91NotRxJava%E6%87%92%E4%BA%BA%E4%B8%93%E7%94%A8%E6%8C%87%E5%8D%97/</id>
     <published>2015-05-05T04:49:07.000Z</published>
     <updated>2016-12-10T18:48:42.000Z</updated>
     
@@ -284,21 +284,21 @@
     
     
     
-    <category term="Android" scheme="https://rocko.xyz/categories/Android/"/>
+    <category term="Android" scheme="https://rocko.vip/categories/Android/"/>
     
     
-    <category term="译文" scheme="https://rocko.xyz/tags/%E8%AF%91%E6%96%87/"/>
+    <category term="译文" scheme="https://rocko.vip/tags/%E8%AF%91%E6%96%87/"/>
     
-    <category term="RxJava" scheme="https://rocko.xyz/tags/RxJava/"/>
+    <category term="RxJava" scheme="https://rocko.vip/tags/RxJava/"/>
     
-    <category term="ReactiveX" scheme="https://rocko.xyz/tags/ReactiveX/"/>
+    <category term="ReactiveX" scheme="https://rocko.vip/tags/ReactiveX/"/>
     
   </entry>
   
   <entry>
     <title>Android View.OnTouchListener 的子类</title>
-    <link href="https://rocko.xyz/2015/04/26/Android-View-OnTouchListener-%E7%9A%84%E5%AD%90%E7%B1%BB/"/>
-    <id>https://rocko.xyz/2015/04/26/Android-View-OnTouchListener-%E7%9A%84%E5%AD%90%E7%B1%BB/</id>
+    <link href="https://rocko.vip/2015/04/26/Android-View-OnTouchListener-%E7%9A%84%E5%AD%90%E7%B1%BB/"/>
+    <id>https://rocko.vip/2015/04/26/Android-View-OnTouchListener-%E7%9A%84%E5%AD%90%E7%B1%BB/</id>
     <published>2015-04-26T02:27:24.000Z</published>
     <updated>2024-12-07T14:26:37.519Z</updated>
     
@@ -325,19 +325,19 @@
     
     
     
-    <category term="Android" scheme="https://rocko.xyz/categories/Android/"/>
+    <category term="Android" scheme="https://rocko.vip/categories/Android/"/>
     
     
-    <category term="View" scheme="https://rocko.xyz/tags/View/"/>
+    <category term="View" scheme="https://rocko.vip/tags/View/"/>
     
-    <category term="OnTouchListener" scheme="https://rocko.xyz/tags/OnTouchListener/"/>
+    <category term="OnTouchListener" scheme="https://rocko.vip/tags/OnTouchListener/"/>
     
   </entry>
   
   <entry>
     <title>Python小程序-多说评论通知</title>
-    <link href="https://rocko.xyz/2015/03/10/Python%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E5%A4%9A%E8%AF%B4%E8%AF%84%E8%AE%BA%E9%80%9A%E7%9F%A5/"/>
-    <id>https://rocko.xyz/2015/03/10/Python%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E5%A4%9A%E8%AF%B4%E8%AF%84%E8%AE%BA%E9%80%9A%E7%9F%A5/</id>
+    <link href="https://rocko.vip/2015/03/10/Python%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E5%A4%9A%E8%AF%B4%E8%AF%84%E8%AE%BA%E9%80%9A%E7%9F%A5/"/>
+    <id>https://rocko.vip/2015/03/10/Python%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E5%A4%9A%E8%AF%B4%E8%AF%84%E8%AE%BA%E9%80%9A%E7%9F%A5/</id>
     <published>2015-03-09T16:40:06.000Z</published>
     <updated>2024-12-07T14:29:16.542Z</updated>
     
@@ -352,19 +352,19 @@
     
     
     
-    <category term="Python" scheme="https://rocko.xyz/categories/Python/"/>
+    <category term="Python" scheme="https://rocko.vip/categories/Python/"/>
     
     
-    <category term="多说" scheme="https://rocko.xyz/tags/%E5%A4%9A%E8%AF%B4/"/>
+    <category term="多说" scheme="https://rocko.vip/tags/%E5%A4%9A%E8%AF%B4/"/>
     
-    <category term="Hexo" scheme="https://rocko.xyz/tags/Hexo/"/>
+    <category term="Hexo" scheme="https://rocko.vip/tags/Hexo/"/>
     
   </entry>
   
   <entry>
     <title>【译】Spans，一个强大的概念</title>
-    <link href="https://rocko.xyz/2015/03/04/%E3%80%90%E8%AF%91%E3%80%91Spans%EF%BC%8C%E4%B8%80%E4%B8%AA%E5%BC%BA%E5%A4%A7%E7%9A%84%E6%A6%82%E5%BF%B5/"/>
-    <id>https://rocko.xyz/2015/03/04/%E3%80%90%E8%AF%91%E3%80%91Spans%EF%BC%8C%E4%B8%80%E4%B8%AA%E5%BC%BA%E5%A4%A7%E7%9A%84%E6%A6%82%E5%BF%B5/</id>
+    <link href="https://rocko.vip/2015/03/04/%E3%80%90%E8%AF%91%E3%80%91Spans%EF%BC%8C%E4%B8%80%E4%B8%AA%E5%BC%BA%E5%A4%A7%E7%9A%84%E6%A6%82%E5%BF%B5/"/>
+    <id>https://rocko.vip/2015/03/04/%E3%80%90%E8%AF%91%E3%80%91Spans%EF%BC%8C%E4%B8%80%E4%B8%AA%E5%BC%BA%E5%A4%A7%E7%9A%84%E6%A6%82%E5%BF%B5/</id>
     <published>2015-03-03T16:11:25.000Z</published>
     <updated>2024-12-07T14:56:12.806Z</updated>
     
@@ -376,23 +376,23 @@
     
     
     
-    <category term="Android" scheme="https://rocko.xyz/categories/Android/"/>
+    <category term="Android" scheme="https://rocko.vip/categories/Android/"/>
     
     
-    <category term="动画" scheme="https://rocko.xyz/tags/%E5%8A%A8%E7%94%BB/"/>
+    <category term="动画" scheme="https://rocko.vip/tags/%E5%8A%A8%E7%94%BB/"/>
     
-    <category term="Span" scheme="https://rocko.xyz/tags/Span/"/>
+    <category term="Span" scheme="https://rocko.vip/tags/Span/"/>
     
-    <category term="文字" scheme="https://rocko.xyz/tags/%E6%96%87%E5%AD%97/"/>
+    <category term="文字" scheme="https://rocko.vip/tags/%E6%96%87%E5%AD%97/"/>
     
-    <category term="译文" scheme="https://rocko.xyz/tags/%E8%AF%91%E6%96%87/"/>
+    <category term="译文" scheme="https://rocko.vip/tags/%E8%AF%91%E6%96%87/"/>
     
   </entry>
   
   <entry>
     <title>仿有道云笔记头像背景</title>
-    <link href="https://rocko.xyz/2015/03/02/%E4%BB%BF%E6%9C%89%E9%81%93%E4%BA%91%E7%AC%94%E8%AE%B0%E5%A4%B4%E5%83%8F%E8%83%8C%E6%99%AF/"/>
-    <id>https://rocko.xyz/2015/03/02/%E4%BB%BF%E6%9C%89%E9%81%93%E4%BA%91%E7%AC%94%E8%AE%B0%E5%A4%B4%E5%83%8F%E8%83%8C%E6%99%AF/</id>
+    <link href="https://rocko.vip/2015/03/02/%E4%BB%BF%E6%9C%89%E9%81%93%E4%BA%91%E7%AC%94%E8%AE%B0%E5%A4%B4%E5%83%8F%E8%83%8C%E6%99%AF/"/>
+    <id>https://rocko.vip/2015/03/02/%E4%BB%BF%E6%9C%89%E9%81%93%E4%BA%91%E7%AC%94%E8%AE%B0%E5%A4%B4%E5%83%8F%E8%83%8C%E6%99%AF/</id>
     <published>2015-03-02T10:11:53.000Z</published>
     <updated>2024-12-07T14:40:20.858Z</updated>
     
@@ -412,17 +412,17 @@
     
     
     
-    <category term="Android" scheme="https://rocko.xyz/categories/Android/"/>
+    <category term="Android" scheme="https://rocko.vip/categories/Android/"/>
     
     
-    <category term="图像" scheme="https://rocko.xyz/tags/%E5%9B%BE%E5%83%8F/"/>
+    <category term="图像" scheme="https://rocko.vip/tags/%E5%9B%BE%E5%83%8F/"/>
     
   </entry>
   
   <entry>
     <title>VPS主机搭建Git服务器</title>
-    <link href="https://rocko.xyz/2015/02/12/VPS%E4%B8%BB%E6%9C%BA%E6%90%AD%E5%BB%BAGit%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
-    <id>https://rocko.xyz/2015/02/12/VPS%E4%B8%BB%E6%9C%BA%E6%90%AD%E5%BB%BAGit%E6%9C%8D%E5%8A%A1%E5%99%A8/</id>
+    <link href="https://rocko.vip/2015/02/12/VPS%E4%B8%BB%E6%9C%BA%E6%90%AD%E5%BB%BAGit%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    <id>https://rocko.vip/2015/02/12/VPS%E4%B8%BB%E6%9C%BA%E6%90%AD%E5%BB%BAGit%E6%9C%8D%E5%8A%A1%E5%99%A8/</id>
     <published>2015-02-11T16:06:07.000Z</published>
     <updated>2016-12-10T18:48:42.000Z</updated>
     
@@ -434,21 +434,21 @@
     
     
     
-    <category term="Git" scheme="https://rocko.xyz/categories/Git/"/>
+    <category term="Git" scheme="https://rocko.vip/categories/Git/"/>
     
     
-    <category term="错误" scheme="https://rocko.xyz/tags/%E9%94%99%E8%AF%AF/"/>
+    <category term="错误" scheme="https://rocko.vip/tags/%E9%94%99%E8%AF%AF/"/>
     
-    <category term="Git" scheme="https://rocko.xyz/tags/Git/"/>
+    <category term="Git" scheme="https://rocko.vip/tags/Git/"/>
     
-    <category term="VPS" scheme="https://rocko.xyz/tags/VPS/"/>
+    <category term="VPS" scheme="https://rocko.vip/tags/VPS/"/>
     
   </entry>
   
   <entry>
     <title>科学上网-搭建Shadowsocks服务</title>
-    <link href="https://rocko.xyz/2015/02/09/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91-%E6%90%AD%E5%BB%BAShadowsocks%E6%9C%8D%E5%8A%A1/"/>
-    <id>https://rocko.xyz/2015/02/09/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91-%E6%90%AD%E5%BB%BAShadowsocks%E6%9C%8D%E5%8A%A1/</id>
+    <link href="https://rocko.vip/2015/02/09/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91-%E6%90%AD%E5%BB%BAShadowsocks%E6%9C%8D%E5%8A%A1/"/>
+    <id>https://rocko.vip/2015/02/09/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91-%E6%90%AD%E5%BB%BAShadowsocks%E6%9C%8D%E5%8A%A1/</id>
     <published>2015-02-09T08:49:40.000Z</published>
     <updated>2024-12-07T14:38:15.542Z</updated>
     
@@ -460,19 +460,19 @@
     
     
     
-    <category term="FGFW" scheme="https://rocko.xyz/categories/FGFW/"/>
+    <category term="FGFW" scheme="https://rocko.vip/categories/FGFW/"/>
     
     
-    <category term="VPS" scheme="https://rocko.xyz/tags/VPS/"/>
+    <category term="VPS" scheme="https://rocko.vip/tags/VPS/"/>
     
-    <category term="FQ" scheme="https://rocko.xyz/tags/FQ/"/>
+    <category term="FQ" scheme="https://rocko.vip/tags/FQ/"/>
     
   </entry>
   
   <entry>
     <title>Android中的MVP</title>
-    <link href="https://rocko.xyz/2015/02/06/Android%E4%B8%AD%E7%9A%84MVP/"/>
-    <id>https://rocko.xyz/2015/02/06/Android%E4%B8%AD%E7%9A%84MVP/</id>
+    <link href="https://rocko.vip/2015/02/06/Android%E4%B8%AD%E7%9A%84MVP/"/>
+    <id>https://rocko.vip/2015/02/06/Android%E4%B8%AD%E7%9A%84MVP/</id>
     <published>2015-02-06T04:28:48.000Z</published>
     <updated>2024-12-07T14:35:12.743Z</updated>
     
@@ -491,19 +491,19 @@
     
     
     
-    <category term="Android" scheme="https://rocko.xyz/categories/Android/"/>
+    <category term="Android" scheme="https://rocko.vip/categories/Android/"/>
     
     
-    <category term="MVP" scheme="https://rocko.xyz/tags/MVP/"/>
+    <category term="MVP" scheme="https://rocko.vip/tags/MVP/"/>
     
-    <category term="架构" scheme="https://rocko.xyz/tags/%E6%9E%B6%E6%9E%84/"/>
+    <category term="架构" scheme="https://rocko.vip/tags/%E6%9E%B6%E6%9E%84/"/>
     
   </entry>
   
   <entry>
     <title>Android 错误集锦ing...</title>
-    <link href="https://rocko.xyz/2015/02/05/Android-%E9%94%99%E8%AF%AF%E9%9B%86%E9%94%A6ing/"/>
-    <id>https://rocko.xyz/2015/02/05/Android-%E9%94%99%E8%AF%AF%E9%9B%86%E9%94%A6ing/</id>
+    <link href="https://rocko.vip/2015/02/05/Android-%E9%94%99%E8%AF%AF%E9%9B%86%E9%94%A6ing/"/>
+    <id>https://rocko.vip/2015/02/05/Android-%E9%94%99%E8%AF%AF%E9%9B%86%E9%94%A6ing/</id>
     <published>2015-02-05T05:44:42.000Z</published>
     <updated>2017-01-02T12:44:34.000Z</updated>
     
@@ -533,17 +533,17 @@
     
     
     
-    <category term="Android" scheme="https://rocko.xyz/categories/Android/"/>
+    <category term="Android" scheme="https://rocko.vip/categories/Android/"/>
     
     
-    <category term="错误" scheme="https://rocko.xyz/tags/%E9%94%99%E8%AF%AF/"/>
+    <category term="错误" scheme="https://rocko.vip/tags/%E9%94%99%E8%AF%AF/"/>
     
   </entry>
   
   <entry>
     <title>使用Gradle发布项目到JCenter仓库</title>
-    <link href="https://rocko.xyz/2015/02/02/%E4%BD%BF%E7%94%A8Gradle%E5%8F%91%E5%B8%83%E9%A1%B9%E7%9B%AE%E5%88%B0JCenter%E4%BB%93%E5%BA%93/"/>
-    <id>https://rocko.xyz/2015/02/02/%E4%BD%BF%E7%94%A8Gradle%E5%8F%91%E5%B8%83%E9%A1%B9%E7%9B%AE%E5%88%B0JCenter%E4%BB%93%E5%BA%93/</id>
+    <link href="https://rocko.vip/2015/02/02/%E4%BD%BF%E7%94%A8Gradle%E5%8F%91%E5%B8%83%E9%A1%B9%E7%9B%AE%E5%88%B0JCenter%E4%BB%93%E5%BA%93/"/>
+    <id>https://rocko.vip/2015/02/02/%E4%BD%BF%E7%94%A8Gradle%E5%8F%91%E5%B8%83%E9%A1%B9%E7%9B%AE%E5%88%B0JCenter%E4%BB%93%E5%BA%93/</id>
     <published>2015-02-02T13:32:49.000Z</published>
     <updated>2024-12-07T14:32:27.815Z</updated>
     
@@ -559,17 +559,17 @@
     
     
     
-    <category term="Android" scheme="https://rocko.xyz/categories/Android/"/>
+    <category term="Android" scheme="https://rocko.vip/categories/Android/"/>
     
     
-    <category term="JCenter" scheme="https://rocko.xyz/tags/JCenter/"/>
+    <category term="JCenter" scheme="https://rocko.vip/tags/JCenter/"/>
     
   </entry>
   
   <entry>
     <title>运算符的几点</title>
-    <link href="https://rocko.xyz/2015/01/14/%E8%BF%90%E7%AE%97%E7%AC%A6%E7%9A%84%E5%87%A0%E7%82%B9/"/>
-    <id>https://rocko.xyz/2015/01/14/%E8%BF%90%E7%AE%97%E7%AC%A6%E7%9A%84%E5%87%A0%E7%82%B9/</id>
+    <link href="https://rocko.vip/2015/01/14/%E8%BF%90%E7%AE%97%E7%AC%A6%E7%9A%84%E5%87%A0%E7%82%B9/"/>
+    <id>https://rocko.vip/2015/01/14/%E8%BF%90%E7%AE%97%E7%AC%A6%E7%9A%84%E5%87%A0%E7%82%B9/</id>
     <published>2015-01-14T04:06:58.000Z</published>
     <updated>2016-12-10T18:48:42.000Z</updated>
     
@@ -580,12 +580,12 @@
     
     
     
-    <category term="Programming" scheme="https://rocko.xyz/categories/Programming/"/>
+    <category term="Programming" scheme="https://rocko.vip/categories/Programming/"/>
     
     
-    <category term="运算符" scheme="https://rocko.xyz/tags/%E8%BF%90%E7%AE%97%E7%AC%A6/"/>
+    <category term="运算符" scheme="https://rocko.vip/tags/%E8%BF%90%E7%AE%97%E7%AC%A6/"/>
     
-    <category term="技巧" scheme="https://rocko.xyz/tags/%E6%8A%80%E5%B7%A7/"/>
+    <category term="技巧" scheme="https://rocko.vip/tags/%E6%8A%80%E5%B7%A7/"/>
     
   </entry>
   
