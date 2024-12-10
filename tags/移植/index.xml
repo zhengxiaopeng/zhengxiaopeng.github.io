@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>移植 on Rocko&#39;s blog</title>
+    <link>https://rocko.vip/tags/%E7%A7%BB%E6%A4%8D/</link>
+    <description>Recent content in 移植 on Rocko&#39;s blog</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 27 Nov 2016 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://rocko.vip/tags/%E7%A7%BB%E6%A4%8D/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Android Robolectric 加载运行本地 so 动态库</title>
+      <link>https://rocko.vip/posts/android-robolectric-%E5%8A%A0%E8%BD%BD%E8%BF%90%E8%A1%8C%E6%9C%AC%E5%9C%B0-so-%E5%8A%A8%E6%80%81%E5%BA%93/</link>
+      <pubDate>Sun, 27 Nov 2016 00:00:00 +0000</pubDate>
+      <guid>https://rocko.vip/posts/android-robolectric-%E5%8A%A0%E8%BD%BD%E8%BF%90%E8%A1%8C%E6%9C%AC%E5%9C%B0-so-%E5%8A%A8%E6%80%81%E5%BA%93/</guid>
+      <description>&lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a href=&#34;http://robolectric.org&#34;&gt;Robolectric&lt;/a&gt; 是 Android 的单元测试框架，运行无需 Android 真机环境直接运行在 JVM 之上，所以在 test case 运行速度效率上有了很大提升，接近于 Java JUnit test（&lt;code&gt;JUnit test &amp;gt; Robolectric &amp;gt;&amp;gt; androidTest&lt;/code&gt;）。不过&lt;strong&gt;框架本身并不支持 &lt;code&gt;so&lt;/code&gt; 本地库的加载使用&lt;/strong&gt;，加载时会直接报错，因为实际上运行环境是电脑机器，而我们打出的 so 文件是给手机上用的所以当然会报错。虽然在 &lt;a href=&#34;https://github.com/robolectric/robolectric&#34;&gt;GitHub&lt;/a&gt; 上很多人问过关于使用 so 的问题但基本都建议说不要在单元测试中去加载本地库，这在原则上是要这么做，但可能有些项目中做起来就有些困难了，比如在代码结构不够好、依赖耦合较大或者本身就对 so 库依赖很大的情况下。所以下面说说在项目中 Robolectric 要怎么解决需要加载运行本地 so 库这个问题。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

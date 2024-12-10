@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content=""
+  />
+  
+    
+      <title>科学上网-搭建Shadowsocks服务 | Rocko&#39;s blog</title>
+    
+  
+  <link rel="stylesheet" href="/css/reset.css"/>
+  <link rel="stylesheet" href="/css/font.css"/>
+  <link rel="stylesheet" href="/css/smigle.css"/>
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+</head>
+
+  <body>
+    <div id="root">
+      <header>
+  <div id="brand">
+    <a class="icon-link" href="https://rocko.vip/">
+      <img
+        class="icon"
+        src="/images/rocko.webp"
+      />
+    </a>
+    <div class="text">
+      <a href="https://rocko.vip/"><h1>Rocko&#39;s blog</h1></a>
+      <h3>Live in the moment</h3>
+    </div>
+  </div>
+  <nav>
+    
+      
+        
+        <a href="/"><b>Home</b></a>
+      
+         | 
+        <a href="/about/"><b>About</b></a>
+      
+         | 
+        <a href="/posts/"><b>Posts</b></a>
+      
+         | 
+        <a href="/categories/"><b>Categories</b></a>
+      
+         | 
+        <a href="/tags/"><b>Tags</b></a>
+      
+         | 
+        <a href="/index.xml"><b>RSS</b></a>
+      
+      |<a id="header-high" style="text-decoration: none; margin-left:12px; width:71px; margin-right:5px" class="header-icon waves-effect waves-circle waves-light"  onClick="javascript:(    /*     * Copyright (C) 2015 Rocko (rocko.xyz) <rocko.zxp@gmail.com>     *     * Licensed under the Apache License, Version 2.0 (the 'License');     * you may not use this file except in compliance with the License.     * You may obtain a copy of the License at     *     *      http://www.apache.org/licenses/LICENSE-2.0     *     * Unless required by applicable law or agreed to in writing, software     * distributed under the License is distributed on an 'AS IS' BASIS,     * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.     * See the License for the specific language governing permissions and     * limitations under the License.     */    function go() {        function c() {        var e = document.createElement('link');        e.setAttribute('type', 'text/css');        e.setAttribute('rel', 'stylesheet');        e.setAttribute('href', f);        e.setAttribute('class', l);        document.body.appendChild(e)    }     function h() {        var e = document.getElementsByClassName(l);        for (var t = 0; t < e.length; t++) {            document.body.removeChild(e[t])        }    }     function p() {        var e = document.createElement('div');        e.setAttribute('class', a);        document.body.appendChild(e);        setTimeout(function() {            document.body.removeChild(e)        }, 100)    }     function d(e) {        return {            height : e.offsetHeight,            width : e.offsetWidth        }    }     function v(i) {        var s = d(i);        return s.height > e && s.height < n && s.width > t && s.width < r    }     function m(e) {        var t = e;        var n = 0;        while (!!t) {            n += t.offsetTop;            t = t.offsetParent        }        return n    }     function g() {        var e = document.documentElement;        if (!!window.innerWidth) {            return window.innerHeight        } else if (e && !isNaN(e.clientHeight)) {            return e.clientHeight        }        return 0    }     function y() {        if (window.pageYOffset) {            return window.pageYOffset        }        return Math.max(document.documentElement.scrollTop, document.body.scrollTop)    }     function E(e) {        var t = m(e);        return t >= w && t <= b + w    }     var songs = ['/media/Music-Fashion_Show.mp3', '/media/G-Love.Phonk.mp3', '/media/APT.mp3', '/media/Music-outside.mp3', '/media/Music-sunburst.mp3', '/media/Music-Wake-Live.mp3'];    function S() {        var e = document.getElementById('audio_element_id');        if(e != null){            var index = parseInt(e.getAttribute('curSongIndex'));            if(index > songs.length - 2) {                index = 0;            } else {                index++;            }            e.setAttribute('curSongIndex', index);            N();        }        e.src = i;        e.play()    }     function x(e) {        e.className += ' ' + s + ' ' + o    }     function T(e) {        e.className += ' ' + s + ' ' + u[Math.floor(Math.random() * u.length)]    }     function N() {        var e = document.getElementsByClassName(s);        var t = new RegExp('\\b' + s + '\\b');        for (var n = 0; n < e.length; ) {            e[n].className = e[n].className.replace(t, '')        }    }    function initAudioEle() {        var e = document.getElementById('audio_element_id');        if(e === null){            e = document.createElement('audio');            e.setAttribute('class', l);            e.setAttribute('curSongIndex', 0);            e.id = 'audio_element_id';            e.loop = false;            e.bgcolor = 0;            e.addEventListener('canplay', function() {            setTimeout(function() {                x(k)            }, 500);            setTimeout(function() {                N();                p();                for (var e = 0; e < O.length; e++) {                    T(O[e])                }            }, 8000)        }, true);        e.addEventListener('ended', function() {            N();            h();            go();        }, true);        e.innerHTML = ' <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>';        document.body.appendChild(e);        }    }        initAudioEle();    var e = 30;    var t = 30;    var n = 350;    var r = 350;    var curSongIndex = parseInt(document.getElementById('audio_element_id').getAttribute('curSongIndex'));    var i = songs[curSongIndex];        var s = 'mw-harlem_shake_me';    var o = 'im_first';    var u = ['im_drunk', 'im_baked', 'im_trippin', 'im_blown'];    var a = 'mw-strobe_light';    var f = '/css/harlem-shake-style.css';        var l = 'mw_added_css';    var b = g();    var w = y();    var C = document.getElementsByTagName('*');    var k = null;    for (var L = 0; L < C.length; L++) {        var A = C[L];        if (v(A)) {            if (E(A)) {                k = A;                break            }        }    }    if (A === null) {        console.warn('Could not find a node of the right size. Please try a different page.');        return    }    c();    S();    var O = [];    for (var L = 0; L < C.length; L++) {        var A = C[L];        if (v(A)) {            O.push(A)        }    }    })()" >High一下</a>
+    
+  </nav>
+  <hr />
+</header>
+
+      <div id="content">
+        
+  <main>
+    <article>
+      <h1 class="title">科学上网-搭建Shadowsocks服务</h1>
+      
+      <div class="post-meta">
+  <strong>
+    <span>Posted on</span>
+    <time>2015-02-09</time>
+    <span>in</span>
+    
+      <a href="/categories/fgfw">FGFW</a>
+  </strong>
+  <span> • 87 words</span>
+  <span> • 1 minute read</span>
+  
+  
+    <div>
+      <span>Tags:</span>
+      
+        <a href="/tags/fq">FQ</a>, 
+        <a href="/tags/vps">VPS</a>
+    </div>
+  
+</div>
+
+      <div class="content"><h2 id="前言">前言</h2>
+<p>生命不息，折腾不止，方校长的丰功伟绩我天朝程序员为之叹息，说多了都是泪。既然现在不太存在把Q推倒的可能，那我们就只好自个F过去，之前一直用都在用<a href="https://github.com/goagent/goagent">Goagent</a>上Youtube看视频，一卡一卡的，而且Goagent也要常更新才能使用，比较蛋疼。而用Hosts上谷歌虽然是一种最直接的方法，但要找到一封就更新IP的服务比较少，这里推荐两个：<a href="https://github.com/txthinking/google-hosts">google-hosts</a>, <a href="http://www.netsh.org/">netsh</a>，这些hosts都是说不定突然就会被封的，但自己使用来看netsh目前还挺靠谱，把它放在hosts那里也还不错的。额，其它的不扯了，下面来把Shadowsocks搭起来。</p>
+<h2 id="vps的选择">VPS的选择</h2>
+<p>VPS自己用的不多只根据网上的各种对比测评，最终还是选择了<code>搬瓦工(Bandwagon Host logo)</code>，因为够便宜，选了个4.99刀一年的，人民币31.24元。配置：<code>112M内存 24Mswap 3G HDD硬盘</code>，够用了，其它的配置价格<a href="https://bandwagonhost.com/cart.php">戳这里</a>，当然也可以使用<a href="https://bandwagonhost.com/aff.php?aff=2049">我的优惠链接</a>。个人的话如果能申请到<a href="https://education.github.com/pack">Student Developer Pack</a>的选择<a href="https://www.digitalocean.com/">DigitalOcean</a>最好不过了，DigitalOcean还是按小时计费的，不用的话可以暂停掉不再计费，成功申请有Student Developer Pack能有100刀送，最低配置的能用两年了，无奈我的申请杳无音讯。。这里VPS就选好了，把支付链接什么的先弄好等待下一步。</p>
+<h2 id="vps费用支付">VPS费用支付</h2>
+<p>有信用卡的最好了，没有的最好选择<a href="https://www.paypal.com">Paypal</a>支持银联支付，一般有国内银行卡即可，注册也很简单，个人信息最好如实填写。然后从搬瓦工的购买链接点击进去按它的提示一步一步把钱送到它口袋即可，支付成功后等下下就会有几条邮件发往你邮箱了，其实都可以不看，直接去搬瓦工后台，Services-&gt;My Services-&gt;Kiwivm Control Panel。</p>
+<h2 id="主机配置">主机配置</h2>
+<p>先上个控制台的图：
+<img src="/images/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91-%E6%90%AD%E5%BB%BAShadowsocks%E6%9C%8D%E5%8A%A1-1.png" alt="VPS控制面板"></p>
+<h3 id="重装系统">重装系统</h3>
+<p>现在控制台Main Controls选项里把系统Stop掉，再来到Install new OS，选择ubuntu-14.04-x86_64-minimal然后agree Reload等待几秒即可，很快。然后就是在机器上装Shadowsocks前先SSH连上机器，Linux下SSH连直接命令行即可操作，不细述了。Windows下我使用<a href="http://www.putty.org/">Putty</a>(官网被墙，<a href="http://the.earth.li/~sgtatham/putty/latest/x86/putty.exe">点我下载</a>),然后按下图填写选择，IP即为控制面板上的<code>IP addres</code>，端口为控制面板上的<code>SSH Port</code>，最后Open。
+<img src="/images/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91-%E6%90%AD%E5%BB%BAShadowsocks%E6%9C%8D%E5%8A%A1-2.png" alt="Putty内容">
+连接上后就是正常的Linux终端了，输入用户名密码，我们选择root登陆，拥有最高权限所以操作要小心。名字：<code>root</code>，密码：点击控制面板上的<code>Root password modidication</code>重新<code>Generate</code>一个新的root密码，复制保存下来，也可以随意重新生成，输入终端回车进入，如下：
+<img src="/images/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91-%E6%90%AD%E5%BB%BAShadowsocks%E6%9C%8D%E5%8A%A1-3.png" alt="用户登陆后">
+然后就可以安装Shadowsocks,可以看<a href="https://github.com/shadowsocks/shadowsocks/wiki/Shadowsocks-%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E">wiki教程</a>,推荐使用配置文件开启服务，过程如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>root@rocko:~# apt-get update
+</span></span><span style="display:flex;"><span>root@rocko:~# apt-get install python-pip
+</span></span><span style="display:flex;"><span>root@rocko:~# pip install shadowsocks
+</span></span></code></pre></div><p>安装完毕使用vim新建配置文件：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>root@rocko:~# vim /etc/shadowsocks.json
+</span></span></code></pre></div><p>然后写入如下配置，server和password换点就好其它随意，<code>:w</code>保存、不再修改<code>:q</code>退出：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-vim" data-lang="vim"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span><span style="color:#75715e">    &#34;server&#34;:&#34;my_server_ip&#34;,</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">    &#34;server_port&#34;:8388,</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">    &#34;local_address&#34;: &#34;127.0.0.1&#34;,</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">    &#34;local_port&#34;:1080,</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">    &#34;password&#34;:&#34;mypassword&#34;,</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">    &#34;timeout&#34;:300,</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">    &#34;method&#34;:&#34;aes-256-cfb&#34;,</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">    &#34;fast_open&#34;: false</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>最后就是在后台开启/关闭服务命令：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>root@rocko:~# ssserver -c /etc/shadowsocks.json -d start
+</span></span><span style="display:flex;"><span>root@rocko:~# ssserver -c /etc/shadowsocks.json -d stop
+</span></span></code></pre></div><h2 id="各平台使用">各平台使用</h2>
+<p>安装各<a href="https://github.com/shadowsocks/shadowsocks/wiki/Ports-and-Clients">平台下的Shadowsocks客户端</a>，基本上都是填入<code>/etc/shadowsocks.json</code>的对应信息即可，最后打开Google，成功！！！
+可以使用命令查看日志信息：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>root@rocko:~# cat /var/log/shadowsocks.log
+</span></span></code></pre></div><p>然后就可以看到运行记录，最明显的就是你客户端上的IP了，对比一下，就是自己~。不过时间不是中国的，看起来不直接所以我们可以把系统时区改在中国，执行以下命令</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>root@rocko:~# dpkg-reconfigure tzdata
+</span></span></code></pre></div><p>按着提示选就可以，截图如下：
+<img src="/images/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91-%E6%90%AD%E5%BB%BAShadowsocks%E6%9C%8D%E5%8A%A1-4.png" alt="市区更改过程图"></p>
+<h2 id="end">End</h2>
+<p>整个过程还是很顺畅的，如果都有必要的账号信息10分钟搞定是没问题的。体验体验之后下一步就是优化了，当然这也是后话了，弄好后有什么特别的再贴出来。</p></div>
+    </article>
+    
+            <br/><br/><br/>
+            <hr/>
+            <div id="valine" class="comment"></div>
+          
+            <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+          
+            <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+            <script type="text/javascript">
+                new Valine({
+                    el: '#valine' ,
+                    appId: 'fBqoKNrWNFkYQMTivF00jWpk-gzGzoHsz',
+                    appKey: 'q2baN9KwoyaFHmbjMHfssLIH',
+                    notify: 'true', 
+                    verify: 'false', 
+                    avatar:'hide', 
+                    placeholder: '说点什么吧~',
+                    visitor: ''
+                });
+            </script>
+            <noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript>
+
+  </main>
+
+      </div>
+      <footer>
+  <hr />
+  
+    <p id="social">
+      Find me around the web:
+      <br />
+      
+        
+        <a href="https://github.com/zhengxiaopeng" target="_blank">GitHub</a>
+      
+         | 
+        <a href="https://juejin.cn/user/3051900006044056" target="_blank">Juejin</a>
+      
+         | 
+        <a href="http://www.zhihu.com/people/rocko" target="_blank">Zhihu</a>
+      
+         | 
+        <a href="http://blog.csdn.net/bbld_" target="_blank">CSDN</a>
+      
+         | 
+        <a href="http://weibo.com/678662430" target="_blank">Weibo</a>
+      
+    </p>
+  
+  <p class="copyright">
+    Copyright © 2024
+    <a href="https://rocko.vip/" ><strong>Rocko</strong></a>.
+    This work is licensed under the
+    <a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA 4.0</a> license.
+  </p>
+  <p class="builtWith">
+    Powered by
+    <a href="http://www.gohugo.io/" target="_blank">Hugo</a>.
+  </p>
+</footer>
+
+    </div>
+  </body>
+</html>

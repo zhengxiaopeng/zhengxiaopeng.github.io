@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Python on Rocko&#39;s blog</title>
+    <link>https://rocko.vip/tags/python/</link>
+    <description>Recent content in Python on Rocko&#39;s blog</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 09 Jul 2015 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://rocko.vip/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Python-Argparse 脚本参数解析</title>
+      <link>https://rocko.vip/posts/python-argparse-%E8%84%9A%E6%9C%AC%E5%8F%82%E6%95%B0%E8%A7%A3%E6%9E%90/</link>
+      <pubDate>Thu, 09 Jul 2015 00:00:00 +0000</pubDate>
+      <guid>https://rocko.vip/posts/python-argparse-%E8%84%9A%E6%9C%AC%E5%8F%82%E6%95%B0%E8%A7%A3%E6%9E%90/</guid>
+      <description>&lt;p&gt;&lt;code&gt;Argparse&lt;/code&gt; 是 &lt;code&gt;Python&lt;/code&gt; 标准库中推荐的命令行解析模块，经常需要解析脚本参数的话这是个方便的工具模块，摆脱万年手动 &lt;code&gt;system.argv&lt;/code&gt;。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

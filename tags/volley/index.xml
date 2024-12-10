@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Volley on Rocko&#39;s blog</title>
+    <link>https://rocko.vip/tags/volley/</link>
+    <description>Recent content in Volley on Rocko&#39;s blog</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 05 Dec 2014 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://rocko.vip/tags/volley/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Android Volley自定义Request(JacksonRequest、GsonRequest)</title>
+      <link>https://rocko.vip/posts/android-volley%E8%87%AA%E5%AE%9A%E4%B9%89request-jacksonrequestgsonrequest/</link>
+      <pubDate>Fri, 05 Dec 2014 00:00:00 +0000</pubDate>
+      <guid>https://rocko.vip/posts/android-volley%E8%87%AA%E5%AE%9A%E4%B9%89request-jacksonrequestgsonrequest/</guid>
+      <description>&lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;&#xA;&lt;p&gt;Volley是一个强大的HTTP库，让Android的的网络操作变得容易、高效、快速。在少数据的高并发情况下它的优势很明显，但在大文件的上传或者下载操作中就并不适用了，这种情况下是建议使用传统方式或者其它框架来实现的。&#xA;&lt;em&gt;它的优点再罗列如下：&lt;/em&gt;&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;自动管理网络请求&lt;/li&gt;&#xA;&lt;li&gt;多并发的网络连接&lt;/li&gt;&#xA;&lt;li&gt;通过标准的HTTP cache coherence(高速缓存一致性)使得磁盘与内存缓存不可见(Transparent)&lt;/li&gt;&#xA;&lt;li&gt;支持指定请求的优先级&lt;/li&gt;&#xA;&lt;li&gt;支持取消已经发出的请求。你可以取消单个请求，也可以设置请求取消的块或范围&lt;/li&gt;&#xA;&lt;li&gt;框架是容易被定制的，例如，重试或者回退功能&lt;/li&gt;&#xA;&lt;li&gt;强大的指令使得你可以容易地去异步网络操作和(网络获取数据后)的UI设置&lt;/li&gt;&#xA;&lt;li&gt;(内置)Debugging和tracing工具&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h1 id=&#34;自定义request实现&#34;&gt;自定义Request实现&lt;/h1&gt;&#xA;&lt;p&gt;上面提到的优点：Volley是容易被定制的，它的易扩展性在这里的自定义Request实现中就很好的体现了出来。自定义Request是通过继承Volley中最核心的Request类来实现的。在我们的Request来解析json数据时，注意处理复杂json数据的解析可扩展性。比如，我们一般都需要把JSON数据解析成我们的实体对象，如下面使用示例中的Weather对象，如果我们的实体比较复杂时就需要自定义自己的Type去给Jackson、Gson去处理了，不然一般都会默认的给解析成HashMap式的键值对造成FC或者get不到属性。对于Jackson，使用Jackson库里的&lt;code&gt;TypeReference&lt;/code&gt;类来实现；对于Gson，使用Gson库中的&lt;code&gt;TypeToken&lt;/code&gt;类来实现。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

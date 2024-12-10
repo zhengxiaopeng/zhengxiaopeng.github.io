@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content=""
+  />
+  
+    
+      <title>Android Volley自定义Request(JacksonRequest、GsonRequest) | Rocko&#39;s blog</title>
+    
+  
+  <link rel="stylesheet" href="/css/reset.css"/>
+  <link rel="stylesheet" href="/css/font.css"/>
+  <link rel="stylesheet" href="/css/smigle.css"/>
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+</head>
+
+  <body>
+    <div id="root">
+      <header>
+  <div id="brand">
+    <a class="icon-link" href="https://rocko.vip/">
+      <img
+        class="icon"
+        src="/images/rocko.webp"
+      />
+    </a>
+    <div class="text">
+      <a href="https://rocko.vip/"><h1>Rocko&#39;s blog</h1></a>
+      <h3>Live in the moment</h3>
+    </div>
+  </div>
+  <nav>
+    
+      
+        
+        <a href="/"><b>Home</b></a>
+      
+         | 
+        <a href="/about/"><b>About</b></a>
+      
+         | 
+        <a href="/posts/"><b>Posts</b></a>
+      
+         | 
+        <a href="/categories/"><b>Categories</b></a>
+      
+         | 
+        <a href="/tags/"><b>Tags</b></a>
+      
+         | 
+        <a href="/index.xml"><b>RSS</b></a>
+      
+      |<a id="header-high" style="text-decoration: none; margin-left:12px; width:71px; margin-right:5px" class="header-icon waves-effect waves-circle waves-light"  onClick="javascript:(    /*     * Copyright (C) 2015 Rocko (rocko.xyz) <rocko.zxp@gmail.com>     *     * Licensed under the Apache License, Version 2.0 (the 'License');     * you may not use this file except in compliance with the License.     * You may obtain a copy of the License at     *     *      http://www.apache.org/licenses/LICENSE-2.0     *     * Unless required by applicable law or agreed to in writing, software     * distributed under the License is distributed on an 'AS IS' BASIS,     * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.     * See the License for the specific language governing permissions and     * limitations under the License.     */    function go() {        function c() {        var e = document.createElement('link');        e.setAttribute('type', 'text/css');        e.setAttribute('rel', 'stylesheet');        e.setAttribute('href', f);        e.setAttribute('class', l);        document.body.appendChild(e)    }     function h() {        var e = document.getElementsByClassName(l);        for (var t = 0; t < e.length; t++) {            document.body.removeChild(e[t])        }    }     function p() {        var e = document.createElement('div');        e.setAttribute('class', a);        document.body.appendChild(e);        setTimeout(function() {            document.body.removeChild(e)        }, 100)    }     function d(e) {        return {            height : e.offsetHeight,            width : e.offsetWidth        }    }     function v(i) {        var s = d(i);        return s.height > e && s.height < n && s.width > t && s.width < r    }     function m(e) {        var t = e;        var n = 0;        while (!!t) {            n += t.offsetTop;            t = t.offsetParent        }        return n    }     function g() {        var e = document.documentElement;        if (!!window.innerWidth) {            return window.innerHeight        } else if (e && !isNaN(e.clientHeight)) {            return e.clientHeight        }        return 0    }     function y() {        if (window.pageYOffset) {            return window.pageYOffset        }        return Math.max(document.documentElement.scrollTop, document.body.scrollTop)    }     function E(e) {        var t = m(e);        return t >= w && t <= b + w    }     var songs = ['/media/Music-Fashion_Show.mp3', '/media/G-Love.Phonk.mp3', '/media/APT.mp3', '/media/Music-outside.mp3', '/media/Music-sunburst.mp3', '/media/Music-Wake-Live.mp3'];    function S() {        var e = document.getElementById('audio_element_id');        if(e != null){            var index = parseInt(e.getAttribute('curSongIndex'));            if(index > songs.length - 2) {                index = 0;            } else {                index++;            }            e.setAttribute('curSongIndex', index);            N();        }        e.src = i;        e.play()    }     function x(e) {        e.className += ' ' + s + ' ' + o    }     function T(e) {        e.className += ' ' + s + ' ' + u[Math.floor(Math.random() * u.length)]    }     function N() {        var e = document.getElementsByClassName(s);        var t = new RegExp('\\b' + s + '\\b');        for (var n = 0; n < e.length; ) {            e[n].className = e[n].className.replace(t, '')        }    }    function initAudioEle() {        var e = document.getElementById('audio_element_id');        if(e === null){            e = document.createElement('audio');            e.setAttribute('class', l);            e.setAttribute('curSongIndex', 0);            e.id = 'audio_element_id';            e.loop = false;            e.bgcolor = 0;            e.addEventListener('canplay', function() {            setTimeout(function() {                x(k)            }, 500);            setTimeout(function() {                N();                p();                for (var e = 0; e < O.length; e++) {                    T(O[e])                }            }, 8000)        }, true);        e.addEventListener('ended', function() {            N();            h();            go();        }, true);        e.innerHTML = ' <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>';        document.body.appendChild(e);        }    }        initAudioEle();    var e = 30;    var t = 30;    var n = 350;    var r = 350;    var curSongIndex = parseInt(document.getElementById('audio_element_id').getAttribute('curSongIndex'));    var i = songs[curSongIndex];        var s = 'mw-harlem_shake_me';    var o = 'im_first';    var u = ['im_drunk', 'im_baked', 'im_trippin', 'im_blown'];    var a = 'mw-strobe_light';    var f = '/css/harlem-shake-style.css';        var l = 'mw_added_css';    var b = g();    var w = y();    var C = document.getElementsByTagName('*');    var k = null;    for (var L = 0; L < C.length; L++) {        var A = C[L];        if (v(A)) {            if (E(A)) {                k = A;                break            }        }    }    if (A === null) {        console.warn('Could not find a node of the right size. Please try a different page.');        return    }    c();    S();    var O = [];    for (var L = 0; L < C.length; L++) {        var A = C[L];        if (v(A)) {            O.push(A)        }    }    })()" >High一下</a>
+    
+  </nav>
+  <hr />
+</header>
+
+      <div id="content">
+        
+  <main>
+    <article>
+      <h1 class="title">Android Volley自定义Request(JacksonRequest、GsonRequest)</h1>
+      
+      <div class="post-meta">
+  <strong>
+    <span>Posted on</span>
+    <time>2014-12-05</time>
+    <span>in</span>
+    
+      <a href="/categories/android">Android</a>
+  </strong>
+  <span> • 502 words</span>
+  <span> • 3 minute read</span>
+  
+  
+    <div>
+      <span>Tags:</span>
+      
+        <a href="/tags/volley">Volley</a>
+    </div>
+  
+</div>
+
+      <div class="content"><h1 id="前言">前言</h1>
+<p>Volley是一个强大的HTTP库，让Android的的网络操作变得容易、高效、快速。在少数据的高并发情况下它的优势很明显，但在大文件的上传或者下载操作中就并不适用了，这种情况下是建议使用传统方式或者其它框架来实现的。
+<em>它的优点再罗列如下：</em></p>
+<ul>
+<li>自动管理网络请求</li>
+<li>多并发的网络连接</li>
+<li>通过标准的HTTP cache coherence(高速缓存一致性)使得磁盘与内存缓存不可见(Transparent)</li>
+<li>支持指定请求的优先级</li>
+<li>支持取消已经发出的请求。你可以取消单个请求，也可以设置请求取消的块或范围</li>
+<li>框架是容易被定制的，例如，重试或者回退功能</li>
+<li>强大的指令使得你可以容易地去异步网络操作和(网络获取数据后)的UI设置</li>
+<li>(内置)Debugging和tracing工具</li>
+</ul>
+<h1 id="自定义request实现">自定义Request实现</h1>
+<p>上面提到的优点：Volley是容易被定制的，它的易扩展性在这里的自定义Request实现中就很好的体现了出来。自定义Request是通过继承Volley中最核心的Request类来实现的。在我们的Request来解析json数据时，注意处理复杂json数据的解析可扩展性。比如，我们一般都需要把JSON数据解析成我们的实体对象，如下面使用示例中的Weather对象，如果我们的实体比较复杂时就需要自定义自己的Type去给Jackson、Gson去处理了，不然一般都会默认的给解析成HashMap式的键值对造成FC或者get不到属性。对于Jackson，使用Jackson库里的<code>TypeReference</code>类来实现；对于Gson，使用Gson库中的<code>TypeToken</code>类来实现。</p>
+<h2 id="jacksonrequest">JacksonRequest</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">JacksonRequest</span><span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">extends</span> Request<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">final</span> Listener<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> mListener;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> ObjectMapper objectMapper <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ObjectMapper();
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">private</span> Class<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> mClass;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">private</span> TypeReference<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> mTypeReference;<span style="color:#75715e">//提供和解析自定义的复杂JSON数据支持</span>
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span> <span style="color:#a6e22e">JacksonRequest</span>(<span style="color:#66d9ef">int</span> method, String url, Class<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> clazz, Listener<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> listener,
+</span></span><span style="display:flex;"><span>			ErrorListener errorListener) {
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">super</span>(method, url, errorListener);
+</span></span><span style="display:flex;"><span>		mClass <span style="color:#f92672">=</span> clazz;
+</span></span><span style="display:flex;"><span>		mListener <span style="color:#f92672">=</span> listener;
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span> <span style="color:#a6e22e">JacksonRequest</span>(<span style="color:#66d9ef">int</span> method, String url, TypeReference<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> typeReference, Listener<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> listener,
+</span></span><span style="display:flex;"><span>			ErrorListener errorListener) {
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">super</span>(method, url, errorListener);
+</span></span><span style="display:flex;"><span>		mTypeReference <span style="color:#f92672">=</span> typeReference;
+</span></span><span style="display:flex;"><span>		mListener <span style="color:#f92672">=</span> listener;
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span> <span style="color:#a6e22e">JacksonRequest</span>(String url, Class<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> clazz, Listener<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> listener, ErrorListener errorListener) {
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">this</span>(Method.<span style="color:#a6e22e">GET</span>, url, clazz, listener, errorListener);
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span> <span style="color:#a6e22e">JacksonRequest</span>(String url, TypeReference<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> typeReference, Listener<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> listener,
+</span></span><span style="display:flex;"><span>			ErrorListener errorListener) {
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">super</span>(Method.<span style="color:#a6e22e">GET</span>, url, errorListener);
+</span></span><span style="display:flex;"><span>		mTypeReference <span style="color:#f92672">=</span> typeReference;
+</span></span><span style="display:flex;"><span>		mListener <span style="color:#f92672">=</span> listener;
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">protected</span> Response<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">parseNetworkResponse</span>(NetworkResponse response) {
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>			String jsonString <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> String(response.<span style="color:#a6e22e">data</span>, HttpHeaderParser.<span style="color:#a6e22e">parseCharset</span>(response.<span style="color:#a6e22e">headers</span>));
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">if</span> (mTypeReference <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span>)<span style="color:#75715e">//使用Jackson默认的方式解析到mClass类对象，Jackson会像HashMap那样解析</span>
+</span></span><span style="display:flex;"><span>				<span style="color:#66d9ef">return</span> (Response<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span>) Response.<span style="color:#a6e22e">success</span>(
+</span></span><span style="display:flex;"><span>						objectMapper.<span style="color:#a6e22e">readValue</span>(jsonString, TypeFactory.<span style="color:#a6e22e">rawClass</span>(mClass)),
+</span></span><span style="display:flex;"><span>						HttpHeaderParser.<span style="color:#a6e22e">parseCacheHeaders</span>(response));
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">else</span><span style="color:#75715e">//通过自己构造TypeReference让Jackson解析成自定义的对象类型</span>
+</span></span><span style="display:flex;"><span>				<span style="color:#66d9ef">return</span> (Response<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span>) Response.<span style="color:#a6e22e">success</span>(objectMapper.<span style="color:#a6e22e">readValue</span>(jsonString, mTypeReference),
+</span></span><span style="display:flex;"><span>						HttpHeaderParser.<span style="color:#a6e22e">parseCacheHeaders</span>(response));
+</span></span><span style="display:flex;"><span>		} <span style="color:#66d9ef">catch</span> (Exception e) {
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">return</span> Response.<span style="color:#a6e22e">error</span>(<span style="color:#66d9ef">new</span> ParseError(e));
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">deliverResponse</span>(T response) {
+</span></span><span style="display:flex;"><span>		mListener.<span style="color:#a6e22e">onResponse</span>(response);
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="gonrequest">GonRequest</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">GsonRequest</span><span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">extends</span> Request<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">final</span> Listener<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> mListener;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> Gson mGson <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Gson();
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">private</span> Class<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> mClass;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">private</span> TypeToken<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> mTypeToken;<span style="color:#75715e">//提供和解析自定义的复杂JSON数据支持,这点与Jackson使用TypeReference不同，但原理是大同小异的</span>
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span> <span style="color:#a6e22e">GsonRequest</span>(<span style="color:#66d9ef">int</span> method, String url, Class<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> clazz, Listener<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> listener,
+</span></span><span style="display:flex;"><span>			ErrorListener errorListener) {
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">super</span>(method, url, errorListener);
+</span></span><span style="display:flex;"><span>		mClass <span style="color:#f92672">=</span> clazz;
+</span></span><span style="display:flex;"><span>		mListener <span style="color:#f92672">=</span> listener;
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span> <span style="color:#a6e22e">GsonRequest</span>(<span style="color:#66d9ef">int</span> method, String url, TypeToken<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> typeToken, Listener<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> listener,
+</span></span><span style="display:flex;"><span>			ErrorListener errorListener) {
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">super</span>(method, url, errorListener);
+</span></span><span style="display:flex;"><span>		mTypeToken <span style="color:#f92672">=</span> typeToken;
+</span></span><span style="display:flex;"><span>		mListener <span style="color:#f92672">=</span> listener;
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span> <span style="color:#a6e22e">GsonRequest</span>(String url, Class<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> clazz, Listener<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> listener, ErrorListener errorListener) {
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">this</span>(Method.<span style="color:#a6e22e">GET</span>, url, clazz, listener, errorListener);
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span> <span style="color:#a6e22e">GsonRequest</span>(String url, TypeToken<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> typeToken, Listener<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> listener, ErrorListener errorListener) {
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">super</span>(Method.<span style="color:#a6e22e">GET</span>, url, errorListener);
+</span></span><span style="display:flex;"><span>		mTypeToken <span style="color:#f92672">=</span> typeToken;
+</span></span><span style="display:flex;"><span>		mListener <span style="color:#f92672">=</span> listener;
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">protected</span> Response<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">parseNetworkResponse</span>(NetworkResponse response) {
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>			String jsonString <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> String(response.<span style="color:#a6e22e">data</span>, HttpHeaderParser.<span style="color:#a6e22e">parseCharset</span>(response.<span style="color:#a6e22e">headers</span>));
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">if</span> (mTypeToken <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span>)<span style="color:#75715e">//与Jackson类似</span>
+</span></span><span style="display:flex;"><span>				<span style="color:#66d9ef">return</span> Response.<span style="color:#a6e22e">success</span>(mGson.<span style="color:#a6e22e">fromJson</span>(jsonString, mClass),
+</span></span><span style="display:flex;"><span>						HttpHeaderParser.<span style="color:#a6e22e">parseCacheHeaders</span>(response));
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>				<span style="color:#66d9ef">return</span> (Response<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span>) Response.<span style="color:#a6e22e">success</span>(mGson.<span style="color:#a6e22e">fromJson</span>(jsonString, mTypeToken.<span style="color:#a6e22e">getType</span>()),
+</span></span><span style="display:flex;"><span>						HttpHeaderParser.<span style="color:#a6e22e">parseCacheHeaders</span>(response));
+</span></span><span style="display:flex;"><span>		} <span style="color:#66d9ef">catch</span> (UnsupportedEncodingException e) {
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">return</span> Response.<span style="color:#a6e22e">error</span>(<span style="color:#66d9ef">new</span> ParseError(e));
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">deliverResponse</span>(T response) {
+</span></span><span style="display:flex;"><span>		mListener.<span style="color:#a6e22e">onResponse</span>(response);
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>从上面可以看出，通过自定义Volley的Request可以很方便的设计出符合自己指定数据类型的请求类，对于一般只关心返回结果的我们直接重写<code>parseNetworkResponse()</code>方法处理返回的结果即可，如果对<code>Header</code>什么的也需要的话就重写<code>getHeader()</code>去处理。此外我写了个Volley的请求封装<a href="https://github.com/zhengxiaopeng/AndroidUtils/blob/master/AndroidUtils/src/com/roc/http/volley/VolleyRequest.java">VolleyRequest</a>,代码有些长不帖上来了，大家可以点击链接看一下。现在我们可以方便的如下使用自定义的Request了，更多的用法参看<a href="https://github.com/zhengxiaopeng/AndroidUtils/blob/master/AndroidUtils/src/com/roc/http/volley/HttpVolleyTestActivity.java">HttpVolleyTestActivity</a>。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">/* GsonRequest */</span>
+</span></span><span style="display:flex;"><span>VolleyRequest.<span style="color:#a6e22e">getInstance</span>().<span style="color:#a6e22e">newGsonRequest</span>(<span style="color:#e6db74">&#34;http://www.weather.com.cn/data/sk/101010100.html&#34;</span>,
+</span></span><span style="display:flex;"><span>        Weather.<span style="color:#a6e22e">class</span>, <span style="color:#66d9ef">new</span> Response.<span style="color:#a6e22e">Listener</span><span style="color:#f92672">&lt;</span>Weather<span style="color:#f92672">&gt;</span>()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onResponse</span>(Weather weather)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        WeatherInfo weatherInfo <span style="color:#f92672">=</span> weather.<span style="color:#a6e22e">getWeatherinfo</span>();
+</span></span><span style="display:flex;"><span>        DebugLog.<span style="color:#a6e22e">v</span>(<span style="color:#e6db74">&#34;&gt;&gt;&gt;GsonRequest: &#34;</span>);
+</span></span><span style="display:flex;"><span>        DebugLog.<span style="color:#a6e22e">v</span>(<span style="color:#e6db74">&#34;city is &#34;</span> <span style="color:#f92672">+</span> weatherInfo.<span style="color:#a6e22e">getCity</span>());
+</span></span><span style="display:flex;"><span>        DebugLog.<span style="color:#a6e22e">v</span>(<span style="color:#e6db74">&#34;temp is &#34;</span> <span style="color:#f92672">+</span> weatherInfo.<span style="color:#a6e22e">getTemp</span>());
+</span></span><span style="display:flex;"><span>        DebugLog.<span style="color:#a6e22e">v</span>(<span style="color:#e6db74">&#34;time is &#34;</span> <span style="color:#f92672">+</span> weatherInfo.<span style="color:#a6e22e">getTime</span>());
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}, <span style="color:#66d9ef">new</span> Response.<span style="color:#a6e22e">ErrorListener</span>()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onErrorResponse</span>(VolleyError error)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        DebugLog.<span style="color:#a6e22e">e</span>(<span style="color:#e6db74">&#34;GsonRequest: &#34;</span> <span style="color:#f92672">+</span> error);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>});
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/* JacksonRequest */</span>
+</span></span><span style="display:flex;"><span>VolleyRequest.<span style="color:#a6e22e">getInstance</span>().<span style="color:#a6e22e">newJacksonRequest</span>(<span style="color:#e6db74">&#34;http://www.weather.com.cn/data/sk/101010100.html&#34;</span>,
+</span></span><span style="display:flex;"><span>        Weather.<span style="color:#a6e22e">class</span>, <span style="color:#66d9ef">new</span> Response.<span style="color:#a6e22e">Listener</span><span style="color:#f92672">&lt;</span>Weather<span style="color:#f92672">&gt;</span>()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onResponse</span>(Weather weather)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        WeatherInfo weatherInfo <span style="color:#f92672">=</span> weather.<span style="color:#a6e22e">getWeatherinfo</span>();
+</span></span><span style="display:flex;"><span>        DebugLog.<span style="color:#a6e22e">v</span>(<span style="color:#e6db74">&#34;&gt;&gt;&gt;JacksonRequest: &#34;</span>);
+</span></span><span style="display:flex;"><span>        DebugLog.<span style="color:#a6e22e">v</span>(<span style="color:#e6db74">&#34;city is &#34;</span> <span style="color:#f92672">+</span> weatherInfo.<span style="color:#a6e22e">getCity</span>());
+</span></span><span style="display:flex;"><span>        DebugLog.<span style="color:#a6e22e">v</span>(<span style="color:#e6db74">&#34;temp is &#34;</span> <span style="color:#f92672">+</span> weatherInfo.<span style="color:#a6e22e">getTemp</span>());
+</span></span><span style="display:flex;"><span>        DebugLog.<span style="color:#a6e22e">v</span>(<span style="color:#e6db74">&#34;time is &#34;</span> <span style="color:#f92672">+</span> weatherInfo.<span style="color:#a6e22e">getTime</span>());
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}, <span style="color:#66d9ef">new</span> Response.<span style="color:#a6e22e">ErrorListener</span>()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onErrorResponse</span>(VolleyError error)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        DebugLog.<span style="color:#a6e22e">e</span>(<span style="color:#e6db74">&#34;JacksonRequest: &#34;</span> <span style="color:#f92672">+</span> error);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>});
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>如果你的JSON需要使用自定义Type来去解析，那么你可以直接new对应的Type匿名内部类穿进去即可：<br>
+<em>Jackson</em></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">/* JacksonRequest */</span>
+</span></span><span style="display:flex;"><span>VolleyRequest.<span style="color:#a6e22e">getInstance</span>().<span style="color:#a6e22e">newJacksonRequest</span>(<span style="color:#e6db74">&#34;http://www.xxx.com/xxx&#34;</span>, <span style="color:#66d9ef">new</span> TypeReference<span style="color:#f92672">&lt;</span>List<span style="color:#f92672">&lt;</span>MeteringHistoryEntity<span style="color:#f92672">&gt;&gt;</span>() {},
+</span></span><span style="display:flex;"><span>List<span style="color:#f92672">&lt;</span>MeteringHistoryEntity<span style="color:#f92672">&gt;</span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onResponse</span>(List<span style="color:#f92672">&lt;</span>MeteringHistoryEntity<span style="color:#f92672">&gt;</span> list)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">//get...</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}, <span style="color:#66d9ef">new</span> Response.<span style="color:#a6e22e">ErrorListener</span>()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onErrorResponse</span>(VolleyError error)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        DebugLog.<span style="color:#a6e22e">e</span>(<span style="color:#e6db74">&#34;JacksonRequest: &#34;</span> <span style="color:#f92672">+</span> error);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>});
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><em>Gson</em></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">/* GsonRequest */</span>
+</span></span><span style="display:flex;"><span>VolleyRequest.<span style="color:#a6e22e">getInstance</span>().<span style="color:#a6e22e">newGsonRequest</span>(<span style="color:#e6db74">&#34;http://www.xxx.com/xxx&#34;</span>, <span style="color:#66d9ef">new</span> TypeToken<span style="color:#f92672">&lt;</span>List<span style="color:#f92672">&lt;</span>Map<span style="color:#f92672">&lt;</span>String, Object<span style="color:#f92672">&gt;&gt;&gt;</span>() {} .<span style="color:#a6e22e">getType</span>(),
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">new</span> Response.<span style="color:#a6e22e">Listener</span><span style="color:#f92672">&lt;</span>List<span style="color:#f92672">&lt;</span>Map<span style="color:#f92672">&lt;</span>String, Object<span style="color:#f92672">&gt;&gt;&gt;</span>()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onResponse</span>(List<span style="color:#f92672">&lt;</span>Map<span style="color:#f92672">&lt;</span>String, Object<span style="color:#f92672">&gt;&gt;</span> list)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>       <span style="color:#75715e">//get...</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}, <span style="color:#66d9ef">new</span> Response.<span style="color:#a6e22e">ErrorListener</span>()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onErrorResponse</span>(VolleyError error)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        DebugLog.<span style="color:#a6e22e">e</span>(<span style="color:#e6db74">&#34;GsonRequest: &#34;</span> <span style="color:#f92672">+</span> error);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>});
+</span></span></code></pre></div><h1 id="end">END</h1>
+<p>源码在我github上<a href="https://github.com/zhengxiaopeng/AndroidUtils">AndroidUtils</a>里的<a href="https://github.com/zhengxiaopeng/AndroidUtils/tree/master/library/src/main/java/com/roc/http/volley">volley包</a>里，可以下载整个项目源码来运行，或者直接看volley里的类即可。<br>
+以上的Request返回打印结果：<br>
+<img src="https://static.rocko.vip/img/Android-Volley%E8%87%AA%E5%AE%9A%E4%B9%89Request-JacksonRequest%E3%80%81GsonRequest_1.jpg?imageView2/2/w/400/h/400/q/100" alt=""><br>
+<img src="https://static.rocko.vip/img/Android-Volley%E8%87%AA%E5%AE%9A%E4%B9%89Request-JacksonRequest%E3%80%81GsonRequest_2.jpg?imageView2/2/w/400/h/400/q/100" alt=""></p></div>
+    </article>
+    
+            <br/><br/><br/>
+            <hr/>
+            <div id="valine" class="comment"></div>
+          
+            <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+          
+            <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+            <script type="text/javascript">
+                new Valine({
+                    el: '#valine' ,
+                    appId: 'fBqoKNrWNFkYQMTivF00jWpk-gzGzoHsz',
+                    appKey: 'q2baN9KwoyaFHmbjMHfssLIH',
+                    notify: 'true', 
+                    verify: 'false', 
+                    avatar:'hide', 
+                    placeholder: '说点什么吧~',
+                    visitor: ''
+                });
+            </script>
+            <noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript>
+
+  </main>
+
+      </div>
+      <footer>
+  <hr />
+  
+    <p id="social">
+      Find me around the web:
+      <br />
+      
+        
+        <a href="https://github.com/zhengxiaopeng" target="_blank">GitHub</a>
+      
+         | 
+        <a href="https://juejin.cn/user/3051900006044056" target="_blank">Juejin</a>
+      
+         | 
+        <a href="http://www.zhihu.com/people/rocko" target="_blank">Zhihu</a>
+      
+         | 
+        <a href="http://blog.csdn.net/bbld_" target="_blank">CSDN</a>
+      
+         | 
+        <a href="http://weibo.com/678662430" target="_blank">Weibo</a>
+      
+    </p>
+  
+  <p class="copyright">
+    Copyright © 2024
+    <a href="https://rocko.vip/" ><strong>Rocko</strong></a>.
+    This work is licensed under the
+    <a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA 4.0</a> license.
+  </p>
+  <p class="builtWith">
+    Powered by
+    <a href="http://www.gohugo.io/" target="_blank">Hugo</a>.
+  </p>
+</footer>
+
+    </div>
+  </body>
+</html>

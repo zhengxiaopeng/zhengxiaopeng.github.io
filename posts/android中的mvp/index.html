@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content=""
+  />
+  
+    
+      <title>Android中的MVP | Rocko&#39;s blog</title>
+    
+  
+  <link rel="stylesheet" href="/css/reset.css"/>
+  <link rel="stylesheet" href="/css/font.css"/>
+  <link rel="stylesheet" href="/css/smigle.css"/>
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+</head>
+
+  <body>
+    <div id="root">
+      <header>
+  <div id="brand">
+    <a class="icon-link" href="https://rocko.vip/">
+      <img
+        class="icon"
+        src="/images/rocko.webp"
+      />
+    </a>
+    <div class="text">
+      <a href="https://rocko.vip/"><h1>Rocko&#39;s blog</h1></a>
+      <h3>Live in the moment</h3>
+    </div>
+  </div>
+  <nav>
+    
+      
+        
+        <a href="/"><b>Home</b></a>
+      
+         | 
+        <a href="/about/"><b>About</b></a>
+      
+         | 
+        <a href="/posts/"><b>Posts</b></a>
+      
+         | 
+        <a href="/categories/"><b>Categories</b></a>
+      
+         | 
+        <a href="/tags/"><b>Tags</b></a>
+      
+         | 
+        <a href="/index.xml"><b>RSS</b></a>
+      
+      |<a id="header-high" style="text-decoration: none; margin-left:12px; width:71px; margin-right:5px" class="header-icon waves-effect waves-circle waves-light"  onClick="javascript:(    /*     * Copyright (C) 2015 Rocko (rocko.xyz) <rocko.zxp@gmail.com>     *     * Licensed under the Apache License, Version 2.0 (the 'License');     * you may not use this file except in compliance with the License.     * You may obtain a copy of the License at     *     *      http://www.apache.org/licenses/LICENSE-2.0     *     * Unless required by applicable law or agreed to in writing, software     * distributed under the License is distributed on an 'AS IS' BASIS,     * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.     * See the License for the specific language governing permissions and     * limitations under the License.     */    function go() {        function c() {        var e = document.createElement('link');        e.setAttribute('type', 'text/css');        e.setAttribute('rel', 'stylesheet');        e.setAttribute('href', f);        e.setAttribute('class', l);        document.body.appendChild(e)    }     function h() {        var e = document.getElementsByClassName(l);        for (var t = 0; t < e.length; t++) {            document.body.removeChild(e[t])        }    }     function p() {        var e = document.createElement('div');        e.setAttribute('class', a);        document.body.appendChild(e);        setTimeout(function() {            document.body.removeChild(e)        }, 100)    }     function d(e) {        return {            height : e.offsetHeight,            width : e.offsetWidth        }    }     function v(i) {        var s = d(i);        return s.height > e && s.height < n && s.width > t && s.width < r    }     function m(e) {        var t = e;        var n = 0;        while (!!t) {            n += t.offsetTop;            t = t.offsetParent        }        return n    }     function g() {        var e = document.documentElement;        if (!!window.innerWidth) {            return window.innerHeight        } else if (e && !isNaN(e.clientHeight)) {            return e.clientHeight        }        return 0    }     function y() {        if (window.pageYOffset) {            return window.pageYOffset        }        return Math.max(document.documentElement.scrollTop, document.body.scrollTop)    }     function E(e) {        var t = m(e);        return t >= w && t <= b + w    }     var songs = ['/media/Music-Fashion_Show.mp3', '/media/G-Love.Phonk.mp3', '/media/APT.mp3', '/media/Music-outside.mp3', '/media/Music-sunburst.mp3', '/media/Music-Wake-Live.mp3'];    function S() {        var e = document.getElementById('audio_element_id');        if(e != null){            var index = parseInt(e.getAttribute('curSongIndex'));            if(index > songs.length - 2) {                index = 0;            } else {                index++;            }            e.setAttribute('curSongIndex', index);            N();        }        e.src = i;        e.play()    }     function x(e) {        e.className += ' ' + s + ' ' + o    }     function T(e) {        e.className += ' ' + s + ' ' + u[Math.floor(Math.random() * u.length)]    }     function N() {        var e = document.getElementsByClassName(s);        var t = new RegExp('\\b' + s + '\\b');        for (var n = 0; n < e.length; ) {            e[n].className = e[n].className.replace(t, '')        }    }    function initAudioEle() {        var e = document.getElementById('audio_element_id');        if(e === null){            e = document.createElement('audio');            e.setAttribute('class', l);            e.setAttribute('curSongIndex', 0);            e.id = 'audio_element_id';            e.loop = false;            e.bgcolor = 0;            e.addEventListener('canplay', function() {            setTimeout(function() {                x(k)            }, 500);            setTimeout(function() {                N();                p();                for (var e = 0; e < O.length; e++) {                    T(O[e])                }            }, 8000)        }, true);        e.addEventListener('ended', function() {            N();            h();            go();        }, true);        e.innerHTML = ' <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>';        document.body.appendChild(e);        }    }        initAudioEle();    var e = 30;    var t = 30;    var n = 350;    var r = 350;    var curSongIndex = parseInt(document.getElementById('audio_element_id').getAttribute('curSongIndex'));    var i = songs[curSongIndex];        var s = 'mw-harlem_shake_me';    var o = 'im_first';    var u = ['im_drunk', 'im_baked', 'im_trippin', 'im_blown'];    var a = 'mw-strobe_light';    var f = '/css/harlem-shake-style.css';        var l = 'mw_added_css';    var b = g();    var w = y();    var C = document.getElementsByTagName('*');    var k = null;    for (var L = 0; L < C.length; L++) {        var A = C[L];        if (v(A)) {            if (E(A)) {                k = A;                break            }        }    }    if (A === null) {        console.warn('Could not find a node of the right size. Please try a different page.');        return    }    c();    S();    var O = [];    for (var L = 0; L < C.length; L++) {        var A = C[L];        if (v(A)) {            O.push(A)        }    }    })()" >High一下</a>
+    
+  </nav>
+  <hr />
+</header>
+
+      <div id="content">
+        
+  <main>
+    <article>
+      <h1 class="title">Android中的MVP</h1>
+      
+      <div class="post-meta">
+  <strong>
+    <span>Posted on</span>
+    <time>2015-02-06</time>
+    <span>in</span>
+    
+      <a href="/categories/android">Android</a>
+  </strong>
+  <span> • 170 words</span>
+  <span> • 1 minute read</span>
+  
+  
+    <div>
+      <span>Tags:</span>
+      
+        <a href="/tags/mvp">MVP</a>, 
+        <a href="/tags/%E6%9E%B6%E6%9E%84">架构</a>
+    </div>
+  
+</div>
+
+      <div class="content"><h2 id="前言">前言</h2>
+<p>MVP 作为一种 MVC 的演化版本在 Android 开发中受到了越来越多的关注，但在项目开发中选择一种这样的软件设计模式需保持慎重心态，一旦确定使用 MVP 作为你 App 的开发模式那么你就最好坚持做下去，如果在使用 MVP 模式开发过程中发现问题而且坑越来越大，那么就呵呵了。要知道在 Android 上 MVP 在现在为止并没有统一的标准或者框架，不像 Java Web 领域的项目有 SSH 这三个成熟稳重强而有力的三剑客支持推动着，所以在运用 MVP 时一定要做好自己的理解，并且尽量预知自己 App 各模块的需求以便提前做好充分的设计工作。当然 MVP 既然能出现那么必然有它的优点的，不然谁会理会这个冒出来的东西，下面就对 Android 中 MVP 做一些阐述。</p>
+<h2 id="mvp简介">MVP简介</h2>
+<p>相信大家对 MVC 都是比较熟悉了：<code>M-Model-模型</code>、<code>V-View-视图</code>、<code>C-Controller-控制器</code>，MVP作为MVC的演化版本，也是作为用户界面（用户层）的实现模式，那么类似的MVP所对应的意义：<code>M-Model-模型</code>、<code>V-View-视图</code>、<code>P-Presenter-表示器</code>。从MVC和MVP两者结合来看，Controlller/Presenter在MVC/MVP中都起着逻辑控制处理的角色，起着控制各业务流程的作用。而MVP与MVC最不同的一点是M与V是不直接关联的也是就Model与View不存在直接关系，这两者之间间隔着的是Presenter层，其负责调控View与Model之间的间接交互，MVP的结构图如下所示，对于这个图理解即可而不必限于其中的条条框框，毕竟在不同的场景下多少会有些出入的。在Android中很重要的一点就是对UI的操作基本上需要异步进行也就是在MainThread中才能操作UI，所以对View与Model的切断分离是合理的。此外Presenter与View、Model的交互使用接口定义交互操作可以进一步达到松耦合也可以通过接口更加方便地进行单元测试。</p>
+<p><img src="/images/Android%E4%B8%AD%E7%9A%84MVP_1.png" alt=""></p>
+<h2 id="mvp之model">MVP之Model</h2>
+<p>Model 是用户界面需要显示数据的抽象，也可以理解为从业务数据（结果）那里到用户界面的抽象（Business rule, data access, model classes）。本文 Demo 为了简单处理就直接把业务放到了对应的 Model 之中。</p>
+<h2 id="mvp之view">MVP之View</h2>
+<p>视图这一层体现的很轻薄，负责显示数据、提供友好界面跟用户交互就行。MVP下Activity和Fragment体现在了这一层，Activity一般也就做加载UI视图、设置监听再交由Presenter处理的一些工作，所以也就需要持有相应Presenter的引用。例如，Activity上滚动列表时隐藏或者显示Acionbar（Toolbar），这样的UI逻辑时也应该在这一层。另外在View上输入的数据做一些判断时，例如，EditText的输入数据，假如是简单的非空判断则可以作为View层的逻辑，而当需要对EditText的数据进行更复杂的比较时，如从数据库获取本地数据进行判断时明显需要经过Model层才能返回了，所以这些细节需要自己掂量。</p>
+<h2 id="mvp之presenter">MVP之Presenter</h2>
+<p>Presenter这一层处理着程序各种逻辑的分发，收到View层UI上的反馈命令、定时命令、系统命令等指令后分发处理逻辑交由业务层做具体的业务操作，然后将得到的 Model 给 View 显示。</p>
+<h2 id="演示demo">演示demo</h2>
+<p>动手写起代码来才有更好的感觉。demo很简单,还是上个图更直观，输入城市的代号，点击按钮获取城市的天气信息然后显示出来，网络操作使用Volley框架，解析用Gson，其它的就手写了。整个项目的包设计如下：
+<img src="/images/Android%E4%B8%AD%E7%9A%84MVP_2.png" alt="包结构">
+<img src="/images/Android%E4%B8%AD%E7%9A%84MVP_3.png" alt="项目效果预览">
+包图中明显的三层：Model包、Presenter包、UI包，其中，三者都实现各自的结构，Model为WeatherModel、Presenter为WeatherPresenter、View为Weather，那么具体实现类就是impl包里的了，View层的即为Activity。此外的app和util包无关紧要可以不看。可以看到采用MVP设计后项目明显多了很多东西，这也是不可避免的，使用原始方法可以使项目开起来简单些但是以后还有维护呢、测试呢、加功能呢、。。。
+entity里的实体属性基本上对应<a href="http://www.weather.com.cn/data/sk/101010100.html">json里的这些属性了</a>，代码不贴了，View里面的接口：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">WeatherView</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">showLoading</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">hideLoading</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">showError</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setWeatherInfo</span>(Weather weather);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>WeatherPresenter的接口：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">WeatherPresenter</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     * 获取天气的逻辑
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     */</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">getWeather</span>(String cityNO);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>WeatherModel接口：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">WeatherModel</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">loadWeather</span>(String cityNO, OnWeatherListener listener);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>prestener里面还有个OnWeatherListener，其在Presenter层实现，给Model层回调，更改View层的状态，确保Model层不直接操作View层。如果没有这一接口在WeatherPresenterImpl实现的话，WeatherPresenterImpl只有View和Model的引用那么Model怎么把结果告诉View呢？当然这只是一种解决方案，在实际项目中可以使用Dagger、EventBus、Otto等第三方框架结合进来达到更加松耦合的设计。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">OnWeatherListener</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     * 成功时回调
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     *
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     * @param weather
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     */</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onSuccess</span>(Weather weather);
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     * 失败时回调，简单处理，没做什么
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     */</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onError</span>();
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>所以demo的代码流程：Activity做了一些UI初始化的东西并需要实例化对应WeatherPresenter的引用和实现WeatherView的接口，监听界面动作，Go按钮按下后即接收到查询天气的事件，在onClick里接收到即通过WeatherPresenter的引用把它交给WeatherPresenter处理。WeatherPresenter接收到了查询天气的逻辑就知道要查询天气了，然后把查询天气的具体业务实现交给WeatherModel去实现同时把WeatherListener即WeatherPresenter自己传给WeatherModel。WeatherModel进行查询天气业务后即把结果通过WeatherListener回调通知WeatherPresenter，WeatherPresenter再把结果返回给View层的Activity，最后Activity显示结果。就这样，拍砖之处请拍。</p>
+<h2 id="end">End</h2>
+<p>采用哪种软件设计模式都是为了达到如下目的，找到合适的加以运用就是最好的：</p>
+<ul>
+<li>易于维护</li>
+<li>易于测试</li>
+<li>松耦合度</li>
+<li>复用性高</li>
+<li>健壮稳定</li>
+</ul>
+<p>本文demo
+<a href="https://github.com/zhengxiaopeng/Rocko-Android-Demos/tree/master/architecture/android-mvp">Rocko&rsquo;s MVP demo</a>
+MVP相关demo
+<a href="https://github.com/antoniolg/androidmvp">androidmvp</a>
+<a href="https://github.com/spengilley/ActivityFragmentMVP">ActivityFragmentMVP</a>
+<a href="https://github.com/pedrovgs/EffectiveAndroidUI">EffectiveAndroidUI</a>
+<a href="https://github.com/glomadrian/MvpCleanArchitecture">MvpCleanArchitecture</a>
+<a href="https://github.com/saulmm/Material-Movies">Material-Movies</a></p>
+<p>相关参考文章
+<a href="http://blog.csdn.net/vector_yi/article/details/24719873">50个Android开发技巧(20 使用MVP模式)</a>
+<a href="http://antonioleiva.com/mvp-android/">MVP for Android: how to organize the presentation layer(英文原版)</a>
+<a href="http://blog.jobbole.com/71209/">MVP for Android: how to organize the presentation layer(中文译文)</a>
+<a href="http://www.cnblogs.com/daizhj/archive/2009/04/30/1447035.HTML">从三层架构到MVC,MVP</a>
+<a href="https://github.com/AWCNTT/ArticleTranslateProject/blob/master/translated/Issue%23118/2014-09-11-Architecting%20Android%E2%80%A6The%20clean%20way.md">Architecting Android…The clean way?(中文译文)</a>
+<a href="http://hannesdorfmann.com/android/mosby/">TED MOSBY - SOFTWARE ARCHITECT</a></p></div>
+    </article>
+    
+            <br/><br/><br/>
+            <hr/>
+            <div id="valine" class="comment"></div>
+          
+            <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+          
+            <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+            <script type="text/javascript">
+                new Valine({
+                    el: '#valine' ,
+                    appId: 'fBqoKNrWNFkYQMTivF00jWpk-gzGzoHsz',
+                    appKey: 'q2baN9KwoyaFHmbjMHfssLIH',
+                    notify: 'true', 
+                    verify: 'false', 
+                    avatar:'hide', 
+                    placeholder: '说点什么吧~',
+                    visitor: ''
+                });
+            </script>
+            <noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript>
+
+  </main>
+
+      </div>
+      <footer>
+  <hr />
+  
+    <p id="social">
+      Find me around the web:
+      <br />
+      
+        
+        <a href="https://github.com/zhengxiaopeng" target="_blank">GitHub</a>
+      
+         | 
+        <a href="https://juejin.cn/user/3051900006044056" target="_blank">Juejin</a>
+      
+         | 
+        <a href="http://www.zhihu.com/people/rocko" target="_blank">Zhihu</a>
+      
+         | 
+        <a href="http://blog.csdn.net/bbld_" target="_blank">CSDN</a>
+      
+         | 
+        <a href="http://weibo.com/678662430" target="_blank">Weibo</a>
+      
+    </p>
+  
+  <p class="copyright">
+    Copyright © 2024
+    <a href="https://rocko.vip/" ><strong>Rocko</strong></a>.
+    This work is licensed under the
+    <a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA 4.0</a> license.
+  </p>
+  <p class="builtWith">
+    Powered by
+    <a href="http://www.gohugo.io/" target="_blank">Hugo</a>.
+  </p>
+</footer>
+
+    </div>
+  </body>
+</html>

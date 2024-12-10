@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content=""
+  />
+  
+    
+      <title>Google Git-Repo (Android)多仓库项目管理 | Rocko&#39;s blog</title>
+    
+  
+  <link rel="stylesheet" href="/css/reset.css"/>
+  <link rel="stylesheet" href="/css/font.css"/>
+  <link rel="stylesheet" href="/css/smigle.css"/>
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+</head>
+
+  <body>
+    <div id="root">
+      <header>
+  <div id="brand">
+    <a class="icon-link" href="https://rocko.vip/">
+      <img
+        class="icon"
+        src="/images/rocko.webp"
+      />
+    </a>
+    <div class="text">
+      <a href="https://rocko.vip/"><h1>Rocko&#39;s blog</h1></a>
+      <h3>Live in the moment</h3>
+    </div>
+  </div>
+  <nav>
+    
+      
+        
+        <a href="/"><b>Home</b></a>
+      
+         | 
+        <a href="/about/"><b>About</b></a>
+      
+         | 
+        <a href="/posts/"><b>Posts</b></a>
+      
+         | 
+        <a href="/categories/"><b>Categories</b></a>
+      
+         | 
+        <a href="/tags/"><b>Tags</b></a>
+      
+         | 
+        <a href="/index.xml"><b>RSS</b></a>
+      
+      |<a id="header-high" style="text-decoration: none; margin-left:12px; width:71px; margin-right:5px" class="header-icon waves-effect waves-circle waves-light"  onClick="javascript:(    /*     * Copyright (C) 2015 Rocko (rocko.xyz) <rocko.zxp@gmail.com>     *     * Licensed under the Apache License, Version 2.0 (the 'License');     * you may not use this file except in compliance with the License.     * You may obtain a copy of the License at     *     *      http://www.apache.org/licenses/LICENSE-2.0     *     * Unless required by applicable law or agreed to in writing, software     * distributed under the License is distributed on an 'AS IS' BASIS,     * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.     * See the License for the specific language governing permissions and     * limitations under the License.     */    function go() {        function c() {        var e = document.createElement('link');        e.setAttribute('type', 'text/css');        e.setAttribute('rel', 'stylesheet');        e.setAttribute('href', f);        e.setAttribute('class', l);        document.body.appendChild(e)    }     function h() {        var e = document.getElementsByClassName(l);        for (var t = 0; t < e.length; t++) {            document.body.removeChild(e[t])        }    }     function p() {        var e = document.createElement('div');        e.setAttribute('class', a);        document.body.appendChild(e);        setTimeout(function() {            document.body.removeChild(e)        }, 100)    }     function d(e) {        return {            height : e.offsetHeight,            width : e.offsetWidth        }    }     function v(i) {        var s = d(i);        return s.height > e && s.height < n && s.width > t && s.width < r    }     function m(e) {        var t = e;        var n = 0;        while (!!t) {            n += t.offsetTop;            t = t.offsetParent        }        return n    }     function g() {        var e = document.documentElement;        if (!!window.innerWidth) {            return window.innerHeight        } else if (e && !isNaN(e.clientHeight)) {            return e.clientHeight        }        return 0    }     function y() {        if (window.pageYOffset) {            return window.pageYOffset        }        return Math.max(document.documentElement.scrollTop, document.body.scrollTop)    }     function E(e) {        var t = m(e);        return t >= w && t <= b + w    }     var songs = ['/media/Music-Fashion_Show.mp3', '/media/G-Love.Phonk.mp3', '/media/APT.mp3', '/media/Music-outside.mp3', '/media/Music-sunburst.mp3', '/media/Music-Wake-Live.mp3'];    function S() {        var e = document.getElementById('audio_element_id');        if(e != null){            var index = parseInt(e.getAttribute('curSongIndex'));            if(index > songs.length - 2) {                index = 0;            } else {                index++;            }            e.setAttribute('curSongIndex', index);            N();        }        e.src = i;        e.play()    }     function x(e) {        e.className += ' ' + s + ' ' + o    }     function T(e) {        e.className += ' ' + s + ' ' + u[Math.floor(Math.random() * u.length)]    }     function N() {        var e = document.getElementsByClassName(s);        var t = new RegExp('\\b' + s + '\\b');        for (var n = 0; n < e.length; ) {            e[n].className = e[n].className.replace(t, '')        }    }    function initAudioEle() {        var e = document.getElementById('audio_element_id');        if(e === null){            e = document.createElement('audio');            e.setAttribute('class', l);            e.setAttribute('curSongIndex', 0);            e.id = 'audio_element_id';            e.loop = false;            e.bgcolor = 0;            e.addEventListener('canplay', function() {            setTimeout(function() {                x(k)            }, 500);            setTimeout(function() {                N();                p();                for (var e = 0; e < O.length; e++) {                    T(O[e])                }            }, 8000)        }, true);        e.addEventListener('ended', function() {            N();            h();            go();        }, true);        e.innerHTML = ' <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>';        document.body.appendChild(e);        }    }        initAudioEle();    var e = 30;    var t = 30;    var n = 350;    var r = 350;    var curSongIndex = parseInt(document.getElementById('audio_element_id').getAttribute('curSongIndex'));    var i = songs[curSongIndex];        var s = 'mw-harlem_shake_me';    var o = 'im_first';    var u = ['im_drunk', 'im_baked', 'im_trippin', 'im_blown'];    var a = 'mw-strobe_light';    var f = '/css/harlem-shake-style.css';        var l = 'mw_added_css';    var b = g();    var w = y();    var C = document.getElementsByTagName('*');    var k = null;    for (var L = 0; L < C.length; L++) {        var A = C[L];        if (v(A)) {            if (E(A)) {                k = A;                break            }        }    }    if (A === null) {        console.warn('Could not find a node of the right size. Please try a different page.');        return    }    c();    S();    var O = [];    for (var L = 0; L < C.length; L++) {        var A = C[L];        if (v(A)) {            O.push(A)        }    }    })()" >High一下</a>
+    
+  </nav>
+  <hr />
+</header>
+
+      <div id="content">
+        
+  <main>
+    <article>
+      <h1 class="title">Google Git-Repo (Android)多仓库项目管理</h1>
+      
+      <div class="post-meta">
+  <strong>
+    <span>Posted on</span>
+    <time>2018-11-22</time>
+    <span>in</span>
+    
+      <a href="/categories/%E5%A4%9A%E4%BB%93">多仓</a>
+  </strong>
+  <span> • 548 words</span>
+  <span> • 3 minute read</span>
+  
+  
+    <div>
+      <span>Tags:</span>
+      
+        <a href="/tags/%E6%9E%84%E5%BB%BA">构建</a>, 
+        <a href="/tags/repo">Repo</a>, 
+        <a href="/tags/git-repo">git-repo</a>, 
+        <a href="/tags/%E5%A4%9A%E4%BB%93%E5%BA%93">多仓库</a>, 
+        <a href="/tags/%E6%A8%A1%E5%9D%97%E5%8C%96">模块化</a>, 
+        <a href="/tags/%E7%BB%84%E4%BB%B6%E5%8C%96">组件化</a>, 
+        <a href="/tags/android">Android</a>
+    </div>
+  
+</div>
+
+      <div class="content"><h2 id="前言">前言</h2>
+<p>如果不是 Android dev 可以忽略标题的 Android。</p>
+<p>项目<code>模块化/组件化</code>之后各模块也作为独立的 <code>Git</code> 仓库从主项目里剥离了出去，各模块各自管理自己的版本。正常 Android 项目，各剥离出去的子模块仓库则通过 <code>Maven 仓库</code> 来管理，然后和引入第三方库一样依赖到主项目里。这种状态下的项目迭代带来的问题会是：需要频繁发布子模块的 版本并需要把修改的版本提交 Merge Request 到主模块里，尤其像我们一周一版的快速迭代的情况下，问题尤为凸显。此外还有个问题就是 <code>Debug/断点</code> 会变得不太方便，因为可能子模块的源码并未发到 Maven 上。</p>
+<p>在上面所说的状态下工作了一段时间后，需要找到个方案来解决这个问题。遂尝试在多仓库管理的方向上尝试。支持 Git 多仓库的管理工具也有好几个：<a href="https://gerrit.googlesource.com/git-repo/">git-repo</a>、<a href="https://git-scm.com/docs/git-submodule">git-submodule</a>、<a href="http://gitslave.sourceforge.net/">gitslave</a>、<a href="https://github.com/apenwarr/git-subtree/">git-subtree</a>，看了一番，除了 git-repo 外的几个要么 <code>子模块需要手动指定本地仓库路径</code>、要么 <code>主仓库与子仓库会产生污染</code> 且操作不够简便化。所以最终就采用了 Google 的 <code>Git-repo（Repo）</code></p>
+<h2 id="git-repo">Git-repo</h2>
+<p>Repo 是对 Git 构成补充的多（可以巨多的那种）代码库管理工具，简单说就是使用 Python 在 Git 基础上开发的一系列脚本命令。当前整个 Android 项目（AOSP）就是通过 repo 来管理，最新版本的仓库大约 <strong>七百多个</strong>，可见 Repo 在多仓库的代码管理和版本管理上是可以支撑现有我们的项目的。接下来描述分析下迁移使用 Repo 的过程和一些解释。</p>
+<h3 id="环境准备">环境准备</h3>
+<p>准备好梯子，把 <code>repo</code> 装到系统里：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Shell" data-lang="Shell"><span style="display:flex;"><span>mkdir ~/bin
+</span></span><span style="display:flex;"><span>PATH<span style="color:#f92672">=</span>~/bin:$PATH  <span style="color:#75715e"># 自己加到 ~/.zshrc or ~/.bashrc or /etc/profile 里 </span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>curl https://storage.googleapis.com/git-repo-downloads/repo &gt; ~/bin/repo
+</span></span><span style="display:flex;"><span>chmod a+x ~/bin/repo
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 最后 source 下环境变量</span>
+</span></span></code></pre></div><p>然后就可以操作项目了，如初始化 AOSP 项目:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span>repo init -u https://android.googlesource.com/platform/manifest -b android-4.0.1_r1
+</span></span></code></pre></div><h3 id="manifest">Manifest</h3>
+<p>Repo 管理的核心就在于 <code>Manifest</code>，每个采用 repo 管理的复杂多仓库项目都需要一个对应的 manifest 仓库，如 AOSP 的 <a href="https://android.googlesource.com/platform/manifest">manifest</a> ，此仓库用来存储所有子仓库的配置信息，repo 也是读取此仓库的配置文件来进行管理操作。里面的配置就是 xml 定义的结构，一般有两个主要的配置：子仓库用到的仓库地址（remote）、子仓库详细配置信息（project）。举例如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Xml" data-lang="Xml"><span style="display:flex;"><span><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;manifest&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;remote</span>  <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;remote1&#34;</span>
+</span></span><span style="display:flex;"><span>           <span style="color:#a6e22e">alias=</span><span style="color:#e6db74">&#34;origin&#34;</span>
+</span></span><span style="display:flex;"><span>           <span style="color:#a6e22e">fetch=</span><span style="color:#e6db74">&#34;..&#34;</span>
+</span></span><span style="display:flex;"><span>           <span style="color:#a6e22e">review=</span><span style="color:#e6db74">&#34;https://android-review.googlesource.com/&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;remote</span>  <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;remote2&#34;</span>
+</span></span><span style="display:flex;"><span>           <span style="color:#a6e22e">alias=</span><span style="color:#e6db74">&#34;origin&#34;</span>
+</span></span><span style="display:flex;"><span>           <span style="color:#a6e22e">fetch=</span><span style="color:#e6db74">&#34;git@github.com:group2/&#34;</span>
+</span></span><span style="display:flex;"><span>           <span style="color:#a6e22e">review=</span><span style="color:#e6db74">&#34;https://android-review2.googlesource.com/&#34;</span> <span style="color:#f92672">/&gt;</span>         
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;default</span> <span style="color:#a6e22e">revision=</span><span style="color:#e6db74">&#34;master&#34;</span>
+</span></span><span style="display:flex;"><span>           <span style="color:#a6e22e">remote=</span><span style="color:#e6db74">&#34;remote1&#34;</span>
+</span></span><span style="display:flex;"><span>           <span style="color:#a6e22e">sync-j=</span><span style="color:#e6db74">&#34;4&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;project</span> <span style="color:#a6e22e">path=</span><span style="color:#e6db74">&#34;build/make&#34;</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;platform/build&#34;</span> <span style="color:#a6e22e">groups=</span><span style="color:#e6db74">&#34;pdk&#34;</span> <span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;copyfile</span> <span style="color:#a6e22e">src=</span><span style="color:#e6db74">&#34;core/root.mk&#34;</span> <span style="color:#a6e22e">dest=</span><span style="color:#e6db74">&#34;Makefile&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;linkfile</span> <span style="color:#a6e22e">src=</span><span style="color:#e6db74">&#34;CleanSpec.mk&#34;</span> <span style="color:#a6e22e">dest=</span><span style="color:#e6db74">&#34;build/CleanSpec.mk&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;/project&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;project</span> <span style="color:#a6e22e">path=</span><span style="color:#e6db74">&#34;build/blueprint&#34;</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;platform/build/blueprint&#34;</span> <span style="color:#a6e22e">groups=</span><span style="color:#e6db74">&#34;pdk,tradefed&#34;</span> <span style="color:#a6e22e">revision=</span><span style="color:#e6db74">&#34;other_branch&#34;</span> <span style="color:#a6e22e">remote=</span><span style="color:#e6db74">&#34;remote1&#34;</span><span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;!-- ... --&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/manifest&gt;</span>
+</span></span></code></pre></div><p>解释下常用的各节点：</p>
+<h4 id="remote">remote</h4>
+<p>远程仓库地址配置，可以多个。</p>
+<ul>
+<li>name: 名字，也用于子仓库的 git remote 名称（.git/config 里的 remote）</li>
+<li>alias: 别名，可省略，建议设为 <code>origin</code>， 设置了那么子仓库的 git remote 即为此名，方便不同的 name 下可以最终设置生成相同的 remote 名称</li>
+<li>fetch: 仓库地址<code>前缀</code>，即 project 的仓库地址为: <code>remote.fetch + project.name</code></li>
+<li>pushurl: 一般可省略，省略了则直接用 fetch</li>
+<li>review: Gerrit code review 的地址，如果没有用 Gerrit 则不需要配置（也就不能用 repo upload 命令了）</li>
+<li>revision: 使用此 remote 的默认分支</li>
+</ul>
+<p><strong>这里的 fetch 遇到个坑</strong>，<code>git@github.com:group2/</code> 这样 git scheme 开头的地址会有问题（ssh/https 的正常），最终子仓库在本地的 remote 地址一直是 manifest 的地址拼上 fetch 再加 project 的  name (manifest.git_path + remote.fetch + project.name)。最终发现是 <a href="https://gerrit.googlesource.com/git-repo">git-repo</a> 里的代码 <a href="https://gerrit.googlesource.com/git-repo/+/v1.12.37/manifest_xml.py">manifest_xml.py</a> 有问题，需要 fix 下，简单的把 <code>78</code> 行注释掉，然后推到自己的仓库，指定下系统环境变量:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>REPO_URL<span style="color:#f92672">=</span>your_fix_git-repo_git_url
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># repo 脚本会使用此变量的地址</span>
+</span></span></code></pre></div><h4 id="project">project</h4>
+<p>子项目仓库配置，可以多个。</p>
+<ul>
+<li>path: repo sync 同步时，相对于根目录的子仓库文件夹路径</li>
+<li>name: 子仓库的 git 仓库名称</li>
+<li>group: 分组</li>
+<li>revision: 使用的分支名</li>
+<li>clone-depth: 仓库同步 Git 的 depth</li>
+</ul>
+<h5 id="copyfile">copyfile</h5>
+<p>project 的子节点属性.</p>
+<ul>
+<li>src: project 下的相对路径</li>
+<li>dest: 整个仓库根路径下的相对路径</li>
+</ul>
+<h5 id="linkfile">linkfile</h5>
+<p>project 的子节点属性，类似 copyfile，只是把复制文件变为创建链接文件。</p>
+<h3 id="default">default</h3>
+<p>project 没有设置属性时会使用的默认配置，常用的是 remote 和 revision。</p>
+<h3 id="其他">其他</h3>
+<p>其他现在暂时用的较少，详细完整的 manifest 格式说明请看<a href="https://gerrit.googlesource.com/git-repo/+/HEAD/docs/manifest-format.md">官方文档</a>。
+了解了 Repo 下的 Manifest 配置仓库的概念后就可以根据自己的项目来创建了，Just do it!</p>
+<h3 id="local_manifest">local_manifest</h3>
+<p>local_manifest 简单说就是一个比 repo init 时设置的 manifest 有更高优先级的本地配置，一般用在不改动远程 manifest 配置又想设置到本地的专属配置时用得到。版本高一点的 repo 下，在工作根目录新建配置文件即可： <code>.repo/local_manifests/local_manifest.xml</code></p>
+<p>有一点需要注意的是如果需要覆盖主 manifest 文件已有 project 的配置那么需要先 <code>remove-project</code> 才行，不然会报错：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>fatal: duplicate path project_name in .repo/manifest.xml
+</span></span></code></pre></div><p>fix :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#f92672">&lt;remove-project</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;project_name&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;!-- 再重写 project 配置 --&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;project</span> <span style="color:#a6e22e">path=</span><span style="color:#e6db74">&#34;xxx&#34;</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;xxx&#34;</span> <span style="color:#a6e22e">revision=</span><span style="color:#e6db74">&#34;xxxx&#34;</span> <span style="color:#a6e22e">remote=</span><span style="color:#e6db74">&#34;xxxx&#34;</span>  <span style="color:#f92672">/&gt;</span>
+</span></span></code></pre></div><h2 id="repo-命令">Repo 命令</h2>
+<p><code>repo init -u yout_manifest_git_url</code> 初始化了你的项目 repo 工作区后，<code>repo sync</code>，你就可以进入正常的特性开发状态了。那么我们以开发一个 feature 为例，顺序说明下需要使用到的常用命令，也是我现在尝试使用的 <code>repo workflow</code> 了。</p>
+<h3 id="repo-init">repo init</h3>
+<p>初始化。</p>
+<pre tabindex="0"><code>repo init -u your_project_git_url
+</code></pre><p>其他常用可选参数:</p>
+<ul>
+<li>-b 选取的 manifest 仓库分支，默认 master</li>
+<li>-m 选取的默认配置文件，默认 default.xml</li>
+<li>&ndash;depth=1 git clone 的深度，一般如在 Jenkins 上打包时可用，加快代码 clone 速度</li>
+<li>&ndash;repo-url=URL 使用自定义的 git-repo 代码，如前面说到的 fix 了 bug 的 git-repo</li>
+<li>&ndash;no-repo-verify 不验证 repo 的源码，如果自定义了 repo url 那么这个一般也加上</li>
+</ul>
+<h3 id="repo-sync">repo sync</h3>
+<p>初始化好一个 repo 工作目录后下一步就是把代码同步下来了：</p>
+<pre tabindex="0"><code>repo sync
+</code></pre><p>同步完成后就会在当前目录下生成 manifest 里配置的各仓库和其对应目录。其他常用可选参数：</p>
+<ul>
+<li>-f 不阻断同步，即一个 project 失败会继续下一个 project 同步</li>
+<li>&ndash;force-sync 如果需要，强制覆盖现有的 git 目录指向不同的对象目录。<strong>此操作可能会导致数据丢失</strong></li>
+<li>-d 把项目回退到 manifest 里配置的分支</li>
+<li>-m 手动指定当前操作使用哪个 manifest 文件</li>
+<li>-t 使用对应 tag 里的 manifest 文件</li>
+</ul>
+<p>同步完后你就可以用你的 IDE 打开项目了。<strong>此时，你需要根据当前的子仓库目录配置，在项目里处理下子仓库的依赖问题</strong>，比如 Android 项目，在 settting.gradle 里就需要根据此 repo 仓库的项目目录把子仓库 include 进来。</p>
+<h3 id="repo-start">repo start</h3>
+<p>从 manifest 配置文件中指定的分支里，创建一个新的分支进行开发，如:</p>
+<pre tabindex="0"><code>repo start your_feature_branch_name --all | [project1 project2]
+</code></pre><p>后续如果发现还改动到了其他模块仓库那么再 start 一个对应 project 的分支</p>
+<h3 id="work-in-progress">Work in progress</h3>
+<p>开发过程中需要用到的常用命令：</p>
+<ul>
+<li>repo status: 跟 git status 类似，会把当前 repo 工作区的状态信息列出来</li>
+<li>repo diff: 同理 git diff</li>
+<li>repo forall &lt;PROJECT_LIST&gt; -c <!-- raw HTML omitted -->: 在（所有）子仓库下执行命令，比如 repo 没有类似 <code>git stash</code> 的命令，利用 forall 就可以实现：<code>repo forall -c git stash</code></li>
+<li>repo prune: 删除已经合并分支</li>
+<li>repo stage: 把文件添加到 index 表(暂存区)中</li>
+<li>repo manifest: 显示当前使用的 manifest 信息内容</li>
+</ul>
+<h3 id="repo-upload">repo upload</h3>
+<p>提交代码到 Gerrit code review 中，如果没有使用 Gerrit，则可以跟之前那样手动操作单个仓库 push 或者使用 <code>repo forall -c git push xxx</code></p>
+<h3 id="other">Other</h3>
+<p>其他更详细的参考可以查看 <a href="https://source.android.com/source/using-repo.html">Repo 命令参考资料</a></p>
+<h2 id="workflow">Workflow</h2>
+<p>上面一节介绍的 repo 命令的顺序过程可以说就是一个常用的 repo 工作流程，<code>AOSP</code> 给的开发流程可以先看下：<a href="https://source.android.com/source/developing.html">
+开发</a></p>
+<p><img src="/images/aee46221gy1fxf0rynj2xj20kb0ou759.jpg.png" alt="Git 和 Repo 快速参考表"></p>
+<p>那么根据上一节的介绍，给出下当前尝试使用的 <code>repo-workflow</code> 的图示：</p>
+<p><img src="/images/aee46221gy1fxg56bs5tmj21s015sn1w.png" alt="git workflow"></p>
+<p>具体到每个仓库来说，主仓库位置原有的 git workflow 不用变，各子仓库新增 <code>dev</code>、<code>build</code> 分支，那么对应的合版打包与发版打包对应 Manifest 固定的分支配置就行，如果没有项目删减，那么合版与发版时的子模块仓库版本也是不用动的。避免了频繁的合版时，各模块版本频繁/繁琐的修改合并。</p>
+<h3 id="jenkins">Jenkins</h3>
+<p>使用 Jenkins 的需要使用 <a href="https://wiki.jenkins.io/display/JENKINS/Repo+Plugin">repo</a> 插件，也还算挺方便的，稍微由原来的 git 迁移到 repo 的配置就行。
+配合 Jenkins 的自动化打包，加一些自动化的打包配置，如远程参数化构建、自定义的 Gradle 打包插件等，如果需要在 Jenkins 上打 Feature 包的，那么在 Manifest 项目里可以不需要再新建 Feature 分支了。所以综合来看，合版时的工作量减轻了不少~</p>
+<h2 id="end">End</h2>
+<p>参考：</p>
+<p><a href="https://source.android.com/index.html">AOSP 文档</a>
+<a href="https://www.jianshu.com/p/284ded3d191b">Git多项目管理</a>
+<a href="https://gerrit.googlesource.com/git-repo/">git-repo README</a></p></div>
+    </article>
+    
+            <br/><br/><br/>
+            <hr/>
+            <div id="valine" class="comment"></div>
+          
+            <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+          
+            <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+            <script type="text/javascript">
+                new Valine({
+                    el: '#valine' ,
+                    appId: 'fBqoKNrWNFkYQMTivF00jWpk-gzGzoHsz',
+                    appKey: 'q2baN9KwoyaFHmbjMHfssLIH',
+                    notify: 'true', 
+                    verify: 'false', 
+                    avatar:'hide', 
+                    placeholder: '说点什么吧~',
+                    visitor: ''
+                });
+            </script>
+            <noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript>
+
+  </main>
+
+      </div>
+      <footer>
+  <hr />
+  
+    <p id="social">
+      Find me around the web:
+      <br />
+      
+        
+        <a href="https://github.com/zhengxiaopeng" target="_blank">GitHub</a>
+      
+         | 
+        <a href="https://juejin.cn/user/3051900006044056" target="_blank">Juejin</a>
+      
+         | 
+        <a href="http://www.zhihu.com/people/rocko" target="_blank">Zhihu</a>
+      
+         | 
+        <a href="http://blog.csdn.net/bbld_" target="_blank">CSDN</a>
+      
+         | 
+        <a href="http://weibo.com/678662430" target="_blank">Weibo</a>
+      
+    </p>
+  
+  <p class="copyright">
+    Copyright © 2024
+    <a href="https://rocko.vip/" ><strong>Rocko</strong></a>.
+    This work is licensed under the
+    <a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA 4.0</a> license.
+  </p>
+  <p class="builtWith">
+    Powered by
+    <a href="http://www.gohugo.io/" target="_blank">Hugo</a>.
+  </p>
+</footer>
+
+    </div>
+  </body>
+</html>

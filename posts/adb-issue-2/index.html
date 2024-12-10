@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content=""
+  />
+  
+    
+      <title>ADB-Issue#2 | Rocko&#39;s blog</title>
+    
+  
+  <link rel="stylesheet" href="/css/reset.css"/>
+  <link rel="stylesheet" href="/css/font.css"/>
+  <link rel="stylesheet" href="/css/smigle.css"/>
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+</head>
+
+  <body>
+    <div id="root">
+      <header>
+  <div id="brand">
+    <a class="icon-link" href="https://rocko.vip/">
+      <img
+        class="icon"
+        src="/images/rocko.webp"
+      />
+    </a>
+    <div class="text">
+      <a href="https://rocko.vip/"><h1>Rocko&#39;s blog</h1></a>
+      <h3>Live in the moment</h3>
+    </div>
+  </div>
+  <nav>
+    
+      
+        
+        <a href="/"><b>Home</b></a>
+      
+         | 
+        <a href="/about/"><b>About</b></a>
+      
+         | 
+        <a href="/posts/"><b>Posts</b></a>
+      
+         | 
+        <a href="/categories/"><b>Categories</b></a>
+      
+         | 
+        <a href="/tags/"><b>Tags</b></a>
+      
+         | 
+        <a href="/index.xml"><b>RSS</b></a>
+      
+      |<a id="header-high" style="text-decoration: none; margin-left:12px; width:71px; margin-right:5px" class="header-icon waves-effect waves-circle waves-light"  onClick="javascript:(    /*     * Copyright (C) 2015 Rocko (rocko.xyz) <rocko.zxp@gmail.com>     *     * Licensed under the Apache License, Version 2.0 (the 'License');     * you may not use this file except in compliance with the License.     * You may obtain a copy of the License at     *     *      http://www.apache.org/licenses/LICENSE-2.0     *     * Unless required by applicable law or agreed to in writing, software     * distributed under the License is distributed on an 'AS IS' BASIS,     * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.     * See the License for the specific language governing permissions and     * limitations under the License.     */    function go() {        function c() {        var e = document.createElement('link');        e.setAttribute('type', 'text/css');        e.setAttribute('rel', 'stylesheet');        e.setAttribute('href', f);        e.setAttribute('class', l);        document.body.appendChild(e)    }     function h() {        var e = document.getElementsByClassName(l);        for (var t = 0; t < e.length; t++) {            document.body.removeChild(e[t])        }    }     function p() {        var e = document.createElement('div');        e.setAttribute('class', a);        document.body.appendChild(e);        setTimeout(function() {            document.body.removeChild(e)        }, 100)    }     function d(e) {        return {            height : e.offsetHeight,            width : e.offsetWidth        }    }     function v(i) {        var s = d(i);        return s.height > e && s.height < n && s.width > t && s.width < r    }     function m(e) {        var t = e;        var n = 0;        while (!!t) {            n += t.offsetTop;            t = t.offsetParent        }        return n    }     function g() {        var e = document.documentElement;        if (!!window.innerWidth) {            return window.innerHeight        } else if (e && !isNaN(e.clientHeight)) {            return e.clientHeight        }        return 0    }     function y() {        if (window.pageYOffset) {            return window.pageYOffset        }        return Math.max(document.documentElement.scrollTop, document.body.scrollTop)    }     function E(e) {        var t = m(e);        return t >= w && t <= b + w    }     var songs = ['/media/Music-Fashion_Show.mp3', '/media/G-Love.Phonk.mp3', '/media/APT.mp3', '/media/Music-outside.mp3', '/media/Music-sunburst.mp3', '/media/Music-Wake-Live.mp3'];    function S() {        var e = document.getElementById('audio_element_id');        if(e != null){            var index = parseInt(e.getAttribute('curSongIndex'));            if(index > songs.length - 2) {                index = 0;            } else {                index++;            }            e.setAttribute('curSongIndex', index);            N();        }        e.src = i;        e.play()    }     function x(e) {        e.className += ' ' + s + ' ' + o    }     function T(e) {        e.className += ' ' + s + ' ' + u[Math.floor(Math.random() * u.length)]    }     function N() {        var e = document.getElementsByClassName(s);        var t = new RegExp('\\b' + s + '\\b');        for (var n = 0; n < e.length; ) {            e[n].className = e[n].className.replace(t, '')        }    }    function initAudioEle() {        var e = document.getElementById('audio_element_id');        if(e === null){            e = document.createElement('audio');            e.setAttribute('class', l);            e.setAttribute('curSongIndex', 0);            e.id = 'audio_element_id';            e.loop = false;            e.bgcolor = 0;            e.addEventListener('canplay', function() {            setTimeout(function() {                x(k)            }, 500);            setTimeout(function() {                N();                p();                for (var e = 0; e < O.length; e++) {                    T(O[e])                }            }, 8000)        }, true);        e.addEventListener('ended', function() {            N();            h();            go();        }, true);        e.innerHTML = ' <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>';        document.body.appendChild(e);        }    }        initAudioEle();    var e = 30;    var t = 30;    var n = 350;    var r = 350;    var curSongIndex = parseInt(document.getElementById('audio_element_id').getAttribute('curSongIndex'));    var i = songs[curSongIndex];        var s = 'mw-harlem_shake_me';    var o = 'im_first';    var u = ['im_drunk', 'im_baked', 'im_trippin', 'im_blown'];    var a = 'mw-strobe_light';    var f = '/css/harlem-shake-style.css';        var l = 'mw_added_css';    var b = g();    var w = y();    var C = document.getElementsByTagName('*');    var k = null;    for (var L = 0; L < C.length; L++) {        var A = C[L];        if (v(A)) {            if (E(A)) {                k = A;                break            }        }    }    if (A === null) {        console.warn('Could not find a node of the right size. Please try a different page.');        return    }    c();    S();    var O = [];    for (var L = 0; L < C.length; L++) {        var A = C[L];        if (v(A)) {            O.push(A)        }    }    })()" >High一下</a>
+    
+  </nav>
+  <hr />
+</header>
+
+      <div id="content">
+        
+  <main>
+    <article>
+      <h1 class="title">ADB-Issue#2</h1>
+      
+      <div class="post-meta">
+  <strong>
+    <span>Posted on</span>
+    <time>2016-06-14</time>
+    <span>in</span>
+    
+      <a href="/categories/android-dev-bookmarks">Android-Dev-Bookmarks</a>
+  </strong>
+  <span> • 294 words</span>
+  <span> • 2 minute read</span>
+  
+  
+    <div>
+      <span>Tags:</span>
+      
+        <a href="/tags/android-dev-bookmarks">Android-Dev-Bookmarks</a>, 
+        <a href="/tags/%E7%AB%99%E7%82%B9">站点</a>, 
+        <a href="/tags/%E6%8E%A8%E8%8D%90">推荐</a>
+    </div>
+  
+</div>
+
+      <div class="content"><p>Android Dev Bookmarks(ADB) 第二期更新。</p>
+<h1 id="adb-issue2">ADB-Issue#2</h1>
+<blockquote>
+<p>ADB 主站：<a href="http://adb.rocko.xyz/">adb.rocko.xyz</a>
+GitHub 项目主页： <a href="https://github.com/zhengxiaopeng/android-dev-bookmarks">Android-Dev-Bookmarks</a>
+<a href="https://tinyletter.com/Rocko">点我订阅每期更新</a>
+<a href="https://github.com/zhengxiaopeng/android-dev-bookmarks/releases">点我下载书签文件导入浏览器</a></p>
+</blockquote>
+<h2 id="官方资料">官方资料</h2>
+<h3 id="网站">网站</h3>
+<ul>
+<li><a href="https://android.googlesource.com/">Git repositories on android</a> - Git repositories on android. 上面也可以查看AOSP里的Android代码了，当然还有commit日志，里面细分git  repo。</li>
+</ul>
+<h3 id="博客">博客</h3>
+<ul>
+<li><a href="medium.com/google-developers">Google Developers @ Dedium</a> - For Engineers, by Engineers</li>
+</ul>
+<h3 id="其它">其它</h3>
+<ul>
+<li><a href="https://design.google.com/icons/">Material icons</a> - Material icons 官方主页，提供搜索下载。</li>
+</ul>
+<hr>
+<h2 id="工具-资源">工具-资源</h2>
+<h3 id="综合">综合</h3>
+<ul>
+<li><a href="http://www.umindex.com/devices/android_resolutions">友盟全域指数</a> - 友盟指数是以友盟海量数据为基础的观察移动互联网行业趋势的数据平台。在这里，你可以研究手机设备排行、用户社交分享行为、应用大盘涨跌趋势、应用排行榜，了解行业趋势，挖掘行业机遇。</li>
+</ul>
+<h3 id="ui-界面设计">UI 界面设计</h3>
+<h4 id="图标-字体">图标-字体</h4>
+<ul>
+<li><a href="http://ionicons.com/">ionicons</a> - 找呀找图标</li>
+</ul>
+<h4 id="灵感">灵感</h4>
+<ul>
+<li><a href="http://www.color-hex.com/">Color Hex Color Codes</a> - Color Palettes. 搜索输出详细信息</li>
+</ul>
+<h3 id="工具">工具</h3>
+<ul>
+<li><a href="http://sqlitebrowser.org/">DB Browser for SQLite</a> - 好用的SQLite桌面客户端</li>
+<li><a href="http://www.ostera.io/tldr.jsx/">tldr</a> - tldr 在线版，命令行好帮手</li>
+<li><a href="http://www.methodscount.com/">Methods Count</a>  - Methods Count</li>
+</ul>
+<hr>
+<h2 id="活动会议">活动会议</h2>
+<ul>
+<li><a href="http://www.huodongxing.com/">活动行</a> - 没事上去看看、搜搜有啥好线下活动～ 活动行是全球最大中文活动平台，帮助主办方提供活动发布、报名管理和推广、购票验票、活动名单和数据管理等线上工具。发布包括创新创业,艺术表演,论坛讲座,研讨会,社团活动,公益活动,展会沙龙等线下活动的内容资讯。同时参加用户能快速关注和报名活动，方便建立彼此间社交关系，增加票券销售量。</li>
+<li><a href="http://360andev.com/">360|AnDev</a> - 360|AnDev is organized by Chiu-Ki Chan, Dave Smith and John Wilker. Awesome Speakers</li>
+</ul>
+<hr>
+<h2 id="接活">接活</h2>
+<ul>
+<li><a href="http://waibao.io/">外包通缉令</a> - 不定期发送靠谱短平快外包信息!  gank.io daimajia</li>
+<li><a href="http://www.clouderwork.com/works">云沃客</a></li>
+<li><a href="https://www.upwork.com/">Upwork</a> - Upwork, the world&rsquo;s largest online workplace</li>
+</ul>
+<hr>
+<h2 id="博客-1">博客</h2>
+<h3 id="android">Android</h3>
+<h4 id="国内">国内</h4>
+<ul>
+<li><a href="http://gityuan.com/">Gityuan</a> - 曾就职于IBM、Lenovo，目前就职于小米MIUI部门。我对技术的第一个追逐目标是成为Android全栈工程师：上至能写App，中间能改framework和Native代码，下至能调驱动，整体上解决性能/稳定性/功耗问题，博主正在努力加强内功修养。</li>
+</ul>
+<h4 id="国外">国外</h4>
+<ul>
+<li><a href="http://opensecurity.in/">OpenSecurity</a> -  Mobile-Security-Framework (MobSF)作者</li>
+<li><a href="https://medium.com/@duhroach">Colt McAnlis</a> - Editor of Google Developers.</li>
+<li><a href="https://medium.com/@dontmesswithjo">Joanna Smith</a> - Developer Advocate for Android trying to help developers #BuildBetterApps</li>
+<li><a href="https://medium.com/@ianhlake">Ian Lake</a> - Android Developer Advocate at Google and Runner</li>
+<li><a href="https://medium.com/@wkalicinski">Wojtek Kaliciński</a> - Android Developer Advocate @ Google</li>
+<li><a href="https://medium.com/@retomeier">Reto Meier</a> - Android Developer Advocate @ Google, software engineer, and author of Professional Android 4 Application Development.</li>
+<li><a href="https://riggaroo.co.za/">Riggaroo</a> - Google Developer Expert for Android. Senior Android Developer based in South Africa.</li>
+</ul>
+<h3 id="其它-1">其它</h3>
+<ul>
+<li><a href="https://yalantis.com/blog/">Yalantis</a> - Blog about app development.</li>
+</ul>
+<hr>
+<h2 id="开发者-组织-团队">开发者-组织-团队</h2>
+<ul>
+<li><a href="https://github.com/fbsamples">Facebook Samples</a></li>
+</ul>
+<hr>
+<h2 id="服务平台">服务平台</h2>
+<h3 id="性能">性能</h3>
+<ul>
+<li><a href="http://www.oneapm.com/">OneAPM</a> - OneAPM（蓝海讯通）提供端到端APM应用性能管理软件及应用性能监控软件解决方案，OneAPM已经形成移动，浏览器，应用，基础设施，网络，数据库性能管理六大产品线，支持Java、.NET、PHP、Ruby、Python、Node.js、iOS、Android、HTML5等应用性能监控管理。</li>
+<li><a href="https://nimbledroid.com/">NimbleDroid</a> - Automated performance analysis for every build of your app</li>
+</ul>
+<h3 id="后端云-云存储">后端云-云存储</h3>
+<ul>
+<li><a href="https://www.ucloud.cn/">UCloud</a> - UCloud，云服务，云主机，云服务器</li>
+</ul>
+<h3 id="其它-2">其它</h3>
+<ul>
+<li><a href="http://reviewcode.cn/">Code Review</a> - 最高效的代码审核服务</li>
+</ul>
+<hr>
+<h2 id="阅读分享-订阅-播客">阅读分享-订阅-播客</h2>
+<h3 id="博客-2">博客</h3>
+<ul>
+<li><a href="http://teahour.fm/">Teahour.fm</a> - Teahour.fm 由Terry，玎玎, Daniel, Kevin 和滚滚主持，会专注程序员感兴趣的话题，包括 Web 设计和开发，移动应用设计和开发，创业以及一切 Geek 的话题。</li>
+</ul>
+<h3 id="订阅">订阅</h3>
+<ul>
+<li><a href="http://weixin.sogou.com/gzh?openid=oIWsFt1ajQBCu8D2780V_hzaOqc8&amp;ext=iCxofdjrdbA9Lm2qQLaos5Xxw-wLr-MnsHKSs0LdGGKel7Xa0AsuoKL3TMo53R8l">微信公众号：移动开发前线</a>  - 专注于分享移动开发前沿和一线技术。</li>
+<li><a href="http://mp.weixin.qq.com/profile?src=3&amp;timestamp=1465922380&amp;ver=1&amp;signature=NGwuCDVbKve5-bEZwTgJmtG-012-cXY1gKGaUABQasV8ZLagHz6rYhziBnLEvC913AKXX9jnpy2FEiaKSkVNxw==">微信公众号：AndroidDeveloper（googdev）</a></li>
+<li><a href="http://mp.weixin.qq.com/profile?src=3&amp;timestamp=1465922100&amp;ver=1&amp;signature=zl4i2*DnPEVglDL-oU0T5wZYcnoucVv2xZLNRG3N9skm4aS3JlUS47184RyTB4RTDcE85u2*jL3JE2Gr97-U6w==">微信公众号：聊聊架构（archtime）</a>  - 在这里煮酒聊架构</li>
+<li><a href="http://mp.weixin.qq.com/profile?src=3&amp;timestamp=1465922594&amp;ver=1&amp;signature=02L9mlsrXhZWR-*NA7eteR5ZGqb*xHPqdMkefJAe4Mxo9uYx4OF9ypj5kvAUJBe6J4REiRdw5e*jBUV4T6Fe2w==">微信公众号：developerWorks（developerWorks）</a></li>
+<li><a href="http://mp.weixin.qq.com/profile?src=3&amp;timestamp=1465922679&amp;ver=1&amp;signature=33uh3zsZYPHNwW6fGu*vFp3FE0rOMtA82o8ZUHSy4GynbEA27chlxVdw965OuKMd6HWF0j0gvI4DQsmaKyxT-g==">微信公众号：InfoQ（infoqchina）</a></li>
+<li><a href="http://mp.weixin.qq.com/profile?src=3&amp;timestamp=1465922773&amp;ver=1&amp;signature=3QkYMCqDP2*L3XBY1BABfq92jIQMfvaLQLuEh0vHKpv3gfh5DQ3wiBowemLxunGJfag1KW3X7SVyDrSnSSijbg==">微信公众号：郭霖（guolin_blog）</a></li>
+</ul>
+<hr>
+<h2 id="教程文档">教程文档</h2>
+<ul>
+<li><a href="http://idunnolol.com/android/drawables.html">Android Drawable XML Documentation</a> - The missing manual! Each of the top-level elements are useable in Android XML files, in /res/drawable/. Some of them are allowed to be contained in others and this is noted below.</li>
+</ul>
+<h2 id="在线学习">在线学习</h2>
+<h3 id="直播撸代码">直播撸代码</h3>
+<ul>
+<li><a href="https://www.livecoding.tv/">Livecoding</a> - 直播撸代码&hellip;</li>
+</ul></div>
+    </article>
+    
+            <br/><br/><br/>
+            <hr/>
+            <div id="valine" class="comment"></div>
+          
+            <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+          
+            <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+            <script type="text/javascript">
+                new Valine({
+                    el: '#valine' ,
+                    appId: 'fBqoKNrWNFkYQMTivF00jWpk-gzGzoHsz',
+                    appKey: 'q2baN9KwoyaFHmbjMHfssLIH',
+                    notify: 'true', 
+                    verify: 'false', 
+                    avatar:'hide', 
+                    placeholder: '说点什么吧~',
+                    visitor: ''
+                });
+            </script>
+            <noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript>
+
+  </main>
+
+      </div>
+      <footer>
+  <hr />
+  
+    <p id="social">
+      Find me around the web:
+      <br />
+      
+        
+        <a href="https://github.com/zhengxiaopeng" target="_blank">GitHub</a>
+      
+         | 
+        <a href="https://juejin.cn/user/3051900006044056" target="_blank">Juejin</a>
+      
+         | 
+        <a href="http://www.zhihu.com/people/rocko" target="_blank">Zhihu</a>
+      
+         | 
+        <a href="http://blog.csdn.net/bbld_" target="_blank">CSDN</a>
+      
+         | 
+        <a href="http://weibo.com/678662430" target="_blank">Weibo</a>
+      
+    </p>
+  
+  <p class="copyright">
+    Copyright © 2024
+    <a href="https://rocko.vip/" ><strong>Rocko</strong></a>.
+    This work is licensed under the
+    <a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA 4.0</a> license.
+  </p>
+  <p class="builtWith">
+    Powered by
+    <a href="http://www.gohugo.io/" target="_blank">Hugo</a>.
+  </p>
+</footer>
+
+    </div>
+  </body>
+</html>

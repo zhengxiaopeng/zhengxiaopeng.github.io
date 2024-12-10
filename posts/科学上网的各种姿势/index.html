@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content=""
+  />
+  
+    
+      <title>科学上网的各种姿势 | Rocko&#39;s blog</title>
+    
+  
+  <link rel="stylesheet" href="/css/reset.css"/>
+  <link rel="stylesheet" href="/css/font.css"/>
+  <link rel="stylesheet" href="/css/smigle.css"/>
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+</head>
+
+  <body>
+    <div id="root">
+      <header>
+  <div id="brand">
+    <a class="icon-link" href="https://rocko.vip/">
+      <img
+        class="icon"
+        src="/images/rocko.webp"
+      />
+    </a>
+    <div class="text">
+      <a href="https://rocko.vip/"><h1>Rocko&#39;s blog</h1></a>
+      <h3>Live in the moment</h3>
+    </div>
+  </div>
+  <nav>
+    
+      
+        
+        <a href="/"><b>Home</b></a>
+      
+         | 
+        <a href="/about/"><b>About</b></a>
+      
+         | 
+        <a href="/posts/"><b>Posts</b></a>
+      
+         | 
+        <a href="/categories/"><b>Categories</b></a>
+      
+         | 
+        <a href="/tags/"><b>Tags</b></a>
+      
+         | 
+        <a href="/index.xml"><b>RSS</b></a>
+      
+      |<a id="header-high" style="text-decoration: none; margin-left:12px; width:71px; margin-right:5px" class="header-icon waves-effect waves-circle waves-light"  onClick="javascript:(    /*     * Copyright (C) 2015 Rocko (rocko.xyz) <rocko.zxp@gmail.com>     *     * Licensed under the Apache License, Version 2.0 (the 'License');     * you may not use this file except in compliance with the License.     * You may obtain a copy of the License at     *     *      http://www.apache.org/licenses/LICENSE-2.0     *     * Unless required by applicable law or agreed to in writing, software     * distributed under the License is distributed on an 'AS IS' BASIS,     * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.     * See the License for the specific language governing permissions and     * limitations under the License.     */    function go() {        function c() {        var e = document.createElement('link');        e.setAttribute('type', 'text/css');        e.setAttribute('rel', 'stylesheet');        e.setAttribute('href', f);        e.setAttribute('class', l);        document.body.appendChild(e)    }     function h() {        var e = document.getElementsByClassName(l);        for (var t = 0; t < e.length; t++) {            document.body.removeChild(e[t])        }    }     function p() {        var e = document.createElement('div');        e.setAttribute('class', a);        document.body.appendChild(e);        setTimeout(function() {            document.body.removeChild(e)        }, 100)    }     function d(e) {        return {            height : e.offsetHeight,            width : e.offsetWidth        }    }     function v(i) {        var s = d(i);        return s.height > e && s.height < n && s.width > t && s.width < r    }     function m(e) {        var t = e;        var n = 0;        while (!!t) {            n += t.offsetTop;            t = t.offsetParent        }        return n    }     function g() {        var e = document.documentElement;        if (!!window.innerWidth) {            return window.innerHeight        } else if (e && !isNaN(e.clientHeight)) {            return e.clientHeight        }        return 0    }     function y() {        if (window.pageYOffset) {            return window.pageYOffset        }        return Math.max(document.documentElement.scrollTop, document.body.scrollTop)    }     function E(e) {        var t = m(e);        return t >= w && t <= b + w    }     var songs = ['/media/Music-Fashion_Show.mp3', '/media/G-Love.Phonk.mp3', '/media/APT.mp3', '/media/Music-outside.mp3', '/media/Music-sunburst.mp3', '/media/Music-Wake-Live.mp3'];    function S() {        var e = document.getElementById('audio_element_id');        if(e != null){            var index = parseInt(e.getAttribute('curSongIndex'));            if(index > songs.length - 2) {                index = 0;            } else {                index++;            }            e.setAttribute('curSongIndex', index);            N();        }        e.src = i;        e.play()    }     function x(e) {        e.className += ' ' + s + ' ' + o    }     function T(e) {        e.className += ' ' + s + ' ' + u[Math.floor(Math.random() * u.length)]    }     function N() {        var e = document.getElementsByClassName(s);        var t = new RegExp('\\b' + s + '\\b');        for (var n = 0; n < e.length; ) {            e[n].className = e[n].className.replace(t, '')        }    }    function initAudioEle() {        var e = document.getElementById('audio_element_id');        if(e === null){            e = document.createElement('audio');            e.setAttribute('class', l);            e.setAttribute('curSongIndex', 0);            e.id = 'audio_element_id';            e.loop = false;            e.bgcolor = 0;            e.addEventListener('canplay', function() {            setTimeout(function() {                x(k)            }, 500);            setTimeout(function() {                N();                p();                for (var e = 0; e < O.length; e++) {                    T(O[e])                }            }, 8000)        }, true);        e.addEventListener('ended', function() {            N();            h();            go();        }, true);        e.innerHTML = ' <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>';        document.body.appendChild(e);        }    }        initAudioEle();    var e = 30;    var t = 30;    var n = 350;    var r = 350;    var curSongIndex = parseInt(document.getElementById('audio_element_id').getAttribute('curSongIndex'));    var i = songs[curSongIndex];        var s = 'mw-harlem_shake_me';    var o = 'im_first';    var u = ['im_drunk', 'im_baked', 'im_trippin', 'im_blown'];    var a = 'mw-strobe_light';    var f = '/css/harlem-shake-style.css';        var l = 'mw_added_css';    var b = g();    var w = y();    var C = document.getElementsByTagName('*');    var k = null;    for (var L = 0; L < C.length; L++) {        var A = C[L];        if (v(A)) {            if (E(A)) {                k = A;                break            }        }    }    if (A === null) {        console.warn('Could not find a node of the right size. Please try a different page.');        return    }    c();    S();    var O = [];    for (var L = 0; L < C.length; L++) {        var A = C[L];        if (v(A)) {            O.push(A)        }    }    })()" >High一下</a>
+    
+  </nav>
+  <hr />
+</header>
+
+      <div id="content">
+        
+  <main>
+    <article>
+      <h1 class="title">科学上网的各种姿势</h1>
+      
+      <div class="post-meta">
+  <strong>
+    <span>Posted on</span>
+    <time>2016-08-28</time>
+    <span>in</span>
+    
+      <a href="/categories/fgfw">FGFW</a>
+  </strong>
+  <span> • 317 words</span>
+  <span> • 2 minute read</span>
+  
+  
+    <div>
+      <span>Tags:</span>
+      
+        <a href="/tags/fq">FQ</a>
+    </div>
+  
+</div>
+
+      <div class="content"><p>有墙的地方，就有梯子。有其它好的姿势的麻烦在后面留下言，我会更新上来。
+科学上网可能会受到不同运营商和所处地区的影响。</p>
+<h2 id="复制粘贴科学上网">复制粘贴科学上网</h2>
+<h3 id="hosts">Hosts</h3>
+<p>电脑的 Hosts 文件, Windows 路径： “C:\WINDOWS\system32\drivers\etc\hosts”, Unix like: “/etc/hosts”， 打开添加即可。
+<a href="https://github.com/racaljk/hosts">Google hosts</a> 目前经常更新。
+<a href="https://github.com/lennylxx/ipv6-hosts">Google ipv6地址</a> 电脑网络需要设置支持 IPV6上网。
+<a href="https://laod.org/hosts/2016-google-hosts.html">2016 Google hosts 持续更新【更新于:2016-08-24】</a>。</p>
+<h3 id="dns">DNS</h3>
+<p>使用不安全可信的DNS存在被较大安全隐患！用 DNS 的话建议后面介绍的自己搭建 DNS 服务。可用作本机设置或路由器设置。
+<a href="http://dns.xsico.cn/">XsicoDNS</a>。
+公共DNS: 115.159.157.26   ((只提供纯净解析，不可翻墙))
+学者DNS: 115.159.158.38
+<a href="http://dns.pandadns.xyz/">PandaDNS</a>：
+北方首选DNS：123.206.49.193
+南方首选DNS: 120.27.30.176</p>
+<hr>
+<h2 id="装个软件科学上网">装个软件科学上网</h2>
+<h3 id="浏览器翻墙代理">浏览器翻墙代理</h3>
+<p><a href="https://chrome.google.com/webstore/detail/%E5%87%BA%E9%94%85/ekmmcigapbkblfihobadbdnadfmekfdo?hl=zh-CN">Chrome翻墙插件-出锅</a>，<a href="https://github.com/chuguofan/chuguo/releases">墙内下载</a>。
+<a href="http://speedplus.org/">Speedplus</a> , 目前支持国内众多主流浏览器，体验最佳推荐使用Chrome浏览器。
+<a href="https://tunnello.com/">Chrome翻墙插件 - tunnello</a> , 多条线路速度还可以，注册登录即可使用。
+其它也有需要付费使用的插件如 <code>开眼</code> 等。</p>
+<h3 id="浏览器封装">浏览器封装</h3>
+<p><a href="https://www.torproject.org/index.html.en">Tor 浏览器</a>, Tor 工作的原理有些类似 VPN，原本作用是用来隐藏用户在网上的行踪的。
+<a href="http://www.goagent.wang/292.html">ChromeGae极光网翻墙浏览器</a>
+其它一堆一键翻墙浏览器包可以在后面的 <a href="#%E5%85%B6%E5%AE%83">FQ 大全</a>里找找就不一一介绍了。</p>
+<h3 id="自由门无界">自由门、无界</h3>
+<p><a href="http://dongtaiwang.com/loc/download.php">自由门</a>， <a href="http://www.wujieliulan.com/download.php">无界浏览</a></p>
+<h3 id="goagent">GoAgent</h3>
+<p>现在看到用 GoAgent 科学上网的可以直接忽略了，基本宣布退出历史舞台。</p>
+<h3 id="xx-net">XX-Net</h3>
+<p>GoAgent 的接力，也是基于 Google 的 GAE。 <a href="https://github.com/XX-net/XX-Net/wiki/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3">项目主页</a>。</p>
+<h3 id="lantern">Lantern</h3>
+<p>之前的原理是类似 P2P, 3.x 收费版出了后应该弄了自己的服务器用做代理了。支持windows、mac、android、ubuntu、Arch Linux。有收费版。<a href="https://github.com/getlantern/lantern">项目地址</a>。</p>
+<h3 id="萤火虫firefly-proxy">萤火虫（firefly-proxy）</h3>
+<p>支持 Windows、OSX、Ubuntu、Android。<a href="https://github.com/yinghuocho/firefly-proxy">项目主页</a>。</p>
+<h3 id="赛风psiphon">赛风（Psiphon）</h3>
+<p>适用 Android 和 Windows，利用 VPN, SSH 和 HTTP 代理软件提供未经审查的访问互联网。赛风的客户端将自动寻找新的接入点，力求最大限度的绕过网络审查。 <a href="http://www.psiphon3.net/zh/download.html">赛风下载</a>。</p>
+<h3 id="uproxy">uProxy</h3>
+<p>uProxy 目前还处于测试阶段，受 Google Ideas 资助，可以关注下。它的工作原理介绍：透过点对点网关进行网络访问，例如，中国用户可以请求在美国的用户分享网络（双方都安装了uProxy插件），美国用户在点击uProxy插件之后，对这位中国用户进行邀请，中国用户点击接受之后，就能够通过美国用户的网关进行自由浏览任何网页了。<a href="https://github.com/uProxy/uproxy">uProxy项目主页</a>。</p>
+<hr>
+<h2 id="直接出钱省事">直接出钱省事</h2>
+<p>买 VPN 时需要注意的是各种假冒伪劣，不要买太久的预防服务商突然遭受不明力量然后就挂了。推荐<a href="https://www.green-jsq.com/vip.html">Green VPN</a>、<a href="http://www.djjsq.org/">豆荚加速器</a>、<a href="https://www.yuntidata.com/">云梯</a> 。
+SS付费账号：Shadowsocks+VPN <a href="https://i.ssvpn.me/">佛跳墙</a>、Shadowsocks: <a href="https://shadowsocks.com/">shadowsocks.com</a> 等等。</p>
+<p>当然也有许多免费得 VPN ,例如：<a href="https://zpn.im/">ZPN</a>   -每月免费10G流量,  <a href="http://i.freevpnss.com/">FreeVPNSS</a>，<a href="http://www.2-vpn4.cc/">二师兄VPN加速器</a>；手机 APP：<a href="https://itunes.apple.com/tw/app/vpn-master-vpn-free-unblock/id1025707485?mt=8">VPN Master Free- iOS</a>, <a href="http://vpn-master.cn.uptodown.com/android">VPN Master Free- Android</a>, 更多可以看看这个推荐： <a href="http://www.0512hunjia.com/53.html">免费 VPN</a> 。</p>
+<hr>
+<h2 id="自己搭建服务科学上网">自己搭建服务科学上网</h2>
+<h3 id="vpn">VPN</h3>
+<p>推荐 PPTP 协议的，简单一点，基本安装路数：安装 pptpd-&gt; 配置账号 -&gt; 开启 NAT转发 -&gt; 配置 iptables 表 -&gt; 重启 pptpd 即可，<a href="http://blueve.me/archives/1087">参考安装</a>。</p>
+<h3 id="cow">COW</h3>
+<p>COW 是一个简化穿墙的 HTTP 代理服务器。它能自动检测被墙网站，仅对这些网站使用二级代理，支持 HTTP, SOCKS5, shadowsocks 和 cow 自身作为二级代理。
+<a href="https://github.com/cyfdecyf/cow">Cow 项目源码、使用方法</a>。</p>
+<h3 id="v2ray">V2Ray</h3>
+<p>V2Ray 原生支持 Socks、HTTP、Shadowsocks、VMess 等协议。<a href="https://www.v2ray.com/">主页</a>。</p>
+<h3 id="gogo">GOGO</h3>
+<p><a href="http://www.gogotunnel.com/">GOGO官网</a> ， GoGo 是一个基于 Paas 平台的代理工具，同时支持 SOCKS5 和 HTTP 两种代理协议。服务端安装需要 Java 环境，所以小 VPS 就伤不起了。</p>
+<h3 id="shadowsocks">Shadowsocks</h3>
+<p>虽然老早之前作者就被请喝茶，但是 SS 依然坚挺 :-) <a href="https://github.com/shadowsocks">项目组织</a>，<a href="https://shadowsocks.org/en/index.html">下载</a>
+iPhone/iPad 客户端推荐使用<a href="https://itunes.apple.com/cn/app/shadowrocket/id932747118">iOS Surge/Shadowrocket</a>。 Unix like 系统推荐原生提供的 sslocal 服务做客户端，对局域网内机器开放连接的话 <code>local_address</code> 设置为 本机 IP 或0.0.0.0 即可，无需安装GUI图形程序。</p>
+<h3 id="ssh-隧道">SSH 隧道</h3>
+<p>简单有效，但容易被封： 本地运行ssh命令即可：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Bash" data-lang="Bash"><span style="display:flex;"><span>ssh -N -D 127.0.0.1:本地端口 用户名@墙外VPS地址
+</span></span></code></pre></div><p>然后在浏览器代理插件里填这个本地的代理配置即可。Windows  要使用 SSH 可以装 <a href="http://www.putty.org/">putty</a>, 或者有装 Git 的直接开个 Git Bash 也可。</p>
+<h3 id="squidstunnel">Squid+Stunnel</h3>
+<p>加密代理功能的实现，越过封锁限制，访问被墙的国外站点 <a href="https://staugur.gitbooks.io/saintic/content/blog/28.html">教程主页</a></p>
+<h3 id="lightsword">LightSword</h3>
+<p>基于 Node.js 的 SOCKS5 代理, LightSword 参考了 Shadowsocks 的协议，并用 Typescript 实现
+<a href="https://github.com/UnsignedInt8/LightSword">项目主页</a>。</p>
+<h3 id="自建科学上网dns">自建科学上网DNS</h3>
+<p><a href="https://github.com/zyqf/DNS">PandaDNS</a> ,只支持 Centos 6.7 64 or Ubuntu，服务器需要在国内。</p>
+<h3 id="fq路由器">FQ路由器</h3>
+<p>买个能刷 Openwrt 或 Merlin（华硕为其路由器所开发的固件） 的路由器，刷完之后还需要 Shadowsocks 上网账号或 VPN 设置。
+树莓派刷 OpenWrt，速度不太好而且刷了后树莓派干不了其它事了。
+此类方式可以一次性解决一家子科学上网。</p>
+<hr>
+<h2 id="其它">其它</h2>
+<p><a href="https://github.com/bannedbook/fanqiang/wiki">FQ 大全</a></p>
+<h2 id="其它使用技巧">其它使用技巧</h2>
+<p>我们有时会遇到需要全局 VPN 的情况，比如开 CMD 窗口，或者 git clone 某些被 GFW 墙掉的网址时，必须要全局VPN，否则网址无法访问, CMD 默认是直连的，不走代理，就算用 set 设置了 http/https 代理也没用，而此时只有代理软件上网。那么 <a href="http://www.proxycap.com/">proxycap</a> 可以帮到你，目前支持 Windows 和 Mac。此外也可以使用 <a href="https://github.com/rofl0r/proxychains-ng">proxychains-ng</a>解决</p>
+<p>我自己是：VPS+树莓派。VPS 搭了 Shadowsocks+VPN+Cow，树莓派安装 Shadowsocks 服务和 Cow 作为局域网内的二级代理；树莓派安装 Shadowsocks-libev + chinadns + dnsmasq 作为透明代理用作网关或路由器网关，sslocal 和 ss-redir 监听不同端口可同时使用。可参考 <a href="http://liberize.me/tech/raspberry-pi-transparent-proxy.html">树莓派搭建透明代理</a>。使用主力是 Shadowsocks，VPN 备用。
+Chrome 的代理插件认定 <a href="https://github.com/FelisCatus/SwitchyOmega">SwitchyOmega</a></p>
+<p>以上有些链接需要 FQ, 可以翻了后再看。
+FQ 基本都需要自己动动手，超级简单、高效、稳定、免费的翻墙服务是没有的，不然 GFW 就变成摆设了，况且 GFW 也是会升级的。</p></div>
+    </article>
+    
+            <br/><br/><br/>
+            <hr/>
+            <div id="valine" class="comment"></div>
+          
+            <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+          
+            <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+            <script type="text/javascript">
+                new Valine({
+                    el: '#valine' ,
+                    appId: 'fBqoKNrWNFkYQMTivF00jWpk-gzGzoHsz',
+                    appKey: 'q2baN9KwoyaFHmbjMHfssLIH',
+                    notify: 'true', 
+                    verify: 'false', 
+                    avatar:'hide', 
+                    placeholder: '说点什么吧~',
+                    visitor: ''
+                });
+            </script>
+            <noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript>
+
+  </main>
+
+      </div>
+      <footer>
+  <hr />
+  
+    <p id="social">
+      Find me around the web:
+      <br />
+      
+        
+        <a href="https://github.com/zhengxiaopeng" target="_blank">GitHub</a>
+      
+         | 
+        <a href="https://juejin.cn/user/3051900006044056" target="_blank">Juejin</a>
+      
+         | 
+        <a href="http://www.zhihu.com/people/rocko" target="_blank">Zhihu</a>
+      
+         | 
+        <a href="http://blog.csdn.net/bbld_" target="_blank">CSDN</a>
+      
+         | 
+        <a href="http://weibo.com/678662430" target="_blank">Weibo</a>
+      
+    </p>
+  
+  <p class="copyright">
+    Copyright © 2024
+    <a href="https://rocko.vip/" ><strong>Rocko</strong></a>.
+    This work is licensed under the
+    <a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA 4.0</a> license.
+  </p>
+  <p class="builtWith">
+    Powered by
+    <a href="http://www.gohugo.io/" target="_blank">Hugo</a>.
+  </p>
+</footer>
+
+    </div>
+  </body>
+</html>

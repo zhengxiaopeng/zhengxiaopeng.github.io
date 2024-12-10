@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>技巧 on Rocko&#39;s blog</title>
+    <link>https://rocko.vip/tags/%E6%8A%80%E5%B7%A7/</link>
+    <description>Recent content in 技巧 on Rocko&#39;s blog</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 14 Jan 2015 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://rocko.vip/tags/%E6%8A%80%E5%B7%A7/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>运算符的几点</title>
+      <link>https://rocko.vip/posts/%E8%BF%90%E7%AE%97%E7%AC%A6%E7%9A%84%E5%87%A0%E7%82%B9/</link>
+      <pubDate>Wed, 14 Jan 2015 00:00:00 +0000</pubDate>
+      <guid>https://rocko.vip/posts/%E8%BF%90%E7%AE%97%E7%AC%A6%E7%9A%84%E5%87%A0%E7%82%B9/</guid>
+      <description>&lt;h2 id=&#34;开篇废话&#34;&gt;开篇废话&lt;/h2&gt;&#xA;&lt;p&gt;运算符使用的几点小技巧，先给出&lt;a href=&#34;http://www.w3cschool.cc/java/java-operators.html&#34;&gt;Java的运算符的基本知识&lt;/a&gt;复习下，其它语言的大同小异。运算符需要注意的问题有：&lt;em&gt;优先级（运算顺序问题）、结合方向（自左至右或自右至左问题）、要求运算对象个数（运算符需要有几个运算对象问题）&lt;/em&gt;。&lt;br&gt;&#xA;合理运用运算符能提高自己代码的BIG、能精简代码、还能提高程序的运行效率，滥用运算符可能导致逻辑混乱、代码不知所云什么的，所以有些问题还是要自己注意一下的。下面就列出一些运算符的使用技巧，换一换思路看下，当然还有先占着这个坑，以后会补(man)上(man)更(lai)新(ba)。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

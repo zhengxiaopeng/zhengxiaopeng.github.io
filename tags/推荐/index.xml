@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>推荐 on Rocko&#39;s blog</title>
+    <link>https://rocko.vip/tags/%E6%8E%A8%E8%8D%90/</link>
+    <description>Recent content in 推荐 on Rocko&#39;s blog</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 14 Jun 2016 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://rocko.vip/tags/%E6%8E%A8%E8%8D%90/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ADB-Issue#2</title>
+      <link>https://rocko.vip/posts/adb-issue-2/</link>
+      <pubDate>Tue, 14 Jun 2016 00:00:00 +0000</pubDate>
+      <guid>https://rocko.vip/posts/adb-issue-2/</guid>
+      <description>&lt;p&gt;Android Dev Bookmarks(ADB) 第二期更新。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>AndroidDev站点推荐-Issue#1</title>
+      <link>https://rocko.vip/posts/androiddev%E7%AB%99%E7%82%B9%E6%8E%A8%E8%8D%90-issue-1/</link>
+      <pubDate>Wed, 17 Feb 2016 00:00:00 +0000</pubDate>
+      <guid>https://rocko.vip/posts/androiddev%E7%AB%99%E7%82%B9%E6%8E%A8%E8%8D%90-issue-1/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://github.com/zhengxiaopeng/android-dev-bookmarks&#34;&gt;Android-Dev-Bookmarks&lt;/a&gt; 项目目前可以生成书签文件导入到浏览器中了，&lt;a href=&#34;http://adb.rocko.xyz/&#34;&gt;ADB&lt;/a&gt; 站点上的内容也是一样的，方便在线浏览。现在内容更新开始按期发布同时也会有个简短的介绍，内容逐渐增多比较难直接看出站点的主要内容，过一遍介绍也可以留个印象。&lt;/p&gt;&#xA;&lt;p&gt;下面是这期更新的内容：&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

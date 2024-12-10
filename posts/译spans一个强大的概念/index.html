@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content=""
+  />
+  
+    
+      <title>【译】Spans，一个强大的概念 | Rocko&#39;s blog</title>
+    
+  
+  <link rel="stylesheet" href="/css/reset.css"/>
+  <link rel="stylesheet" href="/css/font.css"/>
+  <link rel="stylesheet" href="/css/smigle.css"/>
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+</head>
+
+  <body>
+    <div id="root">
+      <header>
+  <div id="brand">
+    <a class="icon-link" href="https://rocko.vip/">
+      <img
+        class="icon"
+        src="/images/rocko.webp"
+      />
+    </a>
+    <div class="text">
+      <a href="https://rocko.vip/"><h1>Rocko&#39;s blog</h1></a>
+      <h3>Live in the moment</h3>
+    </div>
+  </div>
+  <nav>
+    
+      
+        
+        <a href="/"><b>Home</b></a>
+      
+         | 
+        <a href="/about/"><b>About</b></a>
+      
+         | 
+        <a href="/posts/"><b>Posts</b></a>
+      
+         | 
+        <a href="/categories/"><b>Categories</b></a>
+      
+         | 
+        <a href="/tags/"><b>Tags</b></a>
+      
+         | 
+        <a href="/index.xml"><b>RSS</b></a>
+      
+      |<a id="header-high" style="text-decoration: none; margin-left:12px; width:71px; margin-right:5px" class="header-icon waves-effect waves-circle waves-light"  onClick="javascript:(    /*     * Copyright (C) 2015 Rocko (rocko.xyz) <rocko.zxp@gmail.com>     *     * Licensed under the Apache License, Version 2.0 (the 'License');     * you may not use this file except in compliance with the License.     * You may obtain a copy of the License at     *     *      http://www.apache.org/licenses/LICENSE-2.0     *     * Unless required by applicable law or agreed to in writing, software     * distributed under the License is distributed on an 'AS IS' BASIS,     * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.     * See the License for the specific language governing permissions and     * limitations under the License.     */    function go() {        function c() {        var e = document.createElement('link');        e.setAttribute('type', 'text/css');        e.setAttribute('rel', 'stylesheet');        e.setAttribute('href', f);        e.setAttribute('class', l);        document.body.appendChild(e)    }     function h() {        var e = document.getElementsByClassName(l);        for (var t = 0; t < e.length; t++) {            document.body.removeChild(e[t])        }    }     function p() {        var e = document.createElement('div');        e.setAttribute('class', a);        document.body.appendChild(e);        setTimeout(function() {            document.body.removeChild(e)        }, 100)    }     function d(e) {        return {            height : e.offsetHeight,            width : e.offsetWidth        }    }     function v(i) {        var s = d(i);        return s.height > e && s.height < n && s.width > t && s.width < r    }     function m(e) {        var t = e;        var n = 0;        while (!!t) {            n += t.offsetTop;            t = t.offsetParent        }        return n    }     function g() {        var e = document.documentElement;        if (!!window.innerWidth) {            return window.innerHeight        } else if (e && !isNaN(e.clientHeight)) {            return e.clientHeight        }        return 0    }     function y() {        if (window.pageYOffset) {            return window.pageYOffset        }        return Math.max(document.documentElement.scrollTop, document.body.scrollTop)    }     function E(e) {        var t = m(e);        return t >= w && t <= b + w    }     var songs = ['/media/Music-Fashion_Show.mp3', '/media/G-Love.Phonk.mp3', '/media/APT.mp3', '/media/Music-outside.mp3', '/media/Music-sunburst.mp3', '/media/Music-Wake-Live.mp3'];    function S() {        var e = document.getElementById('audio_element_id');        if(e != null){            var index = parseInt(e.getAttribute('curSongIndex'));            if(index > songs.length - 2) {                index = 0;            } else {                index++;            }            e.setAttribute('curSongIndex', index);            N();        }        e.src = i;        e.play()    }     function x(e) {        e.className += ' ' + s + ' ' + o    }     function T(e) {        e.className += ' ' + s + ' ' + u[Math.floor(Math.random() * u.length)]    }     function N() {        var e = document.getElementsByClassName(s);        var t = new RegExp('\\b' + s + '\\b');        for (var n = 0; n < e.length; ) {            e[n].className = e[n].className.replace(t, '')        }    }    function initAudioEle() {        var e = document.getElementById('audio_element_id');        if(e === null){            e = document.createElement('audio');            e.setAttribute('class', l);            e.setAttribute('curSongIndex', 0);            e.id = 'audio_element_id';            e.loop = false;            e.bgcolor = 0;            e.addEventListener('canplay', function() {            setTimeout(function() {                x(k)            }, 500);            setTimeout(function() {                N();                p();                for (var e = 0; e < O.length; e++) {                    T(O[e])                }            }, 8000)        }, true);        e.addEventListener('ended', function() {            N();            h();            go();        }, true);        e.innerHTML = ' <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>';        document.body.appendChild(e);        }    }        initAudioEle();    var e = 30;    var t = 30;    var n = 350;    var r = 350;    var curSongIndex = parseInt(document.getElementById('audio_element_id').getAttribute('curSongIndex'));    var i = songs[curSongIndex];        var s = 'mw-harlem_shake_me';    var o = 'im_first';    var u = ['im_drunk', 'im_baked', 'im_trippin', 'im_blown'];    var a = 'mw-strobe_light';    var f = '/css/harlem-shake-style.css';        var l = 'mw_added_css';    var b = g();    var w = y();    var C = document.getElementsByTagName('*');    var k = null;    for (var L = 0; L < C.length; L++) {        var A = C[L];        if (v(A)) {            if (E(A)) {                k = A;                break            }        }    }    if (A === null) {        console.warn('Could not find a node of the right size. Please try a different page.');        return    }    c();    S();    var O = [];    for (var L = 0; L < C.length; L++) {        var A = C[L];        if (v(A)) {            O.push(A)        }    }    })()" >High一下</a>
+    
+  </nav>
+  <hr />
+</header>
+
+      <div id="content">
+        
+  <main>
+    <article>
+      <h1 class="title">【译】Spans，一个强大的概念</h1>
+      
+      <div class="post-meta">
+  <strong>
+    <span>Posted on</span>
+    <time>2015-03-04</time>
+    <span>in</span>
+    
+      <a href="/categories/android">Android</a>
+  </strong>
+  <span> • 909 words</span>
+  <span> • 5 minute read</span>
+  
+  
+    <div>
+      <span>Tags:</span>
+      
+        <a href="/tags/span">Span</a>, 
+        <a href="/tags/%E6%96%87%E5%AD%97">文字</a>, 
+        <a href="/tags/%E5%8A%A8%E7%94%BB">动画</a>, 
+        <a href="/tags/%E8%AF%91%E6%96%87">译文</a>
+    </div>
+  
+</div>
+
+      <div class="content"><h3 id="前言">前言</h3>
+<p>原文：<a href="http://flavienlaurent.com/blog/2014/01/31/spans/">Spans, a Powerful Concept.</a></p>
+<p>最近，我写了一篇关于 NewStand app 和 app 上 ActionBar 的图标的翻转动效的文章。<a href="http://cyrilmottier.com/">Cyril Mottier</a> 建议我采用一个很优雅的方案，即使用 Spans 去淡入淡出 ActionBar 的标题。
+此外，我一直想尝试所有可用的 Sapn 色的类型：<a href="http://developer.android.com/reference/android/text/style/ImageSpan.html">ImageSpan</a>、<a href="http://developer.android.com/reference/android/text/style/BackgroundColorSpan.html">BackgroundColorSpan</a> 等。他们非常简单易用但是（也）没有任何关于它们的文档和详细信息。
+因此，在这篇文章中，我将探索在 Spans 的框架下什么是可以做的，然后，我将会告诉你怎么去进阶使用 Spans。
+你可以下载和安装 <a href="https://github.com/flavienlaurent/spans/raw/master/sample.apk">demo 程序</a>，查看<a href="https://github.com/flavienlaurent/spans">源码</a>。</p>
+<h3 id="框架">框架</h3>
+<h4 id="层次">层次</h4>
+<p>主要规则：</p>
+<ul>
+<li>如果一个 Span 影响字符级的文本格式，则继承 <a href="http://developer.android.com/reference/android/text/style/CharacterStyle.html">CharacterStyle</a>。</li>
+<li>如果一个 Span 影响段落层次的文本格式，则实现 <a href="http://developer.android.com/reference/android/text/style/ParagraphStyle.html">ParagraphStyle</a></li>
+<li>如果一个 Span 修改字符级别的文本外观，则实现 <a href="http://developer.android.com/reference/android/text/style/UpdateAppearance.html">UpdateAppearance</a></li>
+<li>如果一个 Span 修改字符级文本度量|大小，则实现 <a href="http://developer.android.com/reference/android/text/style/UpdateLayout.html">UpdateLayout</a></li>
+</ul>
+<p>它为我们提供了下面这些类的关系图：
+<img src="/images/Spans%EF%BC%8C%E4%B8%80%E4%B8%AA%E5%BC%BA%E5%A4%A7%E7%9A%84%E6%A6%82%E5%BF%B5-1.png" alt="characterstyle">
+<img src="/images/Spans%EF%BC%8C%E4%B8%80%E4%B8%AA%E5%BC%BA%E5%A4%A7%E7%9A%84%E6%A6%82%E5%BF%B5-2.png" alt="paragraphstyle">
+<img src="/images/Spans%EF%BC%8C%E4%B8%80%E4%B8%AA%E5%BC%BA%E5%A4%A7%E7%9A%84%E6%A6%82%E5%BF%B5-3.png" alt="updateappearance">
+<img src="/images/Spans%EF%BC%8C%E4%B8%80%E4%B8%AA%E5%BC%BA%E5%A4%A7%E7%9A%84%E6%A6%82%E5%BF%B5-4.png" alt="updatelayout">
+因为它有一点复杂所以我建议你使用像这样的可视化类图，以充分理解它的层次结构。</p>
+<h3 id="它是如何工作的">它是如何工作的?</h3>
+<h4 id="布局layout">布局（Layout）</h4>
+<p>当你给一个 TextView 设置文本时，它使用基类<a href="http://developer.android.com/reference/android/text/Layout.html">布局</a>去管理文本的渲染。
+布局类包含一个布尔<code>mSpannedText</code>:真，当文本是一个 <a href="http://developer.android.com/reference/android/text/Spanned.html">Spanned</a> 的实例时（<a href="http://developer.android.com/reference/android/text/SpannableString.html">SpannableString</a>实现 <a href="http://developer.android.com/reference/android/text/Spanned.html">Spanned</a>）。这个类只处理 <a href="http://developer.android.com/reference/android/text/style/ParagraphStyle.html">ParagraphStyle</a>  Spans。
+[draw](<a href="http://developer.android.com/reference/android/text/Layout.html#draw(android.graphics.Canvas,%20android.graphics.Path,%20android.graphics.Paint,%20int)">http://developer.android.com/reference/android/text/Layout.html#draw(android.graphics.Canvas,%20android.graphics.Path,%20android.graphics.Paint,%20int)</a> 方法调用了其它两个方法：</p>
+<ul>
+<li><strong>drawBackground</strong>
+对于文本的每一行，如果有一个 <a href="http://developer.android.com/reference/android/text/style/LineBackgroundSpan.html">LineBackgroundSpan</a> 用于当前行，<a href="http://developer.android.com/reference/android/text/style/LineBackgroundSpan.html#drawBackground(android.graphics.Canvas,%20android.graphics.Paint,%20int,%20int,%20int,%20int,%20int,%20java.lang.CharSequence,%20int,%20int,%20int)">LineBackgroundSpan#drawBackground</a>方法将被调用。</li>
+<li><strong>drawText</strong>
+对于文本的每一行，它计算 <a href="http://developer.android.com/reference/android/text/style/LeadingMarginSpan.html">LeadingMarginSpan</a> 和 <a href="http://developer.android.com/reference/android/text/style/LeadingMarginSpan.LeadingMarginSpan2.html">LeadingMarginSpan2</a>，并调用 <a href="http://developer.android.com/reference/android/text/style/LeadingMarginSpan.html#drawLeadingMargin(android.graphics.Canvas,%20android.graphics.Paint,%20int,%20int,%20int,%20int,%20int,%20java.lang.CharSequence,%20int,%20int,%20boolean,%20android.text.Layout)">LeadingMarginSpan＃drawLeadingMargin</a> 方法当它是必要的时候。这也用于确定文本对齐。最后，如果当前行是跨行的，布局将调用 TextLine#draw 方法（每一行都会创建一个 TextLine 对象）。</li>
+</ul>
+<h4 id="文本行textline">文本行(TextLine)</h4>
+<p><a href="https://android.googlesource.com/platform/frameworks/base/+/master/core/java/android/text/TextLine.java">android.text.TextLine</a> 的文档这么说：代表一行样式的文字，用于测量视觉顺序和为了渲染。
+TextLine 类包含 3 个 Spans 的集合：</p>
+<ul>
+<li>MetricAffectingSpan set</li>
+<li>CharacterStyle set</li>
+<li>ReplacementSpan set</li>
+</ul>
+<p>其中有趣的方法：TextLine#handleRun，这也是所有的 Spans 用来渲染文本的。相对于 Span 的类型，TextLine 调用：</p>
+<ul>
+<li><a href="http://flavienlaurent.com/blog/2014/01/31/spans/">CharacterStyle#updateDrawState</a> 方法更改 MetricAffectingSpan 和 CharacterStyle 两个 Spans 的 TextPaint 配置。</li>
+<li>TextLine#handleReplacement 方法处理 ReplacementSpan。它调用 <a href="http://developer.android.com/reference/android/text/style/ReplacementSpan.html#getSize(android.graphics.Paint,%20java.lang.CharSequence,%20int,%20int,%20android.graphics.Paint.FontMetricsInt)">Replacement#getSize</a> 得到 replacement 的宽度，如果它需要更新字体规格最终会调用 [Replacement#draw](<a href="http://developer.android.com/reference/android/text/style/ReplacementSpan.html#draw(android.graphics.Canvas,%20java.lang.CharSequence,%20int,%20int,%20float,%20int,%20int,%20int,%20android.graphics.Paint)">http://developer.android.com/reference/android/text/style/ReplacementSpan.html#draw(android.graphics.Canvas,%20java.lang.CharSequence,%20int,%20int,%20float,%20int,%20int,%20int,%20android.graphics.Paint)</a></li>
+</ul>
+<h4 id="字体规格font-metrics">字体规格（Font Metrics）</h4>
+<p>如果你想知道更多什么是字体规格，那么看下面的图解：
+<img src="/images/Spans%EF%BC%8C%E4%B8%80%E4%B8%AA%E5%BC%BA%E5%A4%A7%E7%9A%84%E6%A6%82%E5%BF%B5-5.png" alt="fontmetrics"></p>
+<h3 id="耍起来">耍起来</h3>
+<h4 id="bulletspan">BulletSpan</h4>
+<p><a href="http://developer.android.com/reference/android/text/style/BulletSpan.html">android.text.style.BulletSpan</a>
+BulletSpan 影响段落层次的文本格式。它可以给段落的开始处加上项目符号。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * gapWidth: 项目符号和文本之间的间隙
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * color: 项目符号的颜色，默认为透明
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> */</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//创建一个黑色的 BulletSpan，间隙为 15px</span>
+</span></span><span style="display:flex;"><span>span <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> BulletSpan(15, Color.<span style="color:#a6e22e">BLACK</span>);
+</span></span></code></pre></div><p><img src="/images/Spans%EF%BC%8C%E4%B8%80%E4%B8%AA%E5%BC%BA%E5%A4%A7%E7%9A%84%E6%A6%82%E5%BF%B5-6.png" alt="BulletSpan的效果"></p>
+<h4 id="quotespan">QuoteSpan</h4>
+<p><a href="http://developer.android.com/reference/android/text/style/QuoteSpan.html">android.text.style.QuoteSpan</a>
+QuoteSpan 影响段落层次的文本格式。它可以给一个段落加上垂直的引用线。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * color: 垂直的引用线颜色，默认是蓝色
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> */</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//创建一个红色的引用</span>
+</span></span><span style="display:flex;"><span>span <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> QuoteSpan(Color.<span style="color:#a6e22e">RED</span>);
+</span></span></code></pre></div><p><img src="/images/Spans%EF%BC%8C%E4%B8%80%E4%B8%AA%E5%BC%BA%E5%A4%A7%E7%9A%84%E6%A6%82%E5%BF%B5-7.png" alt="QuoteSpan的效果"></p>
+<h4 id="alignmentspanstandard">AlignmentSpan.Standard</h4>
+<p><a href="http://developer.android.com/reference/android/text/style/AlignmentSpan.Standard.html">android.text.style.AlignmentSpan.Standard</a>
+AlignmentSpan.Standard 影响段落层次的文本格式。它可以把段落的每一行文本按正常、居中、相反的方式对齐。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * align: 对齐方式
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> */</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//居中对齐的段落</span>
+</span></span><span style="display:flex;"><span>span <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> AlignmentSpan.<span style="color:#a6e22e">Standard</span>(Layout.<span style="color:#a6e22e">Alignment</span>.<span style="color:#a6e22e">ALIGN_CENTER</span>);
+</span></span></code></pre></div><p><img src="/images/Spans%EF%BC%8C%E4%B8%80%E4%B8%AA%E5%BC%BA%E5%A4%A7%E7%9A%84%E6%A6%82%E5%BF%B5-8.png" alt="AlignmentSpan.Standard的效果"></p>
+<h4 id="underlinespan">UnderlineSpan</h4>
+<p><a href="http://developer.android.com/reference/android/text/style/UnderlineSpan.html">android.text.style.UnderlineSpan</a>
+UnderlineSpan 影响字符级的文本格式。它可以为字符集加上下划线，归功于 <a href="http://developer.android.com/reference/android/graphics/Paint.html#setUnderlineText(boolean)">Paint#setUnderlineText(true)</a>。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#75715e">//下划线</span>
+</span></span><span style="display:flex;"><span>span <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> UnderlineSpan();
+</span></span></code></pre></div><p><img src="/images/Spans%EF%BC%8C%E4%B8%80%E4%B8%AA%E5%BC%BA%E5%A4%A7%E7%9A%84%E6%A6%82%E5%BF%B5-9.png" alt="UnderlineSpan效果图"></p>
+<h4 id="strikethroughspan">StrikethroughSpan</h4>
+<p><a href="http://developer.android.com/reference/android/text/style/StrikethroughSpan.html">android.text.style.StrikethroughSpan</a>
+StrikethroughSpan 影响字符级的文本格式。它可以给字符集加上删除线，归功于 [Paint#setStrikeThruText(true))](<a href="http://developer.android.com/reference/android/graphics/Paint.html#setStrikeThruText(boolean)">http://developer.android.com/reference/android/graphics/Paint.html#setStrikeThruText(boolean)</a>。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#75715e">//删除线</span>
+</span></span><span style="display:flex;"><span>span <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> StrikethroughSpan();
+</span></span></code></pre></div><p><img src="/images/Spans%EF%BC%8C%E4%B8%80%E4%B8%AA%E5%BC%BA%E5%A4%A7%E7%9A%84%E6%A6%82%E5%BF%B5-10.png" alt="StrikethroughSpan的效果图"></p>
+<h4 id="subscriptspan">SubscriptSpan</h4>
+<p><a href="http://developer.android.com/reference/android/text/style/SubscriptSpan.html">android.text.style.SubscriptSpan</a>
+SubscriptSpan 影响字符级的文本格式，它可以通过减小 <a href="http://developer.android.com/reference/android/text/TextPaint.html#baselineShift">TextPaint#baselineShift</a> 给字符集加下标。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#75715e">//下标</span>
+</span></span><span style="display:flex;"><span>span <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> SubscriptSpan();
+</span></span></code></pre></div><p><img src="/images/Spans%EF%BC%8C%E4%B8%80%E4%B8%AA%E5%BC%BA%E5%A4%A7%E7%9A%84%E6%A6%82%E5%BF%B5-11.png" alt="SubscriptSpan的效果图"></p>
+<h4 id="superscriptspan">SuperscriptSpan</h4>
+<p><a href="http://developer.android.com/reference/android/text/style/SuperscriptSpan.html">android.text.style.SuperscriptSpan</a>
+SuperscriptSpan 影响字符级的文本格式。它可以通过增加 <a href="http://developer.android.com/reference/android/text/TextPaint.html#baselineShift">TextPaint#baselineShift </a> 给字符集加上标。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#75715e">//上标</span>
+</span></span><span style="display:flex;"><span>span <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> SuperscriptSpan();
+</span></span></code></pre></div><p><img src="/images/Spans%EF%BC%8C%E4%B8%80%E4%B8%AA%E5%BC%BA%E5%A4%A7%E7%9A%84%E6%A6%82%E5%BF%B5-12.png" alt="SuperscriptSpan效果图"></p>
+<h4 id="backgroundcolorspan">BackgroundColorSpan</h4>
+<p><a href="http://developer.android.com/reference/android/text/style/BackgroundColorSpan.html">android.text.style.BackgroundColorSpan</a>
+BackgroundColorSpan 影响字符级的文本格式。它可以给字符集加上背景颜色。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * color: 背景颜色
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> */</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//设置字符背景颜色</span>
+</span></span><span style="display:flex;"><span>span <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> BackgroundColorSpan(Color.<span style="color:#a6e22e">GREEN</span>);
+</span></span></code></pre></div><p><img src="/images/Spans%EF%BC%8C%E4%B8%80%E4%B8%AA%E5%BC%BA%E5%A4%A7%E7%9A%84%E6%A6%82%E5%BF%B5-13.png" alt="BackgroundColorSpan的效果图"></p>
+<h4 id="foregroundcolorspan">ForegroundColorSpan</h4>
+<p><a href="http://developer.android.com/reference/android/text/style/ForegroundColorSpan.html">android.text.style.ForegroundColorSpan</a>
+ForegroundColorSpan 影响字符级的文本格式，它可以设置字符集的前景颜色也即文字颜色。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * color: 前景颜色
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> */</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//设置红色的前景</span>
+</span></span><span style="display:flex;"><span>span <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ForegroundColorSpan(Color.<span style="color:#a6e22e">RED</span>);
+</span></span></code></pre></div><p><img src="/images/Spans%EF%BC%8C%E4%B8%80%E4%B8%AA%E5%BC%BA%E5%A4%A7%E7%9A%84%E6%A6%82%E5%BF%B5-14.png" alt="ForegroundColorSpan的效果图"></p>
+<h4 id="imagespan">ImageSpan</h4>
+<p><a href="http://developer.android.com/reference/android/text/style/ImageSpan.html">android.text.style.ImageSpan</a>
+ImageSpan 影响字符级的文本格式。它可以生成图像字符。这是为数不多的文档齐全的 Span 所以 enjoy it!</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * Context: 上下文
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * resourceId: 图像资源id
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> */</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//用一个小图像代替字符</span>
+</span></span><span style="display:flex;"><span>span <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ImageSpan(<span style="color:#66d9ef">this</span>, R.<span style="color:#a6e22e">drawable</span>.<span style="color:#a6e22e">pic1_small</span>);
+</span></span></code></pre></div><p><img src="/images/Spans%EF%BC%8C%E4%B8%80%E4%B8%AA%E5%BC%BA%E5%A4%A7%E7%9A%84%E6%A6%82%E5%BF%B5-15.png" alt="ImageSpan的效果图"></p>
+<h4 id="stylespan">StyleSpan</h4>
+<p><a href="http://developer.android.com/reference/android/text/style/StyleSpan.html">android.text.style.StyleSpan</a>
+StyleSpan 影响字符级的文本格式，它可以给字符集设置样式（blod、italic、normal）。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#75715e">//设置bold+italic的字符样式</span>
+</span></span><span style="display:flex;"><span>span <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> StyleSpan(Typeface.<span style="color:#a6e22e">BOLD</span> <span style="color:#f92672">|</span> Typeface.<span style="color:#a6e22e">ITALIC</span>);
+</span></span></code></pre></div><p><img src="/images/Spans%EF%BC%8C%E4%B8%80%E4%B8%AA%E5%BC%BA%E5%A4%A7%E7%9A%84%E6%A6%82%E5%BF%B5-16.png" alt="StyleSpan的效果图"></p>
+<h4 id="typefacespan">TypefaceSpan</h4>
+<p><a href="http://developer.android.com/reference/android/text/style/TypefaceSpan.html">android.text.style.TypefaceSpan</a>
+TypefaceSpan 影响字符级的文本格式。它可以给字符设置字体集（monospace、serif等）。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#75715e">//设置serif family</span>
+</span></span><span style="display:flex;"><span>span <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> TypefaceSpan(<span style="color:#e6db74">&#34;serif&#34;</span>);
+</span></span></code></pre></div><p><img src="/images/Spans%EF%BC%8C%E4%B8%80%E4%B8%AA%E5%BC%BA%E5%A4%A7%E7%9A%84%E6%A6%82%E5%BF%B5-17.png" alt="TypefaceSpan的效果图"></p>
+<h4 id="textappearancespan">TextAppearanceSpan</h4>
+<p><a href="http://developer.android.com/reference/android/text/style/TextAppearanceSpan.html">android.text.style.TextAppearanceSpan</a>
+TextAppearanceSpan 影响字符级的文本格式。它可以给字符集设置外观（appearance）。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * TextAppearanceSpan(Context context, int appearance, int colorList)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * 		context: 上下文
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> *		appearance：appearance资源id（例如：android.R.style.TextAppearance_Small）
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> *		colorList：文本的颜色资源id（例如：android.R.styleable.Theme_textColorPrimary）
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> *
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * TextAppearanceSpan(String family, int style, int size, ColorStateList color, ColorStateList linkColor)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> *		family：字体family
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> *		style：描述样式（例如：android.graphics.Typeface）
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> *		size：文字大小
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> *		color：文字颜色
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> *		linkColor：连接文本的颜色
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> */</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//设置serif family</span>
+</span></span><span style="display:flex;"><span>span <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> TextAppearanceSpan(<span style="color:#66d9ef">this</span><span style="color:#75715e">/*a context*/</span>, R.<span style="color:#a6e22e">style</span>.<span style="color:#a6e22e">SpecialTextAppearance</span>);
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#f92672">&lt;--</span> <span style="color:#960050;background-color:#1e0010">style.xml</span> <span style="color:#960050;background-color:#1e0010">--</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;style</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;SpecialTextAppearance&#34;</span> <span style="color:#a6e22e">parent=</span><span style="color:#e6db74">&#34;@android:style/TextAppearance&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;item</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;android:textColor&#34;</span><span style="color:#f92672">&gt;</span>@color/color1<span style="color:#f92672">&lt;/item&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;item</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;android:textColorHighlight&#34;</span><span style="color:#f92672">&gt;</span>@color/color2<span style="color:#f92672">&lt;/item&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;item</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;android:textColorHint&#34;</span><span style="color:#f92672">&gt;</span>@color/color3<span style="color:#f92672">&lt;/item&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;item</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;android:textColorLink&#34;</span><span style="color:#f92672">&gt;</span>@color/color4<span style="color:#f92672">&lt;/item&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;item</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;android:textSize&#34;</span><span style="color:#f92672">&gt;</span>28sp<span style="color:#f92672">&lt;/item&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;item</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;android:textStyle&#34;</span><span style="color:#f92672">&gt;</span>italic<span style="color:#f92672">&lt;/item&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/style&gt;</span>
+</span></span></code></pre></div><p><img src="/images/Spans%EF%BC%8C%E4%B8%80%E4%B8%AA%E5%BC%BA%E5%A4%A7%E7%9A%84%E6%A6%82%E5%BF%B5-18.png" alt="TextAppearanceSpan效果图"></p>
+<h4 id="absolutesizespan">AbsoluteSizeSpan</h4>
+<p><a href="http://developer.android.com/reference/android/text/style/AbsoluteSizeSpan.html">android.text.style.AbsoluteSizeSpan</a>
+AbsoluteSizeSpan 影响字符级的文本格式。它可以设置一个字符集的绝对文字大小。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * size: 大小
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * dip: false，size单位为px，true，size单位为dip（默认为false）。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> */</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//设置文字大小为24dp</span>
+</span></span><span style="display:flex;"><span>span <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> AbsoluteSizeSpan(24, <span style="color:#66d9ef">true</span>);
+</span></span></code></pre></div><p><img src="/images/Spans%EF%BC%8C%E4%B8%80%E4%B8%AA%E5%BC%BA%E5%A4%A7%E7%9A%84%E6%A6%82%E5%BF%B5-19.png" alt="AbsoluteSizeSpan的效果图"></p>
+<h4 id="relativesizespan">RelativeSizeSpan</h4>
+<p><a href="http://developer.android.com/reference/android/text/style/RelativeSizeSpan.html">android.text.style.RelativeSizeSpan</a>
+RelativeSizeSpan 影响字符水平的文本格式。它可以设置字符集的文本大小。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#75715e">//设置文字大小为大2倍</span>
+</span></span><span style="display:flex;"><span>span <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> RelativeSizeSpan(2.<span style="color:#a6e22e">0f</span>);
+</span></span></code></pre></div><p><img src="/images/Spans%EF%BC%8C%E4%B8%80%E4%B8%AA%E5%BC%BA%E5%A4%A7%E7%9A%84%E6%A6%82%E5%BF%B5-20.png" alt="RelativeSizeSpan的效果图"></p>
+<h4 id="scalexspan">ScaleXSpan</h4>
+<p><a href="http://developer.android.com/reference/android/text/style/ScaleXSpan.html">android.text.style.ScaleXSpan</a>
+ScaleXSpan 影响字符集的文本格式。它可以在x轴方向上缩放字符集。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#75715e">//设置水平方向上放大3倍</span>
+</span></span><span style="display:flex;"><span>span <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ScaleXSpan(3.<span style="color:#a6e22e">0f</span>);
+</span></span></code></pre></div><p><img src="/images/Spans%EF%BC%8C%E4%B8%80%E4%B8%AA%E5%BC%BA%E5%A4%A7%E7%9A%84%E6%A6%82%E5%BF%B5-21.png" alt="ScaleXSpan的效果图"></p>
+<h4 id="maskfilterspan">MaskFilterSpan</h4>
+<p><a href="http://developer.android.com/reference/android/text/style/MaskFilterSpan.html">android.text.style.MaskFilterSpan</a>
+MaskFilterSpan 影响字符集文本格式。它可以给字符集设置 <a href="http://developer.android.com/reference/android/graphics/MaskFilter.html">android.graphics.MaskFilter</a>。
+<strong>警告：BlurMaskFilter不支持硬件加速</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#75715e">//模糊字符集</span>
+</span></span><span style="display:flex;"><span>span <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> MaskFilterSpan(<span style="color:#66d9ef">new</span> BlurMaskFilter(density<span style="color:#f92672">*</span>2, BlurMaskFilter.<span style="color:#a6e22e">Blur</span>.<span style="color:#a6e22e">NORMAL</span>));
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//浮雕字符集</span>
+</span></span><span style="display:flex;"><span>span <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> MaskFilterSpan(<span style="color:#66d9ef">new</span> EmbossMaskFilter(<span style="color:#66d9ef">new</span> <span style="color:#66d9ef">float</span><span style="color:#f92672">[]</span> { 1, 1, 1 }, 0.<span style="color:#a6e22e">4f</span>, 6, 3.<span style="color:#a6e22e">5f</span>));
+</span></span></code></pre></div><p><img src="/images/Spans%EF%BC%8C%E4%B8%80%E4%B8%AA%E5%BC%BA%E5%A4%A7%E7%9A%84%E6%A6%82%E5%BF%B5-22.png" alt="MaskFilterSpan的效果图: BlurMaskFilter">
+<img src="/images/Spans%EF%BC%8C%E4%B8%80%E4%B8%AA%E5%BC%BA%E5%A4%A7%E7%9A%84%E6%A6%82%E5%BF%B5-23.png" alt="MaskFilterSpan的效果图: EmbossMaskFilter"></p>
+<h3 id="spans进阶">Spans进阶</h3>
+<h4 id="前景色文字颜色动画">前景色（文字颜色）动画</h4>
+<p><img src="/images/Spans%EF%BC%8C%E4%B8%80%E4%B8%AA%E5%BC%BA%E5%A4%A7%E7%9A%84%E6%A6%82%E5%BF%B5-24.gif.png" alt="前景色（文字颜色）动画">
+ForegroundColorSpan 为只读。这意味实例化之后着你不能改变你不能改变前景色。所以，要做的第一件事就是编写一个 MutableForegroundColorSpan。
+<em>MutableForegroundColorSpan.java</em></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MutableForegroundColorSpan</span> <span style="color:#66d9ef">extends</span> ForegroundColorSpan
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">int</span> mAlpha <span style="color:#f92672">=</span> 255;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">int</span> mForegroundColor;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">MutableForegroundColorSpan</span>(<span style="color:#66d9ef">int</span> alpha, <span style="color:#66d9ef">int</span> color)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">super</span>(color);
+</span></span><span style="display:flex;"><span>        mAlpha <span style="color:#f92672">=</span> alpha;
+</span></span><span style="display:flex;"><span>        mForegroundColor <span style="color:#f92672">=</span> color;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">MutableForegroundColorSpan</span>(Parcel src)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">super</span>(src);
+</span></span><span style="display:flex;"><span>        mForegroundColor <span style="color:#f92672">=</span> src.<span style="color:#a6e22e">readInt</span>();
+</span></span><span style="display:flex;"><span>        mAlpha <span style="color:#f92672">=</span> src.<span style="color:#a6e22e">readInt</span>();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">writeToParcel</span>(Parcel dest, <span style="color:#66d9ef">int</span> flags)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">super</span>.<span style="color:#a6e22e">writeToParcel</span>(dest, flags);
+</span></span><span style="display:flex;"><span>        dest.<span style="color:#a6e22e">writeInt</span>(mForegroundColor);
+</span></span><span style="display:flex;"><span>        dest.<span style="color:#a6e22e">writeFloat</span>(mAlpha);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">updateDrawState</span>(TextPaint ds)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        ds.<span style="color:#a6e22e">setColor</span>(getForegroundColor());
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     * @param alpha from 0 to 255
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     */</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setAlpha</span>(<span style="color:#66d9ef">int</span> alpha)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        mAlpha <span style="color:#f92672">=</span> alpha;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setForegroundColor</span>(<span style="color:#66d9ef">int</span> foregroundColor)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        mForegroundColor <span style="color:#f92672">=</span> foregroundColor;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">float</span> <span style="color:#a6e22e">getAlpha</span>()
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> mAlpha;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">getForegroundColor</span>()
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> Color.<span style="color:#a6e22e">argb</span>(mAlpha, Color.<span style="color:#a6e22e">red</span>(mForegroundColor), Color.<span style="color:#a6e22e">green</span>(mForegroundColor), Color.<span style="color:#a6e22e">blue</span>(mForegroundColor));
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>现在，我们可以在同一个实例改变透明度和前景色了。但是，当你设置这些属性，它并不会刷新视图，你必须通过重新设置 SpannableString 才能刷新视图。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>MutableForegroundColorSpan span <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> MutableForegroundColorSpan(255, Color.<span style="color:#a6e22e">BLACK</span>);
+</span></span><span style="display:flex;"><span>spannableString.<span style="color:#a6e22e">setSpan</span>(span, 0, text.<span style="color:#a6e22e">length</span>(), Spanned.<span style="color:#a6e22e">SPAN_EXCLUSIVE_EXCLUSIVE</span>);
+</span></span><span style="display:flex;"><span>textView.<span style="color:#a6e22e">setText</span>(spannableString);
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//黑色完全不透明（译者注：上面代码的效果）</span>
+</span></span><span style="display:flex;"><span>span.<span style="color:#a6e22e">setAlpha</span>(100);
+</span></span><span style="display:flex;"><span>span.<span style="color:#a6e22e">setForegroundColor</span>(Color.<span style="color:#a6e22e">RED</span>);
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//到这一步文字没有变化</span>
+</span></span><span style="display:flex;"><span>textView.<span style="color:#a6e22e">setText</span>(spannableString);
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//最后，文字变为红色和透明</span>
+</span></span></code></pre></div><p>现在我们要前景色的动画。我们可以自定义 <a href="http://developer.android.com/reference/android/util/Property.html">android.util.Property</a>。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">final</span> Property<span style="color:#f92672">&lt;</span>MutableForegroundColorSpan, Integer<span style="color:#f92672">&gt;</span> MUTABLE_FOREGROUND_COLOR_SPAN_FC_PROPERTY <span style="color:#f92672">=</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">new</span> Property<span style="color:#f92672">&lt;</span>MutableForegroundColorSpan, Integer<span style="color:#f92672">&gt;</span>(Integer.<span style="color:#a6e22e">class</span>, <span style="color:#e6db74">&#34;MUTABLE_FOREGROUND_COLOR_SPAN_FC_PROPERTY&#34;</span>) {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">set</span>(MutableForegroundColorSpan span, Integer value) {
+</span></span><span style="display:flex;"><span>        span.<span style="color:#a6e22e">setForegroundColor</span>(value);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> Integer <span style="color:#a6e22e">get</span>(MutableForegroundColorSpan span) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> span.<span style="color:#a6e22e">getForegroundColor</span>();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p>最后，我们使用属性动画（<a href="http://developer.android.com/reference/android/animation/ObjectAnimator.html">ObjectAnimator</a>）让自定义属性动起来。不要忘记更新视图。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>MutableForegroundColorSpan span <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> MutableForegroundColorSpan(255, Color.<span style="color:#a6e22e">BLACK</span>);
+</span></span><span style="display:flex;"><span>mSpannableString.<span style="color:#a6e22e">setSpan</span>(span, 0, text.<span style="color:#a6e22e">length</span>(), Spanned.<span style="color:#a6e22e">SPAN_EXCLUSIVE_EXCLUSIVE</span>);
+</span></span><span style="display:flex;"><span>ObjectAnimator objectAnimator <span style="color:#f92672">=</span> ObjectAnimator.<span style="color:#a6e22e">ofInt</span>(span, MUTABLE_FOREGROUND_COLOR_SPAN_FC_PROPERTY, Color.<span style="color:#a6e22e">BLACK</span>, Color.<span style="color:#a6e22e">RED</span>);
+</span></span><span style="display:flex;"><span>objectAnimator.<span style="color:#a6e22e">setEvaluator</span>(<span style="color:#66d9ef">new</span> ArgbEvaluator());
+</span></span><span style="display:flex;"><span>objectAnimator.<span style="color:#a6e22e">addUpdateListener</span>(<span style="color:#66d9ef">new</span> ValueAnimator.<span style="color:#a6e22e">AnimatorUpdateListener</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onAnimationUpdate</span>(ValueAnimator animation) {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">//refresh</span>
+</span></span><span style="display:flex;"><span>        mText.<span style="color:#a6e22e">setText</span>(mSpannableString);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>});
+</span></span><span style="display:flex;"><span>objectAnimator.<span style="color:#a6e22e">start</span>();
+</span></span></code></pre></div><h4 id="actionbar烟火">ActionBar&quot;烟火&quot;</h4>
+<p><img src="/images/Spans%EF%BC%8C%E4%B8%80%E4%B8%AA%E5%BC%BA%E5%A4%A7%E7%9A%84%E6%A6%82%E5%BF%B5-25.gif.png" alt="ActionBar&quot;烟火&quot;">
+&ldquo;烟火&quot;动画是让文字随机淡入。首先，把文字切断成多个 spans（例如，一个 character 的 span），淡入 spans 后再淡入其它的 spans。用前面介绍的 MutableForegroundColorSpan，我们将创建一组特殊的 span 对象。在 span 组调用对应的 setAlpha 方法，我们随机设置每个 span 的透明度。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">FireworksSpanGroup</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">float</span> mAlpha;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">final</span> ArrayList<span style="color:#f92672">&lt;</span>MutableForegroundColorSpan<span style="color:#f92672">&gt;</span> mSpans;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">private</span> <span style="color:#a6e22e">FireworksSpanGroup</span>(<span style="color:#66d9ef">float</span> alpha) {
+</span></span><span style="display:flex;"><span>            mAlpha <span style="color:#f92672">=</span> alpha;
+</span></span><span style="display:flex;"><span>            mSpans <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ArrayList<span style="color:#f92672">&lt;</span>MutableForegroundColorSpan<span style="color:#f92672">&gt;</span>();
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">addSpan</span>(MutableForegroundColorSpan span) {
+</span></span><span style="display:flex;"><span>            span.<span style="color:#a6e22e">setAlpha</span>((<span style="color:#66d9ef">int</span>) (mAlpha <span style="color:#f92672">*</span> 255));
+</span></span><span style="display:flex;"><span>            mSpans.<span style="color:#a6e22e">add</span>(span);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">init</span>() {
+</span></span><span style="display:flex;"><span>            Collections.<span style="color:#a6e22e">shuffle</span>(mSpans);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setAlpha</span>(<span style="color:#66d9ef">float</span> alpha) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">int</span> size <span style="color:#f92672">=</span> mSpans.<span style="color:#a6e22e">size</span>();
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">float</span> total <span style="color:#f92672">=</span> 1.<span style="color:#a6e22e">0f</span> <span style="color:#f92672">*</span> size <span style="color:#f92672">*</span> alpha;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">int</span> index <span style="color:#f92672">=</span> 0 ; index <span style="color:#f92672">&lt;</span> size; index<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>                MutableForegroundColorSpan span <span style="color:#f92672">=</span> mSpans.<span style="color:#a6e22e">get</span>(index);
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span>(total <span style="color:#f92672">&gt;=</span> 1.<span style="color:#a6e22e">0f</span>) {
+</span></span><span style="display:flex;"><span>                    span.<span style="color:#a6e22e">setAlpha</span>(255);
+</span></span><span style="display:flex;"><span>                    total <span style="color:#f92672">-=</span> 1.<span style="color:#a6e22e">0f</span>;
+</span></span><span style="display:flex;"><span>                } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>                    span.<span style="color:#a6e22e">setAlpha</span>((<span style="color:#66d9ef">int</span>) (total <span style="color:#f92672">*</span> 255));
+</span></span><span style="display:flex;"><span>                    total <span style="color:#f92672">=</span> 0.<span style="color:#a6e22e">0f</span>;
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">float</span> <span style="color:#a6e22e">getAlpha</span>() { <span style="color:#66d9ef">return</span> mAlpha; }
+</span></span><span style="display:flex;"><span>    }
+</span></span></code></pre></div><p>我们创建一个自定义属性动画的属性去更改 FireworksSpanGroup 的透明度</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">final</span> Property<span style="color:#f92672">&lt;</span>FireworksSpanGroup, Float<span style="color:#f92672">&gt;</span> FIREWORKS_GROUP_PROGRESS_PROPERTY <span style="color:#f92672">=</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">new</span> Property<span style="color:#f92672">&lt;</span>FireworksSpanGroup, Float<span style="color:#f92672">&gt;</span>(Float.<span style="color:#a6e22e">class</span>, <span style="color:#e6db74">&#34;FIREWORKS_GROUP_PROGRESS_PROPERTY&#34;</span>) {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">set</span>(FireworksSpanGroup spanGroup, Float value) {
+</span></span><span style="display:flex;"><span>        spanGroup.<span style="color:#a6e22e">setProgress</span>(value);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> Float <span style="color:#a6e22e">get</span>(FireworksSpanGroup spanGroup) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> spanGroup.<span style="color:#a6e22e">getProgress</span>();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p>最后，我们创建 span 组并使用一个 ObjectAnimator 给其加上动画。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#66d9ef">final</span> FireworksSpanGroup spanGroup <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> FireworksSpanGroup();
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//初始化包含多个spans的grop</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//spanGroup.addSpan(span);</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//给ActionBar的标题设置spans</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//mActionBarTitleSpannableString.setSpan(span, start, end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);</span>
+</span></span><span style="display:flex;"><span>spanGroup.<span style="color:#a6e22e">init</span>();
+</span></span><span style="display:flex;"><span>ObjectAnimator objectAnimator <span style="color:#f92672">=</span> ObjectAnimator.<span style="color:#a6e22e">ofFloat</span>(spanGroup, FIREWORKS_GROUP_PROGRESS_PROPERTY, 0.<span style="color:#a6e22e">0f</span>, 1.<span style="color:#a6e22e">0f</span>);
+</span></span><span style="display:flex;"><span>objectAnimator.<span style="color:#a6e22e">addUpdateListener</span>(<span style="color:#66d9ef">new</span> ValueAnimator.<span style="color:#a6e22e">AnimatorUpdateListener</span>()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onAnimationUpdate</span>(ValueAnimator animation)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">//更新标题</span>
+</span></span><span style="display:flex;"><span>        setTitle(mActionBarTitleSpannableString);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>});
+</span></span><span style="display:flex;"><span>objectAnimator.<span style="color:#a6e22e">start</span>();
+</span></span></code></pre></div><h4 id="使用自定义的span">使用自定义的span</h4>
+<p>在本节中，我们将看到使用自定义 span 来绘制的方式。这是文本定制很好的方式。
+首先，我们要创建一个继承<a href="http://developer.android.com/reference/android/text/style/ReplacementSpan.html">ReplacementSpan</a>抽象类的自定义 Span。
+如果你想画一个自定义的背景，你可以实现<a href="http://developer.android.com/reference/android/text/style/LineBackgroundSpan.html">LineBackgroundSpan</a>
+,这是影响段落级的文本格式。
+我们必须实现 2 个方法：</p>
+<ul>
+<li><a href="http://developer.android.com/reference/android/text/style/ReplacementSpan.html#getSize(android.graphics.Paint,%20java.lang.CharSequence,%20int,%20int,%20android.graphics.Paint.FontMetricsInt)">getSize</a>：这个方法返回新的你更换后的 size。
+text：Span 管理的文本
+start：文本开始处
+end：文本结尾处
+fm：字体规格，<strong>可以为空</strong></li>
+<li><a href="http://developer.android.com/reference/android/text/style/ReplacementSpan.html#draw(android.graphics.Canvas,%20java.lang.CharSequence,%20int,%20int,%20float,%20int,%20int,%20int,%20android.graphics.Paint)">draw</a>：可以使用 Canvas 绘制。
+x：绘制文本的x坐标
+top：线（line）的顶部（译者注：line 的定义参看前面<em>字体规格</em>这一节）
+y：基线
+bottom：线的底部、</li>
+</ul>
+<p>让我们看一个例子，画一个包围文本的蓝色矩形。
+<em>FrameSpan.java</em></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">getSize</span>(Paint paint, CharSequence text, <span style="color:#66d9ef">int</span> start, <span style="color:#66d9ef">int</span> end, Paint.<span style="color:#a6e22e">FontMetricsInt</span> fm)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//将返回相对于Paint画笔的文本</span>
+</span></span><span style="display:flex;"><span>    mWidth <span style="color:#f92672">=</span> (<span style="color:#66d9ef">int</span>) paint.<span style="color:#a6e22e">measureText</span>(text, start, end);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> mWidth;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">draw</span>(Canvas canvas, CharSequence text, <span style="color:#66d9ef">int</span> start, <span style="color:#66d9ef">int</span> end, <span style="color:#66d9ef">float</span> x, <span style="color:#66d9ef">int</span> top, <span style="color:#66d9ef">int</span> y, <span style="color:#66d9ef">int</span> bottom, Paint paint)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//使用自定义的画笔绘制在画布上</span>
+</span></span><span style="display:flex;"><span>    canvas.<span style="color:#a6e22e">drawRect</span>(x, top, x <span style="color:#f92672">+</span> mWidth, bottom, mPaint);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><img src="/images/Spans%EF%BC%8C%E4%B8%80%E4%B8%AA%E5%BC%BA%E5%A4%A7%E7%9A%84%E6%A6%82%E5%BF%B5-24.jpeg.png" alt="自定义Span的效果"></p>
+<h4 id="附加">附加</h4>
+<p>Sample app 包含了一些 Spans 进阶的例子，如下：
+<img src="/images/Spans%EF%BC%8C%E4%B8%80%E4%B8%AA%E5%BC%BA%E5%A4%A7%E7%9A%84%E6%A6%82%E5%BF%B5-26.gif.png" alt="Progressive blur">
+<img src="/images/Spans%EF%BC%8C%E4%B8%80%E4%B8%AA%E5%BC%BA%E5%A4%A7%E7%9A%84%E6%A6%82%E5%BF%B5-27.gif.png" alt="Typewriter"></p>
+<h3 id="总结">总结</h3>
+<p>在编写这篇文章的过程中，我意识到 Spans 是真的如同 Drawable 那般强大的，我认为它们还没有被充分运用。文本是一个应用程序的主要内容，它无处不在，所以不要忘记，通过 Spans 让它变得更具活力和吸引力！</p></div>
+    </article>
+    
+            <br/><br/><br/>
+            <hr/>
+            <div id="valine" class="comment"></div>
+          
+            <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+          
+            <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+            <script type="text/javascript">
+                new Valine({
+                    el: '#valine' ,
+                    appId: 'fBqoKNrWNFkYQMTivF00jWpk-gzGzoHsz',
+                    appKey: 'q2baN9KwoyaFHmbjMHfssLIH',
+                    notify: 'true', 
+                    verify: 'false', 
+                    avatar:'hide', 
+                    placeholder: '说点什么吧~',
+                    visitor: ''
+                });
+            </script>
+            <noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript>
+
+  </main>
+
+      </div>
+      <footer>
+  <hr />
+  
+    <p id="social">
+      Find me around the web:
+      <br />
+      
+        
+        <a href="https://github.com/zhengxiaopeng" target="_blank">GitHub</a>
+      
+         | 
+        <a href="https://juejin.cn/user/3051900006044056" target="_blank">Juejin</a>
+      
+         | 
+        <a href="http://www.zhihu.com/people/rocko" target="_blank">Zhihu</a>
+      
+         | 
+        <a href="http://blog.csdn.net/bbld_" target="_blank">CSDN</a>
+      
+         | 
+        <a href="http://weibo.com/678662430" target="_blank">Weibo</a>
+      
+    </p>
+  
+  <p class="copyright">
+    Copyright © 2024
+    <a href="https://rocko.vip/" ><strong>Rocko</strong></a>.
+    This work is licensed under the
+    <a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA 4.0</a> license.
+  </p>
+  <p class="builtWith">
+    Powered by
+    <a href="http://www.gohugo.io/" target="_blank">Hugo</a>.
+  </p>
+</footer>
+
+    </div>
+  </body>
+</html>

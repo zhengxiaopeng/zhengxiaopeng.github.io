@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content=""
+  />
+  
+    
+      <title>【译】解决共享元素在系统UI上绘制的问题 | Rocko&#39;s blog</title>
+    
+  
+  <link rel="stylesheet" href="/css/reset.css"/>
+  <link rel="stylesheet" href="/css/font.css"/>
+  <link rel="stylesheet" href="/css/smigle.css"/>
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+</head>
+
+  <body>
+    <div id="root">
+      <header>
+  <div id="brand">
+    <a class="icon-link" href="https://rocko.vip/">
+      <img
+        class="icon"
+        src="/images/rocko.webp"
+      />
+    </a>
+    <div class="text">
+      <a href="https://rocko.vip/"><h1>Rocko&#39;s blog</h1></a>
+      <h3>Live in the moment</h3>
+    </div>
+  </div>
+  <nav>
+    
+      
+        
+        <a href="/"><b>Home</b></a>
+      
+         | 
+        <a href="/about/"><b>About</b></a>
+      
+         | 
+        <a href="/posts/"><b>Posts</b></a>
+      
+         | 
+        <a href="/categories/"><b>Categories</b></a>
+      
+         | 
+        <a href="/tags/"><b>Tags</b></a>
+      
+         | 
+        <a href="/index.xml"><b>RSS</b></a>
+      
+      |<a id="header-high" style="text-decoration: none; margin-left:12px; width:71px; margin-right:5px" class="header-icon waves-effect waves-circle waves-light"  onClick="javascript:(    /*     * Copyright (C) 2015 Rocko (rocko.xyz) <rocko.zxp@gmail.com>     *     * Licensed under the Apache License, Version 2.0 (the 'License');     * you may not use this file except in compliance with the License.     * You may obtain a copy of the License at     *     *      http://www.apache.org/licenses/LICENSE-2.0     *     * Unless required by applicable law or agreed to in writing, software     * distributed under the License is distributed on an 'AS IS' BASIS,     * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.     * See the License for the specific language governing permissions and     * limitations under the License.     */    function go() {        function c() {        var e = document.createElement('link');        e.setAttribute('type', 'text/css');        e.setAttribute('rel', 'stylesheet');        e.setAttribute('href', f);        e.setAttribute('class', l);        document.body.appendChild(e)    }     function h() {        var e = document.getElementsByClassName(l);        for (var t = 0; t < e.length; t++) {            document.body.removeChild(e[t])        }    }     function p() {        var e = document.createElement('div');        e.setAttribute('class', a);        document.body.appendChild(e);        setTimeout(function() {            document.body.removeChild(e)        }, 100)    }     function d(e) {        return {            height : e.offsetHeight,            width : e.offsetWidth        }    }     function v(i) {        var s = d(i);        return s.height > e && s.height < n && s.width > t && s.width < r    }     function m(e) {        var t = e;        var n = 0;        while (!!t) {            n += t.offsetTop;            t = t.offsetParent        }        return n    }     function g() {        var e = document.documentElement;        if (!!window.innerWidth) {            return window.innerHeight        } else if (e && !isNaN(e.clientHeight)) {            return e.clientHeight        }        return 0    }     function y() {        if (window.pageYOffset) {            return window.pageYOffset        }        return Math.max(document.documentElement.scrollTop, document.body.scrollTop)    }     function E(e) {        var t = m(e);        return t >= w && t <= b + w    }     var songs = ['/media/Music-Fashion_Show.mp3', '/media/G-Love.Phonk.mp3', '/media/APT.mp3', '/media/Music-outside.mp3', '/media/Music-sunburst.mp3', '/media/Music-Wake-Live.mp3'];    function S() {        var e = document.getElementById('audio_element_id');        if(e != null){            var index = parseInt(e.getAttribute('curSongIndex'));            if(index > songs.length - 2) {                index = 0;            } else {                index++;            }            e.setAttribute('curSongIndex', index);            N();        }        e.src = i;        e.play()    }     function x(e) {        e.className += ' ' + s + ' ' + o    }     function T(e) {        e.className += ' ' + s + ' ' + u[Math.floor(Math.random() * u.length)]    }     function N() {        var e = document.getElementsByClassName(s);        var t = new RegExp('\\b' + s + '\\b');        for (var n = 0; n < e.length; ) {            e[n].className = e[n].className.replace(t, '')        }    }    function initAudioEle() {        var e = document.getElementById('audio_element_id');        if(e === null){            e = document.createElement('audio');            e.setAttribute('class', l);            e.setAttribute('curSongIndex', 0);            e.id = 'audio_element_id';            e.loop = false;            e.bgcolor = 0;            e.addEventListener('canplay', function() {            setTimeout(function() {                x(k)            }, 500);            setTimeout(function() {                N();                p();                for (var e = 0; e < O.length; e++) {                    T(O[e])                }            }, 8000)        }, true);        e.addEventListener('ended', function() {            N();            h();            go();        }, true);        e.innerHTML = ' <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>';        document.body.appendChild(e);        }    }        initAudioEle();    var e = 30;    var t = 30;    var n = 350;    var r = 350;    var curSongIndex = parseInt(document.getElementById('audio_element_id').getAttribute('curSongIndex'));    var i = songs[curSongIndex];        var s = 'mw-harlem_shake_me';    var o = 'im_first';    var u = ['im_drunk', 'im_baked', 'im_trippin', 'im_blown'];    var a = 'mw-strobe_light';    var f = '/css/harlem-shake-style.css';        var l = 'mw_added_css';    var b = g();    var w = y();    var C = document.getElementsByTagName('*');    var k = null;    for (var L = 0; L < C.length; L++) {        var A = C[L];        if (v(A)) {            if (E(A)) {                k = A;                break            }        }    }    if (A === null) {        console.warn('Could not find a node of the right size. Please try a different page.');        return    }    c();    S();    var O = [];    for (var L = 0; L < C.length; L++) {        var A = C[L];        if (v(A)) {            O.push(A)        }    }    })()" >High一下</a>
+    
+  </nav>
+  <hr />
+</header>
+
+      <div id="content">
+        
+  <main>
+    <article>
+      <h1 class="title">【译】解决共享元素在系统UI上绘制的问题</h1>
+      
+      <div class="post-meta">
+  <strong>
+    <span>Posted on</span>
+    <time>2015-06-19</time>
+    <span>in</span>
+    
+      <a href="/categories/android">Android</a>
+  </strong>
+  <span> • 144 words</span>
+  <span> • 1 minute read</span>
+  
+  
+    <div>
+      <span>Tags:</span>
+      
+        <a href="/tags/%E5%8A%A8%E7%94%BB">动画</a>, 
+        <a href="/tags/%E8%AF%91%E6%96%87">译文</a>
+    </div>
+  
+</div>
+
+      <div class="content"><ul>
+<li>原文链接 ：<a href="https://plus.google.com/+AlexLockwood/posts/RPtwZ5nNebb">Dealing with shared elements that draw on top of the system UI</a></li>
+</ul>
+<p>目前为止，我在使用 Activity transitions 中遇到的一个比较烦人的小问题：共享元素会部分地覆盖掉 Status/Navigation/Action Bar，一旦开始过渡动画，共享元素就会很唐突地从系统 UI 下 <code>弹出</code>。这一不和谐的表现可以看看下面这个视频：</p>
+<p><a href="https://youtu.be/yAbDPjhftlQ">Youtube video</a></p>
+<p>更多关于 Lollipop 中共享元素过渡动画的内容，可查看我的系列博客：<a href="http://www.androiddesignpatterns.com/2014/12/activity-fragment-transitions-in-android-lollipop-part1.html">http://www.androiddesignpatterns.com/2014/12/activity-fragment-transitions-in-android-lollipop-part1.html</a>。PS.这一系列文章在 <a href="http://www.devtf.cn/">开发技术前线</a> 已有译文，见附录～</p>
+<h2 id="问题">问题</h2>
+<p>出现这一问题的原因是因为共享元素默认是在整个窗口视图层的顶层 ViewOverlay 上绘制的。这一默认行为确保了过渡元素总是 Activity 过渡动画的中心焦点，同时这也会使得共享元素会意外地被绘制在正在调用和被调用 Activity 的视图层级顶部。所以不幸的，不小心的话就会造成共享元素可能被绘制在 <code>应用的 Action Bar、状态栏背景、导航栏背景 之上</code>，然而这种情况我们绝对是需要避免的。</p>
+<h2 id="解决方案">解决方案</h2>
+<p>好在我发现有两种方法可以避免出现这种情况：</p>
+<p><strong>（1）</strong> 在你得 XML 中设置 <code>android:windowSharedElementsUseOverlay=&quot;false&quot;</code> 来关闭 overlay。关掉后共享元素就会被作为被调用 Activity 的视图层级的一部分来绘制，使得共享元素不会在系统 UI bars 上发生意外重叠的情况。然而，关掉这一功能后新的问题可能也会随之而来。。。举个例子，你可能会发现在过渡动画的过程中共享元素的动画绘制过程并没有出现，大多数情况下你可以在共享元素所属的 View 中设置如下属性来避免：<code>android:cliptoChildren=&quot;false&quot; 和 &quot;android:clipToPadding=&quot;false&quot;</code> （译者注：关于 clip 可参见：<a href="http://www.alloyteam.com/2014/10/androidcliptopadding-he-androidclipchildren/">android:clipToPadding和android:clipChildren</a>）。</p>
+<p><strong>（2）</strong> 另一个解决这一问题的办法就是把 <strong>Action Bar、 Status Bar background、Navigation Bar background 作为 Activity 过渡动画的额外共享元素</strong> 。把系统 bars 作为共享元素可以确保原来的共享元素和这些系统 UI 可以被绘制在窗口视图层级的同一层级上。这一解决办法的参考代码如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>View decor <span style="color:#f92672">=</span> getWindow().<span style="color:#a6e22e">getDecorView</span>();
+</span></span><span style="display:flex;"><span>View statusBar <span style="color:#f92672">=</span> decor.<span style="color:#a6e22e">findViewById</span>(android.<span style="color:#a6e22e">R</span>.<span style="color:#a6e22e">id</span>.<span style="color:#a6e22e">statusBarBackground</span>);
+</span></span><span style="display:flex;"><span>View navBar <span style="color:#f92672">=</span> decor.<span style="color:#a6e22e">findViewById</span>(android.<span style="color:#a6e22e">R</span>.<span style="color:#a6e22e">id</span>.<span style="color:#a6e22e">navigationBarBackground</span>);
+</span></span><span style="display:flex;"><span>View actionBar <span style="color:#f92672">=</span> decor.<span style="color:#a6e22e">findViewById</span>(getResources().<span style="color:#a6e22e">getIdentifier</span>(
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;action_bar_container&#34;</span>, <span style="color:#e6db74">&#34;id&#34;</span>, <span style="color:#e6db74">&#34;android&#34;</span>));
+</span></span></code></pre></div><p>（注意：如果你使用 appcompat 支持库，你应该直接使用 <code>R.id.action_bar_container</code> 来替代上面代码中使用程序的资源来提取 ID 的办法）
+（译者注：第二种方法在 googlesamples 的 android-topeka 中被使用到，<a href="https://github.com/googlesamples/android-topeka/blob/master/app/src/main/java/com/google/samples/apps/topeka/fragment/CategorySelectionFragment.java">CategorySelectionFragment.java</a>）</p>
+<p>上述的两种办法中，我个人发现第二种实现起来比起第一种更加容易简单（在我遇到的情况中，禁用掉共享元素 view overlay 会造成很多不良副作用）。</p>
+<p>这个话题在我之后的博文中有更加详细的描述～ <a href="http://www.androiddesignpatterns.com/2015/01/activity-fragment-shared-element-transitions-in-depth-part3a.html">Shared Element Transitions In-Depth (part 3a)</a> 希望能帮到你。:)</p>
+<h2 id="附录">附录</h2>
+<p>开发技术前线 Transitions 系列译文：
+<a href="https://github.com/bboyfeiyu/android-tech-frontier/tree/master/others/%E6%B7%B1%E5%85%A5%E6%B5%85%E5%87%BAAndroid%20%E6%96%B0%E7%89%B9%E6%80%A7-Transition-Part-1">开始使用 Transitions（过渡动画） (part 1)</a>
+<a href="https://github.com/bboyfeiyu/android-tech-frontier/blob/master/others/%E6%B7%B1%E5%85%A5%E6%B5%85%E5%87%BAAndroid%20%E6%96%B0%E7%89%B9%E6%80%A7-Transition-Part-2">深入理解Content Transition (part 2)</a>
+<a href="https://github.com/bboyfeiyu/android-tech-frontier/tree/master/issue-7/%E6%B7%B1%E5%85%A5%E6%B5%85%E5%87%BAAndroid%E6%96%B0%E7%89%B9%E6%80%A7-Transition-Part-3a">深入理解 Shared Element Transition (part 3a)</a>
+<a href="https://github.com/bboyfeiyu/android-tech-frontier/tree/master/issue-7/%E6%B7%B1%E5%85%A5%E6%B5%85%E5%87%BAAndroid%E6%96%B0%E7%89%B9%E6%80%A7-Transition-Part-3b">延迟共享元素的过渡动画 (part 3b)</a>
+……</p></div>
+    </article>
+    
+            <br/><br/><br/>
+            <hr/>
+            <div id="valine" class="comment"></div>
+          
+            <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+          
+            <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+            <script type="text/javascript">
+                new Valine({
+                    el: '#valine' ,
+                    appId: 'fBqoKNrWNFkYQMTivF00jWpk-gzGzoHsz',
+                    appKey: 'q2baN9KwoyaFHmbjMHfssLIH',
+                    notify: 'true', 
+                    verify: 'false', 
+                    avatar:'hide', 
+                    placeholder: '说点什么吧~',
+                    visitor: ''
+                });
+            </script>
+            <noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript>
+
+  </main>
+
+      </div>
+      <footer>
+  <hr />
+  
+    <p id="social">
+      Find me around the web:
+      <br />
+      
+        
+        <a href="https://github.com/zhengxiaopeng" target="_blank">GitHub</a>
+      
+         | 
+        <a href="https://juejin.cn/user/3051900006044056" target="_blank">Juejin</a>
+      
+         | 
+        <a href="http://www.zhihu.com/people/rocko" target="_blank">Zhihu</a>
+      
+         | 
+        <a href="http://blog.csdn.net/bbld_" target="_blank">CSDN</a>
+      
+         | 
+        <a href="http://weibo.com/678662430" target="_blank">Weibo</a>
+      
+    </p>
+  
+  <p class="copyright">
+    Copyright © 2024
+    <a href="https://rocko.vip/" ><strong>Rocko</strong></a>.
+    This work is licensed under the
+    <a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA 4.0</a> license.
+  </p>
+  <p class="builtWith">
+    Powered by
+    <a href="http://www.gohugo.io/" target="_blank">Hugo</a>.
+  </p>
+</footer>
+
+    </div>
+  </body>
+</html>

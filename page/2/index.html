@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+	<meta name="generator" content="Hugo 0.139.3">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content=""
+  />
+  
+    
+      <title>Rocko&#39;s blog</title>
+    
+  
+  <link rel="stylesheet" href="/css/reset.css"/>
+  <link rel="stylesheet" href="/css/font.css"/>
+  <link rel="stylesheet" href="/css/smigle.css"/>
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+</head>
+
+  <body>
+    <div id="root">
+      <header>
+  <div id="brand">
+    <a class="icon-link" href="https://rocko.vip/">
+      <img
+        class="icon"
+        src="/images/rocko.webp"
+      />
+    </a>
+    <div class="text">
+      <a href="https://rocko.vip/"><h1>Rocko&#39;s blog</h1></a>
+      <h3>Live in the moment</h3>
+    </div>
+  </div>
+  <nav>
+    
+      
+        
+        <a href="/"><b>Home</b></a>
+      
+         | 
+        <a href="/about/"><b>About</b></a>
+      
+         | 
+        <a href="/posts/"><b>Posts</b></a>
+      
+         | 
+        <a href="/categories/"><b>Categories</b></a>
+      
+         | 
+        <a href="/tags/"><b>Tags</b></a>
+      
+         | 
+        <a href="/index.xml"><b>RSS</b></a>
+      
+      |<a id="header-high" style="text-decoration: none; margin-left:12px; width:71px; margin-right:5px" class="header-icon waves-effect waves-circle waves-light"  onClick="javascript:(    /*     * Copyright (C) 2015 Rocko (rocko.xyz) <rocko.zxp@gmail.com>     *     * Licensed under the Apache License, Version 2.0 (the 'License');     * you may not use this file except in compliance with the License.     * You may obtain a copy of the License at     *     *      http://www.apache.org/licenses/LICENSE-2.0     *     * Unless required by applicable law or agreed to in writing, software     * distributed under the License is distributed on an 'AS IS' BASIS,     * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.     * See the License for the specific language governing permissions and     * limitations under the License.     */    function go() {        function c() {        var e = document.createElement('link');        e.setAttribute('type', 'text/css');        e.setAttribute('rel', 'stylesheet');        e.setAttribute('href', f);        e.setAttribute('class', l);        document.body.appendChild(e)    }     function h() {        var e = document.getElementsByClassName(l);        for (var t = 0; t < e.length; t++) {            document.body.removeChild(e[t])        }    }     function p() {        var e = document.createElement('div');        e.setAttribute('class', a);        document.body.appendChild(e);        setTimeout(function() {            document.body.removeChild(e)        }, 100)    }     function d(e) {        return {            height : e.offsetHeight,            width : e.offsetWidth        }    }     function v(i) {        var s = d(i);        return s.height > e && s.height < n && s.width > t && s.width < r    }     function m(e) {        var t = e;        var n = 0;        while (!!t) {            n += t.offsetTop;            t = t.offsetParent        }        return n    }     function g() {        var e = document.documentElement;        if (!!window.innerWidth) {            return window.innerHeight        } else if (e && !isNaN(e.clientHeight)) {            return e.clientHeight        }        return 0    }     function y() {        if (window.pageYOffset) {            return window.pageYOffset        }        return Math.max(document.documentElement.scrollTop, document.body.scrollTop)    }     function E(e) {        var t = m(e);        return t >= w && t <= b + w    }     var songs = ['/media/Music-Fashion_Show.mp3', '/media/G-Love.Phonk.mp3', '/media/APT.mp3', '/media/Music-outside.mp3', '/media/Music-sunburst.mp3', '/media/Music-Wake-Live.mp3'];    function S() {        var e = document.getElementById('audio_element_id');        if(e != null){            var index = parseInt(e.getAttribute('curSongIndex'));            if(index > songs.length - 2) {                index = 0;            } else {                index++;            }            e.setAttribute('curSongIndex', index);            N();        }        e.src = i;        e.play()    }     function x(e) {        e.className += ' ' + s + ' ' + o    }     function T(e) {        e.className += ' ' + s + ' ' + u[Math.floor(Math.random() * u.length)]    }     function N() {        var e = document.getElementsByClassName(s);        var t = new RegExp('\\b' + s + '\\b');        for (var n = 0; n < e.length; ) {            e[n].className = e[n].className.replace(t, '')        }    }    function initAudioEle() {        var e = document.getElementById('audio_element_id');        if(e === null){            e = document.createElement('audio');            e.setAttribute('class', l);            e.setAttribute('curSongIndex', 0);            e.id = 'audio_element_id';            e.loop = false;            e.bgcolor = 0;            e.addEventListener('canplay', function() {            setTimeout(function() {                x(k)            }, 500);            setTimeout(function() {                N();                p();                for (var e = 0; e < O.length; e++) {                    T(O[e])                }            }, 8000)        }, true);        e.addEventListener('ended', function() {            N();            h();            go();        }, true);        e.innerHTML = ' <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>';        document.body.appendChild(e);        }    }        initAudioEle();    var e = 30;    var t = 30;    var n = 350;    var r = 350;    var curSongIndex = parseInt(document.getElementById('audio_element_id').getAttribute('curSongIndex'));    var i = songs[curSongIndex];        var s = 'mw-harlem_shake_me';    var o = 'im_first';    var u = ['im_drunk', 'im_baked', 'im_trippin', 'im_blown'];    var a = 'mw-strobe_light';    var f = '/css/harlem-shake-style.css';        var l = 'mw_added_css';    var b = g();    var w = y();    var C = document.getElementsByTagName('*');    var k = null;    for (var L = 0; L < C.length; L++) {        var A = C[L];        if (v(A)) {            if (E(A)) {                k = A;                break            }        }    }    if (A === null) {        console.warn('Could not find a node of the right size. Please try a different page.');        return    }    c();    S();    var O = [];    for (var L = 0; L < C.length; L++) {        var A = C[L];        if (v(A)) {            O.push(A)        }    }    })()" >High一下</a>
+    
+  </nav>
+  <hr />
+</header>
+
+      <div id="content">
+        
+	<main>
+		
+		
+			<article class="summary">
+  <a href="https://rocko.vip/posts/android-view-ontouchlistener-%E7%9A%84%E5%AD%90%E7%B1%BB/">
+    <h1 class="title">Android View.OnTouchListener 的子类</h1>
+    
+  </a>
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+<div class="post-meta">
+  <strong>
+    <span>Posted on</span>
+    <time>2015-04-26</time>
+    <span>in</span>
+    
+      <a href="/categories/android">Android</a>
+  </strong>
+ <span> • 299 words</span>
+ <span> • 2 minute read</span>
+  
+    <div>
+      <span>Tags:</span>
+      
+        <a href="/tags/view">View</a>, 
+        <a href="/tags/ontouchlistener">OnTouchListener</a>
+    </div>
+  
+</div>
+
+  <div class="content">
+    <p><p>如下是几个实现了 <a href="http://developer.android.com/reference/android/view/View.OnTouchListener.html">OnTouchListener</a> 接口的子类，OnTouchListener 我们是再熟悉不过了，在 Hello World 开始就接触了，但在 Support V4 中还有它的 3 个子类我们平时可能使用的较少但就其功能而言还是对我们很有帮助的。</p>
+<ul>
+<li>** <a href="http://developer.android.com/reference/android/support/v4/widget/AutoScrollHelper.html">AutoScrollHelper</a> ** 抽象类，用于控件边缘触发自动滚动。</li>
+<li>** <a href="http://developer.android.com/reference/android/support/v4/widget/ListViewAutoScrollHelper.html">ListViewAutoScrollHelper</a> ** 用于 ListView，目前 SDK 里的唯一 AutoScrollHelper 实现类。</li>
+<li>** <a href="http://developer.android.com/reference/android/widget/ZoomButtonsController.html">ZoomButtonsController</a> ** 用于控制缩放控件。</li>
+</ul>
+<p>三者的功能体现在 AutoScrollHelper 和 ZoomButtonsController，前者用于实现控件的自动滚动而后者用于对缩放控件（缩小放大按钮）的处理。</p>
+<h2 id="autoscrollhelper">AutoScrollHelper</h2>
+<p>为了更好阐述它的功能，我们先来看如下的 Gif 图：
+<img src="/images/27sjkadg21bkagd021qhakdhaw8_da2q.gif.png" alt="ListViewAutoScrollHelper"></p>
+<p>所以，他能完成的功能就是在 View 的边缘长按时能自动地滚动视图。下面是它的主要方法说明：</p></p>
+    
+      <a href="https://rocko.vip/posts/android-view-ontouchlistener-%E7%9A%84%E5%AD%90%E7%B1%BB/">Read more...</a>
+    
+  </div>
+</article>
+
+		
+			<article class="summary">
+  <a href="https://rocko.vip/posts/python%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E5%A4%9A%E8%AF%B4%E8%AF%84%E8%AE%BA%E9%80%9A%E7%9F%A5/">
+    <h1 class="title">Python小程序-多说评论通知</h1>
+    
+  </a>
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+<div class="post-meta">
+  <strong>
+    <span>Posted on</span>
+    <time>2015-03-10</time>
+    <span>in</span>
+    
+      <a href="/categories/python">Python</a>
+  </strong>
+ <span> • 352 words</span>
+ <span> • 2 minute read</span>
+  
+    <div>
+      <span>Tags:</span>
+      
+        <a href="/tags/%E5%A4%9A%E8%AF%B4">多说</a>, 
+        <a href="/tags/hexo">Hexo</a>
+    </div>
+  
+</div>
+
+  <div class="content">
+    <p><h2 id="前言">前言</h2>
+<p>这段时间在学习Python，写了第一个稍有实用价值的Python脚本小程序，发文以作纪念。实现多说评论邮件通知的功能：利用<a href="http://dev.duoshuo.com/docs">多说的API</a>定时去检查后台数据从而检测是否有新评论的数据产生，有的话就发邮件到指定邮箱。之所以做这个是因为多说官方的方法一直尝试失败，可以戳这个：<a href="http://haomwei.com/technology/import-users-to-duoshuo.html">同步用户到多说实现文章被评论时的提醒功能</a>，作者用户是导入了，但测试发现一直没反应；另外一个就是多说官方的通知不是及时的，一天一封吧，强迫症患者可能受不了。写的不好求轻喷。</p>
+<h2 id="撸码">撸码</h2>
+<h3 id="配置">配置</h3>
+<p>方便他人修改使用。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>email_info<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>email_host <span style="color:#f92672">=</span> 电子邮件主机，如：smtp.qq.com，注意你的邮箱是否开启了POP3/IMAP/SMTP/Exchange/CardDAV/CalDAV服务
+</span></span><span style="display:flex;"><span>from_address <span style="color:#f92672">=</span> 你要发送邮件的邮件地址
+</span></span><span style="display:flex;"><span>password <span style="color:#f92672">=</span> 邮箱的登陆密码
+</span></span><span style="display:flex;"><span>to_address <span style="color:#f92672">=</span> 你要接受邮件的地址
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>duoshuo_account<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>name <span style="color:#f92672">=</span> 多说的二级域名名, 如我的：rocko
+</span></span><span style="display:flex;"><span>secret <span style="color:#f92672">=</span> 多说的秘钥，在后台的设置查看
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>period_time<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>period <span style="color:#f92672">=</span> 定时检查评论的时间（s）
+</span></span></code></pre></div><h3 id="python代码">Python代码</h3>
+<p>代码比较简单，已加注释。用到多说的接口是这个，<a href="http://dev.duoshuo.com/docs/50037b11b66af78d0c000009">实时同步评论回本地数据库</a>。需要注意的是在后台操作和文章有新评论时就会产生log的json数据返回，返回的数据可以去它的文档看一下，然后就找自己感兴趣的数据了，做为我们判断是否是文章有评论而不是自己在后台产生的是<code>action</code>这个字段，为<strong>create</strong>时就是我们要的。还有就是请求时的<code>limit</code>参数，文档上说默认是50，所以如果你没加使用了默认而你的log数&gt;50时那就只能获取到50条了，不过是&lt;200但我使用&gt;200时区请求是没有问题的。</p></p>
+    
+      <a href="https://rocko.vip/posts/python%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E5%A4%9A%E8%AF%B4%E8%AF%84%E8%AE%BA%E9%80%9A%E7%9F%A5/">Read more...</a>
+    
+  </div>
+</article>
+
+		
+			<article class="summary">
+  <a href="https://rocko.vip/posts/%E8%AF%91spans%E4%B8%80%E4%B8%AA%E5%BC%BA%E5%A4%A7%E7%9A%84%E6%A6%82%E5%BF%B5/">
+    <h1 class="title">【译】Spans，一个强大的概念</h1>
+    
+  </a>
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+<div class="post-meta">
+  <strong>
+    <span>Posted on</span>
+    <time>2015-03-04</time>
+    <span>in</span>
+    
+      <a href="/categories/android">Android</a>
+  </strong>
+ <span> • 909 words</span>
+ <span> • 5 minute read</span>
+  
+    <div>
+      <span>Tags:</span>
+      
+        <a href="/tags/span">Span</a>, 
+        <a href="/tags/%E6%96%87%E5%AD%97">文字</a>, 
+        <a href="/tags/%E5%8A%A8%E7%94%BB">动画</a>, 
+        <a href="/tags/%E8%AF%91%E6%96%87">译文</a>
+    </div>
+  
+</div>
+
+  <div class="content">
+    <p><h3 id="前言">前言</h3>
+<p>原文：<a href="http://flavienlaurent.com/blog/2014/01/31/spans/">Spans, a Powerful Concept.</a></p>
+<p>最近，我写了一篇关于 NewStand app 和 app 上 ActionBar 的图标的翻转动效的文章。<a href="http://cyrilmottier.com/">Cyril Mottier</a> 建议我采用一个很优雅的方案，即使用 Spans 去淡入淡出 ActionBar 的标题。
+此外，我一直想尝试所有可用的 Sapn 色的类型：<a href="http://developer.android.com/reference/android/text/style/ImageSpan.html">ImageSpan</a>、<a href="http://developer.android.com/reference/android/text/style/BackgroundColorSpan.html">BackgroundColorSpan</a> 等。他们非常简单易用但是（也）没有任何关于它们的文档和详细信息。
+因此，在这篇文章中，我将探索在 Spans 的框架下什么是可以做的，然后，我将会告诉你怎么去进阶使用 Spans。
+你可以下载和安装 <a href="https://github.com/flavienlaurent/spans/raw/master/sample.apk">demo 程序</a>，查看<a href="https://github.com/flavienlaurent/spans">源码</a>。</p></p>
+    
+      <a href="https://rocko.vip/posts/%E8%AF%91spans%E4%B8%80%E4%B8%AA%E5%BC%BA%E5%A4%A7%E7%9A%84%E6%A6%82%E5%BF%B5/">Read more...</a>
+    
+  </div>
+</article>
+
+		
+			<article class="summary">
+  <a href="https://rocko.vip/posts/%E4%BB%BF%E6%9C%89%E9%81%93%E4%BA%91%E7%AC%94%E8%AE%B0%E5%A4%B4%E5%83%8F%E8%83%8C%E6%99%AF/">
+    <h1 class="title">仿有道云笔记头像背景</h1>
+    
+  </a>
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+<div class="post-meta">
+  <strong>
+    <span>Posted on</span>
+    <time>2015-03-02</time>
+    <span>in</span>
+    
+      <a href="/categories/android">Android</a>
+  </strong>
+ <span> • 316 words</span>
+ <span> • 2 minute read</span>
+  
+    <div>
+      <span>Tags:</span>
+      
+        <a href="/tags/%E5%9B%BE%E5%83%8F">图像</a>
+    </div>
+  
+</div>
+
+  <div class="content">
+    <p><h2 id="前言">前言</h2>
+<p>如题，本文模仿实现有道云笔记的侧滑菜单中的头像背景的效果，这一效果可用借鉴使用，毕竟大多数时候我们在应用上的资料可能没有像play、微博等的个人页面的自定义背景图。没用过这款应用的童鞋可以下载这款应用看看。</p>
+<h2 id="分析">分析</h2>
+<p>先来看看有道云笔记上的图片（重点是头像上的背景图，真机看起来效果比较好）：
+<img src="/images/%E4%BB%BF%E6%9C%89%E9%81%93%E4%BA%91%E7%AC%94%E8%AE%B0%E5%A4%B4%E5%83%8F%E8%83%8C%E6%99%AF-1.jpg.png" alt="有道云笔记效果图"></p>
+<p>在手机上没找到背景的效果图，应该是在手机上生成的效果图，根据它的背景图片可以看出图片时黑白的而且是有点朦胧感，所以经过分析和实验得到做这一效果可以使用的方法：黑白效果用<code>ColorFilter</code>实现、模糊效果可以用<code>RenderScript</code>的API实现。代码的步骤也是先得到黑白的Bitmap再把它模糊处理。</p></p>
+    
+      <a href="https://rocko.vip/posts/%E4%BB%BF%E6%9C%89%E9%81%93%E4%BA%91%E7%AC%94%E8%AE%B0%E5%A4%B4%E5%83%8F%E8%83%8C%E6%99%AF/">Read more...</a>
+    
+  </div>
+</article>
+
+		
+			<article class="summary">
+  <a href="https://rocko.vip/posts/vps%E4%B8%BB%E6%9C%BA%E6%90%AD%E5%BB%BAgit%E6%9C%8D%E5%8A%A1%E5%99%A8/">
+    <h1 class="title">VPS主机搭建Git服务器</h1>
+    
+  </a>
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+<div class="post-meta">
+  <strong>
+    <span>Posted on</span>
+    <time>2015-02-12</time>
+    <span>in</span>
+    
+      <a href="/categories/vps">VPS</a>
+  </strong>
+ <span> • 111 words</span>
+ <span> • 1 minute read</span>
+  
+    <div>
+      <span>Tags:</span>
+      
+        <a href="/tags/git">Git</a>, 
+        <a href="/tags/vps">VPS</a>, 
+        <a href="/tags/%E9%94%99%E8%AF%AF">错误</a>
+    </div>
+  
+</div>
+
+  <div class="content">
+    <p><h2 id="前言">前言</h2>
+<p>上篇说道搬瓦工上搞了个主机挂起了<code>SS</code>,单单用来干这个有些浪费了，所以它的第二个用处就是用来搭<code>Git服务</code>，以后私用的代码就往上堆了毕竟<code>Github</code>不能全都往上放，本地又有些不保险。所以就用VPS在搬瓦工（bandwagonhost）的Ubuntu 14.04上搭建了这个Git服务，因为过程有些曲折，所以记录一下，在出现错误时在错误方向上瞎折腾了一下午，悲伤，看来程序员要学会遇到bug时要保持淡定的心态，不要思路一走进就不会拐弯了，这点要牢记。</p>
+<h2 id="搭建">搭建</h2>
+<p>搭建一个几个人的小团队的Git服务器的方法比较简单，推荐的教程有<a href="http://git-scm.com/book/zh/v1/%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E7%9A%84-Git-%E6%9E%B6%E8%AE%BE%E6%9C%8D%E5%8A%A1%E5%99%A8">服务器上的 Git - 架设服务器</a>、<a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/00137583770360579bc4b458f044ce7afed3df579123eca000">搭建Git服务器</a>，本文不再介绍因为本文主要说的是在这个过程中的错误。当然也可以使用<code>gitosis</code>等方式搭建更为强大、控制力更强的Git服务器。</p></p>
+    
+      <a href="https://rocko.vip/posts/vps%E4%B8%BB%E6%9C%BA%E6%90%AD%E5%BB%BAgit%E6%9C%8D%E5%8A%A1%E5%99%A8/">Read more...</a>
+    
+  </div>
+</article>
+
+		
+			<article class="summary">
+  <a href="https://rocko.vip/posts/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91-%E6%90%AD%E5%BB%BAshadowsocks%E6%9C%8D%E5%8A%A1/">
+    <h1 class="title">科学上网-搭建Shadowsocks服务</h1>
+    
+  </a>
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+<div class="post-meta">
+  <strong>
+    <span>Posted on</span>
+    <time>2015-02-09</time>
+    <span>in</span>
+    
+      <a href="/categories/fgfw">FGFW</a>
+  </strong>
+ <span> • 87 words</span>
+ <span> • 1 minute read</span>
+  
+    <div>
+      <span>Tags:</span>
+      
+        <a href="/tags/fq">FQ</a>, 
+        <a href="/tags/vps">VPS</a>
+    </div>
+  
+</div>
+
+  <div class="content">
+    <p><h2 id="前言">前言</h2>
+<p>生命不息，折腾不止，方校长的丰功伟绩我天朝程序员为之叹息，说多了都是泪。既然现在不太存在把Q推倒的可能，那我们就只好自个F过去，之前一直用都在用<a href="https://github.com/goagent/goagent">Goagent</a>上Youtube看视频，一卡一卡的，而且Goagent也要常更新才能使用，比较蛋疼。而用Hosts上谷歌虽然是一种最直接的方法，但要找到一封就更新IP的服务比较少，这里推荐两个：<a href="https://github.com/txthinking/google-hosts">google-hosts</a>, <a href="http://www.netsh.org/">netsh</a>，这些hosts都是说不定突然就会被封的，但自己使用来看netsh目前还挺靠谱，把它放在hosts那里也还不错的。额，其它的不扯了，下面来把Shadowsocks搭起来。</p>
+<h2 id="vps的选择">VPS的选择</h2>
+<p>VPS自己用的不多只根据网上的各种对比测评，最终还是选择了<code>搬瓦工(Bandwagon Host logo)</code>，因为够便宜，选了个4.99刀一年的，人民币31.24元。配置：<code>112M内存 24Mswap 3G HDD硬盘</code>，够用了，其它的配置价格<a href="https://bandwagonhost.com/cart.php">戳这里</a>，当然也可以使用<a href="https://bandwagonhost.com/aff.php?aff=2049">我的优惠链接</a>。个人的话如果能申请到<a href="https://education.github.com/pack">Student Developer Pack</a>的选择<a href="https://www.digitalocean.com/">DigitalOcean</a>最好不过了，DigitalOcean还是按小时计费的，不用的话可以暂停掉不再计费，成功申请有Student Developer Pack能有100刀送，最低配置的能用两年了，无奈我的申请杳无音讯。。这里VPS就选好了，把支付链接什么的先弄好等待下一步。</p></p>
+    
+      <a href="https://rocko.vip/posts/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91-%E6%90%AD%E5%BB%BAshadowsocks%E6%9C%8D%E5%8A%A1/">Read more...</a>
+    
+  </div>
+</article>
+
+		
+			<article class="summary">
+  <a href="https://rocko.vip/posts/android%E4%B8%AD%E7%9A%84mvp/">
+    <h1 class="title">Android中的MVP</h1>
+    
+  </a>
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+<div class="post-meta">
+  <strong>
+    <span>Posted on</span>
+    <time>2015-02-06</time>
+    <span>in</span>
+    
+      <a href="/categories/android">Android</a>
+  </strong>
+ <span> • 170 words</span>
+ <span> • 1 minute read</span>
+  
+    <div>
+      <span>Tags:</span>
+      
+        <a href="/tags/mvp">MVP</a>, 
+        <a href="/tags/%E6%9E%B6%E6%9E%84">架构</a>
+    </div>
+  
+</div>
+
+  <div class="content">
+    <p><h2 id="前言">前言</h2>
+<p>MVP 作为一种 MVC 的演化版本在 Android 开发中受到了越来越多的关注，但在项目开发中选择一种这样的软件设计模式需保持慎重心态，一旦确定使用 MVP 作为你 App 的开发模式那么你就最好坚持做下去，如果在使用 MVP 模式开发过程中发现问题而且坑越来越大，那么就呵呵了。要知道在 Android 上 MVP 在现在为止并没有统一的标准或者框架，不像 Java Web 领域的项目有 SSH 这三个成熟稳重强而有力的三剑客支持推动着，所以在运用 MVP 时一定要做好自己的理解，并且尽量预知自己 App 各模块的需求以便提前做好充分的设计工作。当然 MVP 既然能出现那么必然有它的优点的，不然谁会理会这个冒出来的东西，下面就对 Android 中 MVP 做一些阐述。</p>
+<h2 id="mvp简介">MVP简介</h2>
+<p>相信大家对 MVC 都是比较熟悉了：<code>M-Model-模型</code>、<code>V-View-视图</code>、<code>C-Controller-控制器</code>，MVP作为MVC的演化版本，也是作为用户界面（用户层）的实现模式，那么类似的MVP所对应的意义：<code>M-Model-模型</code>、<code>V-View-视图</code>、<code>P-Presenter-表示器</code>。从MVC和MVP两者结合来看，Controlller/Presenter在MVC/MVP中都起着逻辑控制处理的角色，起着控制各业务流程的作用。而MVP与MVC最不同的一点是M与V是不直接关联的也是就Model与View不存在直接关系，这两者之间间隔着的是Presenter层，其负责调控View与Model之间的间接交互，MVP的结构图如下所示，对于这个图理解即可而不必限于其中的条条框框，毕竟在不同的场景下多少会有些出入的。在Android中很重要的一点就是对UI的操作基本上需要异步进行也就是在MainThread中才能操作UI，所以对View与Model的切断分离是合理的。此外Presenter与View、Model的交互使用接口定义交互操作可以进一步达到松耦合也可以通过接口更加方便地进行单元测试。</p>
+<p><img src="/images/Android%E4%B8%AD%E7%9A%84MVP_1.png" alt=""></p></p>
+    
+      <a href="https://rocko.vip/posts/android%E4%B8%AD%E7%9A%84mvp/">Read more...</a>
+    
+  </div>
+</article>
+
+		
+			<article class="summary">
+  <a href="https://rocko.vip/posts/android-%E9%94%99%E8%AF%AF%E9%9B%86%E9%94%A6ing/">
+    <h1 class="title">Android 错误集锦ing...</h1>
+    
+  </a>
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+<div class="post-meta">
+  <strong>
+    <span>Posted on</span>
+    <time>2015-02-05</time>
+    <span>in</span>
+    
+      <a href="/categories/android">Android</a>
+  </strong>
+ <span> • 885 words</span>
+ <span> • 5 minute read</span>
+  
+    <div>
+      <span>Tags:</span>
+      
+        <a href="/tags/%E9%94%99%E8%AF%AF">错误</a>
+    </div>
+  
+</div>
+
+  <div class="content">
+    <p><p>Fork from my csdn blog: <a href="http://blog.csdn.net/bbld_/article/details/39520249">Android 错误集锦(ing&hellip;)</a>.
+Last update time: <em>2016-03-06 23:34:26</em>.</p>
+<p>温馨提示：<code>Ctrl+F查找</code></p>
+<hr>
+<p><strong>系统环境：</strong>
+Windows7 64位
+<strong>问题描述：</strong>
+Eclipse真机无法打印log信息
+<strong>错误提示：</strong>
+&hellip;
+<strong>解决方案：</strong>
+window&ndash;&gt;show view&ndash;&gt;android-&gt;devices，打开devices，点击右边的截屏图片的按钮。等到出现截图的时候，logcat就出来信息了（不保证每次都有用）</p>
+<hr>
+<p><strong>系统环境：</strong>
+Windows7 64位
+<strong>问题描述：</strong>
+xml（资源）文件里面的错误
+<strong>错误提示：</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>android: invalid start tag xxxxx 错误原因
+</span></span></code></pre></div><p><strong>解决方案：</strong>
+今天在学shape这个属性,结果创建的xml总是提示这个错误百思不得其解,后来找到原因了我把这个xml文件放错了位置,放到了res/layout路径下应该放在drawable的路径下才对</p>
+<hr>
+<p><strong>系统环境：</strong>
+Windows7 64位
+<strong>问题描述：</strong>
+无法run(运行)工程
+<strong>错误提示：</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Conversion to Dalvik format failed with error <span style="color:#ae81ff">1</span>
+</span></span></code></pre></div><p><strong>解决方案：</strong>
+第一种情况包导入错误.点击工程&ndash;&gt;build path&ndash;&gt;libraries&ndash;&gt;选中android1.x 或者android2.x ，点击remove。然后再点击add library&ndash;&gt;User Library &ndash;&gt;next&ndash;&gt;User Libraries&ndash;&gt;new 你取一个名字 比如android2.1 点击OK，选中android2.1&ndash;&gt;add jars&ndash;&gt;\android-sdk-windows\platforms\android-7\android.jar 点击打开，点击ok&ndash;&gt;finish.</p>
+<p>第二种情况签名时没有成功。签名：java -jar signapk.jar platform.x509.pem platform.pk8 e:huaworkspace\hua\bin\hua.apk e:huaworkspace\hua\bin\hua_signaed.apk，如果hua_signaed.apk签名失败，那么请到你的工作目录中将hua_signaed.apk delete掉。</p>
+<p>第三种情况包冲突，请到工程目录下将相同的包删除，重新导入一个，这一点和第一种情况类似，不过这是针对其他包，不是android包</p>
+<hr>
+<p><strong>系统环境：</strong>
+Windows7 64位
+<strong>问题描述：</strong>
+导入SlidingMenu和SlidingMenu所依赖的actionbarsherlock包后再导入supportv7（用来支持ActionBar），工程一直报错、无法生成R文件。
+<strong>错误提示：</strong>
+&hellip;
+<strong>解决方案：</strong>
+不用导入v7包了，因为actionbarsherlock已经支持ActionBar，再导入v7会有冲突。</p>
+<hr>
+<p><strong>系统环境：</strong>
+Windows7 64位
+<strong>问题描述：</strong>
+FragmentTransaction使用问题。
+<strong>错误提示：</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>java.lang.IllegalStateException: commit already called.
+</span></span></code></pre></div><p><strong>解决方案：</strong>
+是因为你的ft事务是全局的变量，只能commit一次。所以用两个局部ft事务去做commit即可。 原文地址：http://blog.csdn.net/knxw0001/article/details/9363411 <br>
+补充：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>FragmentManager fragmentManager <span style="color:#f92672">=</span> getSupportFragmentManager(); 
+</span></span><span style="display:flex;"><span>FragmentTransaction fragmentTransaction <span style="color:#f92672">=</span> fragmentManager.<span style="color:#a6e22e">beginTransaction</span>(); 
+</span></span><span style="display:flex;"><span>detailFragment <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ProductDetailFragment(productId); 
+</span></span><span style="display:flex;"><span>commentFragment <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ProductCommentFragment(productId); 
+</span></span><span style="display:flex;"><span>fragmentTransaction.<span style="color:#a6e22e">add</span>(R.<span style="color:#a6e22e">id</span>.<span style="color:#a6e22e">viewgroup</span>, detailFragment); 
+</span></span><span style="display:flex;"><span>fragmentTransaction.<span style="color:#a6e22e">add</span>(R.<span style="color:#a6e22e">id</span>.<span style="color:#a6e22e">viewgroup</span>, commentFragment); 
+</span></span><span style="display:flex;"><span>fragmentTransaction.<span style="color:#a6e22e">commit</span>(); 
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//下面这个是调用的时候需要用新的局部变量  </span>
+</span></span><span style="display:flex;"><span>getSupportFragmentManager().<span style="color:#a6e22e">beginTransaction</span>().<span style="color:#a6e22e">hide</span>(commentFragment).<span style="color:#a6e22e">show</span>(detailFragment).<span style="color:#a6e22e">commit</span>();
+</span></span></code></pre></div><hr>
+<p><strong>系统环境：</strong>
+Windows7 64位
+<strong>问题描述：</strong>
+使用Genymotion调试出现错误INSTALL_FAILED_CPU_ABI_INCOMPATIBLE
+<strong>错误提示：</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Installation error: INSTALL_FAILED_CPU_ABI_INCOMPATIBLE
+</span></span><span style="display:flex;"><span>Please check logcat output <span style="color:#66d9ef">for</span> more details.
+</span></span><span style="display:flex;"><span>Launch canceled!
+</span></span></code></pre></div><p><strong>解决方案：</strong>
+点击下载<a href="http://pan.baidu.com/s/1c0ELjzi#dir/path=%2FJustDoIt%2F%E4%B8%80%E4%BA%9B%E4%B8%8B%E8%BD%BD%E9%93%BE%E6%8E%A5%2F%E6%9C%89%E9%81%93">Genymotion-ARM-Translation.zip</a>
+将你的虚拟器运行起来，将下载好的zip包用鼠标拖到虚拟机窗口中，出现确认对跨框点OK就行。然后重启你的虚拟机。</p></p>
+    
+      <a href="https://rocko.vip/posts/android-%E9%94%99%E8%AF%AF%E9%9B%86%E9%94%A6ing/">Read more...</a>
+    
+  </div>
+</article>
+
+		
+			<article class="summary">
+  <a href="https://rocko.vip/posts/%E4%BD%BF%E7%94%A8gradle%E5%8F%91%E5%B8%83%E9%A1%B9%E7%9B%AE%E5%88%B0jcenter%E4%BB%93%E5%BA%93/">
+    <h1 class="title">使用Gradle发布项目到JCenter仓库</h1>
+    
+  </a>
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+<div class="post-meta">
+  <strong>
+    <span>Posted on</span>
+    <time>2015-02-02</time>
+    <span>in</span>
+    
+      <a href="/categories/android">Android</a>
+  </strong>
+ <span> • 384 words</span>
+ <span> • 2 minute read</span>
+  
+    <div>
+      <span>Tags:</span>
+      
+        <a href="/tags/jcenter">JCenter</a>
+    </div>
+  
+</div>
+
+  <div class="content">
+    <p><p>这篇文章介绍通过Gradle把开源项目发布到公共仓库JCenter中，方便你我他的事情，我们都是很懒的嘛。JCenter现在是Android Studio中repositories的默认节点了，之前是Maven的，不过JCenter是兼容Maven的，所以放心使用。步骤基本是按<a href="https://www.virag.si/2015/01/publishing-gradle-android-library-to-jcenter/">Publishing Gradle Android Library to jCenter Repository</a>这里来的，英文能看的直接看这篇也行。下面我的步骤正式开始，发布到JCenter仓库的是我的项目：<a href="https://github.com/zhengxiaopeng/BounceProgressBar">BounceProgressBar</a>。</p>
+<h2 id="申请bintray账号">申请Bintray账号</h2>
+<p>Bintray的基本功能类似于Maven Central，一样的我们需要一个账号，<a href="https://bintray.com/">Bintray传送门</a>，注册完成后第一步算完成了。
+<code>Note: </code> 如果你的账号（主页）中没有添加 <strong>maven</strong> 记得添加上。点击 <code>Add New Repositories</code> 然后 name 和 type 写上 <code>maven</code> 即可。</p>
+<h2 id="生成项目的javadoc和source-jars">生成项目的JavaDoc和source JARs</h2>
+<p>简单的说生成的这两样东西就是我们在下一步中上传到远程仓库JCenter上的文件了。这一步需要<code>android-maven-plugin</code>插件，所以我们需要在项目的build.gradle（Top-level build file，项目最外层的build.gradle文件）中添加这个构建依赖，如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-gradle" data-lang="gradle"><span style="display:flex;"><span>buildscript <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    repositories <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        jcenter<span style="color:#f92672">()</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>    dependencies <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        classpath <span style="color:#e6db74">&#39;com.android.tools.build:gradle:1.0.0&#39;</span>
+</span></span><span style="display:flex;"><span>        classpath <span style="color:#e6db74">&#39;com.github.dcendents:android-maven-plugin:1.2&#39;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// NOTE: Do not place your application dependencies here; they belong
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#75715e">// in the individual module build.gradle files
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>allprojects <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    repositories <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        jcenter<span style="color:#f92672">()</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><p>然后在你需要发布的那个module（我这里的即是library）的build.gradle里配置如下内容：</p></p>
+    
+      <a href="https://rocko.vip/posts/%E4%BD%BF%E7%94%A8gradle%E5%8F%91%E5%B8%83%E9%A1%B9%E7%9B%AE%E5%88%B0jcenter%E4%BB%93%E5%BA%93/">Read more...</a>
+    
+  </div>
+</article>
+
+		
+			<article class="summary">
+  <a href="https://rocko.vip/posts/%E8%BF%90%E7%AE%97%E7%AC%A6%E7%9A%84%E5%87%A0%E7%82%B9/">
+    <h1 class="title">运算符的几点</h1>
+    
+  </a>
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+<div class="post-meta">
+  <strong>
+    <span>Posted on</span>
+    <time>2015-01-14</time>
+    <span>in</span>
+    
+      <a href="/categories/programming">Programming</a>
+  </strong>
+ <span> • 305 words</span>
+ <span> • 2 minute read</span>
+  
+    <div>
+      <span>Tags:</span>
+      
+        <a href="/tags/%E8%BF%90%E7%AE%97%E7%AC%A6">运算符</a>, 
+        <a href="/tags/%E6%8A%80%E5%B7%A7">技巧</a>
+    </div>
+  
+</div>
+
+  <div class="content">
+    <p><h2 id="开篇废话">开篇废话</h2>
+<p>运算符使用的几点小技巧，先给出<a href="http://www.w3cschool.cc/java/java-operators.html">Java的运算符的基本知识</a>复习下，其它语言的大同小异。运算符需要注意的问题有：<em>优先级（运算顺序问题）、结合方向（自左至右或自右至左问题）、要求运算对象个数（运算符需要有几个运算对象问题）</em>。<br>
+合理运用运算符能提高自己代码的BIG、能精简代码、还能提高程序的运行效率，滥用运算符可能导致逻辑混乱、代码不知所云什么的，所以有些问题还是要自己注意一下的。下面就列出一些运算符的使用技巧，换一换思路看下，当然还有先占着这个坑，以后会补(man)上(man)更(lai)新(ba)。</p></p>
+    
+      <a href="https://rocko.vip/posts/%E8%BF%90%E7%AE%97%E7%AC%A6%E7%9A%84%E5%87%A0%E7%82%B9/">Read more...</a>
+    
+  </div>
+</article>
+
+		
+		<div>
+  
+    <a href="/">Previous Page</a>
+  
+  2 of 3
+  
+    <a href="/page/3/">Next Page</a>
+  
+</div>
+
+	</main>
+
+      </div>
+      <footer>
+  <hr />
+  
+    <p id="social">
+      Find me around the web:
+      <br />
+      
+        
+        <a href="https://github.com/zhengxiaopeng" target="_blank">GitHub</a>
+      
+         | 
+        <a href="https://juejin.cn/user/3051900006044056" target="_blank">Juejin</a>
+      
+         | 
+        <a href="http://www.zhihu.com/people/rocko" target="_blank">Zhihu</a>
+      
+         | 
+        <a href="http://blog.csdn.net/bbld_" target="_blank">CSDN</a>
+      
+         | 
+        <a href="http://weibo.com/678662430" target="_blank">Weibo</a>
+      
+    </p>
+  
+  <p class="copyright">
+    Copyright © 2024
+    <a href="https://rocko.vip/" ><strong>Rocko</strong></a>.
+    This work is licensed under the
+    <a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA 4.0</a> license.
+  </p>
+  <p class="builtWith">
+    Powered by
+    <a href="http://www.gohugo.io/" target="_blank">Hugo</a>.
+  </p>
+</footer>
+
+    </div>
+  </body>
+</html>

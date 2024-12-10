@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Git on Rocko&#39;s blog</title>
+    <link>https://rocko.vip/categories/git/</link>
+    <description>Recent content in Git on Rocko&#39;s blog</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 25 Nov 2014 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://rocko.vip/categories/git/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Git 错误集锦ing...</title>
+      <link>https://rocko.vip/posts/git-%E9%94%99%E8%AF%AF%E9%9B%86%E9%94%A6ing/</link>
+      <pubDate>Tue, 25 Nov 2014 00:00:00 +0000</pubDate>
+      <guid>https://rocko.vip/posts/git-%E9%94%99%E8%AF%AF%E9%9B%86%E9%94%A6ing/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;系统环境：&lt;/strong&gt;&#xA;Windows7 64位&#xA;&lt;strong&gt;问题描述：&lt;/strong&gt;&#xA;Windows使用Git客户端gitscm时，当clone或commit时报错。&#xA;&lt;strong&gt;错误提示：&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;warning: templates not found /share/git-core/templates&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;fatal: Unable to find remote helper &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;https&amp;#39;&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;解决方案：&lt;/strong&gt;&#xA;把Git换个安装目录重新安装问题解决!!!具体原因找了很久未明，估计不知怎么把Git搞乱了。&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;&lt;strong&gt;系统环境：&lt;/strong&gt;&#xA;Windows7 64位&#xA;&lt;strong&gt;问题描述：&lt;/strong&gt;&#xA;ssh-keygen命令报错，一般在Windows上配置git的ssh会出现这个问题&#xA;&lt;strong&gt;错误提示：&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Could not create directory &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;//.ssh&amp;#39;&lt;/span&gt;.&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;...&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;解决方案：&lt;/strong&gt;&#xA;找不到主目录，在系统环境变量配置&lt;code&gt;HOME&lt;/code&gt;变量：系统变量上新建-&amp;gt;变量名：&lt;code&gt;HOME&lt;/code&gt;、变量值：&lt;code&gt;C:\Users\Administrator&lt;/code&gt;,Administrator为你当前的用户名。&lt;/p&gt;&#xA;&lt;hr&gt;</description>
+    </item>
+  </channel>
+</rss>

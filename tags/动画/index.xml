@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>动画 on Rocko&#39;s blog</title>
+    <link>https://rocko.vip/tags/%E5%8A%A8%E7%94%BB/</link>
+    <description>Recent content in 动画 on Rocko&#39;s blog</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 19 Jun 2015 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://rocko.vip/tags/%E5%8A%A8%E7%94%BB/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>【译】解决共享元素在系统UI上绘制的问题</title>
+      <link>https://rocko.vip/posts/%E8%AF%91%E8%A7%A3%E5%86%B3%E5%85%B1%E4%BA%AB%E5%85%83%E7%B4%A0%E5%9C%A8%E7%B3%BB%E7%BB%9Fui%E4%B8%8A%E7%BB%98%E5%88%B6%E7%9A%84%E9%97%AE%E9%A2%98/</link>
+      <pubDate>Fri, 19 Jun 2015 00:00:00 +0000</pubDate>
+      <guid>https://rocko.vip/posts/%E8%AF%91%E8%A7%A3%E5%86%B3%E5%85%B1%E4%BA%AB%E5%85%83%E7%B4%A0%E5%9C%A8%E7%B3%BB%E7%BB%9Fui%E4%B8%8A%E7%BB%98%E5%88%B6%E7%9A%84%E9%97%AE%E9%A2%98/</guid>
+      <description>&lt;ul&gt;&#xA;&lt;li&gt;原文链接 ：&lt;a href=&#34;https://plus.google.com/+AlexLockwood/posts/RPtwZ5nNebb&#34;&gt;Dealing with shared elements that draw on top of the system UI&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;目前为止，我在使用 Activity transitions 中遇到的一个比较烦人的小问题：共享元素会部分地覆盖掉 Status/Navigation/Action Bar，一旦开始过渡动画，共享元素就会很唐突地从系统 UI 下 &lt;code&gt;弹出&lt;/code&gt;。这一不和谐的表现可以看看下面这个视频：&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>【译】Spans，一个强大的概念</title>
+      <link>https://rocko.vip/posts/%E8%AF%91spans%E4%B8%80%E4%B8%AA%E5%BC%BA%E5%A4%A7%E7%9A%84%E6%A6%82%E5%BF%B5/</link>
+      <pubDate>Wed, 04 Mar 2015 00:00:00 +0000</pubDate>
+      <guid>https://rocko.vip/posts/%E8%AF%91spans%E4%B8%80%E4%B8%AA%E5%BC%BA%E5%A4%A7%E7%9A%84%E6%A6%82%E5%BF%B5/</guid>
+      <description>&lt;h3 id=&#34;前言&#34;&gt;前言&lt;/h3&gt;&#xA;&lt;p&gt;原文：&lt;a href=&#34;http://flavienlaurent.com/blog/2014/01/31/spans/&#34;&gt;Spans, a Powerful Concept.&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;最近，我写了一篇关于 NewStand app 和 app 上 ActionBar 的图标的翻转动效的文章。&lt;a href=&#34;http://cyrilmottier.com/&#34;&gt;Cyril Mottier&lt;/a&gt; 建议我采用一个很优雅的方案，即使用 Spans 去淡入淡出 ActionBar 的标题。&#xA;此外，我一直想尝试所有可用的 Sapn 色的类型：&lt;a href=&#34;http://developer.android.com/reference/android/text/style/ImageSpan.html&#34;&gt;ImageSpan&lt;/a&gt;、&lt;a href=&#34;http://developer.android.com/reference/android/text/style/BackgroundColorSpan.html&#34;&gt;BackgroundColorSpan&lt;/a&gt; 等。他们非常简单易用但是（也）没有任何关于它们的文档和详细信息。&#xA;因此，在这篇文章中，我将探索在 Spans 的框架下什么是可以做的，然后，我将会告诉你怎么去进阶使用 Spans。&#xA;你可以下载和安装 &lt;a href=&#34;https://github.com/flavienlaurent/spans/raw/master/sample.apk&#34;&gt;demo 程序&lt;/a&gt;，查看&lt;a href=&#34;https://github.com/flavienlaurent/spans&#34;&gt;源码&lt;/a&gt;。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

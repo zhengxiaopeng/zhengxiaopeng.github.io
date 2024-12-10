@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>VPS on Rocko&#39;s blog</title>
+    <link>https://rocko.vip/tags/vps/</link>
+    <description>Recent content in VPS on Rocko&#39;s blog</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 12 Feb 2015 00:06:07 +0000</lastBuildDate>
+    <atom:link href="https://rocko.vip/tags/vps/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>VPS主机搭建Git服务器</title>
+      <link>https://rocko.vip/posts/vps%E4%B8%BB%E6%9C%BA%E6%90%AD%E5%BB%BAgit%E6%9C%8D%E5%8A%A1%E5%99%A8/</link>
+      <pubDate>Thu, 12 Feb 2015 00:06:07 +0000</pubDate>
+      <guid>https://rocko.vip/posts/vps%E4%B8%BB%E6%9C%BA%E6%90%AD%E5%BB%BAgit%E6%9C%8D%E5%8A%A1%E5%99%A8/</guid>
+      <description>&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;&#xA;&lt;p&gt;上篇说道搬瓦工上搞了个主机挂起了&lt;code&gt;SS&lt;/code&gt;,单单用来干这个有些浪费了，所以它的第二个用处就是用来搭&lt;code&gt;Git服务&lt;/code&gt;，以后私用的代码就往上堆了毕竟&lt;code&gt;Github&lt;/code&gt;不能全都往上放，本地又有些不保险。所以就用VPS在搬瓦工（bandwagonhost）的Ubuntu 14.04上搭建了这个Git服务，因为过程有些曲折，所以记录一下，在出现错误时在错误方向上瞎折腾了一下午，悲伤，看来程序员要学会遇到bug时要保持淡定的心态，不要思路一走进就不会拐弯了，这点要牢记。&lt;/p&gt;&#xA;&lt;h2 id=&#34;搭建&#34;&gt;搭建&lt;/h2&gt;&#xA;&lt;p&gt;搭建一个几个人的小团队的Git服务器的方法比较简单，推荐的教程有&lt;a href=&#34;http://git-scm.com/book/zh/v1/%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E7%9A%84-Git-%E6%9E%B6%E8%AE%BE%E6%9C%8D%E5%8A%A1%E5%99%A8&#34;&gt;服务器上的 Git - 架设服务器&lt;/a&gt;、&lt;a href=&#34;http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/00137583770360579bc4b458f044ce7afed3df579123eca000&#34;&gt;搭建Git服务器&lt;/a&gt;，本文不再介绍因为本文主要说的是在这个过程中的错误。当然也可以使用&lt;code&gt;gitosis&lt;/code&gt;等方式搭建更为强大、控制力更强的Git服务器。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>科学上网-搭建Shadowsocks服务</title>
+      <link>https://rocko.vip/posts/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91-%E6%90%AD%E5%BB%BAshadowsocks%E6%9C%8D%E5%8A%A1/</link>
+      <pubDate>Mon, 09 Feb 2015 00:00:00 +0000</pubDate>
+      <guid>https://rocko.vip/posts/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91-%E6%90%AD%E5%BB%BAshadowsocks%E6%9C%8D%E5%8A%A1/</guid>
+      <description>&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;&#xA;&lt;p&gt;生命不息，折腾不止，方校长的丰功伟绩我天朝程序员为之叹息，说多了都是泪。既然现在不太存在把Q推倒的可能，那我们就只好自个F过去，之前一直用都在用&lt;a href=&#34;https://github.com/goagent/goagent&#34;&gt;Goagent&lt;/a&gt;上Youtube看视频，一卡一卡的，而且Goagent也要常更新才能使用，比较蛋疼。而用Hosts上谷歌虽然是一种最直接的方法，但要找到一封就更新IP的服务比较少，这里推荐两个：&lt;a href=&#34;https://github.com/txthinking/google-hosts&#34;&gt;google-hosts&lt;/a&gt;, &lt;a href=&#34;http://www.netsh.org/&#34;&gt;netsh&lt;/a&gt;，这些hosts都是说不定突然就会被封的，但自己使用来看netsh目前还挺靠谱，把它放在hosts那里也还不错的。额，其它的不扯了，下面来把Shadowsocks搭起来。&lt;/p&gt;&#xA;&lt;h2 id=&#34;vps的选择&#34;&gt;VPS的选择&lt;/h2&gt;&#xA;&lt;p&gt;VPS自己用的不多只根据网上的各种对比测评，最终还是选择了&lt;code&gt;搬瓦工(Bandwagon Host logo)&lt;/code&gt;，因为够便宜，选了个4.99刀一年的，人民币31.24元。配置：&lt;code&gt;112M内存 24Mswap 3G HDD硬盘&lt;/code&gt;，够用了，其它的配置价格&lt;a href=&#34;https://bandwagonhost.com/cart.php&#34;&gt;戳这里&lt;/a&gt;，当然也可以使用&lt;a href=&#34;https://bandwagonhost.com/aff.php?aff=2049&#34;&gt;我的优惠链接&lt;/a&gt;。个人的话如果能申请到&lt;a href=&#34;https://education.github.com/pack&#34;&gt;Student Developer Pack&lt;/a&gt;的选择&lt;a href=&#34;https://www.digitalocean.com/&#34;&gt;DigitalOcean&lt;/a&gt;最好不过了，DigitalOcean还是按小时计费的，不用的话可以暂停掉不再计费，成功申请有Student Developer Pack能有100刀送，最低配置的能用两年了，无奈我的申请杳无音讯。。这里VPS就选好了，把支付链接什么的先弄好等待下一步。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>图像 on Rocko&#39;s blog</title>
+    <link>https://rocko.vip/tags/%E5%9B%BE%E5%83%8F/</link>
+    <description>Recent content in 图像 on Rocko&#39;s blog</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 02 Mar 2015 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://rocko.vip/tags/%E5%9B%BE%E5%83%8F/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>仿有道云笔记头像背景</title>
+      <link>https://rocko.vip/posts/%E4%BB%BF%E6%9C%89%E9%81%93%E4%BA%91%E7%AC%94%E8%AE%B0%E5%A4%B4%E5%83%8F%E8%83%8C%E6%99%AF/</link>
+      <pubDate>Mon, 02 Mar 2015 00:00:00 +0000</pubDate>
+      <guid>https://rocko.vip/posts/%E4%BB%BF%E6%9C%89%E9%81%93%E4%BA%91%E7%AC%94%E8%AE%B0%E5%A4%B4%E5%83%8F%E8%83%8C%E6%99%AF/</guid>
+      <description>&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;&#xA;&lt;p&gt;如题，本文模仿实现有道云笔记的侧滑菜单中的头像背景的效果，这一效果可用借鉴使用，毕竟大多数时候我们在应用上的资料可能没有像play、微博等的个人页面的自定义背景图。没用过这款应用的童鞋可以下载这款应用看看。&lt;/p&gt;&#xA;&lt;h2 id=&#34;分析&#34;&gt;分析&lt;/h2&gt;&#xA;&lt;p&gt;先来看看有道云笔记上的图片（重点是头像上的背景图，真机看起来效果比较好）：&#xA;&lt;img src=&#34;https://rocko.vip/images/%E4%BB%BF%E6%9C%89%E9%81%93%E4%BA%91%E7%AC%94%E8%AE%B0%E5%A4%B4%E5%83%8F%E8%83%8C%E6%99%AF-1.jpg.png&#34; alt=&#34;有道云笔记效果图&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;在手机上没找到背景的效果图，应该是在手机上生成的效果图，根据它的背景图片可以看出图片时黑白的而且是有点朦胧感，所以经过分析和实验得到做这一效果可以使用的方法：黑白效果用&lt;code&gt;ColorFilter&lt;/code&gt;实现、模糊效果可以用&lt;code&gt;RenderScript&lt;/code&gt;的API实现。代码的步骤也是先得到黑白的Bitmap再把它模糊处理。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

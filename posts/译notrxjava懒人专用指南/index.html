@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content=""
+  />
+  
+    
+      <title>【译】NotRxJava懒人专用指南 | Rocko&#39;s blog</title>
+    
+  
+  <link rel="stylesheet" href="/css/reset.css"/>
+  <link rel="stylesheet" href="/css/font.css"/>
+  <link rel="stylesheet" href="/css/smigle.css"/>
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+</head>
+
+  <body>
+    <div id="root">
+      <header>
+  <div id="brand">
+    <a class="icon-link" href="https://rocko.vip/">
+      <img
+        class="icon"
+        src="/images/rocko.webp"
+      />
+    </a>
+    <div class="text">
+      <a href="https://rocko.vip/"><h1>Rocko&#39;s blog</h1></a>
+      <h3>Live in the moment</h3>
+    </div>
+  </div>
+  <nav>
+    
+      
+        
+        <a href="/"><b>Home</b></a>
+      
+         | 
+        <a href="/about/"><b>About</b></a>
+      
+         | 
+        <a href="/posts/"><b>Posts</b></a>
+      
+         | 
+        <a href="/categories/"><b>Categories</b></a>
+      
+         | 
+        <a href="/tags/"><b>Tags</b></a>
+      
+         | 
+        <a href="/index.xml"><b>RSS</b></a>
+      
+      |<a id="header-high" style="text-decoration: none; margin-left:12px; width:71px; margin-right:5px" class="header-icon waves-effect waves-circle waves-light"  onClick="javascript:(    /*     * Copyright (C) 2015 Rocko (rocko.xyz) <rocko.zxp@gmail.com>     *     * Licensed under the Apache License, Version 2.0 (the 'License');     * you may not use this file except in compliance with the License.     * You may obtain a copy of the License at     *     *      http://www.apache.org/licenses/LICENSE-2.0     *     * Unless required by applicable law or agreed to in writing, software     * distributed under the License is distributed on an 'AS IS' BASIS,     * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.     * See the License for the specific language governing permissions and     * limitations under the License.     */    function go() {        function c() {        var e = document.createElement('link');        e.setAttribute('type', 'text/css');        e.setAttribute('rel', 'stylesheet');        e.setAttribute('href', f);        e.setAttribute('class', l);        document.body.appendChild(e)    }     function h() {        var e = document.getElementsByClassName(l);        for (var t = 0; t < e.length; t++) {            document.body.removeChild(e[t])        }    }     function p() {        var e = document.createElement('div');        e.setAttribute('class', a);        document.body.appendChild(e);        setTimeout(function() {            document.body.removeChild(e)        }, 100)    }     function d(e) {        return {            height : e.offsetHeight,            width : e.offsetWidth        }    }     function v(i) {        var s = d(i);        return s.height > e && s.height < n && s.width > t && s.width < r    }     function m(e) {        var t = e;        var n = 0;        while (!!t) {            n += t.offsetTop;            t = t.offsetParent        }        return n    }     function g() {        var e = document.documentElement;        if (!!window.innerWidth) {            return window.innerHeight        } else if (e && !isNaN(e.clientHeight)) {            return e.clientHeight        }        return 0    }     function y() {        if (window.pageYOffset) {            return window.pageYOffset        }        return Math.max(document.documentElement.scrollTop, document.body.scrollTop)    }     function E(e) {        var t = m(e);        return t >= w && t <= b + w    }     var songs = ['/media/Music-Fashion_Show.mp3', '/media/G-Love.Phonk.mp3', '/media/APT.mp3', '/media/Music-outside.mp3', '/media/Music-sunburst.mp3', '/media/Music-Wake-Live.mp3'];    function S() {        var e = document.getElementById('audio_element_id');        if(e != null){            var index = parseInt(e.getAttribute('curSongIndex'));            if(index > songs.length - 2) {                index = 0;            } else {                index++;            }            e.setAttribute('curSongIndex', index);            N();        }        e.src = i;        e.play()    }     function x(e) {        e.className += ' ' + s + ' ' + o    }     function T(e) {        e.className += ' ' + s + ' ' + u[Math.floor(Math.random() * u.length)]    }     function N() {        var e = document.getElementsByClassName(s);        var t = new RegExp('\\b' + s + '\\b');        for (var n = 0; n < e.length; ) {            e[n].className = e[n].className.replace(t, '')        }    }    function initAudioEle() {        var e = document.getElementById('audio_element_id');        if(e === null){            e = document.createElement('audio');            e.setAttribute('class', l);            e.setAttribute('curSongIndex', 0);            e.id = 'audio_element_id';            e.loop = false;            e.bgcolor = 0;            e.addEventListener('canplay', function() {            setTimeout(function() {                x(k)            }, 500);            setTimeout(function() {                N();                p();                for (var e = 0; e < O.length; e++) {                    T(O[e])                }            }, 8000)        }, true);        e.addEventListener('ended', function() {            N();            h();            go();        }, true);        e.innerHTML = ' <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>';        document.body.appendChild(e);        }    }        initAudioEle();    var e = 30;    var t = 30;    var n = 350;    var r = 350;    var curSongIndex = parseInt(document.getElementById('audio_element_id').getAttribute('curSongIndex'));    var i = songs[curSongIndex];        var s = 'mw-harlem_shake_me';    var o = 'im_first';    var u = ['im_drunk', 'im_baked', 'im_trippin', 'im_blown'];    var a = 'mw-strobe_light';    var f = '/css/harlem-shake-style.css';        var l = 'mw_added_css';    var b = g();    var w = y();    var C = document.getElementsByTagName('*');    var k = null;    for (var L = 0; L < C.length; L++) {        var A = C[L];        if (v(A)) {            if (E(A)) {                k = A;                break            }        }    }    if (A === null) {        console.warn('Could not find a node of the right size. Please try a different page.');        return    }    c();    S();    var O = [];    for (var L = 0; L < C.length; L++) {        var A = C[L];        if (v(A)) {            O.push(A)        }    }    })()" >High一下</a>
+    
+  </nav>
+  <hr />
+</header>
+
+      <div id="content">
+        
+  <main>
+    <article>
+      <h1 class="title">【译】NotRxJava懒人专用指南</h1>
+      
+      <div class="post-meta">
+  <strong>
+    <span>Posted on</span>
+    <time>2015-05-05</time>
+    <span>in</span>
+    
+      <a href="/categories/android">Android</a>
+  </strong>
+  <span> • 1831 words</span>
+  <span> • 9 minute read</span>
+  
+  
+    <div>
+      <span>Tags:</span>
+      
+        <a href="/tags/rxjava">RxJava</a>, 
+        <a href="/tags/reactivex">ReactiveX</a>, 
+        <a href="/tags/%E8%AF%91%E6%96%87">译文</a>
+    </div>
+  
+</div>
+
+      <div class="content"><ul>
+<li>原文链接 : <a href="http://yarikx.github.io/NotRxJava/">NotRxJava guide for lazy folks</a></li>
+<li>原文作者 : <a href="http://yarikx.github.io/">Yaroslav Heriatovych</a></li>
+<li>译文出自 : <a href="http://www.devtf.cn/">开发技术前线 www.devtf.cn</a></li>
+<li>译者 : <a href="https://github.com/zhengxiaopeng">Rocko</a></li>
+<li>校对者: <a href="https://github.com/bboyfeiyu">Mr.Simple</a></li>
+<li>状态 : 完成校对</li>
+</ul>
+<p>如果你是一位 Android 开发者，那么这些天你可能已经听到或看到一些关于 RxJava 满天飞的宣传了。RxJava 是一个能让你摆脱编写一些复杂繁琐的代码去处理异步事件的库。一旦开始在你的项目中使用，你会对它爱不释手的。</p>
+<p>然而，RxJava 有个缺陷，它需要一个陡峭的学习过程。对于一个从未接触使用过 RxJava 的人来说，是很难一次就领会到它的精髓所在的，对于它的一些使用方法你也可能会很迷惑。在项目中使用它意味着你需要稍微地改变一下你的代码编写思路，另外，这样的学习曲线会使得在项目中因为大规模的使用RxJava而引发一些问题。</p>
+<p>当然，关于如何去使用 RxJava 已经有许多的教程和代码范例了。感兴趣的开发者可以访问 RxJava 的官方 Wiki，里面有关于什么是 Observable 以及它和 Iterable、Future 之间关系的很好的解释。Wiki 里有一篇很有用的文章：How To Use RxJava，这篇文章包含怎么去发送事件流并且打印出它们的介绍以及它的样例代码。</p>
+<p>但我们要明确的是在还没有学习什么是 Observable 的前提下了解 RxJava 用来解决什么问题以及它是怎么帮助我们组织起异步代码的。</p>
+<p>我这篇文章的定位就是 RxJava 官方文档的“前篇”，读完这篇文章能更好地去理解 RxJava 所解决的问题。文章中也有一个小 Demo，就是自己怎么去整理那些凌乱的代码，然后看看我们在没有使用 RxJava 的情况下是怎么去遵循 RxJava 基本原则的。</p>
+<p>所以，如果你仍有足够的好奇的话就让我们开始吧！</p>
+<h2 id="cat-应用程序">Cat 应用程序</h2>
+<p>让我们来创建一个真实世界的例子。我们都知道猫是我们技术发展的引擎，所以就让我们也来创建这么一个用来下载猫图片的典型应用吧。</p>
+<p>** 任务描述 **</p>
+<ul>
+<li>我们有个 Web API，能根据给定的查询请求搜索到整个互联网上猫的图片。每个图片包含可爱指数的参数（描述图片可爱度的整型值）。我们的任务将会下载到一个猫列表的集合，选择最可爱的那个，然后把它保存到本地。</li>
+</ul>
+<p>我们只关心下载、处理和保存猫的数据。</p>
+<p>我们开始吧~</p>
+<h2 id="模型和-api">模型和 API</h2>
+<p>下面是描述“猫”的简单数据结构：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Cat</span> <span style="color:#66d9ef">implements</span> Comparable<span style="color:#f92672">&lt;</span>Cat<span style="color:#f92672">&gt;</span>{
+</span></span><span style="display:flex;"><span>    Bitmap image;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> cuteness;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">compareTo</span>(Cat another) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> Integer.<span style="color:#a6e22e">compare</span>(cuteness, another.<span style="color:#a6e22e">cuteness</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>还有我们传统阻塞式风格的 API，它被打包进 cat-sdk.jar 中了：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Api</span> {
+</span></span><span style="display:flex;"><span>    List<span style="color:#f92672">&lt;</span>Cat<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">queryCats</span>(String query);
+</span></span><span style="display:flex;"><span>    Uri <span style="color:#a6e22e">store</span>(Cat cat);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>这足够清楚了吗？当然！那就让我们开始编写业务逻辑吧：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CatsHelper</span> {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    Api api;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> Uri <span style="color:#a6e22e">saveTheCutestCat</span>(String query){
+</span></span><span style="display:flex;"><span>        List<span style="color:#f92672">&lt;</span>Cat<span style="color:#f92672">&gt;</span> cats <span style="color:#f92672">=</span> api.<span style="color:#a6e22e">queryCats</span>(query);
+</span></span><span style="display:flex;"><span>        Cat cutest <span style="color:#f92672">=</span> findCutest(cats);
+</span></span><span style="display:flex;"><span>        Uri savedUri <span style="color:#f92672">=</span> api.<span style="color:#a6e22e">store</span>(cutest);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> savedUri;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> Cat <span style="color:#a6e22e">findCutest</span>(List<span style="color:#f92672">&lt;</span>Cat<span style="color:#f92672">&gt;</span> cats) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> Collections.<span style="color:#a6e22e">max</span>(cats);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>唉，这样清晰简单的代码帅到让我窒息啊。来理清一下代码的炫酷之处吧。主方法 saveTheCutestCat 只包含了 3 个其它方法，然后花个几分钟来看看代码和思考这些方法。你给方法提供了输入参数然后就能得到结果返回了，在这个方法工作的时候我们需要等待它的完成。</p>
+<p>简洁而有用，让我们再看看组合方法的其它优势：</p>
+<p><strong>组合</strong></p>
+<p>正如我们看到的，根据其它 3 个方法而新创建了一个方法（<code>saveTheCutestCat</code>），因此我们组合了它们。像乐高积木那样，我们把方法之间连接起来组成了乐高积木（实际上可以在之后组合起来）。组合方法是很简单的，从一个方法得到返回结果然后再把它传递给另外的方法做为输入参数，这不简单吗？</p>
+<p><strong>错误的传递</strong></p>
+<p>另外一个好处就是我们处理错误的方式了。任何一个方法都可能因执行时发生错误而被终止，这个错误能在任何层次上被处理掉，Java 中我们叫它抛出了异常，然后这个错误在 try/catch 代码块中做处理。这里的关键点是我们不需要为组合方法里的每个方法都做异常处理，仅需要对这些组合起来的方法做统一处理，像下面这样：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#66d9ef">try</span>{
+</span></span><span style="display:flex;"><span>    List<span style="color:#f92672">&lt;</span>Cat<span style="color:#f92672">&gt;</span> cats <span style="color:#f92672">=</span> api.<span style="color:#a6e22e">queryCats</span>(query);
+</span></span><span style="display:flex;"><span>    Cat cutest <span style="color:#f92672">=</span> findCutest(cats);
+</span></span><span style="display:flex;"><span>    Uri savedUri <span style="color:#f92672">=</span> api.<span style="color:#a6e22e">store</span>(cutest);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> savedUri;
+</span></span><span style="display:flex;"><span>} <span style="color:#66d9ef">catch</span> (Exception e) {
+</span></span><span style="display:flex;"><span>    e.<span style="color:#a6e22e">printStackTrace</span>()
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> someDefaultValue;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>这个情况下，我们处理了所有执行时的错误，或者说如果我们没有使用 try/catch 代码块我们能够把错误传递到下一个层次上。</p>
+<h2 id="走向异步">走向异步</h2>
+<p>要知道我们身在一个对等待很敏感的世界里，我们也知道不可能只有阻塞式的调用。在 Android 中我们也总需要处理异步代码。</p>
+<p>拿 Android 的 <code>OnClickListener</code> 举个例子，当你需要处理一个控件的点击事件时，你必须提供一个监听器（回调）以供在用户点击控件时被调用。这没有理由使用阻塞的方式去接受点击事件的回调，所以对点击来说总是异步的。现在，让我们也使用异步编程吧。</p>
+<p><strong>异步的网络调用</strong></p>
+<p>开始想象下使用没有阻塞的 HTTP client（例如<a href="https://github.com/koush/ion">Ion</a>），还有就是我们的 <code>cats-sdk.jar</code> 已经更新。它的 API 也换成了异步的方式调用。</p>
+<p>新 API 的接口：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Api</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">CatsQueryCallback</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onCatListReceived</span>(List<span style="color:#f92672">&lt;</span>Cat<span style="color:#f92672">&gt;</span> cats);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onError</span>(Exception e);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">queryCats</span>(String query, CatsQueryCallback catsQueryCallback);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    Uri <span style="color:#a6e22e">store</span>(Cat cat);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>所以现在我们能异步的获取猫的信息集合列表了，返回正确或错误的结果时都会通过 <code>CatsQueryCallback</code> 回调接口。</p>
+<p>因为 API 改变了所以我们也不得不改变我们的 <code>CatsHelper</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CatsHelper</span> {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">CutestCatCallback</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onCutestCatSaved</span>(Uri uri);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onError</span>(Exception e);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    Api api;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">saveTheCutestCat</span>(String query, CutestCatCallback cutestCatCallback){
+</span></span><span style="display:flex;"><span>        api.<span style="color:#a6e22e">queryCats</span>(query, <span style="color:#66d9ef">new</span> Api.<span style="color:#a6e22e">CatsQueryCallback</span>() {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onCatListReceived</span>(List<span style="color:#f92672">&lt;</span>Cat<span style="color:#f92672">&gt;</span> cats) {
+</span></span><span style="display:flex;"><span>                Cat cutest <span style="color:#f92672">=</span> findCutest(cats);
+</span></span><span style="display:flex;"><span>                Uri savedUri <span style="color:#f92672">=</span> api.<span style="color:#a6e22e">store</span>(cutest);
+</span></span><span style="display:flex;"><span>                cutestCatCallback.<span style="color:#a6e22e">onCutestCatSaved</span>(savedUri);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onQueryFailed</span>(Exception e) {
+</span></span><span style="display:flex;"><span>                cutestCatCallback.<span style="color:#a6e22e">onError</span>(e);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        });
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> Cat <span style="color:#a6e22e">findCutest</span>(List<span style="color:#f92672">&lt;</span>Cat<span style="color:#f92672">&gt;</span> cats) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> Collections.<span style="color:#a6e22e">max</span>(cats);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>现在我们已经不能使用阻塞的 API 了，我们也不能把我们的客户端上写成阻塞式的调用（实际上是可以的，但需要明确的在线程中使用 <code>synchronized</code>、<code>CountdownLatch</code>、等等，也需要在下层中使用异步处理）。所以我们不能在 <code>saveTheCutestCat</code> 方法中直接返回一个值，我们需要对它进行异步回调处理。</p>
+<p>让我们再深入一点，如果我们 API 的两个方法调用都是异步的，举个例子，我们正在使用非阻塞IO去写进一个文件。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Api</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">CatsQueryCallback</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onCatListReceived</span>(List<span style="color:#f92672">&lt;</span>Cat<span style="color:#f92672">&gt;</span> cats);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onQueryFailed</span>(Exception e);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">StoreCallback</span>{
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onCatStored</span>(Uri uri);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onStoreFailed</span>(Exception e);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">queryCats</span>(String query, CatsQueryCallback catsQueryCallback);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">store</span>(Cat cat, StoreCallback storeCallback);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>还有我们的 helper：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CatsHelper</span> {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">CutestCatCallback</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onCutestCatSaved</span>(Uri uri);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onError</span>(Exception e);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    Api api;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">saveTheCutestCat</span>(String query, CutestCatCallback cutestCatCallback){
+</span></span><span style="display:flex;"><span>        api.<span style="color:#a6e22e">queryCats</span>(query, <span style="color:#66d9ef">new</span> Api.<span style="color:#a6e22e">CatsQueryCallback</span>() {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onCatListReceived</span>(List<span style="color:#f92672">&lt;</span>Cat<span style="color:#f92672">&gt;</span> cats) {
+</span></span><span style="display:flex;"><span>                Cat cutest <span style="color:#f92672">=</span> findCutest(cats);
+</span></span><span style="display:flex;"><span>                api.<span style="color:#a6e22e">store</span>(cutest, <span style="color:#66d9ef">new</span> Api.<span style="color:#a6e22e">StoreCallback</span>() {
+</span></span><span style="display:flex;"><span>                    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onCatStored</span>(Uri uri) {
+</span></span><span style="display:flex;"><span>                        cutestCatCallback.<span style="color:#a6e22e">onCutestCatSaved</span>(uri);
+</span></span><span style="display:flex;"><span>                    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onStoreFailed</span>(Exception e) {
+</span></span><span style="display:flex;"><span>                        cutestCatCallback.<span style="color:#a6e22e">onError</span>(e);
+</span></span><span style="display:flex;"><span>                    }
+</span></span><span style="display:flex;"><span>                });
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onQueryFailed</span>(Exception e) {
+</span></span><span style="display:flex;"><span>                cutestCatCallback.<span style="color:#a6e22e">onError</span>(e);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        });
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> Cat <span style="color:#a6e22e">findCutest</span>(List<span style="color:#f92672">&lt;</span>Cat<span style="color:#f92672">&gt;</span> cats) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> Collections.<span style="color:#a6e22e">max</span>(cats);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>现在再来看看代码，跟之前一样优雅吗？明显不是了，这很糟糕！现在它有了更多无关代码和花括号，但是逻辑是一样的。</p>
+<p>那么组合在哪呢？他已经不见了！现在你不能像之前那样组合操作了。对于每一个异步操作你都必须创建出回调接口并在代码中插入它们，每一次都需要手动地加入！</p>
+<p>错误传递又在哪？又是一个否定！在这样的代码中错误不会自动地传递，我们需要在更深一层上通过自己手动地再让它传递下去（请看 <code>onStoreFailed</code> 和 <code>onQueryFailed方法</code>）。</p>
+<p>我们很难对这样的代码进行阅读和找出潜在的 bugs。</p>
+<p><strong>结束了？</strong></p>
+<p>结束了又怎样？我们能拿它来干嘛？我们被困在这个没有组合回调的地狱里了吗？前方高能，请抓紧你的安全带哦，我们将努力的去把这些干掉！</p>
+<h2 id="更美好的世界">更美好的世界！</h2>
+<h3 id="泛型回调">泛型回调</h3>
+<p>可以从我们的回调接口中找到共同的模式：</p>
+<ul>
+<li>都有一个分发结果的方法（<code>onCutestCatSaved</code>, <code>onCatListReceived</code>, <code>onCatStored</code>）</li>
+<li>它们中大多数（在我们的例子中是全部）有一个用于错误处理的方法（<code>onError</code>, <code>onQueryFailed</code>, <code>onStoreFailed</code>）</li>
+</ul>
+<p>所以我们可以创建一个泛型回调接口去替代原来所有的接口。但是我们不能去改变 API 的调用方法的签名，我们必须创建包装类来间接调用。</p>
+<p>所以我们的泛型回调接口看起来是这样的：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Callback</span><span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onResult</span>(T result);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onError</span>(Exception e);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>然后我们来创建 <code>ApiWrapper</code> 来改变一下调用方法的签名：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ApiWrapper</span> {
+</span></span><span style="display:flex;"><span>    Api api;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">queryCats</span>(String query, Callback<span style="color:#f92672">&lt;</span>List<span style="color:#f92672">&lt;</span>Cat<span style="color:#f92672">&gt;&gt;</span> catsCallback){
+</span></span><span style="display:flex;"><span>        api.<span style="color:#a6e22e">queryCats</span>(query, <span style="color:#66d9ef">new</span> Api.<span style="color:#a6e22e">CatsQueryCallback</span>() {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onCatListReceived</span>(List<span style="color:#f92672">&lt;</span>Cat<span style="color:#f92672">&gt;</span> cats) {
+</span></span><span style="display:flex;"><span>                catsCallback.<span style="color:#a6e22e">onResult</span>(cats);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onQueryFailed</span>(Exception e) {
+</span></span><span style="display:flex;"><span>                catsCallback.<span style="color:#a6e22e">onError</span>(e);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        });
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">store</span>(Cat cat, Callback<span style="color:#f92672">&lt;</span>Uri<span style="color:#f92672">&gt;</span> uriCallback){
+</span></span><span style="display:flex;"><span>        api.<span style="color:#a6e22e">store</span>(cat, <span style="color:#66d9ef">new</span> Api.<span style="color:#a6e22e">StoreCallback</span>() {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onCatStored</span>(Uri uri) {
+</span></span><span style="display:flex;"><span>                uriCallback.<span style="color:#a6e22e">onResult</span>(uri);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onStoreFailed</span>(Exception e) {
+</span></span><span style="display:flex;"><span>                uriCallback.<span style="color:#a6e22e">onError</span>(e);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        });
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>所以这仅仅是对于 <code>Callback</code> 的一些传递 resuts/errors 的调用转发逻辑。</p>
+<p>最后我们的 <code>CatsHelper</code>：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CatsHelper</span>{
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    ApiWrapper apiWrapper;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">saveTheCutestCat</span>(String query, Callback<span style="color:#f92672">&lt;</span>Uri<span style="color:#f92672">&gt;</span> cutestCatCallback){
+</span></span><span style="display:flex;"><span>        apiWrapper.<span style="color:#a6e22e">queryCats</span>(query, <span style="color:#66d9ef">new</span> Callback<span style="color:#f92672">&lt;</span>List<span style="color:#f92672">&lt;</span>Cat<span style="color:#f92672">&gt;&gt;</span>() {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onResult</span>(List<span style="color:#f92672">&lt;</span>Cat<span style="color:#f92672">&gt;</span> cats) {
+</span></span><span style="display:flex;"><span>                Cat cutest <span style="color:#f92672">=</span> findCutest(cats);
+</span></span><span style="display:flex;"><span>                apiWrapper.<span style="color:#a6e22e">store</span>(cutest, cutestCatCallback);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onError</span>(Exception e) {
+</span></span><span style="display:flex;"><span>                cutestCatCallback.<span style="color:#a6e22e">onError</span>(e);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        });
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> Cat <span style="color:#a6e22e">findCutest</span>(List<span style="color:#f92672">&lt;</span>Cat<span style="color:#f92672">&gt;</span> cats) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> Collections.<span style="color:#a6e22e">max</span>(cats);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>可以看到比之前的简明了一些。我们可以通过直接传递一个顶级的 <code>cutestCatCallback</code> 回调接口给 <code>apiWrapper.store</code> 来减少回调间的层级调用，此外作为回调方法的签名是一样的。</p>
+<p>但是我们可以做的更好！</p>
+<h3 id="你必须把它分开">你必须把它分开</h3>
+<p>让我们来看看我们的异步操作（<code>queryCats</code>，<code>queryCats</code>，还有 <code>saveTheCutestCat</code>），它们都遵循了相同的模式。调用它们的方法有一些参数（<code>query</code>、<code>cat</code>）也包括一个回调对象。再次说明：任何异步操作需要携带所需的常规参数和一个回调实例对象。如果我们试图去分开这几个阶段，每个异步操作仅仅将会携带一个参数对象，然后返回一些携带着回调（信息）的临时对象。</p>
+<p>我们来应用下这样的模式，看看是否对我们有所帮助。</p>
+<p>如果在异步操作中返回一些临时对象，我们需要定义一个出来。这样的一个对象需要包括常见的行为（以回调为单一参数），我们将定义这样的类给所有的异步操作使用，这个类就叫它<code>AsyncJob</code>。</p>
+<ul>
+<li>P.S. 称之为AsyncTask更合适一点，但是我不希望你混淆了异步操作跟另外一个存在的抽象概念之间的关系（这是不好的一点）。</li>
+</ul>
+<p>所以：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">AsyncJob</span><span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">start</span>(Callback<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> callback);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>非常的简单，<code>Callback</code> 传进方法后就会开始它的工作任务。</p>
+<p>然后更改包装 API 的调用：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ApiWrapper</span> {
+</span></span><span style="display:flex;"><span>    Api api;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> AsyncJob<span style="color:#f92672">&lt;</span>List<span style="color:#f92672">&lt;</span>Cat<span style="color:#f92672">&gt;&gt;</span> <span style="color:#a6e22e">queryCats</span>(String query) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> AsyncJob<span style="color:#f92672">&lt;</span>List<span style="color:#f92672">&lt;</span>Cat<span style="color:#f92672">&gt;&gt;</span>() {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">start</span>(Callback<span style="color:#f92672">&lt;</span>List<span style="color:#f92672">&lt;</span>Cat<span style="color:#f92672">&gt;&gt;</span> catsCallback) {
+</span></span><span style="display:flex;"><span>                api.<span style="color:#a6e22e">queryCats</span>(query, <span style="color:#66d9ef">new</span> Api.<span style="color:#a6e22e">CatsQueryCallback</span>() {
+</span></span><span style="display:flex;"><span>                    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onCatListReceived</span>(List<span style="color:#f92672">&lt;</span>Cat<span style="color:#f92672">&gt;</span> cats) {
+</span></span><span style="display:flex;"><span>                        catsCallback.<span style="color:#a6e22e">onResult</span>(cats);
+</span></span><span style="display:flex;"><span>                    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onQueryFailed</span>(Exception e) {
+</span></span><span style="display:flex;"><span>                        catsCallback.<span style="color:#a6e22e">onError</span>(e);
+</span></span><span style="display:flex;"><span>                    }
+</span></span><span style="display:flex;"><span>                });
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        };
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> AsyncJob<span style="color:#f92672">&lt;</span>Uri<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">store</span>(Cat cat) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> AsyncJob<span style="color:#f92672">&lt;</span>Uri<span style="color:#f92672">&gt;</span>() {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">start</span>(Callback<span style="color:#f92672">&lt;</span>Uri<span style="color:#f92672">&gt;</span> uriCallback) {
+</span></span><span style="display:flex;"><span>                api.<span style="color:#a6e22e">store</span>(cat, <span style="color:#66d9ef">new</span> Api.<span style="color:#a6e22e">StoreCallback</span>() {
+</span></span><span style="display:flex;"><span>                    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onCatStored</span>(Uri uri) {
+</span></span><span style="display:flex;"><span>                        uriCallback.<span style="color:#a6e22e">onResult</span>(uri);
+</span></span><span style="display:flex;"><span>                    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onStoreFailed</span>(Exception e) {
+</span></span><span style="display:flex;"><span>                        uriCallback.<span style="color:#a6e22e">onError</span>(e);
+</span></span><span style="display:flex;"><span>                    }
+</span></span><span style="display:flex;"><span>                });
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        };
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>目前一切顺利，我们只是部分运用我们的包装过的 API 调用在程序之中。现在我们可以开始使用 <code>AsyncJob</code> 去做我们想要的了，当然也到更改 <code>CatsHelper</code> 的时间了。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CatsHelper</span> {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    ApiWrapper apiWrapper;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> AsyncJob<span style="color:#f92672">&lt;</span>Uri<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">saveTheCutestCat</span>(String query) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> AsyncJob<span style="color:#f92672">&lt;</span>Uri<span style="color:#f92672">&gt;</span>() {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">start</span>(Callback<span style="color:#f92672">&lt;</span>Uri<span style="color:#f92672">&gt;</span> cutestCatCallback) {
+</span></span><span style="display:flex;"><span>                apiWrapper.<span style="color:#a6e22e">queryCats</span>(query)
+</span></span><span style="display:flex;"><span>                        .<span style="color:#a6e22e">start</span>(<span style="color:#66d9ef">new</span> Callback<span style="color:#f92672">&lt;</span>List<span style="color:#f92672">&lt;</span>Cat<span style="color:#f92672">&gt;&gt;</span>() {
+</span></span><span style="display:flex;"><span>                            <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>                            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onResult</span>(List<span style="color:#f92672">&lt;</span>Cat<span style="color:#f92672">&gt;</span> cats) {
+</span></span><span style="display:flex;"><span>                                Cat cutest <span style="color:#f92672">=</span> findCutest(cats);
+</span></span><span style="display:flex;"><span>                                apiWrapper.<span style="color:#a6e22e">store</span>(cutest)
+</span></span><span style="display:flex;"><span>                                        .<span style="color:#a6e22e">start</span>(<span style="color:#66d9ef">new</span> Callback<span style="color:#f92672">&lt;</span>Uri<span style="color:#f92672">&gt;</span>() {
+</span></span><span style="display:flex;"><span>                                            <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>                                            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onResult</span>(Uri result) {
+</span></span><span style="display:flex;"><span>                                                cutestCatCallback.<span style="color:#a6e22e">onResult</span>(result);
+</span></span><span style="display:flex;"><span>                                            }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                                            <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>                                            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onError</span>(Exception e) {
+</span></span><span style="display:flex;"><span>                                                cutestCatCallback.<span style="color:#a6e22e">onError</span>(e);
+</span></span><span style="display:flex;"><span>                                            }
+</span></span><span style="display:flex;"><span>                                        });
+</span></span><span style="display:flex;"><span>                            }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                            <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>                            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onError</span>(Exception e) {
+</span></span><span style="display:flex;"><span>                                cutestCatCallback.<span style="color:#a6e22e">onError</span>(e);
+</span></span><span style="display:flex;"><span>                            }
+</span></span><span style="display:flex;"><span>                        });
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        };
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> Cat <span style="color:#a6e22e">findCutest</span>(List<span style="color:#f92672">&lt;</span>Cat<span style="color:#f92672">&gt;</span> cats) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> Collections.<span style="color:#a6e22e">max</span>(cats);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>哇，之前的版本更简单些啊，我们现在的优势是什么？答案就是现在我们可以给客户端返回“组合”操作的 <code>AsyncJob&lt;Uri&gt;</code>。所以一个客户端（在 activity 或者 fragment 处）可以用组合起来的工作来操作。</p>
+<h3 id="breaking-things">Breaking things</h3>
+<p>这是我们的逻辑数据流：</p>
+<pre tabindex="0"><code>         (async)                 (sync)           (async)
+query ===========&gt; List&lt;Cat&gt; -------------&gt; Cat ==========&gt; Uri
+       queryCats              findCutest           store
+</code></pre><p>为了让我们的代码拥有之前的可读性，我们从这个事件流中强行进入到里面的操作里。但有件事需要注意，如果某些操作（方法）是异步的，然后调用它的操作（方法）又是异步的，就比如，查询猫的操作是异步的，然后寻找出最可爱的猫（即使有一个阻塞调用）也是一个异步操作（客户端希望接收的结果）。</p>
+<p>所以我们可以使用 AsyncJobs 把我们的方法分解成更小的操作：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CatsHelper</span> {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    ApiWrapper apiWrapper;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> AsyncJob<span style="color:#f92672">&lt;</span>Uri<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">saveTheCutestCat</span>(String query) {
+</span></span><span style="display:flex;"><span>        AsyncJob<span style="color:#f92672">&lt;</span>List<span style="color:#f92672">&lt;</span>Cat<span style="color:#f92672">&gt;&gt;</span> catsListAsyncJob <span style="color:#f92672">=</span> apiWrapper.<span style="color:#a6e22e">queryCats</span>(query);
+</span></span><span style="display:flex;"><span>        AsyncJob<span style="color:#f92672">&lt;</span>Cat<span style="color:#f92672">&gt;</span> cutestCatAsyncJob <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> AsyncJob<span style="color:#f92672">&lt;</span>Cat<span style="color:#f92672">&gt;</span>() {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">start</span>(Callback<span style="color:#f92672">&lt;</span>Cat<span style="color:#f92672">&gt;</span> callback) {
+</span></span><span style="display:flex;"><span>                catsListAsyncJob.<span style="color:#a6e22e">start</span>(<span style="color:#66d9ef">new</span> Callback<span style="color:#f92672">&lt;</span>List<span style="color:#f92672">&lt;</span>Cat<span style="color:#f92672">&gt;&gt;</span>() {
+</span></span><span style="display:flex;"><span>                    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onResult</span>(List<span style="color:#f92672">&lt;</span>Cat<span style="color:#f92672">&gt;</span> result) {
+</span></span><span style="display:flex;"><span>                        callback.<span style="color:#a6e22e">onResult</span>(findCutest(result));
+</span></span><span style="display:flex;"><span>                    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onError</span>(Exception e) {
+</span></span><span style="display:flex;"><span>                        callback.<span style="color:#a6e22e">onError</span>(e);
+</span></span><span style="display:flex;"><span>                    }
+</span></span><span style="display:flex;"><span>                });
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        AsyncJob<span style="color:#f92672">&lt;</span>Uri<span style="color:#f92672">&gt;</span> storedUriAsyncJob <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> AsyncJob<span style="color:#f92672">&lt;</span>Uri<span style="color:#f92672">&gt;</span>() {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">start</span>(Callback<span style="color:#f92672">&lt;</span>Uri<span style="color:#f92672">&gt;</span> cutestCatCallback) {
+</span></span><span style="display:flex;"><span>                cutestCatAsyncJob.<span style="color:#a6e22e">start</span>(<span style="color:#66d9ef">new</span> Callback<span style="color:#f92672">&lt;</span>Cat<span style="color:#f92672">&gt;</span>() {
+</span></span><span style="display:flex;"><span>                    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onResult</span>(Cat cutest) {
+</span></span><span style="display:flex;"><span>                        apiWrapper.<span style="color:#a6e22e">store</span>(cutest)
+</span></span><span style="display:flex;"><span>                                .<span style="color:#a6e22e">start</span>(<span style="color:#66d9ef">new</span> Callback<span style="color:#f92672">&lt;</span>Uri<span style="color:#f92672">&gt;</span>() {
+</span></span><span style="display:flex;"><span>                                    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>                                    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onResult</span>(Uri result) {
+</span></span><span style="display:flex;"><span>                                        cutestCatCallback.<span style="color:#a6e22e">onResult</span>(result);
+</span></span><span style="display:flex;"><span>                                    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                                    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>                                    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onError</span>(Exception e) {
+</span></span><span style="display:flex;"><span>                                        cutestCatCallback.<span style="color:#a6e22e">onError</span>(e);
+</span></span><span style="display:flex;"><span>                                    }
+</span></span><span style="display:flex;"><span>                                });
+</span></span><span style="display:flex;"><span>                    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onError</span>(Exception e) {
+</span></span><span style="display:flex;"><span>                        cutestCatCallback.<span style="color:#a6e22e">onError</span>(e);
+</span></span><span style="display:flex;"><span>                    }
+</span></span><span style="display:flex;"><span>                });
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        };
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> storedUriAsyncJob;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> Cat <span style="color:#a6e22e">findCutest</span>(List<span style="color:#f92672">&lt;</span>Cat<span style="color:#f92672">&gt;</span> cats) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> Collections.<span style="color:#a6e22e">max</span>(cats);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>代码量多了许多，但是更加清晰了。低层次嵌套的回调，利于理解的变量名（<code>catsListAsyncJob</code>、<code>cutestCatAsyncJob</code>、<code>storedUriAsyncJob</code>）。</p>
+<p>看起来好了许多，但我们要再做一些事情：</p>
+<h3 id="简单映射">简单映射</h3>
+<p>现在看看 <code>AsyncJob&lt;Cat&gt; cutestCatAsyncJob</code> 的部分：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>AsyncJob<span style="color:#f92672">&lt;</span>Cat<span style="color:#f92672">&gt;</span> cutestCatAsyncJob <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> AsyncJob<span style="color:#f92672">&lt;</span>Cat<span style="color:#f92672">&gt;</span>() {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">start</span>(Callback<span style="color:#f92672">&lt;</span>Cat<span style="color:#f92672">&gt;</span> callback) {
+</span></span><span style="display:flex;"><span>                catsListAsyncJob.<span style="color:#a6e22e">start</span>(<span style="color:#66d9ef">new</span> Callback<span style="color:#f92672">&lt;</span>List<span style="color:#f92672">&lt;</span>Cat<span style="color:#f92672">&gt;&gt;</span>() {
+</span></span><span style="display:flex;"><span>                    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onResult</span>(List<span style="color:#f92672">&lt;</span>Cat<span style="color:#f92672">&gt;</span> result) {
+</span></span><span style="display:flex;"><span>                        callback.<span style="color:#a6e22e">onResult</span>(findCutest(result));
+</span></span><span style="display:flex;"><span>                    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onError</span>(Exception e) {
+</span></span><span style="display:flex;"><span>                        callback.<span style="color:#a6e22e">onError</span>(e);
+</span></span><span style="display:flex;"><span>                    }
+</span></span><span style="display:flex;"><span>                });
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        };
+</span></span></code></pre></div><p>这 16 行代码只有一行是对我们有用（对于逻辑来说）的操作：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>findCutest(result)
+</span></span></code></pre></div><p>剩下的仅仅是开启另外一个 <code>AsyncJob</code> 和传递结果与错误的样板代码。此外，这些代码并不用于特定的任务，我们可以把其移动到其它地方而不影响编写我们真正需要的业务代码。</p>
+<p>我们该怎么写呢？我们必须做下面的两件事情：</p>
+<ul>
+<li>
+<p>AsyncJob是我们转换的结果</p>
+</li>
+<li>
+<p>转换方法</p>
+</li>
+</ul>
+<p>这又有另外一个问题，因为在 Java 中不能直接传递方法（函数）所以我们需要通过类（和接口）来间接实现这样的功能，然后我们就来定义这个 “方法”：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Func</span><span style="color:#f92672">&lt;</span>T, R<span style="color:#f92672">&gt;</span> {
+</span></span><span style="display:flex;"><span>    R <span style="color:#a6e22e">call</span>(T t);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>相当简单，<code>Func</code> 接口有两个类型成员，T对应于参数类型而R对应于返回类型。</p>
+<p>当我们从一个 <code>AsyncJob</code> 中装换处结果后我们就需要做一些值之间的映射，这样的方法我们就叫它 <code>map</code>。定义这个方法实例（Func 类型）最好的地方就在 <code>AsyncJob</code> 类中，所以 <code>AsyncJob</code> 代码里看起来就是这样了：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">AsyncJob</span><span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">start</span>(Callback<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> callback);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#f92672">&lt;</span>R<span style="color:#f92672">&gt;</span> AsyncJob<span style="color:#f92672">&lt;</span>R<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">map</span>(Func<span style="color:#f92672">&lt;</span>T, R<span style="color:#f92672">&gt;</span> func){
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">final</span> AsyncJob<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> source <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> AsyncJob<span style="color:#f92672">&lt;</span>R<span style="color:#f92672">&gt;</span>() {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">start</span>(Callback<span style="color:#f92672">&lt;</span>R<span style="color:#f92672">&gt;</span> callback) {
+</span></span><span style="display:flex;"><span>                source.<span style="color:#a6e22e">start</span>(<span style="color:#66d9ef">new</span> Callback<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span>() {
+</span></span><span style="display:flex;"><span>                    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onResult</span>(T result) {
+</span></span><span style="display:flex;"><span>                        R mapped <span style="color:#f92672">=</span> func.<span style="color:#a6e22e">call</span>(result);
+</span></span><span style="display:flex;"><span>                        callback.<span style="color:#a6e22e">onResult</span>(mapped);
+</span></span><span style="display:flex;"><span>                    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onError</span>(Exception e) {
+</span></span><span style="display:flex;"><span>                        callback.<span style="color:#a6e22e">onError</span>(e);
+</span></span><span style="display:flex;"><span>                    }
+</span></span><span style="display:flex;"><span>                });
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        };
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>赞，这时 <code>CatsHelper</code> 就是下面这样了：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CatsHelper</span> {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    ApiWrapper apiWrapper;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> AsyncJob<span style="color:#f92672">&lt;</span>Uri<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">saveTheCutestCat</span>(String query) {
+</span></span><span style="display:flex;"><span>        AsyncJob<span style="color:#f92672">&lt;</span>List<span style="color:#f92672">&lt;</span>Cat<span style="color:#f92672">&gt;&gt;</span> catsListAsyncJob <span style="color:#f92672">=</span> apiWrapper.<span style="color:#a6e22e">queryCats</span>(query);
+</span></span><span style="display:flex;"><span>        AsyncJob<span style="color:#f92672">&lt;</span>Cat<span style="color:#f92672">&gt;</span> cutestCatAsyncJob <span style="color:#f92672">=</span> catsListAsyncJob.<span style="color:#a6e22e">map</span>(<span style="color:#66d9ef">new</span> Func<span style="color:#f92672">&lt;</span>List<span style="color:#f92672">&lt;</span>Cat<span style="color:#f92672">&gt;</span>, Cat<span style="color:#f92672">&gt;</span>() {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> Cat <span style="color:#a6e22e">call</span>(List<span style="color:#f92672">&lt;</span>Cat<span style="color:#f92672">&gt;</span> cats) {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> findCutest(cats);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        });
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        AsyncJob<span style="color:#f92672">&lt;</span>Uri<span style="color:#f92672">&gt;</span> storedUriAsyncJob <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> AsyncJob<span style="color:#f92672">&lt;</span>Uri<span style="color:#f92672">&gt;</span>() {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">start</span>(Callback<span style="color:#f92672">&lt;</span>Uri<span style="color:#f92672">&gt;</span> cutestCatCallback) {
+</span></span><span style="display:flex;"><span>                cutestCatAsyncJob.<span style="color:#a6e22e">start</span>(<span style="color:#66d9ef">new</span> Callback<span style="color:#f92672">&lt;</span>Cat<span style="color:#f92672">&gt;</span>() {
+</span></span><span style="display:flex;"><span>                    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onResult</span>(Cat cutest) {
+</span></span><span style="display:flex;"><span>                        apiWrapper.<span style="color:#a6e22e">store</span>(cutest)
+</span></span><span style="display:flex;"><span>                                .<span style="color:#a6e22e">start</span>(<span style="color:#66d9ef">new</span> Callback<span style="color:#f92672">&lt;</span>Uri<span style="color:#f92672">&gt;</span>() {
+</span></span><span style="display:flex;"><span>                                    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>                                    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onResult</span>(Uri result) {
+</span></span><span style="display:flex;"><span>                                        cutestCatCallback.<span style="color:#a6e22e">onResult</span>(result);
+</span></span><span style="display:flex;"><span>                                    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                                    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>                                    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onError</span>(Exception e) {
+</span></span><span style="display:flex;"><span>                                        cutestCatCallback.<span style="color:#a6e22e">onError</span>(e);
+</span></span><span style="display:flex;"><span>                                    }
+</span></span><span style="display:flex;"><span>                                });
+</span></span><span style="display:flex;"><span>                    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onError</span>(Exception e) {
+</span></span><span style="display:flex;"><span>                        cutestCatCallback.<span style="color:#a6e22e">onError</span>(e);
+</span></span><span style="display:flex;"><span>                    }
+</span></span><span style="display:flex;"><span>                });
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        };
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> storedUriAsyncJob;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> Cat <span style="color:#a6e22e">findCutest</span>(List<span style="color:#f92672">&lt;</span>Cat<span style="color:#f92672">&gt;</span> cats) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> Collections.<span style="color:#a6e22e">max</span>(cats);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>现在好多了，创建 <code>AsyncJob&lt;Cat&gt; cutestCatAsyncJob</code> 只需要 6 行代码而回调也只有一个层级了。</p>
+<h3 id="高级映射">高级映射</h3>
+<p>前面的那些已经很赞了，但是创建 <code>AsyncJob&lt;Uri&gt; storedUriAsyncJob</code> 的部分还有些不忍直视。能在这里创建映射吗？我们来试试吧：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CatsHelper</span> {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    ApiWrapper apiWrapper;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> AsyncJob<span style="color:#f92672">&lt;</span>Uri<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">saveTheCutestCat</span>(String query) {
+</span></span><span style="display:flex;"><span>        AsyncJob<span style="color:#f92672">&lt;</span>List<span style="color:#f92672">&lt;</span>Cat<span style="color:#f92672">&gt;&gt;</span> catsListAsyncJob <span style="color:#f92672">=</span> apiWrapper.<span style="color:#a6e22e">queryCats</span>(query);
+</span></span><span style="display:flex;"><span>        AsyncJob<span style="color:#f92672">&lt;</span>Cat<span style="color:#f92672">&gt;</span> cutestCatAsyncJob <span style="color:#f92672">=</span> catsListAsyncJob.<span style="color:#a6e22e">map</span>(<span style="color:#66d9ef">new</span> Func<span style="color:#f92672">&lt;</span>List<span style="color:#f92672">&lt;</span>Cat<span style="color:#f92672">&gt;</span>, Cat<span style="color:#f92672">&gt;</span>() {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> Cat <span style="color:#a6e22e">call</span>(List<span style="color:#f92672">&lt;</span>Cat<span style="color:#f92672">&gt;</span> cats) {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> findCutest(cats);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        });
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        AsyncJob<span style="color:#f92672">&lt;</span>Uri<span style="color:#f92672">&gt;</span> storedUriAsyncJob <span style="color:#f92672">=</span> cutestCatAsyncJob.<span style="color:#a6e22e">map</span>(<span style="color:#66d9ef">new</span> Func<span style="color:#f92672">&lt;</span>Cat, Uri<span style="color:#f92672">&gt;</span>() {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> Uri <span style="color:#a6e22e">call</span>(Cat cat) {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> apiWrapper.<span style="color:#a6e22e">store</span>(cat);
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">//      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ will not compile</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">//      Incompatible types:</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">//      Required: Uri</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">//      Found: AsyncJob&lt;Uri&gt;                </span>
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        });
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> storedUriAsyncJob;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> Cat <span style="color:#a6e22e">findCutest</span>(List<span style="color:#f92672">&lt;</span>Cat<span style="color:#f92672">&gt;</span> cats) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> Collections.<span style="color:#a6e22e">max</span>(cats);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>呃呃。。。并不容易哦，我们来修改下结果的类型变量，试下其它方法：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CatsHelper</span> {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    ApiWrapper apiWrapper;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> AsyncJob<span style="color:#f92672">&lt;</span>Uri<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">saveTheCutestCat</span>(String query) {
+</span></span><span style="display:flex;"><span>        AsyncJob<span style="color:#f92672">&lt;</span>List<span style="color:#f92672">&lt;</span>Cat<span style="color:#f92672">&gt;&gt;</span> catsListAsyncJob <span style="color:#f92672">=</span> apiWrapper.<span style="color:#a6e22e">queryCats</span>(query);
+</span></span><span style="display:flex;"><span>        AsyncJob<span style="color:#f92672">&lt;</span>Cat<span style="color:#f92672">&gt;</span> cutestCatAsyncJob <span style="color:#f92672">=</span> catsListAsyncJob.<span style="color:#a6e22e">map</span>(<span style="color:#66d9ef">new</span> Func<span style="color:#f92672">&lt;</span>List<span style="color:#f92672">&lt;</span>Cat<span style="color:#f92672">&gt;</span>, Cat<span style="color:#f92672">&gt;</span>() {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> Cat <span style="color:#a6e22e">call</span>(List<span style="color:#f92672">&lt;</span>Cat<span style="color:#f92672">&gt;</span> cats) {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> findCutest(cats);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        });
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        AsyncJob<span style="color:#f92672">&lt;</span>AsyncJob<span style="color:#f92672">&lt;</span>Uri<span style="color:#f92672">&gt;&gt;</span> storedUriAsyncJob <span style="color:#f92672">=</span> cutestCatAsyncJob.<span style="color:#a6e22e">map</span>(<span style="color:#66d9ef">new</span> Func<span style="color:#f92672">&lt;</span>Cat, AsyncJob<span style="color:#f92672">&lt;</span>Uri<span style="color:#f92672">&gt;&gt;</span>() {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> AsyncJob<span style="color:#f92672">&lt;</span>Uri<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">call</span>(Cat cat) {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> apiWrapper.<span style="color:#a6e22e">store</span>(cat);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        });
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> storedUriAsyncJob;
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">//^^^^^^^^^^^^^^^^^^^^^^^ will not compile</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">//      Incompatible types:</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">//      Required: AsyncJob&lt;Uri&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">//      Found: AsyncJob&lt;AsyncJob&lt;Uri&gt;&gt;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> Cat <span style="color:#a6e22e">findCutest</span>(List<span style="color:#f92672">&lt;</span>Cat<span style="color:#f92672">&gt;</span> cats) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> Collections.<span style="color:#a6e22e">max</span>(cats);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>在目前这点上我们只能有 <code>AsyncJob&lt;AsyncJob&lt;Uri&gt;&gt;</code>。我们需要往更深处挖吗？我们希望的是，去把 <code>AsyncJob</code> 在一个级别上的两个异步操作扁平化成一个单一的异步操作。</p>
+<p>现在我们需要的是得到能使方法返回映射成R类型也是 <code>AsyncJob&lt;R&gt;</code> 类型的操作。这个操作应该像 <code>map</code>，但在最后应该 <code>flatten</code> 我们嵌套的 <code>AsyncJob</code> 。我们叫它为 <code>flatMap</code> 吧，然后就是来实现它：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">AsyncJob</span><span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">start</span>(Callback<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> callback);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#f92672">&lt;</span>R<span style="color:#f92672">&gt;</span> AsyncJob<span style="color:#f92672">&lt;</span>R<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">map</span>(Func<span style="color:#f92672">&lt;</span>T, R<span style="color:#f92672">&gt;</span> func){
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">final</span> AsyncJob<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> source <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> AsyncJob<span style="color:#f92672">&lt;</span>R<span style="color:#f92672">&gt;</span>() {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">start</span>(Callback<span style="color:#f92672">&lt;</span>R<span style="color:#f92672">&gt;</span> callback) {
+</span></span><span style="display:flex;"><span>                source.<span style="color:#a6e22e">start</span>(<span style="color:#66d9ef">new</span> Callback<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span>() {
+</span></span><span style="display:flex;"><span>                    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onResult</span>(T result) {
+</span></span><span style="display:flex;"><span>                        R mapped <span style="color:#f92672">=</span> func.<span style="color:#a6e22e">call</span>(result);
+</span></span><span style="display:flex;"><span>                        callback.<span style="color:#a6e22e">onResult</span>(mapped);
+</span></span><span style="display:flex;"><span>                    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onError</span>(Exception e) {
+</span></span><span style="display:flex;"><span>                        callback.<span style="color:#a6e22e">onError</span>(e);
+</span></span><span style="display:flex;"><span>                    }
+</span></span><span style="display:flex;"><span>                });
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        };
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#f92672">&lt;</span>R<span style="color:#f92672">&gt;</span> AsyncJob<span style="color:#f92672">&lt;</span>R<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">flatMap</span>(Func<span style="color:#f92672">&lt;</span>T, AsyncJob<span style="color:#f92672">&lt;</span>R<span style="color:#f92672">&gt;&gt;</span> func){
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">final</span> AsyncJob<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> source <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> AsyncJob<span style="color:#f92672">&lt;</span>R<span style="color:#f92672">&gt;</span>() {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">start</span>(Callback<span style="color:#f92672">&lt;</span>R<span style="color:#f92672">&gt;</span> callback) {
+</span></span><span style="display:flex;"><span>                source.<span style="color:#a6e22e">start</span>(<span style="color:#66d9ef">new</span> Callback<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span>() {
+</span></span><span style="display:flex;"><span>                    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onResult</span>(T result) {
+</span></span><span style="display:flex;"><span>                        AsyncJob<span style="color:#f92672">&lt;</span>R<span style="color:#f92672">&gt;</span> mapped <span style="color:#f92672">=</span> func.<span style="color:#a6e22e">call</span>(result);
+</span></span><span style="display:flex;"><span>                        mapped.<span style="color:#a6e22e">start</span>(<span style="color:#66d9ef">new</span> Callback<span style="color:#f92672">&lt;</span>R<span style="color:#f92672">&gt;</span>() {
+</span></span><span style="display:flex;"><span>                            <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>                            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onResult</span>(R result) {
+</span></span><span style="display:flex;"><span>                                callback.<span style="color:#a6e22e">onResult</span>(result);
+</span></span><span style="display:flex;"><span>                            }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                            <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>                            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onError</span>(Exception e) {
+</span></span><span style="display:flex;"><span>                                callback.<span style="color:#a6e22e">onError</span>(e);
+</span></span><span style="display:flex;"><span>                            }
+</span></span><span style="display:flex;"><span>                        });
+</span></span><span style="display:flex;"><span>                    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onError</span>(Exception e) {
+</span></span><span style="display:flex;"><span>                        callback.<span style="color:#a6e22e">onError</span>(e);
+</span></span><span style="display:flex;"><span>                    }
+</span></span><span style="display:flex;"><span>                });
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        };
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>FlatMap 的粗略实现，但这些东西的实现都在一个地方了，在客户端的业务代码中不会再见到它。接下来我们修复下 <code>CatsHelper</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CatsHelper</span> {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    ApiWrapper apiWrapper;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> AsyncJob<span style="color:#f92672">&lt;</span>Uri<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">saveTheCutestCat</span>(String query) {
+</span></span><span style="display:flex;"><span>        AsyncJob<span style="color:#f92672">&lt;</span>List<span style="color:#f92672">&lt;</span>Cat<span style="color:#f92672">&gt;&gt;</span> catsListAsyncJob <span style="color:#f92672">=</span> apiWrapper.<span style="color:#a6e22e">queryCats</span>(query);
+</span></span><span style="display:flex;"><span>        AsyncJob<span style="color:#f92672">&lt;</span>Cat<span style="color:#f92672">&gt;</span> cutestCatAsyncJob <span style="color:#f92672">=</span> catsListAsyncJob.<span style="color:#a6e22e">map</span>(<span style="color:#66d9ef">new</span> Func<span style="color:#f92672">&lt;</span>List<span style="color:#f92672">&lt;</span>Cat<span style="color:#f92672">&gt;</span>, Cat<span style="color:#f92672">&gt;</span>() {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> Cat <span style="color:#a6e22e">call</span>(List<span style="color:#f92672">&lt;</span>Cat<span style="color:#f92672">&gt;</span> cats) {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> findCutest(cats);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        });
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        AsyncJob<span style="color:#f92672">&lt;</span>Uri<span style="color:#f92672">&gt;</span> storedUriAsyncJob <span style="color:#f92672">=</span> cutestCatAsyncJob.<span style="color:#a6e22e">flatMap</span>(<span style="color:#66d9ef">new</span> Func<span style="color:#f92672">&lt;</span>Cat, AsyncJob<span style="color:#f92672">&lt;</span>Uri<span style="color:#f92672">&gt;&gt;</span>() {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> AsyncJob<span style="color:#f92672">&lt;</span>Uri<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">call</span>(Cat cat) {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> apiWrapper.<span style="color:#a6e22e">store</span>(cat);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        });
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> storedUriAsyncJob;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> Cat <span style="color:#a6e22e">findCutest</span>(List<span style="color:#f92672">&lt;</span>Cat<span style="color:#f92672">&gt;</span> cats) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> Collections.<span style="color:#a6e22e">max</span>(cats);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>哈哈！它能用了，读和写也简单了不少。</p>
+<h3 id="最后的要点">最后的要点</h3>
+<p>再来看看我们编写的代码，眼熟吗？如果我们使用 Java 8 的 lambdas（逻辑是一样的但是看起来更爽一些） 代码会更加地简洁。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CatsHelper</span> {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    ApiWrapper apiWrapper;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> AsyncJob<span style="color:#f92672">&lt;</span>Uri<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">saveTheCutestCat</span>(String query) {
+</span></span><span style="display:flex;"><span>        AsyncJob<span style="color:#f92672">&lt;</span>List<span style="color:#f92672">&lt;</span>Cat<span style="color:#f92672">&gt;&gt;</span> catsListAsyncJob <span style="color:#f92672">=</span> apiWrapper.<span style="color:#a6e22e">queryCats</span>(query);
+</span></span><span style="display:flex;"><span>        AsyncJob<span style="color:#f92672">&lt;</span>Cat<span style="color:#f92672">&gt;</span> cutestCatAsyncJob <span style="color:#f92672">=</span> catsListAsyncJob.<span style="color:#a6e22e">map</span>(cats <span style="color:#f92672">-&gt;</span> findCutest(cats));
+</span></span><span style="display:flex;"><span>        AsyncJob<span style="color:#f92672">&lt;</span>Uri<span style="color:#f92672">&gt;</span> storedUriAsyncJob <span style="color:#f92672">=</span> cutestCatAsyncJob.<span style="color:#a6e22e">flatMap</span>(cat <span style="color:#f92672">-&gt;</span> apiWrapper.<span style="color:#a6e22e">store</span>(cat));
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> storedUriAsyncJob;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> Cat <span style="color:#a6e22e">findCutest</span>(List<span style="color:#f92672">&lt;</span>Cat<span style="color:#f92672">&gt;</span> cats) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> Collections.<span style="color:#a6e22e">max</span>(cats);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>它看起来会更好吗？我认为这样的代码跟我们第一次阻塞的版本差不多：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CatsHelper</span> {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    Api api;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> Uri <span style="color:#a6e22e">saveTheCutestCat</span>(String query){
+</span></span><span style="display:flex;"><span>        List<span style="color:#f92672">&lt;</span>Cat<span style="color:#f92672">&gt;</span> cats <span style="color:#f92672">=</span> api.<span style="color:#a6e22e">queryCats</span>(query);
+</span></span><span style="display:flex;"><span>        Cat cutest <span style="color:#f92672">=</span> findCutest(cats);
+</span></span><span style="display:flex;"><span>        Uri savedUri <span style="color:#f92672">=</span> api.<span style="color:#a6e22e">store</span>(cutest);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> savedUri;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> Cat <span style="color:#a6e22e">findCutest</span>(List<span style="color:#f92672">&lt;</span>Cat<span style="color:#f92672">&gt;</span> cats) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> Collections.<span style="color:#a6e22e">max</span>(cats);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>是的，就是这样，逻辑是相似的！也有可能会复杂些（语义是一样的）。
+我们这样的代码有组合性吗？请大声的说有！我们组合了所有的异步操作然后作为返回结果我们仅需一个组合后的结果对象而已。
+错误传递呢？当然也有！所有的错误都会传递到最后的回调中。
+接下来的最后呢。。。</p>
+<h2 id="rxjava">RxJava</h2>
+<p>嘿，你不需要把那些代码拷到你的项目中，因为我们还是实现地不够完全的，仅仅算是非线程安全的 RxJava 的一小部分而已。</p>
+<p>它们之间只有一些差异：</p>
+<ul>
+<li>
+<p><code>AsyncJob&lt;T&gt;</code> 就是实际上的 <a href="http://reactivex.io/documentation/observable.html">Observable</a>，它不仅可以只分发一个单一的结果也可以是一个序列（可以为空）。</p>
+</li>
+<li>
+<p><code>Callback&lt;T&gt;</code> 就是 <a href="http://reactivex.io/documentation/operators/subscribe.html">Observer</a>，除了 <code>Callback</code> 少了 <code>onNext(T t)</code> 方法。<a href="http://reactivex.io/documentation/operators/subscribe.html">Observer</a> 中在 <code>onError(Throwable t)</code> 方法被调用后，会继而调用 <code>onCompleted()</code>，然后 Observer 会包装好并发送出事件流（因为它能发送一个序列）。</p>
+</li>
+<li>
+<p><code>abstract void start(Callback&lt;T&gt; callback)</code> 对应 [Subscription subscribe(final Observer&lt;? super T&gt; observer))](<a href="http://reactivex.io/RxJava/javadoc/rx/Observable.html#subscribe(rx.Observer)">http://reactivex.io/RxJava/javadoc/rx/Observable.html#subscribe(rx.Observer)</a>，这个方法也返回 <a href="http://reactivex.io/RxJava/javadoc/rx/Subscription.html">Subscription</a> ，在不需要它时你可以决定取消接收事件流。</p>
+</li>
+<li>
+<p>除了 <code>map</code> 和 <code>flatMap</code> 方法，<code>Observable</code> 在 <code>Observalbes</code> 之上也有一些 <a href="http://reactivex.io/documentation/operators.html">其它</a> 有用的操作。</p>
+</li>
+</ul>
+<p>下面的代码是使用 RxJava 来完成我们前面自己写的代码的功能：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ApiWrapper</span> {
+</span></span><span style="display:flex;"><span>    Api api;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> Observable<span style="color:#f92672">&lt;</span>List<span style="color:#f92672">&lt;</span>Cat<span style="color:#f92672">&gt;&gt;</span> <span style="color:#a6e22e">queryCats</span>(<span style="color:#66d9ef">final</span> String query) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> Observable.<span style="color:#a6e22e">create</span>(<span style="color:#66d9ef">new</span> Observable.<span style="color:#a6e22e">OnSubscribe</span><span style="color:#f92672">&lt;</span>List<span style="color:#f92672">&lt;</span>Cat<span style="color:#f92672">&gt;&gt;</span>() {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">call</span>(<span style="color:#66d9ef">final</span> Subscriber<span style="color:#f92672">&lt;?</span> <span style="color:#66d9ef">super</span> List<span style="color:#f92672">&lt;</span>Cat<span style="color:#f92672">&gt;&gt;</span> subscriber) {
+</span></span><span style="display:flex;"><span>                api.<span style="color:#a6e22e">queryCats</span>(query, <span style="color:#66d9ef">new</span> Api.<span style="color:#a6e22e">CatsQueryCallback</span>() {
+</span></span><span style="display:flex;"><span>                    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onCatListReceived</span>(List<span style="color:#f92672">&lt;</span>Cat<span style="color:#f92672">&gt;</span> cats) {
+</span></span><span style="display:flex;"><span>                        subscriber.<span style="color:#a6e22e">onNext</span>(cats);
+</span></span><span style="display:flex;"><span>                    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onQueryFailed</span>(Exception e) {
+</span></span><span style="display:flex;"><span>                        subscriber.<span style="color:#a6e22e">onError</span>(e);
+</span></span><span style="display:flex;"><span>                    }
+</span></span><span style="display:flex;"><span>                });
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        });
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> Observable<span style="color:#f92672">&lt;</span>Uri<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">store</span>(<span style="color:#66d9ef">final</span> Cat cat) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> Observable.<span style="color:#a6e22e">create</span>(<span style="color:#66d9ef">new</span> Observable.<span style="color:#a6e22e">OnSubscribe</span><span style="color:#f92672">&lt;</span>Uri<span style="color:#f92672">&gt;</span>() {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">call</span>(<span style="color:#66d9ef">final</span> Subscriber<span style="color:#f92672">&lt;?</span> <span style="color:#66d9ef">super</span> Uri<span style="color:#f92672">&gt;</span> subscriber) {
+</span></span><span style="display:flex;"><span>                api.<span style="color:#a6e22e">store</span>(cat, <span style="color:#66d9ef">new</span> Api.<span style="color:#a6e22e">StoreCallback</span>() {
+</span></span><span style="display:flex;"><span>                    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onCatStored</span>(Uri uri) {
+</span></span><span style="display:flex;"><span>                        subscriber.<span style="color:#a6e22e">onNext</span>(uri);
+</span></span><span style="display:flex;"><span>                    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onStoreFailed</span>(Exception e) {
+</span></span><span style="display:flex;"><span>                        subscriber.<span style="color:#a6e22e">onError</span>(e);
+</span></span><span style="display:flex;"><span>                    }
+</span></span><span style="display:flex;"><span>                });
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        });
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CatsHelper</span> {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    ApiWrapper apiWrapper;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> Observable<span style="color:#f92672">&lt;</span>Uri<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">saveTheCutestCat</span>(String query) {
+</span></span><span style="display:flex;"><span>        Observable<span style="color:#f92672">&lt;</span>List<span style="color:#f92672">&lt;</span>Cat<span style="color:#f92672">&gt;&gt;</span> catsListObservable <span style="color:#f92672">=</span> apiWrapper.<span style="color:#a6e22e">queryCats</span>(query);
+</span></span><span style="display:flex;"><span>        Observable<span style="color:#f92672">&lt;</span>Cat<span style="color:#f92672">&gt;</span> cutestCatObservable <span style="color:#f92672">=</span> catsListObservable.<span style="color:#a6e22e">map</span>(<span style="color:#66d9ef">new</span> Func1<span style="color:#f92672">&lt;</span>List<span style="color:#f92672">&lt;</span>Cat<span style="color:#f92672">&gt;</span>, Cat<span style="color:#f92672">&gt;</span>() {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> Cat <span style="color:#a6e22e">call</span>(List<span style="color:#f92672">&lt;</span>Cat<span style="color:#f92672">&gt;</span> cats) {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> CatsHelper.<span style="color:#a6e22e">this</span>.<span style="color:#a6e22e">findCutest</span>(cats);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        });
+</span></span><span style="display:flex;"><span>        Observable<span style="color:#f92672">&lt;</span>Uri<span style="color:#f92672">&gt;</span> storedUriObservable <span style="color:#f92672">=</span> cutestCatObservable.<span style="color:#a6e22e">flatMap</span>(<span style="color:#66d9ef">new</span> Func1<span style="color:#f92672">&lt;</span>Cat, Observable<span style="color:#f92672">&lt;?</span> <span style="color:#66d9ef">extends</span> Uri<span style="color:#f92672">&gt;&gt;</span>() {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> Observable<span style="color:#f92672">&lt;?</span> <span style="color:#66d9ef">extends</span> Uri<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">call</span>(Cat cat) {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> apiWrapper.<span style="color:#a6e22e">store</span>(cat);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        });
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> storedUriObservable;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> Cat <span style="color:#a6e22e">findCutest</span>(List<span style="color:#f92672">&lt;</span>Cat<span style="color:#f92672">&gt;</span> cats) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> Collections.<span style="color:#a6e22e">max</span>(cats);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>你可以看到代码是相同的，除了使用 <code>Observable</code> 来替代 <code>AsyncJob</code>。</p>
+<h2 id="总结">总结</h2>
+<p>我们看到，通过简单的转化我们可以把异步操作给抽象出来。这个抽象出来的东西可以被用来操作和组合异步操作就像简单的方法那样。通过这种方法我们可以摆脱嵌套的回调，在处理异步结果时也能手动处理错误的传递。</p>
+<p>如果你看到了这里的话建议你放松下，思考下 sync/async 之间的二元关系，然后看看这个很棒的来自 [Erik Meijer](<a href="http://en.wikipedia.org/wiki/Erik_Meijer_(computer_scientist)">http://en.wikipedia.org/wiki/Erik_Meijer_(computer_scientist)</a>的 <a href="https://channel9.msdn.com/Events/Lang-NEXT/Lang-NEXT-2014/Keynote-Duality">视频</a>。</p>
+<h2 id="一些有用的链接">一些有用的链接</h2>
+<ul>
+<li><a href="http://reactivex.io/">http://reactivex.io/</a></li>
+<li><a href="https://github.com/ReactiveX/RxJava">https://github.com/ReactiveX/RxJava</a></li>
+<li><a href="https://github.com/ReactiveX/RxJava/wiki">https://github.com/ReactiveX/RxJava/wiki</a></li>
+<li><a href="http://queue.acm.org/detail.cfm?id=2169076">http://queue.acm.org/detail.cfm?id=2169076</a></li>
+<li><a href="https://www.coursera.org/course/reactive">https://www.coursera.org/course/reactive</a></li>
+<li><a href="http://blog.danlew.net/2014/09/15/grokking-rxjava-part-1/">http://blog.danlew.net/2014/09/15/grokking-rxjava-part-1/</a></li>
+</ul></div>
+    </article>
+    
+            <br/><br/><br/>
+            <hr/>
+            <div id="valine" class="comment"></div>
+          
+            <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+          
+            <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+            <script type="text/javascript">
+                new Valine({
+                    el: '#valine' ,
+                    appId: 'fBqoKNrWNFkYQMTivF00jWpk-gzGzoHsz',
+                    appKey: 'q2baN9KwoyaFHmbjMHfssLIH',
+                    notify: 'true', 
+                    verify: 'false', 
+                    avatar:'hide', 
+                    placeholder: '说点什么吧~',
+                    visitor: ''
+                });
+            </script>
+            <noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript>
+
+  </main>
+
+      </div>
+      <footer>
+  <hr />
+  
+    <p id="social">
+      Find me around the web:
+      <br />
+      
+        
+        <a href="https://github.com/zhengxiaopeng" target="_blank">GitHub</a>
+      
+         | 
+        <a href="https://juejin.cn/user/3051900006044056" target="_blank">Juejin</a>
+      
+         | 
+        <a href="http://www.zhihu.com/people/rocko" target="_blank">Zhihu</a>
+      
+         | 
+        <a href="http://blog.csdn.net/bbld_" target="_blank">CSDN</a>
+      
+         | 
+        <a href="http://weibo.com/678662430" target="_blank">Weibo</a>
+      
+    </p>
+  
+  <p class="copyright">
+    Copyright © 2024
+    <a href="https://rocko.vip/" ><strong>Rocko</strong></a>.
+    This work is licensed under the
+    <a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA 4.0</a> license.
+  </p>
+  <p class="builtWith">
+    Powered by
+    <a href="http://www.gohugo.io/" target="_blank">Hugo</a>.
+  </p>
+</footer>
+
+    </div>
+  </body>
+</html>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>OnTouchListener on Rocko&#39;s blog</title>
+    <link>https://rocko.vip/tags/ontouchlistener/</link>
+    <description>Recent content in OnTouchListener on Rocko&#39;s blog</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 26 Apr 2015 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://rocko.vip/tags/ontouchlistener/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Android View.OnTouchListener 的子类</title>
+      <link>https://rocko.vip/posts/android-view-ontouchlistener-%E7%9A%84%E5%AD%90%E7%B1%BB/</link>
+      <pubDate>Sun, 26 Apr 2015 00:00:00 +0000</pubDate>
+      <guid>https://rocko.vip/posts/android-view-ontouchlistener-%E7%9A%84%E5%AD%90%E7%B1%BB/</guid>
+      <description>&lt;p&gt;如下是几个实现了 &lt;a href=&#34;http://developer.android.com/reference/android/view/View.OnTouchListener.html&#34;&gt;OnTouchListener&lt;/a&gt; 接口的子类，OnTouchListener 我们是再熟悉不过了，在 Hello World 开始就接触了，但在 Support V4 中还有它的 3 个子类我们平时可能使用的较少但就其功能而言还是对我们很有帮助的。&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;** &lt;a href=&#34;http://developer.android.com/reference/android/support/v4/widget/AutoScrollHelper.html&#34;&gt;AutoScrollHelper&lt;/a&gt; ** 抽象类，用于控件边缘触发自动滚动。&lt;/li&gt;&#xA;&lt;li&gt;** &lt;a href=&#34;http://developer.android.com/reference/android/support/v4/widget/ListViewAutoScrollHelper.html&#34;&gt;ListViewAutoScrollHelper&lt;/a&gt; ** 用于 ListView，目前 SDK 里的唯一 AutoScrollHelper 实现类。&lt;/li&gt;&#xA;&lt;li&gt;** &lt;a href=&#34;http://developer.android.com/reference/android/widget/ZoomButtonsController.html&#34;&gt;ZoomButtonsController&lt;/a&gt; ** 用于控制缩放控件。&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;三者的功能体现在 AutoScrollHelper 和 ZoomButtonsController，前者用于实现控件的自动滚动而后者用于对缩放控件（缩小放大按钮）的处理。&lt;/p&gt;&#xA;&lt;h2 id=&#34;autoscrollhelper&#34;&gt;AutoScrollHelper&lt;/h2&gt;&#xA;&lt;p&gt;为了更好阐述它的功能，我们先来看如下的 Gif 图：&#xA;&lt;img src=&#34;https://rocko.vip/images/27sjkadg21bkagd021qhakdhaw8_da2q.gif.png&#34; alt=&#34;ListViewAutoScrollHelper&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;所以，他能完成的功能就是在 View 的边缘长按时能自动地滚动视图。下面是它的主要方法说明：&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

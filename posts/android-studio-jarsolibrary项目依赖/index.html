@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content=""
+  />
+  
+    
+      <title>Android Studio jar、so、library项目依赖 | Rocko&#39;s blog</title>
+    
+  
+  <link rel="stylesheet" href="/css/reset.css"/>
+  <link rel="stylesheet" href="/css/font.css"/>
+  <link rel="stylesheet" href="/css/smigle.css"/>
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+</head>
+
+  <body>
+    <div id="root">
+      <header>
+  <div id="brand">
+    <a class="icon-link" href="https://rocko.vip/">
+      <img
+        class="icon"
+        src="/images/rocko.webp"
+      />
+    </a>
+    <div class="text">
+      <a href="https://rocko.vip/"><h1>Rocko&#39;s blog</h1></a>
+      <h3>Live in the moment</h3>
+    </div>
+  </div>
+  <nav>
+    
+      
+        
+        <a href="/"><b>Home</b></a>
+      
+         | 
+        <a href="/about/"><b>About</b></a>
+      
+         | 
+        <a href="/posts/"><b>Posts</b></a>
+      
+         | 
+        <a href="/categories/"><b>Categories</b></a>
+      
+         | 
+        <a href="/tags/"><b>Tags</b></a>
+      
+         | 
+        <a href="/index.xml"><b>RSS</b></a>
+      
+      |<a id="header-high" style="text-decoration: none; margin-left:12px; width:71px; margin-right:5px" class="header-icon waves-effect waves-circle waves-light"  onClick="javascript:(    /*     * Copyright (C) 2015 Rocko (rocko.xyz) <rocko.zxp@gmail.com>     *     * Licensed under the Apache License, Version 2.0 (the 'License');     * you may not use this file except in compliance with the License.     * You may obtain a copy of the License at     *     *      http://www.apache.org/licenses/LICENSE-2.0     *     * Unless required by applicable law or agreed to in writing, software     * distributed under the License is distributed on an 'AS IS' BASIS,     * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.     * See the License for the specific language governing permissions and     * limitations under the License.     */    function go() {        function c() {        var e = document.createElement('link');        e.setAttribute('type', 'text/css');        e.setAttribute('rel', 'stylesheet');        e.setAttribute('href', f);        e.setAttribute('class', l);        document.body.appendChild(e)    }     function h() {        var e = document.getElementsByClassName(l);        for (var t = 0; t < e.length; t++) {            document.body.removeChild(e[t])        }    }     function p() {        var e = document.createElement('div');        e.setAttribute('class', a);        document.body.appendChild(e);        setTimeout(function() {            document.body.removeChild(e)        }, 100)    }     function d(e) {        return {            height : e.offsetHeight,            width : e.offsetWidth        }    }     function v(i) {        var s = d(i);        return s.height > e && s.height < n && s.width > t && s.width < r    }     function m(e) {        var t = e;        var n = 0;        while (!!t) {            n += t.offsetTop;            t = t.offsetParent        }        return n    }     function g() {        var e = document.documentElement;        if (!!window.innerWidth) {            return window.innerHeight        } else if (e && !isNaN(e.clientHeight)) {            return e.clientHeight        }        return 0    }     function y() {        if (window.pageYOffset) {            return window.pageYOffset        }        return Math.max(document.documentElement.scrollTop, document.body.scrollTop)    }     function E(e) {        var t = m(e);        return t >= w && t <= b + w    }     var songs = ['/media/Music-Fashion_Show.mp3', '/media/G-Love.Phonk.mp3', '/media/APT.mp3', '/media/Music-outside.mp3', '/media/Music-sunburst.mp3', '/media/Music-Wake-Live.mp3'];    function S() {        var e = document.getElementById('audio_element_id');        if(e != null){            var index = parseInt(e.getAttribute('curSongIndex'));            if(index > songs.length - 2) {                index = 0;            } else {                index++;            }            e.setAttribute('curSongIndex', index);            N();        }        e.src = i;        e.play()    }     function x(e) {        e.className += ' ' + s + ' ' + o    }     function T(e) {        e.className += ' ' + s + ' ' + u[Math.floor(Math.random() * u.length)]    }     function N() {        var e = document.getElementsByClassName(s);        var t = new RegExp('\\b' + s + '\\b');        for (var n = 0; n < e.length; ) {            e[n].className = e[n].className.replace(t, '')        }    }    function initAudioEle() {        var e = document.getElementById('audio_element_id');        if(e === null){            e = document.createElement('audio');            e.setAttribute('class', l);            e.setAttribute('curSongIndex', 0);            e.id = 'audio_element_id';            e.loop = false;            e.bgcolor = 0;            e.addEventListener('canplay', function() {            setTimeout(function() {                x(k)            }, 500);            setTimeout(function() {                N();                p();                for (var e = 0; e < O.length; e++) {                    T(O[e])                }            }, 8000)        }, true);        e.addEventListener('ended', function() {            N();            h();            go();        }, true);        e.innerHTML = ' <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>';        document.body.appendChild(e);        }    }        initAudioEle();    var e = 30;    var t = 30;    var n = 350;    var r = 350;    var curSongIndex = parseInt(document.getElementById('audio_element_id').getAttribute('curSongIndex'));    var i = songs[curSongIndex];        var s = 'mw-harlem_shake_me';    var o = 'im_first';    var u = ['im_drunk', 'im_baked', 'im_trippin', 'im_blown'];    var a = 'mw-strobe_light';    var f = '/css/harlem-shake-style.css';        var l = 'mw_added_css';    var b = g();    var w = y();    var C = document.getElementsByTagName('*');    var k = null;    for (var L = 0; L < C.length; L++) {        var A = C[L];        if (v(A)) {            if (E(A)) {                k = A;                break            }        }    }    if (A === null) {        console.warn('Could not find a node of the right size. Please try a different page.');        return    }    c();    S();    var O = [];    for (var L = 0; L < C.length; L++) {        var A = C[L];        if (v(A)) {            O.push(A)        }    }    })()" >High一下</a>
+    
+  </nav>
+  <hr />
+</header>
+
+      <div id="content">
+        
+  <main>
+    <article>
+      <h1 class="title">Android Studio jar、so、library项目依赖</h1>
+      
+      <div class="post-meta">
+  <strong>
+    <span>Posted on</span>
+    <time>2014-12-13</time>
+    <span>in</span>
+    
+      <a href="/categories/android">Android</a>
+  </strong>
+  <span> • 493 words</span>
+  <span> • 3 minute read</span>
+  
+  
+    <div>
+      <span>Tags:</span>
+      
+        <a href="/tags/androidstudio">AndroidStudio</a>
+    </div>
+  
+</div>
+
+      <div class="content"><h1 id="前言">前言</h1>
+<p>Android Studio(以下简称AS)在13年I/O大会后放出预览版到现在放出的正式版1.0（PS.今天又更新到1.0.1了）历时一年多了，虽然Google官方推出的Android开发者的IDE对我们Android DEV是很有吸引力的，但考虑到beta版还是太多问题所以自己主要还是把AS当做尝鲜为主，每放出一个较大更新就下载下来试试，感觉还是挺好的，渐渐用AS的人越来越多，Github上的项目也基本是AS的了，Google的sample也采用AS，所以使用Eclipse跟外界交流越来越困难啊。到现在<code>android-studio-bundle-135.1629389</code>AS正式版的推出，我们有理由从Eclipse迁移到AS了。<br>
+要迁移到AS中开发那么要掌握AS中的项目管理是必须的，基本的new project、run什么的就不提了，这篇文章记录我在AS中在项目中解决jar包、library项目依赖、so动态链接库的问题，版本控制Git、SVN等这篇文章不涉及。这么多废话后下面开始。</p>
+<h1 id="eclipse跟as的不同">Eclipse跟AS的不同</h1>
+<p>从Eclipse到AS不要带着在Eclipse中的主观色彩去在AS中使用，从项目的构成到构建是不同的，下面列举在Eclipse和AS中的一些概念的区别：</p>
+<h2 id="workspace和project">WorkSpace和Project</h2>
+<p>Eclipse的WorkSpace和AS的Project说的可以说是一个东西，也就是说你可以把在AS中的Project理解为WorkSpace。
+<img src="https://static.rocko.xyz/img/Android-Studio-jar%E3%80%81so%E3%80%81library%E9%A1%B9%E7%9B%AE%E4%BE%9D%E8%B5%96_1.jpg?imageView2/2/w/400/h/400/q/100" alt=""> 所以你在AS中new一个Project相当于在Eclipse中重开了一个WorkSpace，注意第一个箭头，显示模式为Project，建议刚用AS时用这种，方便了解里面的文件结构。</p>
+<h2 id="project和module">Project和Module</h2>
+<p>跟上面一样，Eclipse中的一个个project也就是相当于AS中的一个个module。上图的module_1和module_2就是我们习惯的eclipse中的一堆project了，把显示模式换为Android之后就更为直观了：<br>
+<img src="https://static.rocko.xyz/img/Android-Studio-jar%E3%80%81so%E3%80%81library%E9%A1%B9%E7%9B%AE%E4%BE%9D%E8%B5%96_2.jpg?imageView2/2/w/400/h/400/q/100" alt=""><br>
+最下面的就是<code>AS</code>中整个Project中所有Gradle的配置了，当然包括所有module的配置了，括号的名字就表示build.gradle对应的配置对象。</p>
+<h2 id="properties和module-setting">Properties和Module Setting</h2>
+<p>Eclipse中的Properties也是跟AS的Module Setting对应的
+<img src="https://static.rocko.xyz/img/Android-Studio-jar%E3%80%81so%E3%80%81library%E9%A1%B9%E7%9B%AE%E4%BE%9D%E8%B5%96_3.jpg?imageView2/2/w/700/h/700/q/100" alt=""><br>
+可以看到这里可以像在Eclipse的Properties中一样在这里配置一些东西，比如在Module Setting里给Module添加依赖(dependencies)信息也是可以的，并且可以直接搜maven的项目依赖。</p>
+<h1 id="jar">jar</h1>
+<p>明白了上面的三点就可以很快上手了。首先就来说最简单的添加jar包。</p>
+<ul>
+<li>可以跟在Eclipse中一样，把jar包往<code>Module</code>里扔，再在jar右键add as library就可以了，然后最后在你的Module文件夹（像上面的module_1）右键make module一下就可以在代码里用jar里的东西了。</li>
+<li>也可以自己手动到module里的build.gradle里添加dependencies，上面的方法做的方法本质上就是这种。</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-gradle" data-lang="gradle"><span style="display:flex;"><span>dependencies <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    compile <span style="color:#a6e22e">fileTree</span><span style="color:#f92672">(</span>dir: <span style="color:#e6db74">&#39;libs&#39;</span><span style="color:#f92672">,</span> include: <span style="color:#f92672">[</span><span style="color:#e6db74">&#39;*.jar&#39;</span><span style="color:#f92672">])</span>
+</span></span><span style="display:flex;"><span>    compile <span style="color:#a6e22e">fileTree</span><span style="color:#f92672">(</span>dir: <span style="color:#e6db74">&#39;D:\\repositories\\libs\\java&#39;</span><span style="color:#f92672">,</span> include: <span style="color:#f92672">[</span><span style="color:#e6db74">&#39;*.jar&#39;</span><span style="color:#f92672">])</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><p>dir可以是电脑上的目录文件。</p>
+<h1 id="library项目">library项目</h1>
+<p>有了前面跟Eclipse的比较后，类似地像在Eclipse中添加项目依赖一样，被依赖的项目得是作为library。在Eclipse中我们是进入到Properties把这个项目设置为library（as a library），所以在AS中也是类似的，我们需要把一个module作为library(这个module可以自己新建module也可以导入module，此外我们是可以把一个AS的Project导进成module的或者直接导Project里的单个module也可以)，完成后到这个module（我这里是把module_2作为library）把<code>apply plugin: 'com.android.application'</code>改为<code>apply plugin: 'com.android.library'</code>再然后去掉（删除）module_2的build.gradle里的<code>applicationId &quot;com.example.mrzheng.as&quot;</code>(一个library不需要这个，不然make project或make module时会报错)。<br>
+<em>build.gradle(module_2)</em></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-gradle" data-lang="gradle"><span style="display:flex;"><span>apply plugin: <span style="color:#e6db74">&#39;com.android.library&#39;</span>
+</span></span><span style="display:flex;"><span>android <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    compileSdkVersion <span style="color:#ae81ff">21</span>
+</span></span><span style="display:flex;"><span>    buildToolsVersion <span style="color:#e6db74">&#34;21.1.1&#34;</span>
+</span></span><span style="display:flex;"><span>    defaultConfig <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        minSdkVersion <span style="color:#ae81ff">10</span>
+</span></span><span style="display:flex;"><span>        targetSdkVersion <span style="color:#ae81ff">21</span>
+</span></span><span style="display:flex;"><span>        versionCode <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>        versionName <span style="color:#e6db74">&#34;1.0&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>    buildTypes <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        release <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>            minifyEnabled <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>            proguardFiles <span style="color:#a6e22e">getDefaultProguardFile</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#39;proguard-android.txt&#39;</span><span style="color:#f92672">),</span> <span style="color:#e6db74">&#39;proguard-rules.pro&#39;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>dependencies <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    compile <span style="color:#a6e22e">fileTree</span><span style="color:#f92672">(</span>dir: <span style="color:#e6db74">&#39;libs&#39;</span><span style="color:#f92672">,</span> include: <span style="color:#f92672">[</span><span style="color:#e6db74">&#39;*.jar&#39;</span><span style="color:#f92672">])</span>
+</span></span><span style="display:flex;"><span>    compile <span style="color:#e6db74">&#39;com.android.support:appcompat-v7:21.0.2&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><p>到这里先确认下你的project(AS)的settings.gradle里有没把module都include进去,没有的话加上：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-gradle" data-lang="gradle"><span style="display:flex;"><span>include <span style="color:#e6db74">&#39;:module_1&#39;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#39;:module_2&#39;</span>
+</span></span></code></pre></div><p>最后就可以在module_1里就添加library依赖(module_2)了。进入module_1的build.gradle，找到dependencies加上<code>compile project(':module_2')</code>
+<em>build.gradle(module_1)</em></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-gradle" data-lang="gradle"><span style="display:flex;"><span>apply plugin: <span style="color:#e6db74">&#39;com.android.application&#39;</span>
+</span></span><span style="display:flex;"><span>android <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    compileSdkVersion <span style="color:#ae81ff">21</span>
+</span></span><span style="display:flex;"><span>    buildToolsVersion <span style="color:#e6db74">&#34;21.1.1&#34;</span>
+</span></span><span style="display:flex;"><span>    defaultConfig <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        applicationId <span style="color:#e6db74">&#34;com.example.mrzheng.as&#34;</span>
+</span></span><span style="display:flex;"><span>        minSdkVersion <span style="color:#ae81ff">10</span>
+</span></span><span style="display:flex;"><span>        targetSdkVersion <span style="color:#ae81ff">21</span>
+</span></span><span style="display:flex;"><span>        versionCode <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>        versionName <span style="color:#e6db74">&#34;1.0&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>	
+</span></span><span style="display:flex;"><span>    buildTypes <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        release <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>            minifyEnabled <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>            proguardFiles <span style="color:#a6e22e">getDefaultProguardFile</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#39;proguard-android.txt&#39;</span><span style="color:#f92672">),</span> <span style="color:#e6db74">&#39;proguard-rules.pro&#39;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>    sourceSets <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        main <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>            jniLibs<span style="color:#f92672">.</span><span style="color:#a6e22e">srcDirs</span> <span style="color:#f92672">=</span> <span style="color:#f92672">[</span><span style="color:#e6db74">&#39;libs&#39;</span><span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>	
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>dependencies <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    compile <span style="color:#a6e22e">fileTree</span><span style="color:#f92672">(</span>dir: <span style="color:#e6db74">&#39;libs&#39;</span><span style="color:#f92672">,</span> include: <span style="color:#f92672">[</span><span style="color:#e6db74">&#39;*.jar&#39;</span><span style="color:#f92672">])</span>
+</span></span><span style="display:flex;"><span>    compile <span style="color:#a6e22e">fileTree</span><span style="color:#f92672">(</span>dir: <span style="color:#e6db74">&#39;D:\\repositories\\libs\\java&#39;</span><span style="color:#f92672">,</span> include: <span style="color:#f92672">[</span><span style="color:#e6db74">&#39;*.jar&#39;</span><span style="color:#f92672">])</span>
+</span></span><span style="display:flex;"><span>    compile <span style="color:#e6db74">&#39;com.android.support:appcompat-v7:21.0.2&#39;</span>
+</span></span><span style="display:flex;"><span>    compile <span style="color:#a6e22e">project</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#39;:module_2&#39;</span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><p>现在make module一下就可以使用依赖的项目了(module_2)。</p>
+<h1 id="so">so</h1>
+<p>之前的版本不知道怎么样，现在正式版的AS添加so打包进apk里的lib里是很简单的，我们只需要把so文件放到libs文件夹里的对应cpu文件夹里，最后在module的build.gradle里加上jni的sourceSets配置：<code>jniLibs.srcDirs = ['libs']</code>，完整代码看上面的*build.gradle(module_1)*代码片。
+<img src="https://static.rocko.xyz/img/Android-Studio-jar%E3%80%81so%E3%80%81library%E9%A1%B9%E7%9B%AE%E4%BE%9D%E8%B5%96_4.jpg?imageView2/2/w/400/h/400/q/100" alt=""></p>
+<h1 id="end">END</h1>
+<p>做完上面的工作，jar包、so动态链接库、library依赖项目里的代码就都可以正常工作了，正常的项目开发已经没什么问题。最后给上本博文的源码：<a href="http://download.csdn.net/detail/bbld_/8255385">Android Studio jar、so、library项目依赖</a>，导进AS里后，run module_1即可。<br>
+最最后奉上Android Studio快捷键大全（大部分来源于：<a href="http://ask.android-studio.org/?/article/12">http://ask.android-studio.org/?/article/12</a>）：</p>
+<h1 id="附录ideaandroid-studio-快捷键">附录（IDEA(Android Studio) 快捷键）</h1>
+<p>说明：斜体文字表示，测试时没有效果或者没有测试时没有达到预先条件的情况下没有效果。</p>
+<h2 id="ide">IDE</h2>
+<table>
+  <thead>
+      <tr>
+          <th>按键</th>
+          <th>说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>F1</td>
+          <td>帮助</td>
+      </tr>
+      <tr>
+          <td>Alt+F1</td>
+          <td>查找文件所在目录位置</td>
+      </tr>
+      <tr>
+          <td>Alt+1</td>
+          <td>快速打开或隐藏工程面板</td>
+      </tr>
+      <tr>
+          <td>Ctrl+Alt+S</td>
+          <td>打开设置对话框</td>
+      </tr>
+      <tr>
+          <td>Alt+Home</td>
+          <td>跳转到导航栏</td>
+      </tr>
+      <tr>
+          <td>Esc</td>
+          <td>光标返回编辑框</td>
+      </tr>
+      <tr>
+          <td>Shift+Esc</td>
+          <td>光标返回编辑框,关闭无用的窗口</td>
+      </tr>
+      <tr>
+          <td>Shift+Click</td>
+          <td>关闭标签页</td>
+      </tr>
+      <tr>
+          <td>F12</td>
+          <td>把焦点从编辑器移到最近使用的工具窗口</td>
+      </tr>
+      <tr>
+          <td>Ctrl+Alt+Y</td>
+          <td>同步</td>
+      </tr>
+      <tr>
+          <td>Ctrl+Alt+S</td>
+          <td>打开设置对话框</td>
+      </tr>
+      <tr>
+          <td>Alt+Shift+Inert</td>
+          <td>开启/关闭列选择模式</td>
+      </tr>
+      <tr>
+          <td>Ctrl+Alt+Shift+S</td>
+          <td>打开当前项目/模块属性</td>
+      </tr>
+      <tr>
+          <td>Alt+Shift+C</td>
+          <td>查看文件的变更历史</td>
+      </tr>
+      <tr>
+          <td>Ctrl+Shift+F10</td>
+          <td>运行</td>
+      </tr>
+      <tr>
+          <td>Ctrl+Shift+F9</td>
+          <td>debug运行</td>
+      </tr>
+      <tr>
+          <td>Ctrl+Alt+F12</td>
+          <td>资源管理器打开文件夹</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="编辑">编辑</h2>
+<table>
+  <thead>
+      <tr>
+          <th>按键</th>
+          <th>说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Alt+J</td>
+          <td>多行编辑</td>
+      </tr>
+      <tr>
+          <td>Alt+MouseDrag</td>
+          <td>鼠标选中区域</td>
+      </tr>
+      <tr>
+          <td>Ctrl+C</td>
+          <td>复制当前行或选中的内容</td>
+      </tr>
+      <tr>
+          <td>Ctrl+D</td>
+          <td>粘贴当前行或选中的内容到下一行</td>
+      </tr>
+      <tr>
+          <td>Ctrl+X</td>
+          <td>剪切当前行或选中的内容</td>
+      </tr>
+      <tr>
+          <td>Ctrl+Y</td>
+          <td>删除行</td>
+      </tr>
+      <tr>
+          <td>Ctrl+Z</td>
+          <td>倒退</td>
+      </tr>
+      <tr>
+          <td>Ctrl+Shift+Z</td>
+          <td>向前</td>
+      </tr>
+      <tr>
+          <td>Alt+Enter</td>
+          <td>自动修正</td>
+      </tr>
+      <tr>
+          <td>Ctrl+Alt+L</td>
+          <td>格式化代码</td>
+      </tr>
+      <tr>
+          <td>Ctrl+Alt+I</td>
+          <td>将选中的代码进行自动缩进编排</td>
+      </tr>
+      <tr>
+          <td>Ctrl+Alt+O</td>
+          <td>优化导入的类和包</td>
+      </tr>
+      <tr>
+          <td>Ctrl+Alt+D</td>
+          <td>对选中内容添加包围代码</td>
+      </tr>
+      <tr>
+          <td>Ctrl+Alt+J</td>
+          <td>用动态模板环绕</td>
+      </tr>
+      <tr>
+          <td>Alt+Insert</td>
+          <td>得到一些Intention Action，可以生成构造器、Getter、Setter、将 <code>==</code> 改为 <code>equals()</code> 等</td>
+      </tr>
+      <tr>
+          <td>Ctrl+Shift+V</td>
+          <td>选最近使用的剪贴板内容并插入</td>
+      </tr>
+      <tr>
+          <td>Ctrl+Alt+Shift+V</td>
+          <td>简单粘贴</td>
+      </tr>
+      <tr>
+          <td>Ctrl+Shift+Insert</td>
+          <td>选最近使用的剪贴板内容并插入（同Ctrl+Shift+V）</td>
+      </tr>
+      <tr>
+          <td>Ctrl+Enter</td>
+          <td>在当前行的上面插入新行，并移动光标到新行（此功能光标在行首时有效）</td>
+      </tr>
+      <tr>
+          <td>Shift+Enter</td>
+          <td>在当前行的下面插入新行，并移动光标到新行</td>
+      </tr>
+      <tr>
+          <td>Ctrl+J</td>
+          <td>自动代码</td>
+      </tr>
+      <tr>
+          <td>Ctrl+Alt+T</td>
+          <td>把选中的代码放在 <code>try{}</code> 、<code>if{}</code> 、 <code>else{}</code> 里</td>
+      </tr>
+      <tr>
+          <td>Shift+Alt+Insert</td>
+          <td>竖编辑模式</td>
+      </tr>
+      <tr>
+          <td>Ctrl+ <code>/ </code></td>
+          <td>注释 <code>//</code></td>
+      </tr>
+      <tr>
+          <td>Ctrl+Shift+ <code>/</code></td>
+          <td>注释 <code>/*...*/</code></td>
+      </tr>
+      <tr>
+          <td>Ctrl+Shift+J</td>
+          <td>合并成一行</td>
+      </tr>
+      <tr>
+          <td>F2/Shift+F2</td>
+          <td>跳转到下/上一个错误语句处</td>
+      </tr>
+      <tr>
+          <td>Ctrl+Shift+Back</td>
+          <td>跳转到上次编辑的地方</td>
+      </tr>
+      <tr>
+          <td>Ctrl+Alt+Space</td>
+          <td>类名自动完成</td>
+      </tr>
+      <tr>
+          <td>Shift+Alt+Up/Down</td>
+          <td>内容向上/下移动</td>
+      </tr>
+      <tr>
+          <td>Ctrl+Shift+Up/Down</td>
+          <td>语句向上/下移动</td>
+      </tr>
+      <tr>
+          <td>Ctrl+Shift+U</td>
+          <td>大小写切换</td>
+      </tr>
+      <tr>
+          <td>Tab</td>
+          <td>代码标签输入完成后，按 <code>Tab</code>，生成代码</td>
+      </tr>
+      <tr>
+          <td>Ctrl+Backspace</td>
+          <td>按单词删除</td>
+      </tr>
+      <tr>
+          <td>Ctrl+Shift+Enter</td>
+          <td>语句完成</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="文件">文件</h2>
+<table>
+  <thead>
+      <tr>
+          <th>按键</th>
+          <th>说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Ctrl+F12</td>
+          <td>显示当前文件的结构</td>
+      </tr>
+      <tr>
+          <td>Ctrl+H</td>
+          <td>显示类继承结构图</td>
+      </tr>
+      <tr>
+          <td>Ctrl+Q</td>
+          <td>显示注释文档</td>
+      </tr>
+      <tr>
+          <td>Ctrl+P</td>
+          <td>方法参数提示</td>
+      </tr>
+      <tr>
+          <td>Ctrl+U</td>
+          <td>打开当前类的父类或者实现的接口</td>
+      </tr>
+      <tr>
+          <td>Alt+Left/Right</td>
+          <td>切换代码视图</td>
+      </tr>
+      <tr>
+          <td>Ctrl+Alt+Left/Right</td>
+          <td>返回上次编辑的位置</td>
+      </tr>
+      <tr>
+          <td>Alt+Up/Down</td>
+          <td>在方法间快速移动定位</td>
+      </tr>
+      <tr>
+          <td>Ctrl+B</td>
+          <td>快速打开光标处的类或方法</td>
+      </tr>
+      <tr>
+          <td>Ctrl+W</td>
+          <td>选中代码，连续按会有其他效果</td>
+      </tr>
+      <tr>
+          <td>Ctrl+Shift+W</td>
+          <td>取消选择光标所在词</td>
+      </tr>
+      <tr>
+          <td>Ctrl+ <code>-</code> / <code>+</code></td>
+          <td>折叠/展开代码</td>
+      </tr>
+      <tr>
+          <td>Ctrl+Shift+ <code>-</code> / <code>+</code></td>
+          <td>折叠/展开全部代码</td>
+      </tr>
+      <tr>
+          <td>Ctrl+Shift+<code>.</code></td>
+          <td>折叠/展开当前花括号中的代码</td>
+      </tr>
+      <tr>
+          <td>Ctrl+ <code>]</code> / <code>[</code></td>
+          <td>跳转到代码块结束/开始处</td>
+      </tr>
+      <tr>
+          <td>F2 或 Shift+F2</td>
+          <td>高亮错误或警告快速定位</td>
+      </tr>
+      <tr>
+          <td>Ctrl+Shift+C</td>
+          <td>复制路径</td>
+      </tr>
+      <tr>
+          <td>Ctrl+Alt+Shift+C</td>
+          <td>复制引用，必须选择类名</td>
+      </tr>
+      <tr>
+          <td>Alt+Up/Down</td>
+          <td>在方法间快速移动定位</td>
+      </tr>
+      <tr>
+          <td>Shift+F1</td>
+          <td>要打开编辑器光标字符处使用的类或者方法 <code>Java</code> 文档的浏览器</td>
+      </tr>
+      <tr>
+          <td>Ctrl+G</td>
+          <td>定位行</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="查找">查找</h2>
+<table>
+  <thead>
+      <tr>
+          <th>按键</th>
+          <th>说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Ctrl+F</td>
+          <td>在当前窗口查找文本</td>
+      </tr>
+      <tr>
+          <td>Ctrl+Shift+F</td>
+          <td>在指定环境下查找文本</td>
+      </tr>
+      <tr>
+          <td>F3</td>
+          <td>向下查找关键字出现位置</td>
+      </tr>
+      <tr>
+          <td>Shift+F3</td>
+          <td>向上一个关键字出现位置</td>
+      </tr>
+      <tr>
+          <td>Ctrl+R</td>
+          <td>在当前窗口替换文本</td>
+      </tr>
+      <tr>
+          <td>Ctrl+Shift+R</td>
+          <td>在指定窗口替换文本</td>
+      </tr>
+      <tr>
+          <td>Ctrl+N</td>
+          <td>查找类</td>
+      </tr>
+      <tr>
+          <td>Ctrl+Shift+N</td>
+          <td>查找文件</td>
+      </tr>
+      <tr>
+          <td>Ctrl+Shift+Alt+N</td>
+          <td>查找项目中的方法或变量</td>
+      </tr>
+      <tr>
+          <td>Ctrl+B</td>
+          <td>查找变量的来源</td>
+      </tr>
+      <tr>
+          <td>Ctrl+Alt+B</td>
+          <td>快速打开光标处的类或方法</td>
+      </tr>
+      <tr>
+          <td>Ctrl+Shift+B</td>
+          <td>跳转到类或方法实现处</td>
+      </tr>
+      <tr>
+          <td>Ctrl+E</td>
+          <td>最近打开的文件</td>
+      </tr>
+      <tr>
+          <td>Alt+F3</td>
+          <td>快速查找，效果和Ctrl+F相同</td>
+      </tr>
+      <tr>
+          <td>F4</td>
+          <td>跳转至定义变量的位置</td>
+      </tr>
+      <tr>
+          <td>Alt+F7</td>
+          <td>查询当前元素在工程中的引用</td>
+      </tr>
+      <tr>
+          <td>Ctrl+F7</td>
+          <td>查询当前元素在当前文件中的引用，然后按 <code>F3</code> 可以选择</td>
+      </tr>
+      <tr>
+          <td>Ctrl+Alt+F7</td>
+          <td>选中查询当前元素(方法或元素)在工程中的引用</td>
+      </tr>
+      <tr>
+          <td>Ctrl+Alt+H</td>
+          <td>打开方法调用结构层级的窗口</td>
+      </tr>
+      <tr>
+          <td>Ctrl+Shift+F7</td>
+          <td>高亮显示匹配的字符，按 <code>Esc</code> 高亮消失</td>
+      </tr>
+      <tr>
+          <td>Ctrl+Shift+Alt+N</td>
+          <td>查找类中的方法或变量</td>
+      </tr>
+      <tr>
+          <td>Ctrl+F12</td>
+          <td>查找类中的方法</td>
+      </tr>
+      <tr>
+          <td><em>Ctrl+Shift+O</em></td>
+          <td><em>弹出显示查找内容</em></td>
+      </tr>
+      <tr>
+          <td><em>Ctrl+Alt+Up/Down</em></td>
+          <td><em>快速跳转搜索结果</em></td>
+      </tr>
+      <tr>
+          <td><em>Ctrl+Shift+S</em></td>
+          <td><em>高级搜索、搜索结构</em></td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="重构">重构</h2>
+<table>
+  <thead>
+      <tr>
+          <th>按键</th>
+          <th>说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>F5</td>
+          <td>复制</td>
+      </tr>
+      <tr>
+          <td>F6</td>
+          <td>移动</td>
+      </tr>
+      <tr>
+          <td>Alt+Delete</td>
+          <td>安全删除</td>
+      </tr>
+      <tr>
+          <td>Ctrl+U</td>
+          <td>转到父类</td>
+      </tr>
+      <tr>
+          <td>Ctrl+O</td>
+          <td>重写父类的方法</td>
+      </tr>
+      <tr>
+          <td>Ctrl+I</td>
+          <td>实现方法</td>
+      </tr>
+      <tr>
+          <td>Ctrl+Alt+N</td>
+          <td>内联</td>
+      </tr>
+      <tr>
+          <td>Ctrl+Alt+Shift+T</td>
+          <td>弹出重构菜单</td>
+      </tr>
+      <tr>
+          <td>Shift+F6</td>
+          <td>重构-重命名</td>
+      </tr>
+      <tr>
+          <td>Ctrl+Alt+M</td>
+          <td>提取代码组成方法</td>
+      </tr>
+      <tr>
+          <td>Ctrl+Alt+C</td>
+          <td>将变量更改为常量</td>
+      </tr>
+      <tr>
+          <td>Ctrl+Alt+V</td>
+          <td>定义变量引用当前对象或者方法的返回值</td>
+      </tr>
+      <tr>
+          <td>Ctrl+Alt+F</td>
+          <td>将局部变量更改为类的成员变量</td>
+      </tr>
+      <tr>
+          <td>Ctrl+Alt+P</td>
+          <td>将变量更改为方法的参数</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="调试">调试</h2>
+<table>
+  <thead>
+      <tr>
+          <th>按键</th>
+          <th>说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>F8</td>
+          <td>跳到下一步</td>
+      </tr>
+      <tr>
+          <td>Shift+F8</td>
+          <td>跳出函数、跳到下一个断点</td>
+      </tr>
+      <tr>
+          <td>Alt+Shift+F8</td>
+          <td>强制跳出函数</td>
+      </tr>
+      <tr>
+          <td>F7</td>
+          <td>进入代码</td>
+      </tr>
+      <tr>
+          <td>Shift+F7</td>
+          <td>智能进入代码</td>
+      </tr>
+      <tr>
+          <td>Alt+Shift+F7</td>
+          <td>强制进入代码</td>
+      </tr>
+      <tr>
+          <td>Alt+F9</td>
+          <td>运行至光标处</td>
+      </tr>
+      <tr>
+          <td>Ctrl+Alt+F9</td>
+          <td>强制运行至光标处</td>
+      </tr>
+      <tr>
+          <td>Ctrl+F2</td>
+          <td>停止运行</td>
+      </tr>
+      <tr>
+          <td>Alt+F8</td>
+          <td>计算变量值</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="vcs">VCS</h2>
+<table>
+  <thead>
+      <tr>
+          <th>按键</th>
+          <th>说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Alt+ <code>~</code></td>
+          <td><code>VCS</code> 操作菜单</td>
+      </tr>
+      <tr>
+          <td>Ctrl+K</td>
+          <td>提交更改</td>
+      </tr>
+      <tr>
+          <td>Ctrl+T</td>
+          <td>更新项目</td>
+      </tr>
+      <tr>
+          <td>Ctrl+Alt+Shift+D</td>
+          <td>显示变化</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="其它">其它</h2>
+<table>
+  <thead>
+      <tr>
+          <th>按键</th>
+          <th>说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>(Ctrl+)F11</td>
+          <td>标记书签</td>
+      </tr>
+      <tr>
+          <td>Shift+F11</td>
+          <td>显示书签</td>
+      </tr>
+  </tbody>
+</table></div>
+    </article>
+    
+            <br/><br/><br/>
+            <hr/>
+            <div id="valine" class="comment"></div>
+          
+            <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+          
+            <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+            <script type="text/javascript">
+                new Valine({
+                    el: '#valine' ,
+                    appId: 'fBqoKNrWNFkYQMTivF00jWpk-gzGzoHsz',
+                    appKey: 'q2baN9KwoyaFHmbjMHfssLIH',
+                    notify: 'true', 
+                    verify: 'false', 
+                    avatar:'hide', 
+                    placeholder: '说点什么吧~',
+                    visitor: ''
+                });
+            </script>
+            <noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript>
+
+  </main>
+
+      </div>
+      <footer>
+  <hr />
+  
+    <p id="social">
+      Find me around the web:
+      <br />
+      
+        
+        <a href="https://github.com/zhengxiaopeng" target="_blank">GitHub</a>
+      
+         | 
+        <a href="https://juejin.cn/user/3051900006044056" target="_blank">Juejin</a>
+      
+         | 
+        <a href="http://www.zhihu.com/people/rocko" target="_blank">Zhihu</a>
+      
+         | 
+        <a href="http://blog.csdn.net/bbld_" target="_blank">CSDN</a>
+      
+         | 
+        <a href="http://weibo.com/678662430" target="_blank">Weibo</a>
+      
+    </p>
+  
+  <p class="copyright">
+    Copyright © 2024
+    <a href="https://rocko.vip/" ><strong>Rocko</strong></a>.
+    This work is licensed under the
+    <a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA 4.0</a> license.
+  </p>
+  <p class="builtWith">
+    Powered by
+    <a href="http://www.gohugo.io/" target="_blank">Hugo</a>.
+  </p>
+</footer>
+
+    </div>
+  </body>
+</html>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>文字 on Rocko&#39;s blog</title>
+    <link>https://rocko.vip/tags/%E6%96%87%E5%AD%97/</link>
+    <description>Recent content in 文字 on Rocko&#39;s blog</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 04 Mar 2015 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://rocko.vip/tags/%E6%96%87%E5%AD%97/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>【译】Spans，一个强大的概念</title>
+      <link>https://rocko.vip/posts/%E8%AF%91spans%E4%B8%80%E4%B8%AA%E5%BC%BA%E5%A4%A7%E7%9A%84%E6%A6%82%E5%BF%B5/</link>
+      <pubDate>Wed, 04 Mar 2015 00:00:00 +0000</pubDate>
+      <guid>https://rocko.vip/posts/%E8%AF%91spans%E4%B8%80%E4%B8%AA%E5%BC%BA%E5%A4%A7%E7%9A%84%E6%A6%82%E5%BF%B5/</guid>
+      <description>&lt;h3 id=&#34;前言&#34;&gt;前言&lt;/h3&gt;&#xA;&lt;p&gt;原文：&lt;a href=&#34;http://flavienlaurent.com/blog/2014/01/31/spans/&#34;&gt;Spans, a Powerful Concept.&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;最近，我写了一篇关于 NewStand app 和 app 上 ActionBar 的图标的翻转动效的文章。&lt;a href=&#34;http://cyrilmottier.com/&#34;&gt;Cyril Mottier&lt;/a&gt; 建议我采用一个很优雅的方案，即使用 Spans 去淡入淡出 ActionBar 的标题。&#xA;此外，我一直想尝试所有可用的 Sapn 色的类型：&lt;a href=&#34;http://developer.android.com/reference/android/text/style/ImageSpan.html&#34;&gt;ImageSpan&lt;/a&gt;、&lt;a href=&#34;http://developer.android.com/reference/android/text/style/BackgroundColorSpan.html&#34;&gt;BackgroundColorSpan&lt;/a&gt; 等。他们非常简单易用但是（也）没有任何关于它们的文档和详细信息。&#xA;因此，在这篇文章中，我将探索在 Spans 的框架下什么是可以做的，然后，我将会告诉你怎么去进阶使用 Spans。&#xA;你可以下载和安装 &lt;a href=&#34;https://github.com/flavienlaurent/spans/raw/master/sample.apk&#34;&gt;demo 程序&lt;/a&gt;，查看&lt;a href=&#34;https://github.com/flavienlaurent/spans&#34;&gt;源码&lt;/a&gt;。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

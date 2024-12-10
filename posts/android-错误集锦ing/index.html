@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content=""
+  />
+  
+    
+      <title>Android 错误集锦ing... | Rocko&#39;s blog</title>
+    
+  
+  <link rel="stylesheet" href="/css/reset.css"/>
+  <link rel="stylesheet" href="/css/font.css"/>
+  <link rel="stylesheet" href="/css/smigle.css"/>
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+</head>
+
+  <body>
+    <div id="root">
+      <header>
+  <div id="brand">
+    <a class="icon-link" href="https://rocko.vip/">
+      <img
+        class="icon"
+        src="/images/rocko.webp"
+      />
+    </a>
+    <div class="text">
+      <a href="https://rocko.vip/"><h1>Rocko&#39;s blog</h1></a>
+      <h3>Live in the moment</h3>
+    </div>
+  </div>
+  <nav>
+    
+      
+        
+        <a href="/"><b>Home</b></a>
+      
+         | 
+        <a href="/about/"><b>About</b></a>
+      
+         | 
+        <a href="/posts/"><b>Posts</b></a>
+      
+         | 
+        <a href="/categories/"><b>Categories</b></a>
+      
+         | 
+        <a href="/tags/"><b>Tags</b></a>
+      
+         | 
+        <a href="/index.xml"><b>RSS</b></a>
+      
+      |<a id="header-high" style="text-decoration: none; margin-left:12px; width:71px; margin-right:5px" class="header-icon waves-effect waves-circle waves-light"  onClick="javascript:(    /*     * Copyright (C) 2015 Rocko (rocko.xyz) <rocko.zxp@gmail.com>     *     * Licensed under the Apache License, Version 2.0 (the 'License');     * you may not use this file except in compliance with the License.     * You may obtain a copy of the License at     *     *      http://www.apache.org/licenses/LICENSE-2.0     *     * Unless required by applicable law or agreed to in writing, software     * distributed under the License is distributed on an 'AS IS' BASIS,     * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.     * See the License for the specific language governing permissions and     * limitations under the License.     */    function go() {        function c() {        var e = document.createElement('link');        e.setAttribute('type', 'text/css');        e.setAttribute('rel', 'stylesheet');        e.setAttribute('href', f);        e.setAttribute('class', l);        document.body.appendChild(e)    }     function h() {        var e = document.getElementsByClassName(l);        for (var t = 0; t < e.length; t++) {            document.body.removeChild(e[t])        }    }     function p() {        var e = document.createElement('div');        e.setAttribute('class', a);        document.body.appendChild(e);        setTimeout(function() {            document.body.removeChild(e)        }, 100)    }     function d(e) {        return {            height : e.offsetHeight,            width : e.offsetWidth        }    }     function v(i) {        var s = d(i);        return s.height > e && s.height < n && s.width > t && s.width < r    }     function m(e) {        var t = e;        var n = 0;        while (!!t) {            n += t.offsetTop;            t = t.offsetParent        }        return n    }     function g() {        var e = document.documentElement;        if (!!window.innerWidth) {            return window.innerHeight        } else if (e && !isNaN(e.clientHeight)) {            return e.clientHeight        }        return 0    }     function y() {        if (window.pageYOffset) {            return window.pageYOffset        }        return Math.max(document.documentElement.scrollTop, document.body.scrollTop)    }     function E(e) {        var t = m(e);        return t >= w && t <= b + w    }     var songs = ['/media/Music-Fashion_Show.mp3', '/media/G-Love.Phonk.mp3', '/media/APT.mp3', '/media/Music-outside.mp3', '/media/Music-sunburst.mp3', '/media/Music-Wake-Live.mp3'];    function S() {        var e = document.getElementById('audio_element_id');        if(e != null){            var index = parseInt(e.getAttribute('curSongIndex'));            if(index > songs.length - 2) {                index = 0;            } else {                index++;            }            e.setAttribute('curSongIndex', index);            N();        }        e.src = i;        e.play()    }     function x(e) {        e.className += ' ' + s + ' ' + o    }     function T(e) {        e.className += ' ' + s + ' ' + u[Math.floor(Math.random() * u.length)]    }     function N() {        var e = document.getElementsByClassName(s);        var t = new RegExp('\\b' + s + '\\b');        for (var n = 0; n < e.length; ) {            e[n].className = e[n].className.replace(t, '')        }    }    function initAudioEle() {        var e = document.getElementById('audio_element_id');        if(e === null){            e = document.createElement('audio');            e.setAttribute('class', l);            e.setAttribute('curSongIndex', 0);            e.id = 'audio_element_id';            e.loop = false;            e.bgcolor = 0;            e.addEventListener('canplay', function() {            setTimeout(function() {                x(k)            }, 500);            setTimeout(function() {                N();                p();                for (var e = 0; e < O.length; e++) {                    T(O[e])                }            }, 8000)        }, true);        e.addEventListener('ended', function() {            N();            h();            go();        }, true);        e.innerHTML = ' <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>';        document.body.appendChild(e);        }    }        initAudioEle();    var e = 30;    var t = 30;    var n = 350;    var r = 350;    var curSongIndex = parseInt(document.getElementById('audio_element_id').getAttribute('curSongIndex'));    var i = songs[curSongIndex];        var s = 'mw-harlem_shake_me';    var o = 'im_first';    var u = ['im_drunk', 'im_baked', 'im_trippin', 'im_blown'];    var a = 'mw-strobe_light';    var f = '/css/harlem-shake-style.css';        var l = 'mw_added_css';    var b = g();    var w = y();    var C = document.getElementsByTagName('*');    var k = null;    for (var L = 0; L < C.length; L++) {        var A = C[L];        if (v(A)) {            if (E(A)) {                k = A;                break            }        }    }    if (A === null) {        console.warn('Could not find a node of the right size. Please try a different page.');        return    }    c();    S();    var O = [];    for (var L = 0; L < C.length; L++) {        var A = C[L];        if (v(A)) {            O.push(A)        }    }    })()" >High一下</a>
+    
+  </nav>
+  <hr />
+</header>
+
+      <div id="content">
+        
+  <main>
+    <article>
+      <h1 class="title">Android 错误集锦ing...</h1>
+      
+      <div class="post-meta">
+  <strong>
+    <span>Posted on</span>
+    <time>2015-02-05</time>
+    <span>in</span>
+    
+      <a href="/categories/android">Android</a>
+  </strong>
+  <span> • 885 words</span>
+  <span> • 5 minute read</span>
+  
+  
+    <div>
+      <span>Tags:</span>
+      
+        <a href="/tags/%E9%94%99%E8%AF%AF">错误</a>
+    </div>
+  
+</div>
+
+      <div class="content"><p>Fork from my csdn blog: <a href="http://blog.csdn.net/bbld_/article/details/39520249">Android 错误集锦(ing&hellip;)</a>.
+Last update time: <em>2016-03-06 23:34:26</em>.</p>
+<p>温馨提示：<code>Ctrl+F查找</code></p>
+<hr>
+<p><strong>系统环境：</strong>
+Windows7 64位
+<strong>问题描述：</strong>
+Eclipse真机无法打印log信息
+<strong>错误提示：</strong>
+&hellip;
+<strong>解决方案：</strong>
+window&ndash;&gt;show view&ndash;&gt;android-&gt;devices，打开devices，点击右边的截屏图片的按钮。等到出现截图的时候，logcat就出来信息了（不保证每次都有用）</p>
+<hr>
+<p><strong>系统环境：</strong>
+Windows7 64位
+<strong>问题描述：</strong>
+xml（资源）文件里面的错误
+<strong>错误提示：</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>android: invalid start tag xxxxx 错误原因
+</span></span></code></pre></div><p><strong>解决方案：</strong>
+今天在学shape这个属性,结果创建的xml总是提示这个错误百思不得其解,后来找到原因了我把这个xml文件放错了位置,放到了res/layout路径下应该放在drawable的路径下才对</p>
+<hr>
+<p><strong>系统环境：</strong>
+Windows7 64位
+<strong>问题描述：</strong>
+无法run(运行)工程
+<strong>错误提示：</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Conversion to Dalvik format failed with error <span style="color:#ae81ff">1</span>
+</span></span></code></pre></div><p><strong>解决方案：</strong>
+第一种情况包导入错误.点击工程&ndash;&gt;build path&ndash;&gt;libraries&ndash;&gt;选中android1.x 或者android2.x ，点击remove。然后再点击add library&ndash;&gt;User Library &ndash;&gt;next&ndash;&gt;User Libraries&ndash;&gt;new 你取一个名字 比如android2.1 点击OK，选中android2.1&ndash;&gt;add jars&ndash;&gt;\android-sdk-windows\platforms\android-7\android.jar 点击打开，点击ok&ndash;&gt;finish.</p>
+<p>第二种情况签名时没有成功。签名：java -jar signapk.jar platform.x509.pem platform.pk8 e:huaworkspace\hua\bin\hua.apk e:huaworkspace\hua\bin\hua_signaed.apk，如果hua_signaed.apk签名失败，那么请到你的工作目录中将hua_signaed.apk delete掉。</p>
+<p>第三种情况包冲突，请到工程目录下将相同的包删除，重新导入一个，这一点和第一种情况类似，不过这是针对其他包，不是android包</p>
+<hr>
+<p><strong>系统环境：</strong>
+Windows7 64位
+<strong>问题描述：</strong>
+导入SlidingMenu和SlidingMenu所依赖的actionbarsherlock包后再导入supportv7（用来支持ActionBar），工程一直报错、无法生成R文件。
+<strong>错误提示：</strong>
+&hellip;
+<strong>解决方案：</strong>
+不用导入v7包了，因为actionbarsherlock已经支持ActionBar，再导入v7会有冲突。</p>
+<hr>
+<p><strong>系统环境：</strong>
+Windows7 64位
+<strong>问题描述：</strong>
+FragmentTransaction使用问题。
+<strong>错误提示：</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>java.lang.IllegalStateException: commit already called.
+</span></span></code></pre></div><p><strong>解决方案：</strong>
+是因为你的ft事务是全局的变量，只能commit一次。所以用两个局部ft事务去做commit即可。 原文地址：http://blog.csdn.net/knxw0001/article/details/9363411 <br>
+补充：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>FragmentManager fragmentManager <span style="color:#f92672">=</span> getSupportFragmentManager(); 
+</span></span><span style="display:flex;"><span>FragmentTransaction fragmentTransaction <span style="color:#f92672">=</span> fragmentManager.<span style="color:#a6e22e">beginTransaction</span>(); 
+</span></span><span style="display:flex;"><span>detailFragment <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ProductDetailFragment(productId); 
+</span></span><span style="display:flex;"><span>commentFragment <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ProductCommentFragment(productId); 
+</span></span><span style="display:flex;"><span>fragmentTransaction.<span style="color:#a6e22e">add</span>(R.<span style="color:#a6e22e">id</span>.<span style="color:#a6e22e">viewgroup</span>, detailFragment); 
+</span></span><span style="display:flex;"><span>fragmentTransaction.<span style="color:#a6e22e">add</span>(R.<span style="color:#a6e22e">id</span>.<span style="color:#a6e22e">viewgroup</span>, commentFragment); 
+</span></span><span style="display:flex;"><span>fragmentTransaction.<span style="color:#a6e22e">commit</span>(); 
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//下面这个是调用的时候需要用新的局部变量  </span>
+</span></span><span style="display:flex;"><span>getSupportFragmentManager().<span style="color:#a6e22e">beginTransaction</span>().<span style="color:#a6e22e">hide</span>(commentFragment).<span style="color:#a6e22e">show</span>(detailFragment).<span style="color:#a6e22e">commit</span>();
+</span></span></code></pre></div><hr>
+<p><strong>系统环境：</strong>
+Windows7 64位
+<strong>问题描述：</strong>
+使用Genymotion调试出现错误INSTALL_FAILED_CPU_ABI_INCOMPATIBLE
+<strong>错误提示：</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Installation error: INSTALL_FAILED_CPU_ABI_INCOMPATIBLE
+</span></span><span style="display:flex;"><span>Please check logcat output <span style="color:#66d9ef">for</span> more details.
+</span></span><span style="display:flex;"><span>Launch canceled!
+</span></span></code></pre></div><p><strong>解决方案：</strong>
+点击下载<a href="http://pan.baidu.com/s/1c0ELjzi#dir/path=%2FJustDoIt%2F%E4%B8%80%E4%BA%9B%E4%B8%8B%E8%BD%BD%E9%93%BE%E6%8E%A5%2F%E6%9C%89%E9%81%93">Genymotion-ARM-Translation.zip</a>
+将你的虚拟器运行起来，将下载好的zip包用鼠标拖到虚拟机窗口中，出现确认对跨框点OK就行。然后重启你的虚拟机。</p>
+<hr>
+<p><strong>系统环境：</strong>
+Windows7 64位
+<strong>问题描述：</strong>
+自定义View（RemoteViews）无法发出通知，程序报错
+<strong>错误提示：</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>android.app.RemoteServiceException: Bad notification posted from package com.gdut.repairsystem:Couldn<span style="color:#960050;background-color:#1e0010">&#39;</span>t expand RemoteViews <span style="color:#66d9ef">for</span>: StatusBarNotification<span style="color:#f92672">(</span>package<span style="color:#f92672">=</span>com.gdut.repairsystem id<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span> tag<span style="color:#f92672">=</span>null notification<span style="color:#f92672">=</span>Notification<span style="color:#f92672">(</span>vibrate<span style="color:#f92672">=</span>null,sound<span style="color:#f92672">=</span>null,defaults<span style="color:#f92672">=</span>0x0,flags<span style="color:#f92672">=</span>0x10<span style="color:#f92672">))</span>
+</span></span></code></pre></div><p><strong>解决方案：</strong>
+在自定义布局中使用了不自持的组件（这里居然是使用了自定义style的原因！！！(最外层的layout不能，里面的可以)）。</p>
+<hr>
+<p><strong>系统环境：</strong>
+Windows7 64位
+<strong>问题描述：</strong>
+jni代码里：Type Method &lsquo;NewStringUTF&rsquo; could not be resolved<br>
+<strong>错误提示：</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Type Method <span style="color:#e6db74">&#39;NewStringUTF&#39;</span> could not be resolved
+</span></span></code></pre></div><p><strong>解决方案：</strong>
+点开problems窗口把这条错误删除，ok！</p>
+<hr>
+<p><strong>系统环境：</strong>
+Windows7 64位
+<strong>问题描述：</strong>
+Intent使用serializable传递复杂数据时报错
+<strong>错误提示：</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Parcelable encountered IOException writing serializable object
+</span></span></code></pre></div><p><strong>解决方案：</strong>
+在Activity之间传递数据必须所有的内容都实现serializable接口才行。</p>
+<hr>
+<p><strong>系统环境：</strong>
+Windows7 64位
+<strong>问题描述：</strong>
+Intent使用Parcelable传递复杂数据时报错
+<strong>错误提示：</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Unmarshalling unknown type code <span style="color:#ae81ff">7471205</span> at offset <span style="color:#ae81ff">232</span>
+</span></span></code></pre></div><p><strong>解决方案：</strong>
+在两个activitiy之间，传递一个实现了Parcelable的ArrayList，就出现了这个错误，但是当我传递其它类型的数据时（int、String）却没有问题，显然问题出现了Parcelable身上，简单找了找答案
+<img src="https://static.rocko.xyz/img/20140924103915303" alt=""></p>
+<hr>
+<p><strong>系统环境：</strong>
+Windows7 64位
+<strong>问题描述：</strong>
+使用开源控件NumberPicker，inflate时一直错误
+<strong>错误提示：</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Android - Error inflating SimonVT NumberPicker class in my layout xml
+</span></span></code></pre></div><p><strong>解决方案：</strong>
+activity的主题的numberPickerStyle item（numberpicker的主题）要使用它项目中的主题！坑爹···</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#f92672">&lt;item</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;numberPickerStyle&#34;</span><span style="color:#f92672">&gt;</span>@style/NPWidget.Holo.NumberPicker<span style="color:#f92672">&lt;/item&gt;</span>
+</span></span></code></pre></div><hr>
+<p><strong>系统环境：</strong>
+Windows7 64位
+<strong>问题描述：</strong>
+使用sherlockactionbar创建searchview一直报错
+<strong>错误提示：</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sherlockactionbar Binary XML file line <span style="color:#75715e">#29: Error inflating class</span>
+</span></span></code></pre></div><p><strong>解决方案：</strong>
+values-v11等其它资源文件夹里不是使用sherlockactionbar的主题！！！</p>
+<hr>
+<p><strong>系统环境：</strong>
+Ubuntu12.04 64位
+<strong>问题描述：</strong>
+Android环境搭建完毕，但指定了sdk路径没问题依然报错，搭建JDK，Android环境，把android SDK复制过来后，里面的adb和其它命令的都不能使用。
+<strong>错误提示：</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>android-sdk-linux_86/platform-tools/adb: 没有那个文件或目录。
+</span></span><span style="display:flex;"><span>android-sdk-linux/platform-tools/adb: 没有那个文件或目录
+</span></span><span style="display:flex;"><span>AndroidSDK/sdk/build-tools/19.0.1/aapt: error <span style="color:#66d9ef">while</span> loading shared libraries:
+</span></span><span style="display:flex;"><span>Failed to get the adb version: Cannot run program <span style="color:#e6db74">&#34;/home/android-sdk-linux/platform-tools/adb&#34;</span>:
+</span></span><span style="display:flex;"><span>error<span style="color:#f92672">=</span>2, 没有那个文件或目录<span style="color:#e6db74">`</span>
+</span></span></code></pre></div><p><strong>解决方案：</strong>
+由于是64bit的系统，而Android sdk只有32bit的程序，需要安装ia32-libs，才能使用。
+运行如下命令：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># sudo apt-get install ia32-libs</span>
+</span></span></code></pre></div><hr>
+<p><strong>系统环境：</strong>
+Windows7 64位
+<strong>问题描述：</strong>
+SlidingMenu、ActionBarSherLock编译问题
+<strong>错误提示：</strong>
+&hellip;
+<strong>解决方案：</strong>
+1、新版的SlidingMenu-master需要使用google api编译。
+2、SlidingMenu的library编译通过后，把编译好的ActionBarSherLock作为一个library导入SlidingMenu。
+导入方法是 右键-properties-android-add-选择ActionBarSherLock，因为SlidingMenu稍后也是以liberary的形式导入自己的项目中，所以此处勾选is a liberary。
+3、新建项目，将SlidingMunu作为liberary导入，方法同上。
+4、可能报找不到getSupportActionBar等ActionBarSherLock的方法。原因是使用ActionBarSherLock的Activity需继承于SherlockActivity，修改SlidingMenu liberary中的SlidingFragmentActivity，让它继承于SherlockFragmentActivity，重新编译liberary导入。
+5、项目红叉或红叹号，删除support_v4包，ActionBarSherLock已包含此包，会冲突。也有可能是主题问题，注意appication theme是否正确，参照exsample。
+6、注意把ActionBar、某些Fragment等替换成ActionBarSherLock包中的类。
+7、左上角的指示图片是在application theme引用的style里设的。
+8、 actionBar.setNavigationMode设置不同模式使用的监听类不同。</p>
+<hr>
+<p><strong>系统环境：</strong>
+Ubuntu12.04 64位
+<strong>问题描述：</strong>
+真机连接无法识别。
+<strong>错误提示：</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>adb devices
+</span></span><span style="display:flex;"><span>List of devices attached
+</span></span><span style="display:flex;"><span>???????????? no permissions
+</span></span></code></pre></div><p><strong>解决方案：</strong>
+1、设置usb权限</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$lsusb
+</span></span><span style="display:flex;"><span>Bus <span style="color:#ae81ff">005</span> Device 001: ID 1d6b:0001 Linux Foundation 1.1 root hub
+</span></span><span style="display:flex;"><span>Bus <span style="color:#ae81ff">004</span> Device 001: ID 1d6b:0001 Linux Foundation 1.1 root hub
+</span></span><span style="display:flex;"><span>Bus <span style="color:#ae81ff">003</span> Device 001: ID 1d6b:0001 Linux Foundation 1.1 root hub
+</span></span><span style="display:flex;"><span>Bus <span style="color:#ae81ff">002</span> Device 004: ID 093a:2510 Pixart Imaging, Inc. Hama Optical Mouse
+</span></span><span style="display:flex;"><span>Bus <span style="color:#ae81ff">002</span> Device 002: ID 413c:2003 Dell Computer Corp. Keyboard
+</span></span><span style="display:flex;"><span>Bus <span style="color:#ae81ff">002</span> Device 001: ID 1d6b:0001 Linux Foundation 1.1 root hub
+</span></span><span style="display:flex;"><span>Bus <span style="color:#ae81ff">001</span> Device 022: ID 0fce:6146 Sony Ericsson Mobile Communications AB 
+</span></span><span style="display:flex;"><span>Bus <span style="color:#ae81ff">001</span> Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+</span></span></code></pre></div><p>列表中，Bus 001 Device 022: ID 0fce:6146 Sony Ericsson Mobile Communications AB. 这一行为手机的usb使用端口，记录一下，id为0fce</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo gedit /etc/udev/rules.d/70-android.rules
+</span></span></code></pre></div><p>加入以下内容：
+SUBSYSTEM==&ldquo;usb&rdquo;, ATTRS{idVendor}==&ldquo;0fce&rdquo;, ATTRS{idProduct}==&ldquo;6146&rdquo;,MODE=&ldquo;0666&rdquo;
+运行命令，重启udev：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo chmod a+rx /etc/udev/rules.d/70-android.rules
+</span></span><span style="display:flex;"><span>sudo service udev restart
+</span></span></code></pre></div><p>2、拔掉usb重新连上再执行：
+//重新启动adb server</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo ./adb kill-server
+</span></span><span style="display:flex;"><span>./adb devices
+</span></span><span style="display:flex;"><span>./adb root
+</span></span></code></pre></div><p>设置完成了</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>adb devices
+</span></span><span style="display:flex;"><span>List of devices attached 
+</span></span><span style="display:flex;"><span>434235313151564C4D45    device
+</span></span></code></pre></div><hr>
+<p><strong>系统环境：</strong>
+Windows7 64位
+<strong>问题描述：</strong>
+AndroidStudio无法更新(已加了google host)
+<strong>错误提示：</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Connection failed. Please check your network connection and try again
+</span></span></code></pre></div><p><strong>解决方案：</strong>
+修改安装目录下bin\studio.exe.vmoptions文件,如E:\Android\android-studio\bin\studio.exe.vmoptions，64位的还有studio64.exe.vmoptions
+添加内容:</p>
+<pre tabindex="0"><code>-Djava.net.preferIPv4Stack=true 
+-Didea.updates.url=http://dl.google.com/android/studio/patches/updates.xml
+-Didea.patches.url=http://dl.google.com/android/studio/patches/
+</code></pre><p>注意更新后这两个文件会被重新覆盖。</p>
+<hr>
+<p><strong>系统环境：</strong>
+Windows7 64位
+<strong>问题描述：</strong>
+使用Jackson解析key为大写的json(复杂)数据报错
+<strong>错误提示：</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Jackson with JSON: Unrecognized field, not marked as ignorable
+</span></span></code></pre></div><p><strong>解决方案：</strong>
+1、给对应的解析实体类加上注解：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@JsonIgnoreProperties</span>(ignoreUnknown <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>)
+</span></span></code></pre></div><p>2、在json解析处设置属性</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>ObjectMapper objectMapper <span style="color:#f92672">=</span> getObjectMapper();
+</span></span><span style="display:flex;"><span>objectMapper.<span style="color:#a6e22e">configure</span>(DeserializationFeature.<span style="color:#a6e22e">FAIL_ON_UNKNOWN_PROPERTIES</span>, <span style="color:#66d9ef">false</span>);
+</span></span></code></pre></div><hr>
+<p><strong>系统环境：</strong>
+Windows7 64位 Android Studio 1.0.2
+<strong>问题描述：</strong>
+run项目时报错
+<strong>错误提示：</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Error :: duplicate files during packaging of APK
+</span></span><span style="display:flex;"><span>...
+</span></span></code></pre></div><p><strong>解决方案：</strong>
+在出问题的module的build.gradle中的android节点加上：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-gradle" data-lang="gradle"><span style="display:flex;"><span>packagingOptions <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        exclude <span style="color:#e6db74">&#39;META-INF/DEPENDENCIES&#39;</span>
+</span></span><span style="display:flex;"><span>        exclude <span style="color:#e6db74">&#39;META-INF/LICENSE&#39;</span>
+</span></span><span style="display:flex;"><span>        exclude <span style="color:#e6db74">&#39;META-INF/LICENSE.txt&#39;</span>
+</span></span><span style="display:flex;"><span>        exclude <span style="color:#e6db74">&#39;META-INF/license.txt&#39;</span>
+</span></span><span style="display:flex;"><span>        exclude <span style="color:#e6db74">&#39;META-INF/NOTICE&#39;</span>
+</span></span><span style="display:flex;"><span>        exclude <span style="color:#e6db74">&#39;META-INF/NOTICE.txt&#39;</span>
+</span></span><span style="display:flex;"><span>        exclude <span style="color:#e6db74">&#39;META-INF/notice.txt&#39;</span>
+</span></span><span style="display:flex;"><span>        exclude <span style="color:#e6db74">&#39;META-INF/ASL2.0&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span></code></pre></div><hr>
+<p><strong>系统环境：</strong>
+Windows7 64位 Android Studio 1.0.2
+<strong>问题描述：</strong>
+Android Studio导入项目后问题，无法run、rebuild等。
+<strong>错误提示：</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Error:FAILURE: Build failed with an exception.
+</span></span><span style="display:flex;"><span>* What went wrong:
+</span></span><span style="display:flex;"><span>Task <span style="color:#e6db74">&#39;&#39;</span> not found in root project <span style="color:#e6db74">&#39;android-project&#39;</span>.
+</span></span><span style="display:flex;"><span>* Try:
+</span></span><span style="display:flex;"><span>Run gradle tasks to get a list of available tasks. Run with --stacktrace option to get the stack trace. Run with --info or --debug option to get more log output.
+</span></span></code></pre></div><p><strong>解决方案：</strong>
+gradle tasks命令执行正常。一般都为Gradle的问题造成的。
+从其它正常项目里复制替换掉当前项目的<code>gradlew</code>、<code>gradlew.bat</code>文件（也可自己视情况替换掉相关的gradle文件）
+打开设置，打开Gradle选项，如图，点击使用Gradle home（你本地的Gradle目录），然后点击Apply和OK，还不行可以在Use选项中来回切换Apply一下，我就遇到点多几下才正常。。
+<img src="https://static.rocko.xyz/img/Android%20%E9%94%99%E8%AF%AF%E9%9B%86%E9%94%A6ing..._1.png" alt=""></p>
+<hr>
+<p><strong>系统环境：</strong>
+Windows7 64 位 Android Studio 1.1.0
+<strong>问题描述：</strong>
+使用 ZoomButtonsController，在 Activity 重建后发生 ANR 异常退出
+<strong>错误提示：</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span> android.view.WindowLeaked: Activity org.rocko.touchlistener.subclasses.ZoomButtonsActivity has leaked window android.widget.ZoomButtonsController$Container@2b992988 that was originally added here
+</span></span><span style="display:flex;"><span>            ......
+</span></span><span style="display:flex;"><span>            at dalvik.system.NativeStart.main<span style="color:#f92672">(</span>Native Method<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>org.rocko.touchlistener.subclasses E/ActivityThread﹕ Activity org.rocko.touchlistener.subclasses.ZoomButtonsActivity has leaked IntentReceiver android.widget.ZoomButtonsController$1@2b992778 that was originally registered here. Are you missing a call to unregisterReceiver<span style="color:#f92672">()</span>?
+</span></span><span style="display:flex;"><span>    android.app.IntentReceiverLeaked: Activity org.rocko.touchlistener.subclasses.ZoomButtonsActivity has leaked IntentReceiver android.widget.ZoomButtonsController$1@2b992778 that was originally registered here. Are you missing a call to unregisterReceiver<span style="color:#f92672">()</span>?
+</span></span><span style="display:flex;"><span>            ......
+</span></span><span style="display:flex;"><span>            at dalvik.system.NativeStart.main<span style="color:#f92672">(</span>Native Method<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>01-31 18:28:29.022  11475-11475/org.rocko.touchlistener.subclasses E/AndroidRuntime﹕ FATAL EXCEPTION: main
+</span></span><span style="display:flex;"><span>    java.lang.IllegalArgumentException: Receiver not registered: android.widget.ZoomButtonsController$1@2b992778
+</span></span><span style="display:flex;"><span>            ......
+</span></span><span style="display:flex;"><span>            at dalvik.system.NativeStart.main<span style="color:#f92672">(</span>Native Method<span style="color:#f92672">)</span>
+</span></span></code></pre></div><p><strong>解决方案：</strong>
+ZoomButtonsController 造成了内存泄露，在 onDestroy 中把其注销：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onDestroy</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">super</span>.<span style="color:#a6e22e">onDestroy</span>();
+</span></span><span style="display:flex;"><span>        zoomButtonsController.<span style="color:#a6e22e">setVisible</span>(<span style="color:#66d9ef">false</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span></code></pre></div><hr>
+<p><strong>系统环境：</strong>
+Ubuntu 14.04 64 位 Android Studio 1.3.1
+<strong>问题描述：</strong>
+Android 系统源码（AOSP）导入 Android Studio 问题, idegen.jar 已经生成，但是执行生成项目文件的脚本一直报错。
+<strong>错误提示：</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Bash" data-lang="Bash"><span style="display:flex;"><span>Couldn<span style="color:#960050;background-color:#1e0010">&#39;</span>t find idegen.jar. Please run make first.
+</span></span></code></pre></div><p><strong>解决方案：</strong>
+可以直接在 <code>源码路径</code> 下执行 idegen.jar 的命令，<code>idegen.jar</code> 的路径换成你的位置</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Bash" data-lang="Bash"><span style="display:flex;"><span>java -cp /repo/aosp/output/android-5.1.1_r12/host/linux-x86/framework/idegen.jar Main
+</span></span></code></pre></div><hr>
+<p><strong>系统环境：</strong>
+Ubuntu 14.04 64 位 Android Studio 1.3.2
+<strong>问题描述：</strong>
+RSA 加解密，Android 端和 Java 服务器端加解密方式不一致问题。
+<strong>错误提示：</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Bash" data-lang="Bash"><span style="display:flex;"><span>javax.crypto.BadPaddingException: Blocktype mismatch: <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>    at sun.security.rsa.RSAPadding.unpadV15<span style="color:#f92672">(</span>RSAPadding.java:311<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    at sun.security.rsa.RSAPadding.unpad<span style="color:#f92672">(</span>RSAPadding.java:255<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    at com.sun.crypto.provider.RSACipher.a<span style="color:#f92672">(</span>DashoA13*..<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    at com.sun.crypto.provider.RSACipher.engineDoFinal<span style="color:#f92672">(</span>DashoA13*..<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    at javax.crypto.Cipher.doFinal<span style="color:#f92672">(</span>DashoA13*..<span style="color:#f92672">)</span>
+</span></span></code></pre></div><p><strong>解决方案：</strong>
+PublicKey、PrivateKey 获取（KeyPairGenerator）仍为 RSA，Cipher 生成方式修改如下</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>Cipher cipher <span style="color:#f92672">=</span> Cipher.<span style="color:#a6e22e">getInstance</span>(<span style="color:#e6db74">&#34;RSA/ECB/PKCS1Padding&#34;</span>); <span style="color:#75715e">// 1 推荐</span>
+</span></span><span style="display:flex;"><span>Cipher cipher <span style="color:#f92672">=</span> Cipher.<span style="color:#a6e22e">getInstance</span>(<span style="color:#e6db74">&#34;RSA/ECB/NoPadding&#34;</span>); <span style="color:#75715e">// 2 解密后会有空格，需 trim 去掉</span>
+</span></span></code></pre></div><hr>
+<p><strong>系统环境：</strong>
+Ubuntu 14.04 64 位 Android Studio 1.5.1
+<strong>问题描述：</strong>
+Espresso、espresso-contrib（2.2.1）问题
+<strong>错误提示：</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Bash" data-lang="Bash"><span style="display:flex;"><span>java.lang.IncompatibleClassChangeError: xxx.xxx.XxxActivity
+</span></span><span style="display:flex;"><span>                                        ......
+</span></span></code></pre></div><p><strong>解决方案：</strong>
+espresso-contrib内部的依赖冲突，exclude掉相关依赖模块！</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>androidTestCompile (ext.<span style="color:#a6e22e">test</span>.<span style="color:#a6e22e">espressoContrib</span>){
+</span></span><span style="display:flex;"><span>    exclude module: <span style="color:#960050;background-color:#1e0010">&#39;</span>support<span style="color:#f92672">-</span>annotations<span style="color:#960050;background-color:#1e0010">&#39;</span>
+</span></span><span style="display:flex;"><span>    exclude module: <span style="color:#960050;background-color:#1e0010">&#39;</span>recyclerview<span style="color:#f92672">-</span>v7<span style="color:#960050;background-color:#1e0010">&#39;</span>
+</span></span><span style="display:flex;"><span>    exclude module: <span style="color:#960050;background-color:#1e0010">&#39;</span>support<span style="color:#f92672">-</span>v4<span style="color:#960050;background-color:#1e0010">&#39;</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span></code></pre></div><hr>
+<p><strong>系统环境：</strong>
+Ubuntu 14.04 64 位 Android Studio 1.5.1
+<strong>问题描述：</strong>
+Android Studio 中项目编译（build）错误
+<strong>错误提示：</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Bash" data-lang="Bash"><span style="display:flex;"><span>Error:Execution failed <span style="color:#66d9ef">for</span> task <span style="color:#e6db74">&#39;:app:transformClassesWithDexForDebug&#39;</span>. &gt; com.android.build.api.transform.TransformException: com.android.ide.common.process.ProcessException: org.gradle.process.internal.ExecException: Process <span style="color:#e6db74">&#39;command &#39;</span><span style="color:#960050;background-color:#1e0010">&#39;</span> finished with non-zero exit value
+</span></span></code></pre></div><p><strong>解决方案：</strong>
+在 build.gradle 中开启 multiDexEnabled</p>
+<pre tabindex="0"><code class="language-Gradle" data-lang="Gradle">android {
+    ...
+    defaultConfig {
+        multiDexEnabled true
+    }
+}
+</code></pre><hr></div>
+    </article>
+    
+            <br/><br/><br/>
+            <hr/>
+            <div id="valine" class="comment"></div>
+          
+            <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+          
+            <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+            <script type="text/javascript">
+                new Valine({
+                    el: '#valine' ,
+                    appId: 'fBqoKNrWNFkYQMTivF00jWpk-gzGzoHsz',
+                    appKey: 'q2baN9KwoyaFHmbjMHfssLIH',
+                    notify: 'true', 
+                    verify: 'false', 
+                    avatar:'hide', 
+                    placeholder: '说点什么吧~',
+                    visitor: ''
+                });
+            </script>
+            <noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript>
+
+  </main>
+
+      </div>
+      <footer>
+  <hr />
+  
+    <p id="social">
+      Find me around the web:
+      <br />
+      
+        
+        <a href="https://github.com/zhengxiaopeng" target="_blank">GitHub</a>
+      
+         | 
+        <a href="https://juejin.cn/user/3051900006044056" target="_blank">Juejin</a>
+      
+         | 
+        <a href="http://www.zhihu.com/people/rocko" target="_blank">Zhihu</a>
+      
+         | 
+        <a href="http://blog.csdn.net/bbld_" target="_blank">CSDN</a>
+      
+         | 
+        <a href="http://weibo.com/678662430" target="_blank">Weibo</a>
+      
+    </p>
+  
+  <p class="copyright">
+    Copyright © 2024
+    <a href="https://rocko.vip/" ><strong>Rocko</strong></a>.
+    This work is licensed under the
+    <a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA 4.0</a> license.
+  </p>
+  <p class="builtWith">
+    Powered by
+    <a href="http://www.gohugo.io/" target="_blank">Hugo</a>.
+  </p>
+</footer>
+
+    </div>
+  </body>
+</html>

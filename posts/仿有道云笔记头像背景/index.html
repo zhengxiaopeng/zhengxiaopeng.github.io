@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content=""
+  />
+  
+    
+      <title>仿有道云笔记头像背景 | Rocko&#39;s blog</title>
+    
+  
+  <link rel="stylesheet" href="/css/reset.css"/>
+  <link rel="stylesheet" href="/css/font.css"/>
+  <link rel="stylesheet" href="/css/smigle.css"/>
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+</head>
+
+  <body>
+    <div id="root">
+      <header>
+  <div id="brand">
+    <a class="icon-link" href="https://rocko.vip/">
+      <img
+        class="icon"
+        src="/images/rocko.webp"
+      />
+    </a>
+    <div class="text">
+      <a href="https://rocko.vip/"><h1>Rocko&#39;s blog</h1></a>
+      <h3>Live in the moment</h3>
+    </div>
+  </div>
+  <nav>
+    
+      
+        
+        <a href="/"><b>Home</b></a>
+      
+         | 
+        <a href="/about/"><b>About</b></a>
+      
+         | 
+        <a href="/posts/"><b>Posts</b></a>
+      
+         | 
+        <a href="/categories/"><b>Categories</b></a>
+      
+         | 
+        <a href="/tags/"><b>Tags</b></a>
+      
+         | 
+        <a href="/index.xml"><b>RSS</b></a>
+      
+      |<a id="header-high" style="text-decoration: none; margin-left:12px; width:71px; margin-right:5px" class="header-icon waves-effect waves-circle waves-light"  onClick="javascript:(    /*     * Copyright (C) 2015 Rocko (rocko.xyz) <rocko.zxp@gmail.com>     *     * Licensed under the Apache License, Version 2.0 (the 'License');     * you may not use this file except in compliance with the License.     * You may obtain a copy of the License at     *     *      http://www.apache.org/licenses/LICENSE-2.0     *     * Unless required by applicable law or agreed to in writing, software     * distributed under the License is distributed on an 'AS IS' BASIS,     * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.     * See the License for the specific language governing permissions and     * limitations under the License.     */    function go() {        function c() {        var e = document.createElement('link');        e.setAttribute('type', 'text/css');        e.setAttribute('rel', 'stylesheet');        e.setAttribute('href', f);        e.setAttribute('class', l);        document.body.appendChild(e)    }     function h() {        var e = document.getElementsByClassName(l);        for (var t = 0; t < e.length; t++) {            document.body.removeChild(e[t])        }    }     function p() {        var e = document.createElement('div');        e.setAttribute('class', a);        document.body.appendChild(e);        setTimeout(function() {            document.body.removeChild(e)        }, 100)    }     function d(e) {        return {            height : e.offsetHeight,            width : e.offsetWidth        }    }     function v(i) {        var s = d(i);        return s.height > e && s.height < n && s.width > t && s.width < r    }     function m(e) {        var t = e;        var n = 0;        while (!!t) {            n += t.offsetTop;            t = t.offsetParent        }        return n    }     function g() {        var e = document.documentElement;        if (!!window.innerWidth) {            return window.innerHeight        } else if (e && !isNaN(e.clientHeight)) {            return e.clientHeight        }        return 0    }     function y() {        if (window.pageYOffset) {            return window.pageYOffset        }        return Math.max(document.documentElement.scrollTop, document.body.scrollTop)    }     function E(e) {        var t = m(e);        return t >= w && t <= b + w    }     var songs = ['/media/Music-Fashion_Show.mp3', '/media/G-Love.Phonk.mp3', '/media/APT.mp3', '/media/Music-outside.mp3', '/media/Music-sunburst.mp3', '/media/Music-Wake-Live.mp3'];    function S() {        var e = document.getElementById('audio_element_id');        if(e != null){            var index = parseInt(e.getAttribute('curSongIndex'));            if(index > songs.length - 2) {                index = 0;            } else {                index++;            }            e.setAttribute('curSongIndex', index);            N();        }        e.src = i;        e.play()    }     function x(e) {        e.className += ' ' + s + ' ' + o    }     function T(e) {        e.className += ' ' + s + ' ' + u[Math.floor(Math.random() * u.length)]    }     function N() {        var e = document.getElementsByClassName(s);        var t = new RegExp('\\b' + s + '\\b');        for (var n = 0; n < e.length; ) {            e[n].className = e[n].className.replace(t, '')        }    }    function initAudioEle() {        var e = document.getElementById('audio_element_id');        if(e === null){            e = document.createElement('audio');            e.setAttribute('class', l);            e.setAttribute('curSongIndex', 0);            e.id = 'audio_element_id';            e.loop = false;            e.bgcolor = 0;            e.addEventListener('canplay', function() {            setTimeout(function() {                x(k)            }, 500);            setTimeout(function() {                N();                p();                for (var e = 0; e < O.length; e++) {                    T(O[e])                }            }, 8000)        }, true);        e.addEventListener('ended', function() {            N();            h();            go();        }, true);        e.innerHTML = ' <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>';        document.body.appendChild(e);        }    }        initAudioEle();    var e = 30;    var t = 30;    var n = 350;    var r = 350;    var curSongIndex = parseInt(document.getElementById('audio_element_id').getAttribute('curSongIndex'));    var i = songs[curSongIndex];        var s = 'mw-harlem_shake_me';    var o = 'im_first';    var u = ['im_drunk', 'im_baked', 'im_trippin', 'im_blown'];    var a = 'mw-strobe_light';    var f = '/css/harlem-shake-style.css';        var l = 'mw_added_css';    var b = g();    var w = y();    var C = document.getElementsByTagName('*');    var k = null;    for (var L = 0; L < C.length; L++) {        var A = C[L];        if (v(A)) {            if (E(A)) {                k = A;                break            }        }    }    if (A === null) {        console.warn('Could not find a node of the right size. Please try a different page.');        return    }    c();    S();    var O = [];    for (var L = 0; L < C.length; L++) {        var A = C[L];        if (v(A)) {            O.push(A)        }    }    })()" >High一下</a>
+    
+  </nav>
+  <hr />
+</header>
+
+      <div id="content">
+        
+  <main>
+    <article>
+      <h1 class="title">仿有道云笔记头像背景</h1>
+      
+      <div class="post-meta">
+  <strong>
+    <span>Posted on</span>
+    <time>2015-03-02</time>
+    <span>in</span>
+    
+      <a href="/categories/android">Android</a>
+  </strong>
+  <span> • 316 words</span>
+  <span> • 2 minute read</span>
+  
+  
+    <div>
+      <span>Tags:</span>
+      
+        <a href="/tags/%E5%9B%BE%E5%83%8F">图像</a>
+    </div>
+  
+</div>
+
+      <div class="content"><h2 id="前言">前言</h2>
+<p>如题，本文模仿实现有道云笔记的侧滑菜单中的头像背景的效果，这一效果可用借鉴使用，毕竟大多数时候我们在应用上的资料可能没有像play、微博等的个人页面的自定义背景图。没用过这款应用的童鞋可以下载这款应用看看。</p>
+<h2 id="分析">分析</h2>
+<p>先来看看有道云笔记上的图片（重点是头像上的背景图，真机看起来效果比较好）：
+<img src="/images/%E4%BB%BF%E6%9C%89%E9%81%93%E4%BA%91%E7%AC%94%E8%AE%B0%E5%A4%B4%E5%83%8F%E8%83%8C%E6%99%AF-1.jpg.png" alt="有道云笔记效果图"></p>
+<p>在手机上没找到背景的效果图，应该是在手机上生成的效果图，根据它的背景图片可以看出图片时黑白的而且是有点朦胧感，所以经过分析和实验得到做这一效果可以使用的方法：黑白效果用<code>ColorFilter</code>实现、模糊效果可以用<code>RenderScript</code>的API实现。代码的步骤也是先得到黑白的Bitmap再把它模糊处理。</p>
+<h2 id="黑白">黑白</h2>
+<p>Android中图片是以RGBA像素点的形式加载到内存中的，这些像素信息通过<a href="http://developer.android.com/reference/android/graphics/ColorMatrix.html">ColorMatrix</a>，官方文档的描述如下：
+4×5矩阵转换位图的颜色+ alpha分量。该矩阵存储在一个单独的阵列中，其进行如下处理：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#f92672">[</span> a, b, c, d, e,
+</span></span><span style="display:flex;"><span>  f, g, h, i, j,
+</span></span><span style="display:flex;"><span>  k, l, m, n, o,
+</span></span><span style="display:flex;"><span>  p, q, r, s, t <span style="color:#f92672">]</span>
+</span></span></code></pre></div><p>当应用于Color<a href="%E5%9B%BE%E7%89%87%E7%9A%84%E5%8E%9FRGBA%E5%80%BC">R，G，B，A</a>，所以将上面矩阵跟图片的原值相乘后的结果：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span> R<span style="color:#960050;background-color:#1e0010">&#39;</span> <span style="color:#f92672">=</span> a<span style="color:#f92672">*</span>R <span style="color:#f92672">+</span> b<span style="color:#f92672">*</span>G <span style="color:#f92672">+</span> c<span style="color:#f92672">*</span>B <span style="color:#f92672">+</span> d<span style="color:#f92672">*</span>A <span style="color:#f92672">+</span> e;
+</span></span><span style="display:flex;"><span> G<span style="color:#960050;background-color:#1e0010">&#39;</span> <span style="color:#f92672">=</span> f<span style="color:#f92672">*</span>R <span style="color:#f92672">+</span> g<span style="color:#f92672">*</span>G <span style="color:#f92672">+</span> h<span style="color:#f92672">*</span>B <span style="color:#f92672">+</span> i<span style="color:#f92672">*</span>A <span style="color:#f92672">+</span> j;
+</span></span><span style="display:flex;"><span> B<span style="color:#960050;background-color:#1e0010">&#39;</span> <span style="color:#f92672">=</span> k<span style="color:#f92672">*</span>R <span style="color:#f92672">+</span> l<span style="color:#f92672">*</span>G <span style="color:#f92672">+</span> m<span style="color:#f92672">*</span>B <span style="color:#f92672">+</span> n<span style="color:#f92672">*</span>A <span style="color:#f92672">+</span> o;
+</span></span><span style="display:flex;"><span> A<span style="color:#960050;background-color:#1e0010">&#39;</span> <span style="color:#f92672">=</span> p<span style="color:#f92672">*</span>R <span style="color:#f92672">+</span> q<span style="color:#f92672">*</span>G <span style="color:#f92672">+</span> r<span style="color:#f92672">*</span>B <span style="color:#f92672">+</span> s<span style="color:#f92672">*</span>A <span style="color:#f92672">+</span> t;
+</span></span></code></pre></div><p>所以ColorMatrix经<a href="http://developer.android.com/reference/android/graphics/ColorFilter.html">ColorFilter</a>就可以在Android中处理图片的颜色，关于这两个类更详尽的信息可以自己继续Google一下。而把图片变黑白就简单一些了，直接通过ColorMatrix的<a href="http://developer.android.com/reference/android/graphics/ColorMatrix.html#setSaturation(float)">setSaturation</a>方法更改图片的饱和度即可，我们知道当图片的饱和度为0时就会变为黑白了。此外我们也可麻烦一点自己通过ColorMatrix调出一个合适的值也可以，这也是ColorMatrix的强大之处，下面是黑白效果的ColorMatrix的值：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#66d9ef">float</span><span style="color:#f92672">[]</span> src <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">float</span><span style="color:#f92672">[]</span>{
+</span></span><span style="display:flex;"><span>        0.<span style="color:#a6e22e">28F</span>, 0.<span style="color:#a6e22e">60F</span>, 0.<span style="color:#a6e22e">40F</span>, 0, 0,
+</span></span><span style="display:flex;"><span>        0.<span style="color:#a6e22e">28F</span>, 0.<span style="color:#a6e22e">60F</span>, 0.<span style="color:#a6e22e">40F</span>, 0, 0,
+</span></span><span style="display:flex;"><span>        0.<span style="color:#a6e22e">28F</span>, 0.<span style="color:#a6e22e">60F</span>, 0.<span style="color:#a6e22e">40F</span>, 0, 0,
+</span></span><span style="display:flex;"><span>        0, 0, 0, 1, 0,
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p>所以黑白部分的处理代码：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>Drawable drawable <span style="color:#f92672">=</span> getResources().<span style="color:#a6e22e">getDrawable</span>(R.<span style="color:#a6e22e">drawable</span>.<span style="color:#a6e22e">rocko</span>);
+</span></span><span style="display:flex;"><span>Bitmap srcBitmap <span style="color:#f92672">=</span> BitmapUtils.<span style="color:#a6e22e">drawable2Bitmap</span>(drawable);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/*先黑白图片*/</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">float</span><span style="color:#f92672">[]</span> src <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">float</span><span style="color:#f92672">[]</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    0.<span style="color:#a6e22e">28F</span>, 0.<span style="color:#a6e22e">60F</span>, 0.<span style="color:#a6e22e">40F</span>, 0, 0,
+</span></span><span style="display:flex;"><span>    0.<span style="color:#a6e22e">28F</span>, 0.<span style="color:#a6e22e">60F</span>, 0.<span style="color:#a6e22e">40F</span>, 0, 0,
+</span></span><span style="display:flex;"><span>    0.<span style="color:#a6e22e">28F</span>, 0.<span style="color:#a6e22e">60F</span>, 0.<span style="color:#a6e22e">40F</span>, 0, 0,
+</span></span><span style="display:flex;"><span>    0, 0, 0, 1, 0,
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>ColorMatrix cm <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ColorMatrix(src);
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//        cm.setSaturation(0.0f);</span>
+</span></span><span style="display:flex;"><span>ColorMatrixColorFilter f <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ColorMatrixColorFilter(cm);
+</span></span><span style="display:flex;"><span>Bitmap resultBitmap <span style="color:#f92672">=</span> Bitmap.<span style="color:#a6e22e">createBitmap</span>(drawable.<span style="color:#a6e22e">getIntrinsicWidth</span>(), drawable.<span style="color:#a6e22e">getIntrinsicHeight</span>(),
+</span></span><span style="display:flex;"><span>                      Bitmap.<span style="color:#a6e22e">Config</span>.<span style="color:#a6e22e">ARGB_8888</span>);
+</span></span><span style="display:flex;"><span>Canvas canvas <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Canvas(b);
+</span></span><span style="display:flex;"><span>Paint paint <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Paint();
+</span></span><span style="display:flex;"><span>paint.<span style="color:#a6e22e">setAntiAlias</span>(<span style="color:#66d9ef">true</span>);
+</span></span><span style="display:flex;"><span>paint.<span style="color:#a6e22e">setAlpha</span>(100);
+</span></span><span style="display:flex;"><span>paint.<span style="color:#a6e22e">setColorFilter</span>(f);
+</span></span><span style="display:flex;"><span>canvas.<span style="color:#a6e22e">drawBitmap</span>(srcBitmap, 0, 0, paint);
+</span></span></code></pre></div><h2 id="模糊">模糊</h2>
+<p>模糊的效果处理可以有几种方式：Java、jni、Android的RenderScript API，Java代码的一种比较快的一种模糊算法实现<a href="http://www.quasimondo.com/StackBlurForCanvas/StackBlurDemo.html">fastBlur</a>效果不太理想，还是比<code>RenderScript</code>慢些，所以最终采用Android官方的API实现<a href="http://developer.android.com/reference/android/support/v8/renderscript/package-summary.html">RenderScript support v8的支持包</a>，Android support v8支持包是在<code>...\build-tools\21.1.2\renderscript</code>SDK的这里的，在Android Studio中使用support v8：在build.gradle的defaultConfig中加上下面两句即可，</p>
+<pre tabindex="0"><code class="language-Gradle" data-lang="Gradle">renderscriptTargetApi 21
+renderscriptSupportModeEnabled true
+</code></pre><p>所以模糊部分的处理：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#75715e">/*后模糊图片*/</span>
+</span></span><span style="display:flex;"><span>Bitmap bB <span style="color:#f92672">=</span> BitmapUtils.<span style="color:#a6e22e">blurBitmap</span>(getApplicationContext(), resultBitmap, 15.<span style="color:#a6e22e">5f</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//RenderScript模糊处理的使用，主要就是Allocation 、ScriptIntrinsicBlur、RenderScript这几个类，RenderScript里基本上是jni的本地代码了，不再展开</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> Bitmap <span style="color:#a6e22e">blurBitmap</span>(Context applicationContext, Bitmap bitmap, <span style="color:#66d9ef">float</span> radius)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//Let&#39;s create an empty bitmap with the same size of the bitmap we want to blur</span>
+</span></span><span style="display:flex;"><span>    Bitmap outBitmap <span style="color:#f92672">=</span> Bitmap.<span style="color:#a6e22e">createBitmap</span>(bitmap.<span style="color:#a6e22e">getWidth</span>(), bitmap.<span style="color:#a6e22e">getHeight</span>(), Bitmap.<span style="color:#a6e22e">Config</span>.<span style="color:#a6e22e">ARGB_8888</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//Instantiate a new Renderscript</span>
+</span></span><span style="display:flex;"><span>    RenderScript rs <span style="color:#f92672">=</span> RenderScript.<span style="color:#a6e22e">create</span>(applicationContext);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//Create an Intrinsic Blur Script using the Renderscript</span>
+</span></span><span style="display:flex;"><span>    ScriptIntrinsicBlur blurScript <span style="color:#f92672">=</span> ScriptIntrinsicBlur.<span style="color:#a6e22e">create</span>(rs, Element.<span style="color:#a6e22e">U8_4</span>(rs));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//Create the Allocations (in/out) with the Renderscript and the in/out bitmaps</span>
+</span></span><span style="display:flex;"><span>    Allocation allIn <span style="color:#f92672">=</span> Allocation.<span style="color:#a6e22e">createFromBitmap</span>(rs, bitmap);
+</span></span><span style="display:flex;"><span>    Allocation allOut <span style="color:#f92672">=</span> Allocation.<span style="color:#a6e22e">createFromBitmap</span>(rs, outBitmap);
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//Set the radius of the blur</span>
+</span></span><span style="display:flex;"><span>    blurScript.<span style="color:#a6e22e">setRadius</span>(radius);
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//Perform the Renderscript</span>
+</span></span><span style="display:flex;"><span>    blurScript.<span style="color:#a6e22e">setInput</span>(allIn);
+</span></span><span style="display:flex;"><span>    blurScript.<span style="color:#a6e22e">forEach</span>(allOut);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//Copy the final bitmap created by the out Allocation to the outBitmap</span>
+</span></span><span style="display:flex;"><span>    allOut.<span style="color:#a6e22e">copyTo</span>(outBitmap);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//recycle the original bitmap</span>
+</span></span><span style="display:flex;"><span>    bitmap.<span style="color:#a6e22e">recycle</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//After finishing everything, we destroy the Renderscript.</span>
+</span></span><span style="display:flex;"><span>    rs.<span style="color:#a6e22e">destroy</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> outBitmap;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>工作完成，最后要注意的是模糊效果的处理是比较耗时的(~250ms)，所以在UI线程里直接处理的话肯定会掉帧，16ms是界限值，建议开线程预先处理好再设置。仿照的效果图如下：
+<img src="/images/%E4%BB%BF%E6%9C%89%E9%81%93%E4%BA%91%E7%AC%94%E8%AE%B0%E5%A4%B4%E5%83%8F%E8%83%8C%E6%99%AF-2.jpg.png" alt="仿照效果图"></p>
+<h2 id="end">End</h2>
+<p>本文<a href="https://github.com/zhengxiaopeng/Rocko-Android-Demos/tree/master/imitate-ydnote-avatar-background">demo地址</a></p></div>
+    </article>
+    
+            <br/><br/><br/>
+            <hr/>
+            <div id="valine" class="comment"></div>
+          
+            <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+          
+            <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+            <script type="text/javascript">
+                new Valine({
+                    el: '#valine' ,
+                    appId: 'fBqoKNrWNFkYQMTivF00jWpk-gzGzoHsz',
+                    appKey: 'q2baN9KwoyaFHmbjMHfssLIH',
+                    notify: 'true', 
+                    verify: 'false', 
+                    avatar:'hide', 
+                    placeholder: '说点什么吧~',
+                    visitor: ''
+                });
+            </script>
+            <noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript>
+
+  </main>
+
+      </div>
+      <footer>
+  <hr />
+  
+    <p id="social">
+      Find me around the web:
+      <br />
+      
+        
+        <a href="https://github.com/zhengxiaopeng" target="_blank">GitHub</a>
+      
+         | 
+        <a href="https://juejin.cn/user/3051900006044056" target="_blank">Juejin</a>
+      
+         | 
+        <a href="http://www.zhihu.com/people/rocko" target="_blank">Zhihu</a>
+      
+         | 
+        <a href="http://blog.csdn.net/bbld_" target="_blank">CSDN</a>
+      
+         | 
+        <a href="http://weibo.com/678662430" target="_blank">Weibo</a>
+      
+    </p>
+  
+  <p class="copyright">
+    Copyright © 2024
+    <a href="https://rocko.vip/" ><strong>Rocko</strong></a>.
+    This work is licensed under the
+    <a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA 4.0</a> license.
+  </p>
+  <p class="builtWith">
+    Powered by
+    <a href="http://www.gohugo.io/" target="_blank">Hugo</a>.
+  </p>
+</footer>
+
+    </div>
+  </body>
+</html>

@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content=""
+  />
+  
+    
+      <title>Android Robolectric 加载运行本地 so 动态库 | Rocko&#39;s blog</title>
+    
+  
+  <link rel="stylesheet" href="/css/reset.css"/>
+  <link rel="stylesheet" href="/css/font.css"/>
+  <link rel="stylesheet" href="/css/smigle.css"/>
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+</head>
+
+  <body>
+    <div id="root">
+      <header>
+  <div id="brand">
+    <a class="icon-link" href="https://rocko.vip/">
+      <img
+        class="icon"
+        src="/images/rocko.webp"
+      />
+    </a>
+    <div class="text">
+      <a href="https://rocko.vip/"><h1>Rocko&#39;s blog</h1></a>
+      <h3>Live in the moment</h3>
+    </div>
+  </div>
+  <nav>
+    
+      
+        
+        <a href="/"><b>Home</b></a>
+      
+         | 
+        <a href="/about/"><b>About</b></a>
+      
+         | 
+        <a href="/posts/"><b>Posts</b></a>
+      
+         | 
+        <a href="/categories/"><b>Categories</b></a>
+      
+         | 
+        <a href="/tags/"><b>Tags</b></a>
+      
+         | 
+        <a href="/index.xml"><b>RSS</b></a>
+      
+      |<a id="header-high" style="text-decoration: none; margin-left:12px; width:71px; margin-right:5px" class="header-icon waves-effect waves-circle waves-light"  onClick="javascript:(    /*     * Copyright (C) 2015 Rocko (rocko.xyz) <rocko.zxp@gmail.com>     *     * Licensed under the Apache License, Version 2.0 (the 'License');     * you may not use this file except in compliance with the License.     * You may obtain a copy of the License at     *     *      http://www.apache.org/licenses/LICENSE-2.0     *     * Unless required by applicable law or agreed to in writing, software     * distributed under the License is distributed on an 'AS IS' BASIS,     * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.     * See the License for the specific language governing permissions and     * limitations under the License.     */    function go() {        function c() {        var e = document.createElement('link');        e.setAttribute('type', 'text/css');        e.setAttribute('rel', 'stylesheet');        e.setAttribute('href', f);        e.setAttribute('class', l);        document.body.appendChild(e)    }     function h() {        var e = document.getElementsByClassName(l);        for (var t = 0; t < e.length; t++) {            document.body.removeChild(e[t])        }    }     function p() {        var e = document.createElement('div');        e.setAttribute('class', a);        document.body.appendChild(e);        setTimeout(function() {            document.body.removeChild(e)        }, 100)    }     function d(e) {        return {            height : e.offsetHeight,            width : e.offsetWidth        }    }     function v(i) {        var s = d(i);        return s.height > e && s.height < n && s.width > t && s.width < r    }     function m(e) {        var t = e;        var n = 0;        while (!!t) {            n += t.offsetTop;            t = t.offsetParent        }        return n    }     function g() {        var e = document.documentElement;        if (!!window.innerWidth) {            return window.innerHeight        } else if (e && !isNaN(e.clientHeight)) {            return e.clientHeight        }        return 0    }     function y() {        if (window.pageYOffset) {            return window.pageYOffset        }        return Math.max(document.documentElement.scrollTop, document.body.scrollTop)    }     function E(e) {        var t = m(e);        return t >= w && t <= b + w    }     var songs = ['/media/Music-Fashion_Show.mp3', '/media/G-Love.Phonk.mp3', '/media/APT.mp3', '/media/Music-outside.mp3', '/media/Music-sunburst.mp3', '/media/Music-Wake-Live.mp3'];    function S() {        var e = document.getElementById('audio_element_id');        if(e != null){            var index = parseInt(e.getAttribute('curSongIndex'));            if(index > songs.length - 2) {                index = 0;            } else {                index++;            }            e.setAttribute('curSongIndex', index);            N();        }        e.src = i;        e.play()    }     function x(e) {        e.className += ' ' + s + ' ' + o    }     function T(e) {        e.className += ' ' + s + ' ' + u[Math.floor(Math.random() * u.length)]    }     function N() {        var e = document.getElementsByClassName(s);        var t = new RegExp('\\b' + s + '\\b');        for (var n = 0; n < e.length; ) {            e[n].className = e[n].className.replace(t, '')        }    }    function initAudioEle() {        var e = document.getElementById('audio_element_id');        if(e === null){            e = document.createElement('audio');            e.setAttribute('class', l);            e.setAttribute('curSongIndex', 0);            e.id = 'audio_element_id';            e.loop = false;            e.bgcolor = 0;            e.addEventListener('canplay', function() {            setTimeout(function() {                x(k)            }, 500);            setTimeout(function() {                N();                p();                for (var e = 0; e < O.length; e++) {                    T(O[e])                }            }, 8000)        }, true);        e.addEventListener('ended', function() {            N();            h();            go();        }, true);        e.innerHTML = ' <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>';        document.body.appendChild(e);        }    }        initAudioEle();    var e = 30;    var t = 30;    var n = 350;    var r = 350;    var curSongIndex = parseInt(document.getElementById('audio_element_id').getAttribute('curSongIndex'));    var i = songs[curSongIndex];        var s = 'mw-harlem_shake_me';    var o = 'im_first';    var u = ['im_drunk', 'im_baked', 'im_trippin', 'im_blown'];    var a = 'mw-strobe_light';    var f = '/css/harlem-shake-style.css';        var l = 'mw_added_css';    var b = g();    var w = y();    var C = document.getElementsByTagName('*');    var k = null;    for (var L = 0; L < C.length; L++) {        var A = C[L];        if (v(A)) {            if (E(A)) {                k = A;                break            }        }    }    if (A === null) {        console.warn('Could not find a node of the right size. Please try a different page.');        return    }    c();    S();    var O = [];    for (var L = 0; L < C.length; L++) {        var A = C[L];        if (v(A)) {            O.push(A)        }    }    })()" >High一下</a>
+    
+  </nav>
+  <hr />
+</header>
+
+      <div id="content">
+        
+  <main>
+    <article>
+      <h1 class="title">Android Robolectric 加载运行本地 so 动态库</h1>
+      
+      <div class="post-meta">
+  <strong>
+    <span>Posted on</span>
+    <time>2016-11-27</time>
+    <span>in</span>
+    
+      <a href="/categories/android">Android</a>
+  </strong>
+  <span> • 642 words</span>
+  <span> • 4 minute read</span>
+  
+  
+    <div>
+      <span>Tags:</span>
+      
+        <a href="/tags/robolectric">Robolectric</a>, 
+        <a href="/tags/testing">Testing</a>, 
+        <a href="/tags/%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5%E5%BA%93">动态链接库</a>, 
+        <a href="/tags/%E7%A7%BB%E6%A4%8D">移植</a>
+    </div>
+  
+</div>
+
+      <div class="content"><h1 id="前言">前言</h1>
+<p><a href="http://robolectric.org">Robolectric</a> 是 Android 的单元测试框架，运行无需 Android 真机环境直接运行在 JVM 之上，所以在 test case 运行速度效率上有了很大提升，接近于 Java JUnit test（<code>JUnit test &gt; Robolectric &gt;&gt; androidTest</code>）。不过<strong>框架本身并不支持 <code>so</code> 本地库的加载使用</strong>，加载时会直接报错，因为实际上运行环境是电脑机器，而我们打出的 so 文件是给手机上用的所以当然会报错。虽然在 <a href="https://github.com/robolectric/robolectric">GitHub</a> 上很多人问过关于使用 so 的问题但基本都建议说不要在单元测试中去加载本地库，这在原则上是要这么做，但可能有些项目中做起来就有些困难了，比如在代码结构不够好、依赖耦合较大或者本身就对 so 库依赖很大的情况下。所以下面说说在项目中 Robolectric 要怎么解决需要加载运行本地 so 库这个问题。</p>
+<h1 id="动态库">动态库</h1>
+<p>动态库又称动态链接库（Dynamic-link library 缩写 DLL），是一个包含可由多个程序同时使用的代码和数据的库，DLL 不是可执行文件。动态链接提供了一种方法，使进程可以调用不属于其可执行代码的函数。函数的可执行代码位于一个 DLL 中，该 DLL 包含一个或多个已被编译、链接并与使用它们的进程分开存储的函数。DLL 还有助于共享数据和资源。多个应用程序可同时访问内存中单个DLL 副本的内容。DLL 是一个包含可由多个程序同时使用的代码和数据的库。<strong>Windows下动态库为 .dll 后缀（一般为 PE 格式），在 Linux 在为 .so 后缀（一般为 ELF 格式），macOS下为 .dylib 后缀（一般为 Mach-O 格式）</strong> 。由于 CPU 架构和动态库文件格式的不同因而在不同平台下不能通用。其它细节的东西就不展开了因为也不会 :-)</p>
+<p>而 Android 本身是 Linux 系统，所以用的动态库也是 .so 的文件，因而运行与 JVM 的 Robolectric 是不能直接加载使用的（Linux 某些情况下可用，下面提到）。</p>
+<h1 id="robolectric-中使用动态库">Robolectric 中使用动态库</h1>
+<p>我们知道动态库一般都是打给特定平台、特定 CPU 架构用的，所以要解决在 Robolectric 下加载运行 so 动态库的问题的思路就是在不同 Robolectric 运行平台下去处理加载不同的动态库，所以你要在 Robolectric 中使用的 so 动态库最好要有源码不然在 macOS 和 Windows 下就不就好处理了。</p>
+<p><code>Note: </code> 注意动态库名称已 <code>lib</code> 开头。</p>
+<h2 id="linux-下-robolectric-中使用动态库">Linux 下 Robolectric 中使用动态库</h2>
+<p>Android 与 Linux 同气连枝，所以底层的东西很多是通用的，动态库也一样。我们 Android 使用 so 时一般也要对不同 CPU 架构的手机下使用不同的 so 文件，譬如：<code>armeabi-v7a</code>、<code>mips</code>、<code>x86</code>。而我们使用的 LInux 发行版一般都是 64 位的，所以原理上我们使用 <code>x86-64</code> 的动态库是可以的，不过可能需要处理依赖库问题如果你的本地代码里有 include 其它依赖的话。如果没加进来 Robolectric 运行就会报如下的错误：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>java.<span style="color:#a6e22e">lang</span>.<span style="color:#a6e22e">UnsatisfiedLinkError</span>: xxx<span style="color:#f92672">/</span>xxx.<span style="color:#a6e22e">so</span> xxx 动态库找不到<span style="color:#960050;background-color:#1e0010">。</span>
+</span></span></code></pre></div><p>xxx.so 就是你所使用 so 的依赖，比如把新浪微博 SDK 的 x86-64 的 <code>libweibosdkcore.so</code> 加载进来的话就会报 <code>liblog.so</code> 等找不到，因为 libweibosdkcore 中有对 Android liblog 等 so 库的依赖。那这个问题怎么解决呢。我们想想打包 so 库时用的是 ndk，需要使用 ndk-bundle 工具，我们想想，跟编译 apk 差不多，apk 打包需要 sdk 工具，compileSdk 里就是我们编译的依赖，里面有 <code>android.jar</code>。所以我们可以到 ndk-bundle 里找找，最后我们发现不同 CPU 架构下的 so 依赖库都是有的，像我们一般的电脑 64 位 CPU 即可使用 <code>arch-x86_64</code> 下的 so 动态库，所以我们只需要在加载我们程序的 so 库之前加载这些必须的依赖即可。处理代码后面贴出。</p>
+<p><img src="/images/2016-11-27_01-03-43_liblog.so.png" alt="ndk-bundle依赖库"></p>
+<p>注意 ndk-bundle 里的 so 也是只能在 Linux 下用的，如果用于其它平台会报错，原因前面已说明。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>java.<span style="color:#a6e22e">lang</span>.<span style="color:#a6e22e">UnsatisfiedLinkError</span>: xxx.<span style="color:#a6e22e">so</span>: unknown file type, first eight bytes: 0x7F 0x45 0x4C 0x46 0x02 0x01 0x01 0x00
+</span></span></code></pre></div><h2 id="macos-下-robolectric-中使用动态库">macOS 下 Robolectric 中使用动态库</h2>
+<p>前面已提到，不同平台下动态链接库是不通用的，所以必须对源码重新编译打包以移植到不同平台下，如果你的 so 没有源码的话那在 macOS 和 Windows 下就行不通了。重新打包我们可以按如下两步进行：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Bash" data-lang="Bash"><span style="display:flex;"><span><span style="color:#75715e"># 先生成 .o ，-I 后加进 Java jni 的编译依赖</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>cc -c -I/System/Library/Frameworks/JavaVM.framework/Headers *.cpp
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 打包成 .dylib</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>g++ -dynamiclib -undefined suppress -flat_namespace *.o -o something.dylib
+</span></span></code></pre></div><p>某些依赖库可以到 <code>/usr/lib</code> 下找找，比如 <code>libc</code> 和 <code>libstdc++</code> 。</p>
+<h2 id="windows-下-robolectric-中使用动态库">Windows 下 Robolectric 中使用动态库</h2>
+<p>本人没有在 Windows 下开发所以这部分就略过了，思路是一样的。</p>
+<h1 id="sample">Sample</h1>
+<p>下面是简单的处理代码示例。首先新建一个包含 jni 的工程，里面写个基本的本地库，如下：</p>
+<h2 id="正常流程">正常流程</h2>
+<p>// native-lib.cpp</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;jni.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;string&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">extern</span> <span style="color:#e6db74">&#34;C&#34;</span>
+</span></span><span style="display:flex;"><span>jstring
+</span></span><span style="display:flex;"><span>Java_xyz_rocko_rsnl_nativeinterface_NativeSample_stringFromJNI(
+</span></span><span style="display:flex;"><span>       JNIEnv <span style="color:#f92672">*</span>env,
+</span></span><span style="display:flex;"><span>       jobject <span style="color:#75715e">/* this */</span>) {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>   <span style="color:#75715e">// 简单返回个字符串
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>   std<span style="color:#f92672">::</span>string hello <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Hello from Native.&#34;</span>;
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">return</span> env<span style="color:#f92672">-&gt;</span>NewStringUTF(hello.c_str());
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>然后在 Application 启动时会加载这个本地库：</p>
+<p>// NativeLibsApplication.java</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">NativeLibsApplication</span> <span style="color:#66d9ef">extends</span> Application {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> <span style="color:#75715e">// Used to load the &#39;native-lib&#39; library on application startup.</span>
+</span></span><span style="display:flex;"><span> <span style="color:#66d9ef">static</span> {
+</span></span><span style="display:flex;"><span>   System.<span style="color:#a6e22e">loadLibrary</span>(<span style="color:#e6db74">&#34;native-lib&#34;</span>);
+</span></span><span style="display:flex;"><span> }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>此时运行 Robolectric 的 test case 就发生如下报错：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>java.<span style="color:#a6e22e">lang</span>.<span style="color:#a6e22e">UnsatisfiedLinkError</span>: no <span style="color:#66d9ef">native</span><span style="color:#f92672">-</span>lib in java.<span style="color:#a6e22e">library</span>.<span style="color:#a6e22e">path</span>
+</span></span></code></pre></div><p><img src="/images/2016-11-27_09-11-08_no_deal_with.png" alt="正常运行 Test case"></p>
+<h2 id="处理后的流程">处理后的流程</h2>
+<p>首先流程应该在我们的代码里避免可以直接加载 so 动态库，然后 Robolectric 在启动时自己去加载需要的动态库。</p>
+<p>// NativeLibsApplication.java</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">NativeLibsApplication</span> <span style="color:#66d9ef">extends</span> Application {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">@Override</span> <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onCreate</span>() {
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">super</span>.<span style="color:#a6e22e">onCreate</span>();
+</span></span><span style="display:flex;"><span>   loadNativeLibraries();
+</span></span><span style="display:flex;"><span> }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> <span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  * 简单让子类可自己实现
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  */</span>
+</span></span><span style="display:flex;"><span> <span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">loadNativeLibraries</span>() {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 代码里真正加载本地库的地方，当然你自己的可以处理地更解耦一点。</span>
+</span></span><span style="display:flex;"><span>   NativeLibrariesManager.<span style="color:#a6e22e">loadNativeLibraries</span>();
+</span></span><span style="display:flex;"><span> }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>然后我们的 Robolectric 里自定义自己的 Application，里面根据需要在不同运行平台下自己加载需要的本地动态库，首先复制我们给 Robolectric 用的本地库到 test 的 libs 文件夹里，按不同平台分类，如下图：</p>
+<p><img src="/images/2016-11-27_09-24-25_test_libs_folder.png" alt="test 内 libs 文件"></p>
+<p>Linux 下的我们从 ndk-bundle 里复制我们需要的 .so，然后我们自己的本地库打一个 x86-64 的即可，注意 compileSdkVersion 选上高一点支持 x86-64 的版本。</p>
+<p>然后重新移植打出 macOS 下的动态库，简单写个打包脚本如下：</p>
+<p>// make_macOS_dylib.sh</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Bash" data-lang="Bash"><span style="display:flex;"><span><span style="color:#75715e">#!/usr/bin/env bash
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>OUTPUT<span style="color:#f92672">=</span>../../../build/intermediates/dylibs
+</span></span><span style="display:flex;"><span>mkdir -p <span style="color:#e6db74">${</span>OUTPUT<span style="color:#e6db74">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># .o file</span>
+</span></span><span style="display:flex;"><span>cc -c -I/System/Library/Frameworks/JavaVM.framework/Headers *.cpp -o <span style="color:#e6db74">${</span>OUTPUT<span style="color:#e6db74">}</span>/libnative-lib.o
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># .dylib file</span>
+</span></span><span style="display:flex;"><span>g++ -dynamiclib -undefined suppress -flat_namespace <span style="color:#e6db74">${</span>OUTPUT<span style="color:#e6db74">}</span>/*.o -o <span style="color:#e6db74">${</span>OUTPUT<span style="color:#e6db74">}</span>/libnative-lib.dylib
+</span></span></code></pre></div><p><code>libnative-lib.dylib</code> 就是我们要的。</p>
+<p>然后我们自定义 Application 处理加载这些动态库：</p>
+<p>// RobolectricApplication.java</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">RobolectricApplication</span> <span style="color:#66d9ef">extends</span> NativeLibsApplication {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> <span style="color:#66d9ef">static</span> {
+</span></span><span style="display:flex;"><span>   ShadowLog.<span style="color:#a6e22e">stream</span> <span style="color:#f92672">=</span> System.<span style="color:#a6e22e">out</span>; <span style="color:#75715e">//Android logcat output.</span>
+</span></span><span style="display:flex;"><span> }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">@Override</span> <span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">loadNativeLibraries</span>() {
+</span></span><span style="display:flex;"><span>   <span style="color:#75715e">//Disable super class load so file.</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#75715e">//super.loadNativeLibraries();</span>
+</span></span><span style="display:flex;"><span>   Log.<span style="color:#a6e22e">d</span>(TAG, <span style="color:#e6db74">&#34;=====&gt;&gt; Robolectric start native libraries.&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>   String libsBasePath <span style="color:#f92672">=</span>
+</span></span><span style="display:flex;"><span>       <span style="color:#66d9ef">new</span> File(<span style="color:#66d9ef">new</span> File(<span style="color:#e6db74">&#34;&#34;</span>).<span style="color:#a6e22e">getAbsolutePath</span>() <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;/src/test/libs&#34;</span>).<span style="color:#a6e22e">getAbsolutePath</span>();
+</span></span><span style="display:flex;"><span>   String os <span style="color:#f92672">=</span> System.<span style="color:#a6e22e">getProperty</span>(<span style="color:#e6db74">&#34;os.name&#34;</span>);
+</span></span><span style="display:flex;"><span>   os <span style="color:#f92672">=</span> <span style="color:#f92672">!</span>TextUtils.<span style="color:#a6e22e">isEmpty</span>(os) <span style="color:#f92672">?</span> os : <span style="color:#e6db74">&#34;&#34;</span>;
+</span></span><span style="display:flex;"><span>   List<span style="color:#f92672">&lt;</span>File<span style="color:#f92672">&gt;</span> soFileList <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ArrayList<span style="color:#f92672">&lt;&gt;</span>();
+</span></span><span style="display:flex;"><span>   String systemArchPath <span style="color:#f92672">=</span> libsBasePath <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;/framework/&#34;</span>;
+</span></span><span style="display:flex;"><span>   <span style="color:#75715e">//!!! 64 位机器下处理</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">if</span> (os.<span style="color:#a6e22e">contains</span>(<span style="color:#e6db74">&#34;Mac&#34;</span>)) {
+</span></span><span style="display:flex;"><span>     <span style="color:#75715e">//load system library if need</span>
+</span></span><span style="display:flex;"><span>     String macSysSoBasePath <span style="color:#f92672">=</span> systemArchPath <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;macOS/&#34;</span>;
+</span></span><span style="display:flex;"><span>     soFileList.<span style="color:#a6e22e">addAll</span>(addLibs(macSysSoBasePath));
+</span></span><span style="display:flex;"><span>     <span style="color:#75715e">// App so...</span>
+</span></span><span style="display:flex;"><span>     String macAppSoPath <span style="color:#f92672">=</span> libsBasePath <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;/macOS_x86-64/&#34;</span>;
+</span></span><span style="display:flex;"><span>     <span style="color:#75715e">// mac下so要使用macOS专用库</span>
+</span></span><span style="display:flex;"><span>     soFileList.<span style="color:#a6e22e">addAll</span>(addLibs(macAppSoPath));
+</span></span><span style="display:flex;"><span>   } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (os.<span style="color:#a6e22e">contains</span>(<span style="color:#e6db74">&#34;Linux&#34;</span>)) {
+</span></span><span style="display:flex;"><span>     <span style="color:#75715e">//load system library if need</span>
+</span></span><span style="display:flex;"><span>     String linuxSysSoBasePath <span style="color:#f92672">=</span> systemArchPath <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;arch_x86-64/&#34;</span>;
+</span></span><span style="display:flex;"><span>     soFileList.<span style="color:#a6e22e">addAll</span>(addLibs(linuxSysSoBasePath));
+</span></span><span style="display:flex;"><span>     <span style="color:#75715e">// App so...</span>
+</span></span><span style="display:flex;"><span>     String linuxAppSoPath <span style="color:#f92672">=</span> libsBasePath <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;/linux_x86-64/&#34;</span>;
+</span></span><span style="display:flex;"><span>     soFileList.<span style="color:#a6e22e">addAll</span>(addLibs(linuxAppSoPath));
+</span></span><span style="display:flex;"><span>   } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (os.<span style="color:#a6e22e">contains</span>(<span style="color:#e6db74">&#34;Windows&#34;</span>)) {
+</span></span><span style="display:flex;"><span>     <span style="color:#75715e">// ignore</span>
+</span></span><span style="display:flex;"><span>   }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">for</span> (File soFie : soFileList) {
+</span></span><span style="display:flex;"><span>     System.<span style="color:#a6e22e">load</span>(soFie.<span style="color:#a6e22e">getAbsolutePath</span>());
+</span></span><span style="display:flex;"><span>   }
+</span></span><span style="display:flex;"><span> }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> <span style="color:#66d9ef">private</span> List<span style="color:#f92672">&lt;</span>File<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">addLibs</span>(<span style="color:#a6e22e">@NonNull</span> String path) {
+</span></span><span style="display:flex;"><span>   File<span style="color:#f92672">[]</span> basePathFiles <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> File(path).<span style="color:#a6e22e">listFiles</span>();
+</span></span><span style="display:flex;"><span>   List<span style="color:#f92672">&lt;</span>File<span style="color:#f92672">&gt;</span> pathFilesList <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ArrayList<span style="color:#f92672">&lt;&gt;</span>();
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">if</span> (basePathFiles <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">&amp;&amp;</span> basePathFiles.<span style="color:#a6e22e">length</span> <span style="color:#f92672">&gt;</span> 0) {
+</span></span><span style="display:flex;"><span>     pathFilesList.<span style="color:#a6e22e">addAll</span>(Arrays.<span style="color:#a6e22e">asList</span>(basePathFiles));
+</span></span><span style="display:flex;"><span>   }
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">return</span> pathFilesList;
+</span></span><span style="display:flex;"><span> }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>现在就可以加载了，运行如下 test case，结果如下图，成功了。</p>
+<pre tabindex="0"><code>@Test public void testLoadNativeLibrariesSuccess() throws Exception {
+      String nativeExcepted = &#34;Hello from Native.&#34;;
+      String result = NativeSample.stringFromJNI();
+      Log.d(TAG, &#34;result: &#34; + result);
+      assertEquals(nativeExcepted, result);
+}
+</code></pre><p><img src="/images/2016-11-27_09-32-15_test_case_success.png" alt="运行加载本地库 Test case 成功"></p>
+<h1 id="end">End</h1>
+<p>Linux 下使用最快速方便，只需要打包程序的 so 时顺便打包出 x86-64 的 so ，然后复制 ndk-bundle 的 so 加上需要的依赖即可。macOS 和 Windows 下就需要自己打包出各自平台下的动态库才可使用，如果代码里有 Android 自带 so 依赖的话那就需要自己去重新移植编译打包 ndk-bundle 里的动态库了。</p>
+<p>项目实例源码：<a href="https://github.com/zhengxiaopeng/RobolectricSupportNativeLibs">RobolectricSupportNativeLibs</a></p>
+<h1 id="参考">参考</h1>
+<p><a href="https://developer.apple.com/library/content/documentation/Java/Conceptual/Java14Development/05-CoreJavaAPIs/CoreJavaAPIs.html">Core Java APIs and the Java Runtime on OS X</a></p></div>
+    </article>
+    
+            <br/><br/><br/>
+            <hr/>
+            <div id="valine" class="comment"></div>
+          
+            <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+          
+            <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+            <script type="text/javascript">
+                new Valine({
+                    el: '#valine' ,
+                    appId: 'fBqoKNrWNFkYQMTivF00jWpk-gzGzoHsz',
+                    appKey: 'q2baN9KwoyaFHmbjMHfssLIH',
+                    notify: 'true', 
+                    verify: 'false', 
+                    avatar:'hide', 
+                    placeholder: '说点什么吧~',
+                    visitor: ''
+                });
+            </script>
+            <noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript>
+
+  </main>
+
+      </div>
+      <footer>
+  <hr />
+  
+    <p id="social">
+      Find me around the web:
+      <br />
+      
+        
+        <a href="https://github.com/zhengxiaopeng" target="_blank">GitHub</a>
+      
+         | 
+        <a href="https://juejin.cn/user/3051900006044056" target="_blank">Juejin</a>
+      
+         | 
+        <a href="http://www.zhihu.com/people/rocko" target="_blank">Zhihu</a>
+      
+         | 
+        <a href="http://blog.csdn.net/bbld_" target="_blank">CSDN</a>
+      
+         | 
+        <a href="http://weibo.com/678662430" target="_blank">Weibo</a>
+      
+    </p>
+  
+  <p class="copyright">
+    Copyright © 2024
+    <a href="https://rocko.vip/" ><strong>Rocko</strong></a>.
+    This work is licensed under the
+    <a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA 4.0</a> license.
+  </p>
+  <p class="builtWith">
+    Powered by
+    <a href="http://www.gohugo.io/" target="_blank">Hugo</a>.
+  </p>
+</footer>
+
+    </div>
+  </body>
+</html>

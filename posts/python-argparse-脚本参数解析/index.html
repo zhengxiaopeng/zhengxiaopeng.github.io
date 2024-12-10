@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content=""
+  />
+  
+    
+      <title>Python-Argparse 脚本参数解析 | Rocko&#39;s blog</title>
+    
+  
+  <link rel="stylesheet" href="/css/reset.css"/>
+  <link rel="stylesheet" href="/css/font.css"/>
+  <link rel="stylesheet" href="/css/smigle.css"/>
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+</head>
+
+  <body>
+    <div id="root">
+      <header>
+  <div id="brand">
+    <a class="icon-link" href="https://rocko.vip/">
+      <img
+        class="icon"
+        src="/images/rocko.webp"
+      />
+    </a>
+    <div class="text">
+      <a href="https://rocko.vip/"><h1>Rocko&#39;s blog</h1></a>
+      <h3>Live in the moment</h3>
+    </div>
+  </div>
+  <nav>
+    
+      
+        
+        <a href="/"><b>Home</b></a>
+      
+         | 
+        <a href="/about/"><b>About</b></a>
+      
+         | 
+        <a href="/posts/"><b>Posts</b></a>
+      
+         | 
+        <a href="/categories/"><b>Categories</b></a>
+      
+         | 
+        <a href="/tags/"><b>Tags</b></a>
+      
+         | 
+        <a href="/index.xml"><b>RSS</b></a>
+      
+      |<a id="header-high" style="text-decoration: none; margin-left:12px; width:71px; margin-right:5px" class="header-icon waves-effect waves-circle waves-light"  onClick="javascript:(    /*     * Copyright (C) 2015 Rocko (rocko.xyz) <rocko.zxp@gmail.com>     *     * Licensed under the Apache License, Version 2.0 (the 'License');     * you may not use this file except in compliance with the License.     * You may obtain a copy of the License at     *     *      http://www.apache.org/licenses/LICENSE-2.0     *     * Unless required by applicable law or agreed to in writing, software     * distributed under the License is distributed on an 'AS IS' BASIS,     * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.     * See the License for the specific language governing permissions and     * limitations under the License.     */    function go() {        function c() {        var e = document.createElement('link');        e.setAttribute('type', 'text/css');        e.setAttribute('rel', 'stylesheet');        e.setAttribute('href', f);        e.setAttribute('class', l);        document.body.appendChild(e)    }     function h() {        var e = document.getElementsByClassName(l);        for (var t = 0; t < e.length; t++) {            document.body.removeChild(e[t])        }    }     function p() {        var e = document.createElement('div');        e.setAttribute('class', a);        document.body.appendChild(e);        setTimeout(function() {            document.body.removeChild(e)        }, 100)    }     function d(e) {        return {            height : e.offsetHeight,            width : e.offsetWidth        }    }     function v(i) {        var s = d(i);        return s.height > e && s.height < n && s.width > t && s.width < r    }     function m(e) {        var t = e;        var n = 0;        while (!!t) {            n += t.offsetTop;            t = t.offsetParent        }        return n    }     function g() {        var e = document.documentElement;        if (!!window.innerWidth) {            return window.innerHeight        } else if (e && !isNaN(e.clientHeight)) {            return e.clientHeight        }        return 0    }     function y() {        if (window.pageYOffset) {            return window.pageYOffset        }        return Math.max(document.documentElement.scrollTop, document.body.scrollTop)    }     function E(e) {        var t = m(e);        return t >= w && t <= b + w    }     var songs = ['/media/Music-Fashion_Show.mp3', '/media/G-Love.Phonk.mp3', '/media/APT.mp3', '/media/Music-outside.mp3', '/media/Music-sunburst.mp3', '/media/Music-Wake-Live.mp3'];    function S() {        var e = document.getElementById('audio_element_id');        if(e != null){            var index = parseInt(e.getAttribute('curSongIndex'));            if(index > songs.length - 2) {                index = 0;            } else {                index++;            }            e.setAttribute('curSongIndex', index);            N();        }        e.src = i;        e.play()    }     function x(e) {        e.className += ' ' + s + ' ' + o    }     function T(e) {        e.className += ' ' + s + ' ' + u[Math.floor(Math.random() * u.length)]    }     function N() {        var e = document.getElementsByClassName(s);        var t = new RegExp('\\b' + s + '\\b');        for (var n = 0; n < e.length; ) {            e[n].className = e[n].className.replace(t, '')        }    }    function initAudioEle() {        var e = document.getElementById('audio_element_id');        if(e === null){            e = document.createElement('audio');            e.setAttribute('class', l);            e.setAttribute('curSongIndex', 0);            e.id = 'audio_element_id';            e.loop = false;            e.bgcolor = 0;            e.addEventListener('canplay', function() {            setTimeout(function() {                x(k)            }, 500);            setTimeout(function() {                N();                p();                for (var e = 0; e < O.length; e++) {                    T(O[e])                }            }, 8000)        }, true);        e.addEventListener('ended', function() {            N();            h();            go();        }, true);        e.innerHTML = ' <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>';        document.body.appendChild(e);        }    }        initAudioEle();    var e = 30;    var t = 30;    var n = 350;    var r = 350;    var curSongIndex = parseInt(document.getElementById('audio_element_id').getAttribute('curSongIndex'));    var i = songs[curSongIndex];        var s = 'mw-harlem_shake_me';    var o = 'im_first';    var u = ['im_drunk', 'im_baked', 'im_trippin', 'im_blown'];    var a = 'mw-strobe_light';    var f = '/css/harlem-shake-style.css';        var l = 'mw_added_css';    var b = g();    var w = y();    var C = document.getElementsByTagName('*');    var k = null;    for (var L = 0; L < C.length; L++) {        var A = C[L];        if (v(A)) {            if (E(A)) {                k = A;                break            }        }    }    if (A === null) {        console.warn('Could not find a node of the right size. Please try a different page.');        return    }    c();    S();    var O = [];    for (var L = 0; L < C.length; L++) {        var A = C[L];        if (v(A)) {            O.push(A)        }    }    })()" >High一下</a>
+    
+  </nav>
+  <hr />
+</header>
+
+      <div id="content">
+        
+  <main>
+    <article>
+      <h1 class="title">Python-Argparse 脚本参数解析</h1>
+      
+      <div class="post-meta">
+  <strong>
+    <span>Posted on</span>
+    <time>2015-07-09</time>
+    <span>in</span>
+    
+      <a href="/categories/python">Python</a>
+  </strong>
+  <span> • 382 words</span>
+  <span> • 2 minute read</span>
+  
+  
+    <div>
+      <span>Tags:</span>
+      
+        <a href="/tags/python">Python</a>, 
+        <a href="/tags/%E8%84%9A%E6%9C%AC">脚本</a>, 
+        <a href="/tags/%E8%A7%A3%E6%9E%90">解析</a>
+    </div>
+  
+</div>
+
+      <div class="content"><p><code>Argparse</code> 是 <code>Python</code> 标准库中推荐的命令行解析模块，经常需要解析脚本参数的话这是个方便的工具模块，摆脱万年手动 <code>system.argv</code>。</p>
+<h2 id="引入">引入</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span><span style="color:#f92672">import</span> argparse
+</span></span><span style="display:flex;"><span>parser <span style="color:#f92672">=</span> argparse<span style="color:#f92672">.</span>ArgumentParser(description<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;描述说明，可用于 Help 输出说明&#39;</span>, add_help<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>parser<span style="color:#f92672">.</span>parse_args()
+</span></span></code></pre></div><p><code>ArgumentParser</code> 可选参数如下：</p>
+<ul>
+<li>prog &ndash; 此脚本程序名称 (默认: sys.argv[0])</li>
+<li>usage &ndash; 用法说明 (默认: 根据参数自动生成)</li>
+<li>description &ndash; 脚本说明</li>
+<li>epilog &ndash; 也是说明，在 help 输出最后</li>
+<li>parents &ndash; 父 Parsers</li>
+<li>formatter_class &ndash; 输出帮助信息的定制类</li>
+<li>prefix_chars &ndash; 可选前缀参数字符(设置后参数名称需以此为前缀)</li>
+<li>fromfile_prefix_chars &ndash; 从文件读取可选前缀参数字符</li>
+<li>argument_default &ndash; 所有参数的默认值</li>
+<li>conflict_handler &ndash; 冲突处理器</li>
+<li>add_help &ndash; 是否添加帮助</li>
+</ul>
+<h2 id="常用方法">常用方法</h2>
+<h3 id="add_argument">add_argument()</h3>
+<p>// test.py</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span><span style="color:#f92672">import</span> argparse
+</span></span><span style="display:flex;"><span>parser <span style="color:#f92672">=</span> argparse<span style="color:#f92672">.</span>ArgumentParser()
+</span></span><span style="display:flex;"><span>parser<span style="color:#f92672">.</span>add_argument(<span style="color:#e6db74">&#39;-p&#39;</span>, <span style="color:#e6db74">&#39;--param&#39;</span>)
+</span></span><span style="display:flex;"><span>args <span style="color:#f92672">=</span> parser<span style="color:#f92672">.</span>parse_args()
+</span></span><span style="display:flex;"><span>print args<span style="color:#f92672">.</span>param
+</span></span></code></pre></div><p>运行 <code>python test.py -p value</code>  or <code>python test.py --param value</code> 即可。</p>
+<p>add_argument 可选方法参数如下：</p>
+<ul>
+<li>name or flags - 参数的名字.</li>
+<li>action - 遇到参数时的动作，默认值是 store。store_const，表示赋值为 const；append，将遇到的值存储成列表，也就是如果参数重复则会保存多个值; append_const，将参数规范中定义的一个值保存到一个列表；count，存储遇到的次数；此外，也可以继承 argparse.Action 自定义参数解析；</li>
+<li>nargs - 参数的个数，可以是具体的数字，或者是 ? 号，当不指定值时对于 Positional argument 使用 default，对于 Optional argument 使用 const；或者是 * 号，表示 0 或多个参数；或者是 + 号表示 1 或多个参数.</li>
+<li>const - action 和 nargs 所需要的常量值.</li>
+<li>default - 不指定参数时的默认值.</li>
+<li>type - 参数的类型. 如 int、str</li>
+<li>choices - 参数允许的值. 如：[&lsquo;a&rsquo;, &lsquo;b&rsquo;, &lsquo;c&rsquo;]</li>
+<li>required - 可选参数是否可以省略(仅针对 optionals ).</li>
+<li>help - 参数的帮助信息，当指定为 argparse.SUPPRESS 时表示不显示该参数的帮助信息.</li>
+<li>metavar - 在usage说明中的参数名称，对于必选参数默认就是参数名称，对于可选参数默认是全大写的参数名称.</li>
+<li>dest - 解析后的参数名称，默认情况下，对于可选参数选取最长的名称，中划线转换为下划线.</li>
+</ul>
+<h3 id="add_mutually_exclusive_group">add_mutually_exclusive_group()</h3>
+<p>设置冲突参数，当需要设置指定输入参数只能包含其中一个时即可用此方法。</p>
+<p>// test.py</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span>    parse <span style="color:#f92672">=</span> argparse<span style="color:#f92672">.</span>ArgumentParser()
+</span></span><span style="display:flex;"><span>    group <span style="color:#f92672">=</span> parse<span style="color:#f92672">.</span>add_mutually_exclusive_group()
+</span></span><span style="display:flex;"><span>    group<span style="color:#f92672">.</span>add_argument(<span style="color:#e6db74">&#34;-a&#34;</span>, action<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;store_true&#34;</span>)
+</span></span><span style="display:flex;"><span>    group<span style="color:#f92672">.</span>add_argument(<span style="color:#e6db74">&#34;-b&#34;</span>, action<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;store_true&#34;</span>)
+</span></span><span style="display:flex;"><span>    args <span style="color:#f92672">=</span> parse<span style="color:#f92672">.</span>parse_args()
+</span></span></code></pre></div><p>此种情形下 test.py 输入参数只能包含 a 或 b， a、b 不能同时存在。</p>
+<h3 id="add_argument_group">add_argument_group()</h3>
+<p>参数分组设置。当有分组命令的需求时可用，输入参数将归于所属分组下。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span>    parse <span style="color:#f92672">=</span> argparse<span style="color:#f92672">.</span>ArgumentParser()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    some_group <span style="color:#f92672">=</span> parse<span style="color:#f92672">.</span>add_argument_group(<span style="color:#e6db74">&#39;Publish plugin&#39;</span>)
+</span></span><span style="display:flex;"><span>    some_group<span style="color:#f92672">.</span>add_argument(<span style="color:#e6db74">&#39;-f&#39;</span>  type<span style="color:#f92672">=</span>str)
+</span></span></code></pre></div><h3 id="add_subparsers">add_subparsers()</h3>
+<p>子命令模式，类似 <code>git commit</code>、 <code>git push</code> 等命令.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span>    parse <span style="color:#f92672">=</span> argparse<span style="color:#f92672">.</span>ArgumentParser()
+</span></span><span style="display:flex;"><span>    sub_parse <span style="color:#f92672">=</span> parse<span style="color:#f92672">.</span>add_subparsers()
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># sub_parse opt... </span>
+</span></span></code></pre></div><h2 id="sample">Sample</h2>
+<p>下面由一个使用场景说起。一个脚本：<code>publish.py</code>，包含两个功能：发布和查询，运行环境有测试服和正式服，发布时需要两个账号系统的密码，查询时需要一个账号系统的密码和版本、渠道参数。那么脚本如下，其它见注释:</p>
+<p>// publish.py</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span><span style="color:#f92672">import</span> argparse
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_args</span>():
+</span></span><span style="display:flex;"><span>    parse <span style="color:#f92672">=</span> argparse<span style="color:#f92672">.</span>ArgumentParser(description<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Publish tools.&#39;</span>, add_help<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># 操作输入，使用互斥参数并且参数必须输入且只能选一个</span>
+</span></span><span style="display:flex;"><span>    group <span style="color:#f92672">=</span> parse<span style="color:#f92672">.</span>add_mutually_exclusive_group(required<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 查询操作</span>
+</span></span><span style="display:flex;"><span>    group<span style="color:#f92672">.</span>add_argument(<span style="color:#e6db74">&#34;-s&#34;</span>, <span style="color:#e6db74">&#34;--Search&#34;</span>, action<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;store_true&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 发布操作</span>
+</span></span><span style="display:flex;"><span>    group<span style="color:#f92672">.</span>add_argument(<span style="color:#e6db74">&#34;-p&#34;</span>, <span style="color:#e6db74">&#34;--Publish&#34;</span>, action<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;store_true&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 运行环境参数</span>
+</span></span><span style="display:flex;"><span>    parse<span style="color:#f92672">.</span>add_argument(<span style="color:#e6db74">&#39;-e&#39;</span>, <span style="color:#e6db74">&#39;--Env&#39;</span>, type<span style="color:#f92672">=</span>str, help<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Running environment&#39;</span>, choices<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#39;test&#39;</span>, <span style="color:#e6db74">&#39;product&#39;</span>], default<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;test&#39;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 账号必选信息</span>
+</span></span><span style="display:flex;"><span>    parse<span style="color:#f92672">.</span>add_argument(<span style="color:#e6db74">&#39;-a&#39;</span>, <span style="color:#e6db74">&#39;--ApiAuth&#39;</span>, required<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>, type<span style="color:#f92672">=</span>str, help<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;username:password&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 发布分组命令设置</span>
+</span></span><span style="display:flex;"><span>    publish_group <span style="color:#f92672">=</span> parse<span style="color:#f92672">.</span>add_argument_group(<span style="color:#e6db74">&#39;Publish&#39;</span>)
+</span></span><span style="display:flex;"><span>    publish_group<span style="color:#f92672">.</span>add_argument(<span style="color:#e6db74">&#39;-f&#39;</span>, <span style="color:#e6db74">&#39;--FtpAuth&#39;</span>,  type<span style="color:#f92672">=</span>str, help<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;username:password&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 查询分组命令设置</span>
+</span></span><span style="display:flex;"><span>    search_group <span style="color:#f92672">=</span> parse<span style="color:#f92672">.</span>add_argument_group(<span style="color:#e6db74">&#39;Search&#39;</span>)
+</span></span><span style="display:flex;"><span>    search_group<span style="color:#f92672">.</span>add_argument(<span style="color:#e6db74">&#39;-c&#39;</span>, <span style="color:#e6db74">&#39;--channel&#39;</span>, type<span style="color:#f92672">=</span>str, help<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;channel&#39;</span>)
+</span></span><span style="display:flex;"><span>    search_group<span style="color:#f92672">.</span>add_argument(<span style="color:#e6db74">&#39;-v&#39;</span>, <span style="color:#e6db74">&#39;--versonCode&#39;</span>, type<span style="color:#f92672">=</span>int, help<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Search verson code&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    args <span style="color:#f92672">=</span> parse<span style="color:#f92672">.</span>parse_args()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> vars(args)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>args<span style="color:#f92672">=</span>get_args()
+</span></span><span style="display:flex;"><span>print <span style="color:#e6db74">&#39;opt search?:&#39;</span>, args[<span style="color:#e6db74">&#39;Search&#39;</span>],<span style="color:#e6db74">&#39; opt publish?:&#39;</span>, args[<span style="color:#e6db74">&#39;Publish&#39;</span>], <span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span>, args
+</span></span></code></pre></div><p><code>publish.py -h</code> 使用帮助如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>usage: test.py [-h] (-s | -p) [-e {test,product}] -a APIAUTH [-f FTPAUTH]
+</span></span><span style="display:flex;"><span>               [-c CHANNEL] [-v HOSTVERSONCODE]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Publish tools.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>optional arguments:
+</span></span><span style="display:flex;"><span>  -h, --help            show this help message and exit
+</span></span><span style="display:flex;"><span>  -s, --Search
+</span></span><span style="display:flex;"><span>  -p, --Publish
+</span></span><span style="display:flex;"><span>  -e {test,product}, --Env {test,product}
+</span></span><span style="display:flex;"><span>                        Running environment
+</span></span><span style="display:flex;"><span>  -a APIAUTH, --ApiAuth APIAUTH
+</span></span><span style="display:flex;"><span>                        username:password
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Publish plugin:
+</span></span><span style="display:flex;"><span>  -f FTPAUTH, --FtpAuth FTPAUTH
+</span></span><span style="display:flex;"><span>                        username:password
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Search plugin:
+</span></span><span style="display:flex;"><span>  -c CHANNEL, --channel CHANNEL
+</span></span><span style="display:flex;"><span>                        channel
+</span></span><span style="display:flex;"><span>  -v VERSONCODE, --VersonCode VERSONCODE
+</span></span><span style="display:flex;"><span>                        Search verson code
+</span></span></code></pre></div><p>使用如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Shell" data-lang="Shell"><span style="display:flex;"><span><span style="color:#75715e"># 1 publish</span>
+</span></span><span style="display:flex;"><span>python publish.py -p -a U:P -f U:P
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 2 search</span>
+</span></span><span style="display:flex;"><span>python publish.py -s -a U:P -c channel -v <span style="color:#ae81ff">100</span>
+</span></span></code></pre></div></div>
+    </article>
+    
+            <br/><br/><br/>
+            <hr/>
+            <div id="valine" class="comment"></div>
+          
+            <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+          
+            <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+            <script type="text/javascript">
+                new Valine({
+                    el: '#valine' ,
+                    appId: 'fBqoKNrWNFkYQMTivF00jWpk-gzGzoHsz',
+                    appKey: 'q2baN9KwoyaFHmbjMHfssLIH',
+                    notify: 'true', 
+                    verify: 'false', 
+                    avatar:'hide', 
+                    placeholder: '说点什么吧~',
+                    visitor: ''
+                });
+            </script>
+            <noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript>
+
+  </main>
+
+      </div>
+      <footer>
+  <hr />
+  
+    <p id="social">
+      Find me around the web:
+      <br />
+      
+        
+        <a href="https://github.com/zhengxiaopeng" target="_blank">GitHub</a>
+      
+         | 
+        <a href="https://juejin.cn/user/3051900006044056" target="_blank">Juejin</a>
+      
+         | 
+        <a href="http://www.zhihu.com/people/rocko" target="_blank">Zhihu</a>
+      
+         | 
+        <a href="http://blog.csdn.net/bbld_" target="_blank">CSDN</a>
+      
+         | 
+        <a href="http://weibo.com/678662430" target="_blank">Weibo</a>
+      
+    </p>
+  
+  <p class="copyright">
+    Copyright © 2024
+    <a href="https://rocko.vip/" ><strong>Rocko</strong></a>.
+    This work is licensed under the
+    <a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA 4.0</a> license.
+  </p>
+  <p class="builtWith">
+    Powered by
+    <a href="http://www.gohugo.io/" target="_blank">Hugo</a>.
+  </p>
+</footer>
+
+    </div>
+  </body>
+</html>

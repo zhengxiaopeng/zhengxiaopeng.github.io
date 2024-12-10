@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>VPS on Rocko&#39;s blog</title>
+    <link>https://rocko.vip/categories/vps/</link>
+    <description>Recent content in VPS on Rocko&#39;s blog</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 12 Feb 2015 00:06:07 +0000</lastBuildDate>
+    <atom:link href="https://rocko.vip/categories/vps/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>VPS主机搭建Git服务器</title>
+      <link>https://rocko.vip/posts/vps%E4%B8%BB%E6%9C%BA%E6%90%AD%E5%BB%BAgit%E6%9C%8D%E5%8A%A1%E5%99%A8/</link>
+      <pubDate>Thu, 12 Feb 2015 00:06:07 +0000</pubDate>
+      <guid>https://rocko.vip/posts/vps%E4%B8%BB%E6%9C%BA%E6%90%AD%E5%BB%BAgit%E6%9C%8D%E5%8A%A1%E5%99%A8/</guid>
+      <description>&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;&#xA;&lt;p&gt;上篇说道搬瓦工上搞了个主机挂起了&lt;code&gt;SS&lt;/code&gt;,单单用来干这个有些浪费了，所以它的第二个用处就是用来搭&lt;code&gt;Git服务&lt;/code&gt;，以后私用的代码就往上堆了毕竟&lt;code&gt;Github&lt;/code&gt;不能全都往上放，本地又有些不保险。所以就用VPS在搬瓦工（bandwagonhost）的Ubuntu 14.04上搭建了这个Git服务，因为过程有些曲折，所以记录一下，在出现错误时在错误方向上瞎折腾了一下午，悲伤，看来程序员要学会遇到bug时要保持淡定的心态，不要思路一走进就不会拐弯了，这点要牢记。&lt;/p&gt;&#xA;&lt;h2 id=&#34;搭建&#34;&gt;搭建&lt;/h2&gt;&#xA;&lt;p&gt;搭建一个几个人的小团队的Git服务器的方法比较简单，推荐的教程有&lt;a href=&#34;http://git-scm.com/book/zh/v1/%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E7%9A%84-Git-%E6%9E%B6%E8%AE%BE%E6%9C%8D%E5%8A%A1%E5%99%A8&#34;&gt;服务器上的 Git - 架设服务器&lt;/a&gt;、&lt;a href=&#34;http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/00137583770360579bc4b458f044ce7afed3df579123eca000&#34;&gt;搭建Git服务器&lt;/a&gt;，本文不再介绍因为本文主要说的是在这个过程中的错误。当然也可以使用&lt;code&gt;gitosis&lt;/code&gt;等方式搭建更为强大、控制力更强的Git服务器。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

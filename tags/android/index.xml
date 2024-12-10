@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Android on Rocko&#39;s blog</title>
+    <link>https://rocko.vip/tags/android/</link>
+    <description>Recent content in Android on Rocko&#39;s blog</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 22 Nov 2018 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://rocko.vip/tags/android/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Google Git-Repo (Android)多仓库项目管理</title>
+      <link>https://rocko.vip/posts/google-git-repo-%E5%A4%9A%E4%BB%93%E5%BA%93%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/</link>
+      <pubDate>Thu, 22 Nov 2018 00:00:00 +0000</pubDate>
+      <guid>https://rocko.vip/posts/google-git-repo-%E5%A4%9A%E4%BB%93%E5%BA%93%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/</guid>
+      <description>&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;&#xA;&lt;p&gt;如果不是 Android dev 可以忽略标题的 Android。&lt;/p&gt;&#xA;&lt;p&gt;项目&lt;code&gt;模块化/组件化&lt;/code&gt;之后各模块也作为独立的 &lt;code&gt;Git&lt;/code&gt; 仓库从主项目里剥离了出去，各模块各自管理自己的版本。正常 Android 项目，各剥离出去的子模块仓库则通过 &lt;code&gt;Maven 仓库&lt;/code&gt; 来管理，然后和引入第三方库一样依赖到主项目里。这种状态下的项目迭代带来的问题会是：需要频繁发布子模块的 版本并需要把修改的版本提交 Merge Request 到主模块里，尤其像我们一周一版的快速迭代的情况下，问题尤为凸显。此外还有个问题就是 &lt;code&gt;Debug/断点&lt;/code&gt; 会变得不太方便，因为可能子模块的源码并未发到 Maven 上。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

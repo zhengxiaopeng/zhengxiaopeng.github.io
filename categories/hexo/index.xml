@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hexo on Rocko&#39;s blog</title>
+    <link>https://rocko.vip/categories/hexo/</link>
+    <description>Recent content in Hexo on Rocko&#39;s blog</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sat, 27 Jun 2015 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://rocko.vip/categories/hexo/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>High一下</title>
+      <link>https://rocko.vip/posts/high%E4%B8%80%E4%B8%8B/</link>
+      <pubDate>Sat, 27 Jun 2015 00:00:00 +0000</pubDate>
+      <guid>https://rocko.vip/posts/high%E4%B8%80%E4%B8%8B/</guid>
+      <description>&lt;p&gt;发现博客访问不了，原来是 GitCafe Pages 又挂了，而且 A 记录也不能用了，所以又得把博客迁回 Github 了。顺便把 &lt;code&gt;High一下&lt;/code&gt; 优化了下。基本是直接拿耗子叔的 &lt;a href=&#34;http://coolshell.cn/&#34;&gt;酷壳&lt;/a&gt; 上的 High 一下来用的，存在点击重复播放的问题，而且歌曲只有一首，所以得加以优化下：加了几首歌点击随机播放；修复点击重复执行播放的问题，重新点击后动画重新开始。原来的代码右键 High 一下 &lt;code&gt;审查元素&lt;/code&gt; 就看得到了，修改后的代码如下：&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>设置域名邮箱</title>
+      <link>https://rocko.vip/posts/%E8%AE%BE%E7%BD%AE%E5%9F%9F%E5%90%8D%E9%82%AE%E7%AE%B1/</link>
+      <pubDate>Sat, 06 Dec 2014 00:00:00 +0000</pubDate>
+      <guid>https://rocko.vip/posts/%E8%AE%BE%E7%BD%AE%E5%9F%9F%E5%90%8D%E9%82%AE%E7%AE%B1/</guid>
+      <description>&lt;h1 id=&#34;前提&#34;&gt;前提&lt;/h1&gt;&#xA;&lt;p&gt;首先你得有自己的域名&amp;hellip;&lt;/p&gt;&#xA;&lt;h1 id=&#34;操作&#34;&gt;操作&lt;/h1&gt;&#xA;&lt;p&gt;自己喜欢选一个提供域名邮箱服务的邮箱，如qq、163等，设置内容都是大同小异照着来设置就好,我是选了qq邮箱的，所以下面的是在qq邮箱里设置域名邮箱的流程。&lt;/p&gt;&#xA;&lt;h2 id=&#34;创建域名邮箱&#34;&gt;创建域名邮箱&lt;/h2&gt;&#xA;&lt;p&gt;在qq邮箱的设置里，点击账户按钮，向下滚找到域名邮箱然后点击管理域名邮箱，或者&lt;a href=&#34;http://domain.mail.qq.com/&#34;&gt;直接点击这里&lt;/a&gt;。&lt;br&gt;&#xA;&lt;strong&gt;来到创建域名邮箱页面&lt;/strong&gt;，如下，填写后下一步：&lt;br&gt;&#xA;&lt;img src=&#34;https://static.rocko.xyz/img/%E8%AE%BE%E7%BD%AE%E5%9F%9F%E5%90%8D%E9%82%AE%E7%AE%B1_1.jpg?imageView2/2/w/600/h/600/q/100&#34; alt=&#34;&#34;&gt;&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

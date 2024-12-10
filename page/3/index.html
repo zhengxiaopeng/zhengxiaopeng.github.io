@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+	<meta name="generator" content="Hugo 0.139.3">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content=""
+  />
+  
+    
+      <title>Rocko&#39;s blog</title>
+    
+  
+  <link rel="stylesheet" href="/css/reset.css"/>
+  <link rel="stylesheet" href="/css/font.css"/>
+  <link rel="stylesheet" href="/css/smigle.css"/>
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+</head>
+
+  <body>
+    <div id="root">
+      <header>
+  <div id="brand">
+    <a class="icon-link" href="https://rocko.vip/">
+      <img
+        class="icon"
+        src="/images/rocko.webp"
+      />
+    </a>
+    <div class="text">
+      <a href="https://rocko.vip/"><h1>Rocko&#39;s blog</h1></a>
+      <h3>Live in the moment</h3>
+    </div>
+  </div>
+  <nav>
+    
+      
+        
+        <a href="/"><b>Home</b></a>
+      
+         | 
+        <a href="/about/"><b>About</b></a>
+      
+         | 
+        <a href="/posts/"><b>Posts</b></a>
+      
+         | 
+        <a href="/categories/"><b>Categories</b></a>
+      
+         | 
+        <a href="/tags/"><b>Tags</b></a>
+      
+         | 
+        <a href="/index.xml"><b>RSS</b></a>
+      
+      |<a id="header-high" style="text-decoration: none; margin-left:12px; width:71px; margin-right:5px" class="header-icon waves-effect waves-circle waves-light"  onClick="javascript:(    /*     * Copyright (C) 2015 Rocko (rocko.xyz) <rocko.zxp@gmail.com>     *     * Licensed under the Apache License, Version 2.0 (the 'License');     * you may not use this file except in compliance with the License.     * You may obtain a copy of the License at     *     *      http://www.apache.org/licenses/LICENSE-2.0     *     * Unless required by applicable law or agreed to in writing, software     * distributed under the License is distributed on an 'AS IS' BASIS,     * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.     * See the License for the specific language governing permissions and     * limitations under the License.     */    function go() {        function c() {        var e = document.createElement('link');        e.setAttribute('type', 'text/css');        e.setAttribute('rel', 'stylesheet');        e.setAttribute('href', f);        e.setAttribute('class', l);        document.body.appendChild(e)    }     function h() {        var e = document.getElementsByClassName(l);        for (var t = 0; t < e.length; t++) {            document.body.removeChild(e[t])        }    }     function p() {        var e = document.createElement('div');        e.setAttribute('class', a);        document.body.appendChild(e);        setTimeout(function() {            document.body.removeChild(e)        }, 100)    }     function d(e) {        return {            height : e.offsetHeight,            width : e.offsetWidth        }    }     function v(i) {        var s = d(i);        return s.height > e && s.height < n && s.width > t && s.width < r    }     function m(e) {        var t = e;        var n = 0;        while (!!t) {            n += t.offsetTop;            t = t.offsetParent        }        return n    }     function g() {        var e = document.documentElement;        if (!!window.innerWidth) {            return window.innerHeight        } else if (e && !isNaN(e.clientHeight)) {            return e.clientHeight        }        return 0    }     function y() {        if (window.pageYOffset) {            return window.pageYOffset        }        return Math.max(document.documentElement.scrollTop, document.body.scrollTop)    }     function E(e) {        var t = m(e);        return t >= w && t <= b + w    }     var songs = ['/media/Music-Fashion_Show.mp3', '/media/G-Love.Phonk.mp3', '/media/APT.mp3', '/media/Music-outside.mp3', '/media/Music-sunburst.mp3', '/media/Music-Wake-Live.mp3'];    function S() {        var e = document.getElementById('audio_element_id');        if(e != null){            var index = parseInt(e.getAttribute('curSongIndex'));            if(index > songs.length - 2) {                index = 0;            } else {                index++;            }            e.setAttribute('curSongIndex', index);            N();        }        e.src = i;        e.play()    }     function x(e) {        e.className += ' ' + s + ' ' + o    }     function T(e) {        e.className += ' ' + s + ' ' + u[Math.floor(Math.random() * u.length)]    }     function N() {        var e = document.getElementsByClassName(s);        var t = new RegExp('\\b' + s + '\\b');        for (var n = 0; n < e.length; ) {            e[n].className = e[n].className.replace(t, '')        }    }    function initAudioEle() {        var e = document.getElementById('audio_element_id');        if(e === null){            e = document.createElement('audio');            e.setAttribute('class', l);            e.setAttribute('curSongIndex', 0);            e.id = 'audio_element_id';            e.loop = false;            e.bgcolor = 0;            e.addEventListener('canplay', function() {            setTimeout(function() {                x(k)            }, 500);            setTimeout(function() {                N();                p();                for (var e = 0; e < O.length; e++) {                    T(O[e])                }            }, 8000)        }, true);        e.addEventListener('ended', function() {            N();            h();            go();        }, true);        e.innerHTML = ' <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>';        document.body.appendChild(e);        }    }        initAudioEle();    var e = 30;    var t = 30;    var n = 350;    var r = 350;    var curSongIndex = parseInt(document.getElementById('audio_element_id').getAttribute('curSongIndex'));    var i = songs[curSongIndex];        var s = 'mw-harlem_shake_me';    var o = 'im_first';    var u = ['im_drunk', 'im_baked', 'im_trippin', 'im_blown'];    var a = 'mw-strobe_light';    var f = '/css/harlem-shake-style.css';        var l = 'mw_added_css';    var b = g();    var w = y();    var C = document.getElementsByTagName('*');    var k = null;    for (var L = 0; L < C.length; L++) {        var A = C[L];        if (v(A)) {            if (E(A)) {                k = A;                break            }        }    }    if (A === null) {        console.warn('Could not find a node of the right size. Please try a different page.');        return    }    c();    S();    var O = [];    for (var L = 0; L < C.length; L++) {        var A = C[L];        if (v(A)) {            O.push(A)        }    }    })()" >High一下</a>
+    
+  </nav>
+  <hr />
+</header>
+
+      <div id="content">
+        
+	<main>
+		
+		
+			<article class="summary">
+  <a href="https://rocko.vip/posts/android-studio-jarsolibrary%E9%A1%B9%E7%9B%AE%E4%BE%9D%E8%B5%96/">
+    <h1 class="title">Android Studio jar、so、library项目依赖</h1>
+    
+  </a>
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+<div class="post-meta">
+  <strong>
+    <span>Posted on</span>
+    <time>2014-12-13</time>
+    <span>in</span>
+    
+      <a href="/categories/android">Android</a>
+  </strong>
+ <span> • 493 words</span>
+ <span> • 3 minute read</span>
+  
+    <div>
+      <span>Tags:</span>
+      
+        <a href="/tags/androidstudio">AndroidStudio</a>
+    </div>
+  
+</div>
+
+  <div class="content">
+    <p><h1 id="前言">前言</h1>
+<p>Android Studio(以下简称AS)在13年I/O大会后放出预览版到现在放出的正式版1.0（PS.今天又更新到1.0.1了）历时一年多了，虽然Google官方推出的Android开发者的IDE对我们Android DEV是很有吸引力的，但考虑到beta版还是太多问题所以自己主要还是把AS当做尝鲜为主，每放出一个较大更新就下载下来试试，感觉还是挺好的，渐渐用AS的人越来越多，Github上的项目也基本是AS的了，Google的sample也采用AS，所以使用Eclipse跟外界交流越来越困难啊。到现在<code>android-studio-bundle-135.1629389</code>AS正式版的推出，我们有理由从Eclipse迁移到AS了。<br>
+要迁移到AS中开发那么要掌握AS中的项目管理是必须的，基本的new project、run什么的就不提了，这篇文章记录我在AS中在项目中解决jar包、library项目依赖、so动态链接库的问题，版本控制Git、SVN等这篇文章不涉及。这么多废话后下面开始。</p>
+<h1 id="eclipse跟as的不同">Eclipse跟AS的不同</h1>
+<p>从Eclipse到AS不要带着在Eclipse中的主观色彩去在AS中使用，从项目的构成到构建是不同的，下面列举在Eclipse和AS中的一些概念的区别：</p>
+<h2 id="workspace和project">WorkSpace和Project</h2>
+<p>Eclipse的WorkSpace和AS的Project说的可以说是一个东西，也就是说你可以把在AS中的Project理解为WorkSpace。
+<img src="https://static.rocko.xyz/img/Android-Studio-jar%E3%80%81so%E3%80%81library%E9%A1%B9%E7%9B%AE%E4%BE%9D%E8%B5%96_1.jpg?imageView2/2/w/400/h/400/q/100" alt=""> 所以你在AS中new一个Project相当于在Eclipse中重开了一个WorkSpace，注意第一个箭头，显示模式为Project，建议刚用AS时用这种，方便了解里面的文件结构。</p></p>
+    
+      <a href="https://rocko.vip/posts/android-studio-jarsolibrary%E9%A1%B9%E7%9B%AE%E4%BE%9D%E8%B5%96/">Read more...</a>
+    
+  </div>
+</article>
+
+		
+			<article class="summary">
+  <a href="https://rocko.vip/posts/%E8%AE%BE%E7%BD%AE%E5%9F%9F%E5%90%8D%E9%82%AE%E7%AE%B1/">
+    <h1 class="title">设置域名邮箱</h1>
+    
+  </a>
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+<div class="post-meta">
+  <strong>
+    <span>Posted on</span>
+    <time>2014-12-06</time>
+    <span>in</span>
+    
+      <a href="/categories/hexo">Hexo</a>
+  </strong>
+ <span> • 13 words</span>
+ <span> • 1 minute read</span>
+  
+    <div>
+      <span>Tags:</span>
+      
+        <a href="/tags/hexo">Hexo</a>, 
+        <a href="/tags/%E5%9F%9F%E5%90%8D">域名</a>
+    </div>
+  
+</div>
+
+  <div class="content">
+    <p><h1 id="前提">前提</h1>
+<p>首先你得有自己的域名&hellip;</p>
+<h1 id="操作">操作</h1>
+<p>自己喜欢选一个提供域名邮箱服务的邮箱，如qq、163等，设置内容都是大同小异照着来设置就好,我是选了qq邮箱的，所以下面的是在qq邮箱里设置域名邮箱的流程。</p>
+<h2 id="创建域名邮箱">创建域名邮箱</h2>
+<p>在qq邮箱的设置里，点击账户按钮，向下滚找到域名邮箱然后点击管理域名邮箱，或者<a href="http://domain.mail.qq.com/">直接点击这里</a>。<br>
+<strong>来到创建域名邮箱页面</strong>，如下，填写后下一步：<br>
+<img src="https://static.rocko.xyz/img/%E8%AE%BE%E7%BD%AE%E5%9F%9F%E5%90%8D%E9%82%AE%E7%AE%B1_1.jpg?imageView2/2/w/600/h/600/q/100" alt=""></p></p>
+    
+      <a href="https://rocko.vip/posts/%E8%AE%BE%E7%BD%AE%E5%9F%9F%E5%90%8D%E9%82%AE%E7%AE%B1/">Read more...</a>
+    
+  </div>
+</article>
+
+		
+			<article class="summary">
+  <a href="https://rocko.vip/posts/android-volley%E8%87%AA%E5%AE%9A%E4%B9%89request-jacksonrequestgsonrequest/">
+    <h1 class="title">Android Volley自定义Request(JacksonRequest、GsonRequest)</h1>
+    
+  </a>
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+<div class="post-meta">
+  <strong>
+    <span>Posted on</span>
+    <time>2014-12-05</time>
+    <span>in</span>
+    
+      <a href="/categories/android">Android</a>
+  </strong>
+ <span> • 502 words</span>
+ <span> • 3 minute read</span>
+  
+    <div>
+      <span>Tags:</span>
+      
+        <a href="/tags/volley">Volley</a>
+    </div>
+  
+</div>
+
+  <div class="content">
+    <p><h1 id="前言">前言</h1>
+<p>Volley是一个强大的HTTP库，让Android的的网络操作变得容易、高效、快速。在少数据的高并发情况下它的优势很明显，但在大文件的上传或者下载操作中就并不适用了，这种情况下是建议使用传统方式或者其它框架来实现的。
+<em>它的优点再罗列如下：</em></p>
+<ul>
+<li>自动管理网络请求</li>
+<li>多并发的网络连接</li>
+<li>通过标准的HTTP cache coherence(高速缓存一致性)使得磁盘与内存缓存不可见(Transparent)</li>
+<li>支持指定请求的优先级</li>
+<li>支持取消已经发出的请求。你可以取消单个请求，也可以设置请求取消的块或范围</li>
+<li>框架是容易被定制的，例如，重试或者回退功能</li>
+<li>强大的指令使得你可以容易地去异步网络操作和(网络获取数据后)的UI设置</li>
+<li>(内置)Debugging和tracing工具</li>
+</ul>
+<h1 id="自定义request实现">自定义Request实现</h1>
+<p>上面提到的优点：Volley是容易被定制的，它的易扩展性在这里的自定义Request实现中就很好的体现了出来。自定义Request是通过继承Volley中最核心的Request类来实现的。在我们的Request来解析json数据时，注意处理复杂json数据的解析可扩展性。比如，我们一般都需要把JSON数据解析成我们的实体对象，如下面使用示例中的Weather对象，如果我们的实体比较复杂时就需要自定义自己的Type去给Jackson、Gson去处理了，不然一般都会默认的给解析成HashMap式的键值对造成FC或者get不到属性。对于Jackson，使用Jackson库里的<code>TypeReference</code>类来实现；对于Gson，使用Gson库中的<code>TypeToken</code>类来实现。</p></p>
+    
+      <a href="https://rocko.vip/posts/android-volley%E8%87%AA%E5%AE%9A%E4%B9%89request-jacksonrequestgsonrequest/">Read more...</a>
+    
+  </div>
+</article>
+
+		
+			<article class="summary">
+  <a href="https://rocko.vip/posts/git-%E9%94%99%E8%AF%AF%E9%9B%86%E9%94%A6ing/">
+    <h1 class="title">Git 错误集锦ing...</h1>
+    
+  </a>
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+<div class="post-meta">
+  <strong>
+    <span>Posted on</span>
+    <time>2014-11-25</time>
+    <span>in</span>
+    
+      <a href="/categories/git">Git</a>
+  </strong>
+ <span> • 35 words</span>
+ <span> • 1 minute read</span>
+  
+    <div>
+      <span>Tags:</span>
+      
+        <a href="/tags/git">Git</a>, 
+        <a href="/tags/%E9%94%99%E8%AF%AF">错误</a>
+    </div>
+  
+</div>
+
+  <div class="content">
+    <p><p><strong>系统环境：</strong>
+Windows7 64位
+<strong>问题描述：</strong>
+Windows使用Git客户端gitscm时，当clone或commit时报错。
+<strong>错误提示：</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>warning: templates not found /share/git-core/templates
+</span></span><span style="display:flex;"><span>fatal: Unable to find remote helper <span style="color:#66d9ef">for</span> <span style="color:#e6db74">&#39;https&#39;</span>
+</span></span></code></pre></div><p><strong>解决方案：</strong>
+把Git换个安装目录重新安装问题解决!!!具体原因找了很久未明，估计不知怎么把Git搞乱了。</p>
+<hr>
+<p><strong>系统环境：</strong>
+Windows7 64位
+<strong>问题描述：</strong>
+ssh-keygen命令报错，一般在Windows上配置git的ssh会出现这个问题
+<strong>错误提示：</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Could not create directory <span style="color:#e6db74">&#39;//.ssh&#39;</span>.
+</span></span><span style="display:flex;"><span>...
+</span></span></code></pre></div><p><strong>解决方案：</strong>
+找不到主目录，在系统环境变量配置<code>HOME</code>变量：系统变量上新建-&gt;变量名：<code>HOME</code>、变量值：<code>C:\Users\Administrator</code>,Administrator为你当前的用户名。</p>
+<hr></p>
+    
+      <a href="https://rocko.vip/posts/git-%E9%94%99%E8%AF%AF%E9%9B%86%E9%94%A6ing/">Read more...</a>
+    
+  </div>
+</article>
+
+		
+		<div>
+  
+    <a href="/page/2/">Previous Page</a>
+  
+  3 of 3
+  
+</div>
+
+	</main>
+
+      </div>
+      <footer>
+  <hr />
+  
+    <p id="social">
+      Find me around the web:
+      <br />
+      
+        
+        <a href="https://github.com/zhengxiaopeng" target="_blank">GitHub</a>
+      
+         | 
+        <a href="https://juejin.cn/user/3051900006044056" target="_blank">Juejin</a>
+      
+         | 
+        <a href="http://www.zhihu.com/people/rocko" target="_blank">Zhihu</a>
+      
+         | 
+        <a href="http://blog.csdn.net/bbld_" target="_blank">CSDN</a>
+      
+         | 
+        <a href="http://weibo.com/678662430" target="_blank">Weibo</a>
+      
+    </p>
+  
+  <p class="copyright">
+    Copyright © 2024
+    <a href="https://rocko.vip/" ><strong>Rocko</strong></a>.
+    This work is licensed under the
+    <a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA 4.0</a> license.
+  </p>
+  <p class="builtWith">
+    Powered by
+    <a href="http://www.gohugo.io/" target="_blank">Hugo</a>.
+  </p>
+</footer>
+
+    </div>
+  </body>
+</html>

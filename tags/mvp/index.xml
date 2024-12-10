@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>MVP on Rocko&#39;s blog</title>
+    <link>https://rocko.vip/tags/mvp/</link>
+    <description>Recent content in MVP on Rocko&#39;s blog</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 06 Feb 2015 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://rocko.vip/tags/mvp/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Android中的MVP</title>
+      <link>https://rocko.vip/posts/android%E4%B8%AD%E7%9A%84mvp/</link>
+      <pubDate>Fri, 06 Feb 2015 00:00:00 +0000</pubDate>
+      <guid>https://rocko.vip/posts/android%E4%B8%AD%E7%9A%84mvp/</guid>
+      <description>&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;&#xA;&lt;p&gt;MVP 作为一种 MVC 的演化版本在 Android 开发中受到了越来越多的关注，但在项目开发中选择一种这样的软件设计模式需保持慎重心态，一旦确定使用 MVP 作为你 App 的开发模式那么你就最好坚持做下去，如果在使用 MVP 模式开发过程中发现问题而且坑越来越大，那么就呵呵了。要知道在 Android 上 MVP 在现在为止并没有统一的标准或者框架，不像 Java Web 领域的项目有 SSH 这三个成熟稳重强而有力的三剑客支持推动着，所以在运用 MVP 时一定要做好自己的理解，并且尽量预知自己 App 各模块的需求以便提前做好充分的设计工作。当然 MVP 既然能出现那么必然有它的优点的，不然谁会理会这个冒出来的东西，下面就对 Android 中 MVP 做一些阐述。&lt;/p&gt;&#xA;&lt;h2 id=&#34;mvp简介&#34;&gt;MVP简介&lt;/h2&gt;&#xA;&lt;p&gt;相信大家对 MVC 都是比较熟悉了：&lt;code&gt;M-Model-模型&lt;/code&gt;、&lt;code&gt;V-View-视图&lt;/code&gt;、&lt;code&gt;C-Controller-控制器&lt;/code&gt;，MVP作为MVC的演化版本，也是作为用户界面（用户层）的实现模式，那么类似的MVP所对应的意义：&lt;code&gt;M-Model-模型&lt;/code&gt;、&lt;code&gt;V-View-视图&lt;/code&gt;、&lt;code&gt;P-Presenter-表示器&lt;/code&gt;。从MVC和MVP两者结合来看，Controlller/Presenter在MVC/MVP中都起着逻辑控制处理的角色，起着控制各业务流程的作用。而MVP与MVC最不同的一点是M与V是不直接关联的也是就Model与View不存在直接关系，这两者之间间隔着的是Presenter层，其负责调控View与Model之间的间接交互，MVP的结构图如下所示，对于这个图理解即可而不必限于其中的条条框框，毕竟在不同的场景下多少会有些出入的。在Android中很重要的一点就是对UI的操作基本上需要异步进行也就是在MainThread中才能操作UI，所以对View与Model的切断分离是合理的。此外Presenter与View、Model的交互使用接口定义交互操作可以进一步达到松耦合也可以通过接口更加方便地进行单元测试。&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://rocko.vip/images/Android%E4%B8%AD%E7%9A%84MVP_1.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

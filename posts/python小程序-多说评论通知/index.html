@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content=""
+  />
+  
+    
+      <title>Python小程序-多说评论通知 | Rocko&#39;s blog</title>
+    
+  
+  <link rel="stylesheet" href="/css/reset.css"/>
+  <link rel="stylesheet" href="/css/font.css"/>
+  <link rel="stylesheet" href="/css/smigle.css"/>
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+</head>
+
+  <body>
+    <div id="root">
+      <header>
+  <div id="brand">
+    <a class="icon-link" href="https://rocko.vip/">
+      <img
+        class="icon"
+        src="/images/rocko.webp"
+      />
+    </a>
+    <div class="text">
+      <a href="https://rocko.vip/"><h1>Rocko&#39;s blog</h1></a>
+      <h3>Live in the moment</h3>
+    </div>
+  </div>
+  <nav>
+    
+      
+        
+        <a href="/"><b>Home</b></a>
+      
+         | 
+        <a href="/about/"><b>About</b></a>
+      
+         | 
+        <a href="/posts/"><b>Posts</b></a>
+      
+         | 
+        <a href="/categories/"><b>Categories</b></a>
+      
+         | 
+        <a href="/tags/"><b>Tags</b></a>
+      
+         | 
+        <a href="/index.xml"><b>RSS</b></a>
+      
+      |<a id="header-high" style="text-decoration: none; margin-left:12px; width:71px; margin-right:5px" class="header-icon waves-effect waves-circle waves-light"  onClick="javascript:(    /*     * Copyright (C) 2015 Rocko (rocko.xyz) <rocko.zxp@gmail.com>     *     * Licensed under the Apache License, Version 2.0 (the 'License');     * you may not use this file except in compliance with the License.     * You may obtain a copy of the License at     *     *      http://www.apache.org/licenses/LICENSE-2.0     *     * Unless required by applicable law or agreed to in writing, software     * distributed under the License is distributed on an 'AS IS' BASIS,     * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.     * See the License for the specific language governing permissions and     * limitations under the License.     */    function go() {        function c() {        var e = document.createElement('link');        e.setAttribute('type', 'text/css');        e.setAttribute('rel', 'stylesheet');        e.setAttribute('href', f);        e.setAttribute('class', l);        document.body.appendChild(e)    }     function h() {        var e = document.getElementsByClassName(l);        for (var t = 0; t < e.length; t++) {            document.body.removeChild(e[t])        }    }     function p() {        var e = document.createElement('div');        e.setAttribute('class', a);        document.body.appendChild(e);        setTimeout(function() {            document.body.removeChild(e)        }, 100)    }     function d(e) {        return {            height : e.offsetHeight,            width : e.offsetWidth        }    }     function v(i) {        var s = d(i);        return s.height > e && s.height < n && s.width > t && s.width < r    }     function m(e) {        var t = e;        var n = 0;        while (!!t) {            n += t.offsetTop;            t = t.offsetParent        }        return n    }     function g() {        var e = document.documentElement;        if (!!window.innerWidth) {            return window.innerHeight        } else if (e && !isNaN(e.clientHeight)) {            return e.clientHeight        }        return 0    }     function y() {        if (window.pageYOffset) {            return window.pageYOffset        }        return Math.max(document.documentElement.scrollTop, document.body.scrollTop)    }     function E(e) {        var t = m(e);        return t >= w && t <= b + w    }     var songs = ['/media/Music-Fashion_Show.mp3', '/media/G-Love.Phonk.mp3', '/media/APT.mp3', '/media/Music-outside.mp3', '/media/Music-sunburst.mp3', '/media/Music-Wake-Live.mp3'];    function S() {        var e = document.getElementById('audio_element_id');        if(e != null){            var index = parseInt(e.getAttribute('curSongIndex'));            if(index > songs.length - 2) {                index = 0;            } else {                index++;            }            e.setAttribute('curSongIndex', index);            N();        }        e.src = i;        e.play()    }     function x(e) {        e.className += ' ' + s + ' ' + o    }     function T(e) {        e.className += ' ' + s + ' ' + u[Math.floor(Math.random() * u.length)]    }     function N() {        var e = document.getElementsByClassName(s);        var t = new RegExp('\\b' + s + '\\b');        for (var n = 0; n < e.length; ) {            e[n].className = e[n].className.replace(t, '')        }    }    function initAudioEle() {        var e = document.getElementById('audio_element_id');        if(e === null){            e = document.createElement('audio');            e.setAttribute('class', l);            e.setAttribute('curSongIndex', 0);            e.id = 'audio_element_id';            e.loop = false;            e.bgcolor = 0;            e.addEventListener('canplay', function() {            setTimeout(function() {                x(k)            }, 500);            setTimeout(function() {                N();                p();                for (var e = 0; e < O.length; e++) {                    T(O[e])                }            }, 8000)        }, true);        e.addEventListener('ended', function() {            N();            h();            go();        }, true);        e.innerHTML = ' <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>';        document.body.appendChild(e);        }    }        initAudioEle();    var e = 30;    var t = 30;    var n = 350;    var r = 350;    var curSongIndex = parseInt(document.getElementById('audio_element_id').getAttribute('curSongIndex'));    var i = songs[curSongIndex];        var s = 'mw-harlem_shake_me';    var o = 'im_first';    var u = ['im_drunk', 'im_baked', 'im_trippin', 'im_blown'];    var a = 'mw-strobe_light';    var f = '/css/harlem-shake-style.css';        var l = 'mw_added_css';    var b = g();    var w = y();    var C = document.getElementsByTagName('*');    var k = null;    for (var L = 0; L < C.length; L++) {        var A = C[L];        if (v(A)) {            if (E(A)) {                k = A;                break            }        }    }    if (A === null) {        console.warn('Could not find a node of the right size. Please try a different page.');        return    }    c();    S();    var O = [];    for (var L = 0; L < C.length; L++) {        var A = C[L];        if (v(A)) {            O.push(A)        }    }    })()" >High一下</a>
+    
+  </nav>
+  <hr />
+</header>
+
+      <div id="content">
+        
+  <main>
+    <article>
+      <h1 class="title">Python小程序-多说评论通知</h1>
+      
+      <div class="post-meta">
+  <strong>
+    <span>Posted on</span>
+    <time>2015-03-10</time>
+    <span>in</span>
+    
+      <a href="/categories/python">Python</a>
+  </strong>
+  <span> • 352 words</span>
+  <span> • 2 minute read</span>
+  
+  
+    <div>
+      <span>Tags:</span>
+      
+        <a href="/tags/%E5%A4%9A%E8%AF%B4">多说</a>, 
+        <a href="/tags/hexo">Hexo</a>
+    </div>
+  
+</div>
+
+      <div class="content"><h2 id="前言">前言</h2>
+<p>这段时间在学习Python，写了第一个稍有实用价值的Python脚本小程序，发文以作纪念。实现多说评论邮件通知的功能：利用<a href="http://dev.duoshuo.com/docs">多说的API</a>定时去检查后台数据从而检测是否有新评论的数据产生，有的话就发邮件到指定邮箱。之所以做这个是因为多说官方的方法一直尝试失败，可以戳这个：<a href="http://haomwei.com/technology/import-users-to-duoshuo.html">同步用户到多说实现文章被评论时的提醒功能</a>，作者用户是导入了，但测试发现一直没反应；另外一个就是多说官方的通知不是及时的，一天一封吧，强迫症患者可能受不了。写的不好求轻喷。</p>
+<h2 id="撸码">撸码</h2>
+<h3 id="配置">配置</h3>
+<p>方便他人修改使用。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>email_info<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>email_host <span style="color:#f92672">=</span> 电子邮件主机，如：smtp.qq.com，注意你的邮箱是否开启了POP3/IMAP/SMTP/Exchange/CardDAV/CalDAV服务
+</span></span><span style="display:flex;"><span>from_address <span style="color:#f92672">=</span> 你要发送邮件的邮件地址
+</span></span><span style="display:flex;"><span>password <span style="color:#f92672">=</span> 邮箱的登陆密码
+</span></span><span style="display:flex;"><span>to_address <span style="color:#f92672">=</span> 你要接受邮件的地址
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>duoshuo_account<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>name <span style="color:#f92672">=</span> 多说的二级域名名, 如我的：rocko
+</span></span><span style="display:flex;"><span>secret <span style="color:#f92672">=</span> 多说的秘钥，在后台的设置查看
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>period_time<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>period <span style="color:#f92672">=</span> 定时检查评论的时间（s）
+</span></span></code></pre></div><h3 id="python代码">Python代码</h3>
+<p>代码比较简单，已加注释。用到多说的接口是这个，<a href="http://dev.duoshuo.com/docs/50037b11b66af78d0c000009">实时同步评论回本地数据库</a>。需要注意的是在后台操作和文章有新评论时就会产生log的json数据返回，返回的数据可以去它的文档看一下，然后就找自己感兴趣的数据了，做为我们判断是否是文章有评论而不是自己在后台产生的是<code>action</code>这个字段，为<strong>create</strong>时就是我们要的。还有就是请求时的<code>limit</code>参数，文档上说默认是50，所以如果你没加使用了默认而你的log数&gt;50时那就只能获取到50条了，不过是&lt;200但我使用&gt;200时区请求是没有问题的。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span><span style="color:#75715e">#! /usr/bin/env python</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># -*- coding: utf-8 -*-</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> email.mime.text <span style="color:#f92672">import</span> MIMEText
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> email.utils <span style="color:#f92672">import</span> parseaddr, formataddr
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># http://requests-docs-cn.readthedocs.org/zh_CN/latest/user/quickstart.html</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> requests
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> smtplib
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> time
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> ConfigParser
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">monitor</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 加载配置文件信息</span>
+</span></span><span style="display:flex;"><span>    config <span style="color:#f92672">=</span> ConfigParser<span style="color:#f92672">.</span>ConfigParser()
+</span></span><span style="display:flex;"><span>    config<span style="color:#f92672">.</span>read(<span style="color:#e6db74">&#39;./ds.config&#39;</span>) <span style="color:#75715e"># 当前目录下的ds.config</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 初始化配置信息</span>
+</span></span><span style="display:flex;"><span>    duoshuo_account <span style="color:#f92672">=</span> {}
+</span></span><span style="display:flex;"><span>    email_info <span style="color:#f92672">=</span> {}
+</span></span><span style="display:flex;"><span>    period_time <span style="color:#f92672">=</span> {}
+</span></span><span style="display:flex;"><span>    items2dict(duoshuo_account, config<span style="color:#f92672">.</span>items(<span style="color:#e6db74">&#39;duoshuo_account&#39;</span>))
+</span></span><span style="display:flex;"><span>    items2dict(email_info, config<span style="color:#f92672">.</span>items(<span style="color:#e6db74">&#39;email_info&#39;</span>))
+</span></span><span style="display:flex;"><span>    items2dict(period_time, config<span style="color:#f92672">.</span>items(<span style="color:#e6db74">&#39;period_time&#39;</span>))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 第一次获取账户后台的初始信息</span>
+</span></span><span style="display:flex;"><span>    current_count, meta <span style="color:#f92672">=</span> get_duoshuo_log(duoshuo_account)
+</span></span><span style="display:flex;"><span>    last_count <span style="color:#f92672">=</span> current_count
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># print last_count</span>
+</span></span><span style="display:flex;"><span>    name <span style="color:#f92672">=</span> duoshuo_account<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;name&#39;</span>)
+</span></span><span style="display:flex;"><span>    period <span style="color:#f92672">=</span> int(period_time<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;period&#39;</span>))
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> <span style="color:#66d9ef">True</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># print &#39;&gt;&gt;&gt;&gt;&gt;get_duoshuo_log&#39;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">try</span>:  <span style="color:#75715e"># 防止get_duoshuo_log和send_email挂掉</span>
+</span></span><span style="display:flex;"><span>            current_count, meta <span style="color:#f92672">=</span> get_duoshuo_log(duoshuo_account)
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e"># send_email(email_info, name, current_count, (current_count - last_count), meta)</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e"># print current_count</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e"># print str(meta)</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (len(meta)) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">and</span> (current_count <span style="color:#f92672">&gt;</span> last_count):
+</span></span><span style="display:flex;"><span>                send_email(email_info, name, current_count, (current_count <span style="color:#f92672">-</span> last_count), meta)
+</span></span><span style="display:flex;"><span>                last_count <span style="color:#f92672">=</span> current_count
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            time<span style="color:#f92672">.</span>sleep(period)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">except</span> <span style="color:#a6e22e">Exception</span>, e:
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e"># print &#39;Error:&#39;, str(e)</span>
+</span></span><span style="display:flex;"><span>            time<span style="color:#f92672">.</span>sleep(period)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 把option的items映射到dict中</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">items2dict</span>(options_dict, items_list):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> item <span style="color:#f92672">in</span> items_list:
+</span></span><span style="display:flex;"><span>        options_dict[item[<span style="color:#ae81ff">0</span>]] <span style="color:#f92672">=</span> item[<span style="color:#ae81ff">1</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 获取多说账户的后台信息og</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_duoshuo_log</span>(duoshuo_account):
+</span></span><span style="display:flex;"><span>    url <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;http://api.duoshuo.com/log/list.json?&#39;</span> \
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;short_name=&#39;</span> <span style="color:#f92672">+</span> duoshuo_account<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;name&#39;</span>) \
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;&amp;secret=&#39;</span> <span style="color:#f92672">+</span> duoshuo_account<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;secret&#39;</span>) <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;&amp;limit=5000&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># print url</span>
+</span></span><span style="display:flex;"><span>    r <span style="color:#f92672">=</span> requests<span style="color:#f92672">.</span>get(url)
+</span></span><span style="display:flex;"><span>    resp <span style="color:#f92672">=</span> r<span style="color:#f92672">.</span>json()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (resp[<span style="color:#e6db74">&#39;code&#39;</span>] <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>):  <span style="color:#75715e"># code为0时才是正常的log的json信息</span>
+</span></span><span style="display:flex;"><span>        length <span style="color:#f92672">=</span> len(resp[<span style="color:#e6db74">&#39;response&#39;</span>])
+</span></span><span style="display:flex;"><span>        meta <span style="color:#f92672">=</span> resp[<span style="color:#e6db74">&#39;response&#39;</span>][length <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>][<span style="color:#e6db74">&#39;meta&#39;</span>]
+</span></span><span style="display:flex;"><span>        action <span style="color:#f92672">=</span> resp[<span style="color:#e6db74">&#39;response&#39;</span>][length <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>][<span style="color:#e6db74">&#39;action&#39;</span>]
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (action <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;create&#39;</span>):  <span style="color:#75715e"># action为create时才是新增评论，去除其它如delete等操作的影响</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> length, meta
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> length, {}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>, {}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 发送邮件</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">send_email</span>(email_info, name, current_count, count, meta):
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># print &#39;&gt;&gt;&gt;send email&#39;</span>
+</span></span><span style="display:flex;"><span>    last_meta_message <span style="color:#f92672">=</span> <span style="color:#e6db74">u</span><span style="color:#e6db74">&#39;最新评论信息：&#39;</span> \
+</span></span><span style="display:flex;"><span>                        <span style="color:#f92672">+</span> <span style="color:#e6db74">u</span><span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">用户地址：&#39;</span> <span style="color:#f92672">+</span> unicode(meta<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;ip&#39;</span>)) \
+</span></span><span style="display:flex;"><span>                        <span style="color:#f92672">+</span> <span style="color:#e6db74">u</span><span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">用户昵称：&#39;</span> <span style="color:#f92672">+</span> unicode(meta<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;author_name&#39;</span>)) \
+</span></span><span style="display:flex;"><span>                        <span style="color:#f92672">+</span> <span style="color:#e6db74">u</span><span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">用户邮箱：&#39;</span> <span style="color:#f92672">+</span> unicode(meta<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;author_email&#39;</span>)) \
+</span></span><span style="display:flex;"><span>                        <span style="color:#f92672">+</span> <span style="color:#e6db74">u</span><span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">用户网站：&#39;</span> <span style="color:#f92672">+</span> unicode(meta<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;author_url&#39;</span>)) \
+</span></span><span style="display:flex;"><span>                        <span style="color:#f92672">+</span> <span style="color:#e6db74">u</span><span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">评论时间：&#39;</span> <span style="color:#f92672">+</span> unicode(meta<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;created_at&#39;</span>)) \
+</span></span><span style="display:flex;"><span>                        <span style="color:#f92672">+</span> <span style="color:#e6db74">u</span><span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">评论内容：&#39;</span> <span style="color:#f92672">+</span> unicode(meta<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;message&#39;</span>)) \
+</span></span><span style="display:flex;"><span>                        <span style="color:#f92672">+</span> <span style="color:#e6db74">u</span><span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">审核状态：&#39;</span> <span style="color:#f92672">+</span> unicode(meta<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;status&#39;</span>))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    duoshuo_admin_url <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;http://&#39;</span> <span style="color:#f92672">+</span> name <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;.duoshuo.com/admin/&#39;</span>
+</span></span><span style="display:flex;"><span>    text <span style="color:#f92672">=</span> <span style="color:#e6db74">u</span><span style="color:#e6db74">&#39;后台记录变更数：&#39;</span> <span style="color:#f92672">+</span> str(count) <span style="color:#f92672">+</span> <span style="color:#e6db74">u</span><span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">多说后台：&#39;</span> <span style="color:#f92672">+</span> duoshuo_admin_url <span style="color:#f92672">+</span> <span style="color:#e6db74">u</span><span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\n\n</span><span style="color:#e6db74">&#39;</span> <span style="color:#f92672">+</span> last_meta_message;
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># print text</span>
+</span></span><span style="display:flex;"><span>    msg <span style="color:#f92672">=</span> MIMEText(text, <span style="color:#e6db74">&#39;plain&#39;</span>, <span style="color:#e6db74">&#39;utf-8&#39;</span>)
+</span></span><span style="display:flex;"><span>    msg[<span style="color:#e6db74">&#39;Subject&#39;</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74">u</span><span style="color:#e6db74">&#39;多说评论通知 #&#39;</span> <span style="color:#f92672">+</span> str(current_count)
+</span></span><span style="display:flex;"><span>    msg[<span style="color:#e6db74">&#39;From&#39;</span>] <span style="color:#f92672">=</span> email_info<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;from_address&#39;</span>)
+</span></span><span style="display:flex;"><span>    msg[<span style="color:#e6db74">&#39;To&#39;</span>] <span style="color:#f92672">=</span> email_info<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;to_address&#39;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># print msg</span>
+</span></span><span style="display:flex;"><span>    server <span style="color:#f92672">=</span> smtplib<span style="color:#f92672">.</span>SMTP()
+</span></span><span style="display:flex;"><span>    server<span style="color:#f92672">.</span>connect(email_info<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;email_host&#39;</span>))
+</span></span><span style="display:flex;"><span>    server<span style="color:#f92672">.</span>login(email_info<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;from_address&#39;</span>), email_info<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;password&#39;</span>))
+</span></span><span style="display:flex;"><span>    server<span style="color:#f92672">.</span>sendmail(email_info<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;from_address&#39;</span>), [email_info<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;to_address&#39;</span>)], msg<span style="color:#f92672">.</span>as_string())
+</span></span><span style="display:flex;"><span>    server<span style="color:#f92672">.</span>close()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;__main__&#39;</span>:
+</span></span><span style="display:flex;"><span>    monitor()
+</span></span></code></pre></div><h3 id="开机自启">开机自启</h3>
+<p>在自己的VPS里往Linux系统的<code>/etc/rc.local</code>里的<code>exit 0</code>前加上启动程序的命令</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>nohup python your_path/ds.py &amp;
+</span></span></code></pre></div><p>Windows的开机自启动方法，<a href="http://www.cnblogs.com/MikeZhang/archive/2013/02/04/pythonautorunwindows20130204.html">戳我</a>。</p>
+<h3 id="测试效果">测试效果</h3>
+<p><img src="/images/Python%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E5%A4%9A%E8%AF%B4%E8%AF%84%E8%AE%BA%E9%80%9A%E7%9F%A5-1.png" alt="upload successful"></p>
+<h2 id="end">End</h2>
+<p>代码放到了Github上，<a href="https://github.com/zhengxiaopeng/duoshuo-comment-notification">duoshuo-comment-notification</a>，有需要的去看看。
+Python的函数设计的不错，书写简单功能强大。编码格式是个大坑~，缩进识别代码段（域）有些蛋疼。</p></div>
+    </article>
+    
+            <br/><br/><br/>
+            <hr/>
+            <div id="valine" class="comment"></div>
+          
+            <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+          
+            <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+            <script type="text/javascript">
+                new Valine({
+                    el: '#valine' ,
+                    appId: 'fBqoKNrWNFkYQMTivF00jWpk-gzGzoHsz',
+                    appKey: 'q2baN9KwoyaFHmbjMHfssLIH',
+                    notify: 'true', 
+                    verify: 'false', 
+                    avatar:'hide', 
+                    placeholder: '说点什么吧~',
+                    visitor: ''
+                });
+            </script>
+            <noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript>
+
+  </main>
+
+      </div>
+      <footer>
+  <hr />
+  
+    <p id="social">
+      Find me around the web:
+      <br />
+      
+        
+        <a href="https://github.com/zhengxiaopeng" target="_blank">GitHub</a>
+      
+         | 
+        <a href="https://juejin.cn/user/3051900006044056" target="_blank">Juejin</a>
+      
+         | 
+        <a href="http://www.zhihu.com/people/rocko" target="_blank">Zhihu</a>
+      
+         | 
+        <a href="http://blog.csdn.net/bbld_" target="_blank">CSDN</a>
+      
+         | 
+        <a href="http://weibo.com/678662430" target="_blank">Weibo</a>
+      
+    </p>
+  
+  <p class="copyright">
+    Copyright © 2024
+    <a href="https://rocko.vip/" ><strong>Rocko</strong></a>.
+    This work is licensed under the
+    <a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA 4.0</a> license.
+  </p>
+  <p class="builtWith">
+    Powered by
+    <a href="http://www.gohugo.io/" target="_blank">Hugo</a>.
+  </p>
+</footer>
+
+    </div>
+  </body>
+</html>

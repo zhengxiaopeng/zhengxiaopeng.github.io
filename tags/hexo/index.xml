@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hexo on Rocko&#39;s blog</title>
+    <link>https://rocko.vip/tags/hexo/</link>
+    <description>Recent content in Hexo on Rocko&#39;s blog</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 10 Mar 2015 00:40:06 +0000</lastBuildDate>
+    <atom:link href="https://rocko.vip/tags/hexo/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Python小程序-多说评论通知</title>
+      <link>https://rocko.vip/posts/python%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E5%A4%9A%E8%AF%B4%E8%AF%84%E8%AE%BA%E9%80%9A%E7%9F%A5/</link>
+      <pubDate>Tue, 10 Mar 2015 00:40:06 +0000</pubDate>
+      <guid>https://rocko.vip/posts/python%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E5%A4%9A%E8%AF%B4%E8%AF%84%E8%AE%BA%E9%80%9A%E7%9F%A5/</guid>
+      <description>&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;&#xA;&lt;p&gt;这段时间在学习Python，写了第一个稍有实用价值的Python脚本小程序，发文以作纪念。实现多说评论邮件通知的功能：利用&lt;a href=&#34;http://dev.duoshuo.com/docs&#34;&gt;多说的API&lt;/a&gt;定时去检查后台数据从而检测是否有新评论的数据产生，有的话就发邮件到指定邮箱。之所以做这个是因为多说官方的方法一直尝试失败，可以戳这个：&lt;a href=&#34;http://haomwei.com/technology/import-users-to-duoshuo.html&#34;&gt;同步用户到多说实现文章被评论时的提醒功能&lt;/a&gt;，作者用户是导入了，但测试发现一直没反应；另外一个就是多说官方的通知不是及时的，一天一封吧，强迫症患者可能受不了。写的不好求轻喷。&lt;/p&gt;&#xA;&lt;h2 id=&#34;撸码&#34;&gt;撸码&lt;/h2&gt;&#xA;&lt;h3 id=&#34;配置&#34;&gt;配置&lt;/h3&gt;&#xA;&lt;p&gt;方便他人修改使用。&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;email_info&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;email_host &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 电子邮件主机，如：smtp.qq.com，注意你的邮箱是否开启了POP3/IMAP/SMTP/Exchange/CardDAV/CalDAV服务&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;from_address &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 你要发送邮件的邮件地址&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;password &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 邮箱的登陆密码&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;to_address &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 你要接受邮件的地址&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;duoshuo_account&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;name &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 多说的二级域名名, 如我的：rocko&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;secret &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 多说的秘钥，在后台的设置查看&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;period_time&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;period &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 定时检查评论的时间（s）&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;python代码&#34;&gt;Python代码&lt;/h3&gt;&#xA;&lt;p&gt;代码比较简单，已加注释。用到多说的接口是这个，&lt;a href=&#34;http://dev.duoshuo.com/docs/50037b11b66af78d0c000009&#34;&gt;实时同步评论回本地数据库&lt;/a&gt;。需要注意的是在后台操作和文章有新评论时就会产生log的json数据返回，返回的数据可以去它的文档看一下，然后就找自己感兴趣的数据了，做为我们判断是否是文章有评论而不是自己在后台产生的是&lt;code&gt;action&lt;/code&gt;这个字段，为&lt;strong&gt;create&lt;/strong&gt;时就是我们要的。还有就是请求时的&lt;code&gt;limit&lt;/code&gt;参数，文档上说默认是50，所以如果你没加使用了默认而你的log数&amp;gt;50时那就只能获取到50条了，不过是&amp;lt;200但我使用&amp;gt;200时区请求是没有问题的。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>设置域名邮箱</title>
+      <link>https://rocko.vip/posts/%E8%AE%BE%E7%BD%AE%E5%9F%9F%E5%90%8D%E9%82%AE%E7%AE%B1/</link>
+      <pubDate>Sat, 06 Dec 2014 00:00:00 +0000</pubDate>
+      <guid>https://rocko.vip/posts/%E8%AE%BE%E7%BD%AE%E5%9F%9F%E5%90%8D%E9%82%AE%E7%AE%B1/</guid>
+      <description>&lt;h1 id=&#34;前提&#34;&gt;前提&lt;/h1&gt;&#xA;&lt;p&gt;首先你得有自己的域名&amp;hellip;&lt;/p&gt;&#xA;&lt;h1 id=&#34;操作&#34;&gt;操作&lt;/h1&gt;&#xA;&lt;p&gt;自己喜欢选一个提供域名邮箱服务的邮箱，如qq、163等，设置内容都是大同小异照着来设置就好,我是选了qq邮箱的，所以下面的是在qq邮箱里设置域名邮箱的流程。&lt;/p&gt;&#xA;&lt;h2 id=&#34;创建域名邮箱&#34;&gt;创建域名邮箱&lt;/h2&gt;&#xA;&lt;p&gt;在qq邮箱的设置里，点击账户按钮，向下滚找到域名邮箱然后点击管理域名邮箱，或者&lt;a href=&#34;http://domain.mail.qq.com/&#34;&gt;直接点击这里&lt;/a&gt;。&lt;br&gt;&#xA;&lt;strong&gt;来到创建域名邮箱页面&lt;/strong&gt;，如下，填写后下一步：&lt;br&gt;&#xA;&lt;img src=&#34;https://static.rocko.xyz/img/%E8%AE%BE%E7%BD%AE%E5%9F%9F%E5%90%8D%E9%82%AE%E7%AE%B1_1.jpg?imageView2/2/w/600/h/600/q/100&#34; alt=&#34;&#34;&gt;&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

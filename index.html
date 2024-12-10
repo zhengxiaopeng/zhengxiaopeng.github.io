@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+	<meta name="generator" content="Hugo 0.139.3">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content=""
+  />
+  
+    
+      <title>Rocko&#39;s blog</title>
+    
+  
+  <link rel="stylesheet" href="/css/reset.css"/>
+  <link rel="stylesheet" href="/css/font.css"/>
+  <link rel="stylesheet" href="/css/smigle.css"/>
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+</head>
+
+  <body>
+    <div id="root">
+      <header>
+  <div id="brand">
+    <a class="icon-link" href="https://rocko.vip/">
+      <img
+        class="icon"
+        src="/images/rocko.webp"
+      />
+    </a>
+    <div class="text">
+      <a href="https://rocko.vip/"><h1>Rocko&#39;s blog</h1></a>
+      <h3>Live in the moment</h3>
+    </div>
+  </div>
+  <nav>
+    
+      
+        
+        <a href="/"><b>Home</b></a>
+      
+         | 
+        <a href="/about/"><b>About</b></a>
+      
+         | 
+        <a href="/posts/"><b>Posts</b></a>
+      
+         | 
+        <a href="/categories/"><b>Categories</b></a>
+      
+         | 
+        <a href="/tags/"><b>Tags</b></a>
+      
+         | 
+        <a href="/index.xml"><b>RSS</b></a>
+      
+      |<a id="header-high" style="text-decoration: none; margin-left:12px; width:71px; margin-right:5px" class="header-icon waves-effect waves-circle waves-light"  onClick="javascript:(    /*     * Copyright (C) 2015 Rocko (rocko.xyz) <rocko.zxp@gmail.com>     *     * Licensed under the Apache License, Version 2.0 (the 'License');     * you may not use this file except in compliance with the License.     * You may obtain a copy of the License at     *     *      http://www.apache.org/licenses/LICENSE-2.0     *     * Unless required by applicable law or agreed to in writing, software     * distributed under the License is distributed on an 'AS IS' BASIS,     * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.     * See the License for the specific language governing permissions and     * limitations under the License.     */    function go() {        function c() {        var e = document.createElement('link');        e.setAttribute('type', 'text/css');        e.setAttribute('rel', 'stylesheet');        e.setAttribute('href', f);        e.setAttribute('class', l);        document.body.appendChild(e)    }     function h() {        var e = document.getElementsByClassName(l);        for (var t = 0; t < e.length; t++) {            document.body.removeChild(e[t])        }    }     function p() {        var e = document.createElement('div');        e.setAttribute('class', a);        document.body.appendChild(e);        setTimeout(function() {            document.body.removeChild(e)        }, 100)    }     function d(e) {        return {            height : e.offsetHeight,            width : e.offsetWidth        }    }     function v(i) {        var s = d(i);        return s.height > e && s.height < n && s.width > t && s.width < r    }     function m(e) {        var t = e;        var n = 0;        while (!!t) {            n += t.offsetTop;            t = t.offsetParent        }        return n    }     function g() {        var e = document.documentElement;        if (!!window.innerWidth) {            return window.innerHeight        } else if (e && !isNaN(e.clientHeight)) {            return e.clientHeight        }        return 0    }     function y() {        if (window.pageYOffset) {            return window.pageYOffset        }        return Math.max(document.documentElement.scrollTop, document.body.scrollTop)    }     function E(e) {        var t = m(e);        return t >= w && t <= b + w    }     var songs = ['/media/Music-Fashion_Show.mp3', '/media/G-Love.Phonk.mp3', '/media/APT.mp3', '/media/Music-outside.mp3', '/media/Music-sunburst.mp3', '/media/Music-Wake-Live.mp3'];    function S() {        var e = document.getElementById('audio_element_id');        if(e != null){            var index = parseInt(e.getAttribute('curSongIndex'));            if(index > songs.length - 2) {                index = 0;            } else {                index++;            }            e.setAttribute('curSongIndex', index);            N();        }        e.src = i;        e.play()    }     function x(e) {        e.className += ' ' + s + ' ' + o    }     function T(e) {        e.className += ' ' + s + ' ' + u[Math.floor(Math.random() * u.length)]    }     function N() {        var e = document.getElementsByClassName(s);        var t = new RegExp('\\b' + s + '\\b');        for (var n = 0; n < e.length; ) {            e[n].className = e[n].className.replace(t, '')        }    }    function initAudioEle() {        var e = document.getElementById('audio_element_id');        if(e === null){            e = document.createElement('audio');            e.setAttribute('class', l);            e.setAttribute('curSongIndex', 0);            e.id = 'audio_element_id';            e.loop = false;            e.bgcolor = 0;            e.addEventListener('canplay', function() {            setTimeout(function() {                x(k)            }, 500);            setTimeout(function() {                N();                p();                for (var e = 0; e < O.length; e++) {                    T(O[e])                }            }, 8000)        }, true);        e.addEventListener('ended', function() {            N();            h();            go();        }, true);        e.innerHTML = ' <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>';        document.body.appendChild(e);        }    }        initAudioEle();    var e = 30;    var t = 30;    var n = 350;    var r = 350;    var curSongIndex = parseInt(document.getElementById('audio_element_id').getAttribute('curSongIndex'));    var i = songs[curSongIndex];        var s = 'mw-harlem_shake_me';    var o = 'im_first';    var u = ['im_drunk', 'im_baked', 'im_trippin', 'im_blown'];    var a = 'mw-strobe_light';    var f = '/css/harlem-shake-style.css';        var l = 'mw_added_css';    var b = g();    var w = y();    var C = document.getElementsByTagName('*');    var k = null;    for (var L = 0; L < C.length; L++) {        var A = C[L];        if (v(A)) {            if (E(A)) {                k = A;                break            }        }    }    if (A === null) {        console.warn('Could not find a node of the right size. Please try a different page.');        return    }    c();    S();    var O = [];    for (var L = 0; L < C.length; L++) {        var A = C[L];        if (v(A)) {            O.push(A)        }    }    })()" >High一下</a>
+    
+  </nav>
+  <hr />
+</header>
+
+      <div id="content">
+        
+	<main>
+		
+		
+			<article class="summary">
+  <a href="https://rocko.vip/posts/google-git-repo-%E5%A4%9A%E4%BB%93%E5%BA%93%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/">
+    <h1 class="title">Google Git-Repo (Android)多仓库项目管理</h1>
+    
+  </a>
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+<div class="post-meta">
+  <strong>
+    <span>Posted on</span>
+    <time>2018-11-22</time>
+    <span>in</span>
+    
+      <a href="/categories/%E5%A4%9A%E4%BB%93">多仓</a>
+  </strong>
+ <span> • 548 words</span>
+ <span> • 3 minute read</span>
+  
+    <div>
+      <span>Tags:</span>
+      
+        <a href="/tags/%E6%9E%84%E5%BB%BA">构建</a>, 
+        <a href="/tags/repo">Repo</a>, 
+        <a href="/tags/git-repo">git-repo</a>, 
+        <a href="/tags/%E5%A4%9A%E4%BB%93%E5%BA%93">多仓库</a>, 
+        <a href="/tags/%E6%A8%A1%E5%9D%97%E5%8C%96">模块化</a>, 
+        <a href="/tags/%E7%BB%84%E4%BB%B6%E5%8C%96">组件化</a>, 
+        <a href="/tags/android">Android</a>
+    </div>
+  
+</div>
+
+  <div class="content">
+    <p><h2 id="前言">前言</h2>
+<p>如果不是 Android dev 可以忽略标题的 Android。</p>
+<p>项目<code>模块化/组件化</code>之后各模块也作为独立的 <code>Git</code> 仓库从主项目里剥离了出去，各模块各自管理自己的版本。正常 Android 项目，各剥离出去的子模块仓库则通过 <code>Maven 仓库</code> 来管理，然后和引入第三方库一样依赖到主项目里。这种状态下的项目迭代带来的问题会是：需要频繁发布子模块的 版本并需要把修改的版本提交 Merge Request 到主模块里，尤其像我们一周一版的快速迭代的情况下，问题尤为凸显。此外还有个问题就是 <code>Debug/断点</code> 会变得不太方便，因为可能子模块的源码并未发到 Maven 上。</p></p>
+    
+      <a href="https://rocko.vip/posts/google-git-repo-%E5%A4%9A%E4%BB%93%E5%BA%93%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/">Read more...</a>
+    
+  </div>
+</article>
+
+		
+			<article class="summary">
+  <a href="https://rocko.vip/posts/android-robolectric-%E5%8A%A0%E8%BD%BD%E8%BF%90%E8%A1%8C%E6%9C%AC%E5%9C%B0-so-%E5%8A%A8%E6%80%81%E5%BA%93/">
+    <h1 class="title">Android Robolectric 加载运行本地 so 动态库</h1>
+    
+  </a>
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+<div class="post-meta">
+  <strong>
+    <span>Posted on</span>
+    <time>2016-11-27</time>
+    <span>in</span>
+    
+      <a href="/categories/android">Android</a>
+  </strong>
+ <span> • 642 words</span>
+ <span> • 4 minute read</span>
+  
+    <div>
+      <span>Tags:</span>
+      
+        <a href="/tags/robolectric">Robolectric</a>, 
+        <a href="/tags/testing">Testing</a>, 
+        <a href="/tags/%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5%E5%BA%93">动态链接库</a>, 
+        <a href="/tags/%E7%A7%BB%E6%A4%8D">移植</a>
+    </div>
+  
+</div>
+
+  <div class="content">
+    <p><h1 id="前言">前言</h1>
+<p><a href="http://robolectric.org">Robolectric</a> 是 Android 的单元测试框架，运行无需 Android 真机环境直接运行在 JVM 之上，所以在 test case 运行速度效率上有了很大提升，接近于 Java JUnit test（<code>JUnit test &gt; Robolectric &gt;&gt; androidTest</code>）。不过<strong>框架本身并不支持 <code>so</code> 本地库的加载使用</strong>，加载时会直接报错，因为实际上运行环境是电脑机器，而我们打出的 so 文件是给手机上用的所以当然会报错。虽然在 <a href="https://github.com/robolectric/robolectric">GitHub</a> 上很多人问过关于使用 so 的问题但基本都建议说不要在单元测试中去加载本地库，这在原则上是要这么做，但可能有些项目中做起来就有些困难了，比如在代码结构不够好、依赖耦合较大或者本身就对 so 库依赖很大的情况下。所以下面说说在项目中 Robolectric 要怎么解决需要加载运行本地 so 库这个问题。</p></p>
+    
+      <a href="https://rocko.vip/posts/android-robolectric-%E5%8A%A0%E8%BD%BD%E8%BF%90%E8%A1%8C%E6%9C%AC%E5%9C%B0-so-%E5%8A%A8%E6%80%81%E5%BA%93/">Read more...</a>
+    
+  </div>
+</article>
+
+		
+			<article class="summary">
+  <a href="https://rocko.vip/posts/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E7%9A%84%E5%90%84%E7%A7%8D%E5%A7%BF%E5%8A%BF/">
+    <h1 class="title">科学上网的各种姿势</h1>
+    
+  </a>
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+<div class="post-meta">
+  <strong>
+    <span>Posted on</span>
+    <time>2016-08-28</time>
+    <span>in</span>
+    
+      <a href="/categories/fgfw">FGFW</a>
+  </strong>
+ <span> • 317 words</span>
+ <span> • 2 minute read</span>
+  
+    <div>
+      <span>Tags:</span>
+      
+        <a href="/tags/fq">FQ</a>
+    </div>
+  
+</div>
+
+  <div class="content">
+    <p><p>有墙的地方，就有梯子。有其它好的姿势的麻烦在后面留下言，我会更新上来。
+科学上网可能会受到不同运营商和所处地区的影响。</p></p>
+    
+      <a href="https://rocko.vip/posts/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E7%9A%84%E5%90%84%E7%A7%8D%E5%A7%BF%E5%8A%BF/">Read more...</a>
+    
+  </div>
+</article>
+
+		
+			<article class="summary">
+  <a href="https://rocko.vip/posts/adb-issue-2/">
+    <h1 class="title">ADB-Issue#2</h1>
+    
+  </a>
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+<div class="post-meta">
+  <strong>
+    <span>Posted on</span>
+    <time>2016-06-14</time>
+    <span>in</span>
+    
+      <a href="/categories/android-dev-bookmarks">Android-Dev-Bookmarks</a>
+  </strong>
+ <span> • 294 words</span>
+ <span> • 2 minute read</span>
+  
+    <div>
+      <span>Tags:</span>
+      
+        <a href="/tags/android-dev-bookmarks">Android-Dev-Bookmarks</a>, 
+        <a href="/tags/%E7%AB%99%E7%82%B9">站点</a>, 
+        <a href="/tags/%E6%8E%A8%E8%8D%90">推荐</a>
+    </div>
+  
+</div>
+
+  <div class="content">
+    <p><p>Android Dev Bookmarks(ADB) 第二期更新。</p></p>
+    
+      <a href="https://rocko.vip/posts/adb-issue-2/">Read more...</a>
+    
+  </div>
+</article>
+
+		
+			<article class="summary">
+  <a href="https://rocko.vip/posts/androiddev%E7%AB%99%E7%82%B9%E6%8E%A8%E8%8D%90-issue-1/">
+    <h1 class="title">AndroidDev站点推荐-Issue#1</h1>
+    
+  </a>
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+<div class="post-meta">
+  <strong>
+    <span>Posted on</span>
+    <time>2016-02-17</time>
+    <span>in</span>
+    
+      <a href="/categories/android-dev-bookmarks">Android-Dev-Bookmarks</a>
+  </strong>
+ <span> • 154 words</span>
+ <span> • 1 minute read</span>
+  
+    <div>
+      <span>Tags:</span>
+      
+        <a href="/tags/android-dev-bookmarks">Android-Dev-Bookmarks</a>, 
+        <a href="/tags/%E7%AB%99%E7%82%B9">站点</a>, 
+        <a href="/tags/%E6%8E%A8%E8%8D%90">推荐</a>
+    </div>
+  
+</div>
+
+  <div class="content">
+    <p><p><a href="https://github.com/zhengxiaopeng/android-dev-bookmarks">Android-Dev-Bookmarks</a> 项目目前可以生成书签文件导入到浏览器中了，<a href="http://adb.rocko.xyz/">ADB</a> 站点上的内容也是一样的，方便在线浏览。现在内容更新开始按期发布同时也会有个简短的介绍，内容逐渐增多比较难直接看出站点的主要内容，过一遍介绍也可以留个印象。</p>
+<p>下面是这期更新的内容：</p></p>
+    
+      <a href="https://rocko.vip/posts/androiddev%E7%AB%99%E7%82%B9%E6%8E%A8%E8%8D%90-issue-1/">Read more...</a>
+    
+  </div>
+</article>
+
+		
+			<article class="summary">
+  <a href="https://rocko.vip/posts/mvvm_android-cleanarchitecture/">
+    <h1 class="title">MVVM_Android-CleanArchitecture</h1>
+    
+  </a>
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+<div class="post-meta">
+  <strong>
+    <span>Posted on</span>
+    <time>2015-11-07</time>
+    <span>in</span>
+    
+      <a href="/categories/android">Android</a>
+  </strong>
+ <span> • 519 words</span>
+ <span> • 3 minute read</span>
+  
+</div>
+
+  <div class="content">
+    <p><h2 id="前言">前言</h2>
+<p>&ldquo;Architecture is About Intent, not Frameworks&rdquo;    - <a href="http://cleancoder.com/">Robert C. Martin (Uncle Bob)</a></p>
+<p>Uncle Bob 的这句话套在 MVVM 上也是适用的, MVVM 也仅仅是架构<code>模式</code>（Architectural pattern），其有一套自己的理论概念（pattern）而不是规定的具体实现（或 Frameworks）。早之前在知乎上相关问题的回答（<a href="http://www.zhihu.com/question/30976423/answer/50181505">android UI设计MVVM设计模式讨论？</a>）中也简单提到过 MVVM 了，M-V-X 的关系如上图，那么这一次博主把 <a href="https://github.com/android10">Fernando Cejas(android10)</a> 的 <a href="https://github.com/android10/Android-CleanArchitecture">Android-CleanArchitecture</a> 项目中的 MVP 实现重构成了用 MVVM 来实现。所以看这篇文章最好是先搞清了 <a href="https://github.com/android10">Fernando Cejas(android10)</a> 的 <a href="https://github.com/android10/Android-CleanArchitecture">Android-CleanArchitecture</a> sample app 和对应的两篇文章（见参考）。整个历程也算比较愉快，没什么不良反应，这篇文章理所当然会重点说说 MVVM 的实现、 Data Binding 等相关的东西。那为什么拥抱 MVVM 呢。当然是 Google 推出官方的 <a href="https://developer.android.com/tools/data-binding/guide.html">data binding</a> 啦，下一次的 Android MVVM 热潮应该就是 data binding 放出正式版了。</p></p>
+    
+      <a href="https://rocko.vip/posts/mvvm_android-cleanarchitecture/">Read more...</a>
+    
+  </div>
+</article>
+
+		
+			<article class="summary">
+  <a href="https://rocko.vip/posts/python-argparse-%E8%84%9A%E6%9C%AC%E5%8F%82%E6%95%B0%E8%A7%A3%E6%9E%90/">
+    <h1 class="title">Python-Argparse 脚本参数解析</h1>
+    
+  </a>
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+<div class="post-meta">
+  <strong>
+    <span>Posted on</span>
+    <time>2015-07-09</time>
+    <span>in</span>
+    
+      <a href="/categories/python">Python</a>
+  </strong>
+ <span> • 382 words</span>
+ <span> • 2 minute read</span>
+  
+    <div>
+      <span>Tags:</span>
+      
+        <a href="/tags/python">Python</a>, 
+        <a href="/tags/%E8%84%9A%E6%9C%AC">脚本</a>, 
+        <a href="/tags/%E8%A7%A3%E6%9E%90">解析</a>
+    </div>
+  
+</div>
+
+  <div class="content">
+    <p><p><code>Argparse</code> 是 <code>Python</code> 标准库中推荐的命令行解析模块，经常需要解析脚本参数的话这是个方便的工具模块，摆脱万年手动 <code>system.argv</code>。</p></p>
+    
+      <a href="https://rocko.vip/posts/python-argparse-%E8%84%9A%E6%9C%AC%E5%8F%82%E6%95%B0%E8%A7%A3%E6%9E%90/">Read more...</a>
+    
+  </div>
+</article>
+
+		
+			<article class="summary">
+  <a href="https://rocko.vip/posts/high%E4%B8%80%E4%B8%8B/">
+    <h1 class="title">High一下</h1>
+    
+  </a>
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+<div class="post-meta">
+  <strong>
+    <span>Posted on</span>
+    <time>2015-06-27</time>
+    <span>in</span>
+    
+      <a href="/categories/hexo">Hexo</a>
+  </strong>
+ <span> • 527 words</span>
+ <span> • 3 minute read</span>
+  
+</div>
+
+  <div class="content">
+    <p><p>发现博客访问不了，原来是 GitCafe Pages 又挂了，而且 A 记录也不能用了，所以又得把博客迁回 Github 了。顺便把 <code>High一下</code> 优化了下。基本是直接拿耗子叔的 <a href="http://coolshell.cn/">酷壳</a> 上的 High 一下来用的，存在点击重复播放的问题，而且歌曲只有一首，所以得加以优化下：加了几首歌点击随机播放；修复点击重复执行播放的问题，重新点击后动画重新开始。原来的代码右键 High 一下 <code>审查元素</code> 就看得到了，修改后的代码如下：</p></p>
+    
+      <a href="https://rocko.vip/posts/high%E4%B8%80%E4%B8%8B/">Read more...</a>
+    
+  </div>
+</article>
+
+		
+			<article class="summary">
+  <a href="https://rocko.vip/posts/%E8%AF%91%E8%A7%A3%E5%86%B3%E5%85%B1%E4%BA%AB%E5%85%83%E7%B4%A0%E5%9C%A8%E7%B3%BB%E7%BB%9Fui%E4%B8%8A%E7%BB%98%E5%88%B6%E7%9A%84%E9%97%AE%E9%A2%98/">
+    <h1 class="title">【译】解决共享元素在系统UI上绘制的问题</h1>
+    
+  </a>
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+<div class="post-meta">
+  <strong>
+    <span>Posted on</span>
+    <time>2015-06-19</time>
+    <span>in</span>
+    
+      <a href="/categories/android">Android</a>
+  </strong>
+ <span> • 144 words</span>
+ <span> • 1 minute read</span>
+  
+    <div>
+      <span>Tags:</span>
+      
+        <a href="/tags/%E5%8A%A8%E7%94%BB">动画</a>, 
+        <a href="/tags/%E8%AF%91%E6%96%87">译文</a>
+    </div>
+  
+</div>
+
+  <div class="content">
+    <p><ul>
+<li>原文链接 ：<a href="https://plus.google.com/+AlexLockwood/posts/RPtwZ5nNebb">Dealing with shared elements that draw on top of the system UI</a></li>
+</ul>
+<p>目前为止，我在使用 Activity transitions 中遇到的一个比较烦人的小问题：共享元素会部分地覆盖掉 Status/Navigation/Action Bar，一旦开始过渡动画，共享元素就会很唐突地从系统 UI 下 <code>弹出</code>。这一不和谐的表现可以看看下面这个视频：</p></p>
+    
+      <a href="https://rocko.vip/posts/%E8%AF%91%E8%A7%A3%E5%86%B3%E5%85%B1%E4%BA%AB%E5%85%83%E7%B4%A0%E5%9C%A8%E7%B3%BB%E7%BB%9Fui%E4%B8%8A%E7%BB%98%E5%88%B6%E7%9A%84%E9%97%AE%E9%A2%98/">Read more...</a>
+    
+  </div>
+</article>
+
+		
+			<article class="summary">
+  <a href="https://rocko.vip/posts/%E8%AF%91notrxjava%E6%87%92%E4%BA%BA%E4%B8%93%E7%94%A8%E6%8C%87%E5%8D%97/">
+    <h1 class="title">【译】NotRxJava懒人专用指南</h1>
+    
+  </a>
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+<div class="post-meta">
+  <strong>
+    <span>Posted on</span>
+    <time>2015-05-05</time>
+    <span>in</span>
+    
+      <a href="/categories/android">Android</a>
+  </strong>
+ <span> • 1831 words</span>
+ <span> • 9 minute read</span>
+  
+    <div>
+      <span>Tags:</span>
+      
+        <a href="/tags/rxjava">RxJava</a>, 
+        <a href="/tags/reactivex">ReactiveX</a>, 
+        <a href="/tags/%E8%AF%91%E6%96%87">译文</a>
+    </div>
+  
+</div>
+
+  <div class="content">
+    <p><ul>
+<li>原文链接 : <a href="http://yarikx.github.io/NotRxJava/">NotRxJava guide for lazy folks</a></li>
+<li>原文作者 : <a href="http://yarikx.github.io/">Yaroslav Heriatovych</a></li>
+<li>译文出自 : <a href="http://www.devtf.cn/">开发技术前线 www.devtf.cn</a></li>
+<li>译者 : <a href="https://github.com/zhengxiaopeng">Rocko</a></li>
+<li>校对者: <a href="https://github.com/bboyfeiyu">Mr.Simple</a></li>
+<li>状态 : 完成校对</li>
+</ul>
+<p>如果你是一位 Android 开发者，那么这些天你可能已经听到或看到一些关于 RxJava 满天飞的宣传了。RxJava 是一个能让你摆脱编写一些复杂繁琐的代码去处理异步事件的库。一旦开始在你的项目中使用，你会对它爱不释手的。</p>
+<p>然而，RxJava 有个缺陷，它需要一个陡峭的学习过程。对于一个从未接触使用过 RxJava 的人来说，是很难一次就领会到它的精髓所在的，对于它的一些使用方法你也可能会很迷惑。在项目中使用它意味着你需要稍微地改变一下你的代码编写思路，另外，这样的学习曲线会使得在项目中因为大规模的使用RxJava而引发一些问题。</p>
+<p>当然，关于如何去使用 RxJava 已经有许多的教程和代码范例了。感兴趣的开发者可以访问 RxJava 的官方 Wiki，里面有关于什么是 Observable 以及它和 Iterable、Future 之间关系的很好的解释。Wiki 里有一篇很有用的文章：How To Use RxJava，这篇文章包含怎么去发送事件流并且打印出它们的介绍以及它的样例代码。</p>
+<p>但我们要明确的是在还没有学习什么是 Observable 的前提下了解 RxJava 用来解决什么问题以及它是怎么帮助我们组织起异步代码的。</p>
+<p>我这篇文章的定位就是 RxJava 官方文档的“前篇”，读完这篇文章能更好地去理解 RxJava 所解决的问题。文章中也有一个小 Demo，就是自己怎么去整理那些凌乱的代码，然后看看我们在没有使用 RxJava 的情况下是怎么去遵循 RxJava 基本原则的。</p>
+<p>所以，如果你仍有足够的好奇的话就让我们开始吧！</p></p>
+    
+      <a href="https://rocko.vip/posts/%E8%AF%91notrxjava%E6%87%92%E4%BA%BA%E4%B8%93%E7%94%A8%E6%8C%87%E5%8D%97/">Read more...</a>
+    
+  </div>
+</article>
+
+		
+		<div>
+  
+  1 of 3
+  
+    <a href="/page/2/">Next Page</a>
+  
+</div>
+
+	</main>
+
+      </div>
+      <footer>
+  <hr />
+  
+    <p id="social">
+      Find me around the web:
+      <br />
+      
+        
+        <a href="https://github.com/zhengxiaopeng" target="_blank">GitHub</a>
+      
+         | 
+        <a href="https://juejin.cn/user/3051900006044056" target="_blank">Juejin</a>
+      
+         | 
+        <a href="http://www.zhihu.com/people/rocko" target="_blank">Zhihu</a>
+      
+         | 
+        <a href="http://blog.csdn.net/bbld_" target="_blank">CSDN</a>
+      
+         | 
+        <a href="http://weibo.com/678662430" target="_blank">Weibo</a>
+      
+    </p>
+  
+  <p class="copyright">
+    Copyright © 2024
+    <a href="https://rocko.vip/" ><strong>Rocko</strong></a>.
+    This work is licensed under the
+    <a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA 4.0</a> license.
+  </p>
+  <p class="builtWith">
+    Powered by
+    <a href="http://www.gohugo.io/" target="_blank">Hugo</a>.
+  </p>
+</footer>
+
+    </div>
+  </body>
+</html>

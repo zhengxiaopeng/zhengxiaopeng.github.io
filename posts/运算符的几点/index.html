@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content=""
+  />
+  
+    
+      <title>运算符的几点 | Rocko&#39;s blog</title>
+    
+  
+  <link rel="stylesheet" href="/css/reset.css"/>
+  <link rel="stylesheet" href="/css/font.css"/>
+  <link rel="stylesheet" href="/css/smigle.css"/>
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+</head>
+
+  <body>
+    <div id="root">
+      <header>
+  <div id="brand">
+    <a class="icon-link" href="https://rocko.vip/">
+      <img
+        class="icon"
+        src="/images/rocko.webp"
+      />
+    </a>
+    <div class="text">
+      <a href="https://rocko.vip/"><h1>Rocko&#39;s blog</h1></a>
+      <h3>Live in the moment</h3>
+    </div>
+  </div>
+  <nav>
+    
+      
+        
+        <a href="/"><b>Home</b></a>
+      
+         | 
+        <a href="/about/"><b>About</b></a>
+      
+         | 
+        <a href="/posts/"><b>Posts</b></a>
+      
+         | 
+        <a href="/categories/"><b>Categories</b></a>
+      
+         | 
+        <a href="/tags/"><b>Tags</b></a>
+      
+         | 
+        <a href="/index.xml"><b>RSS</b></a>
+      
+      |<a id="header-high" style="text-decoration: none; margin-left:12px; width:71px; margin-right:5px" class="header-icon waves-effect waves-circle waves-light"  onClick="javascript:(    /*     * Copyright (C) 2015 Rocko (rocko.xyz) <rocko.zxp@gmail.com>     *     * Licensed under the Apache License, Version 2.0 (the 'License');     * you may not use this file except in compliance with the License.     * You may obtain a copy of the License at     *     *      http://www.apache.org/licenses/LICENSE-2.0     *     * Unless required by applicable law or agreed to in writing, software     * distributed under the License is distributed on an 'AS IS' BASIS,     * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.     * See the License for the specific language governing permissions and     * limitations under the License.     */    function go() {        function c() {        var e = document.createElement('link');        e.setAttribute('type', 'text/css');        e.setAttribute('rel', 'stylesheet');        e.setAttribute('href', f);        e.setAttribute('class', l);        document.body.appendChild(e)    }     function h() {        var e = document.getElementsByClassName(l);        for (var t = 0; t < e.length; t++) {            document.body.removeChild(e[t])        }    }     function p() {        var e = document.createElement('div');        e.setAttribute('class', a);        document.body.appendChild(e);        setTimeout(function() {            document.body.removeChild(e)        }, 100)    }     function d(e) {        return {            height : e.offsetHeight,            width : e.offsetWidth        }    }     function v(i) {        var s = d(i);        return s.height > e && s.height < n && s.width > t && s.width < r    }     function m(e) {        var t = e;        var n = 0;        while (!!t) {            n += t.offsetTop;            t = t.offsetParent        }        return n    }     function g() {        var e = document.documentElement;        if (!!window.innerWidth) {            return window.innerHeight        } else if (e && !isNaN(e.clientHeight)) {            return e.clientHeight        }        return 0    }     function y() {        if (window.pageYOffset) {            return window.pageYOffset        }        return Math.max(document.documentElement.scrollTop, document.body.scrollTop)    }     function E(e) {        var t = m(e);        return t >= w && t <= b + w    }     var songs = ['/media/Music-Fashion_Show.mp3', '/media/G-Love.Phonk.mp3', '/media/APT.mp3', '/media/Music-outside.mp3', '/media/Music-sunburst.mp3', '/media/Music-Wake-Live.mp3'];    function S() {        var e = document.getElementById('audio_element_id');        if(e != null){            var index = parseInt(e.getAttribute('curSongIndex'));            if(index > songs.length - 2) {                index = 0;            } else {                index++;            }            e.setAttribute('curSongIndex', index);            N();        }        e.src = i;        e.play()    }     function x(e) {        e.className += ' ' + s + ' ' + o    }     function T(e) {        e.className += ' ' + s + ' ' + u[Math.floor(Math.random() * u.length)]    }     function N() {        var e = document.getElementsByClassName(s);        var t = new RegExp('\\b' + s + '\\b');        for (var n = 0; n < e.length; ) {            e[n].className = e[n].className.replace(t, '')        }    }    function initAudioEle() {        var e = document.getElementById('audio_element_id');        if(e === null){            e = document.createElement('audio');            e.setAttribute('class', l);            e.setAttribute('curSongIndex', 0);            e.id = 'audio_element_id';            e.loop = false;            e.bgcolor = 0;            e.addEventListener('canplay', function() {            setTimeout(function() {                x(k)            }, 500);            setTimeout(function() {                N();                p();                for (var e = 0; e < O.length; e++) {                    T(O[e])                }            }, 8000)        }, true);        e.addEventListener('ended', function() {            N();            h();            go();        }, true);        e.innerHTML = ' <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>';        document.body.appendChild(e);        }    }        initAudioEle();    var e = 30;    var t = 30;    var n = 350;    var r = 350;    var curSongIndex = parseInt(document.getElementById('audio_element_id').getAttribute('curSongIndex'));    var i = songs[curSongIndex];        var s = 'mw-harlem_shake_me';    var o = 'im_first';    var u = ['im_drunk', 'im_baked', 'im_trippin', 'im_blown'];    var a = 'mw-strobe_light';    var f = '/css/harlem-shake-style.css';        var l = 'mw_added_css';    var b = g();    var w = y();    var C = document.getElementsByTagName('*');    var k = null;    for (var L = 0; L < C.length; L++) {        var A = C[L];        if (v(A)) {            if (E(A)) {                k = A;                break            }        }    }    if (A === null) {        console.warn('Could not find a node of the right size. Please try a different page.');        return    }    c();    S();    var O = [];    for (var L = 0; L < C.length; L++) {        var A = C[L];        if (v(A)) {            O.push(A)        }    }    })()" >High一下</a>
+    
+  </nav>
+  <hr />
+</header>
+
+      <div id="content">
+        
+  <main>
+    <article>
+      <h1 class="title">运算符的几点</h1>
+      
+      <div class="post-meta">
+  <strong>
+    <span>Posted on</span>
+    <time>2015-01-14</time>
+    <span>in</span>
+    
+      <a href="/categories/programming">Programming</a>
+  </strong>
+  <span> • 305 words</span>
+  <span> • 2 minute read</span>
+  
+  
+    <div>
+      <span>Tags:</span>
+      
+        <a href="/tags/%E8%BF%90%E7%AE%97%E7%AC%A6">运算符</a>, 
+        <a href="/tags/%E6%8A%80%E5%B7%A7">技巧</a>
+    </div>
+  
+</div>
+
+      <div class="content"><h2 id="开篇废话">开篇废话</h2>
+<p>运算符使用的几点小技巧，先给出<a href="http://www.w3cschool.cc/java/java-operators.html">Java的运算符的基本知识</a>复习下，其它语言的大同小异。运算符需要注意的问题有：<em>优先级（运算顺序问题）、结合方向（自左至右或自右至左问题）、要求运算对象个数（运算符需要有几个运算对象问题）</em>。<br>
+合理运用运算符能提高自己代码的BIG、能精简代码、还能提高程序的运行效率，滥用运算符可能导致逻辑混乱、代码不知所云什么的，所以有些问题还是要自己注意一下的。下面就列出一些运算符的使用技巧，换一换思路看下，当然还有先占着这个坑，以后会补(man)上(man)更(lai)新(ba)。</p>
+<h2 id="-按位异或">^ 按位异或</h2>
+<h3 id="不用第三个临时变量交换两个数的值">不用第三个临时变量交换两个数的值</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) {
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">int</span> a <span style="color:#f92672">=</span> 2; <span style="color:#75715e">// int a = -2;</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">int</span> b <span style="color:#f92672">=</span> 3;
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">/* 总的来说就是先找出两个数上位值不同的位置置1其余0,然后将得到的新值分别和a、b的原值异或 */</span>
+</span></span><span style="display:flex;"><span>		a <span style="color:#f92672">^=</span> b; <span style="color:#75715e">// a = a ^ b;</span>
+</span></span><span style="display:flex;"><span>		b <span style="color:#f92672">^=</span> a; <span style="color:#75715e">// b = a ^ b;</span>
+</span></span><span style="display:flex;"><span>		a <span style="color:#f92672">^=</span> b; <span style="color:#75715e">// a = a ^ b;  </span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;交换后: a=%s, b=%s&#34;</span>, a, b);
+</span></span><span style="display:flex;"><span>	}
+</span></span></code></pre></div><h2 id="-按位左移右移">&laquo;、&raquo; 按位左移、右移</h2>
+<h3 id="将一个数乘于2的n次方a2supnsup">将一个数乘于2的n次方a*(2<!-- raw HTML omitted -->n<!-- raw HTML omitted -->)</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>		<span style="color:#66d9ef">int</span> a <span style="color:#f92672">=</span> 2;
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">int</span> n <span style="color:#f92672">=</span> 3; <span style="color:#75715e">// n=1, 左移一位就是乘于2</span>
+</span></span><span style="display:flex;"><span>		a <span style="color:#f92672">&lt;&lt;=</span> n; <span style="color:#75715e">// a = a &lt;&lt; n;</span>
+</span></span><span style="display:flex;"><span>		System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;a*(2^n) = &#34;</span> <span style="color:#f92672">+</span> a);
+</span></span></code></pre></div><h3 id="将一个数除以2的n次方a2supnsup">将一个数除以2的n次方a/(2<!-- raw HTML omitted -->n<!-- raw HTML omitted -->)</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>		<span style="color:#66d9ef">int</span> a <span style="color:#f92672">=</span> 32;
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">int</span> n <span style="color:#f92672">=</span> 3; <span style="color:#75715e">//n=1, 右移一位就是除于2</span>
+</span></span><span style="display:flex;"><span>		a <span style="color:#f92672">&gt;&gt;=</span> n; <span style="color:#75715e">// a = a &gt;&gt; n;</span>
+</span></span><span style="display:flex;"><span>		System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;a/(2^n) = &#34;</span> <span style="color:#f92672">+</span> a);
+</span></span></code></pre></div><!-- raw HTML omitted -->
+<h3 id="2的n次方">2的n次方</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>		<span style="color:#66d9ef">int</span> n <span style="color:#f92672">=</span> 3; <span style="color:#75715e">// int n = 0;</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">int</span> result <span style="color:#f92672">=</span> 2 <span style="color:#f92672">&lt;&lt;</span> (n <span style="color:#f92672">-</span> 1);
+</span></span><span style="display:flex;"><span>		System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;2^n = &#34;</span> <span style="color:#f92672">+</span> result);
+</span></span></code></pre></div><h2 id="-按位与">&amp; 按位与</h2>
+<h3 id="判断一个数的奇偶">判断一个数的奇偶</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>		<span style="color:#66d9ef">int</span> a <span style="color:#f92672">=</span> 3;
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">boolean</span> bl <span style="color:#f92672">=</span> (a <span style="color:#f92672">&amp;</span> 1) <span style="color:#f92672">==</span> 1;
+</span></span><span style="display:flex;"><span>		System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;a为奇数? &#34;</span> <span style="color:#f92672">+</span> bl);
+</span></span></code></pre></div><h3 id="对2supnsup取余">对2<!-- raw HTML omitted -->n<!-- raw HTML omitted -->取余</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>		<span style="color:#66d9ef">int</span> n <span style="color:#f92672">=</span> 2 <span style="color:#f92672">&lt;&lt;</span> 2; <span style="color:#75715e">// 2的3次方</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">int</span> value <span style="color:#f92672">=</span> 2;
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">// 如果是2的幂，n一定是100... n-1就是1111...所以做与运算结果保留m在n范围的非0的位</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">int</span> result <span style="color:#f92672">=</span> value <span style="color:#f92672">&amp;</span> (n <span style="color:#f92672">-</span> 1);
+</span></span><span style="display:flex;"><span>		System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;2对8取余接结果  = &#34;</span> <span style="color:#f92672">+</span> result);
+</span></span></code></pre></div><p>HashMap的table的大小(HashMap的优化是把hash表的大小设置为2<!-- raw HTML omitted -->n<!-- raw HTML omitted -->的)和确定元素的存放位置即table表中的位置(<code>indexFor(int h, int length)</code>方法)也是运用了这一原理，HashMap相关代码如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>    <span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     * The table, resized as necessary. Length MUST Always be a power of two.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     */</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">transient</span> Entry<span style="color:#f92672">&lt;</span>K,V<span style="color:#f92672">&gt;[]</span> table <span style="color:#f92672">=</span> (Entry<span style="color:#f92672">&lt;</span>K,V<span style="color:#f92672">&gt;[]</span>) EMPTY_TABLE;  
+</span></span><span style="display:flex;"><span>    ......
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     * Returns index for hash code h.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     */</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">indexFor</span>(<span style="color:#66d9ef">int</span> h, <span style="color:#66d9ef">int</span> length) {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// assert Integer.bitCount(length) == 1 : &#34;length must be a non-zero power of 2&#34;;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> h <span style="color:#f92672">&amp;</span> (length<span style="color:#f92672">-</span>1);
+</span></span><span style="display:flex;"><span>    }
+</span></span></code></pre></div><p>HashMap中<code>hash(Object k)</code>函数也运用了int类型(4个字节32位)数据的按位右移补零（&raquo;&gt;）和异或（^）运算加入了高位计算，防止低位不变，高位变化时，造成的hash冲突也就是要使得高位对其结果也产生影响：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>        <span style="color:#75715e">// This function ensures that hashCodes that differ only by</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// constant multiples at each bit position have a bounded</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// number of collisions (approximately 8 at default load factor).</span>
+</span></span><span style="display:flex;"><span>        h <span style="color:#f92672">^=</span> (h <span style="color:#f92672">&gt;&gt;&gt;</span> 20) <span style="color:#f92672">^</span> (h <span style="color:#f92672">&gt;&gt;&gt;</span> 12);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> h <span style="color:#f92672">^</span> (h <span style="color:#f92672">&gt;&gt;&gt;</span> 7) <span style="color:#f92672">^</span> (h <span style="color:#f92672">&gt;&gt;&gt;</span> 4);
+</span></span></code></pre></div><h2 id="end">END</h2>
+<p>参考文章：<br>
+<a href="http://blog.csdn.net/zmazon/article/details/8262185">优秀程序员不得不知道的20个位运算技巧</a><br>
+<a href="http://geeklu.com/2010/07/java-hashmap/">Java HashMap 核心源码解读</a><br>
+<a href="http://jinguo.iteye.com/blog/540150">JAVA移位运算符</a></p></div>
+    </article>
+    
+            <br/><br/><br/>
+            <hr/>
+            <div id="valine" class="comment"></div>
+          
+            <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+          
+            <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+            <script type="text/javascript">
+                new Valine({
+                    el: '#valine' ,
+                    appId: 'fBqoKNrWNFkYQMTivF00jWpk-gzGzoHsz',
+                    appKey: 'q2baN9KwoyaFHmbjMHfssLIH',
+                    notify: 'true', 
+                    verify: 'false', 
+                    avatar:'hide', 
+                    placeholder: '说点什么吧~',
+                    visitor: ''
+                });
+            </script>
+            <noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript>
+
+  </main>
+
+      </div>
+      <footer>
+  <hr />
+  
+    <p id="social">
+      Find me around the web:
+      <br />
+      
+        
+        <a href="https://github.com/zhengxiaopeng" target="_blank">GitHub</a>
+      
+         | 
+        <a href="https://juejin.cn/user/3051900006044056" target="_blank">Juejin</a>
+      
+         | 
+        <a href="http://www.zhihu.com/people/rocko" target="_blank">Zhihu</a>
+      
+         | 
+        <a href="http://blog.csdn.net/bbld_" target="_blank">CSDN</a>
+      
+         | 
+        <a href="http://weibo.com/678662430" target="_blank">Weibo</a>
+      
+    </p>
+  
+  <p class="copyright">
+    Copyright © 2024
+    <a href="https://rocko.vip/" ><strong>Rocko</strong></a>.
+    This work is licensed under the
+    <a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA 4.0</a> license.
+  </p>
+  <p class="builtWith">
+    Powered by
+    <a href="http://www.gohugo.io/" target="_blank">Hugo</a>.
+  </p>
+</footer>
+
+    </div>
+  </body>
+</html>
