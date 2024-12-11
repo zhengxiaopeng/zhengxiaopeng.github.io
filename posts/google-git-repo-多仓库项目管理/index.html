@@ -81,7 +81,7 @@
     
       <a href="/categories/%E5%A4%9A%E4%BB%93">多仓</a>
   </strong>
-  <span> • 548 words</span>
+  <span> • 543 words</span>
   <span> • 3 minute read</span>
   
   
@@ -100,7 +100,6 @@
 </div>
 
       <div class="content"><h2 id="前言">前言</h2>
-<p>如果不是 Android dev 可以忽略标题的 Android。</p>
 <p>项目<code>模块化/组件化</code>之后各模块也作为独立的 <code>Git</code> 仓库从主项目里剥离了出去，各模块各自管理自己的版本。正常 Android 项目，各剥离出去的子模块仓库则通过 <code>Maven 仓库</code> 来管理，然后和引入第三方库一样依赖到主项目里。这种状态下的项目迭代带来的问题会是：需要频繁发布子模块的 版本并需要把修改的版本提交 Merge Request 到主模块里，尤其像我们一周一版的快速迭代的情况下，问题尤为凸显。此外还有个问题就是 <code>Debug/断点</code> 会变得不太方便，因为可能子模块的源码并未发到 Maven 上。</p>
 <p>在上面所说的状态下工作了一段时间后，需要找到个方案来解决这个问题。遂尝试在多仓库管理的方向上尝试。支持 Git 多仓库的管理工具也有好几个：<a href="https://gerrit.googlesource.com/git-repo/">git-repo</a>、<a href="https://git-scm.com/docs/git-submodule">git-submodule</a>、<a href="http://gitslave.sourceforge.net/">gitslave</a>、<a href="https://github.com/apenwarr/git-subtree/">git-subtree</a>，看了一番，除了 git-repo 外的几个要么 <code>子模块需要手动指定本地仓库路径</code>、要么 <code>主仓库与子仓库会产生污染</code> 且操作不够简便化。所以最终就采用了 Google 的 <code>Git-repo（Repo）</code></p>
 <h2 id="git-repo">Git-repo</h2>

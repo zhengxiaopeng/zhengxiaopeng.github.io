@@ -100,14 +100,14 @@
 <p>从Eclipse到AS不要带着在Eclipse中的主观色彩去在AS中使用，从项目的构成到构建是不同的，下面列举在Eclipse和AS中的一些概念的区别：</p>
 <h2 id="workspace和project">WorkSpace和Project</h2>
 <p>Eclipse的WorkSpace和AS的Project说的可以说是一个东西，也就是说你可以把在AS中的Project理解为WorkSpace。
-<img src="https://static.rocko.xyz/img/Android-Studio-jar%E3%80%81so%E3%80%81library%E9%A1%B9%E7%9B%AE%E4%BE%9D%E8%B5%96_1.jpg?imageView2/2/w/400/h/400/q/100" alt=""> 所以你在AS中new一个Project相当于在Eclipse中重开了一个WorkSpace，注意第一个箭头，显示模式为Project，建议刚用AS时用这种，方便了解里面的文件结构。</p>
+<img src="/images/Android-Studio-jar%E3%80%81so%E3%80%81library%E9%A1%B9%E7%9B%AE%E4%BE%9D%E8%B5%96_1.jpg?imageView2/2/w/400/h/400/q/100" alt=""> 所以你在AS中new一个Project相当于在Eclipse中重开了一个WorkSpace，注意第一个箭头，显示模式为Project，建议刚用AS时用这种，方便了解里面的文件结构。</p>
 <h2 id="project和module">Project和Module</h2>
 <p>跟上面一样，Eclipse中的一个个project也就是相当于AS中的一个个module。上图的module_1和module_2就是我们习惯的eclipse中的一堆project了，把显示模式换为Android之后就更为直观了：<br>
-<img src="https://static.rocko.xyz/img/Android-Studio-jar%E3%80%81so%E3%80%81library%E9%A1%B9%E7%9B%AE%E4%BE%9D%E8%B5%96_2.jpg?imageView2/2/w/400/h/400/q/100" alt=""><br>
+<img src="/images/Android-Studio-jar%E3%80%81so%E3%80%81library%E9%A1%B9%E7%9B%AE%E4%BE%9D%E8%B5%96_2.jpg?imageView2/2/w/400/h/400/q/100" alt=""><br>
 最下面的就是<code>AS</code>中整个Project中所有Gradle的配置了，当然包括所有module的配置了，括号的名字就表示build.gradle对应的配置对象。</p>
 <h2 id="properties和module-setting">Properties和Module Setting</h2>
 <p>Eclipse中的Properties也是跟AS的Module Setting对应的
-<img src="https://static.rocko.xyz/img/Android-Studio-jar%E3%80%81so%E3%80%81library%E9%A1%B9%E7%9B%AE%E4%BE%9D%E8%B5%96_3.jpg?imageView2/2/w/700/h/700/q/100" alt=""><br>
+<img src="/images/Android-Studio-jar%E3%80%81so%E3%80%81library%E9%A1%B9%E7%9B%AE%E4%BE%9D%E8%B5%96_3.jpg?imageView2/2/w/700/h/700/q/100" alt=""><br>
 可以看到这里可以像在Eclipse的Properties中一样在这里配置一些东西，比如在Module Setting里给Module添加依赖(dependencies)信息也是可以的，并且可以直接搜maven的项目依赖。</p>
 <h1 id="jar">jar</h1>
 <p>明白了上面的三点就可以很快上手了。首先就来说最简单的添加jar包。</p>
@@ -180,7 +180,7 @@
 </span></span></code></pre></div><p>现在make module一下就可以使用依赖的项目了(module_2)。</p>
 <h1 id="so">so</h1>
 <p>之前的版本不知道怎么样，现在正式版的AS添加so打包进apk里的lib里是很简单的，我们只需要把so文件放到libs文件夹里的对应cpu文件夹里，最后在module的build.gradle里加上jni的sourceSets配置：<code>jniLibs.srcDirs = ['libs']</code>，完整代码看上面的*build.gradle(module_1)*代码片。
-<img src="https://static.rocko.xyz/img/Android-Studio-jar%E3%80%81so%E3%80%81library%E9%A1%B9%E7%9B%AE%E4%BE%9D%E8%B5%96_4.jpg?imageView2/2/w/400/h/400/q/100" alt=""></p>
+<img src="/images/Android-Studio-jar%E3%80%81so%E3%80%81library%E9%A1%B9%E7%9B%AE%E4%BE%9D%E8%B5%96_4.jpg?imageView2/2/w/400/h/400/q/100" alt=""></p>
 <h1 id="end">END</h1>
 <p>做完上面的工作，jar包、so动态链接库、library依赖项目里的代码就都可以正常工作了，正常的项目开发已经没什么问题。最后给上本博文的源码：<a href="http://download.csdn.net/detail/bbld_/8255385">Android Studio jar、so、library项目依赖</a>，导进AS里后，run module_1即可。<br>
 最最后奉上Android Studio快捷键大全（大部分来源于：<a href="http://ask.android-studio.org/?/article/12">http://ask.android-studio.org/?/article/12</a>）：</p>

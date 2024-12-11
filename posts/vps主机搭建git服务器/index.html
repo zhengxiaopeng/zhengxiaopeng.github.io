@@ -100,7 +100,7 @@
 <h2 id="搭建">搭建</h2>
 <p>搭建一个几个人的小团队的Git服务器的方法比较简单，推荐的教程有<a href="http://git-scm.com/book/zh/v1/%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E7%9A%84-Git-%E6%9E%B6%E8%AE%BE%E6%9C%8D%E5%8A%A1%E5%99%A8">服务器上的 Git - 架设服务器</a>、<a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/00137583770360579bc4b458f044ce7afed3df579123eca000">搭建Git服务器</a>，本文不再介绍因为本文主要说的是在这个过程中的错误。当然也可以使用<code>gitosis</code>等方式搭建更为强大、控制力更强的Git服务器。</p>
 <h2 id="错误">错误</h2>
-<p>在VPS上按标准教程搭建好服务器上的Git服务后，兴高采烈地在自己电脑上(<code>Windows7 64</code>，如果你同样使用Windows而且使用SSH遇到问题那么可以看看我的这篇博客：<a href="http://rocko.xyz/2014/11/25/Git-%E9%94%99%E8%AF%AF%E9%9B%86%E9%94%A6ing/">Git 错误集锦ing&hellip;</a>)clone了服务器上的repo后，然后就出错误了（如果你也是用VPS搭建而使用其它操作系统客户端的话可能也是会遇到）：</p>
+<p>在VPS上按标准教程搭建好服务器上的Git服务后，兴高采烈地在自己电脑上(<code>Windows7 64</code>，如果你同样使用Windows而且使用SSH遇到问题那么可以看看我的这篇博客：<a href="/posts/Git-%E9%94%99%E8%AF%AF%E9%9B%86%E9%94%A6ing/">Git 错误集锦ing&hellip;</a>)clone了服务器上的repo后，然后就出错误了（如果你也是用VPS搭建而使用其它操作系统客户端的话可能也是会遇到）：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Cloning into <span style="color:#e6db74">&#39;sample&#39;</span>...
 </span></span><span style="display:flex;"><span>ssh: connect to host 104.224.xxx.xx port 22: Bad file number
 </span></span><span style="display:flex;"><span>fatal: Could not read from remote repository.

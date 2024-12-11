@@ -201,7 +201,7 @@ Intent使用Parcelable传递复杂数据时报错
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Unmarshalling unknown type code <span style="color:#ae81ff">7471205</span> at offset <span style="color:#ae81ff">232</span>
 </span></span></code></pre></div><p><strong>解决方案：</strong>
 在两个activitiy之间，传递一个实现了Parcelable的ArrayList，就出现了这个错误，但是当我传递其它类型的数据时（int、String）却没有问题，显然问题出现了Parcelable身上，简单找了找答案
-<img src="https://static.rocko.xyz/img/20140924103915303" alt=""></p>
+<img src="/images/20140924103915303.jpg" alt=""></p>
 <hr>
 <p><strong>系统环境：</strong>
 Windows7 64位
@@ -351,7 +351,7 @@ Android Studio导入项目后问题，无法run、rebuild等。
 gradle tasks命令执行正常。一般都为Gradle的问题造成的。
 从其它正常项目里复制替换掉当前项目的<code>gradlew</code>、<code>gradlew.bat</code>文件（也可自己视情况替换掉相关的gradle文件）
 打开设置，打开Gradle选项，如图，点击使用Gradle home（你本地的Gradle目录），然后点击Apply和OK，还不行可以在Use选项中来回切换Apply一下，我就遇到点多几下才正常。。
-<img src="https://static.rocko.xyz/img/Android%20%E9%94%99%E8%AF%AF%E9%9B%86%E9%94%A6ing..._1.png" alt=""></p>
+<img src="/images/Android%20%E9%94%99%E8%AF%AF%E9%9B%86%E9%94%A6ing..._1.png" alt=""></p>
 <hr>
 <p><strong>系统环境：</strong>
 Windows7 64 位 Android Studio 1.1.0
