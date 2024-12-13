@@ -2,6 +2,12 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://rocko.vip/posts/</loc>
+    <lastmod>2024-12-11T23:46:53+08:00</lastmod>
+  </url><url>
+    <loc>https://rocko.vip/</loc>
+    <lastmod>2024-12-11T23:46:53+08:00</lastmod>
+  </url><url>
     <loc>https://rocko.vip/tags/android/</loc>
     <lastmod>2018-11-22T00:00:00+00:00</lastmod>
   </url><url>
@@ -14,13 +20,7 @@
     <loc>https://rocko.vip/posts/google-git-repo-%E5%A4%9A%E4%BB%93%E5%BA%93%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/</loc>
     <lastmod>2018-11-22T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://rocko.vip/posts/</loc>
-    <lastmod>2018-11-22T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://rocko.vip/tags/repo/</loc>
-    <lastmod>2018-11-22T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://rocko.vip/</loc>
     <lastmod>2018-11-22T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://rocko.vip/tags/</loc>
